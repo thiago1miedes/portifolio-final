@@ -1,0 +1,39 @@
+---
+interface Props { src: string; w: number; h: number; alt: string; mode?: "scroll" | "auto" | "static"; class?: string }
+const { src, w, h, alt, mode = "scroll", class: cls = "" } = Astro.props;
+---
+<figure class:list={["phone", `phone--${mode}`, cls]}>
+  <div class="phone-screen" data-lenis-prevent={mode === "scroll" ? "" : undefined} tabindex={mode === "scroll" ? 0 : undefined}>
+    <img src={src} width={w} height={h} alt={alt} loading="lazy" decoding="async" />
+  </div>
+  <span class="phone-notch" aria-hidden="true"></span>
+</figure>
+
+<style>
+  .phone {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border-radius: 42px;
+    background: var(--ink);
+    box-shadow: inset 0 0 0 2px #24474c, var(--shadow-lg);
+  }
+  .phone-screen {
+    aspect-ratio: 9 / 19.5;
+    border-radius: 32px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .phone--scroll .phone-screen { overflow-y: auto; scrollbar-width: none; overscroll-behavior: contain; }
+  .phone--scroll .phone-screen::-webkit-scrollbar { display: none; }
+  .phone-screen img { width: 100%; height: auto; }
+  .phone--auto img { animation: phone-auto 30s ease-in-out infinite alternate; }
+  @keyframes phone-auto { to { transform: translateY(calc(-100% + var(--view-h, 560px))); } }
+  .phone-notch {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    width: 74px; height: 20px; border-radius: 12px; background: var(--ink);
+  }
+  @media (prefers-reduced-motion: reduce) { .phone--auto img { animation: none; } }
+</style>

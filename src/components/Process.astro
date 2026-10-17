@@ -1,0 +1,52 @@
+---
+const steps = [
+  { t: "Entendimento", d: "Imersão na marca, no público e nos objetivos para alinhar cada detalhe antes de começar." },
+  { t: "Criação", d: "Layout no Figma com rodadas de revisão — e, quando é site, desenvolvimento em código." },
+  { t: "Testes & ajustes", d: "Revisão em todos os dispositivos, performance e refinamento dos detalhes finais." },
+  { t: "Entrega & suporte", d: "Publicação, arquivos organizados e acompanhamento depois da entrega." },
+];
+---
+<section class="section process">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Como eu trabalho</span>
+      <h2 class="h-section" data-split>Um processo simples, <br class="br-lg" />do briefing ao <span class="hl">site no ar</span>.</h2>
+    </div>
+    <div class="steps" data-steps>
+      <svg class="steps-path" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 20 H1000" data-draw />
+      </svg>
+      {steps.map((s, i) => (
+        <article class="step" data-step>
+          <span class="step-node" aria-hidden="true"><i></i></span>
+          <span class="step-num">0{i + 1}</span>
+          <h3>{s.t}</h3>
+          <p>{s.d}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .br-lg { display: none; }
+  @media (min-width: 900px) { .br-lg { display: inline; } }
+  .steps { position: relative; display: grid; gap: 28px; }
+  @media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); gap: 32px; } }
+  .steps-path { display: none; }
+  @media (min-width: 900px) {
+    .steps-path { display: block; position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 40px; overflow: visible; }
+    .steps-path path { fill: none; stroke: var(--leaf); stroke-width: 4; stroke-dasharray: 8 8; vector-effect: non-scaling-stroke; }
+  }
+  .step { position: relative; display: grid; gap: 12px; padding-top: 0; }
+  @media (min-width: 900px) { .step { padding-top: 64px; } }
+  .step-node {
+    display: grid; place-items: center;
+    width: 40px; height: 40px; background: #fff; box-shadow: 0 0 0 2px var(--leaf);
+  }
+  @media (min-width: 900px) { .step-node { position: absolute; top: 0; left: 0; } }
+  .step-node i { width: 14px; height: 14px; background: var(--forest); }
+  .step-num { font-family: var(--font-pixel); font-size: 14px; color: var(--forest); }
+  .step h3 { font-size: 1.5rem; letter-spacing: -0.03em; }
+  .step p { color: var(--ink-2); font-size: 16px; }
+</style>

@@ -1,0 +1,3254 @@
+{
+ "deliziare": {
+  "thumb": {
+   "src": "/cases/deliziare/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "live",
+    "src": "/cases/deliziare/live.webp",
+    "w": 1440,
+    "h": 8745,
+    "kind": "page",
+    "label": "Site no ar"
+   },
+   {
+    "id": "layout",
+    "src": "/cases/deliziare/layout.webp",
+    "w": 1440,
+    "h": 8445,
+    "kind": "page",
+    "label": "Layout · Home"
+   }
+  ],
+  "cover": "live"
+ },
+ "massas-ivai": {
+  "thumb": {
+   "src": "/cases/massas-ivai/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "live",
+    "src": "/cases/massas-ivai/live.webp",
+    "w": 1440,
+    "h": 4133,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "mobile",
+    "src": "/cases/massas-ivai/mobile.webp",
+    "w": 780,
+    "h": 14602,
+    "kind": "mobile"
+   }
+  ],
+  "cover": "live"
+ },
+ "palmont": {
+  "thumb": {
+   "src": "/cases/palmont/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "live",
+    "src": "/cases/palmont/live.webp",
+    "w": 1440,
+    "h": 4887,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "mobile",
+    "src": "/cases/palmont/mobile.webp",
+    "w": 780,
+    "h": 16000,
+    "kind": "mobile"
+   }
+  ],
+  "cover": "live"
+ },
+ "cidade-alegre": {
+  "thumb": {
+   "src": "/cases/cidade-alegre/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "live",
+    "src": "/cases/cidade-alegre/live.webp",
+    "w": 1440,
+    "h": 6696,
+    "kind": "page",
+    "label": "Landing page"
+   },
+   {
+    "id": "mobile",
+    "src": "/cases/cidade-alegre/mobile.webp",
+    "w": 780,
+    "h": 16000,
+    "kind": "mobile"
+   }
+  ],
+  "cover": "live"
+ },
+ "arie-capital": {
+  "thumb": {
+   "src": "/cases/arie-capital/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/arie-capital/home.webp",
+    "w": 1440,
+    "h": 7455,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "fundos",
+    "src": "/cases/arie-capital/fundos.webp",
+    "w": 1440,
+    "h": 1790,
+    "kind": "page",
+    "label": "Fundos"
+   },
+   {
+    "id": "mobile",
+    "src": "/cases/arie-capital/mobile.webp",
+    "w": 780,
+    "h": 16000,
+    "kind": "mobile"
+   },
+   {
+    "id": "mobile-fundos",
+    "src": "/cases/arie-capital/mobile-fundos.webp",
+    "w": 780,
+    "h": 6206,
+    "kind": "mobile"
+   }
+  ],
+  "cover": "home"
+ },
+ "smartbox": {
+  "thumb": {
+   "src": "/cases/smartbox/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "live",
+    "src": "/cases/smartbox/live.webp",
+    "w": 1440,
+    "h": 6413,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "mobile",
+    "src": "/cases/smartbox/mobile.webp",
+    "w": 780,
+    "h": 14416,
+    "kind": "mobile"
+   },
+   {
+    "id": "post-1",
+    "src": "/cases/smartbox/post-1.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-2",
+    "src": "/cases/smartbox/post-2.webp",
+    "w": 810,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-3",
+    "src": "/cases/smartbox/post-3.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-4",
+    "src": "/cases/smartbox/post-4.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-5",
+    "src": "/cases/smartbox/post-5.webp",
+    "w": 1080,
+    "h": 675,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-6",
+    "src": "/cases/smartbox/post-6.webp",
+    "w": 810,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-7",
+    "src": "/cases/smartbox/post-7.webp",
+    "w": 810,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-8",
+    "src": "/cases/smartbox/post-8.webp",
+    "w": 810,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-9",
+    "src": "/cases/smartbox/post-9.webp",
+    "w": 810,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-10",
+    "src": "/cases/smartbox/post-10.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-11",
+    "src": "/cases/smartbox/post-11.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "post-12",
+    "src": "/cases/smartbox/post-12.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "story-1",
+    "src": "/cases/smartbox/story-1.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post",
+    "group": "stories"
+   },
+   {
+    "id": "story-2",
+    "src": "/cases/smartbox/story-2.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post",
+    "group": "stories"
+   },
+   {
+    "id": "story-3",
+    "src": "/cases/smartbox/story-3.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post",
+    "group": "stories"
+   },
+   {
+    "id": "story-4",
+    "src": "/cases/smartbox/story-4.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post",
+    "group": "stories"
+   },
+   {
+    "id": "story-5",
+    "src": "/cases/smartbox/story-5.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post",
+    "group": "stories"
+   },
+   {
+    "id": "story-6",
+    "src": "/cases/smartbox/story-6.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post",
+    "group": "stories"
+   },
+   {
+    "id": "folder-1",
+    "src": "/cases/smartbox/folder-1.webp",
+    "w": 437,
+    "h": 613,
+    "kind": "image",
+    "group": "print"
+   },
+   {
+    "id": "folder-2",
+    "src": "/cases/smartbox/folder-2.webp",
+    "w": 437,
+    "h": 613,
+    "kind": "image",
+    "group": "print"
+   }
+  ],
+  "cover": "live"
+ },
+ "firework": {
+  "thumb": {
+   "src": "/cases/firework/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/firework/home.webp",
+    "w": 1440,
+    "h": 6899,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "sobre",
+    "src": "/cases/firework/sobre.webp",
+    "w": 1440,
+    "h": 11264,
+    "kind": "page",
+    "label": "Sobre a Fire"
+   },
+   {
+    "id": "produto",
+    "src": "/cases/firework/produto.webp",
+    "w": 1440,
+    "h": 5943,
+    "kind": "page",
+    "label": "Produto digital"
+   },
+   {
+    "id": "firesourcing",
+    "src": "/cases/firework/firesourcing.webp",
+    "w": 1440,
+    "h": 5974,
+    "kind": "page",
+    "label": "Firesourcing"
+   },
+   {
+    "id": "insights",
+    "src": "/cases/firework/insights.webp",
+    "w": 1440,
+    "h": 3716,
+    "kind": "page",
+    "label": "Insights"
+   },
+   {
+    "id": "vagas",
+    "src": "/cases/firework/vagas.webp",
+    "w": 1440,
+    "h": 3231,
+    "kind": "page",
+    "label": "Vagas"
+   },
+   {
+    "id": "contato",
+    "src": "/cases/firework/contato.webp",
+    "w": 1440,
+    "h": 2287,
+    "kind": "page",
+    "label": "Contato"
+   }
+  ],
+  "cover": "home"
+ },
+ "ead-plataforma": {
+  "thumb": {
+   "src": "/cases/ead-plataforma/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/ead-plataforma/home.webp",
+    "w": 1440,
+    "h": 8164,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "infoprodutores",
+    "src": "/cases/ead-plataforma/infoprodutores.webp",
+    "w": 1440,
+    "h": 6688,
+    "kind": "page",
+    "label": "Infoprodutores"
+   },
+   {
+    "id": "empresas",
+    "src": "/cases/ead-plataforma/empresas.webp",
+    "w": 1440,
+    "h": 7543,
+    "kind": "page",
+    "label": "Empresas"
+   },
+   {
+    "id": "planos",
+    "src": "/cases/ead-plataforma/planos.webp",
+    "w": 1440,
+    "h": 6302,
+    "kind": "page",
+    "label": "Planos"
+   },
+   {
+    "id": "sobre",
+    "src": "/cases/ead-plataforma/sobre.webp",
+    "w": 1440,
+    "h": 6842,
+    "kind": "page",
+    "label": "Sobre"
+   },
+   {
+    "id": "v1",
+    "src": "/cases/ead-plataforma/v1.webp",
+    "w": 1440,
+    "h": 12060,
+    "kind": "page",
+    "label": "Home · versão 1"
+   }
+  ],
+  "cover": "home"
+ },
+ "conexao-auditiva": {
+  "thumb": {
+   "src": "/cases/conexao-auditiva/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/conexao-auditiva/home.webp",
+    "w": 1440,
+    "h": 4833,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "sobre",
+    "src": "/cases/conexao-auditiva/sobre.webp",
+    "w": 1440,
+    "h": 3157,
+    "kind": "page",
+    "label": "Sobre nós"
+   },
+   {
+    "id": "aparelhos",
+    "src": "/cases/conexao-auditiva/aparelhos.webp",
+    "w": 1440,
+    "h": 5541,
+    "kind": "page",
+    "label": "Aparelhos auditivos"
+   },
+   {
+    "id": "perda",
+    "src": "/cases/conexao-auditiva/perda.webp",
+    "w": 1440,
+    "h": 2921,
+    "kind": "page",
+    "label": "Perda auditiva"
+   },
+   {
+    "id": "zumbido",
+    "src": "/cases/conexao-auditiva/zumbido.webp",
+    "w": 1440,
+    "h": 4148,
+    "kind": "page",
+    "label": "Zumbido"
+   },
+   {
+    "id": "blog",
+    "src": "/cases/conexao-auditiva/blog.webp",
+    "w": 1440,
+    "h": 2457,
+    "kind": "page",
+    "label": "Blog"
+   }
+  ],
+  "cover": "home"
+ },
+ "ecovita": {
+  "thumb": {
+   "src": "/cases/ecovita/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/ecovita/home.webp",
+    "w": 1440,
+    "h": 6043,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "sobre",
+    "src": "/cases/ecovita/sobre.webp",
+    "w": 1440,
+    "h": 8059,
+    "kind": "page",
+    "label": "Sobre nós"
+   },
+   {
+    "id": "cliente-1",
+    "src": "/cases/ecovita/cliente-1.webp",
+    "w": 1440,
+    "h": 6220,
+    "kind": "page",
+    "label": "Área do cliente · A"
+   },
+   {
+    "id": "cliente-2",
+    "src": "/cases/ecovita/cliente-2.webp",
+    "w": 1440,
+    "h": 7091,
+    "kind": "page",
+    "label": "Área do cliente · B"
+   }
+  ],
+  "cover": "home"
+ },
+ "wissence": {
+  "thumb": {
+   "src": "/cases/wissence/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/wissence/home.webp",
+    "w": 1440,
+    "h": 5140,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "landing",
+    "src": "/cases/wissence/landing.webp",
+    "w": 1440,
+    "h": 4739,
+    "kind": "page",
+    "label": "Landing page"
+   },
+   {
+    "id": "especialidades",
+    "src": "/cases/wissence/especialidades.webp",
+    "w": 1440,
+    "h": 3917,
+    "kind": "page",
+    "label": "Especialidades"
+   },
+   {
+    "id": "unidades",
+    "src": "/cases/wissence/unidades.webp",
+    "w": 1440,
+    "h": 6096,
+    "kind": "page",
+    "label": "Unidades"
+   },
+   {
+    "id": "contato",
+    "src": "/cases/wissence/contato.webp",
+    "w": 1440,
+    "h": 2573,
+    "kind": "page",
+    "label": "Contato"
+   }
+  ],
+  "cover": "home"
+ },
+ "surgitec": {
+  "thumb": {
+   "src": "/cases/surgitec/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/surgitec/home.webp",
+    "w": 1440,
+    "h": 4158,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "sobre",
+    "src": "/cases/surgitec/sobre.webp",
+    "w": 1440,
+    "h": 3753,
+    "kind": "page",
+    "label": "Sobre"
+   },
+   {
+    "id": "especialidades",
+    "src": "/cases/surgitec/especialidades.webp",
+    "w": 1440,
+    "h": 5038,
+    "kind": "page",
+    "label": "Especialidades"
+   },
+   {
+    "id": "produtos",
+    "src": "/cases/surgitec/produtos.webp",
+    "w": 1440,
+    "h": 4427,
+    "kind": "page",
+    "label": "Produtos"
+   },
+   {
+    "id": "contato",
+    "src": "/cases/surgitec/contato.webp",
+    "w": 1440,
+    "h": 2630,
+    "kind": "page",
+    "label": "Contato"
+   }
+  ],
+  "cover": "home"
+ },
+ "valor-med": {
+  "thumb": {
+   "src": "/cases/valor-med/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "landing",
+    "src": "/cases/valor-med/landing.webp",
+    "w": 1440,
+    "h": 11484,
+    "kind": "page",
+    "label": "Landing page"
+   },
+   {
+    "id": "logo-1",
+    "src": "/cases/valor-med/logo-1.webp",
+    "w": 658,
+    "h": 685,
+    "kind": "image",
+    "group": "brand"
+   },
+   {
+    "id": "logo-2",
+    "src": "/cases/valor-med/logo-2.webp",
+    "w": 659,
+    "h": 686,
+    "kind": "image",
+    "group": "brand"
+   },
+   {
+    "id": "logo-3",
+    "src": "/cases/valor-med/logo-3.webp",
+    "w": 336,
+    "h": 336,
+    "kind": "image",
+    "group": "brand"
+   },
+   {
+    "id": "logo-4",
+    "src": "/cases/valor-med/logo-4.webp",
+    "w": 337,
+    "h": 336,
+    "kind": "image",
+    "group": "brand"
+   },
+   {
+    "id": "logo-5",
+    "src": "/cases/valor-med/logo-5.webp",
+    "w": 689,
+    "h": 333,
+    "kind": "image",
+    "group": "brand"
+   },
+   {
+    "id": "logo-6",
+    "src": "/cases/valor-med/logo-6.webp",
+    "w": 1364,
+    "h": 333,
+    "kind": "image",
+    "group": "brand"
+   }
+  ],
+  "cover": "landing"
+ },
+ "piemonte": {
+  "thumb": {
+   "src": "/cases/piemonte/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "landing",
+    "src": "/cases/piemonte/landing.webp",
+    "w": 1440,
+    "h": 9145,
+    "kind": "page",
+    "label": "Landing page"
+   }
+  ],
+  "cover": "landing"
+ },
+ "amazonia": {
+  "thumb": {
+   "src": "/cases/amazonia/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/amazonia/home.webp",
+    "w": 1440,
+    "h": 8232,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "sobre",
+    "src": "/cases/amazonia/sobre.webp",
+    "w": 1440,
+    "h": 5435,
+    "kind": "page",
+    "label": "Sobre o projeto"
+   },
+   {
+    "id": "plante",
+    "src": "/cases/amazonia/plante.webp",
+    "w": 1440,
+    "h": 3956,
+    "kind": "page",
+    "label": "Plante essa ideia"
+   }
+  ],
+  "cover": "home"
+ },
+ "chocolori": {
+  "thumb": {
+   "src": "/cases/chocolori/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/chocolori/home.webp",
+    "w": 1440,
+    "h": 7422,
+    "kind": "page",
+    "label": "Home"
+   }
+  ],
+  "cover": "home"
+ },
+ "vo-cida": {
+  "thumb": {
+   "src": "/cases/vo-cida/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/vo-cida/home.webp",
+    "w": 1440,
+    "h": 5875,
+    "kind": "page",
+    "label": "Home"
+   }
+  ],
+  "cover": "home"
+ },
+ "zkr-copos": {
+  "thumb": {
+   "src": "/cases/zkr-copos/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/zkr-copos/home.webp",
+    "w": 1440,
+    "h": 7343,
+    "kind": "page",
+    "label": "Home"
+   }
+  ],
+  "cover": "home"
+ },
+ "laura-coube": {
+  "thumb": {
+   "src": "/cases/laura-coube/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "landing",
+    "src": "/cases/laura-coube/landing.webp",
+    "w": 1440,
+    "h": 3937,
+    "kind": "page",
+    "label": "Landing page"
+   }
+  ],
+  "cover": "landing"
+ },
+ "mpl": {
+  "thumb": {
+   "src": "/cases/mpl/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/mpl/home.webp",
+    "w": 1440,
+    "h": 5400,
+    "kind": "page",
+    "label": "One page"
+   },
+   {
+    "id": "corretores",
+    "src": "/cases/mpl/corretores.webp",
+    "w": 1440,
+    "h": 3941,
+    "kind": "page",
+    "label": "Corretores"
+   }
+  ],
+  "cover": "home"
+ },
+ "sindboss": {
+  "thumb": {
+   "src": "/cases/sindboss/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/sindboss/home.webp",
+    "w": 1440,
+    "h": 5386,
+    "kind": "page",
+    "label": "Home"
+   }
+  ],
+  "cover": "home"
+ },
+ "guia-da-cozinha": {
+  "thumb": {
+   "src": "/cases/guia-da-cozinha/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/guia-da-cozinha/home.webp",
+    "w": 1440,
+    "h": 8220,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "categoria",
+    "src": "/cases/guia-da-cozinha/categoria.webp",
+    "w": 1440,
+    "h": 4212,
+    "kind": "page",
+    "label": "Categoria"
+   },
+   {
+    "id": "receita",
+    "src": "/cases/guia-da-cozinha/receita.webp",
+    "w": 1440,
+    "h": 4712,
+    "kind": "page",
+    "label": "Receita"
+   },
+   {
+    "id": "envio",
+    "src": "/cases/guia-da-cozinha/envio.webp",
+    "w": 1440,
+    "h": 2689,
+    "kind": "page",
+    "label": "Envie sua receita"
+   }
+  ],
+  "cover": "home"
+ },
+ "taze": {
+  "thumb": {
+   "src": "/cases/taze/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/taze/home.webp",
+    "w": 1440,
+    "h": 9613,
+    "kind": "page",
+    "label": "One page"
+   }
+  ],
+  "cover": "home"
+ },
+ "cidade-agil": {
+  "thumb": {
+   "src": "/cases/cidade-agil/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/cidade-agil/home.webp",
+    "w": 1440,
+    "h": 4152,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "consultoria",
+    "src": "/cases/cidade-agil/consultoria.webp",
+    "w": 1440,
+    "h": 1885,
+    "kind": "page",
+    "label": "Consultoria"
+   },
+   {
+    "id": "tecnologia",
+    "src": "/cases/cidade-agil/tecnologia.webp",
+    "w": 1440,
+    "h": 2489,
+    "kind": "page",
+    "label": "Tecnologia"
+   },
+   {
+    "id": "governanca",
+    "src": "/cases/cidade-agil/governanca.webp",
+    "w": 1440,
+    "h": 2004,
+    "kind": "page",
+    "label": "Governança"
+   },
+   {
+    "id": "setor-publico",
+    "src": "/cases/cidade-agil/setor-publico.webp",
+    "w": 1440,
+    "h": 2659,
+    "kind": "page",
+    "label": "Setor público"
+   },
+   {
+    "id": "inteligencia",
+    "src": "/cases/cidade-agil/inteligencia.webp",
+    "w": 1440,
+    "h": 2285,
+    "kind": "page",
+    "label": "Inteligência de mercado"
+   },
+   {
+    "id": "contratos",
+    "src": "/cases/cidade-agil/contratos.webp",
+    "w": 1440,
+    "h": 2197,
+    "kind": "page",
+    "label": "Gestão de contratos"
+   },
+   {
+    "id": "aliancas",
+    "src": "/cases/cidade-agil/aliancas.webp",
+    "w": 1440,
+    "h": 1818,
+    "kind": "page",
+    "label": "Alianças"
+   },
+   {
+    "id": "carreiras",
+    "src": "/cases/cidade-agil/carreiras.webp",
+    "w": 1440,
+    "h": 1660,
+    "kind": "page",
+    "label": "Carreiras"
+   },
+   {
+    "id": "contato",
+    "src": "/cases/cidade-agil/contato.webp",
+    "w": 1440,
+    "h": 1499,
+    "kind": "page",
+    "label": "Contato"
+   }
+  ],
+  "cover": "home"
+ },
+ "aparecida-macena": {
+  "thumb": {
+   "src": "/cases/aparecida-macena/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/aparecida-macena/home.webp",
+    "w": 1440,
+    "h": 4152,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "produtos",
+    "src": "/cases/aparecida-macena/produtos.webp",
+    "w": 1440,
+    "h": 3591,
+    "kind": "page",
+    "label": "Produtos"
+   },
+   {
+    "id": "produto",
+    "src": "/cases/aparecida-macena/produto.webp",
+    "w": 1440,
+    "h": 2517,
+    "kind": "page",
+    "label": "Produto"
+   },
+   {
+    "id": "sobre",
+    "src": "/cases/aparecida-macena/sobre.webp",
+    "w": 1440,
+    "h": 3588,
+    "kind": "page",
+    "label": "Sobre"
+   },
+   {
+    "id": "contato",
+    "src": "/cases/aparecida-macena/contato.webp",
+    "w": 1440,
+    "h": 2077,
+    "kind": "page",
+    "label": "Contato"
+   }
+  ],
+  "cover": "home"
+ },
+ "dor-e-saude": {
+  "thumb": {
+   "src": "/cases/dor-e-saude/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "logo-02",
+    "src": "/cases/dor-e-saude/logo-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-03",
+    "src": "/cases/dor-e-saude/logo-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-04",
+    "src": "/cases/dor-e-saude/logo-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-05",
+    "src": "/cases/dor-e-saude/logo-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-06",
+    "src": "/cases/dor-e-saude/logo-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-07",
+    "src": "/cases/dor-e-saude/logo-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-08",
+    "src": "/cases/dor-e-saude/logo-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-12",
+    "src": "/cases/dor-e-saude/logo-12.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-13",
+    "src": "/cases/dor-e-saude/logo-13.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-14",
+    "src": "/cases/dor-e-saude/logo-14.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-18",
+    "src": "/cases/dor-e-saude/logo-18.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-19",
+    "src": "/cases/dor-e-saude/logo-19.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-20",
+    "src": "/cases/dor-e-saude/logo-20.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "papelaria-01",
+    "src": "/cases/dor-e-saude/papelaria-01.webp",
+    "w": 1600,
+    "h": 1133,
+    "kind": "slide"
+   },
+   {
+    "id": "papelaria-02",
+    "src": "/cases/dor-e-saude/papelaria-02.webp",
+    "w": 1600,
+    "h": 1133,
+    "kind": "slide"
+   },
+   {
+    "id": "papelaria-03",
+    "src": "/cases/dor-e-saude/papelaria-03.webp",
+    "w": 1600,
+    "h": 1133,
+    "kind": "slide"
+   },
+   {
+    "id": "papelaria-04",
+    "src": "/cases/dor-e-saude/papelaria-04.webp",
+    "w": 1600,
+    "h": 1133,
+    "kind": "slide"
+   },
+   {
+    "id": "papelaria-05",
+    "src": "/cases/dor-e-saude/papelaria-05.webp",
+    "w": 1600,
+    "h": 1133,
+    "kind": "slide"
+   },
+   {
+    "id": "papelaria-06",
+    "src": "/cases/dor-e-saude/papelaria-06.webp",
+    "w": 1600,
+    "h": 1133,
+    "kind": "slide"
+   },
+   {
+    "id": "papelaria-07",
+    "src": "/cases/dor-e-saude/papelaria-07.webp",
+    "w": 1600,
+    "h": 1133,
+    "kind": "slide"
+   },
+   {
+    "id": "mock-cartao",
+    "src": "/cases/dor-e-saude/mock-cartao.webp",
+    "w": 1600,
+    "h": 1067,
+    "kind": "image"
+   },
+   {
+    "id": "mock-envelope",
+    "src": "/cases/dor-e-saude/mock-envelope.webp",
+    "w": 1600,
+    "h": 1067,
+    "kind": "image"
+   },
+   {
+    "id": "mock-bloco",
+    "src": "/cases/dor-e-saude/mock-bloco.webp",
+    "w": 1600,
+    "h": 1067,
+    "kind": "image"
+   },
+   {
+    "id": "mock-receituario",
+    "src": "/cases/dor-e-saude/mock-receituario.webp",
+    "w": 1600,
+    "h": 1280,
+    "kind": "image"
+   }
+  ],
+  "cover": "mock-cartao"
+ },
+ "oticas-talarico": {
+  "thumb": {
+   "src": "/cases/oticas-talarico/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": "manual-01",
+  "items": [
+   {
+    "id": "manual-01",
+    "src": "/cases/oticas-talarico/manual-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-02",
+    "src": "/cases/oticas-talarico/manual-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-03",
+    "src": "/cases/oticas-talarico/manual-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-04",
+    "src": "/cases/oticas-talarico/manual-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-05",
+    "src": "/cases/oticas-talarico/manual-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-06",
+    "src": "/cases/oticas-talarico/manual-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-07",
+    "src": "/cases/oticas-talarico/manual-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-08",
+    "src": "/cases/oticas-talarico/manual-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-09",
+    "src": "/cases/oticas-talarico/manual-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-10",
+    "src": "/cases/oticas-talarico/manual-10.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-11",
+    "src": "/cases/oticas-talarico/manual-11.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-12",
+    "src": "/cases/oticas-talarico/manual-12.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-13",
+    "src": "/cases/oticas-talarico/manual-13.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "manual-14",
+    "src": "/cases/oticas-talarico/manual-14.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "foto-1",
+    "src": "/cases/oticas-talarico/foto-1.webp",
+    "w": 1600,
+    "h": 1280,
+    "kind": "image",
+    "group": "packaging"
+   },
+   {
+    "id": "foto-2",
+    "src": "/cases/oticas-talarico/foto-2.webp",
+    "w": 1600,
+    "h": 1280,
+    "kind": "image",
+    "group": "packaging"
+   },
+   {
+    "id": "foto-3",
+    "src": "/cases/oticas-talarico/foto-3.webp",
+    "w": 1600,
+    "h": 1280,
+    "kind": "image",
+    "group": "packaging"
+   },
+   {
+    "id": "foto-4",
+    "src": "/cases/oticas-talarico/foto-4.webp",
+    "w": 1600,
+    "h": 1280,
+    "kind": "image",
+    "group": "packaging"
+   }
+  ]
+ },
+ "easywork": {
+  "thumb": {
+   "src": "/cases/easywork/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "mock-01",
+    "src": "/cases/easywork/mock-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-02",
+    "src": "/cases/easywork/mock-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-03",
+    "src": "/cases/easywork/mock-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-04",
+    "src": "/cases/easywork/mock-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-05",
+    "src": "/cases/easywork/mock-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-06",
+    "src": "/cases/easywork/mock-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-07",
+    "src": "/cases/easywork/mock-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-08",
+    "src": "/cases/easywork/mock-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-09",
+    "src": "/cases/easywork/mock-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-10",
+    "src": "/cases/easywork/mock-10.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-11",
+    "src": "/cases/easywork/mock-11.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "mock-12",
+    "src": "/cases/easywork/mock-12.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "logo-02",
+    "src": "/cases/easywork/logo-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-03",
+    "src": "/cases/easywork/logo-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-05",
+    "src": "/cases/easywork/logo-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-06",
+    "src": "/cases/easywork/logo-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-09",
+    "src": "/cases/easywork/logo-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-12",
+    "src": "/cases/easywork/logo-12.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-13",
+    "src": "/cases/easywork/logo-13.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-16",
+    "src": "/cases/easywork/logo-16.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-19",
+    "src": "/cases/easywork/logo-19.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-20",
+    "src": "/cases/easywork/logo-20.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "site-home",
+    "src": "/cases/easywork/site-home.webp",
+    "w": 1440,
+    "h": 4726,
+    "kind": "page",
+    "label": "EasyWork · Home"
+   },
+   {
+    "id": "site-servicos",
+    "src": "/cases/easywork/site-servicos.webp",
+    "w": 1440,
+    "h": 1707,
+    "kind": "page",
+    "label": "EasyWork · Serviços"
+   },
+   {
+    "id": "site-sobre",
+    "src": "/cases/easywork/site-sobre.webp",
+    "w": 1440,
+    "h": 960,
+    "kind": "page",
+    "label": "EasyWork · Sobre"
+   },
+   {
+    "id": "site-contato",
+    "src": "/cases/easywork/site-contato.webp",
+    "w": 1440,
+    "h": 944,
+    "kind": "page",
+    "label": "EasyWork · Contato"
+   },
+   {
+    "id": "site-directories",
+    "src": "/cases/easywork/site-directories.webp",
+    "w": 1440,
+    "h": 3740,
+    "kind": "page",
+    "label": "Easy Directories"
+   }
+  ],
+  "cover": "mock-01"
+ },
+ "grasie": {
+  "thumb": {
+   "src": "/cases/grasie/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "logo-02",
+    "src": "/cases/grasie/logo-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-03",
+    "src": "/cases/grasie/logo-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-04",
+    "src": "/cases/grasie/logo-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-05",
+    "src": "/cases/grasie/logo-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-06",
+    "src": "/cases/grasie/logo-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-07",
+    "src": "/cases/grasie/logo-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-08",
+    "src": "/cases/grasie/logo-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-09",
+    "src": "/cases/grasie/logo-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-10",
+    "src": "/cases/grasie/logo-10.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-11",
+    "src": "/cases/grasie/logo-11.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-12",
+    "src": "/cases/grasie/logo-12.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-13",
+    "src": "/cases/grasie/logo-13.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-14",
+    "src": "/cases/grasie/logo-14.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-15",
+    "src": "/cases/grasie/logo-15.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-16",
+    "src": "/cases/grasie/logo-16.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-17",
+    "src": "/cases/grasie/logo-17.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-18",
+    "src": "/cases/grasie/logo-18.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-19",
+    "src": "/cases/grasie/logo-19.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "app-01",
+    "src": "/cases/grasie/app-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "app-02",
+    "src": "/cases/grasie/app-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "app-03",
+    "src": "/cases/grasie/app-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "sacola",
+    "src": "/cases/grasie/sacola.webp",
+    "w": 1440,
+    "h": 1080,
+    "kind": "image"
+   }
+  ],
+  "cover": "logo-07"
+ },
+ "lifestyle": {
+  "thumb": {
+   "src": "/cases/lifestyle/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "idv-02",
+    "src": "/cases/lifestyle/idv-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "idv-03",
+    "src": "/cases/lifestyle/idv-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "idv-04",
+    "src": "/cases/lifestyle/idv-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "idv-05",
+    "src": "/cases/lifestyle/idv-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "idv-06",
+    "src": "/cases/lifestyle/idv-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "idv-07",
+    "src": "/cases/lifestyle/idv-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "idv-08",
+    "src": "/cases/lifestyle/idv-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "idv-09",
+    "src": "/cases/lifestyle/idv-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "papelaria-1",
+    "src": "/cases/lifestyle/papelaria-1.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "papelaria-2",
+    "src": "/cases/lifestyle/papelaria-2.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   },
+   {
+    "id": "papelaria-3",
+    "src": "/cases/lifestyle/papelaria-3.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "image"
+   }
+  ],
+  "cover": "idv-09"
+ },
+ "hu-ufnt": {
+  "thumb": {
+   "src": "/cases/hu-ufnt/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "apresentacao-01",
+    "src": "/cases/hu-ufnt/apresentacao-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-02",
+    "src": "/cases/hu-ufnt/apresentacao-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-03",
+    "src": "/cases/hu-ufnt/apresentacao-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-04",
+    "src": "/cases/hu-ufnt/apresentacao-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-05",
+    "src": "/cases/hu-ufnt/apresentacao-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-06",
+    "src": "/cases/hu-ufnt/apresentacao-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-07",
+    "src": "/cases/hu-ufnt/apresentacao-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-08",
+    "src": "/cases/hu-ufnt/apresentacao-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-09",
+    "src": "/cases/hu-ufnt/apresentacao-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-10",
+    "src": "/cases/hu-ufnt/apresentacao-10.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-11",
+    "src": "/cases/hu-ufnt/apresentacao-11.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-12",
+    "src": "/cases/hu-ufnt/apresentacao-12.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-13",
+    "src": "/cases/hu-ufnt/apresentacao-13.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-14",
+    "src": "/cases/hu-ufnt/apresentacao-14.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-15",
+    "src": "/cases/hu-ufnt/apresentacao-15.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-16",
+    "src": "/cases/hu-ufnt/apresentacao-16.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "mock-01",
+    "src": "/cases/hu-ufnt/mock-01.webp",
+    "w": 1600,
+    "h": 893,
+    "kind": "image"
+   },
+   {
+    "id": "mock-02",
+    "src": "/cases/hu-ufnt/mock-02.webp",
+    "w": 1600,
+    "h": 893,
+    "kind": "image"
+   },
+   {
+    "id": "mock-03",
+    "src": "/cases/hu-ufnt/mock-03.webp",
+    "w": 1600,
+    "h": 893,
+    "kind": "image"
+   },
+   {
+    "id": "mock-04",
+    "src": "/cases/hu-ufnt/mock-04.webp",
+    "w": 1600,
+    "h": 893,
+    "kind": "image"
+   },
+   {
+    "id": "mock-05",
+    "src": "/cases/hu-ufnt/mock-05.webp",
+    "w": 1600,
+    "h": 893,
+    "kind": "image"
+   },
+   {
+    "id": "mock-06",
+    "src": "/cases/hu-ufnt/mock-06.webp",
+    "w": 1600,
+    "h": 893,
+    "kind": "image"
+   },
+   {
+    "id": "mock-07",
+    "src": "/cases/hu-ufnt/mock-07.webp",
+    "w": 1600,
+    "h": 893,
+    "kind": "image"
+   },
+   {
+    "id": "mock-08",
+    "src": "/cases/hu-ufnt/mock-08.webp",
+    "w": 1600,
+    "h": 893,
+    "kind": "image"
+   }
+  ],
+  "cover": "mock-01"
+ },
+ "royal-lash": {
+  "thumb": {
+   "src": "/cases/royal-lash/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "logo-02",
+    "src": "/cases/royal-lash/logo-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-03",
+    "src": "/cases/royal-lash/logo-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-04",
+    "src": "/cases/royal-lash/logo-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-05",
+    "src": "/cases/royal-lash/logo-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-06",
+    "src": "/cases/royal-lash/logo-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-07",
+    "src": "/cases/royal-lash/logo-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-08",
+    "src": "/cases/royal-lash/logo-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-09",
+    "src": "/cases/royal-lash/logo-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-10",
+    "src": "/cases/royal-lash/logo-10.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   }
+  ],
+  "cover": "logo-05"
+ },
+ "rock-ensina": {
+  "thumb": {
+   "src": "/cases/rock-ensina/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "id-01",
+    "src": "/cases/rock-ensina/id-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-02",
+    "src": "/cases/rock-ensina/id-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-03",
+    "src": "/cases/rock-ensina/id-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-04",
+    "src": "/cases/rock-ensina/id-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-05",
+    "src": "/cases/rock-ensina/id-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-06",
+    "src": "/cases/rock-ensina/id-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-07",
+    "src": "/cases/rock-ensina/id-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-08",
+    "src": "/cases/rock-ensina/id-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-09",
+    "src": "/cases/rock-ensina/id-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-10",
+    "src": "/cases/rock-ensina/id-10.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-11",
+    "src": "/cases/rock-ensina/id-11.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-12",
+    "src": "/cases/rock-ensina/id-12.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-13",
+    "src": "/cases/rock-ensina/id-13.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-14",
+    "src": "/cases/rock-ensina/id-14.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-15",
+    "src": "/cases/rock-ensina/id-15.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   }
+  ],
+  "cover": "id-09"
+ },
+ "reputation-architecture": {
+  "thumb": {
+   "src": "/cases/reputation-architecture/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "id-01",
+    "src": "/cases/reputation-architecture/id-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-02",
+    "src": "/cases/reputation-architecture/id-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-03",
+    "src": "/cases/reputation-architecture/id-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-04",
+    "src": "/cases/reputation-architecture/id-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-05",
+    "src": "/cases/reputation-architecture/id-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-06",
+    "src": "/cases/reputation-architecture/id-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-07",
+    "src": "/cases/reputation-architecture/id-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "id-08",
+    "src": "/cases/reputation-architecture/id-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   }
+  ],
+  "cover": "id-03"
+ },
+ "confraria": {
+  "thumb": {
+   "src": "/cases/confraria/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "logo-02",
+    "src": "/cases/confraria/logo-02.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-03",
+    "src": "/cases/confraria/logo-03.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-04",
+    "src": "/cases/confraria/logo-04.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-05",
+    "src": "/cases/confraria/logo-05.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-06",
+    "src": "/cases/confraria/logo-06.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-07",
+    "src": "/cases/confraria/logo-07.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-08",
+    "src": "/cases/confraria/logo-08.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-09",
+    "src": "/cases/confraria/logo-09.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-10",
+    "src": "/cases/confraria/logo-10.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   }
+  ],
+  "cover": "logo-04"
+ },
+ "efpi": {
+  "thumb": {
+   "src": "/cases/efpi/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "logo-01",
+    "src": "/cases/efpi/logo-01.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-02",
+    "src": "/cases/efpi/logo-02.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-03",
+    "src": "/cases/efpi/logo-03.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-04",
+    "src": "/cases/efpi/logo-04.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-05",
+    "src": "/cases/efpi/logo-05.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-06",
+    "src": "/cases/efpi/logo-06.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-07",
+    "src": "/cases/efpi/logo-07.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-08",
+    "src": "/cases/efpi/logo-08.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-09",
+    "src": "/cases/efpi/logo-09.webp",
+    "w": 1600,
+    "h": 1132,
+    "kind": "slide"
+   }
+  ],
+  "cover": "logo-02"
+ },
+ "debora-sandrin": {
+  "thumb": {
+   "src": "/cases/debora-sandrin/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "logo-02",
+    "src": "/cases/debora-sandrin/logo-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-03",
+    "src": "/cases/debora-sandrin/logo-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-04",
+    "src": "/cases/debora-sandrin/logo-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-05",
+    "src": "/cases/debora-sandrin/logo-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-06",
+    "src": "/cases/debora-sandrin/logo-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-07",
+    "src": "/cases/debora-sandrin/logo-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-08",
+    "src": "/cases/debora-sandrin/logo-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-09",
+    "src": "/cases/debora-sandrin/logo-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "logo-10",
+    "src": "/cases/debora-sandrin/logo-10.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   }
+  ],
+  "cover": "logo-06"
+ },
+ "faggian": {
+  "thumb": {
+   "src": "/cases/faggian/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "logo-1",
+    "src": "/cases/faggian/logo-1.webp",
+    "w": 897,
+    "h": 309,
+    "kind": "image"
+   },
+   {
+    "id": "sacola",
+    "src": "/cases/faggian/sacola.webp",
+    "w": 694,
+    "h": 964,
+    "kind": "image"
+   },
+   {
+    "id": "cartao-frente",
+    "src": "/cases/faggian/cartao-frente.webp",
+    "w": 255,
+    "h": 142,
+    "kind": "image"
+   },
+   {
+    "id": "cartao-verso",
+    "src": "/cases/faggian/cartao-verso.webp",
+    "w": 255,
+    "h": 142,
+    "kind": "image"
+   },
+   {
+    "id": "adesivo-1",
+    "src": "/cases/faggian/adesivo-1.webp",
+    "w": 99,
+    "h": 99,
+    "kind": "image"
+   },
+   {
+    "id": "etiqueta-1",
+    "src": "/cases/faggian/etiqueta-1.webp",
+    "w": 136,
+    "h": 249,
+    "kind": "image"
+   },
+   {
+    "id": "digital-1",
+    "src": "/cases/faggian/digital-1.webp",
+    "w": 900,
+    "h": 1600,
+    "kind": "image"
+   },
+   {
+    "id": "destaque-1",
+    "src": "/cases/faggian/destaque-1.webp",
+    "w": 1000,
+    "h": 1000,
+    "kind": "post"
+   },
+   {
+    "id": "destaque-2",
+    "src": "/cases/faggian/destaque-2.webp",
+    "w": 1000,
+    "h": 1000,
+    "kind": "post"
+   },
+   {
+    "id": "destaque-3",
+    "src": "/cases/faggian/destaque-3.webp",
+    "w": 1000,
+    "h": 1000,
+    "kind": "post"
+   }
+  ],
+  "cover": "sacola"
+ },
+ "vocs": {
+  "thumb": {
+   "src": "/cases/vocs/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "cartao-frente",
+    "src": "/cases/vocs/cartao-frente.webp",
+    "w": 273,
+    "h": 160,
+    "kind": "image"
+   },
+   {
+    "id": "cartao-verso",
+    "src": "/cases/vocs/cartao-verso.webp",
+    "w": 273,
+    "h": 159,
+    "kind": "image"
+   },
+   {
+    "id": "certificado",
+    "src": "/cases/vocs/certificado.webp",
+    "w": 860,
+    "h": 613,
+    "kind": "image"
+   },
+   {
+    "id": "cartao-digital",
+    "src": "/cases/vocs/cartao-digital.webp",
+    "w": 900,
+    "h": 1600,
+    "kind": "image"
+   },
+   {
+    "id": "assinatura",
+    "src": "/cases/vocs/assinatura.webp",
+    "w": 476,
+    "h": 130,
+    "kind": "image"
+   },
+   {
+    "id": "apresentacao-01",
+    "src": "/cases/vocs/apresentacao-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-02",
+    "src": "/cases/vocs/apresentacao-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "apresentacao-03",
+    "src": "/cases/vocs/apresentacao-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   }
+  ],
+  "cover": "cartao-frente"
+ },
+ "sg-importados": {
+  "thumb": {
+   "src": "/cases/sg-importados/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "feed",
+    "src": "/cases/sg-importados/feed.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "story",
+    "src": "/cases/sg-importados/story.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "consumidor-1",
+    "src": "/cases/sg-importados/consumidor-1.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "consumidor-2",
+    "src": "/cases/sg-importados/consumidor-2.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "aniversario",
+    "src": "/cases/sg-importados/aniversario.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "desconto",
+    "src": "/cases/sg-importados/desconto.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "progressivo",
+    "src": "/cases/sg-importados/progressivo.webp",
+    "w": 608,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "banner-black",
+    "src": "/cases/sg-importados/banner-black.webp",
+    "w": 1580,
+    "h": 450,
+    "kind": "image",
+    "group": "banners"
+   },
+   {
+    "id": "banner-decants",
+    "src": "/cases/sg-importados/banner-decants.webp",
+    "w": 1580,
+    "h": 450,
+    "kind": "image",
+    "group": "banners"
+   },
+   {
+    "id": "banner-vendidos",
+    "src": "/cases/sg-importados/banner-vendidos.webp",
+    "w": 1580,
+    "h": 450,
+    "kind": "image",
+    "group": "banners"
+   },
+   {
+    "id": "banner-consumidor",
+    "src": "/cases/sg-importados/banner-consumidor.webp",
+    "w": 1580,
+    "h": 450,
+    "kind": "image",
+    "group": "banners"
+   },
+   {
+    "id": "banner-aniversario",
+    "src": "/cases/sg-importados/banner-aniversario.webp",
+    "w": 1580,
+    "h": 450,
+    "kind": "image",
+    "group": "banners"
+   }
+  ],
+  "cover": "feed"
+ },
+ "cau-pe": {
+  "thumb": {
+   "src": "/cases/cau-pe/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "save-1",
+    "src": "/cases/cau-pe/save-1.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "save-2",
+    "src": "/cases/cau-pe/save-2.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "coloquio-1",
+    "src": "/cases/cau-pe/coloquio-1.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "coloquio-2",
+    "src": "/cases/cau-pe/coloquio-2.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "coloquio-3",
+    "src": "/cases/cau-pe/coloquio-3.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "coloquio-4",
+    "src": "/cases/cau-pe/coloquio-4.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "coloquio-5",
+    "src": "/cases/cau-pe/coloquio-5.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "patrimonio-1",
+    "src": "/cases/cau-pe/patrimonio-1.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "patrimonio-2",
+    "src": "/cases/cau-pe/patrimonio-2.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "patrimonio-3",
+    "src": "/cases/cau-pe/patrimonio-3.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "patrimonio-4",
+    "src": "/cases/cau-pe/patrimonio-4.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "patrimonio-5",
+    "src": "/cases/cau-pe/patrimonio-5.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "patrimonio-6",
+    "src": "/cases/cau-pe/patrimonio-6.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "patrimonio-7",
+    "src": "/cases/cau-pe/patrimonio-7.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "turismo-1",
+    "src": "/cases/cau-pe/turismo-1.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "turismo-7",
+    "src": "/cases/cau-pe/turismo-7.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "projeto-1",
+    "src": "/cases/cau-pe/projeto-1.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   },
+   {
+    "id": "projeto-2",
+    "src": "/cases/cau-pe/projeto-2.webp",
+    "w": 864,
+    "h": 1080,
+    "kind": "post"
+   }
+  ],
+  "cover": "save-1"
+ },
+ "dedicad": {
+  "thumb": {
+   "src": "/cases/dedicad/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "mockup-v4",
+    "src": "/cases/dedicad/mockup-v4.webp",
+    "w": 1275,
+    "h": 1500,
+    "kind": "image"
+   },
+   {
+    "id": "mockup",
+    "src": "/cases/dedicad/mockup.webp",
+    "w": 1275,
+    "h": 1500,
+    "kind": "image"
+   },
+   {
+    "id": "mockup-v3",
+    "src": "/cases/dedicad/mockup-v3.webp",
+    "w": 1275,
+    "h": 1500,
+    "kind": "image"
+   },
+   {
+    "id": "opcao-1",
+    "src": "/cases/dedicad/opcao-1.webp",
+    "w": 1600,
+    "h": 513,
+    "kind": "image"
+   },
+   {
+    "id": "opcao-2",
+    "src": "/cases/dedicad/opcao-2.webp",
+    "w": 1600,
+    "h": 513,
+    "kind": "image"
+   },
+   {
+    "id": "welbuda-1",
+    "src": "/cases/dedicad/welbuda-1.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "welbuda-2",
+    "src": "/cases/dedicad/welbuda-2.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "welbuda-3",
+    "src": "/cases/dedicad/welbuda-3.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "social"
+   },
+   {
+    "id": "welbuda-4",
+    "src": "/cases/dedicad/welbuda-4.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "social"
+   }
+  ],
+  "cover": "mockup-v4"
+ },
+ "todateen": {
+  "thumb": {
+   "src": "/cases/todateen/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "nightrun-01",
+    "src": "/cases/todateen/nightrun-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "nightrun-03",
+    "src": "/cases/todateen/nightrun-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "nightrun-04",
+    "src": "/cases/todateen/nightrun-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "nightrun-05",
+    "src": "/cases/todateen/nightrun-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "nightrun-07",
+    "src": "/cases/todateen/nightrun-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "nightrun-09",
+    "src": "/cases/todateen/nightrun-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "nightrun-11",
+    "src": "/cases/todateen/nightrun-11.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "nightrun-13",
+    "src": "/cases/todateen/nightrun-13.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "bidu-01",
+    "src": "/cases/todateen/bidu-01.webp",
+    "w": 1600,
+    "h": 889,
+    "kind": "slide"
+   },
+   {
+    "id": "bidu-02",
+    "src": "/cases/todateen/bidu-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "bidu-03",
+    "src": "/cases/todateen/bidu-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "bidu-05",
+    "src": "/cases/todateen/bidu-05.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "bidu-07",
+    "src": "/cases/todateen/bidu-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "bidu-09",
+    "src": "/cases/todateen/bidu-09.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "porto-02",
+    "src": "/cases/todateen/porto-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "porto-04",
+    "src": "/cases/todateen/porto-04.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "porto-06",
+    "src": "/cases/todateen/porto-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "porto-08",
+    "src": "/cases/todateen/porto-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "papo-01",
+    "src": "/cases/todateen/papo-01.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "papo-03",
+    "src": "/cases/todateen/papo-03.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "papo-07",
+    "src": "/cases/todateen/papo-07.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "papo-11",
+    "src": "/cases/todateen/papo-11.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "conteudo-02",
+    "src": "/cases/todateen/conteudo-02.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "conteudo-08",
+    "src": "/cases/todateen/conteudo-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "conteudo-10",
+    "src": "/cases/todateen/conteudo-10.webp",
+    "w": 1600,
+    "h": 479,
+    "kind": "slide"
+   },
+   {
+    "id": "responde-06",
+    "src": "/cases/todateen/responde-06.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "responde-08",
+    "src": "/cases/todateen/responde-08.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   },
+   {
+    "id": "responde-10",
+    "src": "/cases/todateen/responde-10.webp",
+    "w": 1600,
+    "h": 900,
+    "kind": "slide"
+   }
+  ],
+  "cover": "nightrun-01"
+ },
+ "mgk": {
+  "thumb": {
+   "src": "/cases/mgk/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "items": [
+   {
+    "id": "ebook-01",
+    "src": "/cases/mgk/ebook-01.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-02",
+    "src": "/cases/mgk/ebook-02.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-03",
+    "src": "/cases/mgk/ebook-03.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-05",
+    "src": "/cases/mgk/ebook-05.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-07",
+    "src": "/cases/mgk/ebook-07.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-09",
+    "src": "/cases/mgk/ebook-09.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-13",
+    "src": "/cases/mgk/ebook-13.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-17",
+    "src": "/cases/mgk/ebook-17.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-21",
+    "src": "/cases/mgk/ebook-21.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   },
+   {
+    "id": "ebook-25",
+    "src": "/cases/mgk/ebook-25.webp",
+    "w": 1132,
+    "h": 1600,
+    "kind": "slide"
+   }
+  ],
+  "cover": "ebook-01"
+ }
+}

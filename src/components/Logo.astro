@@ -1,0 +1,41 @@
+---
+interface Props { light?: boolean }
+const { light = false } = Astro.props;
+---
+<span class:list={["logo", { "is-light": light }]}>
+  <svg class="logo-mark" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" shape-rendering="crispEdges">
+    <rect class="lm lm-1" x="0" y="0" width="8" height="8" />
+    <rect class="lm lm-2" x="8" y="0" width="8" height="8" />
+    <rect class="lm lm-3" x="16" y="8" width="8" height="8" />
+    <rect class="lm lm-4" x="0" y="8" width="8" height="8" />
+    <rect class="lm lm-5" x="8" y="16" width="8" height="8" />
+    <rect class="lm lm-6" x="0" y="16" width="8" height="8" />
+  </svg>
+  <span class="logo-word">thiago<b>miedes</b></span>
+</span>
+
+<style>
+  .logo { display: inline-flex; align-items: center; gap: 10px; }
+  .logo-mark { flex: none; }
+  .lm-1, .lm-4 { fill: var(--forest); }
+  .lm-2 { fill: var(--leaf); }
+  .lm-3 { fill: var(--sea); }
+  .lm-5 { fill: var(--marine); }
+  .lm-6 { fill: var(--forest-2); }
+  .lm { transition: transform 0.5s var(--ease); transform-box: fill-box; transform-origin: center; }
+  .logo:hover .lm-2 { transform: translate(0, -3px); }
+  .logo:hover .lm-3 { transform: translate(3px, 0); }
+  .logo:hover .lm-5 { transform: translate(0, 3px); }
+  .logo-word {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .logo-word b { font-weight: 700; color: var(--forest); margin-left: 1px; }
+  .is-light .logo-word { color: #fff; }
+  .is-light .logo-word b { color: var(--lime); }
+  .is-light .lm-5 { fill: var(--gem); }
+  .is-light .lm-6 { fill: var(--leaf-2); }
+</style>

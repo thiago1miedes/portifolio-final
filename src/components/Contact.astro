@@ -1,0 +1,136 @@
+---
+import { site } from "../data/site";
+const types = ["Site / landing page", "Identidade visual", "Social media", "Front-end (tenho o layout)", "Outro"];
+const budgets = ["Ainda não sei", "Até R$ 3 mil", "R$ 3 a 6 mil", "R$ 6 a 12 mil", "Acima de R$ 12 mil"];
+---
+<section class="section section--soft contact" id="contato">
+  <div class="container contact-grid">
+    <div class="contact-intro">
+      <span class="eyebrow" data-reveal>Contato</span>
+      <h2 class="h-section" data-split>Vamos tirar seu projeto do <span class="hl">papel</span>?</h2>
+      <p class="lead" data-reveal>Conte um pouco sobre o que você precisa. Respondo em até um dia útil com os próximos passos.</p>
+      <ul class="contact-list" data-reveal>
+        <li>
+          <span class="cl-label">E-mail</span>
+          <a href={`mailto:${site.email}`} class="cl-value">{site.email}</a>
+        </li>
+        <li>
+          <span class="cl-label">WhatsApp</span>
+          <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener" class="cl-value">{site.phone}</a>
+        </li>
+        <li>
+          <span class="cl-label">Base</span>
+          <span class="cl-value">{site.city} · atendimento remoto</span>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" data-contact data-endpoint={site.formEndpoint} data-email={site.email} data-whatsapp={site.whatsapp} novalidate data-reveal="up">
+      <fieldset class="f-types">
+        <legend>O que você precisa?</legend>
+        <div class="f-chips">
+          {types.map((t, i) => (
+            <label class="f-chip"><input type="radio" name="tipo" value={t} checked={i === 0} /><span>{t}</span></label>
+          ))}
+        </div>
+      </fieldset>
+      <div class="f-row">
+        <label class="f-field">
+          <span>Seu nome</span>
+          <input name="nome" type="text" autocomplete="name" required placeholder="Como posso te chamar?" />
+          <em class="f-err">Me diga seu nome.</em>
+        </label>
+        <label class="f-field">
+          <span>E-mail</span>
+          <input name="email" type="email" autocomplete="email" required placeholder="voce@empresa.com" />
+          <em class="f-err">Informe um e-mail válido.</em>
+        </label>
+      </div>
+      <div class="f-row">
+        <label class="f-field">
+          <span>WhatsApp <small>(opcional)</small></span>
+          <input name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" />
+        </label>
+        <label class="f-field">
+          <span>Investimento previsto</span>
+          <select name="orcamento">{budgets.map((b) => <option>{b}</option>)}</select>
+        </label>
+      </div>
+      <label class="f-field">
+        <span>Sobre o projeto</span>
+        <textarea name="mensagem" rows="5" required placeholder="Conte o objetivo, prazos e se já existe algum material (logo, layout, site atual…)"></textarea>
+        <em class="f-err">Escreva uma mensagem curtinha.</em>
+      </label>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+      <div class="f-actions">
+        <button type="submit" class="btn btn--green" data-magnetic>
+          <span data-label>Enviar mensagem</span>
+          <span class="btn-ico" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="2" stroke-linecap="square" /></svg></span>
+        </button>
+        <button type="button" class="btn btn--ghost" data-wa>Enviar pelo WhatsApp</button>
+      </div>
+      <p class="f-status" role="status" aria-live="polite" data-status></p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact-grid { display: grid; gap: clamp(40px, 6vw, 80px); }
+  @media (min-width: 1000px) { .contact-grid { grid-template-columns: 0.85fr 1.15fr; align-items: start; } }
+  .contact-intro { display: grid; gap: 24px; align-content: start; }
+  @media (min-width: 1000px) { .contact-intro { position: sticky; top: 120px; } }
+  .contact-list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; border-top: 1px solid var(--line); }
+  .contact-list li { display: grid; gap: 2px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .cl-label { font-family: var(--font-pixel); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest); }
+  .cl-value { font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 500; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+  a.cl-value:hover { color: var(--forest); }
+
+  .form {
+    display: grid; gap: 20px;
+    padding: clamp(22px, 3.4vw, 44px);
+    background: #fff; border-radius: 28px;
+    box-shadow: 0 0 0 1px var(--line), var(--shadow);
+  }
+  .f-types { border: 0; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .f-types legend, .f-field > span { font-weight: 600; font-size: 14.5px; color: var(--ink); padding: 0; margin-bottom: 10px; }
+  .f-field small { font-weight: 400; color: var(--ink-3); }
+  .f-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .f-chip input { position: absolute; opacity: 0; pointer-events: none; }
+  .f-chip span {
+    display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: 999px;
+    box-shadow: inset 0 0 0 1.5px var(--line); font-size: 14.5px; color: var(--ink-2); cursor: pointer;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+  }
+  .f-chip span:hover { box-shadow: inset 0 0 0 1.5px var(--forest); }
+  .f-chip input:checked + span { background: var(--marine); color: #fff; box-shadow: none; }
+  .f-chip input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .f-row { display: grid; gap: 20px; }
+  @media (min-width: 640px) { .f-row { grid-template-columns: 1fr 1fr; } }
+  .f-field { display: grid; position: relative; }
+  .f-field input, .f-field select, .f-field textarea {
+    width: 100%;
+    font: inherit; font-size: 16px; color: var(--ink);
+    padding: 14px 16px;
+    border: 0; border-radius: 12px;
+    background: var(--bg-soft);
+    box-shadow: inset 0 0 0 1.5px transparent;
+    transition: box-shadow 0.25s, background-color 0.25s;
+    appearance: none;
+  }
+  .f-field select {
+    background-image: linear-gradient(45deg, transparent 50%, var(--ink-2) 50%), linear-gradient(135deg, var(--ink-2) 50%, transparent 50%);
+    background-position: calc(100% - 22px) 52%, calc(100% - 16px) 52%;
+    background-size: 6px 6px; background-repeat: no-repeat;
+    padding-right: 40px;
+  }
+  .f-field textarea { resize: vertical; min-height: 130px; }
+  .f-field input::placeholder, .f-field textarea::placeholder { color: #8ea5a2; }
+  .f-field input:focus, .f-field select:focus, .f-field textarea:focus { outline: none; background: #fff; box-shadow: inset 0 0 0 1.5px var(--forest), 0 0 0 4px var(--mint-2); }
+  .f-err { display: none; font-style: normal; font-size: 13px; color: #c0392b; margin-top: 6px; }
+  .f-field.is-invalid input, .f-field.is-invalid textarea { box-shadow: inset 0 0 0 1.5px #e07a6c; background: #fff7f5; }
+  .f-field.is-invalid .f-err { display: block; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .f-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .f-status { font-size: 15px; color: var(--forest-2); min-height: 1.4em; }
+  .f-status.is-error { color: #c0392b; }
+</style>

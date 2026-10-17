@@ -1,0 +1,153 @@
+---
+// Paisagem em pixel art (inspirada em jogos 2D como Terraria), gerada no build.
+// Camadas: nuvens · colinas ao fundo · colinas médias · terreno com árvores e gemas · blocos flutuantes.
+interface Props { seed?: number; class?: string }
+const { seed = 21, class: cls = "" } = Astro.props;
+
+function rng(a: number) {
+  return () => {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+const r = rng(seed);
+const P = 24, COLS = 64, ROWS = 20, W = COLS * P, H = ROWS * P;
+const wave = (x: number, base: number, a1: number, f1: number, p1: number, a2: number, f2: number, p2: number) =>
+  Math.round(base + a1 * Math.sin(x * f1 + p1) + a2 * Math.sin(x * f2 + p2));
+
+const back = Array.from({ length: COLS }, (_, x) => wave(x, 10.5, 2.4, 0.15, 1.3, 1.1, 0.42, 0.4));
+const mid = Array.from({ length: COLS }, (_, x) => wave(x, 7.6, 1.9, 0.21, 2.6, 1.0, 0.55, 1.2));
+const front = Array.from({ length: COLS }, (_, x) => wave(x, 4.4, 1.5, 0.18, 0.3, 0.9, 0.63, 2.1));
+
+const depthColor = ["var(--leaf)", "var(--forest)", "var(--forest-2)", "var(--marine)", "var(--marine-2)", "var(--abyss)"];
+type Cell = { x: number; y: number; c: string; gem?: boolean };
+const columns: Cell[][] = front.map((h, x) => {
+  const col: Cell[] = [];
+  for (let k = 0; k < h; k++) {
+    const y = (ROWS - h + k) * P;
+    let c = depthColor[Math.min(k, depthColor.length - 1)];
+    let gem = false;
+    if (k >= 3 && r() < 0.09) { c = r() < 0.5 ? "var(--gem)" : "var(--lime)"; gem = true; }
+    if (k === 1 && r() < 0.15) c = "var(--leaf)";
+    col.push({ x: x * P, y, c, gem });
+  }
+  return col;
+});
+
+// tufos de grama / flores sobre o terreno (meio pixel)
+const tufts: Cell[] = [];
+front.forEach((h, x) => {
+  if (r() < 0.32) {
+    const top = (ROWS - h) * P;
+    const off = Math.floor(r() * 2) * 12;
+    tufts.push({ x: x * P + off, y: top - 12, c: r() < 0.25 ? "var(--lime)" : "var(--leaf-2)" });
+  }
+});
+
+// árvores (pixel de 12px)
+const Q = 12;
+const crowns = [
+  ["...xxxx...", "..xxxxxx..", ".xxxxxxxx.", "xxxxxxxxxx", "xxxxxxxxxx", ".xxxxxxxx.", "..xxxxxx.."],
+  ["..xxx..", ".xxxxx.", "xxxxxxx", "xxxxxxx", ".xxxxx.", "..xxx.."],
+  ["...x...", "..xxx..", ".xxxxx.", "..xxx..", ".xxxxx.", "xxxxxxx", "..xxx.."],
+];
+const treeCols = [30, 38, 45, 52, 60];
+const trees = treeCols.map((cx, i) => {
+  const crown = crowns[i % crowns.length];
+  const groundY = (ROWS - front[cx]) * P;
+  const trunkH = 3 + (i % 3);
+  const trunkX = cx * P + 6;
+  const cells: Cell[] = [];
+  for (let t = 0; t < trunkH; t++) cells.push({ x: trunkX, y: groundY - (t + 1) * Q, c: "var(--marine-2)" });
+  const cw = crown[0].length;
+  const top = groundY - trunkH * Q - crown.length * Q;
+  crown.forEach((row, ry) => {
+    [...row].forEach((ch, rx) => {
+      if (ch !== "x") return;
+      const light = ry < 2 || (rx < cw / 2 && ry < crown.length / 2 && r() < 0.5);
+      const dark = ry >= crown.length - 2 && r() < 0.6;
+      cells.push({
+        x: trunkX + Q / 2 - (cw * Q) / 2 + rx * Q,
+        y: top + ry * Q + Q,
+        c: light ? "var(--leaf)" : dark ? "var(--forest-2)" : "var(--forest)",
+      });
+    });
+  });
+  return { cells, ox: trunkX + Q / 2, oy: groundY };
+});
+
+// nuvens
+const cloudShapes = [
+  ["....xxxx......", "..xxxxxxxxx...", ".xxxxxxxxxxxx.", "xxxxxxxxxxxxxx"],
+  ["...xxx....", ".xxxxxxx..", "xxxxxxxxxx"],
+];
+const clouds = [
+  { x: 120, y: 40, s: 0 }, { x: 640, y: 18, s: 1 }, { x: 1080, y: 70, s: 0 }, { x: 1380, y: 30, s: 1 },
+].map((c) => ({ ...c, shape: cloudShapes[c.s] }));
+
+// blocos flutuantes (itens)
+const floats = [
+  { x: 120, y: 250, c: "var(--gem)" },
+  { x: 504, y: 226, c: "var(--lime)" },
+  { x: 696, y: 274, c: "var(--sea)" },
+  { x: 960, y: 238, c: "var(--leaf)" },
+];
+---
+<div class:list={["pixel-world", cls]} aria-hidden="true">
+  <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMax slice" shape-rendering="crispEdges">
+    <g class="pw-clouds">
+      {clouds.map((c) => (
+        <g class="pw-cloud" transform={`translate(${c.x} ${c.y})`}>
+          {c.shape.map((row, ry) => [...row].map((ch, rx) => ch === "x" && (
+            <rect x={rx * 12} y={ry * 12} width="12" height="12" fill={ry === c.shape.length - 1 ? "#dff3ea" : "#eef9f4"} />
+          )))}
+        </g>
+      ))}
+    </g>
+
+    <g class="pw-layer pw-back" data-depth="0.2">
+      {back.map((h, x) => <rect x={x * P} y={(ROWS - h) * P} width={P} height={h * P} fill="#eaf8f1" />)}
+    </g>
+    <g class="pw-layer pw-mid" data-depth="0.45">
+      {mid.map((h, x) => (
+        <>
+          <rect x={x * P} y={(ROWS - h) * P} width={P} height={h * P} fill="#cfeee3" />
+          <rect x={x * P} y={(ROWS - h) * P} width={P} height={P / 2} fill="#b7e6d6" />
+        </>
+      ))}
+    </g>
+
+    <g class="pw-layer pw-front" data-depth="0.8">
+      <g class="pw-trees">
+        {trees.map((t) => (
+          <g class="pw-tree">
+            {t.cells.map((s) => <rect x={s.x} y={s.y} width={Q} height={Q} fill={s.c} />)}
+          </g>
+        ))}
+      </g>
+      {tufts.map((s) => <rect class="pw-tuft" x={s.x} y={s.y} width="12" height="12" fill={s.c} />)}
+      {columns.map((col) => (
+        <g class="pw-col">
+          {col.map((s) => <rect class:list={{ "pw-gem": s.gem }} x={s.x} y={s.y} width={P} height={P} fill={s.c} />)}
+        </g>
+      ))}
+    </g>
+
+    <g class="pw-floats">
+      {floats.map((f) => (
+        <g class="pw-float" transform={`translate(${f.x} ${f.y})`}>
+          <rect width={P} height={P} fill={f.c} />
+          <rect width={P} height="5" fill="#fff" opacity="0.45" />
+          <rect y={P - 5} width={P} height="5" fill="#0b2a2f" opacity="0.18" />
+        </g>
+      ))}
+    </g>
+  </svg>
+</div>
+
+<style>
+  .pixel-world { position: absolute; inset: auto 0 0 0; pointer-events: none; }
+  .pixel-world svg { width: 100%; height: 100%; display: block; overflow: visible; }
+</style>

@@ -1,0 +1,280 @@
+---
+import Base from "../../layouts/Base.astro";
+import BrowserFrame from "../../components/BrowserFrame.astro";
+import PhoneFrame from "../../components/PhoneFrame.astro";
+import { cases, categories, type AssetItem } from "../../data/cases";
+
+export function getStaticPaths() {
+  return cases.map((c, i) => ({ params: { slug: c.slug }, props: { i } }));
+}
+const { i } = Astro.props;
+const c = cases[i];
+const next = cases[(i + 1) % cases.length];
+
+const pages = c.items.filter((it) => it.kind === "page");
+const mobiles = c.items.filter((it) => it.kind === "mobile");
+const rest = c.items.filter((it) => it.kind !== "page" && it.kind !== "mobile");
+const cover = pages[0];
+const visualCover = !cover ? (rest.find((it) => it.id === c.cover) ?? rest[0]) : undefined;
+
+const host = (u?: string) => (u ? new URL(u).host.replace(/^www\./, "") : "");
+const fakeUrl = (label?: string) => `${host(c.live) || c.slug + ".com.br"}${label && !/home|site no ar|landing|one page/i.test(label) ? "/" + label.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") : ""}`;
+
+// agrupa a galeria por tipo de peça, preservando a ordem
+const labels: Record<string, string> = {
+  slide: "Apresentação", image: "Aplicações", post: "Peças", social: "Social media", stories: "Stories",
+  print: "Impressos", banners: "Banners de site", brand: "Marca", packaging: "Embalagens",
+};
+const layoutOf = (k: string) =>
+  k === "slide" ? "slides" : k === "banners" ? "banners" : k === "post" || k === "social" || k === "stories" ? "posts" : "images";
+const groups: { key: string; items: AssetItem[] }[] = [];
+for (const it of rest.filter((x) => x !== visualCover)) {
+  const key = it.group ?? it.kind;
+  let g = groups.find((x) => x.key === key);
+  if (!g) groups.push((g = { key, items: [] }));
+  g.items.push(it);
+}
+const meta = [
+  { k: "Cliente", v: c.client },
+  { k: "Segmento", v: c.sector },
+  ...(c.year ? [{ k: "Ano", v: c.year }] : []),
+  { k: "Ferramentas", v: c.tools.join(", ") },
+];
+---
+<Base title={c.title} description={c.summary} image={c.thumb.src} page="case">
+  <article class="case" style={`--accent:${c.accent}`}>
+    <header class="case-hero container">
+      <a href="/cases/" class="case-back"><span aria-hidden="true">←</span> Todos os projetos</a>
+      <div class="case-cats" data-hero-fade>
+        {c.cats.map((k) => <span class="chip chip--pixel">{categories[k]}</span>)}
+        {c.live && <span class="chip chip--live"><i></i>Site no ar</span>}
+      </div>
+      <h1 class="h-display case-title" data-hero-title>{c.title}</h1>
+      <div class="case-intro">
+        <p class="lead" data-hero-fade>{c.summary}</p>
+        <div class="case-actions" data-hero-fade>
+          {c.live && (
+            <a href={c.live} target="_blank" rel="noopener" class="btn btn--green" data-magnetic>
+              Visitar site
+              <span class="btn-ico" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="2" stroke-linecap="square" /></svg></span>
+            </a>
+          )}
+          <a href="#galeria" class="btn btn--ghost" data-magnetic>Ver projeto</a>
+        </div>
+      </div>
+      <dl class="case-meta" data-hero-fade>
+        {meta.map((m) => <div><dt>{m.k}</dt><dd>{m.v}</dd></div>)}
+      </dl>
+    </header>
+
+    {cover && (
+      <section class="case-cover" data-cover-scrub>
+        <div class="cover-sticky container">
+          <BrowserFrame src={cover.src} w={cover.w} h={cover.h} alt={`Página ${cover.label ?? "inicial"} do site ${c.title}`} url={fakeUrl(cover.label)} mode="scrub" ratio="16 / 9" class="cover-browser" eager />
+          <p class="cover-hint"><i aria-hidden="true"></i>Role a página para navegar pelo layout</p>
+        </div>
+      </section>
+    )}
+    {visualCover && (
+      <section class="case-cover-img container">
+        <div class="cover-img" data-parallax-wrap>
+          <img src={visualCover.src} width={visualCover.w} height={visualCover.h} alt={`Projeto ${c.title}`} data-parallax loading="eager" />
+        </div>
+      </section>
+    )}
+
+    <section class="case-about container">
+      <div class="ca-text">
+        <span class="eyebrow" data-reveal>Sobre o projeto</span>
+        {c.about.map((p, k) => <p class:list={[{ lead: k === 0 }]} data-reveal>{p}</p>)}
+        {c.credit && <p class="ca-credit" data-reveal>{c.credit}.</p>}
+      </div>
+      <aside class="ca-side" data-reveal="up">
+        <h2>Entregas</h2>
+        <ul>{c.deliverables.map((d) => <li>{d}</li>)}</ul>
+      </aside>
+    </section>
+
+    <div id="galeria"></div>
+
+    {pages.length > 0 && (
+      <section class="case-pages container" data-tabs>
+        <div class="cp-head">
+          <span class="eyebrow" data-reveal>{pages.length > 1 ? "Páginas do site" : "Layout completo"}</span>
+          <h2 class="h-card" data-reveal>{pages.length > 1 ? `${pages.length} telas desenhadas` : "Navegue pela página inteira"}</h2>
+        </div>
+        <div class="cp-tabs" role="tablist" aria-label="Páginas do site" hidden={pages.length < 2}>
+          {pages.map((p, k) => (
+            <button type="button" role="tab" class:list={["cp-tab", { "is-active": k === 0 }]} aria-selected={k === 0 ? "true" : "false"} aria-controls={`tab-${p.id}`} id={`t-${p.id}`} data-tab={k}>{p.label ?? `Página ${k + 1}`}</button>
+          ))}
+        </div>
+        <div class="cp-panels">
+          {pages.map((p, k) => (
+            <div class="cp-panel" role="tabpanel" id={`tab-${p.id}`} aria-labelledby={`t-${p.id}`} hidden={k !== 0} data-panel={k}>
+              <BrowserFrame src={p.src} w={p.w} h={p.h} alt={`Página ${p.label} do site ${c.title}`} url={fakeUrl(p.label)} mode="scroll" ratio="16 / 10" />
+            </div>
+          ))}
+        </div>
+        <p class="cp-hint">Passe o mouse sobre a janela e role para navegar pela página.</p>
+      </section>
+    )}
+
+    {mobiles.length > 0 && (
+      <section class="case-mobile">
+        <div class="container cm-grid">
+          <div class="cm-text">
+            <span class="eyebrow" data-reveal>Versão mobile</span>
+            <h2 class="h-section" data-split>Pensado para o polegar.</h2>
+            <p class="lead" data-reveal>Hierarquia, botões e menus adaptados para o celular — onde acontece a maior parte das visitas.</p>
+          </div>
+          <div class="cm-phones">
+            {mobiles.slice(0, 2).map((m, k) => (
+              <div class="cm-phone" data-reveal="up" data-float={k}>
+                <PhoneFrame src={m.src} w={m.w} h={m.h} alt={`Site ${c.title} no celular`} mode="scroll" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {groups.map((g) => (
+      <section class="case-gallery container">
+        <div class="cg-head">
+          <span class="eyebrow" data-reveal>{labels[g.key] ?? "Galeria"}</span>
+          <span class="cg-count" data-reveal>{String(g.items.length).padStart(2, "0")} {g.items.length === 1 ? "peça" : "peças"}</span>
+        </div>
+        <div class:list={["cg", `cg--${layoutOf(g.key)}`]}>
+          {g.items.map((it) => (
+            <button type="button" class="cg-item" data-lightbox={it.src} data-w={it.w} data-h={it.h} data-reveal="clip" aria-label="Ampliar imagem">
+              <img src={it.src} width={it.w} height={it.h} alt={`${labels[g.key] ?? "Imagem"} — ${c.title}`} loading="lazy" decoding="async" />
+            </button>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <nav class="case-next" aria-label="Próximo projeto">
+      <a href={`/cases/${next.slug}/`} class="next-link container" data-cursor="view" style={`--accent:${next.accent}`}>
+        <span class="eyebrow">Próximo case</span>
+        <span class="next-row">
+          <span class="next-title">{next.title}</span>
+          <span class="next-thumb" aria-hidden="true"><img src={next.thumb.src} width={next.thumb.w} height={next.thumb.h} alt="" loading="lazy" /></span>
+        </span>
+        <span class="next-sector">{next.sector}</span>
+      </a>
+    </nav>
+  </article>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label="Imagem ampliada">
+    <button type="button" class="lb-close" data-lb-close aria-label="Fechar">×</button>
+    <button type="button" class="lb-nav lb-prev" data-lb-prev aria-label="Anterior">←</button>
+    <div class="lb-stage" data-lenis-prevent><img alt="" data-lb-img /></div>
+    <button type="button" class="lb-nav lb-next" data-lb-next aria-label="Próxima">→</button>
+    <span class="lb-count" data-lb-count></span>
+  </dialog>
+</Base>
+
+<style>
+  .case-hero { padding-top: clamp(112px, 15vh, 156px); padding-bottom: clamp(32px, 4vw, 52px); display: grid; gap: 22px; }
+  .case-back { justify-self: start; display: inline-flex; gap: 8px; font-weight: 500; color: var(--ink-2); font-size: 15px; transition: color 0.25s, gap 0.3s var(--ease); }
+  .case-back:hover { color: var(--forest); gap: 12px; }
+  .case-cats { display: flex; flex-wrap: wrap; gap: 6px; }
+  .case-title { font-size: clamp(3rem, 10vw, 9.5rem); max-width: 14ch; }
+  .case-intro { display: grid; gap: 24px; align-items: end; }
+  @media (min-width: 1000px) { .case-intro { grid-template-columns: 1fr auto; gap: 48px; } }
+  .case-intro .lead { max-width: 640px; }
+  .case-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .case-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; margin: 12px 0 0; border-top: 1px solid var(--line); }
+  .case-meta div { padding: 18px 20px 0 0; display: grid; gap: 4px; }
+  .case-meta dt { font-family: var(--font-pixel); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest); }
+  .case-meta dd { margin: 0; font-size: 15.5px; color: var(--ink); }
+
+  .case-cover { position: relative; }
+  .cover-sticky { position: sticky; top: 92px; display: grid; gap: 14px; }
+  .cover-sticky :global(.cover-browser .browser-view) { max-height: calc(100svh - 190px); }
+  .cover-hint { display: inline-flex; align-items: center; gap: 10px; justify-self: center; font-size: 14px; color: var(--ink-3); }
+  .cover-hint i { width: 8px; height: 8px; background: var(--leaf); animation: blink 1.6s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: 0.2; } }
+
+  .case-cover-img { padding-bottom: clamp(20px, 4vw, 40px); }
+  .cover-img { border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), var(--shadow); background: var(--bg-soft); aspect-ratio: 16 / 9; }
+  .cover-img img { width: 100%; height: 118%; object-fit: cover; }
+
+  .case-about { display: grid; gap: 36px; padding-block: clamp(48px, 6vw, 88px); }
+  @media (min-width: 1000px) { .case-about { grid-template-columns: 1.4fr 0.6fr; gap: 80px; } }
+  .ca-text { display: grid; gap: 20px; align-content: start; color: var(--ink-2); max-width: 760px; }
+  .ca-text .lead { color: var(--ink); font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.45; letter-spacing: -0.01em; }
+  .ca-credit { font-size: 14.5px; color: var(--ink-3); display: inline-flex; gap: 8px; align-items: center; }
+  .ca-credit::before { content: ""; width: 6px; height: 6px; background: var(--accent); }
+  .ca-side { align-self: start; padding: 26px; border-radius: 20px; background: var(--bg-soft); box-shadow: 0 0 0 1px var(--line); }
+  @media (min-width: 1000px) { .ca-side { position: sticky; top: 110px; } }
+  .ca-side h2 { font-size: 1.2rem; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .ca-side ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .ca-side li { display: flex; gap: 10px; align-items: center; font-size: 15.5px; color: var(--ink-2); }
+  .ca-side li::before { content: ""; width: 8px; height: 8px; flex: none; background: var(--accent); box-shadow: 2px 2px 0 color-mix(in srgb, var(--accent) 35%, transparent); }
+
+  .case-pages { padding-bottom: clamp(48px, 6vw, 80px); display: grid; gap: 18px; }
+  .cp-head { display: grid; gap: 10px; }
+  .cp-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 4px; margin: 0 calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+  .cp-tabs::-webkit-scrollbar { display: none; }
+  .cp-tab {
+    flex: none; height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: #fff;
+    box-shadow: inset 0 0 0 1.5px var(--line); font-weight: 500; font-size: 14.5px; color: var(--ink-2);
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+  }
+  .cp-tab:hover { box-shadow: inset 0 0 0 1.5px var(--forest); color: var(--ink); }
+  .cp-tab.is-active { background: var(--ink); color: #fff; box-shadow: none; }
+  .cp-panel :global(.browser-view) { max-height: 78vh; }
+  .cp-hint { font-size: 14px; color: var(--ink-3); text-align: center; }
+
+  .case-mobile { background: var(--bg-soft); padding-block: clamp(56px, 7vw, 96px); margin-bottom: clamp(48px, 6vw, 80px); overflow: hidden; }
+  .cm-grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 1000px) { .cm-grid { grid-template-columns: 0.9fr 1.1fr; } }
+  .cm-text { display: grid; gap: 20px; max-width: 480px; }
+  .cm-phones { display: flex; justify-content: center; gap: clamp(16px, 4vw, 48px); }
+  .cm-phone { width: min(300px, 46vw); }
+  .cm-phone:nth-child(2) { margin-top: 56px; }
+
+  .case-gallery { padding-bottom: clamp(40px, 5vw, 72px); }
+  .cg-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 18px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }
+  .cg-count { font-family: var(--font-pixel); font-size: 13px; color: var(--ink-3); }
+  .cg { display: grid; gap: clamp(12px, 1.6vw, 20px); }
+  .cg-item { display: block; padding: 0; border: 0; background: var(--bg-soft); border-radius: 16px; overflow: hidden; cursor: zoom-in; box-shadow: 0 0 0 1px var(--line); }
+  .cg-item img { width: 100%; height: auto; transition: transform 0.8s var(--ease); }
+  .cg-item:hover img { transform: scale(1.02); }
+  .cg--slides { grid-template-columns: 1fr; }
+  @media (min-width: 760px) {
+    .cg--slides { grid-template-columns: 1fr 1fr; }
+    .cg--slides .cg-item:nth-child(3n + 1) { grid-column: 1 / -1; }
+    .cg--images { grid-template-columns: 1fr 1fr; align-items: start; }
+    .cg--images .cg-item:first-child:nth-last-child(odd) { grid-column: 1 / -1; }
+  }
+  .cg--banners { grid-template-columns: 1fr; }
+  .cg--posts { display: block; columns: 2; column-gap: clamp(12px, 1.6vw, 20px); }
+  .cg--posts .cg-item { break-inside: avoid; margin-bottom: clamp(12px, 1.6vw, 20px); width: 100%; }
+  @media (min-width: 760px) { .cg--posts { columns: 3; } }
+  @media (min-width: 1100px) { .cg--posts { columns: 4; } }
+
+  .case-next { border-top: 1px solid var(--line); }
+  .next-link { display: grid; gap: 12px; padding-block: clamp(48px, 6vw, 88px) clamp(100px, 9vw, 130px); }
+  .next-row { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .next-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.6rem, 8vw, 7.5rem); letter-spacing: -0.05em; line-height: 0.95; transition: color 0.4s; }
+  .next-link:hover .next-title { color: var(--forest); }
+  .next-thumb { flex: none; width: clamp(120px, 22vw, 320px); aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); transform: rotate(3deg) scale(0.92); transition: transform 0.6s var(--ease); }
+  .next-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .next-link:hover .next-thumb { transform: rotate(0) scale(1); }
+  .next-sector { color: var(--ink-3); }
+  @media (max-width: 640px) { .next-thumb { display: none; } }
+
+  .lightbox { border: 0; padding: 0; margin: 0; width: 100vw; height: 100svh; max-width: none; max-height: none; background: rgba(8, 42, 51, 0.94); color: #fff; }
+  .lightbox[open] { display: grid; grid-template-columns: auto 1fr auto; align-items: center; }
+  .lightbox::backdrop { background: transparent; }
+  .lb-stage { height: 100svh; overflow: auto; display: grid; place-items: center; padding: 64px 8px; }
+  .lb-stage img { max-width: min(1400px, 100%); height: auto; border-radius: 8px; }
+  .lb-close { position: absolute; top: 16px; right: 16px; z-index: 2; width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.12); color: #fff; font-size: 28px; line-height: 1; }
+  .lb-nav { width: 56px; height: 56px; margin: 0 8px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.12); color: #fff; font-size: 22px; }
+  .lb-nav:hover, .lb-close:hover { background: var(--forest); }
+  .lb-count { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); font-family: var(--font-pixel); font-size: 13px; color: #a9c7c1; }
+  @media (max-width: 640px) { .lb-nav { position: absolute; bottom: 12px; } .lb-prev { left: 8px; } .lb-next { right: 8px; } .lightbox[open] { grid-template-columns: 1fr; } }
+</style>

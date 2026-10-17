@@ -1,0 +1,29 @@
+---
+import Base from "../../layouts/Base.astro";
+import ProjectsGrid from "../../components/ProjectsGrid.astro";
+import PixelWorld from "../../components/PixelWorld.astro";
+import { cases, countBy } from "../../data/cases";
+---
+<Base title="Projetos" description="Todos os projetos de Thiago Miedes: web design, front-end, identidade visual, social media, papelaria, embalagens e apresentações." page="archive">
+  <section class="archive-hero">
+    <div class="container">
+      <span class="eyebrow" data-hero-fade>Portfólio completo</span>
+      <h1 class="h-display" data-hero-title>Todos os <span class="mark">projetos</span>.</h1>
+      <p class="lead" data-hero-fade>{cases.length} projetos entre sites ({countBy("web")}), identidades visuais ({countBy("brand")}), social media ({countBy("social")}) e outros formatos. Use os filtros para encontrar o que procura.</p>
+    </div>
+    <PixelWorld class="archive-world" seed={44} />
+  </section>
+  <section class="section archive-list">
+    <div class="container">
+      <ProjectsGrid />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .archive-hero { position: relative; padding: clamp(130px, 18vh, 190px) 0 clamp(220px, 32vh, 320px); overflow: hidden; }
+  .archive-hero .container { position: relative; z-index: 2; display: grid; gap: 24px; justify-items: start; }
+  .archive-hero .lead { max-width: 620px; }
+  .archive-hero :global(.archive-world) { height: clamp(170px, 26vh, 280px); }
+  .archive-list { padding-top: clamp(32px, 4vw, 56px); }
+</style>

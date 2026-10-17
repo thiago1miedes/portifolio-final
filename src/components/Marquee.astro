@@ -1,0 +1,34 @@
+---
+interface Props { items: string[]; label?: string; tone?: "light" | "soft" }
+const { items, label = "Marcas com quem já trabalhei", tone = "light" } = Astro.props;
+---
+<section class:list={["marquee", `marquee--${tone}`]} aria-label={label}>
+  <div class="marquee-track" data-marquee>
+    {[0, 1].map((k) => (
+      <ul class="marquee-group" aria-hidden={k === 1 ? "true" : undefined}>
+        {items.map((it) => <li><i aria-hidden="true"></i>{it}</li>)}
+      </ul>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee { overflow: hidden; border-block: 1px solid var(--line); background: #fff; position: relative; z-index: 2; }
+  .marquee--soft { background: var(--bg-soft); }
+  .marquee-track { display: flex; width: max-content; will-change: transform; }
+  .marquee-group { display: flex; align-items: center; gap: 0; margin: 0; padding: 0; list-style: none; }
+  .marquee-group li {
+    display: inline-flex; align-items: center; gap: 28px;
+    padding: 26px 28px 26px 0;
+    font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+    letter-spacing: -0.03em; color: var(--ink);
+    white-space: nowrap;
+  }
+  .marquee-group li i { width: 10px; height: 10px; background: var(--leaf); box-shadow: 10px 10px 0 var(--marine); transform: translateY(-5px); margin-right: 10px; }
+  .marquee-group li:nth-child(3n) i { background: var(--gem); }
+  .marquee-group li:nth-child(4n) i { background: var(--lime); box-shadow: 10px 10px 0 var(--forest); }
+  .no-js .marquee-track, html:not(.js) .marquee-track { animation: marquee 40s linear infinite; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none !important; } }
+</style>

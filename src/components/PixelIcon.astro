@@ -1,0 +1,109 @@
+---
+// Ícones em pixel art desenhados como matriz: x = cor principal, g = destaque, . = vazio
+interface Props { name: keyof typeof icons; size?: number; class?: string }
+const icons = {
+  web: [
+    "xxxxxxxxxx",
+    "xgxgx....x",
+    "xxxxxxxxxx",
+    "x........x",
+    "x.gggg.x.x",
+    "x.gggg...x",
+    "x.gggg.x.x",
+    "x........x",
+    "x.xxxxxx.x",
+    "xxxxxxxxxx",
+  ],
+  dev: [
+    "..........",
+    "..x....x..",
+    ".x....g.x.",
+    "x....g...x",
+    "x...g....x",
+    ".x.g....x.",
+    "..x....x..",
+    "..........",
+  ],
+  brand: [
+    "....xx....",
+    "...xggx...",
+    "..xggggx..",
+    ".xggxxggx.",
+    ".xggxxggx.",
+    "..xggggx..",
+    "...xggx...",
+    "....xx....",
+    "....xx....",
+    "...xxxx...",
+  ],
+  social: [
+    ".xxxxxxxx.",
+    "x........x",
+    "x.gg..gg.x",
+    "x.gggggg.x",
+    "x..gggg..x",
+    "x...gg...x",
+    ".xxxxxxxx.",
+    "..xx......",
+    ".x........",
+  ],
+  print: [
+    "..xxxxxx..",
+    "..x....xx.",
+    "..x.gg..x.",
+    "xxxxxx..x.",
+    "x....xx.x.",
+    "x.gg..x.x.",
+    "x.....xxx.",
+    "x.ggg.x...",
+    "x.....x...",
+    "xxxxxxx...",
+  ],
+  packaging: [
+    "...xxxx...",
+    ".xxggggxx.",
+    "xggggggggx",
+    "xxxxxxxxxx",
+    "x...gg...x",
+    "x...gg...x",
+    "x........x",
+    "x........x",
+    "xxxxxxxxxx",
+  ],
+  deck: [
+    "xxxxxxxxxx",
+    "x........x",
+    "x......g.x",
+    "x....g.g.x",
+    "x..g.g.g.x",
+    "x.gg.g.g.x",
+    "xxxxxxxxxx",
+    "....xx....",
+    "...x..x...",
+    "..x....x..",
+  ],
+  spark: [
+    "....x....",
+    "....x....",
+    "...xgx...",
+    "xxxgggxxx",
+    "...xgx...",
+    "....x....",
+    "....x....",
+  ],
+};
+const { name, size = 40, class: cls = "" } = Astro.props;
+const grid = icons[name];
+const w = Math.max(...grid.map((r) => r.length));
+const h = grid.length;
+---
+<svg class:list={["px-icon", cls]} viewBox={`0 0 ${w} ${h}`} width={size} height={(size * h) / w} aria-hidden="true" shape-rendering="crispEdges">
+  {grid.map((row, y) => [...row].map((c, x) => c !== "." && (
+    <rect x={x} y={y} width="1" height="1" class={c === "g" ? "px-g" : "px-x"} />
+  )))}
+</svg>
+
+<style>
+  .px-icon .px-x { fill: var(--px-x, var(--marine)); }
+  .px-icon .px-g { fill: var(--px-g, var(--leaf)); }
+</style>
