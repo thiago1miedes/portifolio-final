@@ -305,6 +305,7 @@ export const cases = {
     thumb: { from: "logo-04" },
     items: [{ id: "logo", src: "ConfrariaDosAromas/Confraria_Logo_apresentação.pdf", kind: "slide", pages: range(2, 10) }],
   },
+  // A capa (thumb.webp) deste case foi trocada à mão pelo logo final; rodar `npm run assets -- efpi` a sobrescreve.
   efpi: {
     thumb: { from: "logo-02" },
     items: [{ id: "logo", src: "EFPI/EFPI_logo_apresentação(out21).pdf", kind: "slide", pages: range(1, 9) }],

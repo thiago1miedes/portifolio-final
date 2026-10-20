@@ -42,7 +42,7 @@ export const skills = [
 ];
 
 /** Slugs dos cases que aparecem na home (ordem = ordem no grid: grande, pequeno, pequeno, grande…). */
-export const homeProjects = ["smartbox", "dor-e-saude", "hu-ufnt", "firework", "arie-capital", "deliziare"];
+export const homeProjects = ["smartbox", "dor-e-saude", "hu-ufnt", "firework", "arie-capital", "efpi"];
 
 /** Ferramentas (ícones do bloco "Ferramentas que eu uso"). */
 export const tools = [
