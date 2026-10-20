@@ -1,0 +1,41 @@
+---
+// Cena gerada por IA com a superfície em branco + o SVG real aplicado por cima (mix-blend-mode + matrix3d).
+// Os cantos (pin, em % da imagem) vêm do case.json; abra a página com ?pin para ajustá-los arrastando.
+import BrandImg from "./BrandImg.astro";
+import BrandLogo from "./BrandLogo.astro";
+import BrandText from "./BrandText.astro";
+import { imageInfo, pinBox, type AppItem, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData; item: AppItem }
+const { data, item } = Astro.props;
+const info = imageInfo(data, item.image!);
+const overlays = info.exists ? (item.overlays ?? []) : [];
+---
+<figure class="bc-mockup" data-bc-mockup data-image-id={item.image}>
+  <div class="bc-mockup-frame" style={`aspect-ratio:${info.w}/${info.h}`} data-bc-mockup-frame>
+    <BrandImg data={data} id={item.image!} sizes="(min-width: 900px) 55vw, 100vw" />
+    {overlays.map((o, k) => (
+      <div
+        class="bc-overlay"
+        data-index={k}
+        data-pin={o.pin.flat().join(",")}
+        style={{ ...pinBox(o.pin), mixBlendMode: o.blend ?? "normal", "--inset": String(o.inset ?? 0) }}
+      >
+        <div class="bc-overlay-art"><BrandLogo data={data} art={o.art} variant={o.variant} decorative /></div>
+      </div>
+    ))}
+    {overlays.map((o, k) => o.pin.map((p, j) => (
+      <button
+        type="button"
+        class="bc-pin-handle is-hidden"
+        data-pin-handle
+        data-overlay={k}
+        data-index={j}
+        style={`--x:${p[0]};--y:${p[1]}`}
+        aria-label={`Canto ${j + 1} do logo ${k + 1}`}
+      ></button>
+    )))}
+    {overlays.length > 0 && <output class="bc-pin-out is-hidden" data-pin-out></output>}
+  </div>
+  {item.caption && <figcaption><BrandText text={item.caption} /></figcaption>}
+</figure>

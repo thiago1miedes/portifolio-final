@@ -1,0 +1,48 @@
+---
+// 8. Fechamento: frase final, ficha técnica, chamada para contato e o próximo case.
+import BrandImg from "./BrandImg.astro";
+import BrandLogo from "./BrandLogo.astro";
+import BrandText from "./BrandText.astro";
+import type { BrandCaseData } from "../../data/brand-cases";
+import type { Case } from "../../data/cases";
+
+interface Props { data: BrandCaseData; next: Case }
+const { data, next } = Astro.props;
+const c = data.closing;
+const year = new Date().getFullYear();
+---
+<section class="bc-closing" id="fechamento" data-theme="dark" data-bc-section>
+  {c.image && <div class="bc-bg bc-closing-bg"><BrandImg data={data} id={c.image} decorative /></div>}
+  <div class="container bc-closing-inner">
+    <BrandLogo data={data} art="symbol" variant="onPrimary" decorative class="bc-closing-mark" />
+    <BrandText as="h2" class="bc-closing-phrase" text={c.phrase} data-bc-split />
+    <dl class="bc-credits" data-bc-reveal>
+      {c.credits.map((row) => <div><dt>{row.k}</dt><BrandText as="dd" text={row.v} /></div>)}
+    </dl>
+    <div class="bc-cta" data-bc-reveal>
+      <BrandText as="p" class="bc-cta-text" text={c.cta.text} />
+      <a href={c.cta.href} class="bc-btn">
+        {c.cta.label}
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 13L13 3M13 3H5M13 3V11" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
+      </a>
+    </div>
+  </div>
+
+  <a href={`/cases/${next.slug}/`} class="container bc-next" data-cursor="view">
+    <span class="bc-eyebrow">Próximo case</span>
+    <span class="bc-next-row">
+      <span class="bc-next-title">{next.title}</span>
+      <span class="bc-next-thumb" aria-hidden="true"><img src={next.thumb.src} width={next.thumb.w} height={next.thumb.h} alt="" loading="lazy" decoding="async" /></span>
+    </span>
+    <span class="bc-next-sector">{next.sector}</span>
+  </a>
+
+  <footer class="container bc-foot">
+    <span>© {year} Thiago Miedes · {data.client}, {data.year}</span>
+    <nav aria-label="Portfólio">
+      <a href="/cases/">Todos os projetos</a>
+      <a href="/#contato">Contato</a>
+      <a href="/">Início</a>
+    </nav>
+  </footer>
+</section>

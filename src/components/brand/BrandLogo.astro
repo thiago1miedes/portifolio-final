@@ -1,0 +1,33 @@
+---
+// SVG do logo inline: as partes marcadas com data-part são recoloridas pelas variáveis da variante.
+import { readSvg, variantVars, type BrandCaseData, type LogoArt } from "../../data/brand-cases";
+
+interface Props {
+  data: BrandCaseData;
+  art: LogoArt;
+  variant?: string;
+  class?: string;
+  decorative?: boolean;
+  /** recorte em coordenadas do logo original (ex.: "217 60 128 60") */
+  viewBox?: string;
+  preserve?: string;
+  style?: string;
+  [attr: `data-${string}`]: unknown;
+}
+const { data, art, variant, class: cls, decorative = false, viewBox, preserve, style, ...attrs } = Astro.props;
+const svg = readSvg(data, art);
+const vars = Object.entries(variantVars(data, variant)).map(([k, v]) => `${k}:${v}`).join(";");
+---
+<svg
+  class:list={["bc-logo", cls]}
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={viewBox ?? svg.viewBox.join(" ")}
+  preserveAspectRatio={preserve}
+  style={[vars, style].filter(Boolean).join(";") || undefined}
+  role={decorative ? undefined : "img"}
+  aria-label={decorative ? undefined : svg.label}
+  aria-hidden={decorative ? "true" : undefined}
+  focusable="false"
+  {...attrs}
+  set:html={svg.inner}
+/>

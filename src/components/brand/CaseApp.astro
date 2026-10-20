@@ -1,0 +1,38 @@
+---
+// Tela de app feita em código (sem IA): celular com a interface do aluno nas cores da marca.
+import BrandLogo from "./BrandLogo.astro";
+import BrandText from "./BrandText.astro";
+import type { AppItem, BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData; item: AppItem }
+const { data, item } = Astro.props;
+const screen = item.screen!;
+---
+<figure class="bc-app">
+  <div class="bc-app-stage">
+    <div class="bc-phone" data-speed="3">
+      <div class="bc-phone-screen" role="img" aria-label={`Tela do app ${data.client} com as próximas aulas e o progresso do aluno`}>
+        <div class="bc-app-status" aria-hidden="true"><span>9:41</span><span class="bc-app-dots"><i></i><i></i><i></i></span></div>
+        <div class="bc-app-head" aria-hidden="true">
+          <BrandLogo data={data} art="symbol" variant={item.variant} decorative class="bc-app-symbol" />
+          <BrandLogo data={data} art="wordmark" variant={item.variant} decorative class="bc-app-wordmark" />
+        </div>
+        <p class="bc-app-greet" aria-hidden="true">{screen.greeting}</p>
+        {screen.cards.map((card, i) => (
+          <div class:list={["bc-app-card", { "is-primary": i === 0 }]} aria-hidden="true">
+            <small>{card.label}</small>
+            <strong>{card.title}</strong>
+            <span>{card.meta}</span>
+          </div>
+        ))}
+        <div class="bc-app-progress" aria-hidden="true">
+          <small>{screen.progress.label}</small>
+          <span class="bc-app-bar"><i style={`width:${screen.progress.value}%`}></i></span>
+          <b>{screen.progress.value}%</b>
+        </div>
+        <div class="bc-app-tabbar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+  {item.caption && <figcaption><BrandText text={item.caption} /></figcaption>}
+</figure>

@@ -1,0 +1,48 @@
+---
+// 5. Cores: blocos que crescem com a rolagem, cada um com nome, papel, HEX, RGB, CMYK e contraste do texto.
+import BrandText from "./BrandText.astro";
+import { swatchInfo, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData }
+const { data } = Astro.props;
+const c = data.colors;
+const swatches = c.swatches.map((s) => ({ ...s, info: swatchInfo(data, s.hex) }));
+---
+<section class="bc-colors" id="cores" data-theme="light" data-bc-section data-bc-colors>
+  <div class="bc-sticky bc-colors-sticky">
+    <div class="container bc-colors-head">
+      <div>
+        <p class="bc-eyebrow">{c.eyebrow}</p>
+        <BrandText as="h2" class="bc-h2" text={c.title} data-bc-split />
+      </div>
+      <div class="bc-colors-copy">
+        <BrandText as="p" class="bc-body" text={c.text} data-bc-reveal />
+        <p class="bc-note" data-bc-reveal>{c.note}</p>
+      </div>
+    </div>
+    <div class="container bc-swatches">
+      {swatches.map((s, i) => (
+        <article
+          class="bc-swatch"
+          data-index={i}
+          data-card={s.info.card ? "true" : undefined}
+          style={`--sw:${s.hex};--sw-ink:${s.info.ink};--w:${s.weight}`}
+        >
+          <span class="bc-swatch-fill" aria-hidden="true"></span>
+          <div class="bc-swatch-info">
+            <BrandText as="h3" class="bc-swatch-name" text={s.name} />
+            <p class="bc-swatch-role">{s.role}</p>
+            <dl class="bc-swatch-codes">
+              <div><dt>HEX</dt><dd>{s.hex.toUpperCase()}</dd></div>
+              <div><dt>RGB</dt><dd>{s.info.rgb}</dd></div>
+              <div><dt>CMYK</dt><dd>{s.info.cmyk}</dd></div>
+            </dl>
+            <p class="bc-swatch-wcag" title={`Contraste do texto sobre esta cor: ${s.info.ratio.toFixed(2)}:1 (WCAG ${s.info.grade})`}>
+              Aa {s.info.ratio.toFixed(1)}:1 · {s.info.grade}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

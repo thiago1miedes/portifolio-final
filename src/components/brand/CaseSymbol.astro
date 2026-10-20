@@ -1,0 +1,35 @@
+---
+// 2. Símbolo grande ao lado do conceito; ao rolar, as peças se separam e ganham legenda.
+import BrandLogo from "./BrandLogo.astro";
+import BrandImg from "./BrandImg.astro";
+import BrandText from "./BrandText.astro";
+import { readSvg, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData }
+const { data } = Astro.props;
+const s = data.symbol;
+const [, , w, h] = readSvg(data, "symbol").viewBox;
+---
+<section class="bc-symbol" id="simbolo" data-theme="dark" data-bc-section data-bc-symbol>
+  <div class="bc-sticky">
+    {s.image && <div class="bc-bg bc-symbol-bg"><BrandImg data={data} id={s.image} decorative /></div>}
+    <div class="container bc-symbol-grid">
+      <div class="bc-symbol-art">
+        <div class="bc-symbol-stage" style={`aspect-ratio:${w}/${h}`}>
+          <BrandLogo data={data} art="symbol" variant="onPrimary" class="bc-symbol-svg" />
+          {s.pieces.map((p, i) => (
+            <p class="bc-piece-label" data-piece-label={p.piece} data-shift={p.shift} data-index={i} style={`--y0:${p.y};--y1:${+(p.y + (p.shift / h) * 100).toFixed(2)}`}>
+              <b>{p.label}</b>
+              <span>{p.text}</span>
+            </p>
+          ))}
+        </div>
+      </div>
+      <div class="bc-symbol-text">
+        <p class="bc-eyebrow">{s.eyebrow}</p>
+        <BrandText as="h2" class="bc-h2" text={s.title} data-bc-split />
+        {s.text.map((t) => <BrandText as="p" class="bc-body" text={t} data-bc-reveal />)}
+      </div>
+    </div>
+  </div>
+</section>

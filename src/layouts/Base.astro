@@ -12,8 +12,11 @@ interface Props {
   description?: string;
   image?: string;
   page?: string;
+  /** false = sem header/rodapé do portfólio (páginas com navegação própria, como os cases de marca) */
+  chrome?: boolean;
+  themeColor?: string;
 }
-const { title, description = site.description, image = "/og.png", page = "default" } = Astro.props;
+const { title, description = site.description, image = "/og.png", page = "default", chrome = true, themeColor = "#0a0a0b" } = Astro.props;
 const fullTitle = title ? `${title} — ${site.name}` : `${site.name} · Designer gráfico & web designer`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 ---
@@ -25,7 +28,7 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="theme-color" content={themeColor} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -45,13 +48,13 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
       })();
     </script>
   </head>
-  <body>
+  <body style={chrome ? undefined : `background:${themeColor}`}>
     <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-    <Header />
+    {chrome && <Header />}
     <main id="conteudo">
       <slot />
     </main>
-    <Footer />
+    {chrome && <Footer />}
 
     <div class="cursor" aria-hidden="true"><span class="cursor-label">Ver ↗</span></div>
     <div class="page-wipe" aria-hidden="true"></div>

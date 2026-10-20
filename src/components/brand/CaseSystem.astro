@@ -1,0 +1,73 @@
+---
+// 6. Sistema do logo em grade bento: versões, cores de fundo, tamanhos pequenos e área de proteção.
+import BrandLogo from "./BrandLogo.astro";
+import BrandText from "./BrandText.astro";
+import { readSvg, swatchInfo, variantVars, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData }
+const { data } = Astro.props;
+const sys = data.system;
+const lockup = readSvg(data, "lockup");
+const [lx, ly, lw, lh] = lockup.viewBox;
+// área de proteção: x = altura do logotipo (caixa-alta do "EFPI")
+const x = readSvg(data, "wordmark").viewBox[3];
+const clearBox = [lx - x, ly - x, lw + x * 2, lh + x * 2].map((n) => +n.toFixed(2)).join(" ");
+
+const tileStyle = (variant: string) => {
+  const vars = variantVars(data, variant);
+  const ink = swatchInfo(data, data.logo.variants[variant].bg).ink;
+  return [...Object.entries(vars).map(([k, v]) => `${k}:${v}`), `--tile-ink:${ink}`].join(";");
+};
+---
+<section class="bc-system" id="sistema" data-theme="light" data-bc-section>
+  <div class="container">
+    <div class="bc-section-head">
+      <p class="bc-eyebrow">{sys.eyebrow}</p>
+      <BrandText as="h2" class="bc-h2" text={sys.title} data-bc-split />
+    </div>
+    <div class="bc-bento">
+      {sys.tiles.map((tile) => (
+        <figure class="bc-tile" data-size={tile.size} data-kind={tile.kind} style={tileStyle(tile.variant)} data-bc-reveal>
+          <div class="bc-tile-art">
+            {tile.kind === "lockup" && <BrandLogo data={data} art="lockup" class="bc-tile-lockup" />}
+            {tile.kind === "symbol" && <BrandLogo data={data} art="symbol" class="bc-tile-symbol" />}
+            {tile.kind === "sizes" && (
+              <ul class="bc-sizes">
+                {(tile.sizes ?? [48, 32, 24, 16]).map((px) => (
+                  <li><BrandLogo data={data} art="symbol" decorative style={`height:${px}px;width:auto`} /><span>{px}px</span></li>
+                ))}
+              </ul>
+            )}
+            {tile.kind === "clearspace" && (
+              <svg class="bc-logo bc-clearspace" viewBox={clearBox} xmlns="http://www.w3.org/2000/svg" role="img" aria-label={`Área de proteção do logo ${data.client}`}>
+                <rect class="bc-clear-zone" x={lx - x} y={ly - x} width={lw + x * 2} height={lh + x * 2} />
+                <rect class="bc-clear-box" x={lx} y={ly} width={lw} height={lh} />
+                <g set:html={lockup.inner} />
+                <rect class="bc-clear-x" x={lx - x} y={ly} width={x} height={x} />
+                <text class="bc-clear-label" x={lx - x / 2} y={ly + x / 2}>x</text>
+                <rect class="bc-clear-x" x={lx + lw} y={ly + lh - x} width={x} height={x} />
+                <text class="bc-clear-label" x={lx + lw + x / 2} y={ly + lh - x / 2}>x</text>
+              </svg>
+            )}
+            {tile.kind === "icon" && (
+              <div class="bc-icons">
+                <span class="bc-icon bc-icon--lg"><BrandLogo data={data} art="symbol" decorative /></span>
+                <span class="bc-icon bc-icon--sm"><BrandLogo data={data} art="symbol" decorative /></span>
+              </div>
+            )}
+            {tile.kind === "minimum" && (
+              <div class="bc-minimum">
+                <BrandLogo data={data} art="lockup" style="width:160px;height:auto" />
+                <BrandLogo data={data} art="symbol" decorative style="height:32px;width:auto" />
+              </div>
+            )}
+          </div>
+          <figcaption class:list={{ "is-chip": swatchInfo(data, data.logo.variants[tile.variant].bg).card }}>
+            <span class="bc-tile-label">{tile.label}</span>
+            {tile.note && <BrandText as="span" class="bc-tile-note" text={tile.note} />}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

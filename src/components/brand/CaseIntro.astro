@@ -1,0 +1,50 @@
+---
+// 1. Abertura escura: o símbolo desenha o contorno, ganha preenchimento e o logotipo entra com um brilho.
+import BrandImg from "./BrandImg.astro";
+import BrandText from "./BrandText.astro";
+import { readSvg, shineCopy, variantVars, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData }
+const { data } = Astro.props;
+const lockup = readSvg(data, "lockup");
+const outline = readSvg(data, "outline");
+const [vx, vy, vw, vh] = lockup.viewBox;
+const gradient = `bc-shine-${data.slug}`;
+const band = Math.round(vw * 0.28);
+const vars = Object.entries(variantVars(data, "negative")).map(([k, v]) => `${k}:${v}`).join(";");
+---
+<section class="bc-intro" id="intro" data-theme="dark" data-bc-section data-bc-intro>
+  {data.intro.image && (
+    <div class="bc-bg bc-intro-bg" data-bc-intro-bg>
+      <BrandImg data={data} id={data.intro.image} eager decorative />
+    </div>
+  )}
+  <div class="bc-intro-inner" data-bc-intro-inner>
+    <p class="bc-kicker" data-intro-fade>{data.intro.kicker}</p>
+    <h1 class="bc-intro-title">
+      <svg
+        class="bc-logo bc-intro-logo"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={lockup.viewBox.join(" ")}
+        style={vars}
+        role="img"
+        aria-label={lockup.label}
+        data-bc-intro-logo
+        data-band={band}
+      >
+        <defs>
+          <linearGradient id={gradient} gradientUnits="userSpaceOnUse" x1={vx - band} y1={vy} x2={vx} y2={vy + vh * 0.35}>
+            <stop offset="0" stop-color="#fff" stop-opacity="0" />
+            <stop offset="0.5" stop-color="#fff" stop-opacity="0.95" />
+            <stop offset="1" stop-color="#fff" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <g set:html={lockup.inner} />
+        <g data-intro-outline aria-hidden="true" set:html={outline.inner} />
+        <g data-intro-shine aria-hidden="true" set:html={shineCopy(lockup.inner, gradient)} />
+      </svg>
+    </h1>
+    <BrandText as="p" class="bc-intro-sub" text={data.intro.subtitle} data-intro-fade />
+  </div>
+  <p class="bc-scroll-hint" data-intro-fade><span>{data.intro.scrollHint}</span><i aria-hidden="true"></i></p>
+</section>

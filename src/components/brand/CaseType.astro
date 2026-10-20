@@ -1,0 +1,58 @@
+---
+// 3. Tipografia: uma letra gigante da fonte da marca troca de forma (letra e peso) conforme a rolagem.
+import BrandText from "./BrandText.astro";
+import type { BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData }
+const { data } = Astro.props;
+const t = data.typography;
+const weightNames: Record<number, string> = {
+  100: "Thin", 200: "ExtraLight", 300: "Light", 400: "Regular", 500: "Medium",
+  600: "SemiBold", 700: "Bold", 800: "ExtraBold", 900: "Black",
+};
+const names = t.weights.map((w) => `${weightNames[w] ?? "Peso"} ${w}`);
+const start = t.weights.includes(700) ? 700 : t.weights[t.weights.length - 1];
+---
+<section
+  class="bc-type"
+  id="tipografia"
+  data-theme="dark"
+  data-bc-section
+  data-bc-type
+  data-glyphs={t.glyphs.join(",")}
+  data-weights={t.weights.join(",")}
+  data-weight-names={names.join(",")}
+>
+  <div class="bc-sticky">
+    <div class="container bc-type-grid">
+      <div class="bc-type-track" data-bc-type-track>
+      <div class="bc-type-stage" data-bc-type-stage>
+        <div class="bc-type-glyph-wrap" data-bc-glyph-wrap>
+          <span class="bc-type-guide is-cap is-hidden" data-bc-guide="cap" aria-hidden="true"><i>altura das maiúsculas</i></span>
+          <span class="bc-type-guide is-base is-hidden" data-bc-guide="base" aria-hidden="true"><i>linha de base</i></span>
+          <span class="bc-type-glyph" data-bc-glyph style={`font-weight:${start}`} aria-hidden="true">{t.glyphs[0]}</span>
+        </div>
+        <p class="bc-type-readout" aria-hidden="true">
+          <span data-bc-glyph-name>{t.glyphs[0]}</span> · <span data-bc-weight-name>{names[t.weights.indexOf(start)]}</span>
+        </p>
+        <ol class="bc-type-scale" aria-hidden="true">
+          {t.weights.map((w) => <li data-weight={w} class:list={{ "is-active": w === start }}></li>)}
+        </ol>
+      </div>
+      </div>
+
+      <div class="bc-type-info">
+        <p class="bc-eyebrow">{t.eyebrow}</p>
+        <h2 class="bc-type-name">{t.title}</h2>
+        <BrandText as="p" class="bc-body" text={t.text} />
+        <dl class="bc-spec">
+          {t.spec.map((row) => <div><dt>{row.k}</dt><dd>{row.v}</dd></div>)}
+        </dl>
+        <p class="bc-type-weights" aria-label={`Pesos da ${t.title}: ${t.weights.join(", ")}`}>
+          {t.weights.map((w) => <span style={`font-weight:${w}`} aria-hidden="true">Aa</span>)}
+        </p>
+        <p class="bc-type-sample">{t.sample}</p>
+      </div>
+    </div>
+  </div>
+</section>

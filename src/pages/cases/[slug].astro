@@ -3,7 +3,9 @@ import Base from "../../layouts/Base.astro";
 import BrowserFrame from "../../components/BrowserFrame.astro";
 import PhoneFrame from "../../components/PhoneFrame.astro";
 import Icon from "../../components/Icon.astro";
+import BrandCase from "../../components/brand/BrandCase.astro";
 import { cases, categories, type AssetItem } from "../../data/cases";
+import { brandCases } from "../../data/brand-cases";
 
 export function getStaticPaths() {
   return cases.map((c, i) => ({ params: { slug: c.slug }, props: { i } }));
@@ -11,6 +13,8 @@ export function getStaticPaths() {
 const { i } = Astro.props;
 const c = cases[i];
 const next = cases[(i + 1) % cases.length];
+// com cases/<slug>/case.json, a página vira o case narrativo de marca
+const brand = brandCases[c.slug];
 
 const pages = c.items.filter((it) => it.kind === "page");
 const mobiles = c.items.filter((it) => it.kind === "mobile");
@@ -42,6 +46,7 @@ const meta = [
   { k: "Ferramentas", v: c.tools.join(", ") },
 ];
 ---
+{brand ? <BrandCase data={brand} next={next} /> : (
 <Base title={c.title} description={c.summary} image={c.thumb.src} page="case">
   <article class="case" data-project={c.slug}>
     <header class="case-hero container">
@@ -174,6 +179,7 @@ const meta = [
     <span class="lb-count" data-lb-count></span>
   </dialog>
 </Base>
+)}
 
 <style>
   .case-hero { position: relative; padding-top: clamp(124px, 17vh, 168px); padding-bottom: clamp(32px, 4vw, 56px); display: grid; gap: 24px; }

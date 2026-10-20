@@ -1,0 +1,92 @@
+---
+// 7. Aplicações: colagem com fotos editoriais P&B, recortes gigantes do logotipo, faixa em movimento,
+//    grafismo do símbolo e mockups. Tudo que é geométrico sai do próprio SVG; só as fotos vêm da IA.
+import BrandImg from "./BrandImg.astro";
+import BrandLogo from "./BrandLogo.astro";
+import BrandText from "./BrandText.astro";
+import CaseMockup from "./CaseMockup.astro";
+import CaseApp from "./CaseApp.astro";
+import { imageInfo, imageVisible, readSvg, variantVars, type AppItem, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData }
+const { data } = Astro.props;
+const a = data.applications;
+const items = a.items.filter((it) => !it.image || imageVisible(imageInfo(data, it.image)));
+const symbol = readSvg(data, "symbol");
+const [, , sw, sh] = symbol.viewBox;
+const patternId = `bc-pattern-${data.slug}`;
+const vars = (v?: string) => Object.entries(variantVars(data, v)).map(([k, val]) => `${k}:${val}`).join(";");
+const cell = (it: AppItem) => `--c0:${it.col[0]};--cs:${it.col[1]};--ms:${it.mobile};--off:${it.offset ?? 0}`;
+const ratio = (it: AppItem) => {
+  const info = imageInfo(data, it.image!);
+  return `--ar:${info.w}/${info.h}`;
+};
+const loops = Array.from({ length: 4 });
+---
+<section class="bc-apps" id="aplicacoes" data-theme="light" data-bc-section>
+  <div class="container bc-section-head bc-section-head--split">
+    <div>
+      <p class="bc-eyebrow">{a.eyebrow}</p>
+      <BrandText as="h2" class="bc-h2" text={a.title} data-bc-split />
+    </div>
+    <BrandText as="p" class="bc-body" text={a.text} data-bc-reveal />
+  </div>
+
+  <div class="container bc-collage">
+    {items.map((it) => (
+      <div class="bc-cell" data-kind={it.kind} style={cell(it)}>
+        {it.kind === "photo" && (
+          <figure class="bc-photo" style={ratio(it)} data-bc-reveal>
+            <BrandImg data={data} id={it.image!} sizes="(min-width: 900px) 45vw, 100vw" data-speed={it.speed ?? 4} />
+          </figure>
+        )}
+
+        {it.kind === "crop" && (
+          <div class="bc-crop" style={vars(it.variant)} data-bc-reveal>
+            <BrandLogo data={data} art={it.art ?? "wordmark"} viewBox={it.viewBox} preserve="xMidYMid slice" variant={it.variant} decorative data-bc-crop />
+          </div>
+        )}
+
+        {it.kind === "mockup" && <CaseMockup data={data} item={it} />}
+
+        {it.kind === "app" && <CaseApp data={data} item={it} />}
+
+        {it.kind === "marquee" && (
+          <div class="bc-marquee" aria-hidden="true" data-bc-marquee>
+            <div class="bc-marquee-row" data-marquee-dir="-1">
+              {loops.map(() => (
+                <span class="bc-marquee-item">
+                  <BrandLogo data={data} art="wordmark" variant="positive" decorative />
+                  <BrandLogo data={data} art="symbol" variant="positive" decorative />
+                </span>
+              ))}
+            </div>
+            <div class="bc-marquee-row is-outline" data-marquee-dir="1">
+              {loops.map(() => (
+                <span class="bc-marquee-item">
+                  <BrandLogo data={data} art="wordmark" decorative />
+                  <BrandLogo data={data} art="symbol" decorative />
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {it.kind === "pattern" && (
+          <div class="bc-pattern" style={`--logo-bg:${data.theme.dark};--logo-symbol-main:${data.theme.primary};--logo-symbol-accent:${data.theme.secondary}`} data-bc-reveal>
+            <svg class="bc-logo bc-pattern-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <pattern id={patternId} width={sw * 1.2} height={sh * 1.1} patternUnits="userSpaceOnUse">
+                  <g transform={`translate(${sw * 0.05} ${sh * 0.025}) scale(0.5)`} set:html={symbol.inner} />
+                  <g transform={`translate(${sw * 0.65} ${sh * 0.575}) scale(0.5)`} set:html={symbol.inner} />
+                </pattern>
+              </defs>
+              <rect x="0" y={-sh * 1.1} width="800" height={800 + sh * 2.2} fill={`url(#${patternId})`} data-bc-pattern data-shift={sh * 1.1} />
+            </svg>
+            <BrandLogo data={data} art="symbol" variant="negative" decorative class="bc-pattern-mark" />
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>

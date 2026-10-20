@@ -1,0 +1,71 @@
+---
+// Página narrativa de case de marca. Todo o conteúdo vem de cases/<slug>/case.json;
+// para um novo case basta criar o case.json e a pasta de arquivos (ver cases/efpi/).
+import Base from "../../layouts/Base.astro";
+import BrandNav from "./BrandNav.astro";
+import CaseIntro from "./CaseIntro.astro";
+import CaseSymbol from "./CaseSymbol.astro";
+import CaseType from "./CaseType.astro";
+import CaseManifesto from "./CaseManifesto.astro";
+import CaseColors from "./CaseColors.astro";
+import CaseSystem from "./CaseSystem.astro";
+import CaseApplications from "./CaseApplications.astro";
+import CaseClosing from "./CaseClosing.astro";
+import { assetUrl, fontFaceCss, plain, variantVars, warnDrafts, type BrandCaseData } from "../../data/brand-cases";
+import type { Case } from "../../data/cases";
+import "../../styles/brand-case.css";
+
+interface Props { data: BrandCaseData; next: Case }
+const { data, next } = Astro.props;
+warnDrafts(data);
+
+const t = data.theme;
+const rootVars = {
+  "--bc-dark": t.dark,
+  "--bc-light": t.light,
+  "--bc-primary": t.primary,
+  "--bc-secondary": t.secondary,
+  "--bc-support": t.support,
+  "--bc-accent": t.accent,
+  "--bc-ink-on-light": t.inkOnLight,
+  "--bc-muted-on-light": t.mutedOnLight,
+  "--bc-ink-on-dark": t.inkOnDark,
+  "--bc-muted-on-dark": t.mutedOnDark,
+  "--bc-font": `"${data.font.family}", ${data.font.fallback}`,
+  ...variantVars(data, "positive"),
+};
+const style = Object.entries(rootVars).map(([k, v]) => `${k}:${v}`).join(";");
+const sections = [data.symbol, data.typography, data.manifesto, data.colors, data.system, data.applications]
+  .map((s, i) => ({ id: ["simbolo", "tipografia", "manifesto", "cores", "sistema", "aplicacoes"][i], label: s.nav }));
+---
+<Base
+  title={plain(data.seo.title)}
+  description={plain(data.seo.description)}
+  image={assetUrl(data, data.seo.image)}
+  page="brand-case"
+  chrome={false}
+  themeColor={t.dark}
+>
+  <Fragment slot="head">
+    {data.font.preload.map((w) => (
+      <link rel="preload" as="font" type="font/woff2" href={assetUrl(data, data.font.files[String(w)])} crossorigin />
+    ))}
+    <style set:html={fontFaceCss(data)}></style>
+  </Fragment>
+
+  <div class="bc" style={style} data-brand-case={data.slug}>
+    <BrandNav data={data} sections={sections} />
+    <CaseIntro data={data} />
+    <CaseSymbol data={data} />
+    <CaseType data={data} />
+    <CaseManifesto data={data} />
+    <CaseColors data={data} />
+    <CaseSystem data={data} />
+    <CaseApplications data={data} />
+    <CaseClosing data={data} next={next} />
+  </div>
+</Base>
+
+<script>
+  import "../../scripts/brand-case";
+</script>

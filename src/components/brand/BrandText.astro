@@ -1,0 +1,14 @@
+---
+// Texto vindo do case.json. Se começar com "[rascunho]", mostra a etiqueta para revisão.
+import { parseDraft } from "../../data/brand-cases";
+
+interface Props {
+  text?: string;
+  as?: string;
+  class?: string;
+  [attr: string]: unknown;
+}
+const { text = "", as: Tag = "span", class: cls, ...attrs } = Astro.props;
+const { draft, value } = parseDraft(text);
+---
+<Tag class={cls} {...attrs}>{draft && <mark class="bc-draft" title="Texto em rascunho — revise em case.json">rascunho</mark>}{value}</Tag>

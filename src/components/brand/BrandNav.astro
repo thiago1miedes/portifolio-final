@@ -1,0 +1,21 @@
+---
+import BrandLogo from "./BrandLogo.astro";
+import type { BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData; sections: { id: string; label: string }[] }
+const { data, sections } = Astro.props;
+---
+<header class="bc-nav" data-bc-nav data-theme="dark">
+  <a href="#intro" class="bc-nav-logo" aria-label={`${data.client} — voltar ao topo do case`}>
+    <BrandLogo data={data} art="symbol" decorative class="bc-nav-symbol" />
+    <BrandLogo data={data} art="wordmark" decorative class="bc-nav-wordmark" />
+  </a>
+  <nav class="bc-nav-links" aria-label="Seções do case" data-bc-nav-links>
+    {sections.map((s) => <a href={`#${s.id}`} class="bc-nav-link" data-section-link={s.id}>{s.label}</a>)}
+  </nav>
+  <a href="/cases/" class="bc-nav-exit" aria-label="Fechar o case e ver todos os projetos">
+    <span class="bc-nav-exit-label">Projetos</span>
+    <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="1.6" /></svg>
+  </a>
+  <span class="bc-nav-progress" aria-hidden="true"><i data-bc-progress></i></span>
+</header>
