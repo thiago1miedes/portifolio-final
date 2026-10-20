@@ -1,17 +1,16 @@
 ---
 import Base from "../../layouts/Base.astro";
 import ProjectsGrid from "../../components/ProjectsGrid.astro";
-import PixelWorld from "../../components/PixelWorld.astro";
 import { cases, countBy } from "../../data/cases";
 ---
-<Base title="Projetos" description="Todos os projetos de Thiago Miedes: web design, front-end, identidade visual, social media, papelaria, embalagens e apresentações." page="archive">
-  <section class="archive-hero">
-    <div class="container">
-      <span class="eyebrow" data-hero-fade>Portfólio completo</span>
-      <h1 class="h-display" data-hero-title>Todos os <span class="mark">projetos</span>.</h1>
+<Base title="Projetos" description="Todos os projetos de Thiago Miedes: web design, identidade visual, social media, papelaria, embalagens e apresentações." page="archive">
+  <section class="page-hero">
+    <div class="page-glow" aria-hidden="true"></div>
+    <div class="container page-hero-inner">
+      <p class="eyebrow" data-hero-fade>Portfólio completo</p>
+      <h1 class="page-title display" data-page-title>Todos os <em>projetos</em></h1>
       <p class="lead" data-hero-fade>{cases.length} projetos entre sites ({countBy("web")}), identidades visuais ({countBy("brand")}), social media ({countBy("social")}) e outros formatos. Use os filtros para encontrar o que procura.</p>
     </div>
-    <PixelWorld class="archive-world" seed={44} />
   </section>
   <section class="section archive-list">
     <div class="container">
@@ -21,9 +20,17 @@ import { cases, countBy } from "../../data/cases";
 </Base>
 
 <style>
-  .archive-hero { position: relative; padding: clamp(130px, 18vh, 190px) 0 clamp(220px, 32vh, 320px); overflow: hidden; }
-  .archive-hero .container { position: relative; z-index: 2; display: grid; gap: 24px; justify-items: start; }
-  .archive-hero .lead { max-width: 620px; }
-  .archive-hero :global(.archive-world) { height: clamp(170px, 26vh, 280px); }
-  .archive-list { padding-top: clamp(32px, 4vw, 56px); }
+  .page-hero { position: relative; padding: clamp(140px, 20vh, 200px) 0 clamp(24px, 4vw, 48px); overflow: hidden; isolation: isolate; }
+  .page-glow {
+    position: absolute; left: 50%; top: 0;
+    width: min(1100px, 150vw); aspect-ratio: 2 / 1;
+    transform: translate(-50%, -45%);
+    background: radial-gradient(closest-side, rgba(255, 90, 31, 0.22), transparent 75%);
+    z-index: -1; pointer-events: none;
+  }
+  .page-hero-inner { display: grid; gap: 24px; justify-items: start; }
+  .page-title { font-size: clamp(3.5rem, 12vw, 11rem); }
+  .page-title em { font-style: normal; }
+  .page-hero .lead { max-width: 640px; }
+  .archive-list { padding-top: clamp(24px, 4vw, 48px); }
 </style>

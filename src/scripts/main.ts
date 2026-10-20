@@ -12,8 +12,7 @@ const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matc
 const $ = <T extends Element = HTMLElement>(s: string, el: ParentNode = document) => el.querySelector<T>(s);
 const $$ = <T extends Element = HTMLElement>(s: string, el: ParentNode = document) => Array.from(el.querySelectorAll<T>(s));
 
-
-/* ------------------------------------------------------------------ scroll suave */
+/* ------------------------------------------------------------------ scroll suave (Lenis + ScrollTrigger) */
 let lenis: Lenis | null = null;
 if (!reduce) {
   lenis = new Lenis({ duration: 1.15, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
@@ -21,41 +20,47 @@ if (!reduce) {
   gsap.ticker.add((time) => lenis!.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 }
-const scrollTo = (target: string | number | HTMLElement, immediate = false) => {
-  if (lenis) lenis.scrollTo(target as any, { offset: typeof target === "number" ? 0 : -84, immediate, duration: 1.4 });
+const scrollTo = (target: number | HTMLElement, immediate = false) => {
+  if (lenis) lenis.scrollTo(target as any, { offset: typeof target === "number" ? 0 : -90, immediate, duration: 1.4 });
   else if (typeof target === "number") window.scrollTo({ top: target });
-  else (typeof target === "string" ? $(target) : target)?.scrollIntoView();
+  else target.scrollIntoView();
 };
 
-/* ------------------------------------------------------------------ transição em pixels */
-const wipe = $(".px-wipe")!;
-const tile = 90;
-function buildWipe() {
-  const cols = Math.ceil(innerWidth / tile), rows = Math.ceil(innerHeight / tile);
-  wipe.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-  wipe.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-  wipe.innerHTML = "<i></i>".repeat(cols * rows);
-  return { cols, rows };
-}
-let grid = buildWipe();
-const tiles = () => $$("i", wipe);
+// Recalcula as posições depois de abrir/fechar painéis (debounce simples).
+let refreshTimer = 0;
+const refreshSoon = () => { clearTimeout(refreshTimer); refreshTimer = window.setTimeout(() => ScrollTrigger.refresh(), 120); };
 
-if (root.classList.contains("is-arriving")) {
-  gsap.set(tiles(), { scale: 1.02 });
-  gsap.to(tiles(), {
-    scale: 0, duration: 0.42, ease: "power2.in", delay: 0.05,
-    stagger: { grid: [grid.rows, grid.cols], from: "random", amount: 0.45 },
-    onComplete: () => root.classList.remove("is-arriving"),
+/* ------------------------------------------------------------------ painéis com display:none + altura animada */
+// O estado oculto é sempre a classe .is-hidden (display:none). A altura só é animada na entrada/saída.
+function showPanel(panel: HTMLElement) {
+  panel.classList.remove("is-hidden");
+  if (!reduce) gsap.fromTo(panel, { height: 0, opacity: 0 }, { height: "auto", opacity: 1, duration: 0.55, ease: "power3.out", clearProps: "height,opacity", onComplete: refreshSoon });
+  else refreshSoon();
+}
+function hidePanel(panel: HTMLElement) {
+  if (panel.classList.contains("is-hidden")) return;
+  if (reduce) { panel.classList.add("is-hidden"); refreshSoon(); return; }
+  gsap.to(panel, {
+    height: 0, opacity: 0, duration: 0.4, ease: "power3.inOut",
+    onComplete: () => { panel.classList.add("is-hidden"); gsap.set(panel, { clearProps: "height,opacity" }); refreshSoon(); },
   });
 }
-try { sessionStorage.removeItem("px-nav"); } catch {}
+
+/* ------------------------------------------------------------------ transição entre páginas (cortina laranja) */
+const wipe = $(".page-wipe");
+if (wipe && root.classList.contains("is-arriving")) {
+  gsap.fromTo(wipe, { scaleY: 1, transformOrigin: "50% 0%" }, {
+    scaleY: 0, duration: 0.7, ease: "expo.inOut", delay: 0.05,
+    onComplete: () => { root.classList.remove("is-arriving"); gsap.set(wipe, { clearProps: "all" }); },
+  });
+}
+try { sessionStorage.removeItem("page-wipe"); } catch {}
 
 function isInternal(a: HTMLAnchorElement) {
   if (a.target === "_blank" || a.hasAttribute("download")) return false;
   const url = new URL(a.href, location.href);
   if (url.origin !== location.origin) return false;
-  if (url.pathname === location.pathname && url.hash) return false;
-  if (url.pathname === location.pathname && url.search === location.search) return false;
+  if (url.pathname === location.pathname) return false;
   return true;
 }
 document.addEventListener("click", (e) => {
@@ -68,81 +73,86 @@ document.addEventListener("click", (e) => {
     if (el) { e.preventDefault(); closeMenu(); scrollTo(el); history.replaceState(null, "", url.hash); }
     return;
   }
-  if (reduce || !isInternal(a)) return;
+  if (reduce || !wipe || !isInternal(a)) return;
   e.preventDefault();
   closeMenu();
-  try { sessionStorage.setItem("px-nav", "1"); } catch {}
-  grid = buildWipe();
-  const col = Math.floor((e.clientX / innerWidth) * grid.cols), row = Math.floor((e.clientY / innerHeight) * grid.rows);
-  gsap.to(tiles(), {
-    scale: 1.02, duration: 0.32, ease: "power2.out",
-    stagger: { grid: [grid.rows, grid.cols], from: [col, row] as any, amount: 0.38 },
+  try { sessionStorage.setItem("page-wipe", "1"); } catch {}
+  gsap.fromTo(wipe, { scaleY: 0, transformOrigin: "50% 100%" }, {
+    scaleY: 1, duration: 0.55, ease: "expo.inOut",
     onComplete: () => { location.href = a.href; },
   });
 });
 window.addEventListener("pageshow", (e) => {
-  if ((e as PageTransitionEvent).persisted) { gsap.set(tiles(), { scale: 0 }); root.classList.remove("is-arriving"); }
+  if ((e as PageTransitionEvent).persisted && wipe) { gsap.set(wipe, { clearProps: "all" }); root.classList.remove("is-arriving"); }
 });
 
-/* ------------------------------------------------------------------ header */
-const header = $("[data-header]");
-if (header) {
-  let last = 0;
-  const onScroll = (y: number) => {
-    header.classList.toggle("is-scrolled", y > 20);
-    const menuOpen = header.classList.contains("menu-open");
-    if (Math.abs(y - last) < 6) return;
-    if (!menuOpen) header.classList.toggle("is-hidden", y > last && y > 400);
-    last = y;
-  };
+/* ------------------------------------------------------------------ navbar: encolhe ao rolar + link ativo */
+const navEl = $("[data-nav]");
+if (navEl) {
+  const onScroll = (y: number) => navEl.classList.toggle("is-scrolled", y > 40);
   if (lenis) lenis.on("scroll", ({ scroll }: any) => onScroll(scroll));
   else addEventListener("scroll", () => onScroll(scrollY), { passive: true });
   onScroll(scrollY);
+
+  $$<HTMLAnchorElement>("[data-nav-link]", navEl).forEach((link) => {
+    const section = document.getElementById(link.dataset.navLink!);
+    if (!section) return;
+    ScrollTrigger.create({
+      trigger: section, start: "top 50%", end: "bottom 50%",
+      onToggle: (self) => {
+        link.classList.toggle("is-active", self.isActive);
+        if (self.isActive) link.setAttribute("aria-current", "true"); else link.removeAttribute("aria-current");
+      },
+    });
+  });
 }
 
-/* ------------------------------------------------------------------ menu mobile */
-const burger = $<HTMLButtonElement>("[data-burger]");
-const menu = $("[data-menu]");
+/* ------------------------------------------------------------------ menu mobile (data-menu-toggle) */
+const menuToggle = $<HTMLButtonElement>("[data-menu-toggle]");
+const menuPanel = $("[data-menu-panel]");
 function openMenu() {
-  if (!menu || !burger) return;
-  menu.hidden = false;
-  header?.classList.add("menu-open");
-  burger.setAttribute("aria-expanded", "true");
-  burger.setAttribute("aria-label", "Fechar menu");
+  if (!menuPanel || !menuToggle) return;
+  menuPanel.classList.remove("is-hidden");
+  menuToggle.setAttribute("aria-expanded", "true");
+  menuToggle.setAttribute("aria-label", "Fechar menu");
   lenis?.stop();
-  gsap.fromTo($$(".menu-link", menu), { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.05, duration: 0.6, ease: "expo.out" });
+  if (!reduce) {
+    gsap.fromTo(menuPanel, { opacity: 0, y: -12, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" });
+    gsap.fromTo($$(".panel-link", menuPanel), { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.04, duration: 0.6, ease: "expo.out" });
+  }
 }
 function closeMenu() {
-  if (!menu || menu.hidden || !burger) return;
-  menu.hidden = true;
-  header?.classList.remove("menu-open");
-  burger.setAttribute("aria-expanded", "false");
-  burger.setAttribute("aria-label", "Abrir menu");
+  if (!menuPanel || !menuToggle || menuPanel.classList.contains("is-hidden")) return;
+  menuPanel.classList.add("is-hidden");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Abrir menu");
   lenis?.start();
 }
-burger?.addEventListener("click", () => (menu?.hidden ? openMenu() : closeMenu()));
-addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+menuToggle?.addEventListener("click", () => (menuPanel?.classList.contains("is-hidden") ? openMenu() : closeMenu()));
+$$("[data-menu-link]").forEach((l) => l.addEventListener("click", closeMenu));
+addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && menuPanel && !menuPanel.classList.contains("is-hidden")) { closeMenu(); menuToggle?.focus(); }
+});
+document.addEventListener("click", (e) => {
+  if (navEl && menuPanel && !menuPanel.classList.contains("is-hidden") && !navEl.contains(e.target as Node)) closeMenu();
+});
+matchMedia("(min-width: 900px)").addEventListener("change", (e) => { if (e.matches) closeMenu(); });
 
-/* ------------------------------------------------------------------ cursor + magnetismo */
+/* ------------------------------------------------------------------ cursor "Ver" nos projetos */
 if (finePointer && !reduce) {
   const cursor = $(".cursor")!;
-  const label = $(".cursor-label", cursor)!;
-  const xTo = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "power3" });
-  const yTo = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3" });
+  const xTo = gsap.quickTo(cursor, "x", { duration: 0.4, ease: "power3" });
+  const yTo = gsap.quickTo(cursor, "y", { duration: 0.4, ease: "power3" });
   addEventListener("pointermove", (e) => { xTo(e.clientX); yTo(e.clientY); }, { passive: true });
   document.addEventListener("pointerover", (e) => {
-    const t = e.target as Element;
-    const view = t.closest?.("[data-cursor='view']") as HTMLElement | null;
-    cursor.classList.toggle("is-view", !!view);
-    if (view) label.textContent = view.dataset.cursorLabel ?? "Ver case";
-    cursor.classList.toggle("is-link", !view && !!t.closest?.("a, button, label, input, select, textarea"));
+    cursor.classList.toggle("is-view", !!(e.target as Element).closest?.("[data-cursor='view']"));
   });
-  document.addEventListener("pointerleave", () => cursor.classList.remove("is-view", "is-link"));
+  document.addEventListener("pointerleave", () => cursor.classList.remove("is-view"));
 }
 
-/* ------------------------------------------------------------------ títulos divididos (SplitText) */
+/* ------------------------------------------------------------------ títulos: revelação por palavra, a palavra laranja por último */
 function splitReveal(el: HTMLElement, opts: { scroll?: boolean; delay?: number } = {}) {
-  el.style.visibility = "visible";
+  el.style.opacity = "1";
   if (reduce) return;
   SplitText.create(el, {
     type: "lines,words",
@@ -150,15 +160,16 @@ function splitReveal(el: HTMLElement, opts: { scroll?: boolean; delay?: number }
     linesClass: "split-line",
     autoSplit: true,
     onSplit(self) {
-      return gsap.from(self.words, {
-        yPercent: 115,
-        rotate: 4,
-        duration: 1.1,
-        ease: "expo.out",
-        stagger: 0.045,
+      const words = self.words as HTMLElement[];
+      const accent = words.filter((w) => w.closest("em"));
+      const rest = words.filter((w) => !accent.includes(w));
+      const tl = gsap.timeline({
         delay: opts.delay ?? 0,
-        scrollTrigger: opts.scroll === false ? undefined : { trigger: el, start: "top 86%", once: true },
+        scrollTrigger: opts.scroll === false ? undefined : { trigger: el, start: "top 88%", once: true },
       });
+      tl.from(rest, { yPercent: 110, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.05 })
+        .from(accent, { yPercent: 110, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.05 }, rest.length ? "-=0.6" : 0);
+      return tl;
     },
   });
 }
@@ -166,167 +177,153 @@ $$("[data-split]").forEach((el) => splitReveal(el));
 
 /* ------------------------------------------------------------------ revelações ao rolar */
 if (!reduce) {
-  ScrollTrigger.batch("[data-reveal]:not([data-reveal='clip']):not([data-reveal='up'])", {
+  ScrollTrigger.batch("[data-reveal]", {
     start: "top 90%", once: true,
-    onEnter: (b) => gsap.fromTo(b, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 1, ease: "expo.out", stagger: 0.08, overwrite: true }),
-  });
-  ScrollTrigger.batch("[data-reveal='up']", {
-    start: "top 92%", once: true,
-    onEnter: (b) => gsap.fromTo(b, { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 1.2, ease: "expo.out", stagger: 0.1, overwrite: true }),
-  });
-  ScrollTrigger.batch("[data-reveal='clip']", {
-    start: "top 92%", once: true,
-    onEnter: (b) => gsap.fromTo(b, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "expo.inOut", stagger: 0.08, overwrite: true }),
+    onEnter: (b) => gsap.fromTo(b, { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 1, ease: "expo.out", stagger: 0.08, overwrite: true }),
   });
 }
-
-/* ------------------------------------------------------------------ contadores */
-$$("[data-count]").forEach((el) => {
-  const end = Number(el.dataset.count);
-  if (reduce || !end) return;
-  const o = { v: 0 };
-  el.textContent = "0";
-  gsap.to(o, {
-    v: end, duration: 1.8, ease: "power3.out", delay: el.closest("[data-hero]") ? 1.2 : 0,
-    onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString("pt-BR"); },
-    scrollTrigger: el.closest("[data-hero]") ? undefined : { trigger: el, start: "top 90%", once: true },
-  });
-});
 
 /* ------------------------------------------------------------------ hero */
 const hero = $("[data-hero]");
-const heroTitle = $("[data-hero-title]");
-const heroFades = $$("[data-hero-fade]");
-if (heroTitle) {
-  const delay = root.classList.contains("is-arriving") ? 0.55 : 0.15;
-  splitReveal(heroTitle, { scroll: false, delay });
-  if (!reduce) {
-    gsap.fromTo(heroFades, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.1, ease: "expo.out", stagger: 0.1, delay: delay + 0.35 });
-    const mark = $(".mark", heroTitle);
-    if (mark) gsap.fromTo(mark, { "--mark": 0 }, { "--mark": 1, duration: 0.8, ease: "steps(8)", delay: delay + 0.9 });
-  } else heroFades.forEach((el) => (el.style.opacity = "1"));
-}
+if (hero) {
+  const lines = $$("[data-hero-line]", hero);
+  const fades = $$("[data-hero-fade]", hero);
+  const avatar = $("[data-hero-avatar]", hero);
+  const delay = root.classList.contains("is-arriving") ? 0.5 : 0.1;
 
-function buildWorld(world: HTMLElement, delay = 0) {
-  world.style.visibility = "visible";
-  if (reduce) return;
-  const tl = gsap.timeline({ delay });
-  const snap = (v: string) => `${Math.round(parseFloat(v) / 6) * 6}px`;
-  tl.from($$(".pw-back rect, .pw-mid rect", world), { y: 90, duration: 1.1, ease: "power3.out", stagger: { each: 0.004, from: "center" }, modifiers: { y: snap } }, 0)
-    .from($$(".pw-col", world), { y: 220, duration: 0.9, ease: "back.out(1.4)", stagger: { each: 0.014, from: "center" }, modifiers: { y: snap } }, 0.15)
-    .from($$(".pw-tree", world), { scale: 0, transformOrigin: "50% 100%", duration: 0.7, ease: "back.out(2.2)", stagger: 0.08 }, 0.7)
-    .from($$(".pw-tuft", world), { scale: 0, transformOrigin: "50% 100%", duration: 0.4, stagger: { each: 0.01, from: "random" } }, 0.9)
-    .from($$(".pw-cloud", world), { opacity: 0, duration: 1.2, stagger: 0.15 }, 0.5)
-    .from($$(".pw-float", world), { opacity: 0, scale: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(3)", stagger: 0.12 }, 1.1);
-
-  // vida no mundo
-  $$(".pw-cloud", world).forEach((c, i) => gsap.to(c, { x: `+=${i % 2 ? -90 : 110}`, duration: 16 + i * 4, ease: "sine.inOut", yoyo: true, repeat: -1 }));
-  $$(".pw-float", world).forEach((f, i) => gsap.to(f, { y: "-=14", duration: 1.3 + i * 0.2, ease: "steps(4)", yoyo: true, repeat: -1, delay: 1.6 + i * 0.3 }));
-  $$(".pw-gem", world).forEach((g) => gsap.to(g, { opacity: 0.45, duration: 0.6, ease: "steps(2)", yoyo: true, repeat: -1, delay: gsap.utils.random(0, 3) }));
-
-  // parallax com o mouse
-  if (finePointer) {
-    const layers = [
-      { el: $(".pw-back", world), d: 6 }, { el: $(".pw-mid", world), d: 12 },
-      { el: $(".pw-front", world), d: 20 }, { el: $(".pw-floats", world), d: 34 }, { el: $(".pw-clouds", world), d: 10 },
-    ].filter((l) => l.el);
-    const qs = layers.map((l) => ({ x: gsap.quickTo(l.el!, "x", { duration: 1.2, ease: "power3" }), d: l.d }));
-    const host = world.parentElement!;
-    host.addEventListener("pointermove", (e) => {
-      const nx = e.clientX / innerWidth - 0.5;
-      qs.forEach((q) => q.x(-nx * q.d * 2));
+  if (reduce) fades.forEach((el) => (el.style.opacity = "1"));
+  else {
+    // espera a fonte condensada para não animar com a fonte reserva
+    const fontReady = Promise.race([document.fonts?.load("1em Anton") ?? Promise.resolve(), new Promise((r) => setTimeout(r, 900))]);
+    gsap.set(lines, { yPercent: 105 });
+    if (avatar) gsap.set(avatar, { opacity: 0, y: 80 });
+    fontReady.then(() => {
+      const tl = gsap.timeline({ delay });
+      tl.to(lines, { yPercent: 0, duration: 1.2, ease: "expo.out", stagger: 0.12 })
+        .to(avatar, { opacity: 1, y: 0, duration: 1.4, ease: "expo.out" }, 0.35)
+        .fromTo(fades, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1, ease: "expo.out", stagger: 0.1 }, 0.6);
     });
-  }
-  // afunda levemente ao rolar
-  gsap.to(world, { yPercent: 12, ease: "none", scrollTrigger: { trigger: world.parentElement!, start: "top top", end: "bottom top", scrub: true } });
-}
-$$(".pixel-world").forEach((w) => buildWorld(w, root.classList.contains("is-arriving") ? 0.5 : 0.1));
 
-const heroVisual = $("[data-hero-visual]");
-if (heroVisual) {
-  heroVisual.style.opacity = "1";
-  if (!reduce) {
-    gsap.from($(".hv-browser, .hv-phone, .hv-tag", heroVisual), { y: 70, opacity: 0, duration: 2.2, ease: "power3.out", stagger: 0.25, delay: 0.8 });
-    if (finePointer) {
-      const items = $$("[data-depth]", heroVisual).map((el) => ({
-        x: gsap.quickTo(el, "x", { duration: 1, ease: "power3" }),
-        y: gsap.quickTo(el, "y", { duration: 1, ease: "power3" }),
-        d: Number(el.dataset.depth),
-      }));
-      hero?.addEventListener("pointermove", (e) => {
-        const nx = e.clientX / innerWidth - 0.5, ny = e.clientY / innerHeight - 0.5;
-        items.forEach((it) => { it.x(nx * it.d); it.y(ny * it.d); });
-      });
+    // parallax sutil do avatar: mouse (força em data-parallax) + rolagem
+    const img = $<HTMLElement>("[data-parallax]", hero);
+    if (img) {
+      const strength = Number(img.dataset.parallax) || 0.04;
+      if (finePointer) {
+        const xTo = gsap.quickTo(img, "x", { duration: 1.2, ease: "power3" });
+        const yTo = gsap.quickTo(img, "y", { duration: 1.2, ease: "power3" });
+        hero.addEventListener("pointermove", (e) => {
+          xTo((e.clientX - innerWidth / 2) * strength);
+          yTo((e.clientY - innerHeight / 2) * strength);
+        });
+        hero.addEventListener("pointerleave", () => { xTo(0); yTo(0); });
+      }
+      gsap.to(avatar, { yPercent: 10, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
     }
-    gsap.to(heroVisual, { yPercent: -10, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
+    // o título se afasta um pouco mais devagar que a página
+    gsap.to($(".hero-title", hero), { yPercent: 18, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
   }
 }
 
-/* ------------------------------------------------------------------ marquee */
-$$("[data-marquee]").forEach((track) => {
-  if (reduce) return;
-  const tw = gsap.to(track, { xPercent: -50, ease: "none", duration: 42, repeat: -1 });
-  let dir = 1;
-  ScrollTrigger.create({
-    onUpdate: (self) => {
-      const v = self.getVelocity();
-      if (self.direction !== dir) dir = self.direction;
-      gsap.to(tw, { timeScale: gsap.utils.clamp(-5, 5, dir * (1 + Math.abs(v) / 400)), duration: 0.2, overwrite: true });
-      gsap.to(tw, { timeScale: dir, duration: 1.2, delay: 0.25, overwrite: false });
-    },
+/* ------------------------------------------------------------------ projetos: parallax leve na imagem */
+if (!reduce) {
+  $$("[data-project-img]").forEach((img) => {
+    gsap.fromTo(img, { yPercent: -4 }, {
+      yPercent: 4, ease: "none",
+      scrollTrigger: { trigger: img.closest("[data-project]"), start: "top bottom", end: "bottom top", scrub: true },
+    });
+  });
+}
+
+/* ------------------------------------------------------------------ serviços: só um aberto por vez (data-service-index) */
+$$("[data-services]").forEach((list) => {
+  const triggers = $$<HTMLButtonElement>("[data-service-index]", list);
+  const select = (index: number) => {
+    triggers.forEach((t) => {
+      const item = t.closest<HTMLElement>("[data-service]")!;
+      const panel = document.getElementById(t.getAttribute("aria-controls")!)!;
+      const open = Number(t.dataset.serviceIndex) === index;
+      const wasOpen = t.getAttribute("aria-expanded") === "true";
+      t.setAttribute("aria-expanded", String(open));
+      item.classList.toggle("is-active", open);
+      if (open && !wasOpen) showPanel(panel);
+      if (!open && wasOpen) hidePanel(panel);
+    });
+  };
+  triggers.forEach((t) => t.addEventListener("click", () => {
+    const index = Number(t.dataset.serviceIndex);
+    // clicar no aberto mantém ele aberto (sempre há um card laranja)
+    if (t.getAttribute("aria-expanded") !== "true") select(index);
+  }));
+});
+
+/* ------------------------------------------------------------------ FAQ: só um aberto por vez (data-faq-index) */
+$$("[data-faq]").forEach((list) => {
+  const triggers = $$<HTMLButtonElement>("[data-faq-index]", list);
+  triggers.forEach((t) => t.addEventListener("click", () => {
+    const index = Number(t.dataset.faqIndex);
+    const willOpen = t.getAttribute("aria-expanded") !== "true";
+    triggers.forEach((other) => {
+      const open = willOpen && Number(other.dataset.faqIndex) === index;
+      const wasOpen = other.getAttribute("aria-expanded") === "true";
+      const panel = document.getElementById(other.getAttribute("aria-controls")!)!;
+      other.setAttribute("aria-expanded", String(open));
+      other.closest("[data-faq-item]")!.classList.toggle("is-open", open);
+      if (open && !wasOpen) showPanel(panel);
+      if (!open && wasOpen) hidePanel(panel);
+    });
+  }));
+});
+
+/* ------------------------------------------------------------------ "Ver tudo" da trajetória (data-open) */
+$$<HTMLButtonElement>("[data-open]").forEach((btn) => {
+  const list = document.getElementById(btn.getAttribute("aria-controls")!);
+  const label = $("[data-open-label]", btn);
+  if (!list) return;
+  const extras = $$("[data-timeline-extra]", list);
+  btn.addEventListener("click", () => {
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", String(open));
+    if (label) label.textContent = open ? "Ver menos" : "Ver tudo";
+    extras.forEach((el) => el.classList.toggle("is-hidden", !open));
+    if (open && !reduce) gsap.fromTo(extras, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 });
+    refreshSoon();
   });
 });
 
-/* ------------------------------------------------------------------ cases empilhados */
-// O card anterior recua quando o próximo sobe. O site dentro do card fica parado (só o topo).
-const mm = gsap.matchMedia();
-const cards = $$("[data-stack-card]");
-if (cards.length && !reduce) {
-  mm.add("(min-width: 1000px)", () => {
-    cards.forEach((card, i) => {
-      if (i === cards.length - 1) return;
-      gsap.to(card, {
-        scale: 0.94, y: -16, ease: "none",
-        scrollTrigger: { trigger: cards[i + 1], start: "top bottom", end: "top 96px", scrub: true },
-      });
-    });
+/* ------------------------------------------------------------------ retrato do "Sobre": sobe devagar */
+const portrait = $("[data-portrait]");
+if (portrait && !reduce) {
+  gsap.fromTo(portrait, { yPercent: 8 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: portrait.parentElement, start: "top bottom", end: "center center", scrub: true } });
+}
+
+/* ------------------------------------------------------------------ rodapé: letras do nome sobem ao entrar na tela */
+const footerName = $("[data-footer-name]");
+if (footerName && !reduce) {
+  gsap.from($$("[data-letter]", footerName), {
+    yPercent: 60, duration: 1.3, ease: "expo.out", stagger: 0.07,
+    scrollTrigger: { trigger: footerName, start: "top 98%", once: true },
   });
 }
 
-/* ------------------------------------------------------------------ grade de projetos (filtro + Flip) */
+/* ------------------------------------------------------------------ página de todos os projetos (filtro + Flip) */
 $$("[data-projects]").forEach((wrap) => {
-  const base = Number(wrap.dataset.limit) || 0;
-  const limit = base && innerWidth < 640 ? Math.min(base, 6) : base;
   const items = $$<HTMLElement>(".case-card", wrap);
   const buttons = $$<HTMLButtonElement>("[data-filter]", wrap);
-  const more = $<HTMLAnchorElement>("[data-more]", wrap);
-  const total = Number(wrap.dataset.total) || items.length;
 
   const apply = (cat: string, animate = true) => {
     const state = animate && !reduce ? Flip.getState(items) : null;
-    const before = new Set(items.filter((i) => i.style.display !== "none"));
-    let shown = 0, matches = 0;
+    const before = new Set(items.filter((i) => !i.classList.contains("is-hidden")));
     items.forEach((it) => {
       const ok = cat === "all" || it.dataset.cats!.split(" ").includes(cat);
-      if (ok) matches++;
-      const show = ok && (!limit || shown < limit);
-      if (show) shown++;
-      it.style.display = show ? "" : "none";
+      it.classList.toggle("is-hidden", !ok);
     });
     buttons.forEach((b) => {
       const on = b.dataset.filter === cat;
       b.classList.toggle("is-active", on);
       b.setAttribute("aria-pressed", String(on));
     });
-    if (more) {
-      const btn = buttons.find((b) => b.dataset.filter === cat);
-      const name = btn?.childNodes[0]?.textContent?.trim();
-      const all = Number(btn?.dataset.all) || matches;
-      more.href = cat === "all" ? "/cases/" : `/cases/?cat=${cat}`;
-      more.textContent = cat === "all" ? `Ver todos os ${total} projetos` : `Ver todos de ${name} (${all})`;
-    }
     if (state) {
-      const now = items.filter((i) => i.style.display !== "none");
+      const now = items.filter((i) => !i.classList.contains("is-hidden"));
       const entering = now.filter((i) => !before.has(i) || i.dataset.revealed !== "1");
       Flip.from(state, {
         targets: now.filter((i) => before.has(i)),
@@ -338,13 +335,16 @@ $$("[data-projects]").forEach((wrap) => {
         onComplete: () => entering.forEach((e) => (e.dataset.revealed = "1")),
       });
     }
+    const url = new URL(location.href);
+    if (cat === "all") url.searchParams.delete("cat"); else url.searchParams.set("cat", cat);
+    if (animate) history.replaceState(null, "", url);
   };
 
   buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter!)));
   const initial = new URLSearchParams(location.search).get("cat");
   apply(initial && buttons.some((b) => b.dataset.filter === initial) ? initial : "all", false);
 
-  const visible = items.filter((i) => i.style.display !== "none");
+  const visible = items.filter((i) => !i.classList.contains("is-hidden"));
   if (reduce) gsap.set(items, { opacity: 1 });
   else
     ScrollTrigger.batch(visible, {
@@ -353,93 +353,19 @@ $$("[data-projects]").forEach((wrap) => {
     });
 });
 
-/* ------------------------------------------------------------------ processo */
-const steps = $("[data-steps]");
-if (steps && !reduce) {
-  const path = $(".steps-path", steps);
-  if (path) gsap.from(path, { scaleX: 0, transformOrigin: "0 50%", ease: "none", scrollTrigger: { trigger: steps, start: "top 80%", end: "top 30%", scrub: true } });
-  gsap.from($$("[data-step]", steps), { opacity: 0, y: 50, duration: 1, ease: "expo.out", stagger: 0.15, scrollTrigger: { trigger: steps, start: "top 80%", once: true } });
-  gsap.from($$(".step-node i", steps), { scale: 0, rotate: 90, duration: 0.6, ease: "back.out(3)", stagger: 0.2, scrollTrigger: { trigger: steps, start: "top 70%", once: true } });
-}
-
-/* ------------------------------------------------------------------ trilho arrastável (Behance) */
-$$("[data-rail]").forEach((rail) => {
-  let down = false, moved = false, sx = 0, sl = 0;
-  rail.addEventListener("pointerdown", (e) => {
-    if (e.pointerType !== "mouse") return;
-    down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft;
-  });
-  addEventListener("pointermove", (e) => {
-    if (!down) return;
-    const dx = e.clientX - sx;
-    if (Math.abs(dx) > 5) { moved = true; rail.classList.add("is-dragging"); }
-    rail.scrollLeft = sl - dx;
-  });
-  addEventListener("pointerup", () => { down = false; setTimeout(() => rail.classList.remove("is-dragging"), 0); });
-  rail.addEventListener("click", (e) => { if (moved) { e.preventDefault(); moved = false; } }, true);
-  if (!reduce) gsap.from($$("li", rail), { x: 120, opacity: 0, duration: 1.2, ease: "expo.out", stagger: 0.07, scrollTrigger: { trigger: rail, start: "top 85%", once: true } });
+/* ------------------------------------------------------------------ página de case */
+// Títulos grandes das páginas internas (sem SplitText: as linhas sobem inteiras)
+$$("[data-page-title]").forEach((el) => {
+  el.style.opacity = "1";
+  if (reduce) return;
+  gsap.from(el, { yPercent: 30, opacity: 0, duration: 1.2, ease: "expo.out", delay: root.classList.contains("is-arriving") ? 0.45 : 0.1 });
+});
+$$("[data-hero-fade]").forEach((el) => {
+  if (hero?.contains(el)) return;
+  el.style.opacity = "1";
+  if (!reduce) gsap.from(el, { opacity: 0, y: 24, duration: 1, ease: "expo.out", delay: root.classList.contains("is-arriving") ? 0.6 : 0.3 });
 });
 
-/* ------------------------------------------------------------------ formulário de contato */
-const form = $<HTMLFormElement>("[data-contact]");
-if (form) {
-  const status = $("[data-status]", form)!;
-  const label = $("[data-label]", form)!;
-  const val = (n: string) => ((form.elements.namedItem(n) as HTMLInputElement | null)?.value ?? "").trim();
-  const tipo = () => (form.querySelector<HTMLInputElement>("input[name=tipo]:checked")?.value ?? "");
-  const setErr = (n: string, bad: boolean) => (form.elements.namedItem(n) as HTMLElement).closest(".f-field")!.classList.toggle("is-invalid", bad);
-  const validate = () => {
-    const errs = {
-      nome: val("nome").length < 2,
-      email: !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")),
-      mensagem: val("mensagem").length < 5,
-    };
-    Object.entries(errs).forEach(([k, v]) => setErr(k, v));
-    const first = Object.entries(errs).find(([, v]) => v)?.[0];
-    if (first) (form.elements.namedItem(first) as HTMLElement).focus();
-    return !first;
-  };
-  form.addEventListener("input", (e) => (e.target as HTMLElement).closest(".f-field")?.classList.remove("is-invalid"));
-  const body = () => [
-    `Olá, Thiago! Meu nome é ${val("nome")}.`,
-    `Tipo de projeto: ${tipo()}`,
-    `Investimento previsto: ${val("orcamento")}`,
-    val("telefone") && `WhatsApp: ${val("telefone")}`,
-    `E-mail: ${val("email")}`,
-    "",
-    val("mensagem"),
-  ].filter((l) => l !== false && l !== undefined).join("\n");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    status.classList.remove("is-error");
-    if (val("_gotcha")) return;
-    if (!validate()) { status.textContent = "Confira os campos destacados."; status.classList.add("is-error"); return; }
-    const endpoint = form.dataset.endpoint;
-    if (endpoint) {
-      label.textContent = "Enviando…";
-      try {
-        const res = await fetch(endpoint, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
-        if (!res.ok) throw new Error(String(res.status));
-        form.reset();
-        status.textContent = "Mensagem enviada! Logo eu respondo — obrigado pelo contato.";
-      } catch {
-        status.textContent = "Não consegui enviar agora. Tente pelo WhatsApp ou e-mail ao lado.";
-        status.classList.add("is-error");
-      } finally { label.textContent = "Enviar mensagem"; }
-    } else {
-      const subject = encodeURIComponent(`Novo projeto — ${tipo()}`);
-      location.href = `mailto:${form.dataset.email}?subject=${subject}&body=${encodeURIComponent(body())}`;
-      status.textContent = "Abri seu aplicativo de e-mail com a mensagem pronta. Se preferir, use o WhatsApp.";
-    }
-  });
-  $("[data-wa]", form)?.addEventListener("click", () => {
-    const text = val("mensagem") || val("nome") ? body() : "Olá, Thiago! Vim pelo seu portfólio e quero conversar sobre um projeto.";
-    window.open(`https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
-  });
-}
-
-/* ------------------------------------------------------------------ página de case */
 const cover = $("[data-cover-scrub]");
 if (cover) {
   const img = $<HTMLImageElement>(".browser-shot", cover)!;
@@ -447,15 +373,14 @@ if (cover) {
   // Sempre chega ao fim do layout. Páginas curtas rolam quase 1:1; as muito longas aceleram só o necessário (máx. 2,2×).
   const dist = () => Math.max(0, img.offsetHeight - view.offsetHeight);
   const speed = () => Math.min(2.2, Math.max(1.1, dist() / (innerHeight * 3)));
-  const travel = () => dist();
-  const scrollLen = () => travel() / speed();
-  const size = () => { cover.style.height = reduce || travel() < 40 ? "auto" : `${Math.round(scrollLen() + innerHeight)}px`; };
+  const scrollLen = () => dist() / speed();
+  const size = () => { cover.style.height = reduce || dist() < 40 ? "auto" : `${Math.round(scrollLen() + innerHeight)}px`; };
   size();
   ScrollTrigger.addEventListener("refreshInit", size);
   if (!img.complete) img.addEventListener("load", () => ScrollTrigger.refresh());
   if (!reduce) {
-    gsap.to(img, { y: () => -travel(), ease: "none", scrollTrigger: { trigger: cover, start: "top 92px", end: () => `+=${scrollLen()}`, scrub: 1.2, invalidateOnRefresh: true } });
-    gsap.from($(".browser", cover), { scale: 0.9, y: 60, opacity: 0, duration: 1.4, ease: "expo.out", delay: 0.5 });
+    gsap.to(img, { y: () => -dist(), ease: "none", scrollTrigger: { trigger: cover, start: "top 92px", end: () => `+=${scrollLen()}`, scrub: 1.2, invalidateOnRefresh: true } });
+    gsap.from($(".browser", cover), { scale: 0.92, y: 60, opacity: 0, duration: 1.4, ease: "expo.out", delay: 0.5 });
   }
 }
 
@@ -470,7 +395,7 @@ if (!reduce) {
   });
 }
 
-$$("[data-parallax]").forEach((img) => {
+$$("[data-parallax-img]").forEach((img) => {
   if (reduce) return;
   gsap.fromTo(img, { yPercent: -8 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
 });
@@ -486,7 +411,7 @@ $$("[data-tabs]").forEach((wrap) => {
   const panels = $$("[data-panel]", wrap);
   const select = (k: number) => {
     tabs.forEach((t, i) => { t.classList.toggle("is-active", i === k); t.setAttribute("aria-selected", String(i === k)); t.tabIndex = i === k ? 0 : -1; });
-    panels.forEach((p, i) => (p.hidden = i !== k));
+    panels.forEach((p, i) => p.classList.toggle("is-hidden", i !== k));
     const view = $(".browser-view", panels[k]);
     const inner = view && (view as any).__lenis;
     if (inner) inner.scrollTo(0, { immediate: true }); else if (view) view.scrollTop = 0;
@@ -533,8 +458,6 @@ if (dialog) {
 }
 
 /* ------------------------------------------------------------------ utilidades */
-$$("[data-to-top]").forEach((b) => b.addEventListener("click", () => scrollTo(0)));
-
 // chegou por link com âncora (ex.: /#contato vindo de outra página)
 if (location.hash) {
   const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));

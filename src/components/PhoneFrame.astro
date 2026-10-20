@@ -17,8 +17,8 @@ const { src, w, h, alt, mode = "scroll", class: cls = "" } = Astro.props;
     max-width: 300px;
     padding: 10px;
     border-radius: 42px;
-    background: var(--ink);
-    box-shadow: inset 0 0 0 2px #24474c, var(--shadow-lg);
+    background: var(--bg-elev-2);
+    box-shadow: inset 0 0 0 1px var(--border-strong), 0 40px 80px -40px rgba(0, 0, 0, 0.9);
   }
   .phone-screen {
     aspect-ratio: 9 / 19.5;
@@ -33,7 +33,7 @@ const { src, w, h, alt, mode = "scroll", class: cls = "" } = Astro.props;
   @keyframes phone-auto { to { transform: translateY(calc(-100% + var(--view-h, 560px))); } }
   .phone-notch {
     position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
-    width: 74px; height: 20px; border-radius: 12px; background: var(--ink);
+    width: 74px; height: 20px; border-radius: 12px; background: var(--bg-elev-2);
   }
   @media (prefers-reduced-motion: reduce) { .phone--auto img { animation: none; } }
 </style>

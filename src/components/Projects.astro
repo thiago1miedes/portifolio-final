@@ -1,0 +1,110 @@
+---
+import Icon from "./Icon.astro";
+import { cases, categories } from "../data/cases";
+import { homeProjects } from "../data/site";
+
+const list = homeProjects
+  .map((slug) => cases.find((c) => c.slug === slug))
+  .filter((c): c is (typeof cases)[number] => Boolean(c));
+// padrão do grid: grande + pequeno, pequeno + grande…
+const sizeOf = (i: number) => (i % 4 === 0 || i % 4 === 3 ? "lg" : "sm");
+---
+<section class="section projects" id="projetos">
+  <div class="container">
+    <header class="section-head section-head--split">
+      <div class="projects-heading">
+        <p class="eyebrow" data-reveal>Trabalhos selecionados</p>
+        <h2 class="title-section" data-split>Meus <em>Projetos</em></h2>
+      </div>
+      <p class="lead" data-reveal>Sites, marcas e campanhas que desenhei nos últimos anos. Cada projeto tem uma página com as telas, as aplicações e o que foi entregue.</p>
+    </header>
+
+    <div class="projects-grid">
+      {list.map((c, i) => (
+        <article class:list={["project", `project--${sizeOf(i)}`]} data-project={c.slug} data-reveal>
+          <a href={`/cases/${c.slug}/`} class="project-link" data-cursor="view">
+            <div class="project-media">
+              <img src={c.thumb.src} width={c.thumb.w} height={c.thumb.h} alt={`Projeto ${c.title}`} loading="lazy" decoding="async" data-project-img />
+            </div>
+            <div class="project-info">
+              <div>
+                <h3 class="project-title">{c.title}</h3>
+                <p class="project-cat">{c.cats.slice(0, 2).map((k) => categories[k]).join(" · ")}</p>
+              </div>
+              <span class="project-more">Ver projeto <Icon name="arrow-up-right" /></span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="projects-all" data-reveal>
+      <a href="/cases/" class="link-arrow">Ver todos os {cases.length} projetos <Icon name="arrow-up-right" /></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-heading { display: grid; gap: 18px; }
+  .projects-grid {
+    display: grid;
+    gap: clamp(36px, 4vw, 56px) clamp(16px, 2vw, 28px);
+    grid-template-columns: 1fr;
+  }
+  .project-link { display: flex; flex-direction: column; gap: 18px; height: 100%; }
+  .project-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    isolation: isolate;
+  }
+  .project-media img {
+    position: absolute;
+    left: 0; top: -6%;
+    width: 100%;
+    height: 112%;
+    object-fit: cover;
+    transition: scale 0.9s var(--ease);
+  }
+  .project-link:hover .project-media img,
+  .project-link:focus-visible .project-media img { scale: 1.04; }
+
+  .project-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .project-title { font-size: clamp(1.25rem, 1.8vw, 1.625rem); letter-spacing: -0.03em; transition: color 0.3s; }
+  .project-cat { margin-top: 4px; font-size: 0.875rem; color: var(--text-muted); }
+  .project-more {
+    flex: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 4px;
+    font-size: 0.875rem; font-weight: 600;
+    color: var(--text-muted);
+    transition: color 0.3s;
+  }
+  .project-more :global(.icon) { width: 16px; height: 16px; transition: transform 0.35s var(--ease); }
+  .project-link:hover .project-title { color: var(--accent); }
+  .project-link:hover .project-more { color: var(--text); }
+  .project-link:hover .project-more :global(.icon) { transform: translate(2px, -2px); color: var(--accent); }
+
+  @media (min-width: 640px) and (max-width: 899px) {
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .project--lg:nth-child(4n + 1) { grid-column: 1 / -1; }
+    .project--lg:nth-child(4n + 1) .project-media { aspect-ratio: 16 / 9; }
+  }
+
+  /* grid assimétrico: 1 grande (7/12) + 1 pequeno (5/12), alternando a cada linha */
+  @media (min-width: 900px) {
+    .projects-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .project--lg { grid-column: span 7; }
+    .project--sm { grid-column: span 5; }
+    .project--lg .project-media { aspect-ratio: 3 / 2; }
+    .project--sm .project-media { aspect-ratio: auto; flex: 1; min-height: 240px; }
+    /* o pequeno da linha alterna o alinhamento vertical para dar ritmo */
+    .project--sm:nth-child(4n + 2) { padding-top: clamp(40px, 7vw, 120px); }
+    .project--sm:nth-child(4n + 3) { padding-bottom: clamp(40px, 7vw, 120px); }
+  }
+
+  .projects-all { display: flex; justify-content: center; margin-top: clamp(48px, 6vw, 88px); }
+</style>

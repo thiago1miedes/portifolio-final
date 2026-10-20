@@ -1,116 +1,140 @@
 ---
-import Logo from "./Logo.astro";
-import PixelEdge from "./PixelEdge.astro";
-import { site } from "../data/site";
+import Icon from "./Icon.astro";
+import { site, nav, whatsappUrl } from "../data/site";
 const year = new Date().getFullYear();
+const letters = site.firstName.toUpperCase().split("");
 ---
-<footer class="site-footer">
-  <PixelEdge seed={11} />
-  <div class="footer-body">
-    <div class="container">
-      <div class="footer-cta">
-        <span class="eyebrow is-light">Próximo projeto</span>
-        <h2 class="footer-title" data-split>
-          Tem uma ideia? <br /><span class="soft">Vamos dar forma a ela.</span>
-        </h2>
-        <a class="footer-mail" href={`mailto:${site.email}`} data-magnetic>
-          <span>{site.email}</span>
-          <svg width="28" height="28" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" /></svg>
-        </a>
-      </div>
+<footer class="footer" id="contato">
+  <div class="footer-glow" aria-hidden="true"></div>
+  <div class="container footer-inner">
+    <div class="footer-cta">
+      <p class="eyebrow" data-reveal>Contato</p>
+      <h2 class="title-section footer-title" data-split>Vamos <em>criar</em> algo incrível juntos.</h2>
+      <a href={whatsappUrl} class="btn btn--accent" target="_blank" rel="noopener" data-reveal>Começar um projeto <Icon name="arrow-up-right" class="icon--arrow" /></a>
+    </div>
 
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <Logo light />
-          <p>{site.role}. Sites, identidades visuais e conteúdo para marcas de todo o Brasil, direto de {site.city}.</p>
-        </div>
-        <div>
-          <h3>Navegue</h3>
-          <ul>
-            <li><a href="/#cases">Cases</a></li>
-            <li><a href="/cases/">Todos os projetos</a></li>
-            <li><a href="/#servicos">Serviços</a></li>
-            <li><a href="/#sobre">Sobre</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contato</h3>
-          <ul>
-            <li><a href={`mailto:${site.email}`}>E-mail</a></li>
-            <li><a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">WhatsApp {site.phone.replace("+55 ", "")}</a></li>
-            <li><a href="/#contato">Formulário</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Redes</h3>
-          <ul>
-            {site.social.map((s) => <li><a href={s.href} target="_blank" rel="noopener">{s.label}</a></li>)}
-          </ul>
-        </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h3>E-mail</h3>
+        <a href={`mailto:${site.email}`} class="footer-link">{site.email}</a>
       </div>
-
-      <div class="footer-bottom">
-        <span>© {year} {site.name}. Todos os direitos reservados.</span>
-        <span class="made">Desenhado e codado por mim <i aria-hidden="true"></i> Astro + GSAP</span>
-        <button class="to-top" type="button" data-to-top>Voltar ao topo ↑</button>
+      <div class="footer-col">
+        <h3>WhatsApp</h3>
+        <a href={whatsappUrl} target="_blank" rel="noopener" class="footer-link">{site.phone}</a>
+      </div>
+      <div class="footer-col">
+        <h3>Redes</h3>
+        <ul class="socials">
+          {site.social.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener" class="social" aria-label={s.label}>
+                <Icon name={s.icon} size={22} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Menu</h3>
+        <ul class="footer-menu">
+          {nav.map((n) => <li><a href={n.href} class="footer-link">{n.label}</a></li>)}
+          <li><a href="/cases/" class="footer-link">Todos os projetos</a></li>
+        </ul>
       </div>
     </div>
+
+    <div class="footer-bottom">
+      <p>© {year} {site.name}. Todos os direitos reservados.</p>
+      <p>{site.city} — Brasil</p>
+    </div>
+  </div>
+
+  <div class="footer-name display" aria-hidden="true" data-footer-name>
+    {letters.map((l) => <span class="footer-letter" data-letter>{l}</span>)}
   </div>
 </footer>
 
 <style>
-  .site-footer { position: relative; }
-  .site-footer :global(.pixel-edge) { margin-top: -72px; }
-  @media (max-width: 700px) { .site-footer :global(.pixel-edge) { margin-top: -48px; } }
-  .footer-body { background: var(--abyss); color: #cfe3de; padding-block: clamp(44px, 5.5vw, 76px) 28px; }
-  .footer-cta { display: grid; gap: 22px; padding-bottom: clamp(36px, 4.5vw, 60px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-  .footer-title {
-    color: #fff;
-    font-size: clamp(2.4rem, 6.6vw, 6rem);
-    letter-spacing: -0.045em;
-    line-height: 0.98;
+  .footer {
+    position: relative;
+    padding-top: clamp(80px, 10vw, 150px);
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    isolation: isolate;
+    container-type: inline-size;
   }
-  .footer-title .soft { color: var(--leaf-2); }
-  .footer-mail {
-    display: inline-flex; align-items: center; gap: 14px; justify-self: start;
-    font-family: var(--font-display); font-weight: 500;
-    font-size: clamp(1.25rem, 3.2vw, 2.4rem);
-    color: #fff;
-    letter-spacing: -0.03em;
-    padding-bottom: 6px;
-    background: linear-gradient(var(--lime), var(--lime)) 0 100% / 100% 2px no-repeat;
-    overflow-wrap: anywhere;
+  .footer-glow {
+    position: absolute;
+    left: 50%; bottom: -30%;
+    width: min(1200px, 160vw);
+    aspect-ratio: 2 / 1;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(255, 90, 31, 0.2), transparent 75%);
+    z-index: -1;
+    pointer-events: none;
   }
-  .footer-mail svg { flex: none; color: var(--lime); transition: transform 0.4s var(--ease); }
-  .footer-mail:hover svg { transform: translate(4px, -4px); }
+  .footer-inner { display: grid; gap: clamp(48px, 6vw, 88px); }
+  .footer-cta { display: grid; gap: 24px; justify-items: start; }
+  .footer-title { max-width: 13ch; font-size: clamp(2.75rem, 7.4vw, 6.5rem); }
 
-  .footer-grid {
-    display: grid; gap: 36px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-block: 40px;
+  .footer-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+  @media (min-width: 900px) { .footer-cols { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
+  .footer-col { display: grid; gap: 14px; align-content: start; }
+  .footer-col:first-child { grid-column: 1 / -1; }
+  @media (min-width: 900px) { .footer-col:first-child { grid-column: auto; } }
+  .footer-col h3 {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
   }
-  .footer-brand { grid-column: 1 / -1; display: grid; gap: 18px; max-width: 380px; }
-  .footer-brand p { font-size: 15px; color: #9fbcb6; }
-  .footer-grid h3 {
-    font-family: var(--font-pixel); font-weight: 500;
-    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--leaf-2); margin-bottom: 14px;
+  .footer-link {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+    transition: color 0.3s;
   }
-  .footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-  .footer-grid a { color: #e6f3ef; transition: color 0.25s; }
-  .footer-grid a:hover { color: var(--lime); }
-  @media (min-width: 900px) {
-    .footer-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
-    .footer-brand { grid-column: auto; }
+  .footer-link:hover { color: var(--accent); }
+  .footer-menu { display: grid; gap: 6px; }
+  .footer-menu .footer-link { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+  .footer-menu .footer-link:hover { color: var(--text); }
+
+  .socials { display: flex; gap: 10px; }
+  .social {
+    display: grid; place-items: center;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background-color 0.3s;
   }
+  .social:hover { transform: translateY(-3px); background: var(--accent-hover); box-shadow: 0 12px 28px -8px var(--accent-glow); }
 
   .footer-bottom {
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
-    padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 14px; color: #86a5a0;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 0.875rem;
+    color: var(--text-muted);
   }
-  .made { display: inline-flex; align-items: center; gap: 8px; }
-  .made i { width: 8px; height: 8px; background: var(--leaf); box-shadow: 8px 0 0 var(--gem); margin-right: 8px; }
-  .to-top { background: none; border: 1px solid rgba(255,255,255,0.18); color: #e6f3ef; border-radius: 999px; padding: 8px 16px; font-size: 14px; transition: background-color 0.3s; }
-  .to-top:hover { background: rgba(255,255,255,0.08); }
+
+  /* THIAGO gigante, cortado pela borda inferior */
+  .footer-name {
+    display: flex;
+    justify-content: space-between;
+    margin-top: clamp(16px, 2vw, 32px);
+    padding-inline: clamp(8px, 1.5vw, 24px);
+    height: 0.62em;
+    /* THIAGO ocupa 100% da largura */
+    font-size: calc((100cqi - 2 * clamp(8px, 1.5cqi, 24px)) / 2.62);
+    line-height: 0.82;
+    color: var(--accent);
+    overflow: hidden;
+    user-select: none;
+  }
+  .footer-letter { display: block; }
 </style>

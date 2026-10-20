@@ -1,23 +1,25 @@
 ---
 import Base from "../layouts/Base.astro";
-import PixelWorld from "../components/PixelWorld.astro";
+import Icon from "../components/Icon.astro";
 ---
 <Base title="Página não encontrada" page="404">
   <section class="nf">
     <div class="container nf-inner">
-      <span class="eyebrow" data-hero-fade>Erro 404</span>
-      <h1 class="h-display" data-hero-title>Esse bloco ainda não foi <span class="mark">construído</span>.</h1>
+      <p class="eyebrow" data-hero-fade>Erro 404</p>
+      <h1 class="nf-title display" data-page-title><span>Página</span> <em>perdida</em></h1>
       <p class="lead" data-hero-fade>A página que você procura não existe ou mudou de lugar.</p>
-      <div data-hero-fade style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="/" class="btn btn--green">Voltar ao início</a>
+      <div class="nf-actions" data-hero-fade>
+        <a href="/" class="btn btn--accent">Voltar ao início <Icon name="arrow-up-right" class="icon--arrow" /></a>
         <a href="/cases/" class="btn btn--ghost">Ver projetos</a>
       </div>
     </div>
-    <PixelWorld seed={404} />
   </section>
 </Base>
+
 <style>
-  .nf { position: relative; min-height: 100svh; padding: 170px 0 300px; overflow: hidden; }
-  .nf-inner { position: relative; z-index: 2; display: grid; gap: 24px; justify-items: start; }
-  .nf :global(.pixel-world) { height: 280px; }
+  .nf { min-height: 90svh; display: grid; align-items: center; padding: 160px 0 80px; }
+  .nf-inner { display: grid; gap: 24px; justify-items: start; }
+  .nf-title { font-size: clamp(4rem, 15vw, 13rem); display: grid; }
+  .nf-title em { font-style: normal; }
+  .nf-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 </style>

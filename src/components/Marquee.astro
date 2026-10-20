@@ -1,34 +1,44 @@
 ---
-interface Props { items: string[]; label?: string; tone?: "light" | "soft" }
-const { items, label = "Marcas com quem já trabalhei", tone = "light" } = Astro.props;
+// Faixa infinita (CSS). Pausa ao passar o mouse; parada para quem prefere menos movimento.
+interface Props { items: readonly string[] }
+const { items } = Astro.props;
 ---
-<section class:list={["marquee", `marquee--${tone}`]} aria-label={label}>
-  <div class="marquee-track" data-marquee>
-    {[0, 1].map((k) => (
-      <ul class="marquee-group" aria-hidden={k === 1 ? "true" : undefined}>
-        {items.map((it) => <li><i aria-hidden="true"></i>{it}</li>)}
+<div class="marquee" role="region" aria-label="Habilidades e ferramentas">
+  <div class="marquee-track">
+    {[0, 1].map((copy) => (
+      <ul class="marquee-group" aria-hidden={copy === 1 ? "true" : undefined}>
+        {items.map((t) => <li><span>{t}</span><i aria-hidden="true">✦</i></li>)}
       </ul>
     ))}
   </div>
-</section>
+</div>
 
 <style>
-  .marquee { overflow: hidden; border-block: 1px solid var(--line); background: #fff; position: relative; z-index: 2; }
-  .marquee--soft { background: var(--bg-soft); }
-  .marquee-track { display: flex; width: max-content; will-change: transform; }
-  .marquee-group { display: flex; align-items: center; gap: 0; margin: 0; padding: 0; list-style: none; }
+  .marquee {
+    position: relative;
+    z-index: 4;
+    overflow: hidden;
+    background: var(--bg);
+    border-block: 1px solid var(--border);
+    padding-block: clamp(14px, 2vw, 22px);
+  }
+  .marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-group { display: flex; flex: none; }
   .marquee-group li {
-    display: inline-flex; align-items: center; gap: 28px;
-    padding: 26px 28px 26px 0;
-    font-family: var(--font-display); font-weight: 500;
-    font-size: clamp(1.25rem, 2.2vw, 1.9rem);
-    letter-spacing: -0.03em; color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 2.4vw, 36px);
+    padding-right: clamp(18px, 2.4vw, 36px);
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.2vw, 2.75rem);
+    line-height: 1;
+    text-transform: uppercase;
     white-space: nowrap;
   }
-  .marquee-group li i { width: 10px; height: 10px; background: var(--leaf); box-shadow: 10px 10px 0 var(--marine); transform: translateY(-5px); margin-right: 10px; }
-  .marquee-group li:nth-child(3n) i { background: var(--gem); }
-  .marquee-group li:nth-child(4n) i { background: var(--lime); box-shadow: 10px 10px 0 var(--forest); }
-  .no-js .marquee-track, html:not(.js) .marquee-track { animation: marquee 40s linear infinite; }
+  .marquee-group i { font-style: normal; font-size: 0.55em; color: var(--accent); }
   @keyframes marquee { to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
 </style>

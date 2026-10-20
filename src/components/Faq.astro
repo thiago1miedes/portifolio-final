@@ -1,0 +1,120 @@
+---
+import Icon from "./Icon.astro";
+import { faq, site, whatsappUrl } from "../data/site";
+---
+<section class="section faq" id="faq">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-reveal>Dúvidas</p>
+      <h2 class="title-section" data-split>Perguntas <em>frequentes</em></h2>
+    </header>
+
+    <div class="faq-grid">
+      <div class="faq-list" data-faq>
+        {faq.map((item, i) => (
+          <div class:list={["faq-item", { "is-open": i === 0 }]} data-faq-item data-reveal>
+            <h3 class="faq-heading">
+              <button
+                type="button"
+                class="faq-trigger"
+                id={`faq-trigger-${i}`}
+                aria-expanded={i === 0 ? "true" : "false"}
+                aria-controls={`faq-panel-${i}`}
+                data-faq-index={i}
+              >
+                <span class="faq-num">{String(i + 1).padStart(2, "0")}</span>
+                <span class="faq-q">{item.q}</span>
+                <span class="faq-icon" aria-hidden="true"><Icon name="plus" size={20} /></span>
+              </button>
+            </h3>
+            <div
+              class:list={["faq-panel", { "is-hidden": i !== 0 }]}
+              id={`faq-panel-${i}`}
+              role="region"
+              aria-labelledby={`faq-trigger-${i}`}
+              data-faq-panel
+            >
+              <p class="faq-a">{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <aside class="faq-card on-accent" data-reveal>
+        <img class="faq-avatar" src="/about/avatar.webp" width="80" height="80" alt="" loading="lazy" />
+        <h3 class="faq-card-title">Quer conversar sobre seu projeto?</h3>
+        <p>Me conta a sua ideia: eu respondo rapidinho e, juntos, a gente define o melhor caminho — sem compromisso.</p>
+        <div class="faq-actions">
+          <a href={whatsappUrl} class="btn btn--dark" target="_blank" rel="noopener"><Icon name="whatsapp" /> Chamar no WhatsApp</a>
+          <a href={`mailto:${site.email}`} class="btn btn--outline"><Icon name="mail" /> Enviar e-mail</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-grid { display: grid; gap: 24px; align-items: start; }
+  @media (min-width: 1000px) {
+    .faq-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: clamp(32px, 4vw, 64px); }
+    .faq-card { position: sticky; top: 110px; }
+  }
+
+  .faq-list { border-top: 1px solid var(--border); }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-heading { font-size: inherit; letter-spacing: normal; }
+  .faq-trigger {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: clamp(14px, 2vw, 28px);
+    width: 100%;
+    padding: clamp(20px, 2.4vw, 28px) 0;
+    text-align: left;
+    border-radius: 12px;
+  }
+  .faq-num { font-family: var(--font-heading); font-weight: 600; font-size: 0.9375rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .faq-q {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    transition: color 0.3s;
+  }
+  .faq-trigger:hover .faq-q { color: var(--accent); }
+  .faq-icon {
+    display: grid; place-items: center;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--surface-glass-2);
+    border: 1px solid var(--border);
+    transition: transform 0.45s var(--ease), background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  /* + vira × */
+  .faq-item.is-open .faq-icon { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+  .faq-panel { overflow: hidden; }
+  .faq-a {
+    padding: 0 0 clamp(22px, 2.4vw, 30px);
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+  @media (min-width: 640px) { .faq-a { padding-left: calc(clamp(14px, 2vw, 28px) + 1.4rem); padding-right: 64px; } }
+
+  /* card laranja fixo */
+  .faq-card {
+    display: grid;
+    gap: 18px;
+    padding: clamp(24px, 3vw, 36px);
+    border-radius: var(--radius-card);
+    background: var(--accent);
+    color: var(--on-accent);
+    box-shadow: 0 30px 80px -30px var(--accent-glow);
+  }
+  .faq-avatar { width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--on-accent); }
+  .faq-card-title { font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.04em; line-height: 1; }
+  .faq-card p { font-size: 1rem; line-height: 1.55; }
+  .faq-actions { display: grid; gap: 10px; margin-top: 6px; }
+  .faq-actions .btn { width: 100%; }
+</style>

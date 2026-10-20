@@ -20,23 +20,24 @@ npm run preview    # serve o dist/ para conferir o build
 | **GSAP 3** (ScrollTrigger, SplitText, Flip) | Padrão do mercado para animação na web: linhas de tempo, animação ligada à rolagem, títulos revelados palavra por palavra e filtros que reorganizam a grade com transição. Todos os plugins são gratuitos. |
 | **Lenis** | Rolagem suave que conversa com o ScrollTrigger. |
 | **CSS próprio** (sem framework) | Identidade única, sem visual "de template", e CSS pequeno. Tokens de cor e tipografia ficam em `src/styles/global.css`. |
-| **Fontes locais** (Space Grotesk, Inter, Pixelify Sans) | Todas sem serifa, servidas pelo próprio site (sem depender do Google Fonts). |
+| **Fontes locais** (Anton, Bricolage Grotesque, Inter) | Servidas pelo próprio site (sem depender do Google Fonts), o que ajuda no Lighthouse. |
 
 Alternativas consideradas: Next.js (ótimo, mas mais pesado do que um portfólio precisa), WordPress/Elementor (mais difícil de chegar nesse nível de animação e performance) e HTML puro (funciona, mas repetir 48 páginas à mão não escala).
 
 ## Identidade visual
 
-- Base **branca**, com detalhes em **verdes de floresta saturados** e **verde-marinho** (paleta inspirada em jogos 2D como Terraria).
-- Elementos em **SVG pixel art** gerados no build: paisagem do banner (colinas, árvores, gemas, nuvens, blocos flutuantes), borda de grama no rodapé, ícones dos serviços, cena da mesa de trabalho no "Sobre".
-- Tipografia sem serifa: Space Grotesk (títulos), Inter (texto), Pixelify Sans (etiquetas pequenas).
+- Fundo **escuro** (#0A0A0B) com superfícies de vidro e bordas finas translúcidas.
+- **Um único laranja** de destaque (#FF5A1F). Em todo título, a palavra-chave (`<em>`) fica em laranja.
+- Tipografia: **Anton** (hero, nomes gigantes), **Bricolage Grotesque** (títulos) e **Inter** (texto), todas servidas pelo próprio site.
+- Foto recortada (`public/about/thiago-cutout.webp`) na frente do título do hero e no "Sobre", sobre fundo laranja. Para trocar pelo avatar 3D, substitua esse arquivo (PNG/WebP sem fundo).
 
 ## Animações
 
-- Banner: o mundo em pixel "se constrói" bloco a bloco, árvores crescem, nuvens se movem, gemas piscam, parallax com o mouse.
-- Títulos revelados por palavra (SplitText) e marca-texto pixelado.
-- Cases em destaque empilhados: o card anterior encolhe e o site rola dentro do navegador conforme a rolagem.
-- Página de case: o layout do site rola dentro da janela do navegador enquanto você rola a página.
-- Filtro de projetos com Flip, letreiro de clientes que acelera com a rolagem, contadores, botões magnéticos, cursor personalizado e transição entre páginas em grade de pixels.
+- Hero: as linhas do título sobem da máscara, o avatar entra e acompanha o mouse (`data-parallax`).
+- Títulos revelados por palavra (SplitText); a palavra laranja entra por último.
+- Faixa infinita de habilidades (pausa ao passar o mouse), parallax nas imagens dos projetos, cursor "Ver" nos cards.
+- Acordeões de serviços e FAQ (um aberto por vez), "Ver tudo" da trajetória e menu mobile usam a classe `.is-hidden` (display:none).
+- "THIAGO" gigante no rodapé com letras que sobem ao entrar na tela; cortina laranja na troca de página.
 - Tudo respeita `prefers-reduced-motion` (quem pede menos movimento vê o site completo, sem animação).
 
 ## Onde editar
@@ -45,8 +46,7 @@ Alternativas consideradas: Next.js (ótimo, mas mais pesado do que um portfólio
 |---|---|
 | Textos, categorias, ordem e destaques dos cases | `src/data/cases.ts` (campo `featured` = posição na vitrine da home) |
 | Quais imagens cada case usa | `scripts/assets.config.mjs` → depois rode `npm run assets` |
-| E-mail, WhatsApp, redes, ferramentas, clientes do letreiro | `src/data/site.ts` |
-| Projetos do Behance | `src/data/behance.ts` |
+| E-mail, WhatsApp, redes, fatos do hero, faixa de habilidades, projetos da home, ferramentas, serviços, sobre, trajetória e FAQ | `src/data/site.ts` |
 | Cores, fontes, botões | `src/styles/global.css` |
 | Seções da home | `src/components/*.astro` e `src/pages/index.astro` |
 
@@ -64,10 +64,9 @@ Apague o objeto em `src/data/cases.ts` (e, se quiser, o bloco correspondente em 
 
 `npm run shots -- sources/shots nome=https://site.com.br` usa o Chrome instalado para capturar desktop e mobile.
 
-## Formulário de contato
+## Contato
 
-Sem configuração, o formulário valida os campos e abre o e-mail do visitante já preenchido (há também o botão "Enviar pelo WhatsApp").
-Para receber mensagens direto na caixa de entrada, crie um formulário gratuito no [Formspree](https://formspree.io) ou [Web3Forms](https://web3forms.com) e cole o endpoint em `formEndpoint` (`src/data/site.ts`).
+Não há formulário: o FAQ e o rodapé levam direto para o WhatsApp (mensagem já preenchida) e para o e-mail. Para mudar o texto inicial do WhatsApp, edite `whatsappText` em `src/data/site.ts`.
 
 ## Publicar
 

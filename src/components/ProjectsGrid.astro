@@ -1,34 +1,26 @@
 ---
 import CaseCard from "./CaseCard.astro";
 import { cases, categories, countBy, type Category } from "../data/cases";
-interface Props { limit?: number; exclude?: string[] }
-const { limit = 0, exclude = [] } = Astro.props;
-const list = cases.filter((c) => !exclude.includes(c.slug));
 const cats = (Object.keys(categories) as Category[]).filter((k) => countBy(k) > 0);
 ---
-<div class="projects" data-projects data-limit={limit} data-total={cases.length}>
+<div class="projects" data-projects>
   <div class="filters" role="toolbar" aria-label="Filtrar projetos">
-    <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Todos <sup>{list.length}</sup></button>
+    <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Todos <sup>{cases.length}</sup></button>
     {cats.map((k) => (
-      <button type="button" class="filter" data-filter={k} data-all={countBy(k)} aria-pressed="false">
-        {categories[k]} <sup>{list.filter((c) => c.cats.includes(k)).length}</sup>
+      <button type="button" class="filter" data-filter={k} aria-pressed="false">
+        {categories[k]} <sup>{countBy(k)}</sup>
       </button>
     ))}
   </div>
   <div class="grid" data-grid>
-    {list.map((c, i) => <CaseCard c={c} index={i} />)}
+    {cases.map((c) => <CaseCard c={c} />)}
   </div>
-  {limit > 0 && (
-    <div class="projects-more">
-      <a href="/cases/" class="btn btn--ghost" data-magnetic data-more>Ver todos os {cases.length} projetos</a>
-    </div>
-  )}
 </div>
 
 <style>
   .filters {
     display: flex; gap: 8px; flex-wrap: nowrap; overflow-x: auto;
-    padding-bottom: 6px; margin-bottom: clamp(28px, 4vw, 48px);
+    padding-block: 4px 6px; margin-bottom: clamp(28px, 4vw, 48px);
     scrollbar-width: none;
     margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter);
   }
@@ -37,24 +29,22 @@ const cats = (Object.keys(categories) as Category[]).filter((k) => countBy(k) > 
   .filter {
     flex: none;
     display: inline-flex; align-items: center; gap: 6px;
-    height: 44px; padding: 0 18px;
-    border: 0; border-radius: 999px;
-    background: #fff;
-    box-shadow: inset 0 0 0 1.5px var(--line);
-    font-family: var(--font-display); font-weight: 500; font-size: 15px; color: var(--ink-2);
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    min-height: 44px; padding: 0 18px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-glass);
+    border: 1px solid var(--border);
+    font-family: var(--font-heading); font-weight: 600; font-size: 0.9375rem; color: var(--text-muted);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   }
-  .filter sup { font-family: var(--font-pixel); font-size: 11px; color: var(--ink-3); top: -0.5em; }
-  .filter:hover { box-shadow: inset 0 0 0 1.5px var(--forest); color: var(--ink); }
-  .filter.is-active { background: var(--ink); color: #fff; box-shadow: none; }
-  .filter.is-active sup { color: var(--lime); }
+  .filter sup { font-size: 0.6875rem; color: var(--text-muted); top: -0.5em; }
+  .filter:hover { border-color: var(--border-strong); color: var(--text); }
+  .filter.is-active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .filter.is-active sup { color: var(--on-accent); }
   .grid {
     display: grid;
-    gap: clamp(28px, 3vw, 44px) clamp(20px, 2.4vw, 32px);
+    gap: clamp(32px, 3.4vw, 48px) clamp(16px, 2vw, 28px);
     grid-template-columns: 1fr;
   }
   @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 1040px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  .grid :global(.case-card[hidden]) { display: none; }
-  .projects-more { display: flex; justify-content: center; margin-top: clamp(28px, 3.5vw, 44px); }
 </style>

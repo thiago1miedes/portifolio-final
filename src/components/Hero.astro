@@ -1,173 +1,195 @@
 ---
-import PixelWorld from "./PixelWorld.astro";
-import { cases, countBy } from "../data/cases";
-import { site } from "../data/site";
-
-const sb = cases.find((c) => c.slug === "smartbox")!;
-const ar = cases.find((c) => c.slug === "arie-capital")!;
-const shot = sb.items.find((i) => i.id === "live")!;
-const phone = ar.items.find((i) => i.id === "mobile")!;
-const sites = countBy("web");
-const brands = Math.floor((cases.length + 9) / 5) * 5; // cases da pasta + Behance, arredondado para baixo
+import Icon from "./Icon.astro";
+import Marquee from "./Marquee.astro";
+import { facts, skills } from "../data/site";
 ---
-<section class="hero" data-hero>
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow" data-hero-fade>Web designer & front-end · {site.city}</span>
-      <h1 class="h-display hero-title" data-hero-title>
-        Do primeiro pixel ao site no ar.
+<section class="hero" id="inicio" data-hero>
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-stage">
+      <h1 class="hero-title display" aria-label="Pense criativamente">
+        <span class="hero-line" aria-hidden="true"><span class="hero-word" data-hero-line>Pense</span></span>
+        <span class="hero-line hero-line--accent" aria-hidden="true"><span class="hero-word" data-hero-line>Criativamente</span></span>
       </h1>
-      <p class="lead hero-lead" data-hero-fade>
-        Sou Thiago Miedes. Desenho e desenvolvo sites, identidades visuais e conteúdos para marcas que querem ser lembradas — e entrego tudo funcionando, do Figma ao código.
+
+      <p class="hero-tag" data-hero-fade>
+        <span class="status"><i></i>Disponível para novos projetos</span>
+        <span class="hero-role">Designer gráfico &amp; web designer</span>
       </p>
-      <div class="hero-actions" data-hero-fade>
-        <a href="#cases" class="btn btn--green" data-magnetic>
-          Ver cases
-          <span class="btn-ico" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" /></svg>
-          </span>
-        </a>
-        <a href="#contato" class="btn btn--ghost" data-magnetic>Fale comigo</a>
-      </div>
-      <dl class="hero-stats" data-hero-fade>
-        <div><dt><span data-count={brands}>{brands}</span>+</dt><dd>marcas atendidas</dd></div>
-        <div><dt><span data-count={sites}>{sites}</span>+</dt><dd>sites desenhados</dd></div>
-        <div><dt><span data-count="790">790</span></dt><dd>avaliações no Behance</dd></div>
-      </dl>
+
+      <figure class="hero-avatar" data-hero-avatar>
+        <img
+          src="/about/thiago-cutout.webp"
+          width="612" height="984"
+          alt="Thiago Miedes de braços cruzados, vestindo blusa preta"
+          fetchpriority="high"
+          data-parallax="0.04"
+        />
+      </figure>
     </div>
 
-    <div class="hero-visual" data-hero-visual>
-      <a href={`/cases/${sb.slug}/`} class="hv-browser" data-cursor="view" data-depth="18" aria-label="Ver case Smart Box">
-        <div class="hv-bar"><i></i><i></i><i></i><span>smartboxbr.com.br</span></div>
-        <div class="hv-view">
-          <img src={shot.src} width={shot.w} height={shot.h} alt="Site da Smart Box" fetchpriority="high" />
-        </div>
-      </a>
-      <a href={`/cases/${ar.slug}/`} class="hv-phone" data-cursor="view" data-depth="34" aria-label="Ver case Arie Capital">
-        <div class="hv-phone-screen">
-          <img src={phone.src} width={phone.w} height={phone.h} alt="Site da Arie Capital no celular" loading="lazy" />
-        </div>
-      </a>
-      <span class="hv-tag hv-tag--a" data-depth="48"><i></i>Design + código</span>
-      <span class="hv-tag hv-tag--b" data-depth="26">100% responsivo</span>
+    <div class="hero-bottom">
+      <div class="hero-intro" data-hero-fade>
+        <p>Designer gráfico e web designer. Eu transformo ideias em marcas e experiências digitais claras e memoráveis.</p>
+        <a href="#contato" class="btn btn--accent">Vamos conversar <Icon name="arrow-up-right" class="icon--arrow" /></a>
+      </div>
+
+      <ul class="hero-facts" data-hero-fade>
+        {facts.map((f) => (
+          <li><strong>{f.value}</strong><span>{f.label}</span></li>
+        ))}
+      </ul>
     </div>
   </div>
 
-  <PixelWorld class="hero-world" />
-
-  <a href="#cases" class="hero-scroll" aria-label="Rolar para os cases">
-    <span>Role para explorar</span>
-    <svg width="12" height="18" viewBox="0 0 12 18" aria-hidden="true" shape-rendering="crispEdges"><path d="M4 0h4v10h4v2h-2v2H8v2H4v-2H2v-2H0v-2h4z" fill="currentColor" /></svg>
-  </a>
+  <Marquee items={skills} />
 </section>
 
 <style>
   .hero {
     position: relative;
     min-height: 100svh;
-    padding-top: clamp(108px, 14vh, 150px);
-    padding-bottom: clamp(150px, 21vh, 240px);
+    display: flex;
+    flex-direction: column;
+    padding-top: calc(var(--nav-h) + 48px);
     overflow: hidden;
-    background:
-      radial-gradient(60% 50% at 85% 20%, rgba(78, 224, 194, 0.12), transparent 70%),
-      radial-gradient(50% 40% at 10% 10%, rgba(184, 240, 94, 0.12), transparent 70%),
-      #fff;
+    isolation: isolate;
   }
-  .hero::before {
-    /* grade de pixels sutil ao fundo */
-    content: ""; position: absolute; inset: 0;
-    background-image:
-      linear-gradient(to right, rgba(15, 76, 92, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(15, 76, 92, 0.05) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 75%);
+  /* brilho laranja sutil no fundo */
+  .hero-glow {
+    position: absolute;
+    left: 50%; top: 58%;
+    width: min(1100px, 140vw);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(closest-side, rgba(255, 90, 31, 0.22), rgba(255, 90, 31, 0.06) 55%, transparent 72%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* tudo no hero é medido pela largura (cqi): a composição fica igual em qualquer tela */
+  .hero-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    container-type: inline-size;
+  }
+
+  /* palco: título gigante + avatar na frente */
+  .hero-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-title {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    /* CRIATIVAMENTE ocupa toda a largura do container */
+    font-size: calc(100cqi / 5.7);
+    line-height: 0.86;
+  }
+  .hero-line { display: block; overflow: clip; padding-top: 0.04em; }
+  .hero-word { display: block; }
+  .hero-line--accent { color: var(--accent); }
+
+  .hero-tag {
+    order: -1;
+    display: grid;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .hero-role { display: none; font-family: var(--font-heading); font-weight: 600; font-size: clamp(1rem, 1.7cqi, 1.5rem); letter-spacing: -0.02em; line-height: 1.2; }
+
+  .hero-avatar {
+    position: relative;
+    z-index: 2;
+    width: min(74%, 340px);
+    margin: -9cqi auto 0;
     pointer-events: none;
   }
-  .hero-grid { position: relative; z-index: 2; display: grid; gap: 56px; align-items: center; }
-  @media (min-width: 1100px) { .hero-grid { grid-template-columns: 1.25fr 0.75fr; gap: 32px; } }
-
-  .hero-copy { display: grid; gap: 24px; justify-items: start; }
-  .hero-title { font-size: clamp(2.7rem, 6.3vw, 6.3rem); }
-  .hero-lead { max-width: 610px; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .hero-stats { display: flex; flex-wrap: wrap; gap: 14px 36px; margin: 8px 0 0; }
-  .hero-stats div { display: grid; gap: 2px; }
-  .hero-stats dt { font-family: var(--font-display); font-weight: 600; font-size: 30px; letter-spacing: -0.03em; color: var(--ink); }
-  .hero-stats dd { margin: 0; font-size: 14px; color: var(--ink-3); }
-
-  .hero-visual { position: relative; height: clamp(340px, 38vw, 500px); perspective: 1400px; }
-  .hv-browser {
-    position: absolute; inset: 0 10% auto 0;
-    border-radius: 14px; overflow: hidden; background: #fff;
-    box-shadow: 0 0 0 1px var(--line), var(--shadow-lg);
-    transform: rotateY(-10deg) rotateX(4deg);
-    transform-style: preserve-3d;
+  .hero-avatar img {
+    width: 100%;
+    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
+    /* some suavemente na base para encostar no conteúdo de baixo */
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
   }
-  .hv-bar { display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; background: var(--bg-soft); border-bottom: 1px solid var(--line); }
-  .hv-bar i { width: 8px; height: 8px; background: var(--line-strong); }
-  .hv-bar i:first-child { background: var(--leaf); }
-  .hv-bar i:nth-child(2) { background: var(--gem); }
-  .hv-bar span { margin-left: auto; margin-right: auto; font-size: 11px; color: var(--ink-3); background: #fff; border: 1px solid var(--line); border-radius: 5px; padding: 1px 12px; }
-  .hv-view { height: clamp(260px, 32vw, 400px); overflow: hidden; }
-  .hv-view img { width: 100%; animation: hv-scroll 70s 3s ease-in-out infinite alternate; }
-  @keyframes hv-scroll { to { transform: translateY(calc(-100% + clamp(260px, 32vw, 400px))); } }
 
-  .hv-phone {
-    position: absolute; right: 0; bottom: -6%;
-    width: clamp(130px, 15vw, 190px);
-    padding: 7px; border-radius: 30px; background: var(--ink);
-    box-shadow: inset 0 0 0 2px #24474c, var(--shadow-lg);
-    transform: rotate(4deg);
+  .hero-bottom {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    gap: 28px;
+    margin-top: -16cqi;
+    padding-bottom: 32px;
   }
-  .hv-phone-screen { aspect-ratio: 9 / 19; border-radius: 23px; overflow: hidden; background: #fff; }
-  .hv-phone-screen img { width: 100%; animation: hv-scroll-p 60s 4s ease-in-out infinite alternate; }
-  @keyframes hv-scroll-p { to { transform: translateY(-62%); } }
+  .hero-intro { display: grid; gap: 20px; justify-items: start; max-width: 380px; }
+  .hero-intro p { color: var(--text-muted); font-size: 1.0625rem; line-height: 1.55; }
 
-  .hv-tag {
-    position: absolute;
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 9px 14px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 0 1px var(--line), var(--shadow);
-    font-family: var(--font-pixel); font-size: 13px; letter-spacing: 0.04em; color: var(--marine);
-    white-space: nowrap;
+  .hero-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
   }
-  .hv-tag i { width: 8px; height: 8px; background: var(--leaf); }
-  .hv-tag--a { left: -4%; bottom: 14%; }
-  .hv-tag--b { right: 2%; top: -6%; background: var(--marine); color: #fff; box-shadow: var(--shadow); }
+  .hero-facts li {
+    display: grid;
+    gap: 4px;
+    align-content: start;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-strong);
+  }
+  .hero-facts strong {
+    font-family: var(--font-heading);
+    font-size: clamp(1.15rem, 2.2vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .hero-facts li:first-child strong { color: var(--accent); }
+  .hero-facts span { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.35; }
 
-  .hero-world { height: clamp(220px, 34vh, 380px); z-index: 1; }
+  /* mobile: PENSE também ocupa a largura toda; fatos em lista */
+  @media (max-width: 699px) {
+    .hero-line:first-child { font-size: calc(100cqi / 2.3); line-height: 0.84; }
+    .hero-avatar { width: min(68%, 320px); }
+    .hero-facts { grid-template-columns: 1fr; gap: 0; }
+    .hero-facts li { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-block: 12px; }
+    .hero-facts span { text-align: right; }
+  }
 
-  .hero-scroll {
-    position: absolute; left: 50%; bottom: 22px; z-index: 3;
-    transform: translateX(-50%);
-    display: none; align-items: center; gap: 10px;
-    font-family: var(--font-pixel); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-    color: #fff;
-    padding: 8px 14px; border-radius: 6px; background: rgba(8, 42, 51, 0.5);
-    backdrop-filter: blur(6px);
-  }
-  .hero-scroll svg { animation: nudge 1.4s steps(3) infinite; }
-  @keyframes nudge { 50% { transform: translateY(3px); } }
-  @media (min-width: 900px) { .hero-scroll { display: inline-flex; } }
-
-  @media (max-width: 1099px) {
-    .hero-visual { max-width: 640px; width: 100%; margin-inline: auto; }
-  }
-  @media (max-width: 640px) {
-    .hero-stats { gap: 18px; flex-wrap: nowrap; }
-    .hero-stats dt { font-size: 24px; }
-    .hero-stats dd { font-size: 12.5px; line-height: 1.3; }
-    .hero-visual { height: 330px; }
-    .hv-browser { inset: 0 16% auto 0; transform: none; }
-    .hv-view { height: 220px; }
-    @keyframes hv-scroll { to { transform: translateY(calc(-100% + 220px)); } }
-    .hv-tag--a { left: 0; bottom: 4%; }
-    .hv-tag--b { top: -18px; right: 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hv-view img, .hv-phone-screen img { animation: none; }
+  /* desktop: avatar no centro, sobrepondo as letras; texto e fatos nas laterais */
+  @media (min-width: 700px) {
+    .hero { padding-top: calc(var(--nav-h) + 40px); }
+    .hero-stage { display: block; height: 50cqi; }
+    .hero-tag {
+      position: absolute;
+      z-index: 3;
+      right: 0;
+      top: 0;
+      justify-items: end;
+      max-width: 34cqi;
+      margin: 0;
+      padding-top: 1.2cqi;
+      text-align: right;
+    }
+    .hero-role { display: block; }
+    .hero-avatar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 4.5cqi;
+      width: 28.4cqi;
+      margin: 0 auto;
+    }
+    .hero-bottom {
+      grid-template-columns: minmax(0, 1fr) 28cqi minmax(0, 1fr);
+      align-items: end;
+      gap: 24px;
+    }
+    .hero-intro { grid-column: 1; }
+    .hero-facts { grid-column: 3; grid-template-columns: 1fr; gap: 14px; justify-self: end; width: min(100%, 280px); }
   }
 </style>

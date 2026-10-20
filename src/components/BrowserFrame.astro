@@ -25,32 +25,32 @@ const { src, w, h, alt, url = "", mode = "scroll", ratio = "16 / 10", class: cls
 <style>
   .browser {
     margin: 0;
-    background: #fff;
-    border-radius: 14px;
+    background: var(--bg-elev);
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 0 0 1px var(--line), var(--shadow-lg);
+    border: 1px solid var(--border);
+    box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.9);
   }
   .browser-bar {
     display: flex; align-items: center; gap: 14px;
-    height: 38px; padding: 0 14px;
-    background: var(--bg-soft);
-    border-bottom: 1px solid var(--line);
+    height: 40px; padding: 0 16px;
+    background: var(--bg-elev-2);
+    border-bottom: 1px solid var(--border);
   }
-  .dots { display: flex; gap: 6px; flex: none; }
-  .dots i { width: 9px; height: 9px; background: var(--line-strong); }
-  .dots i:first-child { background: var(--leaf); }
-  .dots i:nth-child(2) { background: var(--gem); }
+  .dots { display: flex; gap: 7px; flex: none; }
+  .dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.16); }
+  .dots i:first-child { background: var(--accent); }
   .browser-url {
     flex: 1; min-width: 0;
     max-width: 360px; margin-inline: auto;
-    height: 22px; border-radius: 6px; background: #fff; border: 1px solid var(--line);
-    font-size: 11.5px; color: var(--ink-3); line-height: 20px; text-align: center;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-inline: 10px;
+    height: 24px; border-radius: var(--radius-pill); background: var(--surface-glass-2);
+    font-size: 0.75rem; color: var(--text-muted); line-height: 24px; text-align: center;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-inline: 12px;
   }
-  .browser-tail { width: 45px; flex: none; }
+  .browser-tail { width: 51px; flex: none; }
   .browser-view { position: relative; width: 100%; overflow: hidden; background: #fff; }
   .browser-shot { width: 100%; height: auto; max-width: none; will-change: transform; }
-  .browser--scroll .browser-view { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+  .browser--scroll .browser-view { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: rgba(0, 0, 0, 0.3) transparent; }
   .browser--auto .browser-shot { animation: browser-auto 38s ease-in-out infinite alternate; }
   @keyframes browser-auto { from { transform: translateY(0); } to { transform: translateY(calc(-100% + var(--view-h, 420px))); } }
   @media (prefers-reduced-motion: reduce) { .browser--auto .browser-shot { animation: none; } }

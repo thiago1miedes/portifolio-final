@@ -1,130 +1,110 @@
 ---
-import { site } from "../data/site";
-
-// Cena em pixel art: mesa de trabalho com monitor, planta e caneca.
-const S = [
-  "ssssssssssssssss",
-  "sggsssssstsststs",
-  "ssssssssssssssss",
-  "sffffffffsstttts",
-  "sffffffsssstttts",
-  "ssssssssssstttts",
-  "slllssssssstttts",
-  "ssssssssssssssss",
-  "sgggsgggsgggsggs",
-  "ssssssssssssssss",
-];
-const M = "m".repeat(18);
-const rows = [
-  "................................",
-  "................................",
-  "........" + M + "......",
-  "........" + "m" + S[0] + "m" + "......",
-  "........" + "m" + S[1] + "m" + "......",
-  "..g....." + "m" + S[2] + "m" + "......",
-  ".gfg...." + "m" + S[3] + "m" + "......",
-  "gfgfg..." + "m" + S[4] + "m" + "......",
-  ".gfgfg.." + "m" + S[5] + "m" + "......",
-  "gfgfg..." + "m" + S[6] + "m" + "......",
-  ".gfgf..." + "m" + S[7] + "m" + "......",
-  "..ff...." + "m" + S[8] + "m" + "..w...",
-  "..f....." + "m" + S[9] + "m" + "...w..",
-  ".pppp..." + M + "..w...",
-  ".pppp..." + "........mm........" + ".ccc..",
-  ".pppp..." + "......mmmmmm......" + ".cccw.",
-  "k".repeat(32),
-  "k".repeat(32),
-  ".k......" + ".".repeat(18) + "....k.",
-  ".k......" + ".".repeat(18) + "....k.",
-];
-const pal: Record<string, string> = {
-  m: "#0b2a2f", s: "#f3fbf7", g: "#3cc46b", f: "#1e8a4c", t: "#148a85", l: "#b8f05e",
-  w: "#b9cfc9", p: "#0f4c5c", c: "#4ee0c2", k: "#0b3a47",
-};
-const values = [
-  { t: "Detalhe que se vê", d: "Cada espaçamento, cor e microinteração pensados para o site parecer tão bom quanto a marca é." },
-  { t: "Código leve", d: "Sites rápidos, responsivos e fáceis de manter — sem plugin desnecessário." },
-  { t: "Conversa direta", d: "Você fala comigo, sem intermediários. Prazos claros e atualizações a cada etapa." },
-];
+import { about, timeline, site } from "../data/site";
+const visible = 3;
 ---
 <section class="section about" id="sobre">
   <div class="container about-grid">
-    <div class="about-visual" data-reveal="up">
-      <div class="photo">
-        <img src="/about/thiago.webp" width="898" height="1123" alt="Thiago Miedes, web designer e desenvolvedor front-end" loading="lazy" decoding="async" />
-        <span class="photo-tag"><i></i>Thiago Miedes</span>
-      <div class="scene">
-        <svg viewBox="0 0 32 20" shape-rendering="crispEdges" aria-label="Ilustração em pixel art de uma mesa de trabalho com computador, planta e café" role="img">
-          {rows.map((row, y) => [...row].map((ch, x) => pal[ch] && (
-            <rect x={x} y={y} width="1" height="1" fill={pal[ch]} class={ch === "l" ? "blink" : ch === "w" ? "steam" : undefined} />
-          )))}
-        </svg>
-      </div>
-      </div>
-      <div class="about-badges">
-        <span class="chip chip--pixel"><i class="dot"></i>{site.city}</span>
-        <span class="chip chip--pixel">Atendo todo o Brasil</span>
-        <span class="chip chip--pixel">Freelancer</span>
-      </div>
-    </div>
+    <figure class="about-portrait" data-reveal>
+      <img src="/about/thiago-cutout.webp" width="612" height="984" alt="Retrato de Thiago Miedes sobre fundo laranja" loading="lazy" decoding="async" data-portrait />
+      <figcaption class="about-caption">
+        <span>{site.name}</span>
+        <span>{site.city}</span>
+      </figcaption>
+    </figure>
 
-    <div class="about-copy">
-      <span class="eyebrow" data-reveal>Sobre mim</span>
-      <h2 class="h-section" data-split>Um designer que fala a língua do <span class="hl">código</span>.</h2>
+    <div class="about-content">
+      <p class="eyebrow" data-reveal>Sobre mim</p>
+      <h2 class="title-section" data-split>Design que faz <em>sentido</em>.</h2>
       <div class="about-text" data-reveal>
-        <p class="lead">Sou Thiago Miedes, designer gráfico e web designer em Bauru (SP). Comecei pela identidade visual e pelo social media e, projeto após projeto, levei o cuidado com o detalhe para a web — primeiro no layout, depois no código.</p>
-        <p>Na agência Olive Comunicação desenhei sites como Deliziare, Palmont e Massas Ivaí. Hoje atendo marcas e agências de todo o Brasil — como a Apex Comunicação — do protótipo no Figma ao site publicado, com animações, responsividade e SEO.</p>
+        {about.map((p, i) => <p class:list={{ lead: i === 0 }}>{p}</p>)}
       </div>
-      <ul class="values">
-        {values.map((v, i) => (
-          <li data-reveal="up">
-            <span class="v-num">0{i + 1}</span>
-            <div><h3>{v.t}</h3><p>{v.d}</p></div>
-          </li>
-        ))}
-      </ul>
-      <div class="about-links" data-reveal>
-        {site.social.map((s) => (
-          <a href={s.href} target="_blank" rel="noopener" class="link-arrow">{s.label} <span aria-hidden="true">↗</span></a>
-        ))}
+
+      <div class="timeline" data-reveal>
+        <h3 class="timeline-title">Minha trajetória</h3>
+        <ol class="timeline-list" id="timeline-list">
+          {timeline.map((t, i) => (
+            <li class:list={["timeline-item", { "is-hidden": i >= visible }]} data-timeline-extra={i >= visible ? "" : undefined}>
+              <span class="timeline-company">{t.company}</span>
+              <span class="timeline-role">{t.role}</span>
+              {t.period && <span class="timeline-period">{t.period}</span>}
+            </li>
+          ))}
+        </ol>
+        {timeline.length > visible && (
+          <button type="button" class="btn btn--ghost btn--sm timeline-more" aria-expanded="false" aria-controls="timeline-list" data-open="timeline">
+            <span data-open-label>Ver tudo</span>
+          </button>
+        )}
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .about-grid { display: grid; gap: clamp(40px, 6vw, 96px); align-items: center; }
-  @media (min-width: 1000px) { .about-grid { grid-template-columns: 0.9fr 1.1fr; } }
-  .about-visual { display: grid; gap: 16px; }
-  .photo { position: relative; border-radius: 28px; box-shadow: 0 0 0 1px var(--line), var(--shadow-lg); }
-  .photo > img { width: 100%; height: auto; border-radius: 28px; aspect-ratio: 4 / 5; object-fit: cover; }
-  .photo-tag { position: absolute; left: 16px; top: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; background: #fff; border-radius: 6px; font-family: var(--font-pixel); font-size: 13px; letter-spacing: 0.04em; color: var(--marine); box-shadow: var(--shadow); }
-  .photo-tag i { width: 8px; height: 8px; background: var(--leaf); }
-  .photo .scene { position: absolute; right: -14px; bottom: -22px; width: 46%; padding: 12px; border-radius: 16px; background: #fff; box-shadow: 0 0 0 1px var(--line), var(--shadow); }
-  @media (min-width: 1000px) { .photo .scene { right: -28px; } }
-  .scene {
-    position: relative;
-    padding: clamp(28px, 5vw, 56px);
-    border-radius: 28px;
-    background:
-      linear-gradient(to right, rgba(15, 76, 92, 0.06) 1px, transparent 1px) 0 0 / 24px 24px,
-      linear-gradient(to bottom, rgba(15, 76, 92, 0.06) 1px, transparent 1px) 0 0 / 24px 24px,
-      linear-gradient(170deg, var(--mint-2), #fff 70%);
-    box-shadow: 0 0 0 1px var(--line);
+  .about-grid { display: grid; gap: clamp(40px, 6vw, 96px); align-items: start; }
+  @media (min-width: 1000px) {
+    .about-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+    .about-portrait { position: sticky; top: 110px; }
   }
-  .scene svg { width: 100%; height: auto; }
-  .scene :global(.blink) { animation: blink-px 1.1s steps(1) infinite; }
-  .scene :global(.steam) { animation: steam 2.4s steps(3) infinite; }
-  @keyframes blink-px { 50% { opacity: 0; } }
-  @keyframes steam { 0% { opacity: 0.9; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-2px); } }
-  .about-badges { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .about-badges .dot { width: 6px; height: 6px; background: var(--leaf); }
-  .about-copy { display: grid; gap: 26px; }
-  .about-text { display: grid; gap: 16px; color: var(--ink-2); }
-  .values { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
-  .values li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--line); }
-  .v-num { font-family: var(--font-pixel); color: var(--forest); font-size: 14px; padding-top: 4px; }
-  .values h3 { font-size: 1.2rem; letter-spacing: -0.02em; margin-bottom: 4px; }
-  .values p { font-size: 15.5px; color: var(--ink-2); }
-  .about-links { display: flex; flex-wrap: wrap; gap: 14px 28px; }
+
+  /* retrato com fundo laranja sólido */
+  .about-portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    background: var(--accent);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .about-portrait::before {
+    content: "";
+    position: absolute;
+    inset: auto -20% -30% -20%;
+    height: 70%;
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.28), transparent);
+    z-index: -1;
+  }
+  .about-portrait img {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 74%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 24px 40px rgba(10, 10, 11, 0.35));
+  }
+  .about-caption {
+    position: absolute;
+    left: 16px; right: 16px; top: 16px;
+    display: flex; justify-content: space-between; gap: 12px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--on-accent);
+  }
+
+  .about-content { display: grid; gap: 28px; }
+  .about-text { display: grid; gap: 16px; color: var(--text-muted); max-width: 62ch; }
+  .about-text .lead { color: var(--text); }
+
+  .timeline {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+    padding: clamp(22px, 3vw, 32px);
+    border-radius: var(--radius-card);
+    background: var(--surface-glass);
+    border: 1px solid var(--border);
+  }
+  .timeline-title { font-size: 1.25rem; letter-spacing: -0.02em; }
+  .timeline-list { display: grid; width: 100%; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 16px;
+    padding-block: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .timeline-company { font-family: var(--font-heading); font-weight: 600; font-size: 1.0625rem; letter-spacing: -0.01em; }
+  .timeline-role { grid-row: 2; font-size: 0.9375rem; color: var(--text-muted); }
+  .timeline-period { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-size: 0.875rem; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
 </style>
