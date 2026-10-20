@@ -129,10 +129,11 @@ function intro(root: HTMLElement) {
     const box = symbol.getBoundingClientRect();
     const k = svg.getBoundingClientRect().width / vb.width; // px por unidade do SVG
     const ratio = box.width / box.height;
-    const target = Math.min(window.innerHeight * 0.54, (window.innerWidth * 0.8) / ratio);
+    const vw = document.documentElement.clientWidth; // innerWidth cresce no celular se algo vazar para o lado
+    const target = Math.min(window.innerHeight * 0.54, (vw * 0.8) / ratio);
     const mark = [symbol, outline];
     gsap.set(mark, {
-      x: (window.innerWidth / 2 - (box.left + box.width / 2)) / k,
+      x: (vw / 2 - (box.left + box.width / 2)) / k,
       y: (window.innerHeight / 2 - (box.top + box.height / 2)) / k,
       scale: Math.max(1, target / box.height),
       transformOrigin: "50% 50%",

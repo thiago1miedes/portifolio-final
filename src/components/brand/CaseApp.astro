@@ -1,21 +1,21 @@
 ---
-// Tela de app feita em código (sem IA): celular com a interface do aluno nas cores da marca.
+// Tela de app feita em código (sem IA): celular com uma interface nas cores da marca (textos em screen, no case.json).
 import BrandLogo from "./BrandLogo.astro";
 import BrandText from "./BrandText.astro";
-import type { AppItem, BrandCaseData } from "../../data/brand-cases";
+import { plain, type AppItem, type BrandCaseData } from "../../data/brand-cases";
 
 interface Props { data: BrandCaseData; item: AppItem }
 const { data, item } = Astro.props;
 const screen = item.screen!;
+const head = item.head ?? ["symbol", "wordmark"];
 ---
 <figure class="bc-app">
   <div class="bc-app-stage">
     <div class="bc-phone" data-speed="3">
-      <div class="bc-phone-screen" role="img" aria-label={`Tela do app ${data.client} com as próximas aulas e o progresso do aluno`}>
+      <div class="bc-phone-screen" role="img" aria-label={plain(screen.alt) || `Tela de app com a marca ${data.client}`}>
         <div class="bc-app-status" aria-hidden="true"><span>9:41</span><span class="bc-app-dots"><i></i><i></i><i></i></span></div>
         <div class="bc-app-head" aria-hidden="true">
-          <BrandLogo data={data} art="symbol" variant={item.variant} decorative class="bc-app-symbol" />
-          <BrandLogo data={data} art="wordmark" variant={item.variant} decorative class="bc-app-wordmark" />
+          {head.map((art) => <BrandLogo data={data} art={art} variant={item.variant} decorative class={`bc-app-${art}`} />)}
         </div>
         <p class="bc-app-greet" aria-hidden="true">{screen.greeting}</p>
         {screen.cards.map((card, i) => (

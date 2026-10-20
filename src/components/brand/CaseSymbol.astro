@@ -15,7 +15,7 @@ const [, , w, h] = readSvg(data, "symbol").viewBox;
     {s.image && <div class="bc-bg bc-symbol-bg"><BrandImg data={data} id={s.image} decorative /></div>}
     <div class="container bc-symbol-grid">
       <div class="bc-symbol-art">
-        <div class="bc-symbol-stage" style={`aspect-ratio:${w}/${h}`}>
+        <div class="bc-symbol-stage" style={`aspect-ratio:${w}/${h};--sym-ratio:${(w / h).toFixed(4)}`}>
           <BrandLogo data={data} art="symbol" variant="onPrimary" class="bc-symbol-svg" />
           {s.pieces.map((p, i) => (
             <p class="bc-piece-label" data-piece-label={p.piece} data-shift={p.shift} data-index={i} style={`--y0:${p.y};--y1:${+(p.y + (p.shift / h) * 100).toFixed(2)}`}>

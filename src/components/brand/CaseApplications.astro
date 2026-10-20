@@ -22,6 +22,7 @@ const ratio = (it: AppItem) => {
   return `--ar:${info.w}/${info.h}`;
 };
 const loops = Array.from({ length: 4 });
+const marqueeArts = a.marqueeArts ?? ["wordmark", "symbol"];
 ---
 <section class="bc-apps" id="aplicacoes" data-theme="light" data-bc-section>
   <div class="container bc-section-head bc-section-head--split">
@@ -36,8 +37,11 @@ const loops = Array.from({ length: 4 });
     {items.map((it) => (
       <div class="bc-cell" data-kind={it.kind} style={cell(it)}>
         {it.kind === "photo" && (
-          <figure class="bc-photo" style={ratio(it)} data-bc-reveal>
-            <BrandImg data={data} id={it.image!} sizes="(min-width: 900px) 45vw, 100vw" data-speed={it.speed ?? 4} />
+          <figure data-bc-reveal>
+            <div class="bc-photo" style={ratio(it)}>
+              <BrandImg data={data} id={it.image!} sizes="(min-width: 900px) 45vw, 100vw" data-speed={it.speed ?? 4} />
+            </div>
+            {it.caption && <figcaption><BrandText text={it.caption} /></figcaption>}
           </figure>
         )}
 
@@ -56,16 +60,14 @@ const loops = Array.from({ length: 4 });
             <div class="bc-marquee-row" data-marquee-dir="-1">
               {loops.map(() => (
                 <span class="bc-marquee-item">
-                  <BrandLogo data={data} art="wordmark" variant="positive" decorative />
-                  <BrandLogo data={data} art="symbol" variant="positive" decorative />
+                  {marqueeArts.map((art) => <BrandLogo data={data} art={art} variant="positive" decorative />)}
                 </span>
               ))}
             </div>
             <div class="bc-marquee-row is-outline" data-marquee-dir="1">
               {loops.map(() => (
                 <span class="bc-marquee-item">
-                  <BrandLogo data={data} art="wordmark" decorative />
-                  <BrandLogo data={data} art="symbol" decorative />
+                  {marqueeArts.map((art) => <BrandLogo data={data} art={art} decorative />)}
                 </span>
               ))}
             </div>

@@ -3,6 +3,7 @@
 //       npm run brand -- efpi refs       PNGs do logo para anexar nas IAs  → cases/<slug>/ref/
 //       npm run brand -- efpi og         imagem de compartilhamento        → public/<assets>/og.png
 //       npm run brand -- efpi images     converte cases/<slug>/raw/*        → public/<assets>/img/*.webp|avif
+//       npm run brand -- efpi thumb      capa da listagem (logo negativo)   → public/cases/<slug>/thumb.webp (fora do "tudo")
 import sharp from "sharp";
 import fs from "node:fs";
 import path from "node:path";
@@ -105,8 +106,18 @@ async function images() {
   }
 }
 
-const tasks = { refs, og, images };
-for (const name of task === "all" ? Object.keys(tasks) : [task]) {
+/** Capa do card na listagem: substitui a que o `npm run assets` gera a partir da apresentação. */
+async function thumb() {
+  const svg = recolor(logoSvg("lockup"), variant("negative"));
+  const file = path.join(ROOT, "public", "cases", slug, "thumb.webp");
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const png = await (await renderLogo(svg, { width: 1200, height: 800, fill: 0.66, bg: data.theme.dark })).toBuffer();
+  await sharp(png).webp({ quality: 88 }).toFile(file);
+  console.log("thumb", path.relative(ROOT, file));
+}
+
+const tasks = { refs, og, images, thumb };
+for (const name of task === "all" ? ["refs", "og", "images"] : [task]) {
   if (!tasks[name]) throw new Error(`tarefa desconhecida: ${name}`);
   await tasks[name]();
 }

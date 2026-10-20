@@ -4,11 +4,22 @@ import type { BrandCaseData } from "../../data/brand-cases";
 
 interface Props { data: BrandCaseData; sections: { id: string; label: string }[] }
 const { data, sections } = Astro.props;
+// logos só de lettering mostram o logotipo inteiro no desktop e o monograma no celular (logo.nav no case.json)
+const nav = data.logo.nav ?? {};
+const desktop = nav.desktop ?? ["symbol", "wordmark"];
+const mobile = nav.mobile ?? ["symbol"];
+const arts = [...new Set([...desktop, ...mobile])];
 ---
-<header class="bc-nav" data-bc-nav data-theme="dark">
+<header class="bc-nav" data-bc-nav data-theme="dark" style={nav.wordmarkHeight ? `--nav-wordmark-h:${nav.wordmarkHeight}px` : undefined}>
   <a href="#intro" class="bc-nav-logo" aria-label={`${data.client} — voltar ao topo do case`}>
-    <BrandLogo data={data} art="symbol" decorative class="bc-nav-symbol" />
-    <BrandLogo data={data} art="wordmark" decorative class="bc-nav-wordmark" />
+    {arts.map((art) => (
+      <BrandLogo
+        data={data}
+        art={art}
+        decorative
+        class:list={[`bc-nav-${art}`, { "is-desktop-only": !mobile.includes(art), "is-mobile-only": !desktop.includes(art) }]}
+      />
+    ))}
   </a>
   <nav class="bc-nav-links" aria-label="Seções do case" data-bc-nav-links>
     {sections.map((s) => <a href={`#${s.id}`} class="bc-nav-link" data-section-link={s.id}>{s.label}</a>)}

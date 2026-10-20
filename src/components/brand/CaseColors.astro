@@ -35,7 +35,7 @@ const swatches = c.swatches.map((s) => ({ ...s, info: swatchInfo(data, s.hex) })
             <dl class="bc-swatch-codes">
               <div><dt>HEX</dt><dd>{s.hex.toUpperCase()}</dd></div>
               <div><dt>RGB</dt><dd>{s.info.rgb}</dd></div>
-              <div><dt>CMYK</dt><dd>{s.info.cmyk}</dd></div>
+              <div><dt>CMYK</dt><dd>{s.cmyk ?? s.info.cmyk}</dd></div>
             </dl>
             <p class="bc-swatch-wcag" title={`Contraste do texto sobre esta cor: ${s.info.ratio.toFixed(2)}:1 (WCAG ${s.info.grade})`}>
               Aa {s.info.ratio.toFixed(1)}:1 · {s.info.grade}

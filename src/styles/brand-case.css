@@ -10,14 +10,21 @@
   --bc-pad: clamp(96px, 12vw, 176px);
   --bc-radius: 6px;
   position: relative;
-  font-family: var(--bc-font);
+  overflow-x: clip; /* nada vaza para os lados no celular (clip não quebra o sticky) */
+  /* textos na fonte de apoio (font.text), quando o case tem uma; títulos sempre na fonte da marca */
+  font-family: var(--bc-font-text, var(--bc-font));
+  /* fonte de peso único (ex.: display serifada) não ganha negrito falso */
+  font-synthesis-weight: none;
   font-size: 1.0625rem;
   line-height: 1.55;
   color: var(--bc-ink-on-dark);
   background: var(--bc-dark);
 }
 @media (min-width: 900px) { .bc { font-size: 1.125rem; } }
-.bc h1, .bc h2, .bc h3, .bc h4 { font-family: inherit; color: inherit; letter-spacing: -0.01em; }
+.bc h1, .bc h2, .bc h3, .bc h4,
+.bc-manifesto-headline, .bc-type-glyph, .bc-type-weights, .bc-type-sample,
+.bc-cta-text, .bc-next-title, .bc-app-greet { font-family: var(--bc-font); }
+.bc h1, .bc h2, .bc h3, .bc h4 { color: inherit; letter-spacing: -0.01em; }
 .bc ::selection { background: var(--bc-accent); color: var(--bc-dark); }
 .bc :focus-visible { outline-color: var(--bc-accent); }
 
@@ -125,7 +132,7 @@
 }
 .bc-nav-logo { flex: none; display: flex; align-items: center; gap: 10px; }
 .bc-nav-symbol { height: 28px; width: auto; }
-.bc-nav-wordmark { height: 13px; width: auto; }
+.bc-nav-wordmark { height: var(--nav-wordmark-h, 13px); width: auto; }
 .bc-nav-links {
   flex: 1 1 auto; min-width: 0;
   display: flex; gap: 2px; justify-content: flex-end;
@@ -152,8 +159,9 @@
 .bc-nav-exit:hover { background: color-mix(in srgb, currentColor 11%, transparent); }
 .bc-nav-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; }
 .bc-nav-progress i { display: block; height: 100%; background: var(--bc-accent); transform: scaleX(0); transform-origin: 0 50%; }
+@media (min-width: 900px) { .bc-nav-logo .is-mobile-only { display: none; } }
 @media (max-width: 899px) {
-  .bc-nav-wordmark { display: none; }
+  .bc-nav-logo .is-desktop-only { display: none; }
   .bc-nav-links { justify-content: flex-start; }
   .bc-nav-exit { width: 40px; padding: 0; justify-content: center; }
   .bc-nav-exit-label { display: none; }
@@ -213,14 +221,16 @@ html:not(.js) [data-intro-outline] { display: none; }
 @media (min-width: 900px) { .bc-symbol-grid { grid-template-columns: 1fr 1fr; } }
 .bc-symbol-art { display: grid; justify-items: start; padding-left: 4vw; }
 @media (min-width: 900px) { .bc-symbol-art { justify-items: center; padding-left: 0; padding-right: 180px; } }
-.bc-symbol-stage { position: relative; height: min(64vw, 300px); }
-@media (min-width: 900px) { .bc-symbol-stage { height: min(60svh, 560px); } }
+/* altura-alvo, mas um símbolo largo (monograma) não passa da coluna */
+.bc-symbol-stage { --stage-h: min(64vw, 300px); position: relative; width: min(100% - 160px, var(--stage-h) * var(--sym-ratio, 1)); } /* 160px: legendas à direita */
+@media (min-width: 900px) { .bc-symbol-stage { --stage-h: min(60svh, 560px); width: min(100%, var(--stage-h) * var(--sym-ratio, 1)); } }
 .bc-symbol-svg { width: 100%; height: 100%; }
 .bc-piece-label {
-  position: absolute; left: calc(100% + 30px); top: calc(var(--y0) * 1%);
+  position: absolute; left: calc(100% + 26px); top: calc(var(--y0) * 1%);
   transform: translateY(-50%);
-  display: grid; gap: 2px; width: max-content; max-width: min(46vw, 230px);
+  display: grid; gap: 2px; width: max-content; max-width: 130px; /* cabe nos 160px reservados */
 }
+@media (min-width: 900px) { .bc-piece-label { left: calc(100% + 30px); max-width: min(46vw, 230px); } }
 .js .bc-piece-label { top: calc(var(--y1) * 1%); } /* com JS as peças se afastam, e a legenda acompanha */
 .bc-piece-label::before { content: ""; position: absolute; right: calc(100% + 8px); top: 0.7em; width: 20px; height: 1px; background: currentColor; opacity: 0.5; }
 .bc-piece-label b { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--bc-accent); }
@@ -444,6 +454,7 @@ html:not(.js) [data-intro-outline] { display: none; }
 .bc-app-head { display: flex; align-items: center; gap: 3cqw; margin-top: 2cqw; }
 .bc-app-symbol { height: 11cqw; width: auto; }
 .bc-app-wordmark { height: 5cqw; width: auto; }
+.bc-app-head:not(:has(.bc-app-symbol)) .bc-app-wordmark { height: 10cqw; } /* só o logotipo (lettering): maior */
 .bc-app-greet { font-size: 9cqw; font-weight: 600; line-height: 1.05; margin-top: 2cqw; }
 .bc-app-card { display: grid; gap: 0.6cqw; padding: 5cqw; border-radius: 4cqw; background: #fff; box-shadow: 0 0 0 1px rgba(15, 28, 46, 0.07); }
 .bc-app-card.is-primary { background: var(--bc-primary); color: var(--bc-ink-on-dark); }

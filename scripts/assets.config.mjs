@@ -301,6 +301,7 @@ export const cases = {
     thumb: { from: "id-03" },
     items: [{ id: "id", src: "Reputation Architeture/_Apresentação identidade - MANU BORGES.pdf", kind: "slide", pages: range(1, 8) }],
   },
+  // A capa (thumb.webp) vem de `npm run brand -- confraria thumb` (logo final); rodar `npm run assets -- confraria` a sobrescreve.
   confraria: {
     thumb: { from: "logo-04" },
     items: [{ id: "logo", src: "ConfrariaDosAromas/Confraria_Logo_apresentação.pdf", kind: "slide", pages: range(2, 10) }],

@@ -35,9 +35,11 @@ const start = t.weights.includes(700) ? 700 : t.weights[t.weights.length - 1];
         <p class="bc-type-readout" aria-hidden="true">
           <span data-bc-glyph-name>{t.glyphs[0]}</span> · <span data-bc-weight-name>{names[t.weights.indexOf(start)]}</span>
         </p>
-        <ol class="bc-type-scale" aria-hidden="true">
-          {t.weights.map((w) => <li data-weight={w} class:list={{ "is-active": w === start }}></li>)}
-        </ol>
+        {t.weights.length > 1 && (
+          <ol class="bc-type-scale" aria-hidden="true">
+            {t.weights.map((w) => <li data-weight={w} class:list={{ "is-active": w === start }}></li>)}
+          </ol>
+        )}
       </div>
       </div>
 

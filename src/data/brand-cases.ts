@@ -15,23 +15,39 @@ export interface AppItem {
   kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern";
   image?: string; col: [number, number]; mobile: 1 | 2; offset?: number; speed?: number; caption?: string;
   art?: LogoArt; viewBox?: string; variant?: string; overlays?: Overlay[];
-  screen?: { greeting: string; cards: { label: string; title: string; meta: string }[]; progress: { label: string; value: number } };
+  /** app: partes do logo no topo da tela (padrão: símbolo + logotipo) */
+  head?: LogoArt[];
+  screen?: { alt?: string; greeting: string; cards: { label: string; title: string; meta: string }[]; progress: { label: string; value: number } };
 }
-export interface SystemTile { kind: "lockup" | "symbol" | "sizes" | "clearspace" | "icon" | "minimum"; variant: string; size: "lg" | "tall" | "wide" | "sm"; label: string; note?: string; sizes?: number[] }
+export interface SystemTile {
+  kind: "lockup" | "symbol" | "sizes" | "clearspace" | "icon" | "minimum"; variant: string; size: "lg" | "tall" | "wide" | "sm"; label: string; note?: string; sizes?: number[];
+  /** clearspace: medida "x" em unidades do logo (padrão: altura do logotipo) */
+  unit?: number;
+  /** minimum: largura do logo completo na redução mínima, em px (padrão: 160) */
+  minWidth?: number;
+}
+interface FontFiles { family: string; fallback: string; unicodeRange?: string; files: Record<string, string>; preload?: number[] }
 
 export interface BrandCaseData {
   slug: string; client: string; segment: string; year: string; assets: string;
   seo: { title: string; description: string; image: string };
   theme: { dark: string; light: string; primary: string; secondary: string; support: string; accent: string; inkOnLight: string; mutedOnLight: string; inkOnDark: string; mutedOnDark: string };
-  font: { family: string; fallback: string; unicodeRange?: string; files: Record<string, string>; preload: number[] };
-  logo: Record<LogoArt, string> & { variants: Record<string, Variant> };
+  /** fonte da marca (títulos); `text` é a fonte opcional de textos e interface */
+  font: FontFiles & { preload: number[]; text?: FontFiles };
+  logo: Record<LogoArt, string> & {
+    variants: Record<string, Variant>;
+    /** partes do logo na navegação (padrão: desktop símbolo + logotipo, celular só o símbolo) */
+    nav?: { desktop?: LogoArt[]; mobile?: LogoArt[]; wordmarkHeight?: number };
+  };
   intro: { kicker: string; subtitle: string; scrollHint: string; image?: string };
   symbol: { nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[]; image?: string };
   typography: { nav: string; eyebrow: string; title: string; glyphs: string[]; weights: number[]; text: string; spec: { k: string; v: string }[]; sample: string };
   manifesto: { nav: string; eyebrow: string; headline: string; attributes: { word: string; text: string }[] };
-  colors: { nav: string; eyebrow: string; title: string; text: string; note: string; swatches: { name: string; role: string; hex: string; weight: number }[] };
+  /** swatches[].cmyk: valor oficial da marca, quando existe (senão é calculado e aproximado) */
+  colors: { nav: string; eyebrow: string; title: string; text: string; note: string; swatches: { name: string; role: string; hex: string; weight: number; cmyk?: string }[] };
   system: { nav: string; eyebrow: string; title: string; tiles: SystemTile[] };
-  applications: { nav: string; eyebrow: string; title: string; text: string; marquee: string; items: AppItem[] };
+  /** marqueeArts: partes do logo na faixa em movimento (padrão: logotipo + símbolo) */
+  applications: { nav: string; eyebrow: string; title: string; text: string; marquee: string; marqueeArts?: LogoArt[]; items: AppItem[] };
   closing: { phrase: string; credits: { k: string; v: string }[]; cta: { text: string; label: string; href: string }; image?: string };
   images: BrandImage[];
 }
@@ -171,14 +187,28 @@ export function swatchInfo(c: BrandCaseData, hex: string) {
 }
 
 /* ------------------------------------------------------------------ fontes */
+const families = (c: BrandCaseData) => [c.font, c.font.text].filter((f): f is FontFiles => !!f);
+
+/** Uma regra por arquivo; a chave é o peso ("400") ou a faixa de uma fonte variável ("300 900"). */
 export function fontFaceCss(c: BrandCaseData) {
-  const f = c.font;
-  return Object.entries(f.files)
-    .map(([weight, file]) =>
+  return families(c)
+    .flatMap((f) => Object.entries(f.files).map(([weight, file]) =>
       `@font-face{font-family:"${f.family}";font-style:normal;font-weight:${weight};font-display:swap;` +
       `src:url("${assetUrl(c, file)}") format("woff2");${f.unicodeRange ? `unicode-range:${f.unicodeRange};` : ""}}`,
-    )
+    ))
     .join("\n");
+}
+
+/** Arquivos a pré-carregar: os pesos de `preload` (numa fonte variável, o arquivo da faixa que os contém). */
+export function fontPreloads(c: BrandCaseData) {
+  const urls = families(c).flatMap((f) => (f.preload ?? []).map((w) => {
+    const key = Object.keys(f.files).find((k) => {
+      const [lo, hi = lo] = k.split(/\s+/).map(Number);
+      return w >= lo && w <= hi;
+    });
+    return key ? assetUrl(c, f.files[key]) : undefined;
+  }));
+  return [...new Set(urls.filter((u): u is string => !!u))];
 }
 
 /* ------------------------------------------------------------------ mockups */

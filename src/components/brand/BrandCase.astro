@@ -11,7 +11,7 @@ import CaseColors from "./CaseColors.astro";
 import CaseSystem from "./CaseSystem.astro";
 import CaseApplications from "./CaseApplications.astro";
 import CaseClosing from "./CaseClosing.astro";
-import { assetUrl, fontFaceCss, plain, variantVars, warnDrafts, type BrandCaseData } from "../../data/brand-cases";
+import { assetUrl, fontFaceCss, fontPreloads, plain, variantVars, warnDrafts, type BrandCaseData } from "../../data/brand-cases";
 import type { Case } from "../../data/cases";
 import "../../styles/brand-case.css";
 
@@ -32,6 +32,7 @@ const rootVars = {
   "--bc-ink-on-dark": t.inkOnDark,
   "--bc-muted-on-dark": t.mutedOnDark,
   "--bc-font": `"${data.font.family}", ${data.font.fallback}`,
+  ...(data.font.text && { "--bc-font-text": `"${data.font.text.family}", ${data.font.text.fallback}` }),
   ...variantVars(data, "positive"),
 };
 const style = Object.entries(rootVars).map(([k, v]) => `${k}:${v}`).join(";");
@@ -47,8 +48,8 @@ const sections = [data.symbol, data.typography, data.manifesto, data.colors, dat
   themeColor={t.dark}
 >
   <Fragment slot="head">
-    {data.font.preload.map((w) => (
-      <link rel="preload" as="font" type="font/woff2" href={assetUrl(data, data.font.files[String(w)])} crossorigin />
+    {fontPreloads(data).map((href) => (
+      <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />
     ))}
     <style set:html={fontFaceCss(data)}></style>
   </Fragment>

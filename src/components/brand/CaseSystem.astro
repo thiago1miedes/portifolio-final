@@ -9,8 +9,9 @@ const { data } = Astro.props;
 const sys = data.system;
 const lockup = readSvg(data, "lockup");
 const [lx, ly, lw, lh] = lockup.viewBox;
-// área de proteção: x = altura do logotipo (caixa-alta do "EFPI")
-const x = readSvg(data, "wordmark").viewBox[3];
+// área de proteção: x = tile.unit (em unidades do logo) ou a altura do logotipo (caixa-alta do "EFPI")
+const clearTile = sys.tiles.find((t) => t.kind === "clearspace");
+const x = clearTile?.unit ?? readSvg(data, "wordmark").viewBox[3];
 const clearBox = [lx - x, ly - x, lw + x * 2, lh + x * 2].map((n) => +n.toFixed(2)).join(" ");
 
 const tileStyle = (variant: string) => {
@@ -57,7 +58,7 @@ const tileStyle = (variant: string) => {
             )}
             {tile.kind === "minimum" && (
               <div class="bc-minimum">
-                <BrandLogo data={data} art="lockup" style="width:160px;height:auto" />
+                <BrandLogo data={data} art="lockup" style={`width:${tile.minWidth ?? 160}px;height:auto`} />
                 <BrandLogo data={data} art="symbol" decorative style="height:32px;width:auto" />
               </div>
             )}
