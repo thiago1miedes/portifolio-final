@@ -62,7 +62,7 @@
 
   "intro": {
     "kicker": "Identidade visual · 2022",
-    "subtitle": "[rascunho] Lettering para uma marca de perfumes caseiros e velas aromáticas, com vinhas que brotam das letras como o aroma que se espalha pela casa.",
+    "subtitle": "Lettering para uma marca de perfumes caseiros e velas aromáticas, com vinhas que brotam das letras como o aroma que se espalha pela casa.",
     "scrollHint": "Role para conhecer a marca",
     "image": "hero-fumaca"
   },
@@ -70,10 +70,10 @@
   "symbol": {
     "nav": "Monograma",
     "eyebrow": "01 — Monograma",
-    "title": "[rascunho] Das letras, brotam vinhas.",
+    "title": "Das letras, brotam vinhas.",
     "text": [
-      "[rascunho] O logotipo parte de uma serifada clássica e ganha vinhas que saem das próprias letras: a natureza e os cheiros naturais se espalhando pela marca.",
-      "[rascunho] O C de abertura, com a vinha enrolada embaixo, funciona sozinho como monograma. Assina tampas, etiquetas e o perfil nas redes quando o nome inteiro não cabe."
+      "O logotipo parte de uma serifada clássica e ganha vinhas que saem das próprias letras: a natureza e os cheiros naturais se espalhando pela marca.",
+      "O C de abertura, com a vinha enrolada embaixo, funciona sozinho como monograma. Assina tampas, etiquetas e o perfil nas redes quando o nome inteiro não cabe."
     ],
     "pieces": [
       { "piece": "letra", "label": "Letra", "text": "serifa clássica, de alto contraste", "shift": 0, "y": 34 },
@@ -88,7 +88,7 @@
     "title": "Gloock",
     "glyphs": ["C", "o", "f", "r", "a", "&"],
     "weights": [400],
-    "text": "[rascunho] O lettering parte de uma serifada de alto contraste, com altura-x generosa e terminais em gota no a, no r e no s. A Gloock é a fonte gratuita mais próxima desse desenho e assume títulos e destaques. A Figtree, limpa e arredondada, cuida dos textos.",
+    "text": "O lettering parte de uma serifada de alto contraste, com altura-x generosa e terminais em gota no a, no r e no s. A Gloock é a fonte gratuita mais próxima desse desenho e assume títulos e destaques. A Figtree, limpa e arredondada, cuida dos textos.",
     "spec": [
       { "k": "Família", "v": "Gloock — Duarte Pinheiro" },
       { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
@@ -103,20 +103,20 @@
   "manifesto": {
     "nav": "Manifesto",
     "eyebrow": "03 — Manifesto",
-    "headline": "[rascunho] Uma confraria é gente reunida em torno do que ama. Aqui, quem reúne é o aroma: feito à mão, para encher a casa de memória.",
+    "headline": "Uma confraria é gente reunida em torno do que ama. Aqui, quem reúne é o aroma: feito à mão, para encher a casa de memória.",
     "attributes": [
-      { "word": "Artesanal", "text": "[rascunho] Feito à mão, em casa, com o cuidado de quem prepara um presente." },
-      { "word": "Natureza", "text": "[rascunho] As vinhas do logotipo trazem o verde e o frescor do jardim para dentro de casa." },
-      { "word": "Acolhimento", "text": "[rascunho] Aromas que transformam a casa em lugar de ficar." },
-      { "word": "Encontro", "text": "[rascunho] Confraria é reunião: a marca convida a sentir junto." }
+      { "word": "Artesanal", "text": "Feito à mão, em casa, com o cuidado de quem prepara um presente." },
+      { "word": "Natureza", "text": "As vinhas do logotipo trazem o verde e o frescor do jardim para dentro de casa." },
+      { "word": "Acolhimento", "text": "Aromas que transformam a casa em lugar de ficar." },
+      { "word": "Encontro", "text": "Confraria é reunião: a marca convida a sentir junto." }
     ]
   },
 
   "colors": {
     "nav": "Cores",
     "eyebrow": "04 — Cores",
-    "title": "[rascunho] Verde de mata, terracota de argila.",
-    "text": "[rascunho] O verde e a terracota são as cores oficiais da marca. Deles derivam um fundo de mata fechada, um creme de papel e a sálvia de apoio. O dourado vem do estudo de rótulos dourados e entra pouco, como a luz de uma vela.",
+    "title": "Verde de mata, terracota de argila.",
+    "text": "O verde e a terracota são as cores oficiais da marca. Deles derivam um fundo de mata fechada, um creme de papel e a sálvia de apoio. O dourado vem do estudo de rótulos dourados e entra pouco, como a luz de uma vela.",
     "note": "CMYK oficial no verde e na terracota (apresentação da marca); nas demais, aproximado — confirme no perfil da gráfica.",
     "swatches": [
       { "name": "Verde Confraria", "role": "Principal · logotipo e textos", "hex": "#074D40", "cmyk": "90 41 70 47", "weight": 2.6 },
@@ -131,7 +131,7 @@
   "system": {
     "nav": "Sistema",
     "eyebrow": "05 — Sistema",
-    "title": "[rascunho] Do rótulo ao perfil, a mesma assinatura.",
+    "title": "Do rótulo ao perfil, a mesma assinatura.",
     "tiles": [
       { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
       { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Monograma" },
@@ -140,17 +140,17 @@
       { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo" },
       { "kind": "lockup", "variant": "onSecondary", "size": "sm", "label": "Sobre terracota" },
       { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre dourado" },
-      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 78, "note": "[rascunho] Margem mínima igual à altura do “o” de aromas." },
+      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 78, "note": "Margem mínima igual à altura do “o” de aromas." },
       { "kind": "icon", "variant": "negative", "size": "sm", "label": "Ícone e perfil" },
-      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 140, "note": "[rascunho] Abaixo de 140 px de largura, use só o monograma." }
+      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 140, "note": "Abaixo de 140 px de largura, use só o monograma." }
     ]
   },
 
   "applications": {
     "nav": "Aplicações",
     "eyebrow": "06 — Aplicações",
-    "title": "[rascunho] A marca na mesa, na estante e na tela.",
-    "text": "[rascunho] Estudo de aplicações: fotografia editorial em preto e branco, vela, aromatizador, caixa de presente, etiquetas e a loja no celular.",
+    "title": "A marca na mesa, na estante e na tela.",
+    "text": "Estudo de aplicações: fotografia editorial em preto e branco, vela, aromatizador, caixa de presente, etiquetas e a loja no celular.",
     "marquee": "Confraria",
     "marqueeArts": ["wordmark"],
     "items": [
@@ -158,9 +158,9 @@
       { "kind": "crop", "art": "lockup", "viewBox": "250 0 300 230", "variant": "onPrimary", "col": [6, 7], "mobile": 2 },
       { "kind": "mockup", "image": "mockup-vela", "col": [1, 4], "mobile": 1, "caption": "Vela aromática",
         "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.1, "pin": [[33, 53], [67, 53], [67, 69], [33, 69]] }] },
-      { "kind": "app", "variant": "positive", "col": [5, 4], "mobile": 1, "caption": "[rascunho] Loja no celular (estudo)", "head": ["wordmark"],
+      { "kind": "app", "variant": "positive", "col": [5, 4], "mobile": 1, "caption": "Loja no celular (estudo)", "head": ["wordmark"],
         "screen": {
-          "alt": "[rascunho] Estudo de loja no celular da Confraria dos Aromas, com velas aromáticas e aromatizador de ambiente",
+          "alt": "Estudo de loja no celular da Confraria dos Aromas, com velas aromáticas e aromatizador de ambiente",
           "greeting": "Qual aroma hoje?",
           "cards": [
             { "label": "Feito à mão", "title": "Velas aromáticas", "meta": "Ver coleção" },
@@ -176,7 +176,7 @@
       { "kind": "mockup", "image": "mockup-caixa", "col": [1, 6], "mobile": 1, "caption": "Caixa de presente",
         "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.14, "pin": [[24, 30], [76, 30], [76, 70], [24, 70]] }] },
       { "kind": "pattern", "variant": "negative", "col": [7, 6], "mobile": 1 },
-      { "kind": "photo", "image": "rotulo-aromatizador", "col": [1, 5], "mobile": 1, "speed": 3, "caption": "[rascunho] Proposta de rótulo do aromatizador, 2022" },
+      { "kind": "photo", "image": "rotulo-aromatizador", "col": [1, 5], "mobile": 1, "speed": 3, "caption": "Proposta de rótulo do aromatizador, 2022" },
       { "kind": "mockup", "image": "mockup-tag", "col": [6, 7], "mobile": 1, "offset": 6, "caption": "Etiquetas",
         "overlays": [{ "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.18, "pin": [[40, 30], [60, 30], [60, 66], [40, 66]] }] },
       { "kind": "crop", "art": "wordmark", "viewBox": "770 40 190 190", "variant": "onSecondary", "col": [1, 5], "mobile": 1 },
@@ -190,12 +190,12 @@
   },
 
   "closing": {
-    "phrase": "[rascunho] Aromas que reúnem.",
+    "phrase": "Aromas que reúnem.",
     "credits": [
       { "k": "Cliente", "v": "Confraria dos Aromas" },
       { "k": "Segmento", "v": "Perfumes caseiros e velas aromáticas" },
       { "k": "Ano", "v": "2022" },
-      { "k": "Serviços", "v": "[rascunho] Lettering · paleta · versões de cor · proposta de rótulo" },
+      { "k": "Serviços", "v": "Lettering · paleta · versões de cor · proposta de rótulo" },
       { "k": "Ferramentas", "v": "Illustrator" },
       { "k": "Design", "v": "Thiago Miedes" }
     ],
