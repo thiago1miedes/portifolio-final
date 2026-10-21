@@ -1,0 +1,237 @@
+{
+  "slug": "faggian",
+  "client": "Faggian",
+  "segment": "Moda feita à mão · camisas e bolsas",
+  "year": "2022",
+  "assets": "/brand/faggian",
+
+  "seo": {
+    "title": "Faggian — Identidade visual",
+    "description": "Case de identidade visual da Faggian, marca independente de roupas costuradas à mão: lettering com a linha que dá o laço, monograma Gi, tipografia, cores, sistema de logo e aplicações em etiqueta, tag, sacola e loja.",
+    "image": "og.png"
+  },
+
+  "theme": {
+    "dark": "#261A15",
+    "light": "#F7F3EC",
+    "primary": "#B05136",
+    "secondary": "#706F6E",
+    "support": "#D9CBB8",
+    "accent": "#C9A46E",
+    "inkOnLight": "#261A15",
+    "mutedOnLight": "#6B5F57",
+    "inkOnDark": "#F7F3EC",
+    "mutedOnDark": "#BBAB98"
+  },
+
+  "font": {
+    "family": "Bodoni Moda",
+    "fallback": "\"Playfair Display\", \"Abril Fatface\", Didot, \"Bodoni 72\", Georgia, serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "400 900": "fonts/bodoni-moda-var.woff2"
+    },
+    "preload": [600],
+    "text": {
+      "family": "Jost",
+      "fallback": "Futura, \"Century Gothic\", system-ui, \"Segoe UI\", sans-serif",
+      "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+      "files": {
+        "300 700": "fonts/jost-var.woff2"
+      },
+      "preload": [400]
+    }
+  },
+
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": { "desktop": ["wordmark"], "mobile": ["symbol"], "wordmarkHeight": 22 },
+    "variants": {
+      "positive":    { "label": "Positivo",          "bg": "#F7F3EC", "symbol-main": "#B05136", "symbol-accent": "#B05136", "wordmark": "#B05136", "tagline": "#706F6E" },
+      "negative":    { "label": "Negativo",          "bg": "#261A15", "symbol-main": "#F7F3EC", "symbol-accent": "#F7F3EC", "wordmark": "#F7F3EC", "tagline": "#C9A46E" },
+      "onDark":      { "label": "Cor sobre café",    "bg": "#261A15", "symbol-main": "#B05136", "symbol-accent": "#B05136", "wordmark": "#B05136", "tagline": "#D9CBB8" },
+      "onPrimary":   { "label": "Sobre terracota",   "bg": "#B05136", "symbol-main": "#F7F3EC", "symbol-accent": "#F7F3EC", "wordmark": "#F7F3EC", "tagline": "#F7F3EC" },
+      "onSupport":   { "label": "Sobre algodão cru", "bg": "#D9CBB8", "symbol-main": "#B05136", "symbol-accent": "#B05136", "wordmark": "#B05136", "tagline": "#261A15" },
+      "onAccent":    { "label": "Sobre latão",       "bg": "#C9A46E", "symbol-main": "#261A15", "symbol-accent": "#261A15", "wordmark": "#261A15", "tagline": "#261A15" },
+      "mono":        { "label": "Monocromático",     "bg": "#FFFFFF", "symbol-main": "#261A15", "symbol-accent": "#261A15", "wordmark": "#261A15", "tagline": "#261A15" }
+    }
+  },
+
+  "intro": {
+    "kicker": "Identidade visual · 2022",
+    "subtitle": "Lettering para uma marca de roupas costuradas à mão, em que a linha nasce no i, contorna o G e termina num laço.",
+    "scrollHint": "Role para conhecer a marca",
+    "image": "hero-tecido",
+    "variant": "onDark"
+  },
+
+  "symbol": {
+    "nav": "Monograma",
+    "eyebrow": "01 — Monograma",
+    "title": "A linha que dá o laço.",
+    "text": [
+      "O nome é escrito numa serifada de alto contraste: hastes pesadas como a estrutura de uma peça e filetes finos como linha. É o mesmo equilíbrio entre firmeza e delicadeza de uma roupa bem costurada.",
+      "No encontro do G com o i, a linha escapa da letra, contorna o G e fecha num laço, como o arremate no fim de uma costura. Esse par vira o monograma Gi, que assina etiquetas, tags e o perfil nas redes quando o nome inteiro não cabe."
+    ],
+    "pieces": [
+      { "piece": "linha", "label": "Linha", "text": "o fio que contorna o G e fecha em laço", "shift": 0, "y": 10 },
+      { "piece": "letra", "label": "Letra", "text": "hastes pesadas, filetes finos", "shift": 0, "y": 82 }
+    ],
+    "image": "textura-linho"
+  },
+
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "02 — Tipografia",
+    "title": "Bodoni Moda",
+    "glyphs": ["G", "a", "Q", "&", "g", "R"],
+    "weights": [400, 500, 600, 700, 800, 900],
+    "text": "O lettering parte de uma didone, a família de serifadas de alto contraste que Giambattista Bodoni levou ao extremo e que virou a cara das revistas de moda. A Bodoni Moda é a fonte gratuita mais próxima desse desenho e assume títulos e destaques. A Jost, geométrica como a Futura, cuida dos textos: a dupla clássica do editorial de moda.",
+    "spec": [
+      { "k": "Família", "v": "Bodoni Moda — Owen Earl (indestructible type*)" },
+      { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
+      { "k": "Títulos", "v": "Bodoni Moda 400–900 · variável, com tamanho óptico" },
+      { "k": "Logotipo", "v": "Lettering didone com a linha em laço" },
+      { "k": "Descritor", "v": "Serifada clássica em caixa-alta, espaçada" },
+      { "k": "Textos", "v": "Jost 300–700 — Owen Earl" },
+      { "k": "Alternativas", "v": "Playfair Display · Abril Fatface · Didot" }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz & 0123456789"
+  },
+
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "03 — Manifesto",
+    "headline": "Uma peça costurada à mão guarda o tempo de quem a fez. A Faggian veste esse tempo: ponto a ponto, para durar mais que uma estação.",
+    "attributes": [
+      { "word": "Artesanal", "text": "Cada peça passa pelas mãos de quem costura, com o cuidado de quem conhece o tecido pelo toque." },
+      { "word": "Refinada", "text": "Alto padrão sem ostentação: o refinamento está no corte, no caimento e no acabamento." },
+      { "word": "Autoral", "text": "Uma marca independente, com o olhar e a assinatura de quem cria cada modelo." },
+      { "word": "Atemporal", "text": "Camisas e bolsas pensadas para atravessar estações, não para seguir a próxima tendência." }
+    ]
+  },
+
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "04 — Cores",
+    "title": "Terracota, linho e um fio de latão.",
+    "text": "A terracota e o grafite vêm do próprio logo. Em volta deles, tons de fibra natural e de ateliê: o café de um fundo profundo, o linho e o algodão cru dos tecidos e o latão de botões, agulhas e fechos, usado pouco, como um detalhe de acabamento.",
+    "note": "Terracota e grafite tirados do SVG do logo. CMYK aproximado em todas as cores: confirme no perfil da gráfica.",
+    "swatches": [
+      { "name": "Terracota Faggian", "role": "Principal · logotipo", "hex": "#B05136", "weight": 2.6 },
+      { "name": "Grafite", "role": "Secundária · descritor “Brand”", "hex": "#706F6E", "weight": 1.5 },
+      { "name": "Café", "role": "Fundo escuro", "hex": "#261A15", "weight": 1.8 },
+      { "name": "Linho", "role": "Fundo claro", "hex": "#F7F3EC", "weight": 1.8 },
+      { "name": "Algodão cru", "role": "Apoio · etiquetas e embalagens", "hex": "#D9CBB8", "weight": 1.3 },
+      { "name": "Latão", "role": "Destaque · detalhes", "hex": "#C9A46E", "weight": 1.2 }
+    ]
+  },
+
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "05 — Sistema",
+    "title": "Da etiqueta à vitrine, a mesma assinatura.",
+    "tiles": [
+      { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
+      { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Monograma Gi" },
+      { "kind": "sizes", "variant": "positive", "size": "sm", "label": "Tamanhos pequenos", "sizes": [48, 32, 24, 16] },
+      { "kind": "lockup", "variant": "mono", "size": "sm", "label": "Monocromático" },
+      { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo" },
+      { "kind": "lockup", "variant": "onSupport", "size": "sm", "label": "Sobre algodão cru" },
+      { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre latão" },
+      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 62, "note": "Margem mínima igual à largura da base do i." },
+      { "kind": "icon", "variant": "negative", "size": "sm", "label": "Ícone e perfil" },
+      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 160, "note": "Abaixo de 160 px de largura, use só o monograma." }
+    ]
+  },
+
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "06 — Aplicações",
+    "title": "A marca no tecido, na sacola e na tela.",
+    "text": "Estudo de aplicações: fotografia editorial em preto e branco, etiqueta tecida, tag, sacola, caixa de presente, cartões e a loja no celular.",
+    "marquee": "Faggian",
+    "marqueeArts": ["wordmark"],
+    "items": [
+      { "kind": "photo", "image": "editorial-maos-costura", "col": [1, 5], "mobile": 2, "speed": -4 },
+      { "kind": "crop", "art": "wordmark", "viewBox": "470 -14 250 220", "variant": "onPrimary", "col": [6, 7], "mobile": 2 },
+      { "kind": "mockup", "image": "mockup-tag", "col": [1, 4], "mobile": 1, "caption": "Tag",
+        "overlays": [{ "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.2, "pin": [[33, 32], [67, 32], [67, 72], [33, 72]] }] },
+      { "kind": "app", "variant": "positive", "col": [5, 4], "mobile": 1, "caption": "Loja no celular (estudo)", "head": ["wordmark"],
+        "screen": {
+          "alt": "Estudo de loja no celular da Faggian, com camisas e bolsas feitas à mão",
+          "greeting": "Feito à mão para você",
+          "cards": [
+            { "label": "Nova coleção", "title": "Camisas feitas à mão", "meta": "Ver peças" },
+            { "label": "Acessórios", "title": "Bolsas", "meta": "Ver bolsas" }
+          ],
+          "progress": { "label": "Seu pedido · em costura", "value": 60 }
+        } },
+      { "kind": "photo", "image": "editorial-camisa", "col": [9, 4], "mobile": 2, "offset": 8, "speed": 5 },
+      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
+      { "kind": "mockup", "image": "mockup-etiqueta", "col": [1, 7], "mobile": 2, "caption": "Etiqueta tecida na gola",
+        "overlays": [{ "art": "lockup", "variant": "negative", "blend": "screen", "inset": 0.14, "pin": [[32, 42], [68, 42], [68, 58], [32, 58]] }] },
+      { "kind": "photo", "image": "editorial-bolsa", "col": [8, 5], "mobile": 2, "offset": 7, "speed": -5 },
+      { "kind": "mockup", "image": "mockup-sacola", "col": [1, 6], "mobile": 1, "caption": "Sacola",
+        "overlays": [{ "art": "lockup", "variant": "onPrimary", "blend": "screen", "inset": 0.16, "pin": [[30, 40], [70, 40], [70, 66], [30, 66]] }] },
+      { "kind": "pattern", "variant": "negative", "col": [7, 6], "mobile": 1 },
+      { "kind": "photo", "image": "editorial-tesoura", "col": [1, 5], "mobile": 1, "speed": 3 },
+      { "kind": "mockup", "image": "mockup-cartoes", "col": [6, 7], "mobile": 1, "offset": 6, "caption": "Cartões de visita",
+        "overlays": [
+          { "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.16, "pin": [[12.6, 38.4], [48.2, 30.9], [51.4, 65.6], [15.8, 73.1]] },
+          { "art": "symbol", "variant": "onPrimary", "blend": "screen", "inset": 0.24, "pin": [[54.2, 27.3], [90.0, 32.9], [87.5, 67.7], [51.7, 62.1]] }
+        ] },
+      { "kind": "crop", "art": "wordmark", "viewBox": "0 50 260 190", "variant": "positive", "col": [1, 5], "mobile": 1 },
+      { "kind": "mockup", "image": "mockup-caixa", "col": [6, 7], "mobile": 1, "caption": "Caixa de presente",
+        "overlays": [{ "art": "lockup", "variant": "negative", "blend": "screen", "inset": 0.2, "pin": [[24, 30], [76, 30], [76, 70], [24, 70]] }] },
+      { "kind": "photo", "image": "editorial-punho", "col": [1, 12], "mobile": 2, "speed": 4 }
+    ]
+  },
+
+  "closing": {
+    "phrase": "Ponto a ponto, à mão.",
+    "credits": [
+      { "k": "Cliente", "v": "Faggian" },
+      { "k": "Segmento", "v": "Moda feita à mão · camisas e bolsas" },
+      { "k": "Ano", "v": "2022" },
+      { "k": "Serviços", "v": "Lettering · monograma · paleta · tipografia · sistema de logo · estudo de aplicações" },
+      { "k": "Ferramentas", "v": "Illustrator · Photoshop" },
+      { "k": "Design", "v": "Thiago Miedes" }
+    ],
+    "cta": { "text": "Tem uma marca para construir?", "label": "Vamos conversar", "href": "/#contato" },
+    "image": "editorial-atelie"
+  },
+
+  "images": [
+    { "id": "editorial-maos-costura", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Mãos costurando à mão o punho de uma camisa com agulha e linha, em preto e branco" },
+    { "id": "hero-tecido", "section": "intro", "w": 2400, "h": 1350, "essential": true,
+      "alt": "Linho terracota caindo em dobras macias sobre fundo café, com um fio de linha solto formando um laço" },
+    { "id": "mockup-etiqueta", "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Etiqueta tecida cor de café com o logo da Faggian costurada na gola de uma camisa de linho" },
+    { "id": "mockup-tag", "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Tag de papel algodão com o monograma Gi presa por um cordão de algodão à alça de uma bolsa" },
+    { "id": "editorial-camisa", "mono": true, "section": "applications", "w": 1500, "h": 1500, "essential": true,
+      "alt": "Camisa de linho pendurada num cabide de madeira junto a uma janela, em preto e branco" },
+    { "id": "editorial-bolsa", "mono": true, "section": "applications", "w": 2000, "h": 1333, "essential": true,
+      "alt": "Detalhe de uma bolsa feita à mão, com costura aparente e fecho de metal, em preto e branco" },
+    { "id": "mockup-sacola", "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Sacola de papel terracota com o logo da Faggian e alças de cordão de algodão" },
+    { "id": "mockup-caixa", "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Caixa de presente cor de café com o logo da Faggian na tampa, ao lado de uma camisa dobrada em papel de seda" },
+    { "id": "textura-linho", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Trama de linho em macro, em tons de café e terracota" },
+    { "id": "editorial-tesoura", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": false,
+      "alt": "Tesoura de alfaiate, giz e fita métrica sobre um corte de tecido, em preto e branco" },
+    { "id": "mockup-cartoes", "section": "applications", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Cartões de visita da Faggian, um linho e um terracota" },
+    { "id": "editorial-punho", "mono": true, "section": "applications", "w": 2400, "h": 1200, "essential": false,
+      "alt": "Pessoa abotoando o punho de uma camisa, em preto e branco" },
+    { "id": "editorial-atelie", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
+      "alt": "Mesa de ateliê de costura com carretéis de linha, alfinetes e retalhos de tecido, em preto e branco" }
+  ]
+}

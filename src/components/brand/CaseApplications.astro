@@ -14,7 +14,9 @@ const { data } = Astro.props;
 const a = data.applications;
 const items = a.items.filter((it) => !it.image || imageVisible(imageInfo(data, it.image)));
 const symbol = readSvg(data, "symbol");
-const [, , sw, sh] = symbol.viewBox;
+const [sx, sy, sw, sh] = symbol.viewBox;
+// o símbolo pode estar fora da origem (ex.: o monograma recortado do meio do logotipo); o padrão o traz para o canto do módulo
+const tile = (dx: number, dy: number) => `translate(${+(dx - sx * 0.5).toFixed(2)} ${+(dy - sy * 0.5).toFixed(2)}) scale(0.5)`;
 const patternId = `bc-pattern-${data.slug}`;
 const vars = (v?: string) => Object.entries(variantVars(data, v)).map(([k, val]) => `${k}:${val}`).join(";");
 const cell = (it: AppItem) => `--c0:${it.col[0]};--cs:${it.col[1]};--ms:${it.mobile};--off:${it.offset ?? 0}`;
@@ -124,8 +126,8 @@ const marqueeArts = a.marqueeArts ?? ["wordmark", "symbol"];
             <svg class="bc-logo bc-pattern-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <defs>
                 <pattern id={patternId} width={sw * 1.2} height={sh * 1.1} patternUnits="userSpaceOnUse">
-                  <g transform={`translate(${sw * 0.05} ${sh * 0.025}) scale(0.5)`} set:html={symbol.inner} />
-                  <g transform={`translate(${sw * 0.65} ${sh * 0.575}) scale(0.5)`} set:html={symbol.inner} />
+                  <g transform={tile(sw * 0.05, sh * 0.025)} set:html={symbol.inner} />
+                  <g transform={tile(sw * 0.65, sh * 0.575)} set:html={symbol.inner} />
                 </pattern>
               </defs>
               <rect x="0" y={-sh * 1.1} width="800" height={800 + sh * 2.2} fill={`url(#${patternId})`} data-bc-pattern data-shift={sh * 1.1} />
