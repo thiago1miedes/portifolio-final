@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 8.64 209.9 280.53" role="img" aria-label="Símbolo LifeStyle">
+  <g data-piece="frame">
+    <path data-part="symbol-main" fill="#5D140F" d="M0,33.97v184.56h139.25v-68.54h-70.72v-72.82h72.82v72.74h68.53V8.64H25.33C11.34,8.64,0,19.98,0,33.97Z"/>
+  </g>
+  <g data-piece="module">
+    <path data-part="symbol-accent" fill="#5D140F" d="M139.26,218.53h70.64v70.64h-33.33c-20.59,0-37.3-16.71-37.3-37.3v-33.33h0Z"/>
+  </g>
+</svg>

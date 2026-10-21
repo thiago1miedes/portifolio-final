@@ -30,6 +30,7 @@ if (root) {
       manifestoTurn(root);
       colorBlocks(root);
       collage(root);
+      tilt(root);
     }
   } catch (err) {
     // algo falhou: mostra a página inteira, sem animação
@@ -173,20 +174,24 @@ function symbolPieces(root: HTMLElement) {
   const frame = $("[data-bc-crop-frame]", section);
   const full = $("[data-bc-crop-full]", section);
   const outline = $("[data-bc-crop-outline]", section);
+  // symbol.grid: a grade de construção se desenha antes de as peças andarem
+  const gridLines = $$("[data-bc-grid-line]", section);
   gsap.matchMedia().add({ desktop: DESKTOP, mobile: MOBILE }, (ctx) => {
     const desktop = ctx.conditions?.desktop;
     const tl = gsap.timeline({
       scrollTrigger: { trigger: section, start: desktop ? "top top" : "top 70%", end: desktop ? "bottom bottom" : "bottom 70%", scrub: 0.6 },
     });
+    if (gridLines.length) tl.fromTo(gridLines, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut", stagger: 0.04 }, 0);
     if (frame && full && outline) {
       tl.fromTo(frame, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0.15)
         .fromTo(full, { opacity: 1 }, { opacity: 0, duration: 0.6, ease: "none" }, 0.75)
         .fromTo(outline, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "none" }, 0.75);
     }
+    const at = gridLines.length ? 0.45 : 0;
     labels.forEach((label, i) => {
       const piece = $(`[data-piece="${label.dataset.pieceLabel}"]`, section);
-      if (piece) tl.fromTo(piece, { y: 0 }, { y: Number(label.dataset.shift) || 0, duration: 1, ease: "power2.inOut" }, 0);
-      tl.fromTo(label, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.45 + i * 0.15);
+      if (piece) tl.fromTo(piece, { y: 0 }, { y: Number(label.dataset.shift) || 0, duration: 1, ease: "power2.inOut" }, at);
+      tl.fromTo(label, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, at + 0.45 + i * 0.15);
     });
     tl.to({}, { duration: 0.6 });
   });
@@ -359,6 +364,62 @@ function collage(root: HTMLElement) {
   $$("[data-bc-pattern]", root).forEach((rect) => {
     const shift = Number(rect.dataset.shift) || 0;
     gsap.fromTo(rect, { attr: { y: -shift } }, { attr: { y: 0 }, ease: "none", scrollTrigger: { trigger: rect.closest(".bc-cell"), start: "top bottom", end: "bottom top", scrub: true } });
+  });
+
+  // faixa de recortes: no desktop corre de lado enquanto passa pela tela; no celular fica no deslize nativo
+  $$("[data-bc-track]", root).forEach((track) => {
+    const row = $("[data-bc-track-row]", track);
+    if (!row) return;
+    const items = $$(".bc-track-item", row);
+    gsap.matchMedia().add(DESKTOP, () => {
+      track.classList.add("is-scrubbed");
+      // entra pela direita e sai pela esquerda: no meio da passagem, o centro da faixa fica no centro da tela
+      const lead = () => track.clientWidth * 0.15;
+      const tl = gsap.timeline({ scrollTrigger: { trigger: track, start: "top bottom", end: "bottom top", scrub: 0.5, invalidateOnRefresh: true } });
+      tl.fromTo(row, { x: lead }, { x: () => Math.min(0, track.clientWidth - row.scrollWidth) - lead(), ease: "none" }, 0)
+        .fromTo(items, { rotate: (i) => (i % 2 ? 3 : -3) }, { rotate: (i) => (i % 2 ? -2 : 2), ease: "none" }, 0);
+      return () => track.classList.remove("is-scrubbed");
+    });
+  });
+
+  // mosaico: as formas nascem em sequência e, com a rolagem, giram de um quarto em um quarto de volta
+  // (cada uma no seu momento, data-phase) — paradas, estão sempre alinhadas à grade
+  $$("[data-bc-mosaic]", root).forEach((svg) => {
+    const shapes = $$<SVGGElement>("[data-bc-mosaic-shape]", svg);
+    gsap.set(shapes, { transformOrigin: "50% 50%" });
+    gsap.from(shapes, {
+      scale: 0, duration: 0.9, ease: "back.out(1.6)", stagger: { each: 0.035, from: "random" },
+      scrollTrigger: { trigger: svg, start: "top 85%", toggleActions: "play none none none" },
+    });
+    const steps = shapes.map(() => 0);
+    ScrollTrigger.create({
+      trigger: svg,
+      start: "top bottom",
+      end: "bottom top",
+      onUpdate: (self) => shapes.forEach((el, i) => {
+        const step = Math.floor(self.progress * 3 + (Number(el.dataset.phase) || 0));
+        if (step === steps[i]) return;
+        steps[i] = step;
+        gsap.to(el, { rotation: step * 90 * (Number(el.dataset.turn) || 1), duration: 0.8, ease: "expo.inOut", overwrite: "auto" });
+      }),
+    });
+  });
+}
+
+/* ------------------------------------------------------------------ 7c. recortes que acompanham o mouse */
+function tilt(root: HTMLElement) {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  $$("[data-bc-tilt]", root).forEach((el) => {
+    const area = el.parentElement ?? el;
+    gsap.set(el, { transformPerspective: 900, transformOrigin: "50% 50%" });
+    const rx = gsap.quickTo(el, "rotationX", { duration: 0.6, ease: "power3.out" });
+    const ry = gsap.quickTo(el, "rotationY", { duration: 0.6, ease: "power3.out" });
+    area.addEventListener("pointermove", (e) => {
+      const r = area.getBoundingClientRect();
+      ry(((e.clientX - r.left) / r.width - 0.5) * 10);
+      rx(-((e.clientY - r.top) / r.height - 0.5) * 8);
+    });
+    area.addEventListener("pointerleave", () => { rx(0); ry(0); });
   });
 }
 

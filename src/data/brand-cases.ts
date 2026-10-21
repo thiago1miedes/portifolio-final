@@ -18,8 +18,10 @@ export interface AppItem {
   /** cutout: PNG recortado (fundo transparente), mostrado inteiro e sem moldura
    *  piece: peça real (post, capa, key visual) inteira, sem corte; com frame "phone", dentro de um celular
    *  feed: celular com um perfil de rede social montado em código, com as imagens de `images` na grade
-   *  graphic: arquivo vetorial do grafismo (src em public/<assets>/), sem passar pela IA */
-  kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern" | "cutout" | "piece" | "feed" | "graphic" | "heading";
+   *  graphic: arquivo vetorial do grafismo (src em public/<assets>/), sem passar pela IA
+   *  track: faixa de recortes (slides) que corre de lado com a rolagem no desktop e desliza com o dedo no celular
+   *  mosaic: grade de formas geométricas no módulo do símbolo, desenhada em código; as formas giram com a rolagem */
+  kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern" | "cutout" | "piece" | "feed" | "graphic" | "heading" | "track" | "mosaic";
   /** heading: título (caption) e texto de um grupo de peças dentro da colagem */
   text?: string;
   image?: string; col: [number, number]; mobile: 1 | 2; offset?: number; speed?: number; caption?: string;
@@ -33,6 +35,13 @@ export interface AppItem {
   profile?: { name: string; bio: string; alt: string; action: string; highlights?: { label: string; src: string }[] };
   /** graphic: caminho em public/<assets>/ e tamanho natural */
   src?: string; w?: number; h?: number; alt?: string;
+  /** cutout: inclina de leve seguindo o mouse (só com mouse e com movimento permitido) */
+  tilt?: boolean;
+  /** track: recortes da faixa (ids de images[]) e a dica que aparece no celular */
+  slides?: { image: string; caption?: string }[];
+  hint?: string;
+  /** mosaic: colunas × linhas da grade */
+  grid?: [number, number];
 }
 /** Seção opcional de grafismo: pictogramas em grade e padrões numa faixa que corre com a rolagem. */
 export interface GraphicsSection {
@@ -75,8 +84,9 @@ export interface BrandCaseData {
   slug: string; client: string; segment: string; year: string; assets: string;
   seo: { title: string; description: string; image: string };
   theme: { dark: string; light: string; primary: string; secondary: string; support: string; accent: string; inkOnLight: string; mutedOnLight: string; inkOnDark: string; mutedOnDark: string };
-  /** fonte da marca (títulos); `text` é a fonte opcional de textos e interface */
-  font: FontFiles & { preload: number[]; text?: FontFiles };
+  /** fonte da marca (títulos); `text` é a fonte opcional de textos e interface;
+   *  display: peso e espaçamento dos títulos, quando a marca pede outro tom (padrão: 600 e o espaçamento de cada título) */
+  font: FontFiles & { preload: number[]; text?: FontFiles; display?: { weight?: number; tracking?: string } };
   /** tagline é opcional: logos sem descritor não precisam do arquivo */
   logo: Record<Exclude<LogoArt, "tagline">, string> & { tagline?: string } & {
     variants: Record<string, Variant>;
@@ -86,8 +96,13 @@ export interface BrandCaseData {
   };
   /** variant: versão do logo na abertura (padrão: negative) */
   intro: { kicker: string; subtitle: string; scrollHint: string; image?: string; variant?: string };
-  /** crop: quadrado [x, y, lado, lado] em unidades do símbolo; ao rolar, ele recorta o símbolo e mostra o módulo do grafismo */
-  symbol: { nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[]; image?: string; crop?: [number, number, number, number] };
+  /** crop: quadrado [x, y, lado, lado] em unidades do símbolo; ao rolar, ele recorta o símbolo e mostra o módulo do grafismo
+   *  grid: linhas da grade de construção (posições x e y em unidades do símbolo), desenhadas ao rolar
+   *  variant: versão do símbolo na seção (padrão: onPrimary) */
+  symbol: {
+    nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[];
+    image?: string; crop?: [number, number, number, number]; grid?: { x: number[]; y: number[] }; variant?: string;
+  };
   /** font "text": a letra gigante e a amostra usam a fonte de textos (ex.: a fonte do logotipo não é a dos títulos) */
   typography: { nav: string; eyebrow: string; title: string; glyphs: string[]; weights: number[]; text: string; spec: { k: string; v: string }[]; sample: string; font?: "text" };
   manifesto: { nav: string; eyebrow: string; headline: string; attributes: { word: string; text: string }[] };

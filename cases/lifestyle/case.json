@@ -1,0 +1,235 @@
+{
+  "slug": "lifestyle",
+  "client": "LifeStyle",
+  "segment": "Psicologia e soluções em gestão de pessoas",
+  "year": "2023",
+  "assets": "/brand/lifestyle",
+
+  "seo": {
+    "title": "LifeStyle — Identidade visual",
+    "description": "Case de identidade visual da LifeStyle, marca de psicologia e soluções em gestão de pessoas: o símbolo modular com a peça fora do quadrado, a tipografia, as cores, o sistema de logo e as aplicações em papelaria e objetos.",
+    "image": "og.png"
+  },
+
+  "theme": {
+    "dark": "#2B0A08",
+    "light": "#F4F0EC",
+    "primary": "#5D140F",
+    "secondary": "#EC6C1D",
+    "support": "#E6E2DF",
+    "accent": "#EC6C1D",
+    "inkOnLight": "#2B0A08",
+    "mutedOnLight": "#6E5A55",
+    "inkOnDark": "#F4F0EC",
+    "mutedOnDark": "#CDB8B1"
+  },
+
+  "font": {
+    "family": "Inter",
+    "fallback": "\"Inter Variable\", system-ui, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "100 900": "fonts/inter-var.woff2"
+    },
+    "preload": [400],
+    "display": { "weight": 800, "tracking": "-0.04em" }
+  },
+
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": { "desktop": ["symbol", "wordmark"], "mobile": ["symbol"], "wordmarkHeight": 20, "dark": "onDark", "light": "positive" },
+    "variants": {
+      "positive":     { "label": "Positivo",             "bg": "#FFFFFF", "symbol-main": "#5D140F", "symbol-accent": "#5D140F", "wordmark": "#5D140F", "wordmark-accent": "#EC6C1D", "tagline": "#EC6C1D" },
+      "negative":     { "label": "Negativo",             "bg": "#5D140F", "symbol-main": "#FFFFFF", "symbol-accent": "#FFFFFF", "wordmark": "#FFFFFF", "wordmark-accent": "#FFFFFF", "tagline": "#FFFFFF" },
+      "onPrimary":    { "label": "Sobre o bordô",        "bg": "#5D140F", "symbol-main": "#FFFFFF", "symbol-accent": "#FFFFFF", "wordmark": "#FFFFFF", "wordmark-accent": "#FFFFFF", "tagline": "#FFFFFF" },
+      "onDark":       { "label": "Bicolor sobre escuro", "bg": "#2B0A08", "symbol-main": "#FFFFFF", "symbol-accent": "#FFFFFF", "wordmark": "#FFFFFF", "wordmark-accent": "#EC6C1D", "tagline": "#EC6C1D" },
+      "concept":      { "label": "Conceito",             "bg": "#2B0A08", "symbol-main": "#FFFFFF", "symbol-accent": "#EC6C1D", "wordmark": "#FFFFFF", "wordmark-accent": "#EC6C1D", "tagline": "#EC6C1D" },
+      "onAccent":     { "label": "Sobre o laranja",      "bg": "#EC6C1D", "symbol-main": "#FFFFFF", "symbol-accent": "#FFFFFF", "wordmark": "#FFFFFF", "wordmark-accent": "#FFFFFF", "tagline": "#FFFFFF" },
+      "maroonOnAccent": { "label": "Bordô sobre laranja", "bg": "#EC6C1D", "symbol-main": "#5D140F", "symbol-accent": "#5D140F", "wordmark": "#5D140F", "wordmark-accent": "#5D140F", "tagline": "#5D140F" }
+    }
+  },
+
+  "intro": {
+    "kicker": "Identidade visual · 2023",
+    "subtitle": "Marca de psicologia e soluções em gestão de pessoas, feita para quem trabalha — ou quer trabalhar — com RH e psicologia e faz disso um estilo de vida.",
+    "scrollHint": "Role para conhecer a marca",
+    "image": "hero-atmosfera",
+    "variant": "onDark"
+  },
+
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "01 — Símbolo",
+    "title": "Uma peça fora do quadrado.",
+    "text": [
+      "O símbolo nasce de uma grade de 3 × 3 módulos: oito deles formam uma moldura com o centro aberto, e o último desce um módulo e sai do lugar. Quando ele sobe, o quadrado se fecha. Esse encaixe entre a pessoa e a estrutura é o trabalho da gestão de pessoas.",
+      "Na marca, a peça fica de fora, em movimento: cada pessoa tem lugar na empresa, mas também caminho próprio. Os cantos arredondados, no alto da moldura e na base da peça, tiram a rigidez do quadrado e voltam no logotipo."
+    ],
+    "pieces": [
+      { "piece": "frame", "label": "Estrutura", "text": "oito módulos e um centro aberto", "shift": 0, "y": 24 },
+      { "piece": "module", "label": "Encaixe", "text": "a peça sobe e fecha o quadrado", "shift": -68.54, "y": 87 }
+    ],
+    "grid": { "x": [0, 68.53, 139.26, 209.9], "y": [8.64, 77.17, 149.99, 218.53, 289.17] },
+    "variant": "concept",
+    "image": "textura-feltro"
+  },
+
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "02 — Tipografia",
+    "title": "Inter",
+    "glyphs": ["L", "S", "e", "f", "ã", "G"],
+    "weights": [300, 400, 500, 600, 700, 800, 900],
+    "text": "O logotipo parte da Inter ExtraBold e ganha detalhes do símbolo: o L, o i, o f e o l herdam o canto arredondado do alto da moldura, e a barra do e termina na mesma curva da base da peça solta. O descritor é a própria Inter, no peso regular. Desenhada para telas, ela fica clara do cartão de visita ao celular, e uma só família cobre toda a comunicação.",
+    "spec": [
+      { "k": "Família", "v": "Inter — Rasmus Andersson" },
+      { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
+      { "k": "Logotipo", "v": "Inter ExtraBold 800, redesenhada" },
+      { "k": "Descritor", "v": "Inter Regular 400, em duas linhas" },
+      { "k": "Títulos e textos", "v": "Inter 300–900 · variável" },
+      { "k": "Alternativas", "v": "Roboto · Helvetica Neue · Arial" }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz Ç ã õ 0123456789"
+  },
+
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "03 — Manifesto",
+    "headline": "Trabalho também é vida. A LifeStyle une psicologia e gestão de pessoas para que empresa e profissional cresçam juntos: com estrutura, e com espaço para cada um se mover.",
+    "attributes": [
+      { "word": "Humana", "text": "Pessoas antes de processos: a psicologia é o ponto de partida de cada solução." },
+      { "word": "Estratégica", "text": "Gestão de pessoas com o método e a seriedade que uma empresa espera." },
+      { "word": "Próxima", "text": "O laranja quente e os cantos arredondados aproximam uma marca corporativa." },
+      { "word": "Movimento", "text": "A peça fora do quadrado: carreira, equipe e empresa sempre em desenvolvimento." }
+    ]
+  },
+
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "04 — Cores",
+    "title": "Bordô que sustenta, laranja que aproxima.",
+    "text": "O bordô assina o símbolo e o Style: é a cor da estrutura, séria e corporativa. O laranja acende o Life e o descritor, a parte calorosa do nome. Em volta deles ficam o branco e a névoa das peças e dois fundos derivados, um bordô quase preto e um papel quente, que deixam as duas cores trabalharem.",
+    "note": "Bordô e laranja vêm do arquivo do logo; branco e névoa, das peças de papelaria; bordô noturno e papel são derivados. O laranja sobre fundo claro (2,75:1) fica para títulos grandes e grafismo, nunca para texto miúdo. CMYK aproximado: confirme no perfil da gráfica.",
+    "swatches": [
+      { "name": "Bordô LifeStyle", "role": "Principal · símbolo e Style", "hex": "#5D140F", "weight": 2.4 },
+      { "name": "Laranja LifeStyle", "role": "Destaque · Life e descritor", "hex": "#EC6C1D", "weight": 2.0 },
+      { "name": "Bordô noturno", "role": "Fundo escuro · textos", "hex": "#2B0A08", "weight": 1.5 },
+      { "name": "Papel", "role": "Fundo claro", "hex": "#F4F0EC", "weight": 1.4 },
+      { "name": "Névoa", "role": "Apoio · grafismo e superfícies", "hex": "#E6E2DF", "weight": 1.3 },
+      { "name": "Branco", "role": "Logo negativo · peças", "hex": "#FFFFFF", "weight": 1.3 }
+    ]
+  },
+
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "05 — Sistema",
+    "title": "Do cartão ao botton, o mesmo quadrado.",
+    "tiles": [
+      { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
+      { "kind": "symbol", "variant": "negative", "size": "tall", "label": "Símbolo" },
+      { "kind": "sizes", "variant": "positive", "size": "sm", "label": "Tamanhos pequenos", "sizes": [48, 32, 24, 16] },
+      { "kind": "lockup", "variant": "onAccent", "size": "sm", "label": "Sobre o laranja" },
+      { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo" },
+      { "kind": "symbol", "variant": "maroonOnAccent", "size": "sm", "label": "Bordô sobre laranja" },
+      { "kind": "lockup", "variant": "onDark", "size": "sm", "label": "Bicolor sobre escuro", "note": "Proposta para fundos escuros: o Life segue em laranja." },
+      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 68.53, "note": "Margem mínima igual a um módulo do símbolo." },
+      { "kind": "icon", "variant": "onDark", "size": "sm", "label": "Ícone e perfil" },
+      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 180, "note": "Com descritor, no mínimo 180 px; abaixo disso, só o símbolo." }
+    ]
+  },
+
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "06 — Aplicações",
+    "title": "Papelaria, objetos e telas.",
+    "text": "A identidade aplicada na papelaria corporativa, em objetos do dia a dia e nas telas, sempre com o bordô e o laranja e um grafismo de formas geométricas. As fotos em preto e branco são o estudo de imagem da marca.",
+    "marquee": "LifeStyle",
+    "marqueeArts": ["wordmark", "symbol"],
+    "items": [
+      { "kind": "photo", "image": "editorial-entrevista", "col": [1, 5], "mobile": 2, "speed": -4 },
+      { "kind": "cutout", "image": "mockup-papelaria", "col": [6, 7], "mobile": 2, "offset": 3, "speed": 3, "tilt": true, "caption": "Papel timbrado, pasta, cartões e copo" },
+      { "kind": "crop", "art": "wordmark", "viewBox": "262 -6 150 160", "variant": "onAccent", "col": [1, 4], "mobile": 1 },
+      { "kind": "cutout", "image": "mockup-cartoes", "col": [5, 4], "mobile": 1, "speed": 4, "tilt": true, "caption": "Cartões de visita" },
+      { "kind": "mosaic", "grid": [4, 4], "col": [9, 4], "mobile": 2, "caption": "Grafismo em código: formas no módulo do símbolo, que giram com a rolagem" },
+      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
+      { "kind": "heading", "col": [1, 7], "mobile": 2, "caption": "Objetos do dia a dia", "text": "Bolsa, xícara, estojo, botton e almofada: o bordô como fundo e o símbolo inteiro ou ampliado até virar estampa." },
+      { "kind": "track", "col": [1, 12], "mobile": 2, "hint": "Deslize para ver mais",
+        "slides": [
+          { "image": "mockup-bolsa", "caption": "Bolsa" },
+          { "image": "mockup-xicara", "caption": "Xícara" },
+          { "image": "mockup-estojo", "caption": "Estojo" },
+          { "image": "mockup-botton", "caption": "Botton" },
+          { "image": "mockup-almofada", "caption": "Almofada" }
+        ] },
+      { "kind": "cutout", "image": "mockup-kit", "col": [2, 10], "mobile": 2, "speed": 2, "tilt": true, "caption": "Caderno, celular, envelope, pasta e cartões" },
+      { "kind": "photo", "image": "editorial-workshop", "col": [1, 7], "mobile": 2, "speed": -3 },
+      { "kind": "pattern", "variant": "negative", "col": [8, 5], "mobile": 2 },
+      { "kind": "cutout", "image": "mockup-digital", "col": [2, 10], "mobile": 2, "speed": 2, "tilt": true, "caption": "Notebook, tablet, carta, envelope e cartão" },
+      { "kind": "photo", "image": "editorial-rotina", "col": [1, 5], "mobile": 1, "speed": 4 },
+      { "kind": "crop", "art": "wordmark", "viewBox": "582 0 192 166", "variant": "negative", "col": [6, 7], "mobile": 1 },
+      { "kind": "mockup", "image": "mockup-recepcao", "col": [1, 12], "mobile": 2, "caption": "Recepção",
+        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.06, "pin": [[34, 26], [66, 26], [66, 52], [34, 52]] }] },
+      { "kind": "photo", "image": "editorial-cafe", "col": [1, 7], "mobile": 2, "speed": -3 },
+      { "kind": "mockup", "image": "mockup-cracha", "col": [8, 5], "mobile": 2, "offset": 4, "caption": "Crachá de evento",
+        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.12, "pin": [[33, 44], [67, 44], [67, 66], [33, 66]] }] }
+    ]
+  },
+
+  "closing": {
+    "phrase": "Espaço para cada um se mover.",
+    "credits": [
+      { "k": "Cliente", "v": "LifeStyle" },
+      { "k": "Segmento", "v": "Psicologia e soluções em gestão de pessoas" },
+      { "k": "Ano", "v": "2023" },
+      { "k": "Serviços", "v": "Logo · paleta · tipografia · papelaria · aplicações" },
+      { "k": "Ferramentas", "v": "Illustrator · Photoshop · InDesign" },
+      { "k": "Design", "v": "Thiago Miedes" }
+    ],
+    "cta": { "text": "Tem uma marca para construir?", "label": "Vamos conversar", "href": "/#contato" },
+    "image": "editorial-movimento"
+  },
+
+  "images": [
+    { "id": "mockup-papelaria", "section": "applications", "w": 908, "h": 799, "essential": true,
+      "alt": "Papel timbrado branco com o logo da LifeStyle, pasta bordô, cartões de visita, caneta, copo com o grafismo e um prendedor laranja" },
+    { "id": "mockup-cartoes", "section": "applications", "w": 595, "h": 619, "essential": true,
+      "alt": "Pilha de cartões de visita bordô com o logo da LifeStyle em branco e o grafismo geométrico em laranja e branco" },
+    { "id": "mockup-bolsa", "section": "applications", "w": 597, "h": 621, "essential": true,
+      "alt": "Bolsa branca com o logo da LifeStyle, faixa laranja na lateral e o grafismo geométrico em bordô e laranja" },
+    { "id": "mockup-xicara", "section": "applications", "w": 749, "h": 649, "essential": true,
+      "alt": "Xícara de café branca com quadrados arredondados em bordô e uma faixa laranja, ao lado de grãos de café" },
+    { "id": "mockup-estojo", "section": "applications", "w": 629, "h": 620, "essential": true,
+      "alt": "Estojo cilíndrico branco com o logo da LifeStyle e formas arredondadas em bordô e laranja" },
+    { "id": "mockup-botton", "section": "applications", "w": 658, "h": 647, "essential": true,
+      "alt": "Botton laranja com o símbolo da LifeStyle em bordô, ao lado do verso metálico" },
+    { "id": "mockup-almofada", "section": "applications", "w": 780, "h": 740, "essential": true,
+      "alt": "Poltrona branca com uma almofada que estampa o símbolo da LifeStyle ampliado, em bordô sobre laranja" },
+    { "id": "mockup-kit", "section": "applications", "w": 1420, "h": 919, "essential": true,
+      "alt": "Caderno e envelope bordô, pasta e cartão laranja, cartões de visita e um celular laranja, todos com o logo da LifeStyle em branco" },
+    { "id": "mockup-digital", "section": "applications", "w": 1405, "h": 930, "essential": true,
+      "alt": "Notebook e tablet com fotos de uma profissional sorrindo e o logo da LifeStyle, ao lado de carta, envelope laranja e cartão com o grafismo" },
+
+    { "id": "hero-atmosfera", "section": "intro", "w": 2400, "h": 1350, "essential": true,
+      "alt": "Luz laranja de fim de tarde atravessando uma persiana e desenhando faixas sobre uma parede bordô de escritório" },
+    { "id": "editorial-entrevista", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Profissional de RH ouvindo uma candidata numa entrevista, vista por cima do ombro, com um currículo sobre a mesa, em preto e branco" },
+    { "id": "editorial-workshop", "mono": true, "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Mãos colando notas adesivas num quadro de vidro durante um workshop de equipe, em preto e branco" },
+    { "id": "editorial-rotina", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Profissional caminhando para o trabalho de manhã, com uma bolsa no ombro e um copo de café, numa calçada com sombras longas, em preto e branco" },
+    { "id": "mockup-recepcao", "section": "applications", "w": 2400, "h": 1200, "essential": false,
+      "alt": "Recepção de escritório com o logo da LifeStyle na parede clara, um banco de madeira e uma planta" },
+    { "id": "editorial-cafe", "mono": true, "section": "applications", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Duas colegas conversando e rindo na copa do escritório, com xícaras na mão, em preto e branco" },
+    { "id": "mockup-cracha", "section": "applications", "w": 1600, "h": 2000, "essential": false,
+      "alt": "Crachá de evento com o logo da LifeStyle pendurado num cordão laranja, sobre fundo bordô" },
+    { "id": "textura-feltro", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Feltro de lã bordô em macro, com fibras iluminadas por uma luz rasante quente" },
+    { "id": "editorial-movimento", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
+      "alt": "Pessoas atravessando o saguão de um prédio comercial em longa exposição, os vultos em movimento, em preto e branco" }
+  ]
+}

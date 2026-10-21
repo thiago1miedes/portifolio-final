@@ -67,6 +67,9 @@
 }
 .bc-eyebrow::before { content: ""; width: 7px; height: 7px; flex: none; background: var(--bc-accent); transform: rotate(45deg); }
 .bc-h2 { font-size: clamp(2.25rem, 5vw, 4.75rem); font-weight: 600; line-height: 1.02; max-width: 15ch; margin-top: 18px; }
+/* font.display no case.json: peso e espaçamento próprios dos títulos (ex.: uma grotesca pesada e fechada) */
+.bc.has-display :is(.bc-h2, .bc-type-name, .bc-attr-word, .bc-group-title, .bc-closing-phrase, .bc-next-title) { font-weight: var(--bc-h-weight, 600); letter-spacing: var(--bc-h-track, -0.01em); }
+.bc.has-display .bc-manifesto-headline { letter-spacing: var(--bc-h-track, -0.015em); }
 .bc-body { font-size: clamp(1.0625rem, 1.3vw, 1.25rem); color: var(--bc-muted); max-width: 52ch; }
 .bc-note { font-size: 0.875rem; color: var(--bc-muted); }
 .bc-section-head { display: grid; gap: 22px; margin-bottom: clamp(40px, 5vw, 72px); }
@@ -258,6 +261,9 @@ html:not(.js) [data-intro-outline] { display: none; }
 .js .bc-crop-svg [data-bc-crop-full] { opacity: 1; }
 .js .bc-crop-outline { opacity: 0; }
 .js .bc-crop-frame { stroke-dasharray: 1; stroke-dashoffset: 1; }
+/* symbol.grid: linhas de construção; sem JS (ou com movimento reduzido) já aparecem desenhadas */
+.bc-symbol-lines line { stroke: var(--bc-muted); stroke-width: 0.7; opacity: 0.45; }
+.js .bc-symbol-lines line { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .bc-symbol-text { display: grid; gap: 22px; align-content: start; }
 .bc-symbol-text .bc-h2 { margin-top: 0; }
 
@@ -456,7 +462,9 @@ html:not(.js) [data-intro-outline] { display: none; }
 
 .bc-pattern { position: relative; height: 100%; min-height: 300px; border-radius: var(--bc-radius); overflow: hidden; background: var(--logo-bg); display: grid; place-items: center; }
 .bc-pattern-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.bc-pattern-mark { position: relative; height: 34%; width: auto; filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45)); }
+/* o símbolo do centro não entra no cálculo da altura: quem manda é a foto ao lado (ou o min-height) */
+.bc-pattern-mark { position: absolute; left: 50%; top: 50%; height: 34%; width: auto; transform: translate(-50%, -50%); filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45)); }
+@media (max-width: 899px) { .bc-pattern { min-height: max(300px, 80vw); } }
 
 .bc-mockup-frame { position: relative; overflow: hidden; border-radius: var(--bc-radius); isolation: isolate; background: color-mix(in srgb, currentColor 6%, transparent); }
 .bc-mockup-frame > .bc-img, .bc-mockup-frame > .bc-ph { position: absolute; inset: 0; height: 100%; aspect-ratio: auto !important; }
@@ -562,6 +570,26 @@ html:not(.js) [data-intro-outline] { display: none; }
 .bc-cutout .bc-img img { object-fit: contain; }
 .bc-cutout .bc-ph { position: absolute; inset: 0; height: 100%; aspect-ratio: auto !important; }
 .bc-cell[data-kind="cutout"] figcaption { text-align: center; }
+
+/* faixa de recortes: rola de lado (dedo, trackpad, sem JS); no desktop com JS ela corre com a rolagem (.is-scrubbed) */
+.bc-track { width: 100vw; margin-left: calc(50% - 50vw); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding-block: 8px 4px; }
+.bc-track::-webkit-scrollbar { display: none; }
+.bc-track-row { display: flex; gap: clamp(16px, 2.4vw, 36px); width: max-content; padding-inline: var(--gutter); }
+.bc-track-item { flex: none; width: min(76vw, 360px); scroll-snap-align: center; }
+@media (min-width: 900px) {
+  .bc-track-item { width: clamp(300px, 27vw, 440px); }
+  .bc-track-item:nth-child(even) { margin-top: clamp(40px, 6vw, 96px); }
+}
+.bc-track-item figcaption { text-align: center; }
+.bc-track.is-scrubbed { overflow: hidden; scroll-snap-type: none; }
+.bc-track-hint { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 16px; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bc-muted); }
+.bc-track-hint i { width: 32px; height: 1px; background: currentColor; transform-origin: 0 50%; animation: bc-swipe 1.8s var(--ease) infinite; }
+@keyframes bc-swipe { 0% { transform: scaleX(0.15); opacity: 1; } 60% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
+.bc-track.is-scrubbed .bc-track-hint { display: none; }
+
+/* mosaico: formas no módulo do símbolo, desenhadas em código */
+.bc-mosaic { position: relative; aspect-ratio: var(--ar); overflow: hidden; border-radius: var(--bc-radius); }
+.bc-mosaic-svg { display: block; width: 100%; height: 100%; }
 
 /* ---------------------------------------------------------------- 7b. site (prints navegáveis) */
 .bc-site { position: relative; padding-block: var(--bc-pad); overflow: clip; }
@@ -706,5 +734,5 @@ html:not(.js) [data-intro-outline] { display: none; }
 .bc-foot a:hover { color: var(--bc-ink-on-dark); }
 
 @media (prefers-reduced-motion: reduce) {
-  .bc-scroll-hint i { animation: none; }
+  .bc-scroll-hint i, .bc-track-hint i { animation: none; }
 }

@@ -275,6 +275,8 @@ export const cases = {
       { id: "sacola", src: "Grasie Kids Store/136.jpg", kind: "image" },
     ],
   },
+  // A página é o case de marca (cases/lifestyle/case.json, só com o logo e os mockups de LifeStyle/Projeto Case);
+  // a capa vem de `npm run brand -- lifestyle thumb`. Rodar `npm run assets -- lifestyle` a sobrescreve.
   lifestyle: {
     thumb: { from: "idv-09" },
     items: [

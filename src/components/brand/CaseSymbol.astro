@@ -1,6 +1,7 @@
 ---
 // 2. Símbolo grande ao lado do conceito; ao rolar, as peças se separam e ganham legenda.
 //    Com symbol.crop, um quadrado recorta o símbolo: dentro fica o módulo do grafismo, fora só o contorno.
+//    Com symbol.grid, as linhas da grade de construção se desenham atrás do símbolo.
 import BrandLogo from "./BrandLogo.astro";
 import BrandImg from "./BrandImg.astro";
 import BrandText from "./BrandText.astro";
@@ -10,10 +11,19 @@ interface Props { data: BrandCaseData }
 const { data } = Astro.props;
 const s = data.symbol;
 const symbol = readSvg(data, "symbol");
-const [, , w, h] = symbol.viewBox;
+const [sx, sy, w, h] = symbol.viewBox;
 const crop = s.crop;
 const clipId = `bc-crop-${data.slug}`;
-const vars = Object.entries(variantVars(data, "onPrimary")).map(([k, v]) => `${k}:${v}`).join(";");
+const variant = s.variant ?? "onPrimary";
+const vars = Object.entries(variantVars(data, variant)).map(([k, v]) => `${k}:${v}`).join(";");
+// as linhas passam um pouco das bordas do símbolo, como numa prancha de construção (menos à direita, onde ficam as legendas)
+const ext = Math.max(w, h) * 0.08;
+const gridLines = s.grid
+  ? [
+      ...s.grid.x.map((x) => ({ x1: x, y1: sy - ext, x2: x, y2: sy + h + ext })),
+      ...s.grid.y.map((y) => ({ x1: sx - ext, y1: y, x2: sx + w + ext * 0.3, y2: y })),
+    ]
+  : [];
 ---
 <section class="bc-symbol" id="simbolo" data-theme="dark" data-bc-section data-bc-symbol>
   <div class="bc-sticky">
@@ -38,8 +48,22 @@ const vars = Object.entries(variantVars(data, "onPrimary")).map(([k, v]) => `${k
               <g clip-path={`url(#${clipId})`} aria-hidden="true" set:html={symbol.inner} />
               <rect class="bc-crop-frame" data-bc-crop-frame x={crop[0]} y={crop[1]} width={crop[2]} height={crop[3]} pathLength="1" />
             </svg>
+          ) : gridLines.length ? (
+            <svg
+              class="bc-logo bc-symbol-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox={symbol.viewBox.join(" ")}
+              style={vars}
+              role="img"
+              aria-label={`${symbol.label}, sobre a grade de construção`}
+            >
+              <g class="bc-symbol-lines" aria-hidden="true">
+                {gridLines.map((l, i) => <line {...l} pathLength="1" data-bc-grid-line data-index={i} />)}
+              </g>
+              <g set:html={symbol.inner} />
+            </svg>
           ) : (
-            <BrandLogo data={data} art="symbol" variant="onPrimary" class="bc-symbol-svg" />
+            <BrandLogo data={data} art="symbol" variant={variant} class="bc-symbol-svg" />
           )}
           {s.pieces.map((p, i) => (
             <p class="bc-piece-label" data-piece-label={p.piece} data-shift={p.shift} data-index={i} style={`--y0:${p.y};--y1:${+(p.y + (p.shift / h) * 100).toFixed(2)}`}>

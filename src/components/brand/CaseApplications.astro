@@ -26,6 +26,45 @@ const ratio = (it: AppItem) => {
 };
 const loops = Array.from({ length: 4 });
 const marqueeArts = a.marqueeArts ?? ["wordmark", "symbol"];
+const slides = (it: AppItem) => (it.slides ?? []).filter((s) => imageVisible(imageInfo(data, s.image)));
+
+// mosaic: formas no módulo de 100 × 100, sorteadas com semente fixa (a mesma em toda build)
+const SHAPES: Record<string, string> = {
+  block: '<rect width="100" height="100"/>',
+  corner: '<path d="M0 0H100V100H50A50 50 0 0 1 0 50Z"/>',
+  quarter: '<path d="M0 0H100A100 100 0 0 1 0 100Z"/>',
+  half: '<path d="M0 100A50 50 0 0 1 100 100Z"/>',
+  leaf: '<path d="M0 100V50A50 50 0 0 1 50 0H100V50A50 50 0 0 1 50 100Z"/>',
+  circle: '<circle cx="50" cy="50" r="38"/>',
+  ring: '<path fill-rule="evenodd" d="M50 12a38 38 0 1 0 0 76a38 38 0 1 0 0-76ZM50 34a16 16 0 1 1 0 32a16 16 0 1 1 0-32Z"/>',
+  frame: '<path fill-rule="evenodd" d="M0 0H100V100H0ZM33 33V67H67V33Z"/>',
+  dots: '<circle cx="50" cy="22" r="9"/><circle cx="50" cy="50" r="9"/><circle cx="50" cy="78" r="9"/>',
+};
+const t = data.theme;
+const PAIRS: [string, string][] = [
+  [t.primary, t.accent], [t.accent, t.primary], [t.primary, t.support], [t.support, t.primary],
+  [t.accent, t.support], [t.support, t.accent], [t.dark, t.accent], [t.primary, t.light],
+];
+function mosaic(it: AppItem) {
+  let seed = [...`${data.slug}:${it.col.join(",")}`].reduce((acc, ch) => (acc * 31 + ch.charCodeAt(0)) >>> 0, 7);
+  const rand = () => { // mulberry32
+    seed = (seed + 0x6d2b79f5) >>> 0;
+    let x = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x;
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+  };
+  const pick = <T,>(list: T[]) => list[Math.floor(rand() * list.length)];
+  const [cols, rows] = it.grid ?? [4, 4];
+  const names = Object.keys(SHAPES);
+  const cells = Array.from({ length: cols * rows }, (_, i) => {
+    const [bg, fg] = pick(PAIRS);
+    return {
+      x: (i % cols) * 100, y: Math.floor(i / cols) * 100, bg, fg, shape: SHAPES[pick(names)],
+      angle: Math.floor(rand() * 4) * 90, turn: rand() < 0.5 ? -1 : 1, phase: +rand().toFixed(3),
+    };
+  });
+  return { cols, rows, cells, clip: `bc-mosaic-${data.slug}-${it.col.join("-")}` };
+}
 ---
 <section class="bc-apps" id="aplicacoes" data-theme="light" data-bc-section>
   <div class="container bc-section-head bc-section-head--split">
@@ -51,11 +90,59 @@ const marqueeArts = a.marqueeArts ?? ["wordmark", "symbol"];
         {it.kind === "cutout" && (
           <figure data-bc-reveal>
             <div class="bc-cutout" style={ratio(it)} data-speed={it.speed ?? 3}>
-              <BrandImg data={data} id={it.image!} sizes="(min-width: 900px) 40vw, 100vw" />
+              {it.tilt
+                ? <BrandImg data={data} id={it.image!} sizes={it.col[1] > 6 ? "(min-width: 900px) 70vw, 100vw" : "(min-width: 900px) 40vw, 100vw"} data-bc-tilt />
+                : <BrandImg data={data} id={it.image!} sizes="(min-width: 900px) 40vw, 100vw" />}
             </div>
             {it.caption && <figcaption><BrandText text={it.caption} /></figcaption>}
           </figure>
         )}
+
+        {it.kind === "track" && (
+          <div class="bc-track" data-bc-track>
+            <ul class="bc-track-row" role="list" data-bc-track-row>
+              {slides(it).map((s, i) => (
+                <li class="bc-track-item" data-index={i}>
+                  <figure>
+                    <div class="bc-cutout" style={`--ar:${imageInfo(data, s.image).w}/${imageInfo(data, s.image).h}`}>
+                      <BrandImg data={data} id={s.image} sizes="(min-width: 900px) 30vw, 76vw" data-bc-tilt />
+                    </div>
+                    {s.caption && <figcaption><BrandText text={s.caption} /></figcaption>}
+                  </figure>
+                </li>
+              ))}
+            </ul>
+            {it.hint && <p class="bc-track-hint" aria-hidden="true"><span>{it.hint}</span><i></i></p>}
+          </div>
+        )}
+
+        {it.kind === "mosaic" && (() => {
+          const m = mosaic(it);
+          return (
+            <figure data-bc-reveal>
+              <div class="bc-mosaic" style={`--ar:${m.cols}/${m.rows}`}>
+                <svg class="bc-mosaic-svg" viewBox={`0 0 ${m.cols * 100} ${m.rows * 100}`} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-bc-mosaic>
+                  <defs><clipPath id={m.clip}><rect width="100" height="100" /></clipPath></defs>
+                  {m.cells.map((c, i) => (
+                    <g transform={`translate(${c.x} ${c.y})`}>
+                      {/* o fundo passa meio ponto da célula: sem frestas de antisserrilhado entre vizinhas */}
+                      <rect x="-0.5" y="-0.5" width="101" height="101" fill={c.bg} />
+                      <g clip-path={`url(#${m.clip})`}>
+                        <g data-bc-mosaic-shape data-index={i} data-turn={c.turn} data-phase={c.phase}>
+                          <g transform={`rotate(${c.angle} 50 50)`} fill={c.fg}>
+                            <rect width="100" height="100" fill="none" />
+                            <Fragment set:html={c.shape} />
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  ))}
+                </svg>
+              </div>
+              {it.caption && <figcaption><BrandText text={it.caption} /></figcaption>}
+            </figure>
+          );
+        })()}
 
         {it.kind === "heading" && (
           <div class="bc-group" data-bc-reveal>

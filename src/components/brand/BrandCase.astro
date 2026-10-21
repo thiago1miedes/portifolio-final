@@ -35,6 +35,8 @@ const rootVars = {
   "--bc-muted-on-dark": t.mutedOnDark,
   "--bc-font": `"${data.font.family}", ${data.font.fallback}`,
   ...(data.font.text && { "--bc-font-text": `"${data.font.text.family}", ${data.font.text.fallback}` }),
+  ...(data.font.display?.weight && { "--bc-h-weight": String(data.font.display.weight) }),
+  ...(data.font.display?.tracking && { "--bc-h-track": data.font.display.tracking }),
   ...variantVars(data, "positive"),
 };
 const style = Object.entries(rootVars).map(([k, v]) => `${k}:${v}`).join(";");
@@ -65,7 +67,7 @@ const sections = [
     <style set:html={fontFaceCss(data)}></style>
   </Fragment>
 
-  <div class="bc" style={style} data-brand-case={data.slug}>
+  <div class:list={["bc", { "has-display": data.font.display }]} style={style} data-brand-case={data.slug}>
     {defs && (
       <svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false" set:html={`<defs>${defs}</defs>`} />
     )}
