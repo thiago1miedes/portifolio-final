@@ -5,7 +5,7 @@ const visible = 3;
 <section class="section about" id="sobre">
   <div class="container about-grid">
     <figure class="about-portrait" data-reveal>
-      <img src="/about/thiago-cutout.webp" width="612" height="984" alt="Retrato de Thiago Miedes sobre fundo laranja" loading="lazy" decoding="async" data-portrait />
+      <img src="/about/thiago.webp" width="900" height="1126" alt="Retrato de Thiago Miedes de braços cruzados diante de um mural grafitado" loading="lazy" decoding="async" data-portrait />
       <figcaption class="about-caption">
         <span>{site.name}</span>
         <span>{site.city}</span>
@@ -47,39 +47,30 @@ const visible = 3;
     .about-portrait { position: sticky; top: 110px; }
   }
 
-  /* retrato com fundo laranja sólido */
+  /* retrato (foto real) */
   .about-portrait {
     position: relative;
     aspect-ratio: 4 / 5;
     border-radius: var(--radius-lg);
-    background: var(--accent);
+    background: var(--bg-elev);
     overflow: hidden;
     isolation: isolate;
   }
-  .about-portrait::before {
-    content: "";
-    position: absolute;
-    inset: auto -20% -30% -20%;
-    height: 70%;
-    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.28), transparent);
-    z-index: -1;
-  }
-  .about-portrait img {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 74%;
-    transform: translateX(-50%);
-    filter: drop-shadow(0 24px 40px rgba(10, 10, 11, 0.35));
-  }
+  .about-portrait img { position: absolute; left: 0; top: -4%; width: 100%; height: 108%; object-fit: cover; }
   .about-caption {
     position: absolute;
-    left: 16px; right: 16px; top: 16px;
+    left: 16px; right: 16px; bottom: 16px;
     display: flex; justify-content: space-between; gap: 12px;
+    padding: 12px 18px;
+    border-radius: var(--radius-pill);
+    background: rgba(10, 10, 11, 0.62);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 0.875rem;
-    color: var(--on-accent);
+    color: var(--text);
   }
 
   .about-content { display: grid; gap: 28px; }
