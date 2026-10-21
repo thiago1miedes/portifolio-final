@@ -551,7 +551,7 @@ const list: CaseData[] = [
     slug: "rock-ensina",
     title: "Rock Ensina",
     client: "Rock Ensina",
-    sector: "Educação · carreira",
+    sector: "Educação · escola de negócios",
     year: "2024",
     cats: ["brand", "social"],
     accent: "#F5C400",

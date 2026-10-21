@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.02 240.02" width="240" height="240" overflow="hidden">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e8ecf2;
+      }
+
+      .cls-2 {
+        fill: #fcba04;
+      }
+
+      .cls-3 {
+        fill: #1e233c;
+      }
+    </style>
+  </defs>
+  <g id="Camada_1-2">
+    <g>
+      <rect class="cls-2" width="240.02" height="240.02"/>
+      <rect class="cls-3" x="48" y="0" width="144.01" height="120.01"/>
+      <path class="cls-1" d="M48,120.01l72.13,96.01,71.88-96.01s-24-24-72.13-24-71.88,24-71.88,24"/>
+      <path class="cls-3" d="M120.13,216.02l31.43-41.98c-7.75-3.24-18.29-6.03-31.63-6.03s-23.66,2.76-31.37,5.97l31.58,42.03Z"/>
+      <path class="cls-3" d="M120.01,216.02c0,4.42,3.58,8,8,8h112.01v-16h-112.01c-4.42,0-8,3.58-8,8"/>
+    </g>
+  </g>
+</svg>

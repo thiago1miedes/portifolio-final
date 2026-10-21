@@ -10,10 +10,10 @@ const desktop = nav.desktop ?? ["symbol", "wordmark"];
 const mobile = nav.mobile ?? ["symbol"];
 const arts = [...new Set([...desktop, ...mobile])];
 // logo.nav.dark / light: cores de uma variante do case.json sobre as seções escuras / claras
-const parts = ["symbol-main", "symbol-accent", "wordmark", "wordmark-accent"] as const;
+const parts = ["symbol-main", "symbol-accent", "symbol-3", "symbol-4", "wordmark", "wordmark-accent"] as const;
 const themeVars = (["dark", "light"] as const).flatMap((theme) => {
   const v = nav[theme] ? data.logo.variants[nav[theme]!] : undefined;
-  return v ? parts.map((p) => `--nav-${theme}-${p}:${v[p] ?? v.wordmark}`) : [];
+  return v ? parts.map((p) => `--nav-${theme}-${p}:${v[p] ?? (p.startsWith("symbol") ? v["symbol-accent"] : v.wordmark)}`) : [];
 });
 const style = [nav.wordmarkHeight && `--nav-wordmark-h:${nav.wordmarkHeight}px`, ...themeVars].filter(Boolean).join(";");
 ---

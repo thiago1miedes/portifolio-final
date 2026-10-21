@@ -22,6 +22,7 @@ const start = t.weights.includes(700) ? 700 : t.weights[t.weights.length - 1];
   data-glyphs={t.glyphs.join(",")}
   data-weights={t.weights.join(",")}
   data-weight-names={names.join(",")}
+  style={t.font === "text" ? "--bc-type-font:var(--bc-font-text, var(--bc-font))" : undefined}
 >
   <div class="bc-sticky">
     <div class="container bc-type-grid">

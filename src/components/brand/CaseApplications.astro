@@ -6,7 +6,8 @@ import BrandLogo from "./BrandLogo.astro";
 import BrandText from "./BrandText.astro";
 import CaseMockup from "./CaseMockup.astro";
 import CaseApp from "./CaseApp.astro";
-import { imageInfo, imageVisible, readSvg, variantVars, type AppItem, type BrandCaseData } from "../../data/brand-cases";
+import CaseFeed from "./CaseFeed.astro";
+import { assetUrl, imageInfo, imageVisible, plain, readSvg, variantVars, type AppItem, type BrandCaseData } from "../../data/brand-cases";
 
 interface Props { data: BrandCaseData }
 const { data } = Astro.props;
@@ -49,6 +50,34 @@ const marqueeArts = a.marqueeArts ?? ["wordmark", "symbol"];
           <figure data-bc-reveal>
             <div class="bc-cutout" style={ratio(it)} data-speed={it.speed ?? 3}>
               <BrandImg data={data} id={it.image!} sizes="(min-width: 900px) 40vw, 100vw" />
+            </div>
+            {it.caption && <figcaption><BrandText text={it.caption} /></figcaption>}
+          </figure>
+        )}
+
+        {it.kind === "piece" && (
+          <figure data-bc-reveal>
+            {it.frame === "phone" ? (
+              <div class="bc-piece-phone" data-speed={it.speed ?? 3}>
+                <div class="bc-phone bc-phone--media">
+                  <div class="bc-phone-screen bc-phone-media"><BrandImg data={data} id={it.image!} sizes="(min-width: 900px) 280px, 45vw" /></div>
+                </div>
+              </div>
+            ) : (
+              <div class="bc-piece" style={ratio(it)} data-speed={it.speed ?? 3}>
+                <BrandImg data={data} id={it.image!} sizes={it.col[1] > 6 ? "(min-width: 900px) 60vw, 100vw" : "(min-width: 900px) 34vw, 50vw"} />
+              </div>
+            )}
+            {it.caption && <figcaption><BrandText text={it.caption} /></figcaption>}
+          </figure>
+        )}
+
+        {it.kind === "feed" && <CaseFeed data={data} item={it} />}
+
+        {it.kind === "graphic" && (
+          <figure data-bc-reveal>
+            <div class="bc-graphic" style={`--ar:${it.w}/${it.h}`} data-speed={it.speed ?? 2}>
+              <img src={assetUrl(data, it.src!)} width={it.w} height={it.h} alt={plain(it.alt)} loading="lazy" decoding="async" />
             </div>
             {it.caption && <figcaption><BrandText text={it.caption} /></figcaption>}
           </figure>

@@ -1,0 +1,39 @@
+---
+// Perfil de rede social feito em código (sem IA): celular com cabeçalho, destaques e a grade de posts reais.
+import BrandImg from "./BrandImg.astro";
+import BrandLogo from "./BrandLogo.astro";
+import BrandText from "./BrandText.astro";
+import { assetUrl, plain, type AppItem, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData; item: AppItem }
+const { data, item } = Astro.props;
+const profile = item.profile!;
+---
+<figure class="bc-feed">
+  <div class="bc-feed-stage">
+    <div class="bc-phone bc-phone--feed" data-speed={item.speed ?? 3}>
+      <div class="bc-phone-screen bc-feed-screen" role="img" aria-label={plain(profile.alt)}>
+        <div class="bc-app-status" aria-hidden="true"><span>9:41</span><span class="bc-app-dots"><i></i><i></i><i></i></span></div>
+        <div class="bc-feed-head" aria-hidden="true">
+          <span class="bc-feed-avatar"><BrandLogo data={data} art="symbol" variant={item.variant} decorative /></span>
+          <span class="bc-feed-who">
+            <strong>{profile.name}</strong>
+            <span>{profile.bio}</span>
+          </span>
+        </div>
+        <span class="bc-feed-action" aria-hidden="true">{profile.action}</span>
+        {profile.highlights && (
+          <ul class="bc-feed-highlights" aria-hidden="true">
+            {profile.highlights.map((hl) => (
+              <li><span><img src={assetUrl(data, hl.src)} width="240" height="240" alt="" loading="lazy" decoding="async" /></span><small>{hl.label}</small></li>
+            ))}
+          </ul>
+        )}
+        <div class="bc-feed-grid" aria-hidden="true">
+          {(item.images ?? []).map((id) => <BrandImg data={data} id={id} sizes="(min-width: 900px) 120px, 30vw" decorative />)}
+        </div>
+      </div>
+    </div>
+  </div>
+  {item.caption && <figcaption><BrandText text={item.caption} /></figcaption>}
+</figure>

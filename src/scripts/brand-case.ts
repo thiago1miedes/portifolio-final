@@ -25,6 +25,7 @@ if (root) {
       reveals(root);
       intro(root);
       symbolPieces(root);
+      graphics(root);
       typeMorph(root);
       manifestoTurn(root);
       colorBlocks(root);
@@ -168,17 +169,50 @@ function symbolPieces(root: HTMLElement) {
   const section = $("[data-bc-symbol]", root);
   if (!section) return;
   const labels = $$("[data-piece-label]", section);
+  // symbol.crop: o quadrado se desenha, o resto do símbolo vira contorno e fica só o módulo
+  const frame = $("[data-bc-crop-frame]", section);
+  const full = $("[data-bc-crop-full]", section);
+  const outline = $("[data-bc-crop-outline]", section);
   gsap.matchMedia().add({ desktop: DESKTOP, mobile: MOBILE }, (ctx) => {
     const desktop = ctx.conditions?.desktop;
     const tl = gsap.timeline({
       scrollTrigger: { trigger: section, start: desktop ? "top top" : "top 70%", end: desktop ? "bottom bottom" : "bottom 70%", scrub: 0.6 },
     });
+    if (frame && full && outline) {
+      tl.fromTo(frame, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0.15)
+        .fromTo(full, { opacity: 1 }, { opacity: 0, duration: 0.6, ease: "none" }, 0.75)
+        .fromTo(outline, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "none" }, 0.75);
+    }
     labels.forEach((label, i) => {
       const piece = $(`[data-piece="${label.dataset.pieceLabel}"]`, section);
       if (piece) tl.fromTo(piece, { y: 0 }, { y: Number(label.dataset.shift) || 0, duration: 1, ease: "power2.inOut" }, 0);
       tl.fromTo(label, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.45 + i * 0.15);
     });
     tl.to({}, { duration: 0.6 });
+  });
+}
+
+/* ------------------------------------------------------------------ 2b. grafismo: pictogramas entram e o padrão corre de lado */
+function graphics(root: HTMLElement) {
+  const section = $("[data-bc-graphics]", root);
+  if (!section) return;
+  const pictos = $$("[data-bc-picto]", section);
+  gsap.set(pictos, { y: 48 });
+  ScrollTrigger.batch(pictos, {
+    start: "top 90%",
+    onEnter: (batch) => {
+      gsap.to(batch, { opacity: 1, y: 0, duration: 1, ease: "expo.out", stagger: 0.09, overwrite: true });
+      gsap.fromTo(batch.map((el) => $("img", el)), { scale: 1.4, rotate: (i) => (i % 2 ? 8 : -8) }, { scale: 1, rotate: 0, duration: 1.2, ease: "expo.out", stagger: 0.09 });
+    },
+  });
+
+  const track = $("[data-bc-patterns-track]", section);
+  const row = track && $("[data-bc-patterns-row]", track);
+  if (!track || !row) return;
+  gsap.fromTo(row, { x: 0 }, {
+    x: () => Math.min(0, track.clientWidth - row.scrollWidth),
+    ease: "none",
+    scrollTrigger: { trigger: track, start: "top bottom", end: "bottom top", scrub: 0.4, invalidateOnRefresh: true },
   });
 }
 

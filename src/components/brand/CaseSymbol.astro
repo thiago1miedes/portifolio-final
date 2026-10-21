@@ -1,14 +1,19 @@
 ---
 // 2. Símbolo grande ao lado do conceito; ao rolar, as peças se separam e ganham legenda.
+//    Com symbol.crop, um quadrado recorta o símbolo: dentro fica o módulo do grafismo, fora só o contorno.
 import BrandLogo from "./BrandLogo.astro";
 import BrandImg from "./BrandImg.astro";
 import BrandText from "./BrandText.astro";
-import { readSvg, type BrandCaseData } from "../../data/brand-cases";
+import { readSvg, variantVars, type BrandCaseData } from "../../data/brand-cases";
 
 interface Props { data: BrandCaseData }
 const { data } = Astro.props;
 const s = data.symbol;
-const [, , w, h] = readSvg(data, "symbol").viewBox;
+const symbol = readSvg(data, "symbol");
+const [, , w, h] = symbol.viewBox;
+const crop = s.crop;
+const clipId = `bc-crop-${data.slug}`;
+const vars = Object.entries(variantVars(data, "onPrimary")).map(([k, v]) => `${k}:${v}`).join(";");
 ---
 <section class="bc-symbol" id="simbolo" data-theme="dark" data-bc-section data-bc-symbol>
   <div class="bc-sticky">
@@ -16,7 +21,26 @@ const [, , w, h] = readSvg(data, "symbol").viewBox;
     <div class="container bc-symbol-grid">
       <div class="bc-symbol-art">
         <div class="bc-symbol-stage" style={`aspect-ratio:${w}/${h};--sym-ratio:${(w / h).toFixed(4)}`}>
-          <BrandLogo data={data} art="symbol" variant="onPrimary" class="bc-symbol-svg" />
+          {crop ? (
+            <svg
+              class="bc-logo bc-symbol-svg bc-crop-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox={symbol.viewBox.join(" ")}
+              style={vars}
+              role="img"
+              aria-label={`${symbol.label}, recortado por um quadrado que vira o módulo do grafismo`}
+            >
+              <defs>
+                <clipPath id={clipId}><rect x={crop[0]} y={crop[1]} width={crop[2]} height={crop[3]} /></clipPath>
+              </defs>
+              <g data-bc-crop-full set:html={symbol.inner} />
+              <g class="bc-crop-outline" data-bc-crop-outline aria-hidden="true" set:html={readSvg(data, "outline").inner} />
+              <g clip-path={`url(#${clipId})`} aria-hidden="true" set:html={symbol.inner} />
+              <rect class="bc-crop-frame" data-bc-crop-frame x={crop[0]} y={crop[1]} width={crop[2]} height={crop[3]} pathLength="1" />
+            </svg>
+          ) : (
+            <BrandLogo data={data} art="symbol" variant="onPrimary" class="bc-symbol-svg" />
+          )}
           {s.pieces.map((p, i) => (
             <p class="bc-piece-label" data-piece-label={p.piece} data-shift={p.shift} data-index={i} style={`--y0:${p.y};--y1:${+(p.y + (p.shift / h) * 100).toFixed(2)}`}>
               <b>{p.label}</b>

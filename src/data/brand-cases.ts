@@ -4,22 +4,40 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-/** wordmark-accent: parte do logotipo em outra cor (ex.: "Easy" verde + "Work" azul); sem ela, segue o wordmark */
-export type LogoPart = "symbol-main" | "symbol-accent" | "wordmark" | "wordmark-accent" | "tagline";
+/** wordmark-accent: parte do logotipo em outra cor (ex.: "Easy" verde + "Work" azul); sem ela, segue o wordmark.
+ *  symbol-3 / symbol-4: terceira e quarta cor de um símbolo multicolorido (ex.: as barras da Rock Ensina); sem elas, seguem o symbol-accent. */
+export type LogoPart = "symbol-main" | "symbol-accent" | "symbol-3" | "symbol-4" | "wordmark" | "wordmark-accent" | "tagline";
 export type LogoArt = "lockup" | "symbol" | "outline" | "wordmark" | "tagline";
-export type Variant = Record<Exclude<LogoPart, "wordmark-accent">, string> & { "wordmark-accent"?: string; label: string; bg: string };
+type OptionalPart = "wordmark-accent" | "symbol-3" | "symbol-4";
+export type Variant = Record<Exclude<LogoPart, OptionalPart>, string> & Partial<Record<OptionalPart, string>> & { label: string; bg: string };
 type Pin = [number, number][];
 
 export interface BrandImage { id: string; section: string; w: number; h: number; alt: string; essential?: boolean; mono?: boolean }
 export interface Overlay { art: LogoArt; variant: string; blend?: string; inset?: number; pin: Pin }
 export interface AppItem {
-  /** cutout: PNG recortado (fundo transparente), mostrado inteiro e sem moldura */
-  kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern" | "cutout";
+  /** cutout: PNG recortado (fundo transparente), mostrado inteiro e sem moldura
+   *  piece: peça real (post, capa, key visual) inteira, sem corte; com frame "phone", dentro de um celular
+   *  feed: celular com um perfil de rede social montado em código, com as imagens de `images` na grade
+   *  graphic: arquivo vetorial do grafismo (src em public/<assets>/), sem passar pela IA */
+  kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern" | "cutout" | "piece" | "feed" | "graphic";
   image?: string; col: [number, number]; mobile: 1 | 2; offset?: number; speed?: number; caption?: string;
   art?: LogoArt; viewBox?: string; variant?: string; overlays?: Overlay[];
   /** app: partes do logo no topo da tela (padrão: símbolo + logotipo) */
   head?: LogoArt[];
   screen?: { alt?: string; greeting: string; cards: { label: string; title: string; meta: string }[]; progress: { label: string; value: number } };
+  frame?: "phone";
+  /** feed: ids de images[] na grade (3 por linha) e o cabeçalho do perfil; destaques usam arquivos do grafismo */
+  images?: string[];
+  profile?: { name: string; bio: string; alt: string; action: string; highlights?: { label: string; src: string }[] };
+  /** graphic: caminho em public/<assets>/ e tamanho natural */
+  src?: string; w?: number; h?: number; alt?: string;
+}
+/** Seção opcional de grafismo: pictogramas em grade e padrões numa faixa que corre com a rolagem. */
+export interface GraphicsSection {
+  nav: string; eyebrow: string; title: string; text: string;
+  items: { src: string; label: string; alt: string }[];
+  patterns?: { src: string; w: number; h: number; alt: string }[];
+  patternsNote?: string;
 }
 export interface SystemTile {
   kind: "lockup" | "symbol" | "sizes" | "clearspace" | "icon" | "minimum"; variant: string; size: "lg" | "tall" | "wide" | "sm"; label: string; note?: string; sizes?: number[];
@@ -55,7 +73,8 @@ export interface BrandCaseData {
   theme: { dark: string; light: string; primary: string; secondary: string; support: string; accent: string; inkOnLight: string; mutedOnLight: string; inkOnDark: string; mutedOnDark: string };
   /** fonte da marca (títulos); `text` é a fonte opcional de textos e interface */
   font: FontFiles & { preload: number[]; text?: FontFiles };
-  logo: Record<LogoArt, string> & {
+  /** tagline é opcional: logos sem descritor não precisam do arquivo */
+  logo: Record<Exclude<LogoArt, "tagline">, string> & { tagline?: string } & {
     variants: Record<string, Variant>;
     /** partes do logo na navegação (padrão: desktop símbolo + logotipo, celular só o símbolo);
      *  dark/light: variante usada sobre seções escuras/claras (padrão: cores do tema) */
@@ -63,8 +82,10 @@ export interface BrandCaseData {
   };
   /** variant: versão do logo na abertura (padrão: negative) */
   intro: { kicker: string; subtitle: string; scrollHint: string; image?: string; variant?: string };
-  symbol: { nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[]; image?: string };
-  typography: { nav: string; eyebrow: string; title: string; glyphs: string[]; weights: number[]; text: string; spec: { k: string; v: string }[]; sample: string };
+  /** crop: quadrado [x, y, lado, lado] em unidades do símbolo; ao rolar, ele recorta o símbolo e mostra o módulo do grafismo */
+  symbol: { nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[]; image?: string; crop?: [number, number, number, number] };
+  /** font "text": a letra gigante e a amostra usam a fonte de textos (ex.: a fonte do logotipo não é a dos títulos) */
+  typography: { nav: string; eyebrow: string; title: string; glyphs: string[]; weights: number[]; text: string; spec: { k: string; v: string }[]; sample: string; font?: "text" };
   manifesto: { nav: string; eyebrow: string; headline: string; attributes: { word: string; text: string }[] };
   /** swatches[].cmyk: valor oficial da marca, quando existe (senão é calculado e aproximado) */
   colors: { nav: string; eyebrow: string; title: string; text: string; note: string; swatches: { name: string; role: string; hex: string; weight: number; cmyk?: string }[] };
@@ -73,6 +94,8 @@ export interface BrandCaseData {
   applications: { nav: string; eyebrow: string; title: string; text: string; marquee: string; marqueeArts?: LogoArt[]; items: AppItem[] };
   /** opcional: o site do cliente, com as páginas navegáveis */
   site?: SiteSection;
+  /** opcional: pictogramas e padrões, logo depois do símbolo */
+  graphics?: GraphicsSection;
   closing: { phrase: string; credits: { k: string; v: string }[]; cta: { text: string; label: string; href: string }; image?: string };
   images: BrandImage[];
 }
@@ -138,7 +161,9 @@ export const imageVisible = (info: ImageInfo) => info.exists || !!info.essential
 interface SvgFile { viewBox: [number, number, number, number]; inner: string; label: string }
 const svgCache = new Map<string, SvgFile>();
 export function readSvg(c: BrandCaseData, art: LogoArt): SvgFile {
-  const file = publicPath(c, c.logo[art]);
+  const rel = c.logo[art];
+  if (!rel) throw new Error(`[brand-case] ${c.slug}: logo.${art} não está no case.json`);
+  const file = publicPath(c, rel);
   const key = `${file}:${fs.statSync(file).mtimeMs}`;
   if (!svgCache.has(key)) {
     const raw = fs.readFileSync(file, "utf8");
@@ -158,6 +183,8 @@ export function variantVars(c: BrandCaseData, name?: string) {
     "--logo-bg": v.bg,
     "--logo-symbol-main": v["symbol-main"],
     "--logo-symbol-accent": v["symbol-accent"],
+    "--logo-symbol-3": v["symbol-3"] ?? v["symbol-accent"],
+    "--logo-symbol-4": v["symbol-4"] ?? v["symbol-accent"],
     "--logo-wordmark": v.wordmark,
     // sempre definida: senão herdaria a cor da variante de fora
     "--logo-wordmark-accent": v["wordmark-accent"] ?? v.wordmark,

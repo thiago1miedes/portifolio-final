@@ -35,6 +35,8 @@
 .bc-logo { display: block; overflow: visible; }
 .bc-logo [data-part="symbol-main"] { fill: var(--logo-symbol-main); }
 .bc-logo [data-part="symbol-accent"] { fill: var(--logo-symbol-accent); }
+.bc-logo [data-part="symbol-3"] { fill: var(--logo-symbol-3, var(--logo-symbol-accent)); }
+.bc-logo [data-part="symbol-4"] { fill: var(--logo-symbol-4, var(--logo-symbol-accent)); }
 .bc-logo [data-part="wordmark"] { fill: var(--logo-wordmark); }
 .bc-logo [data-part="wordmark-accent"] { fill: var(--logo-wordmark-accent, var(--logo-wordmark)); }
 .bc-logo [data-part="tagline"] { fill: var(--logo-tagline); }
@@ -127,6 +129,8 @@
   --nav-bg: var(--bc-dark); --nav-line: rgba(255, 255, 255, 0.08);
   --logo-symbol-main: var(--nav-dark-symbol-main, var(--bc-ink-on-dark));
   --logo-symbol-accent: var(--nav-dark-symbol-accent, var(--bc-support));
+  --logo-symbol-3: var(--nav-dark-symbol-3, var(--logo-symbol-accent));
+  --logo-symbol-4: var(--nav-dark-symbol-4, var(--logo-symbol-accent));
   --logo-wordmark: var(--nav-dark-wordmark, var(--bc-ink-on-dark));
   --logo-wordmark-accent: var(--nav-dark-wordmark-accent, var(--logo-wordmark));
 }
@@ -135,12 +139,15 @@
   --nav-bg: var(--bc-light); --nav-line: rgba(15, 28, 46, 0.08);
   --logo-symbol-main: var(--nav-light-symbol-main, var(--bc-primary));
   --logo-symbol-accent: var(--nav-light-symbol-accent, var(--bc-secondary));
+  --logo-symbol-3: var(--nav-light-symbol-3, var(--logo-symbol-accent));
+  --logo-symbol-4: var(--nav-light-symbol-4, var(--logo-symbol-accent));
   --logo-wordmark: var(--nav-light-wordmark, var(--bc-primary));
   --logo-wordmark-accent: var(--nav-light-wordmark-accent, var(--logo-wordmark));
 }
 .bc-nav-logo { flex: none; display: flex; align-items: center; gap: 10px; }
 .bc-nav-symbol { height: 28px; width: auto; }
 .bc-nav-wordmark { height: var(--nav-wordmark-h, 13px); width: auto; }
+.bc-nav-lockup { height: 26px; width: auto; } /* logo.nav com "lockup": as proporções exatas do arquivo */
 .bc-nav-links {
   flex: 1 1 auto; min-width: 0;
   display: flex; gap: 2px; justify-content: flex-end;
@@ -243,11 +250,39 @@ html:not(.js) [data-intro-outline] { display: none; }
 .bc-piece-label::before { content: ""; position: absolute; right: calc(100% + 8px); top: 0.7em; width: 20px; height: 1px; background: currentColor; opacity: 0.5; }
 .bc-piece-label b { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--bc-accent); }
 .bc-piece-label span { font-size: 0.9375rem; line-height: 1.35; color: var(--bc-muted); }
+/* symbol.crop: sem JS (ou com movimento reduzido) já mostra o recorte pronto; com JS a rolagem chega nele */
+.bc-crop-svg [data-bc-crop-full] { opacity: 0; }
+.bc-crop-outline { fill: none; stroke: var(--bc-muted); }
+.bc-crop-outline > * { stroke-width: 1.2px; vector-effect: non-scaling-stroke; }
+.bc-crop-frame { fill: none; stroke: var(--bc-accent); stroke-width: 0.4; }
+.js .bc-crop-svg [data-bc-crop-full] { opacity: 1; }
+.js .bc-crop-outline { opacity: 0; }
+.js .bc-crop-frame { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .bc-symbol-text { display: grid; gap: 22px; align-content: start; }
 .bc-symbol-text .bc-h2 { margin-top: 0; }
 
+/* ---------------------------------------------------------------- 2b. grafismo (pictogramas e padrões) */
+.bc-graphics { position: relative; padding-block: var(--bc-pad); overflow: clip; }
+.bc-pictos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 56px) var(--bc-gap); }
+@media (min-width: 900px) { .bc-pictos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.bc-picto { display: grid; gap: 14px; justify-items: center; text-align: center; }
+.bc-picto-art { display: block; width: min(100%, 260px); aspect-ratio: 1; overflow: hidden; }
+.bc-picto-art img { display: block; width: 100%; height: 100%; }
+.bc-picto-label { font-family: var(--bc-font); font-size: clamp(1.05rem, 1.5vw, 1.375rem); font-weight: 600; letter-spacing: 0.01em; }
+.js [data-bc-picto] { opacity: 0; }
+
+.bc-patterns { margin-top: clamp(72px, 10vw, 144px); }
+.bc-patterns-track { overflow-x: auto; scrollbar-width: none; } /* sem JS ou com movimento reduzido: rola de lado */
+.bc-patterns-track::-webkit-scrollbar { display: none; }
+.js .bc-patterns-track { overflow: hidden; }
+.bc-patterns-row { display: flex; width: max-content; }
+.bc-pattern-tile { display: block; width: clamp(220px, 28vw, 420px); height: auto; }
+.bc-patterns figcaption { margin-top: 18px; font-size: 0.8125rem; letter-spacing: 0.06em; color: var(--bc-muted); }
+
 /* ---------------------------------------------------------------- 3. tipografia */
 .bc-type { position: relative; padding-block: var(--bc-pad); }
+/* typography.font "text": a seção mostra a fonte de textos (--bc-type-font, em CaseType.astro) */
+.bc-type .bc-type-glyph, .bc-type .bc-type-name, .bc-type .bc-type-weights, .bc-type .bc-type-sample { font-family: var(--bc-type-font, var(--bc-font)); }
 @media (min-width: 900px) { .js .bc-type { height: 300svh; padding: 0; } }
 .bc-type-grid { display: grid; gap: 40px; align-items: center; }
 @media (min-width: 900px) {
@@ -479,6 +514,42 @@ html:not(.js) [data-intro-outline] { display: none; }
 .bc-app-tabbar { margin-top: auto; display: flex; justify-content: space-around; padding-top: 4cqw; border-top: 1px solid rgba(15, 28, 46, 0.08); }
 .bc-app-tabbar i { width: 6cqw; height: 6cqw; border-radius: 2cqw; background: color-mix(in srgb, var(--bc-primary) 22%, transparent); }
 .bc-app-tabbar i:first-child { background: var(--bc-primary); }
+
+/* peça real (post, capa, key visual): inteira, sem corte; o parallax move a peça, não a imagem dentro dela */
+.bc-piece { position: relative; aspect-ratio: var(--ar); overflow: hidden; border-radius: var(--bc-radius); box-shadow: 0 0 0 1px rgba(15, 28, 46, 0.06), 0 34px 60px -34px rgba(15, 28, 46, 0.55); }
+.bc-piece .bc-ph { position: absolute; inset: 0; height: 100%; aspect-ratio: auto !important; }
+.bc-piece-phone { display: grid; place-items: center; }
+.bc-phone--media { width: min(280px, 100%); aspect-ratio: auto; padding: 3.2%; border-radius: 13% / 6.4%; }
+.bc-phone-media { padding: 0; aspect-ratio: 9 / 16; border-radius: 10% / 5.6%; }
+.bc-phone-media .bc-img img { object-fit: cover; }
+.bc-phone-media .bc-ph { height: 100%; aspect-ratio: auto !important; }
+.bc-cell[data-kind="piece"] figcaption, .bc-cell[data-kind="feed"] figcaption, .bc-cell[data-kind="graphic"] figcaption { text-align: center; }
+.bc-cell[data-kind="piece"]:has(.bc-piece) figcaption { text-align: left; }
+
+/* vetor do grafismo no meio da colagem */
+.bc-graphic { aspect-ratio: var(--ar); overflow: hidden; border-radius: var(--bc-radius); }
+.bc-graphic img { display: block; width: 100%; height: 100%; }
+
+/* perfil de rede social (CaseFeed.astro) */
+.bc-feed-stage { display: grid; place-items: center; padding: clamp(28px, 4vw, 48px) 12px; border-radius: var(--bc-radius); background: var(--bc-dark); }
+.bc-phone--feed { width: min(330px, 86%); }
+.bc-feed-screen { gap: 3.6cqw; padding: 6cqw 0 0; background: #fff; }
+.bc-feed-screen .bc-app-status { padding-inline: 6cqw; }
+.bc-feed-head { display: flex; align-items: center; gap: 4cqw; padding: 2cqw 5cqw 0; }
+.bc-feed-avatar { flex: none; width: 19cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0.6cqw var(--bc-light), 0 0 0 1.2cqw color-mix(in srgb, var(--bc-ink-on-light) 12%, transparent); }
+.bc-feed-avatar .bc-logo { width: 70%; height: auto; }
+.bc-feed-who { display: grid; gap: 1cqw; min-width: 0; }
+.bc-feed-who strong { font-size: 5cqw; font-weight: 700; }
+.bc-feed-who span { font-size: 3.9cqw; line-height: 1.3; color: var(--bc-muted-on-light); }
+.bc-feed-action { margin-inline: 5cqw; padding: 2.2cqw 0; border-radius: 2cqw; background: var(--bc-primary); color: #fff; font-size: 4cqw; font-weight: 600; text-align: center; }
+.bc-feed-highlights { display: flex; justify-content: space-between; padding-inline: 5cqw; }
+.bc-feed-highlights li { display: grid; justify-items: center; gap: 1.4cqw; width: 18cqw; }
+.bc-feed-highlights span { width: 15cqw; aspect-ratio: 1; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 0.6cqw #fff, 0 0 0 1.1cqw color-mix(in srgb, var(--bc-ink-on-light) 16%, transparent); }
+.bc-feed-highlights img { display: block; width: 100%; height: 100%; }
+.bc-feed-highlights small { font-size: 3.2cqw; color: var(--bc-ink-on-light); }
+.bc-feed-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6cqw; margin-top: 1cqw; }
+.bc-feed-grid > * { aspect-ratio: 1; }
+.bc-feed-grid .bc-ph { padding: 4px; font-size: 0; }
 
 /* recorte (PNG sem fundo): inteiro, sem moldura; nunca maior que o arquivo (--dw) */
 .bc-cutout { position: relative; width: 100%; max-width: calc(var(--dw, 99999) * 1px); margin-inline: auto; aspect-ratio: var(--ar); }

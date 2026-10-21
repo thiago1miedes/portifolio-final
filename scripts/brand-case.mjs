@@ -23,8 +23,9 @@ sharp.cache(false);
 
 /** Troca a cor de cada parte marcada com data-part="…" fill="…" pelas cores da variante. */
 function recolor(svg, variant) {
-  // wordmark-accent (ex.: "Easy" de outra cor) segue o wordmark quando a variante não a define
-  const color = (part) => variant[part] ?? (part === "wordmark-accent" ? variant.wordmark : undefined);
+  // wordmark-accent (ex.: "Easy" de outra cor) segue o wordmark e symbol-3/4 seguem o symbol-accent quando a variante não os define
+  const fallback = { "wordmark-accent": "wordmark", "symbol-3": "symbol-accent", "symbol-4": "symbol-accent" };
+  const color = (part) => variant[part] ?? variant[fallback[part]];
   return svg.replace(/data-part="([\w-]+)"(\s+)fill="[^"]*"/g, (m, part, sp) =>
     color(part) ? `data-part="${part}"${sp}fill="${color(part)}"` : m,
   );
