@@ -474,17 +474,17 @@ const list: CaseData[] = [
   {
     slug: "easywork",
     title: "EasyWork",
-    client: "EasyWork Outsourcing · Easy Directories",
+    client: "EasyWork Outsourcing",
     sector: "Tecnologia · outsourcing",
     year: "2023",
     cats: ["brand", "web"],
-    accent: "#48C774",
-    summary: "Marca, aplicações e sites para uma empresa de outsourcing de tecnologia e sua plataforma de diretórios.",
+    accent: "#48C972",
+    summary: "Marca e site institucional para uma empresa de soluções em aplicativos, sistemas e serviços digitais.",
     about: [
       "Para a EasyWork foram criadas três propostas de logotipo em verde e azul-marinho, com ícones geométricos que funcionam bem em telas pequenas e em aplicações como camisetas, bandeiras e notebooks.",
-      "Na sequência, desenhei os sites da EasyWork Outsourcing e da Easy Directories, aplicando a nova identidade.",
+      "Na sequência, desenhei o site da EasyWork Outsourcing, aplicando a nova identidade.",
     ],
-    deliverables: ["3 propostas de logo", "Paleta e ícones", "Mockups", "Sites EasyWork e Easy Directories"],
+    deliverables: ["3 propostas de logo", "Paleta e ícones", "Mockups", "Site institucional"],
     tools: ["Illustrator", "Photoshop", "Figma", "WordPress"],
   },
   {

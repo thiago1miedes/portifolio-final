@@ -253,6 +253,8 @@ export const cases = {
       { id: "foto-4", src: "Oticas Talarico/Imagens/imagem-lente-copiar_0000_Agrupar-23.png", kind: "image", group: "packaging" },
     ],
   },
+  // A página é o case de marca (cases/easywork/case.json); a capa vem de `npm run brand -- easywork thumb`
+  // (logo final). Rodar `npm run assets -- easywork` a sobrescreve.
   easywork: {
     thumb: { from: "mock-01", crop: "center" },
     items: [

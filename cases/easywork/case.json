@@ -1,0 +1,274 @@
+{
+  "slug": "easywork",
+  "client": "EasyWork Outsourcing",
+  "segment": "Tecnologia · outsourcing de software",
+  "year": "2023",
+  "assets": "/brand/easywork",
+
+  "seo": {
+    "title": "EasyWork Outsourcing — Identidade visual e site",
+    "description": "Case de identidade visual da EasyWork Outsourcing, empresa de soluções em aplicativos, sistemas e serviços digitais: símbolo, tipografia, cores, sistema de logo, aplicações e o site institucional navegável.",
+    "image": "og.png"
+  },
+
+  "theme": {
+    "dark": "#01131F",
+    "light": "#F2F2F2",
+    "primary": "#022135",
+    "secondary": "#18703D",
+    "support": "#9FB3C2",
+    "accent": "#48C972",
+    "inkOnLight": "#022135",
+    "mutedOnLight": "#45596A",
+    "inkOnDark": "#F2F2F2",
+    "mutedOnDark": "#9FB3C2"
+  },
+
+  "font": {
+    "family": "Space Grotesk",
+    "fallback": "\"Archivo\", \"Schibsted Grotesk\", \"Segoe UI\", Arial, sans-serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "300 700": "fonts/space-grotesk-var.woff2"
+    },
+    "preload": [400]
+  },
+
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": { "desktop": ["symbol", "wordmark"], "mobile": ["symbol"], "wordmarkHeight": 20, "dark": "onPrimary", "light": "positive" },
+    "variants": {
+      "positive":    { "label": "Positivo",           "bg": "#F2F2F2", "symbol-main": "#022135", "symbol-accent": "#48C972", "wordmark-accent": "#48C972", "wordmark": "#022135", "tagline": "#022135" },
+      "negative":    { "label": "Negativo",           "bg": "#022135", "symbol-main": "#48C972", "symbol-accent": "#022135", "wordmark-accent": "#48C972", "wordmark": "#48C972", "tagline": "#48C972" },
+      "onPrimary":   { "label": "Bicolor sobre azul", "bg": "#022135", "symbol-main": "#F2F2F2", "symbol-accent": "#48C972", "wordmark-accent": "#48C972", "wordmark": "#F2F2F2", "tagline": "#F2F2F2" },
+      "onSecondary": { "label": "Sobre verde código", "bg": "#18703D", "symbol-main": "#F2F2F2", "symbol-accent": "#18703D", "wordmark-accent": "#F2F2F2", "wordmark": "#F2F2F2", "tagline": "#F2F2F2" },
+      "onAccent":    { "label": "Sobre verde",        "bg": "#48C972", "symbol-main": "#022135", "symbol-accent": "#48C972", "wordmark-accent": "#022135", "wordmark": "#022135", "tagline": "#022135" },
+      "mono":        { "label": "Monocromático",      "bg": "#FFFFFF", "symbol-main": "#022135", "symbol-accent": "#FFFFFF", "wordmark-accent": "#022135", "wordmark": "#022135", "tagline": "#022135" },
+      "app":         { "label": "Ícone de app",       "bg": "#F2F2F2", "symbol-main": "#48C972", "symbol-accent": "#022135", "wordmark-accent": "#48C972", "wordmark": "#022135", "tagline": "#022135" }
+    }
+  },
+
+  "intro": {
+    "kicker": "Identidade visual · 2023",
+    "subtitle": "Marca e site para uma empresa que resolve com tecnologia: aplicativos, sistemas e soluções digitais sob medida.",
+    "scrollHint": "Role para conhecer a marca",
+    "image": "hero-codigo",
+    "variant": "onPrimary"
+  },
+
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "01 — Símbolo",
+    "title": "Um bloco firme, com os cantos cortados para seguir em frente.",
+    "text": [
+      "O símbolo é um bloco de base sólida — o peso de quem entrega — com dois cantos chanfrados a 45°. Os cortes tiram a rigidez do quadrado e desenham uma diagonal: trabalho que avança.",
+      "Dentro dele, o E de Easy se encaixa no alto, como uma peça que cabe no lugar certo. A mesma diagonal vira grafismo nas telas, nas fotos do site e nos impressos."
+    ],
+    "pieces": [
+      { "piece": "letter", "label": "E", "text": "o E de Easy, encaixado no bloco", "shift": -56, "y": 36 },
+      { "piece": "block", "label": "Bloco", "text": "base firme, cantos a 45°", "shift": 22, "y": 82 }
+    ],
+    "image": "textura-grid"
+  },
+
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "02 — Tipografia",
+    "title": "Space Grotesk",
+    "glyphs": ["E", "a", "s", "y", "W", "g"],
+    "weights": [300, 400, 500, 600, 700],
+    "text": "O logotipo é um lettering grotesco, pesado e de espaçamento justo: o a de dois andares com espora, o y de perna reta que se estende e vira a base de “outsourcing”, o i sem pingo. A Space Grotesk tem o mesmo desenho — uma grotesca nascida de uma fonte monoespaçada, com sotaque de código — e assume títulos e textos.",
+    "spec": [
+      { "k": "Família", "v": "Space Grotesk — Florian Karsten" },
+      { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
+      { "k": "Logotipo", "v": "Lettering grotesco · Easy em verde, Work em azul" },
+      { "k": "Títulos", "v": "SemiBold 600 · Bold 700" },
+      { "k": "Textos", "v": "Regular 400" },
+      { "k": "Alternativas", "v": "Archivo · Schibsted Grotesk · Arial" }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789 { } < / >"
+  },
+
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "03 — Manifesto",
+    "headline": "Tecnologia boa não complica. Ela se encaixa no seu negócio, sustenta o que você já faz e abre espaço para o que vem — o futuro escrito em código, uma linha de cada vez.",
+    "attributes": [
+      { "word": "Simplicidade", "text": "O Easy do nome é promessa: processos claros e conversa sem jargão." },
+      { "word": "Solidez", "text": "Como o bloco do símbolo, base firme para sistemas que precisam funcionar todo dia." },
+      { "word": "Movimento", "text": "Cantos cortados na diagonal: a marca está sempre um passo à frente." },
+      { "word": "Parceria", "text": "Outsourcing é trabalhar junto. O time da EasyWork passa a ser parte do seu." }
+    ]
+  },
+
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "04 — Cores",
+    "title": "Verde que acende, azul que sustenta.",
+    "text": "O verde, o azul-marinho e o cinza-névoa são as cores apresentadas com a marca. Deles derivam um fundo noturno, um verde mais fechado para textos sobre o claro e um cinza-aço de apoio. O verde Easy nunca vira texto sobre o claro: ali ele é cor de forma.",
+    "note": "CMYK oficial no verde, no azul e na névoa (apresentação da marca, 2023); nas demais, aproximado — confirme no perfil da gráfica.",
+    "swatches": [
+      { "name": "Verde Easy", "role": "Destaque · o “Easy” e o E", "hex": "#48C972", "cmyk": "64 0 43 21", "weight": 2.4 },
+      { "name": "Azul Work", "role": "Principal · símbolo e textos", "hex": "#022135", "cmyk": "96 38 0 79", "weight": 2.4 },
+      { "name": "Névoa", "role": "Fundo claro", "hex": "#F2F2F2", "cmyk": "0 0 0 5", "weight": 1.6 },
+      { "name": "Noite", "role": "Fundo escuro profundo", "hex": "#01131F", "weight": 1.4 },
+      { "name": "Verde Código", "role": "Verde para texto sobre o claro", "hex": "#18703D", "weight": 1.2 },
+      { "name": "Aço", "role": "Apoio · textos sobre o escuro", "hex": "#9FB3C2", "weight": 1.2 }
+    ]
+  },
+
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "05 — Sistema",
+    "title": "Do cabeçalho do site ao ícone do app.",
+    "tiles": [
+      { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
+      { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Símbolo isolado" },
+      { "kind": "sizes", "variant": "positive", "size": "sm", "label": "Tamanhos pequenos", "sizes": [48, 32, 24, 16] },
+      { "kind": "lockup", "variant": "mono", "size": "sm", "label": "Monocromático" },
+      { "kind": "lockup", "variant": "onPrimary", "size": "wide", "label": "Bicolor sobre azul" },
+      { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre verde" },
+      { "kind": "lockup", "variant": "negative", "size": "sm", "label": "Negativo" },
+      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 110, "note": "Margem mínima igual ao corte chanfrado do símbolo." },
+      { "kind": "icon", "variant": "app", "size": "sm", "label": "Ícone de app" },
+      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 140, "note": "Abaixo de 140 px de largura, use só o símbolo." }
+    ]
+  },
+
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "06 — Aplicações",
+    "title": "Da mesa do time à tela do cliente.",
+    "text": "Estudo de aplicações: fotografia editorial em preto e branco, crachá, adesivo, caneca e recepção, ao lado dos mockups da apresentação e das imagens do site.",
+    "marquee": "EasyWork",
+    "items": [
+      { "kind": "photo", "image": "editorial-dev-teclado", "col": [1, 5], "mobile": 2, "speed": -4 },
+      { "kind": "crop", "art": "wordmark", "viewBox": "770 20 320 280", "variant": "onPrimary", "col": [6, 7], "mobile": 2 },
+      { "kind": "mockup", "image": "mockup-cracha", "col": [1, 4], "mobile": 1, "caption": "Crachá",
+        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.04, "pin": [[37, 45], [63, 45], [63, 52], [37, 52]] }] },
+      { "kind": "app", "variant": "positive", "col": [5, 4], "mobile": 1, "caption": "Painel do cliente (estudo)",
+        "screen": {
+          "alt": "Estudo de app da EasyWork: painel do cliente com o projeto em andamento, a próxima entrega e o progresso da sprint",
+          "greeting": "Bom dia, time!",
+          "cards": [
+            { "label": "Seu projeto", "title": "App de vendas", "meta": "Sprint em andamento" },
+            { "label": "Próxima entrega", "title": "Tela de checkout", "meta": "Em revisão" }
+          ],
+          "progress": { "label": "Sprint atual", "value": 64 }
+        } },
+      { "kind": "cutout", "image": "site-pessoa", "col": [9, 4], "mobile": 2, "offset": 6, "speed": 4, "caption": "Foto do site, recortada com os cantos do símbolo" },
+      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
+      { "kind": "photo", "image": "mockup-notebook", "col": [1, 7], "mobile": 2, "speed": 3, "caption": "Notebook — mockup da apresentação da marca, 2023" },
+      { "kind": "photo", "image": "editorial-squad", "col": [8, 5], "mobile": 2, "offset": 6, "speed": -5 },
+      { "kind": "mockup", "image": "mockup-notebook-tampa", "col": [1, 6], "mobile": 1, "caption": "Adesivo no notebook",
+        "overlays": [{ "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.12, "pin": [[45, 40], [55, 40], [55, 55], [45, 55]] }] },
+      { "kind": "pattern", "variant": "negative", "col": [7, 6], "mobile": 1 },
+      { "kind": "photo", "image": "mockup-papelaria", "col": [1, 8], "mobile": 2, "speed": 3, "caption": "Celular, cartões e polo com “.coding our future” — mockups da apresentação, 2023" },
+      { "kind": "cutout", "image": "site-marketing", "col": [9, 4], "mobile": 2, "offset": 4, "speed": 4, "caption": "Imagem da seção Digital Marketing do site" },
+      { "kind": "mockup", "image": "mockup-caneca", "col": [1, 4], "mobile": 1, "caption": "Caneca",
+        "overlays": [{ "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.06, "pin": [[41, 42], [59, 42], [59, 56.4], [41, 56.4]] }] },
+      { "kind": "crop", "art": "symbol", "viewBox": "230 150 170 240", "variant": "onAccent", "col": [5, 3], "mobile": 1 },
+      { "kind": "mockup", "image": "mockup-recepcao", "col": [8, 5], "mobile": 2, "offset": 3, "caption": "Recepção",
+        "overlays": [{ "art": "lockup", "variant": "onPrimary", "blend": "screen", "inset": 0.06, "pin": [[24, 24], [76, 24], [76, 42], [24, 42]] }] },
+      { "kind": "mockup", "image": "mockup-caixa", "col": [1, 6], "mobile": 1, "caption": "Kit de boas-vindas",
+        "overlays": [{ "art": "lockup", "variant": "onPrimary", "blend": "screen", "inset": 0.16, "pin": [[24, 30], [70, 24], [82, 42], [36, 49]] }] },
+      { "kind": "mockup", "image": "mockup-cartoes", "col": [7, 6], "mobile": 1, "caption": "Cartões de visita",
+        "overlays": [
+          { "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.16, "pin": [[12.6, 38.4], [48.2, 30.9], [51.4, 65.6], [15.8, 73.1]] },
+          { "art": "symbol", "variant": "onPrimary", "blend": "screen", "inset": 0.24, "pin": [[54.2, 27.3], [90.0, 32.9], [87.5, 67.7], [51.7, 62.1]] }
+        ] },
+      { "kind": "photo", "image": "editorial-chamada", "col": [1, 12], "mobile": 2, "speed": 4 }
+    ]
+  },
+
+  "site": {
+    "nav": "Site",
+    "eyebrow": "07 — Site",
+    "title": "A marca no ar, página por página.",
+    "text": "O site institucional, desenhado logo depois da marca: o verde e o azul nas faixas de seção, os cantos chanfrados do símbolo recortando as fotos e o ponto de “.our services” vindo do “.coding our future”. Escolha uma página e role dentro da janela.",
+    "hint": "Role dentro da janela, arraste o mapa ao lado ou clique no menu do próprio site.",
+    "hintMobile": "Arraste dentro da janela e toque em Ampliar para ler os detalhes.",
+    "crop": [560, 1440],
+    "pages": [
+      { "id": "home", "label": "Home", "url": "easyworkoutsourcing.com", "source": "source/site-home.png", "cut": [[160, 960]],
+        "alt": "Página inicial do site da EasyWork Outsourcing: serviços de consultoria de TI, software sob medida, transformação digital, apps web e mobile, design e marketing digital, por que escolher a empresa e blog" },
+      { "id": "sobre", "label": "Sobre", "url": "easyworkoutsourcing.com/aboutus", "source": "source/site-sobre.png",
+        "alt": "Página Sobre do site da EasyWork Outsourcing, com o símbolo, o texto de apresentação da empresa e os blocos de história, missão e visão" },
+      { "id": "servicos", "label": "Serviços", "url": "easyworkoutsourcing.com/services", "source": "source/site-servicos.png",
+        "alt": "Página de serviços do site da EasyWork Outsourcing: times dedicados, alocação de profissionais de TI e outsourcing de software" },
+      { "id": "contato", "label": "Contato", "url": "easyworkoutsourcing.com/contact", "source": "source/site-contato.png",
+        "alt": "Página de contato do site da EasyWork Outsourcing, com formulário e os canais de e-mail, endereço e telefone" }
+    ],
+    "links": [
+      { "to": "home", "box": [700, 44, 330, 96] },
+      { "to": "sobre", "box": [1444, 72, 66, 40] },
+      { "to": "servicos", "box": [1521, 72, 82, 40] },
+      { "to": "contato", "box": [1614, 72, 82, 40] }
+    ],
+    "devices": [
+      { "image": "device-notebook", "caption": "Notebook", "speed": 3 },
+      { "image": "device-celular", "caption": "Celular na horizontal", "speed": -3 },
+      { "image": "device-celular-mini", "caption": "Celular", "speed": 5 }
+    ]
+  },
+
+  "closing": {
+    "phrase": ".coding our future",
+    "credits": [
+      { "k": "Cliente", "v": "EasyWork Outsourcing" },
+      { "k": "Segmento", "v": "Tecnologia · outsourcing de software" },
+      { "k": "Ano", "v": "2023" },
+      { "k": "Serviços", "v": "Logo · paleta · ícones · mockups · site institucional" },
+      { "k": "Ferramentas", "v": "Illustrator · Photoshop · Figma · WordPress" },
+      { "k": "Design", "v": "Thiago Miedes" }
+    ],
+    "cta": { "text": "Tem uma marca para construir?", "label": "Vamos conversar", "href": "/#contato" },
+    "image": "editorial-escritorio"
+  },
+
+  "images": [
+    { "id": "editorial-dev-teclado", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Mãos de um desenvolvedor digitando num teclado mecânico, com o reflexo de linhas de código, em preto e branco" },
+    { "id": "hero-codigo", "section": "intro", "w": 2400, "h": 1350, "essential": true,
+      "alt": "Fundo azul-noite com linhas de luz verde desfocadas, como código passando numa tela" },
+    { "id": "editorial-squad", "mono": true, "section": "applications", "w": 2000, "h": 1333, "essential": true,
+      "alt": "Três pessoas revisando código juntas diante de um monitor, em preto e branco" },
+    { "id": "mockup-cracha", "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Crachá branco com o logo da EasyWork Outsourcing, preso a um cordão azul-marinho, sobre uma mesa" },
+    { "id": "mockup-notebook-tampa", "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Notebook prateado fechado com o adesivo do símbolo da EasyWork na tampa" },
+    { "id": "mockup-caneca", "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Caneca branca com o símbolo da EasyWork numa mesa de trabalho" },
+    { "id": "mockup-recepcao", "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Parede azul-marinho da recepção com o logo da EasyWork Outsourcing em destaque" },
+    { "id": "textura-grid", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Placa de circuito em azul-noite com trilhas acesas em verde, em macro" },
+    { "id": "editorial-escritorio", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
+      "alt": "Escritório de tecnologia vazio no fim do dia, com monitores acesos, em preto e branco" },
+    { "id": "mockup-caixa", "section": "applications", "w": 1800, "h": 1800, "essential": false,
+      "alt": "Caixa azul-marinho do kit de boas-vindas com o logo da EasyWork na tampa" },
+    { "id": "mockup-cartoes", "section": "applications", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Cartões de visita da EasyWork, um claro e um azul-marinho" },
+    { "id": "editorial-chamada", "mono": true, "section": "applications", "w": 2400, "h": 1200, "essential": false,
+      "alt": "Pessoa de fone de ouvido numa chamada de vídeo de trabalho, em preto e branco" },
+
+    { "id": "mockup-notebook", "section": "applications", "w": 1920, "h": 1080, "essential": true,
+      "alt": "Notebook com a marca EasyWork outsourcing na tela, sobre fundo azul-marinho com uma faixa verde na diagonal" },
+    { "id": "mockup-papelaria", "section": "applications", "w": 1920, "h": 1080, "essential": true,
+      "alt": "Celular, cartões de visita e camisa polo azul-marinho com o símbolo da EasyWork e a frase .coding our future" },
+    { "id": "site-pessoa", "section": "applications", "w": 578, "h": 671, "essential": true,
+      "alt": "Homem sorrindo com o celular nas mãos, de camisa verde, numa moldura verde de cantos chanfrados" },
+    { "id": "site-marketing", "section": "applications", "w": 612, "h": 566, "essential": true,
+      "alt": "Mulher de suéter amarelo sorrindo com um tablet, com ícones de curtida e coração em verde" },
+    { "id": "device-notebook", "section": "site", "w": 558, "h": 573, "essential": true,
+      "alt": "Notebook aberto com a tela de abertura da EasyWork Outsourcing" },
+    { "id": "device-celular", "section": "site", "w": 874, "h": 383, "essential": true,
+      "alt": "Celular na horizontal com a marca EasyWork outsourcing sobre fundo verde" },
+    { "id": "device-celular-mini", "section": "site", "w": 330, "h": 201, "essential": true,
+      "alt": "Celular deitado com a marca EasyWork outsourcing na tela azul-marinho" }
+  ]
+}

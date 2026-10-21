@@ -13,6 +13,8 @@ const [lx, ly, lw, lh] = lockup.viewBox;
 const clearTile = sys.tiles.find((t) => t.kind === "clearspace");
 const x = clearTile?.unit ?? readSvg(data, "wordmark").viewBox[3];
 const clearBox = [lx - x, ly - x, lw + x * 2, lh + x * 2].map((n) => +n.toFixed(2)).join(" ");
+// linhas e o "x" foram calibrados num logo de ~650 unidades; viewBox maiores escalam junto
+const clearScale = Math.max(1, +((lw + x * 2) / 656).toFixed(3));
 
 const tileStyle = (variant: string) => {
   const vars = variantVars(data, variant);
@@ -40,7 +42,7 @@ const tileStyle = (variant: string) => {
               </ul>
             )}
             {tile.kind === "clearspace" && (
-              <svg class="bc-logo bc-clearspace" viewBox={clearBox} xmlns="http://www.w3.org/2000/svg" role="img" aria-label={`Área de proteção do logo ${data.client}`}>
+              <svg class="bc-logo bc-clearspace" viewBox={clearBox} style={`--u:${clearScale}`} xmlns="http://www.w3.org/2000/svg" role="img" aria-label={`Área de proteção do logo ${data.client}`}>
                 <rect class="bc-clear-zone" x={lx - x} y={ly - x} width={lw + x * 2} height={lh + x * 2} />
                 <rect class="bc-clear-box" x={lx} y={ly} width={lw} height={lh} />
                 <g set:html={lockup.inner} />

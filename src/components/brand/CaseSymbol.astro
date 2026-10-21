@@ -20,7 +20,7 @@ const [, , w, h] = readSvg(data, "symbol").viewBox;
           {s.pieces.map((p, i) => (
             <p class="bc-piece-label" data-piece-label={p.piece} data-shift={p.shift} data-index={i} style={`--y0:${p.y};--y1:${+(p.y + (p.shift / h) * 100).toFixed(2)}`}>
               <b>{p.label}</b>
-              <span>{p.text}</span>
+              <BrandText text={p.text} />
             </p>
           ))}
         </div>

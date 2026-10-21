@@ -3,6 +3,7 @@
 //       npm run brand -- efpi refs       PNGs do logo para anexar nas IAs  → cases/<slug>/ref/
 //       npm run brand -- efpi og         imagem de compartilhamento        → public/<assets>/og.png
 //       npm run brand -- efpi images     converte cases/<slug>/raw/*        → public/<assets>/img/*.webp|avif
+//       npm run brand -- easywork site   prints do site (site.pages)        → public/<assets>/site/*.webp + manifest.json
 //       npm run brand -- efpi thumb      capa da listagem (logo negativo)   → public/cases/<slug>/thumb.webp (fora do "tudo")
 import sharp from "sharp";
 import fs from "node:fs";
@@ -22,8 +23,10 @@ sharp.cache(false);
 
 /** Troca a cor de cada parte marcada com data-part="…" fill="…" pelas cores da variante. */
 function recolor(svg, variant) {
+  // wordmark-accent (ex.: "Easy" de outra cor) segue o wordmark quando a variante não a define
+  const color = (part) => variant[part] ?? (part === "wordmark-accent" ? variant.wordmark : undefined);
   return svg.replace(/data-part="([\w-]+)"(\s+)fill="[^"]*"/g, (m, part, sp) =>
-    variant[part] ? `data-part="${part}"${sp}fill="${variant[part]}"` : m,
+    color(part) ? `data-part="${part}"${sp}fill="${color(part)}"` : m,
   );
 }
 const logoSvg = (key) => fs.readFileSync(path.join(PUB, data.logo[key]), "utf8");
@@ -106,6 +109,50 @@ async function images() {
   }
 }
 
+/** Prints de página inteira: recorta as margens laterais (site.crop), remove faixas vazias (page.cut)
+ *  e grava a página (largura do recorte), a metade (celular) e uma miniatura para o mapa lateral. */
+async function site() {
+  const s = data.site;
+  if (!s) {
+    console.log(`case.json de ${slug} não tem "site".`);
+    return;
+  }
+  const out = path.join(PUB, "site");
+  fs.mkdirSync(out, { recursive: true });
+  const [cx, cw] = s.crop;
+  const manifest = {};
+  for (const p of s.pages) {
+    const src = path.join(CASE_DIR, p.source);
+    if (!fs.existsSync(src)) {
+      console.warn(`faltando: cases/${slug}/${p.source}`);
+      continue;
+    }
+    const { height } = await sharp(src, { limitInputPixels: false }).metadata();
+    const keep = [];
+    let y = 0;
+    for (const [y0, y1] of [...(p.cut ?? [])].sort((a, b) => a[0] - b[0])) {
+      if (y0 > y) keep.push([y, y0]);
+      y = Math.max(y, y1);
+    }
+    if (y < height) keep.push([y, height]);
+    const parts = [];
+    let top = 0;
+    for (const [a, b] of keep) {
+      const input = await sharp(src, { limitInputPixels: false }).extract({ left: cx, top: a, width: cw, height: b - a }).png().toBuffer();
+      parts.push({ input, left: 0, top });
+      top += b - a;
+    }
+    const page = await sharp({ create: { width: cw, height: top, channels: 3, background: "#ffffff" } }).composite(parts).png().toBuffer();
+    const files = { full: `${p.id}.webp`, small: `${p.id}-w${Math.round(cw / 2)}.webp`, mini: `${p.id}-mini.webp` };
+    await sharp(page, { limitInputPixels: false }).webp({ quality: 80, effort: 5 }).toFile(path.join(out, files.full));
+    await sharp(page, { limitInputPixels: false }).resize({ width: Math.round(cw / 2) }).webp({ quality: 80, effort: 5 }).toFile(path.join(out, files.small));
+    await sharp(page, { limitInputPixels: false }).resize({ width: 160 }).webp({ quality: 74 }).toFile(path.join(out, files.mini));
+    manifest[p.id] = { w: cw, h: top, ...files };
+    console.log("site", p.id, `${cw}×${top}`, p.cut?.length ? `(${p.cut.length} faixa removida)` : "");
+  }
+  fs.writeFileSync(path.join(out, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
+}
+
 /** Capa do card na listagem: substitui a que o `npm run assets` gera a partir da apresentação. */
 async function thumb() {
   const svg = recolor(logoSvg("lockup"), variant("negative"));
@@ -116,8 +163,8 @@ async function thumb() {
   console.log("thumb", path.relative(ROOT, file));
 }
 
-const tasks = { refs, og, images, thumb };
-for (const name of task === "all" ? ["refs", "og", "images"] : [task]) {
+const tasks = { refs, og, images, site, thumb };
+for (const name of task === "all" ? ["refs", "og", "images", ...(data.site ? ["site"] : [])] : [task]) {
   if (!tasks[name]) throw new Error(`tarefa desconhecida: ${name}`);
   await tasks[name]();
 }

@@ -1,0 +1,30 @@
+{
+  "home": {
+    "w": 1440,
+    "h": 7601,
+    "full": "home.webp",
+    "small": "home-w720.webp",
+    "mini": "home-mini.webp"
+  },
+  "sobre": {
+    "w": 1440,
+    "h": 1706,
+    "full": "sobre.webp",
+    "small": "sobre-w720.webp",
+    "mini": "sobre-mini.webp"
+  },
+  "servicos": {
+    "w": 1440,
+    "h": 3034,
+    "full": "servicos.webp",
+    "small": "servicos-w720.webp",
+    "mini": "servicos-mini.webp"
+  },
+  "contato": {
+    "w": 1440,
+    "h": 1678,
+    "full": "contato.webp",
+    "small": "contato-w720.webp",
+    "mini": "contato-mini.webp"
+  }
+}

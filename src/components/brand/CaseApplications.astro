@@ -45,6 +45,15 @@ const marqueeArts = a.marqueeArts ?? ["wordmark", "symbol"];
           </figure>
         )}
 
+        {it.kind === "cutout" && (
+          <figure data-bc-reveal>
+            <div class="bc-cutout" style={ratio(it)} data-speed={it.speed ?? 3}>
+              <BrandImg data={data} id={it.image!} sizes="(min-width: 900px) 40vw, 100vw" />
+            </div>
+            {it.caption && <figcaption><BrandText text={it.caption} /></figcaption>}
+          </figure>
+        )}
+
         {it.kind === "crop" && (
           <div class="bc-crop" style={vars(it.variant)} data-bc-reveal>
             <BrandLogo data={data} art={it.art ?? "wordmark"} viewBox={it.viewBox} preserve="xMidYMid slice" variant={it.variant} decorative data-bc-crop />

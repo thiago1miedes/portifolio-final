@@ -10,6 +10,7 @@ import CaseManifesto from "./CaseManifesto.astro";
 import CaseColors from "./CaseColors.astro";
 import CaseSystem from "./CaseSystem.astro";
 import CaseApplications from "./CaseApplications.astro";
+import CaseSite from "./CaseSite.astro";
 import CaseClosing from "./CaseClosing.astro";
 import { assetUrl, fontFaceCss, fontPreloads, plain, variantVars, warnDrafts, type BrandCaseData } from "../../data/brand-cases";
 import type { Case } from "../../data/cases";
@@ -36,8 +37,15 @@ const rootVars = {
   ...variantVars(data, "positive"),
 };
 const style = Object.entries(rootVars).map(([k, v]) => `${k}:${v}`).join(";");
-const sections = [data.symbol, data.typography, data.manifesto, data.colors, data.system, data.applications]
-  .map((s, i) => ({ id: ["simbolo", "tipografia", "manifesto", "cores", "sistema", "aplicacoes"][i], label: s.nav }));
+const sections = [
+  { id: "simbolo", label: data.symbol.nav },
+  { id: "tipografia", label: data.typography.nav },
+  { id: "manifesto", label: data.manifesto.nav },
+  { id: "cores", label: data.colors.nav },
+  { id: "sistema", label: data.system.nav },
+  { id: "aplicacoes", label: data.applications.nav },
+  ...(data.site ? [{ id: "site", label: data.site.nav }] : []),
+];
 ---
 <Base
   title={plain(data.seo.title)}
@@ -63,6 +71,7 @@ const sections = [data.symbol, data.typography, data.manifesto, data.colors, dat
     <CaseColors data={data} />
     <CaseSystem data={data} />
     <CaseApplications data={data} />
+    {data.site && <CaseSite data={data} />}
     <CaseClosing data={data} next={next} />
   </div>
 </Base>

@@ -1,0 +1,121 @@
+---
+// 7b. Site: prints de página inteira numa janela de navegador. Abas (e os links do próprio menu do print)
+//     trocam de página; rola-se dentro da janela; mapa lateral no desktop e zoom de leitura no celular.
+//     Os arquivos vêm de `npm run brand -- <slug> site` (cases/<slug>/source → public/<assets>/site).
+import BrandImg from "./BrandImg.astro";
+import BrandText from "./BrandText.astro";
+import { imageInfo, imageVisible, siteInfo, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData }
+const { data } = Astro.props;
+const s = data.site!;
+const pages = siteInfo(data);
+const devices = (s.devices ?? []).filter((d) => imageVisible(imageInfo(data, d.image)));
+const ratio = (id: string) => {
+  const info = imageInfo(data, id);
+  return `--ar:${info.w}/${info.h};--dw:${info.w}`;
+};
+---
+<section class="bc-site" id="site" data-theme="dark" data-bc-section data-bc-site>
+  <div class="container bc-section-head bc-section-head--split">
+    <div>
+      <p class="bc-eyebrow">{s.eyebrow}</p>
+      <BrandText as="h2" class="bc-h2" text={s.title} data-bc-split />
+    </div>
+    <BrandText as="p" class="bc-body" text={s.text} data-bc-reveal />
+  </div>
+
+  <div class="container bc-site-viewer" data-bc-site-viewer data-bc-reveal>
+    <div class="bc-site-tabs" role="tablist" aria-label="Páginas do site">
+      {pages.map((p, i) => (
+        <button
+          type="button"
+          role="tab"
+          class="bc-site-tab"
+          id={`bc-site-tab-${p.id}`}
+          aria-controls={`bc-site-page-${p.id}`}
+          aria-selected={i === 0 ? "true" : "false"}
+          tabindex={i === 0 ? 0 : -1}
+          data-bc-site-tab
+          data-index={i}
+        >{p.label}</button>
+      ))}
+    </div>
+
+    <div class="bc-site-body">
+      <figure class="bc-browser">
+        <div class="bc-browser-bar">
+          <span class="bc-browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="bc-browser-url">
+            <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2M3.5 7h9v6.5h-9z" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+            <span data-bc-site-url>{pages[0]?.url}</span>
+          </span>
+          <button type="button" class="bc-browser-zoom" aria-pressed="false" data-bc-site-zoom>
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6" /><path d="M10.4 10.4 14 14M5 7h4" fill="none" stroke="currentColor" stroke-width="1.6" /><path class="bc-zoom-plus" d="M7 5v4" fill="none" stroke="currentColor" stroke-width="1.6" /></svg>
+            <span data-bc-zoom-label data-on="Ver inteira" data-off="Ampliar">Ampliar</span>
+          </button>
+        </div>
+        <span class="bc-site-progress" aria-hidden="true"><i data-bc-site-progress></i></span>
+        <div class="bc-browser-view" tabindex="0" data-lenis-prevent data-bc-site-view aria-label="Janela do site: role para navegar pela página">
+          {pages.map((p, i) => (
+            <div
+              class:list={["bc-site-page", { "is-hidden": i !== 0 }]}
+              role="tabpanel"
+              id={`bc-site-page-${p.id}`}
+              aria-labelledby={`bc-site-tab-${p.id}`}
+              data-bc-site-page
+              data-index={i}
+              data-url={p.url}
+              style={`aspect-ratio:${p.w}/${p.h}`}
+            >
+              {p.exists ? (
+                <img src={p.src} srcset={p.srcset} sizes="(min-width: 1100px) 1080px, 100vw" width={p.w} height={p.h} alt={p.alt} loading="lazy" decoding="async" />
+              ) : (
+                <div class="bc-ph" role="img" aria-label={`Print pendente: ${p.alt}`} data-image-id={`site-${p.id}`}>
+                  <span class="bc-ph-id">site-{p.id}</span>
+                  <span class="bc-ph-meta">rode npm run brand -- {data.slug} site</span>
+                </div>
+              )}
+              {p.exists && p.links.map((l) => (
+                <button
+                  type="button"
+                  class="bc-site-link"
+                  data-bc-site-go={l.to}
+                  style={`left:${l.left};top:${l.top};width:${l.width};height:${l.height}`}
+                  aria-label={`Abrir a página ${l.label}`}
+                ></button>
+              ))}
+            </div>
+          ))}
+        </div>
+      </figure>
+
+      <div class="bc-site-map" aria-hidden="true" data-bc-site-map>
+        {pages.map((p, i) => (
+          <div class:list={["bc-site-map-page", { "is-hidden": i !== 0 }]} data-bc-site-map-page data-index={i}>
+            {p.mini && <img src={p.mini} width={160} height={Math.round((160 * p.h) / p.w)} alt="" loading="lazy" decoding="async" data-bc-site-map-img />}
+            <span class="bc-site-map-view" data-bc-site-map-view></span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <p class="bc-site-hint">
+      <span class="bc-site-hint-desktop">{s.hint}</span>
+      <span class="bc-site-hint-mobile">{s.hintMobile}</span>
+    </p>
+  </div>
+
+  {devices.length > 0 && (
+    <div class="container bc-devices">
+      {devices.map((d) => (
+        <figure class="bc-device" data-bc-reveal>
+          <div class="bc-cutout" style={ratio(d.image)} data-speed={d.speed ?? 3}>
+            <BrandImg data={data} id={d.image} sizes="(min-width: 900px) 33vw, 100vw" />
+          </div>
+          {d.caption && <figcaption><BrandText text={d.caption} /></figcaption>}
+        </figure>
+      ))}
+    </div>
+  )}
+</section>

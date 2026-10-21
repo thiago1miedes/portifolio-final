@@ -19,6 +19,7 @@ if (root) {
   try {
     setupNav(root);
     setupMockups(root);
+    setupSite(root);
     typeGuides(root);
     if (!reduce) {
       reveals(root);
@@ -325,6 +326,116 @@ function collage(root: HTMLElement) {
     const shift = Number(rect.dataset.shift) || 0;
     gsap.fromTo(rect, { attr: { y: -shift } }, { attr: { y: 0 }, ease: "none", scrollTrigger: { trigger: rect.closest(".bc-cell"), start: "top bottom", end: "bottom top", scrub: true } });
   });
+}
+
+/* ------------------------------------------------------------------ 7b. site: abas, links do print, progresso, mapa e zoom */
+function setupSite(root: HTMLElement) {
+  const viewer = $("[data-bc-site-viewer]", root);
+  if (!viewer) return;
+  const tabs = $$<HTMLButtonElement>("[data-bc-site-tab]", viewer);
+  const strip = tabs[0]?.parentElement;
+  const pages = $$("[data-bc-site-page]", viewer);
+  const view = $("[data-bc-site-view]", viewer)!;
+  const url = $("[data-bc-site-url]", viewer);
+  const bar = $("[data-bc-site-progress]", viewer);
+  const zoom = $<HTMLButtonElement>("[data-bc-site-zoom]", viewer);
+  const zoomLabel = $("[data-bc-zoom-label]", viewer);
+  const map = $("[data-bc-site-map]", viewer);
+  const mapPages = $$("[data-bc-site-map-page]", viewer);
+  let current = 0;
+
+  const centerX = () => { view.scrollLeft = (view.scrollWidth - view.clientWidth) / 2; };
+
+  /** retângulo da janela sobre a miniatura da página */
+  const updateMap = () => {
+    const page = mapPages[current];
+    const img = page && $("img", page);
+    const box = page && $("[data-bc-site-map-view]", page);
+    if (!img || !box || !img.offsetHeight || !view.scrollHeight) return;
+    const k = img.offsetHeight / view.scrollHeight;
+    Object.assign(box.style, {
+      left: `${img.offsetLeft}px`,
+      width: `${img.offsetWidth}px`,
+      top: `${img.offsetTop + view.scrollTop * k}px`,
+      height: `${Math.min(img.offsetHeight, view.clientHeight * k)}px`,
+    });
+  };
+  const progress = () => {
+    const max = view.scrollHeight - view.clientHeight;
+    if (bar) bar.style.transform = `scaleX(${max > 0 ? view.scrollTop / max : 0})`;
+    updateMap();
+  };
+
+  const select = (k: number) => {
+    if (k === current || !pages[k]) return;
+    current = k;
+    tabs.forEach((t, i) => {
+      t.setAttribute("aria-selected", String(i === k));
+      t.tabIndex = i === k ? 0 : -1;
+    });
+    pages.forEach((p, i) => p.classList.toggle("is-hidden", i !== k));
+    mapPages.forEach((p, i) => p.classList.toggle("is-hidden", i !== k));
+    if (url) url.textContent = pages[k].dataset.url ?? "";
+    view.scrollTop = 0;
+    centerX();
+    progress();
+    // só a faixa de abas rola para mostrar a aba ativa (scrollIntoView mexeria na página inteira)
+    const tab = tabs[k];
+    if (strip && tab) strip.scrollTo({ left: tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" });
+    if (!reduce) gsap.fromTo(pages[k], { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out", clearProps: "opacity,transform" });
+  };
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => select(i));
+    tab.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const n = (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+      select(n);
+      tabs[n].focus();
+    });
+  });
+  // o menu desenhado no próprio print também troca de página
+  $$("[data-bc-site-go]", viewer).forEach((link) => {
+    link.addEventListener("click", () => select(Number(link.dataset.bcSiteGo)));
+  });
+
+  zoom?.addEventListener("click", () => {
+    const max = view.scrollHeight - view.clientHeight;
+    const ratio = max > 0 ? view.scrollTop / max : 0;
+    const on = !view.classList.contains("is-zoomed");
+    view.classList.toggle("is-zoomed", on);
+    zoom.setAttribute("aria-pressed", String(on));
+    if (zoomLabel) zoomLabel.textContent = (on ? zoomLabel.dataset.on : zoomLabel.dataset.off) ?? "";
+    view.scrollTop = ratio * (view.scrollHeight - view.clientHeight);
+    centerX();
+    progress();
+  });
+
+  // arrastar (ou clicar) no mapa leva a janela até aquele ponto da página
+  if (map) {
+    let dragging = false;
+    const jump = (e: PointerEvent, smooth: boolean) => {
+      const img = $("img", mapPages[current]);
+      if (!img) return;
+      const r = img.getBoundingClientRect();
+      const y = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+      view.scrollTo({ top: y * view.scrollHeight - view.clientHeight / 2, behavior: smooth && !reduce ? "smooth" : "auto" });
+    };
+    map.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      map.setPointerCapture(e.pointerId);
+      jump(e, true);
+    });
+    map.addEventListener("pointermove", (e) => { if (dragging) jump(e, false); });
+    map.addEventListener("pointerup", () => { dragging = false; });
+    map.addEventListener("pointercancel", () => { dragging = false; });
+  }
+
+  view.addEventListener("scroll", progress, { passive: true });
+  $$<HTMLImageElement>("img", viewer).forEach((img) => img.addEventListener("load", progress));
+  new ResizeObserver(() => { centerX(); progress(); }).observe(view);
+  centerX();
+  progress();
 }
 
 /* ------------------------------------------------------------------ mockups: o SVG real deformado sobre a superfície */

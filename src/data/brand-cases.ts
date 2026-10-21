@@ -4,15 +4,17 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-export type LogoPart = "symbol-main" | "symbol-accent" | "wordmark" | "tagline";
+/** wordmark-accent: parte do logotipo em outra cor (ex.: "Easy" verde + "Work" azul); sem ela, segue o wordmark */
+export type LogoPart = "symbol-main" | "symbol-accent" | "wordmark" | "wordmark-accent" | "tagline";
 export type LogoArt = "lockup" | "symbol" | "outline" | "wordmark" | "tagline";
-export type Variant = Record<LogoPart, string> & { label: string; bg: string };
+export type Variant = Record<Exclude<LogoPart, "wordmark-accent">, string> & { "wordmark-accent"?: string; label: string; bg: string };
 type Pin = [number, number][];
 
 export interface BrandImage { id: string; section: string; w: number; h: number; alt: string; essential?: boolean; mono?: boolean }
 export interface Overlay { art: LogoArt; variant: string; blend?: string; inset?: number; pin: Pin }
 export interface AppItem {
-  kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern";
+  /** cutout: PNG recortado (fundo transparente), mostrado inteiro e sem moldura */
+  kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern" | "cutout";
   image?: string; col: [number, number]; mobile: 1 | 2; offset?: number; speed?: number; caption?: string;
   art?: LogoArt; viewBox?: string; variant?: string; overlays?: Overlay[];
   /** app: partes do logo no topo da tela (padrão: símbolo + logotipo) */
@@ -28,6 +30,25 @@ export interface SystemTile {
 }
 interface FontFiles { family: string; fallback: string; unicodeRange?: string; files: Record<string, string>; preload?: number[] }
 
+/** Prints de página inteira do site, navegáveis numa janela de navegador (gerados por `npm run brand -- <slug> site`). */
+export interface SitePage {
+  id: string; label: string; url: string; alt: string;
+  /** print original, relativo a cases/<slug>/ */
+  source: string;
+  /** faixas verticais [y0, y1] (px do print) removidas — ex.: um bloco que saiu em branco na captura */
+  cut?: [number, number][];
+}
+export interface SiteSection {
+  nav: string; eyebrow: string; title: string; text: string; hint: string; hintMobile: string;
+  /** recorte horizontal dos prints [x, largura] em px do original: tira as margens vazias das capturas largas */
+  crop: [number, number];
+  pages: SitePage[];
+  /** áreas clicáveis no cabeçalho dos prints (px do original) que levam a outra página */
+  links?: { to: string; box: [number, number, number, number] }[];
+  /** imagens de images[] (recortes de aparelhos) mostradas abaixo da janela */
+  devices?: { image: string; caption?: string; speed?: number }[];
+}
+
 export interface BrandCaseData {
   slug: string; client: string; segment: string; year: string; assets: string;
   seo: { title: string; description: string; image: string };
@@ -36,10 +57,12 @@ export interface BrandCaseData {
   font: FontFiles & { preload: number[]; text?: FontFiles };
   logo: Record<LogoArt, string> & {
     variants: Record<string, Variant>;
-    /** partes do logo na navegação (padrão: desktop símbolo + logotipo, celular só o símbolo) */
-    nav?: { desktop?: LogoArt[]; mobile?: LogoArt[]; wordmarkHeight?: number };
+    /** partes do logo na navegação (padrão: desktop símbolo + logotipo, celular só o símbolo);
+     *  dark/light: variante usada sobre seções escuras/claras (padrão: cores do tema) */
+    nav?: { desktop?: LogoArt[]; mobile?: LogoArt[]; wordmarkHeight?: number; dark?: string; light?: string };
   };
-  intro: { kicker: string; subtitle: string; scrollHint: string; image?: string };
+  /** variant: versão do logo na abertura (padrão: negative) */
+  intro: { kicker: string; subtitle: string; scrollHint: string; image?: string; variant?: string };
   symbol: { nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[]; image?: string };
   typography: { nav: string; eyebrow: string; title: string; glyphs: string[]; weights: number[]; text: string; spec: { k: string; v: string }[]; sample: string };
   manifesto: { nav: string; eyebrow: string; headline: string; attributes: { word: string; text: string }[] };
@@ -48,6 +71,8 @@ export interface BrandCaseData {
   system: { nav: string; eyebrow: string; title: string; tiles: SystemTile[] };
   /** marqueeArts: partes do logo na faixa em movimento (padrão: logotipo + símbolo) */
   applications: { nav: string; eyebrow: string; title: string; text: string; marquee: string; marqueeArts?: LogoArt[]; items: AppItem[] };
+  /** opcional: o site do cliente, com as páginas navegáveis */
+  site?: SiteSection;
   closing: { phrase: string; credits: { k: string; v: string }[]; cta: { text: string; label: string; href: string }; image?: string };
   images: BrandImage[];
 }
@@ -134,8 +159,47 @@ export function variantVars(c: BrandCaseData, name?: string) {
     "--logo-symbol-main": v["symbol-main"],
     "--logo-symbol-accent": v["symbol-accent"],
     "--logo-wordmark": v.wordmark,
+    // sempre definida: senão herdaria a cor da variante de fora
+    "--logo-wordmark-accent": v["wordmark-accent"] ?? v.wordmark,
     "--logo-tagline": v.tagline,
   };
+}
+
+/* ------------------------------------------------------------------ site (prints navegáveis) */
+export interface SitePageInfo extends SitePage {
+  exists: boolean; w: number; h: number;
+  src?: string; srcset?: string; mini?: string;
+  links: { to: number; label: string; left: string; top: string; width: string; height: string }[];
+}
+/** Lê public/<assets>/site/manifest.json (escrito pelo script); sem ele, as páginas viram placeholder. */
+export function siteInfo(c: BrandCaseData): SitePageInfo[] {
+  const s = c.site;
+  if (!s) return [];
+  const file = publicPath(c, "site/manifest.json");
+  const manifest: Record<string, { w: number; h: number; full: string; small?: string; mini: string }> =
+    fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : {};
+  const [cx, cw] = s.crop;
+  return s.pages.map((p) => {
+    const m = manifest[p.id];
+    const w = m?.w ?? cw, h = m?.h ?? Math.round(cw * 1.6);
+    const firstCut = Math.min(...(p.cut ?? []).map(([y0]) => y0), Infinity);
+    const pct = (n: number, of: number) => `${+((n / of) * 100).toFixed(3)}%`;
+    const links = (s.links ?? [])
+      // só links acima do primeiro corte: abaixo dele as posições do print original mudam
+      .filter((l) => l.box[1] + l.box[3] <= firstCut && s.pages.some((q) => q.id === l.to))
+      .map((l) => {
+        const to = s.pages.findIndex((q) => q.id === l.to);
+        const [x, y, bw, bh] = l.box;
+        const k = w / cw; // o arquivo pode ter sido reduzido em relação ao recorte
+        return { to, label: s.pages[to].label, left: pct(x - cx, cw), top: pct(y * k, h), width: pct(bw, cw), height: pct(bh * k, h) };
+      });
+    return {
+      ...p, exists: !!m, w, h, links,
+      src: m && assetUrl(c, `site/${m.full}`),
+      srcset: m?.small ? `${assetUrl(c, `site/${m.small}`)} ${Math.round(w / 2)}w, ${assetUrl(c, `site/${m.full}`)} ${w}w` : undefined,
+      mini: m && assetUrl(c, `site/${m.mini}`),
+    };
+  });
 }
 
 /** Copia das formas do logo pintada com um gradiente — usada no brilho que atravessa a abertura. */

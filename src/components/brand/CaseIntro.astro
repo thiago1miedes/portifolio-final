@@ -11,7 +11,12 @@ const outline = readSvg(data, "outline");
 const [vx, vy, vw, vh] = lockup.viewBox;
 const gradient = `bc-shine-${data.slug}`;
 const band = Math.round(vw * 0.28);
-const vars = Object.entries(variantVars(data, "negative")).map(([k, v]) => `${k}:${v}`).join(";");
+// traço do desenho proporcional ao viewBox (1.1 foi calibrado num logo de ~530 unidades)
+const outlineWidth = Math.max(1.1, +(vw / 480).toFixed(2));
+const vars = [
+  ...Object.entries(variantVars(data, data.intro.variant ?? "negative")).map(([k, v]) => `${k}:${v}`),
+  `--outline-w:${outlineWidth}`,
+].join(";");
 ---
 <section class="bc-intro" id="intro" data-theme="dark" data-bc-section data-bc-intro>
   {data.intro.image && (

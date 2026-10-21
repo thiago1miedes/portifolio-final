@@ -9,8 +9,15 @@ const nav = data.logo.nav ?? {};
 const desktop = nav.desktop ?? ["symbol", "wordmark"];
 const mobile = nav.mobile ?? ["symbol"];
 const arts = [...new Set([...desktop, ...mobile])];
+// logo.nav.dark / light: cores de uma variante do case.json sobre as seções escuras / claras
+const parts = ["symbol-main", "symbol-accent", "wordmark", "wordmark-accent"] as const;
+const themeVars = (["dark", "light"] as const).flatMap((theme) => {
+  const v = nav[theme] ? data.logo.variants[nav[theme]!] : undefined;
+  return v ? parts.map((p) => `--nav-${theme}-${p}:${v[p] ?? v.wordmark}`) : [];
+});
+const style = [nav.wordmarkHeight && `--nav-wordmark-h:${nav.wordmarkHeight}px`, ...themeVars].filter(Boolean).join(";");
 ---
-<header class="bc-nav" data-bc-nav data-theme="dark" style={nav.wordmarkHeight ? `--nav-wordmark-h:${nav.wordmarkHeight}px` : undefined}>
+<header class="bc-nav" data-bc-nav data-theme="dark" style={style || undefined}>
   <a href="#intro" class="bc-nav-logo" aria-label={`${data.client} — voltar ao topo do case`}>
     {arts.map((art) => (
       <BrandLogo
