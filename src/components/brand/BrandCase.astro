@@ -13,7 +13,7 @@ import CaseSystem from "./CaseSystem.astro";
 import CaseApplications from "./CaseApplications.astro";
 import CaseSite from "./CaseSite.astro";
 import CaseClosing from "./CaseClosing.astro";
-import { assetUrl, fontFaceCss, fontPreloads, plain, variantVars, warnDrafts, type BrandCaseData } from "../../data/brand-cases";
+import { assetUrl, fontFaceCss, fontPreloads, logoDefs, plain, variantVars, warnDrafts, type BrandCaseData } from "../../data/brand-cases";
 import type { Case } from "../../data/cases";
 import "../../styles/brand-case.css";
 
@@ -38,6 +38,7 @@ const rootVars = {
   ...variantVars(data, "positive"),
 };
 const style = Object.entries(rootVars).map(([k, v]) => `${k}:${v}`).join(";");
+const defs = logoDefs(data);
 const sections = [
   { id: "simbolo", label: data.symbol.nav },
   ...(data.graphics ? [{ id: "grafismo", label: data.graphics.nav }] : []),
@@ -65,6 +66,9 @@ const sections = [
   </Fragment>
 
   <div class="bc" style={style} data-brand-case={data.slug}>
+    {defs && (
+      <svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false" set:html={`<defs>${defs}</defs>`} />
+    )}
     <BrandNav data={data} sections={sections} />
     <CaseIntro data={data} />
     <CaseSymbol data={data} />

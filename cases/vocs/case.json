@@ -1,0 +1,224 @@
+{
+  "slug": "vocs",
+  "client": "VOC&S",
+  "segment": "Psicologia, desenvolvimento humano e organizacional",
+  "year": "2021",
+  "assets": "/brand/vocs",
+
+  "seo": {
+    "title": "VOC&S — Identidade visual",
+    "description": "Case de identidade visual da VOC&S, empresa de psicologia e desenvolvimento humano e organizacional: o & no lugar do ê, tipografia, cores, sistema de logo e aplicações.",
+    "image": "og.png"
+  },
+
+  "theme": {
+    "dark": "#05213A",
+    "light": "#F6F2EC",
+    "primary": "#004E88",
+    "secondary": "#BC1F36",
+    "support": "#9DB7CF",
+    "accent": "#FF6D00",
+    "inkOnLight": "#05213A",
+    "mutedOnLight": "#666666",
+    "inkOnDark": "#F6F2EC",
+    "mutedOnDark": "#9DB7CF"
+  },
+
+  "font": {
+    "family": "Outfit",
+    "fallback": "\"Century Gothic\", \"Avenir Next\", system-ui, sans-serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "100 900": "fonts/outfit-var.woff2"
+    },
+    "preload": [400]
+  },
+
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": { "desktop": ["wordmark"], "mobile": ["wordmark"], "wordmarkHeight": 22, "dark": "negative", "light": "positive" },
+    "variants": {
+      "positive":     { "label": "Positivo",               "bg": "#FFFFFF", "symbol-main": "#004E88", "symbol-accent": "url(#vocs-amp)", "wordmark": "#004E88", "tagline": "#666666" },
+      "negative":     { "label": "Negativo",               "bg": "#05213A", "symbol-main": "#FFFFFF", "symbol-accent": "url(#vocs-amp)", "wordmark": "#FFFFFF", "tagline": "#9DB7CF" },
+      "onPrimary":    { "label": "Sobre azul-noite",       "bg": "#05213A", "symbol-main": "#FFFFFF", "symbol-accent": "url(#vocs-amp)", "wordmark": "#FFFFFF", "tagline": "#9DB7CF" },
+      "onBlue":       { "label": "Sobre o azul VOC&S",     "bg": "#004E88", "symbol-main": "#FFFFFF", "symbol-accent": "#FF6D00",        "wordmark": "#FFFFFF", "tagline": "#FFFFFF" },
+      "onAccent":     { "label": "Sobre o laranja",        "bg": "#FF6D00", "symbol-main": "#05213A", "symbol-accent": "#FFFFFF",        "wordmark": "#05213A", "tagline": "#05213A" },
+      "mono":         { "label": "Uma cor",                "bg": "#FFFFFF", "symbol-main": "#004E88", "symbol-accent": "#004E88",        "wordmark": "#004E88", "tagline": "#004E88" },
+      "monoNegative": { "label": "Negativo em uma cor",    "bg": "#05213A", "symbol-main": "#FFFFFF", "symbol-accent": "#FFFFFF",        "wordmark": "#FFFFFF", "tagline": "#FFFFFF" }
+    }
+  },
+
+  "intro": {
+    "kicker": "Identidade visual · 2021",
+    "subtitle": "Marca de uma empresa de psicologia e desenvolvimento humano e organizacional, criada por duas psicólogas para quem quer crescer no trabalho.",
+    "scrollHint": "Role para conhecer a marca",
+    "image": "hero-frente-a-frente"
+  },
+
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "01 — Símbolo",
+    "title": "O ê virou um &.",
+    "text": [
+      "VOC&S se lê vocês. Vocês como pessoas, que querem se desenvolver para trabalhar nas empresas. Vocês, as duas psicólogas que conduzem o processo. E vocês, a empresa que cuida de quem trabalha nela.",
+      "No lugar do ê entra o &, a única forma em cor quente da marca: é o “e” que liga uma pessoa à outra. Ao lado dele, o c gira e fica de frente para o o, como duas pessoas em conversa."
+    ],
+    "pieces": [
+      { "piece": "amp", "label": "Laranja", "text": "o calor de quem acolhe", "shift": 0, "y": 14 },
+      { "piece": "amp", "label": "No lugar do ê", "text": "o “e” que liga as pessoas", "shift": 0, "y": 52 },
+      { "piece": "amp", "label": "Carmim", "text": "a profundidade do vínculo", "shift": 0, "y": 90 }
+    ],
+    "image": "textura-luz"
+  },
+
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "02 — Tipografia",
+    "title": "Outfit",
+    "glyphs": ["V", "o", "c", "&", "s"],
+    "weights": [300, 500, 700, 900],
+    "text": "O logotipo parte de uma geométrica pesada, de altura-x generosa e curvas redondas, que soa firme sem perder a gentileza. O projeto usou a Goldplay; como ela é comercial, esta página usa a Outfit, gratuita e de desenho muito próximo: o mesmo o redondo e o mesmo & de duas voltas.",
+    "spec": [
+      { "k": "Fonte do projeto", "v": "Goldplay — Latinotype (comercial)" },
+      { "k": "Nesta página", "v": "Outfit — Rodrigo Fuenzalida · SIL OFL, Google Fonts" },
+      { "k": "Logotipo", "v": "Geométrica pesada, V de cantos arredondados e c espelhado" },
+      { "k": "Descritor", "v": "Caixa-alta espaçada, em grafite" },
+      { "k": "Pesos", "v": "Outfit 300 · 500 · 700 · 900 (variável)" },
+      { "k": "Alternativas", "v": "Urbanist · Lexend · Century Gothic" }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz & 0123456789"
+  },
+
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "03 — Manifesto",
+    "headline": "Ninguém se desenvolve sozinho. Por isso o nome é plural: vocês — a pessoa, a equipe, a empresa e as duas psicólogas que fazem o caminho junto.",
+    "attributes": [
+      { "word": "Escuta", "text": "Antes de propor, ouvir: cada pessoa chega com a própria história." },
+      { "word": "Vínculo", "text": "O & no centro do nome: o trabalho acontece na relação." },
+      { "word": "Desenvolvimento", "text": "Psicologia aplicada ao trabalho, para crescer na carreira e dentro da empresa." },
+      { "word": "Confiança", "text": "O azul firme de uma empresa séria, que cuida de gente." }
+    ]
+  },
+
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "04 — Cores",
+    "title": "Azul que sustenta, laranja que aquece.",
+    "text": "O azul assina o nome e dá a firmeza de uma empresa. O gradiente do laranja ao carmim acende só o &, a parte humana do nome. O grafite vem do descritor; o azul-noite e o areia, quente, são os fundos que deixam o laranja respirar.",
+    "note": "Azul, laranja, carmim e grafite vêm do arquivo do logo (o gradiente do & vai do laranja ao carmim); azul-noite e areia são derivados. CMYK aproximado — confirme no perfil da gráfica.",
+    "swatches": [
+      { "name": "Azul VOC&S", "role": "Principal · logotipo", "hex": "#004E88", "weight": 2.6 },
+      { "name": "Laranja", "role": "Destaque · início do gradiente do &", "hex": "#FF6D00", "weight": 1.8 },
+      { "name": "Carmim", "role": "Fim do gradiente do &", "hex": "#BC1F36", "weight": 1.6 },
+      { "name": "Azul-noite", "role": "Fundo escuro · textos", "hex": "#05213A", "weight": 1.6 },
+      { "name": "Areia", "role": "Fundo claro", "hex": "#F6F2EC", "weight": 1.4 },
+      { "name": "Grafite", "role": "Descritor · textos de apoio", "hex": "#666666", "weight": 1.2 }
+    ]
+  },
+
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "05 — Sistema",
+    "title": "Um nome que funciona em qualquer tamanho.",
+    "tiles": [
+      { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
+      { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Símbolo · o &" },
+      { "kind": "sizes", "variant": "positive", "size": "sm", "label": "Tamanhos pequenos", "sizes": [48, 32, 24, 16] },
+      { "kind": "lockup", "art": "wordmark", "variant": "positive", "size": "sm", "label": "Sem descritor" },
+      { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo" },
+      { "kind": "lockup", "variant": "onBlue", "size": "sm", "label": "Sobre o azul" },
+      { "kind": "lockup", "art": "wordmark", "variant": "mono", "size": "sm", "label": "Uma cor" },
+      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 36, "note": "Margem mínima igual à largura da haste do V." },
+      { "kind": "icon", "variant": "onAccent", "size": "sm", "label": "Ícone e perfil" },
+      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 200, "note": "Com descritor, no mínimo 200 px; abaixo disso, só o logotipo." }
+    ]
+  },
+
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "06 — Aplicações",
+    "title": "Do consultório à sala de treinamento.",
+    "text": "Estudo de aplicações: fotografia editorial em preto e branco, cartões, crachá de evento, recepção e um app para acompanhar o processo. As cenas são geradas sem o logo; a marca é aplicada por cima, no código.",
+    "marquee": "VOC&S",
+    "marqueeArts": ["wordmark"],
+    "items": [
+      { "kind": "photo", "image": "editorial-escuta", "col": [1, 5], "mobile": 2, "speed": -4 },
+      { "kind": "crop", "art": "wordmark", "viewBox": "118 34 240 136", "variant": "onBlue", "col": [6, 7], "mobile": 2 },
+      { "kind": "mockup", "image": "mockup-cartoes", "col": [1, 7], "mobile": 2, "caption": "Cartões de visita",
+        "overlays": [
+          { "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.14, "pin": [[12.6, 38.4], [48.2, 30.9], [51.4, 65.6], [15.8, 73.1]] },
+          { "art": "symbol", "variant": "negative", "blend": "screen", "inset": 0.26, "pin": [[54.2, 27.3], [90.0, 32.9], [87.5, 67.7], [51.7, 62.1]] }
+        ] },
+      { "kind": "app", "variant": "positive", "col": [8, 5], "mobile": 2, "caption": "Estudo de app para acompanhar o processo", "head": ["wordmark"],
+        "screen": {
+          "alt": "Estudo de app da VOC&S com a próxima sessão, um programa para empresas e a trilha de desenvolvimento",
+          "greeting": "Como você chega hoje?",
+          "cards": [
+            { "label": "Próxima sessão", "title": "Orientação de carreira", "meta": "Quinta · online" },
+            { "label": "Para a sua empresa", "title": "Desenvolvimento de equipes", "meta": "Ver programa" }
+          ],
+          "progress": { "label": "Sua trilha de desenvolvimento", "value": 40 }
+        } },
+      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
+      { "kind": "photo", "image": "editorial-carreira", "col": [1, 4], "mobile": 1, "offset": 6, "speed": 4 },
+      { "kind": "mockup", "image": "mockup-cracha", "col": [5, 4], "mobile": 1, "caption": "Crachá de evento",
+        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.12, "pin": [[33, 44], [67, 44], [67, 68], [33, 68]] }] },
+      { "kind": "crop", "art": "wordmark", "viewBox": "336 22 124 136", "variant": "negative", "col": [9, 4], "mobile": 2 },
+      { "kind": "mockup", "image": "mockup-recepcao", "col": [1, 12], "mobile": 2, "caption": "Recepção",
+        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.06, "pin": [[34, 26], [66, 26], [66, 56], [34, 56]] }] },
+      { "kind": "photo", "image": "editorial-equipe", "col": [1, 7], "mobile": 2, "speed": -3 },
+      { "kind": "pattern", "variant": "negative", "col": [8, 5], "mobile": 2 },
+      { "kind": "mockup", "image": "mockup-caneca", "col": [1, 5], "mobile": 1, "caption": "Caneca",
+        "overlays": [{ "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.16, "pin": [[38, 38], [60, 38], [60, 62], [38, 62]] }] },
+      { "kind": "mockup", "image": "mockup-caderno", "col": [6, 7], "mobile": 1, "offset": 5, "caption": "Caderno de treinamento",
+        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.12, "pin": [[33, 30], [63, 30], [63, 52], [33, 52]] }] },
+      { "kind": "photo", "image": "editorial-roda", "col": [1, 12], "mobile": 2, "speed": 4 }
+    ]
+  },
+
+  "closing": {
+    "phrase": "Desenvolver gente, no plural.",
+    "credits": [
+      { "k": "Cliente", "v": "VOC&S" },
+      { "k": "Segmento", "v": "Psicologia, desenvolvimento humano e organizacional" },
+      { "k": "Ano", "v": "2021" },
+      { "k": "Serviços", "v": "Logotipo · descritor · paleta · versões de cor" },
+      { "k": "Ferramentas", "v": "Illustrator · Photoshop" },
+      { "k": "Design", "v": "Thiago Miedes" }
+    ],
+    "cta": { "text": "Tem uma marca para construir?", "label": "Vamos conversar", "href": "/#contato" },
+    "image": "editorial-janela"
+  },
+
+  "images": [
+    { "id": "editorial-escuta", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Duas pessoas conversando frente a frente numa mesa, uma delas com um caderno aberto, em preto e branco" },
+    { "id": "hero-frente-a-frente", "section": "intro", "w": 2400, "h": 1350, "essential": true,
+      "alt": "Duas poltronas vazias, uma de frente para a outra, numa sala azul-escura iluminada por uma luz quente lateral" },
+    { "id": "mockup-cartoes", "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Cartões de visita da VOC&S, um branco com o logo e um azul-noite com o &" },
+    { "id": "editorial-carreira", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Jovem profissional ajustando o blazer diante de uma janela antes de uma entrevista, em preto e branco" },
+    { "id": "mockup-cracha", "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Crachá de evento da VOC&S pendurado num cordão, sobre fundo areia" },
+    { "id": "mockup-recepcao", "section": "applications", "w": 2400, "h": 1200, "essential": true,
+      "alt": "Recepção de escritório com o logo da VOC&S na parede clara, uma poltrona azul-marinho e um vaso com capim seco" },
+    { "id": "editorial-equipe", "mono": true, "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Equipe reunida em roda numa sala de treinamento, com papéis e post-its na mesa, em preto e branco" },
+    { "id": "mockup-caneca", "section": "applications", "w": 1800, "h": 1800, "essential": false,
+      "alt": "Caneca branca com o & da VOC&S sobre uma mesa de madeira clara, ao lado de um caderno" },
+    { "id": "mockup-caderno", "section": "applications", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Caderno de capa branca com o logo da VOC&S sobre uma mesa, com caneta e post-its laranja" },
+    { "id": "editorial-roda", "mono": true, "section": "applications", "w": 2400, "h": 1200, "essential": false,
+      "alt": "Cadeiras dispostas em círculo numa sala clara e vazia, à espera de uma dinâmica de grupo, em preto e branco" },
+    { "id": "textura-luz", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Luz quente, do laranja ao carmim, atravessando um vidro fosco sobre fundo azul-escuro" },
+    { "id": "editorial-janela", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
+      "alt": "Silhuetas de duas pessoas conversando perto de uma janela grande, em contraluz, em preto e branco" }
+  ]
+}

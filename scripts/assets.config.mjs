@@ -332,6 +332,8 @@ export const cases = {
       { id: "destaque-3", src: "Faggian/Destaques/Imagens/faggian_destaque_guardaroupa.png", kind: "post" },
     ],
   },
+  // A página é o case de marca (cases/vocs/case.json); a capa vem de `npm run brand -- vocs thumb`
+  // (logo final). Rodar `npm run assets -- vocs` a sobrescreve.
   vocs: {
     thumb: { from: "cartao-frente", crop: "center" },
     items: [

@@ -32,7 +32,7 @@ const tileStyle = (variant: string) => {
       {sys.tiles.map((tile) => (
         <figure class="bc-tile" data-size={tile.size} data-kind={tile.kind} style={tileStyle(tile.variant)} data-bc-reveal>
           <div class="bc-tile-art">
-            {tile.kind === "lockup" && <BrandLogo data={data} art="lockup" class="bc-tile-lockup" />}
+            {tile.kind === "lockup" && <BrandLogo data={data} art={tile.art ?? "lockup"} class="bc-tile-lockup" />}
             {tile.kind === "symbol" && <BrandLogo data={data} art="symbol" class="bc-tile-symbol" />}
             {tile.kind === "sizes" && (
               <ul class="bc-sizes">

@@ -43,6 +43,8 @@ export interface GraphicsSection {
 }
 export interface SystemTile {
   kind: "lockup" | "symbol" | "sizes" | "clearspace" | "icon" | "minimum"; variant: string; size: "lg" | "tall" | "wide" | "sm"; label: string; note?: string; sizes?: number[];
+  /** lockup: outra parte do logo no lugar do logo completo (ex.: "wordmark" para a versão sem descritor) */
+  art?: LogoArt;
   /** clearspace: medida "x" em unidades do logo (padrão: altura do logotipo) */
   unit?: number;
   /** minimum: largura do logo completo na redução mínima, em px (padrão: 160) */
@@ -160,8 +162,10 @@ export function imageInfo(c: BrandCaseData, id: string): ImageInfo {
 export const imageVisible = (info: ImageInfo) => info.exists || !!info.essential || import.meta.env.DEV;
 
 /* ------------------------------------------------------------------ logo (SVG inline) */
-interface SvgFile { viewBox: [number, number, number, number]; inner: string; label: string }
+interface SvgFile { viewBox: [number, number, number, number]; inner: string; label: string; defs: string }
 const svgCache = new Map<string, SvgFile>();
+const DEFS = /<defs>([\s\S]*?)<\/defs>/g;
+const decode = (s: string) => s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&amp;/g, "&");
 export function readSvg(c: BrandCaseData, art: LogoArt): SvgFile {
   const rel = c.logo[art];
   if (!rel) throw new Error(`[brand-case] ${c.slug}: logo.${art} não está no case.json`);
@@ -170,11 +174,27 @@ export function readSvg(c: BrandCaseData, art: LogoArt): SvgFile {
   if (!svgCache.has(key)) {
     const raw = fs.readFileSync(file, "utf8");
     const viewBox = /viewBox="([^"]+)"/.exec(raw)![1].trim().split(/[\s,]+/).map(Number) as SvgFile["viewBox"];
-    const inner = raw.slice(raw.indexOf(">", raw.indexOf("<svg")) + 1, raw.lastIndexOf("</svg>")).trim();
-    const label = /aria-label="([^"]*)"/.exec(raw)?.[1] ?? c.client;
-    svgCache.set(key, { viewBox, inner, label });
+    // <defs> (ex.: o gradiente de uma parte) saem de cada cópia e são desenhadas uma vez na página (logoDefs)
+    const body = raw.slice(raw.indexOf(">", raw.indexOf("<svg")) + 1, raw.lastIndexOf("</svg>"));
+    const defs = [...body.matchAll(DEFS)].map((m) => m[1].trim()).join("\n");
+    const inner = body.replace(DEFS, "").trim();
+    const label = decode(/aria-label="([^"]*)"/.exec(raw)?.[1] ?? c.client);
+    svgCache.set(key, { viewBox, inner, label, defs });
   }
   return svgCache.get(key)!;
+}
+
+/** <defs> de todos os arquivos do logo, sem repetir id. Ficam num SVG de tamanho zero no topo da página:
+ *  uma variante pode usar "url(#id)" como cor, e a referência não quebra quando a cópia do logo está com display:none. */
+export function logoDefs(c: BrandCaseData) {
+  const byId = new Map<string, string>();
+  for (const art of ["lockup", "symbol", "outline", "wordmark", "tagline"] as const) {
+    if (!c.logo[art]) continue;
+    for (const m of readSvg(c, art).defs.matchAll(/<(\w+)\b[^>]*\bid="([^"]+)"[\s\S]*?<\/\1>/g)) {
+      if (!byId.has(m[2])) byId.set(m[2], m[0]);
+    }
+  }
+  return [...byId.values()].join("\n");
 }
 
 /** Variáveis CSS que recolorem as partes do logo (ver [data-part] em brand.css). */
