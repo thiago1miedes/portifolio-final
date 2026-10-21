@@ -19,7 +19,9 @@ export interface AppItem {
    *  piece: peça real (post, capa, key visual) inteira, sem corte; com frame "phone", dentro de um celular
    *  feed: celular com um perfil de rede social montado em código, com as imagens de `images` na grade
    *  graphic: arquivo vetorial do grafismo (src em public/<assets>/), sem passar pela IA */
-  kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern" | "cutout" | "piece" | "feed" | "graphic";
+  kind: "photo" | "crop" | "mockup" | "app" | "marquee" | "pattern" | "cutout" | "piece" | "feed" | "graphic" | "heading";
+  /** heading: título (caption) e texto de um grupo de peças dentro da colagem */
+  text?: string;
   image?: string; col: [number, number]; mobile: 1 | 2; offset?: number; speed?: number; caption?: string;
   art?: LogoArt; viewBox?: string; variant?: string; overlays?: Overlay[];
   /** app: partes do logo no topo da tela (padrão: símbolo + logotipo) */

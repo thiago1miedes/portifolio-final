@@ -55,6 +55,13 @@ const marqueeArts = a.marqueeArts ?? ["wordmark", "symbol"];
           </figure>
         )}
 
+        {it.kind === "heading" && (
+          <div class="bc-group" data-bc-reveal>
+            <BrandText as="h3" class="bc-group-title" text={it.caption} />
+            {it.text && <BrandText as="p" class="bc-group-text" text={it.text} />}
+          </div>
+        )}
+
         {it.kind === "piece" && (
           <figure data-bc-reveal>
             {it.frame === "phone" ? (

@@ -515,6 +515,12 @@ html:not(.js) [data-intro-outline] { display: none; }
 .bc-app-tabbar i { width: 6cqw; height: 6cqw; border-radius: 2cqw; background: color-mix(in srgb, var(--bc-primary) 22%, transparent); }
 .bc-app-tabbar i:first-child { background: var(--bc-primary); }
 
+/* título de um grupo de peças (feed, stories, YouTube) */
+.bc-group { display: grid; gap: 10px; padding-top: clamp(20px, 3vw, 36px); margin-top: clamp(28px, 5vw, 72px); border-top: 1px solid var(--bc-line); }
+.bc-cell[data-kind="heading"]:first-child .bc-group { margin-top: 0; }
+.bc-group-title { font-size: clamp(1.8rem, 3.6vw, 3rem); font-weight: 600; line-height: 1.05; }
+.bc-group-text { max-width: 56ch; color: var(--bc-muted); }
+
 /* peça real (post, capa, key visual): inteira, sem corte; o parallax move a peça, não a imagem dentro dela */
 .bc-piece { position: relative; aspect-ratio: var(--ar); overflow: hidden; border-radius: var(--bc-radius); box-shadow: 0 0 0 1px rgba(15, 28, 46, 0.06), 0 34px 60px -34px rgba(15, 28, 46, 0.55); }
 .bc-piece .bc-ph { position: absolute; inset: 0; height: 100%; aspect-ratio: auto !important; }

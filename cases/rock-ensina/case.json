@@ -4,13 +4,11 @@
   "segment": "Educação · escola de negócios",
   "year": "2024",
   "assets": "/brand/rock-ensina",
-
   "seo": {
     "title": "Rock Ensina — Identidade visual para redes sociais",
     "description": "Case de identidade visual para redes sociais da Rock Ensina, escola de negócios: grafismo derivado do símbolo, oito pictogramas, padrões, tipografia, cores e posts, stories, reels e capas para YouTube.",
     "image": "og.png"
   },
-
   "theme": {
     "dark": "#1E233C",
     "light": "#E8ECF2",
@@ -23,7 +21,6 @@
     "inkOnDark": "#F4F6FA",
     "mutedOnDark": "#A7AFC6"
   },
-
   "font": {
     "family": "Jost",
     "fallback": "\"Futura\", \"Century Gothic\", \"Avenir Next\", system-ui, sans-serif",
@@ -31,7 +28,9 @@
     "files": {
       "100 900": "fonts/jost-var.woff2"
     },
-    "preload": [600],
+    "preload": [
+      600
+    ],
     "text": {
       "family": "Barlow",
       "fallback": "\"Bahnschrift\", \"Roboto\", system-ui, sans-serif",
@@ -47,34 +46,89 @@
         "800": "fonts/barlow-800.woff2",
         "900": "fonts/barlow-900.woff2"
       },
-      "preload": [400]
+      "preload": [
+        400
+      ]
     }
   },
-
   "logo": {
     "lockup": "logo/lockup.svg",
     "symbol": "logo/symbol.svg",
     "outline": "logo/symbol-outline.svg",
     "wordmark": "logo/wordmark.svg",
-    "nav": { "desktop": ["lockup"], "mobile": ["symbol"], "dark": "negative", "light": "positive" },
+    "nav": {
+      "desktop": [
+        "lockup"
+      ],
+      "mobile": [
+        "symbol"
+      ],
+      "dark": "negative",
+      "light": "positive"
+    },
     "variants": {
-      "positive":     { "label": "Colorido",               "bg": "#FFFFFF", "symbol-main": "#3185FC", "symbol-accent": "#FF513D", "symbol-3": "#29BF12", "symbol-4": "#FCBA04", "wordmark": "#26272C", "tagline": "#26272C" },
-      "negative":     { "label": "Negativo colorido",      "bg": "#1E233C", "symbol-main": "#3185FC", "symbol-accent": "#FF513D", "symbol-3": "#29BF12", "symbol-4": "#FCBA04", "wordmark": "#FFFFFF", "tagline": "#FFFFFF" },
-      "onPrimary":    { "label": "Sobre o azul-noite",     "bg": "#1E233C", "symbol-main": "#3185FC", "symbol-accent": "#FF513D", "symbol-3": "#29BF12", "symbol-4": "#FCBA04", "wordmark": "#FFFFFF", "tagline": "#FFFFFF" },
-      "mono":         { "label": "Monocromático",          "bg": "#FFFFFF", "symbol-main": "#26272C", "symbol-accent": "#26272C", "wordmark": "#26272C", "tagline": "#26272C" },
-      "monoNegative": { "label": "Negativo monocromático", "bg": "#1E233C", "symbol-main": "#FFFFFF", "symbol-accent": "#FFFFFF", "wordmark": "#FFFFFF", "tagline": "#FFFFFF" },
-      "onAccent":     { "label": "Sobre amarelo (só referência para IA)", "bg": "#FCBA04", "symbol-main": "#1E233C", "symbol-accent": "#1E233C", "wordmark": "#1E233C", "tagline": "#1E233C" }
+      "positive": {
+        "label": "Colorido",
+        "bg": "#FFFFFF",
+        "symbol-main": "#3185FC",
+        "symbol-accent": "#FF513D",
+        "symbol-3": "#29BF12",
+        "symbol-4": "#FCBA04",
+        "wordmark": "#26272C",
+        "tagline": "#26272C"
+      },
+      "negative": {
+        "label": "Negativo colorido",
+        "bg": "#1E233C",
+        "symbol-main": "#3185FC",
+        "symbol-accent": "#FF513D",
+        "symbol-3": "#29BF12",
+        "symbol-4": "#FCBA04",
+        "wordmark": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "onPrimary": {
+        "label": "Sobre o azul-noite",
+        "bg": "#1E233C",
+        "symbol-main": "#3185FC",
+        "symbol-accent": "#FF513D",
+        "symbol-3": "#29BF12",
+        "symbol-4": "#FCBA04",
+        "wordmark": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "mono": {
+        "label": "Monocromático",
+        "bg": "#FFFFFF",
+        "symbol-main": "#26272C",
+        "symbol-accent": "#26272C",
+        "wordmark": "#26272C",
+        "tagline": "#26272C"
+      },
+      "monoNegative": {
+        "label": "Negativo monocromático",
+        "bg": "#1E233C",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "onAccent": {
+        "label": "Sobre amarelo (só referência para IA)",
+        "bg": "#FCBA04",
+        "symbol-main": "#1E233C",
+        "symbol-accent": "#1E233C",
+        "wordmark": "#1E233C",
+        "tagline": "#1E233C"
+      }
     }
   },
-
   "intro": {
     "kicker": "Identidade visual para redes sociais · 2024",
     "subtitle": "Grafismo, pictogramas e posts para uma escola de negócios de São Paulo, construídos a partir do símbolo que a marca já tinha.",
     "scrollHint": "Role para conhecer o projeto",
-    "image": "hero-palco",
     "variant": "negative"
   },
-
   "symbol": {
     "nav": "Símbolo",
     "eyebrow": "01 — Símbolo",
@@ -84,68 +138,188 @@
       "As pontas arredondadas, os arcos e as diagonais a 45° voltam em todas as formas que vêm depois: nos pictogramas, nos padrões e nas molduras das fotos."
     ],
     "pieces": [
-      { "piece": "simbolo", "label": "Símbolo", "text": "como no guia", "shift": 0, "y": 6 },
-      { "piece": "recorte", "label": "Recorte", "text": "isola as barras", "shift": 0, "y": 50 },
-      { "piece": "modulo", "label": "Módulo", "text": "base do grafismo", "shift": 0, "y": 94 }
+      {
+        "piece": "simbolo",
+        "label": "Símbolo",
+        "text": "como no guia",
+        "shift": 0,
+        "y": 6
+      },
+      {
+        "piece": "recorte",
+        "label": "Recorte",
+        "text": "isola as barras",
+        "shift": 0,
+        "y": 50
+      },
+      {
+        "piece": "modulo",
+        "label": "Módulo",
+        "text": "base do grafismo",
+        "shift": 0,
+        "y": 94
+      }
     ],
-    "crop": [14.71, 14.71, 70.58, 70.58]
+    "crop": [
+      14.71,
+      14.71,
+      70.58,
+      70.58
+    ]
   },
-
   "graphics": {
     "nav": "Grafismo",
     "eyebrow": "02 — Grafismo",
     "title": "Oito pictogramas, um só vocabulário.",
     "text": "Cada pictograma traduz um tema da escola com as mesmas peças: círculos, quartos de círculo, a barra arredondada do símbolo e as quatro cores sobre o azul-noite. Juntos, eles se encaixam num padrão que emoldura fotos e chamadas.",
     "items": [
-      { "src": "graphics/pictogram-sucesso.svg", "label": "sucesso", "alt": "Pictograma sucesso: taça em vermelho e azul-noite com duas estrelas de quatro pontas" },
-      { "src": "graphics/pictogram-autoconhecimento.svg", "label": "autoconhecimento", "alt": "Pictograma autoconhecimento: perfil de uma cabeça com uma lâmpada no lugar da mente, sobre azul" },
-      { "src": "graphics/pictogram-geracoes.svg", "label": "gerações", "alt": "Pictograma gerações: três figuras de tamanhos diferentes feitas de círculos e arcos, em verde e azul-noite" },
-      { "src": "graphics/pictogram-proposito.svg", "label": "propósito", "alt": "Pictograma propósito: corações vermelhos empilhados formando setas para baixo" },
-      { "src": "graphics/pictogram-atencao.svg", "label": "atenção", "alt": "Pictograma atenção: olho aberto com íris azul e raios nos cantos" },
-      { "src": "graphics/pictogram-criatividade.svg", "label": "criatividade", "alt": "Pictograma criatividade: ponta de lápis desenhando uma linha, sobre amarelo" },
-      { "src": "graphics/pictogram-essencialismo.svg", "label": "essencialismo", "alt": "Pictograma essencialismo: alvo em azul e branco com uma fatia aberta" },
-      { "src": "graphics/pictogram-comunicacao.svg", "label": "comunicação", "alt": "Pictograma comunicação: dois balões de conversa vermelhos com reticências" }
+      {
+        "src": "graphics/pictogram-sucesso.svg",
+        "label": "sucesso",
+        "alt": "Pictograma sucesso: taça em vermelho e azul-noite com duas estrelas de quatro pontas"
+      },
+      {
+        "src": "graphics/pictogram-autoconhecimento.svg",
+        "label": "autoconhecimento",
+        "alt": "Pictograma autoconhecimento: perfil de uma cabeça com uma lâmpada no lugar da mente, sobre azul"
+      },
+      {
+        "src": "graphics/pictogram-geracoes.svg",
+        "label": "gerações",
+        "alt": "Pictograma gerações: três figuras de tamanhos diferentes feitas de círculos e arcos, em verde e azul-noite"
+      },
+      {
+        "src": "graphics/pictogram-proposito.svg",
+        "label": "propósito",
+        "alt": "Pictograma propósito: corações vermelhos empilhados formando setas para baixo"
+      },
+      {
+        "src": "graphics/pictogram-atencao.svg",
+        "label": "atenção",
+        "alt": "Pictograma atenção: olho aberto com íris azul e raios nos cantos"
+      },
+      {
+        "src": "graphics/pictogram-criatividade.svg",
+        "label": "criatividade",
+        "alt": "Pictograma criatividade: ponta de lápis desenhando uma linha, sobre amarelo"
+      },
+      {
+        "src": "graphics/pictogram-essencialismo.svg",
+        "label": "essencialismo",
+        "alt": "Pictograma essencialismo: alvo em azul e branco com uma fatia aberta"
+      },
+      {
+        "src": "graphics/pictogram-comunicacao.svg",
+        "label": "comunicação",
+        "alt": "Pictograma comunicação: dois balões de conversa vermelhos com reticências"
+      }
     ],
     "patterns": [
-      { "src": "graphics/pattern-cores.svg", "w": 750, "h": 750, "alt": "Padrão do grafismo com as quatro cores da marca" },
-      { "src": "graphics/pattern-azul.svg", "w": 750, "h": 750, "alt": "Padrão do grafismo em azul" },
-      { "src": "graphics/pattern-vermelho.svg", "w": 750, "h": 750, "alt": "Padrão do grafismo em vermelho" },
-      { "src": "graphics/pattern-laranja.svg", "w": 750, "h": 750, "alt": "Padrão do grafismo em laranja" },
-      { "src": "graphics/pattern-verde.svg", "w": 750, "h": 750, "alt": "Padrão do grafismo em verde" }
+      {
+        "src": "graphics/pattern-cores.svg",
+        "w": 750,
+        "h": 750,
+        "alt": "Padrão do grafismo com as quatro cores da marca"
+      },
+      {
+        "src": "graphics/pattern-azul.svg",
+        "w": 750,
+        "h": 750,
+        "alt": "Padrão do grafismo em azul"
+      },
+      {
+        "src": "graphics/pattern-vermelho.svg",
+        "w": 750,
+        "h": 750,
+        "alt": "Padrão do grafismo em vermelho"
+      },
+      {
+        "src": "graphics/pattern-laranja.svg",
+        "w": 750,
+        "h": 750,
+        "alt": "Padrão do grafismo em laranja"
+      },
+      {
+        "src": "graphics/pattern-verde.svg",
+        "w": 750,
+        "h": 750,
+        "alt": "Padrão do grafismo em verde"
+      }
     ],
     "patternsNote": "O padrão na versão com todas as cores e em uma cor só: azul, vermelho, laranja ou verde."
   },
-
   "typography": {
     "nav": "Tipografia",
     "eyebrow": "03 — Tipografia",
     "title": "Barlow",
     "font": "text",
-    "glyphs": ["r", "o", "c", "k", "s", "a"],
-    "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    "glyphs": [
+      "r",
+      "o",
+      "c",
+      "k",
+      "s",
+      "a"
+    ],
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
     "text": "A Barlow é a fonte institucional do guia da marca e a base do logotipo. Nas redes, ela cuida dos textos e ganha a companhia da Massima, uma geométrica que homenageia o design de meados do século XX e assina as chamadas grandes. Como a Massima é comercial, os títulos desta página usam a Jost, gratuita e de desenho próximo.",
     "spec": [
-      { "k": "Família", "v": "Barlow — Jeremy Tribby" },
-      { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
-      { "k": "Logotipo", "v": "Barlow SemiBold, estilizada" },
-      { "k": "Nas redes", "v": "Massima (Plau) nos títulos · Barlow nos textos" },
-      { "k": "Nesta página", "v": "Jost nos títulos, no lugar da Massima" },
-      { "k": "Documentos", "v": "Calibri, quando a Barlow não estiver disponível" }
+      {
+        "k": "Família",
+        "v": "Barlow — Jeremy Tribby"
+      },
+      {
+        "k": "Licença",
+        "v": "SIL Open Font License · Google Fonts"
+      },
+      {
+        "k": "Logotipo",
+        "v": "Barlow SemiBold, estilizada"
+      },
+      {
+        "k": "Nas redes",
+        "v": "Massima (Plau) nos títulos · Barlow nos textos"
+      },
+      {
+        "k": "Nesta página",
+        "v": "Jost nos títulos, no lugar da Massima"
+      },
+      {
+        "k": "Documentos",
+        "v": "Calibri, quando a Barlow não estiver disponível"
+      }
     ],
     "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789"
   },
-
   "manifesto": {
     "nav": "Princípios",
     "eyebrow": "04 — Princípios",
     "headline": "Ensinar negócios com atitude: a régua da Bauhaus, a energia do rock e lugar para todas as gerações na mesma sala.",
     "attributes": [
-      { "word": "Encontro de gerações", "text": "Do Bauhaus ao contemporâneo, a nova identidade busca o minimalismo e o essencialismo desta famosa escola vanguardista, com um toque de dinamismo e fluidez característicos dos atributos da marca." },
-      { "word": "Mantendo a essência", "text": "Aproveitando elementos característicos da marca atual, como o símbolo e as cores, agora potencializados." },
-      { "word": "Referência discreta", "text": "O rock enquanto gênero musical deixa de ser a principal referência da marca, tendo uma associação mais discreta." }
+      {
+        "word": "Encontro de gerações",
+        "text": "Do Bauhaus ao contemporâneo, a nova identidade busca o minimalismo e o essencialismo desta famosa escola vanguardista, com um toque de dinamismo e fluidez característicos dos atributos da marca."
+      },
+      {
+        "word": "Mantendo a essência",
+        "text": "Aproveitando elementos característicos da marca atual, como o símbolo e as cores, agora potencializados."
+      },
+      {
+        "word": "Referência discreta",
+        "text": "O rock enquanto gênero musical deixa de ser a principal referência da marca, tendo uma associação mais discreta."
+      }
     ]
   },
-
   "colors": {
     "nav": "Cores",
     "eyebrow": "05 — Cores",
@@ -153,161 +327,640 @@
     "text": "Azul, vermelho, verde e amarelo são as cores institucionais do guia da marca, as mesmas do símbolo. Nas redes, elas saem do símbolo e ocupam fundos, molduras e o grafismo, quase sempre sobre um azul-noite que segura o contraste. O grafite segue no logotipo; o gelo é o branco dos pictogramas.",
     "note": "CMYK oficial nas cinco cores do guia da marca; no azul-noite e no gelo, aproximado — confirme no perfil da gráfica.",
     "swatches": [
-      { "name": "Azul", "role": "Símbolo · destaque principal", "hex": "#3185FC", "cmyk": "100 20 0 0", "weight": 2.2 },
-      { "name": "Vermelho", "role": "Símbolo · chamadas", "hex": "#FF513D", "cmyk": "0 80 75 0", "weight": 1.6 },
-      { "name": "Verde", "role": "Símbolo · grafismo", "hex": "#29BF12", "cmyk": "80 0 100 0", "weight": 1.6 },
-      { "name": "Amarelo", "role": "Símbolo · destaques", "hex": "#FCBA04", "cmyk": "0 30 100 0", "weight": 1.6 },
-      { "name": "Azul-noite", "role": "Fundo das redes", "hex": "#1E233C", "weight": 2 },
-      { "name": "Grafite", "role": "Logotipo", "hex": "#26272C", "cmyk": "15 10 0 90", "weight": 1.1 },
-      { "name": "Gelo", "role": "Branco do grafismo", "hex": "#E8ECF2", "weight": 1.1 }
+      {
+        "name": "Azul",
+        "role": "Símbolo · destaque principal",
+        "hex": "#3185FC",
+        "cmyk": "100 20 0 0",
+        "weight": 2.2
+      },
+      {
+        "name": "Vermelho",
+        "role": "Símbolo · chamadas",
+        "hex": "#FF513D",
+        "cmyk": "0 80 75 0",
+        "weight": 1.6
+      },
+      {
+        "name": "Verde",
+        "role": "Símbolo · grafismo",
+        "hex": "#29BF12",
+        "cmyk": "80 0 100 0",
+        "weight": 1.6
+      },
+      {
+        "name": "Amarelo",
+        "role": "Símbolo · destaques",
+        "hex": "#FCBA04",
+        "cmyk": "0 30 100 0",
+        "weight": 1.6
+      },
+      {
+        "name": "Azul-noite",
+        "role": "Fundo das redes",
+        "hex": "#1E233C",
+        "weight": 2
+      },
+      {
+        "name": "Grafite",
+        "role": "Logotipo",
+        "hex": "#26272C",
+        "cmyk": "15 10 0 90",
+        "weight": 1.1
+      },
+      {
+        "name": "Gelo",
+        "role": "Branco do grafismo",
+        "hex": "#E8ECF2",
+        "weight": 1.1
+      }
     ]
   },
-
   "system": {
     "nav": "Sistema",
     "eyebrow": "06 — Sistema",
     "title": "A marca do guia, sem mudar uma linha.",
     "tiles": [
-      { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão preferencial colorida" },
-      { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Símbolo", "note": "Isolado só em materiais aprovados, como pede o guia." },
-      { "kind": "lockup", "variant": "mono", "size": "sm", "label": "Monocromático" },
-      { "kind": "lockup", "variant": "monoNegative", "size": "sm", "label": "Negativo monocromático" },
-      { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo colorido" },
-      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de não-interferência", "unit": 75, "note": "0,75x do símbolo em volta do logo; mínimo de 135 px (24 mm) nesta versão." }
+      {
+        "kind": "lockup",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão preferencial colorida"
+      },
+      {
+        "kind": "symbol",
+        "variant": "onPrimary",
+        "size": "tall",
+        "label": "Símbolo",
+        "note": "Isolado só em materiais aprovados, como pede o guia."
+      },
+      {
+        "kind": "lockup",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Monocromático"
+      },
+      {
+        "kind": "lockup",
+        "variant": "monoNegative",
+        "size": "sm",
+        "label": "Negativo monocromático"
+      },
+      {
+        "kind": "lockup",
+        "variant": "negative",
+        "size": "wide",
+        "label": "Negativo colorido"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área de não-interferência",
+        "unit": 75,
+        "note": "0,75x do símbolo em volta do logo; mínimo de 135 px (24 mm) nesta versão."
+      }
     ]
   },
-
   "applications": {
     "nav": "Redes sociais",
     "eyebrow": "07 — Redes sociais",
     "title": "Do feed ao YouTube, a mesma voz.",
-    "text": "Peças da proposta e dos primeiros testes: key visual, posts, stories, reels e capas de vídeo. O grafismo emoldura as fotos, as cores se revezam de uma peça para outra e as chamadas ganham peso na tipografia. Caderno, caneca, crachá e ecobag são estudos de aplicação.",
+    "text": "Todas as peças do projeto, separadas por formato: feed do Instagram, stories e reels, e capas de vídeo. O grafismo emoldura as fotos, as cores se revezam de uma peça para outra e as chamadas ganham peso na tipografia.",
     "marquee": "rockensina",
     "items": [
-      { "kind": "piece", "image": "kv-carreira", "col": [1, 8], "mobile": 2, "speed": 2, "caption": "Key visual · estudo da campanha “Você no controle da sua carreira”" },
-      { "kind": "piece", "frame": "phone", "image": "story-negocios", "col": [9, 4], "mobile": 1, "offset": 3, "speed": 4, "caption": "Story" },
-      { "kind": "photo", "image": "editorial-aula", "col": [1, 4], "mobile": 1, "speed": -4 },
-      { "kind": "piece", "image": "post-rock-lider", "col": [5, 4], "mobile": 1, "offset": 8, "caption": "Post · Rock Líder" },
-      { "kind": "piece", "image": "post-rock-planeja", "col": [9, 4], "mobile": 1, "offset": 3, "speed": -3, "caption": "Post · Rock Planeja" },
-      { "kind": "feed", "variant": "positive", "col": [1, 5], "mobile": 2, "caption": "Perfil no Instagram (estudo)",
-        "images": ["post-desenvolvimento", "post-rock-lider", "post-gamificacao", "post-rock-skills", "post-rock-planeja", "post-rock-vendas", "post-tendencia", "post-formacao-claro", "post-formacao-escuro", "post-cada-perfil", "post-tamanho-unico", "post-abordagem", "post-formacao-vermelho", "post-gamificacao-retrato", "post-tendencia-escuro"],
+      {
+        "kind": "heading",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Feed do Instagram",
+        "text": "Posts quadrados e em retrato 4:5, e o perfil montado com a grade de peças e os pictogramas nos destaques."
+      },
+      {
+        "kind": "feed",
+        "variant": "positive",
+        "col": [
+          1,
+          6
+        ],
+        "mobile": 2,
+        "caption": "Perfil no Instagram (estudo)",
+        "images": [
+          "post-desenvolvimento",
+          "post-rock-lider",
+          "post-gamificacao",
+          "post-rock-skills",
+          "post-rock-planeja",
+          "post-rock-vendas",
+          "post-tendencia",
+          "post-formacao-claro",
+          "post-formacao-escuro"
+        ],
         "profile": {
           "name": "rockensina",
           "bio": "A escola de negócios com ensino personalizado para te levar mais longe.",
           "action": "Seguir",
           "alt": "Estudo de perfil da Rock Ensina no Instagram: avatar com o símbolo, destaques com os pictogramas e a grade de posts",
           "highlights": [
-            { "label": "sucesso", "src": "graphics/pictogram-sucesso.svg" },
-            { "label": "propósito", "src": "graphics/pictogram-proposito.svg" },
-            { "label": "atenção", "src": "graphics/pictogram-atencao.svg" },
-            { "label": "gerações", "src": "graphics/pictogram-geracoes.svg" }
+            {
+              "label": "sucesso",
+              "src": "graphics/pictogram-sucesso.svg"
+            },
+            {
+              "label": "propósito",
+              "src": "graphics/pictogram-proposito.svg"
+            },
+            {
+              "label": "atenção",
+              "src": "graphics/pictogram-atencao.svg"
+            },
+            {
+              "label": "gerações",
+              "src": "graphics/pictogram-geracoes.svg"
+            }
           ]
-        } },
-      { "kind": "piece", "frame": "phone", "image": "reels-abordagem", "col": [6, 3], "mobile": 1, "offset": 10, "caption": "Reels" },
-      { "kind": "piece", "frame": "phone", "image": "reels-gamificacao", "col": [10, 3], "mobile": 1, "offset": 4, "speed": -3, "caption": "Reels" },
-      { "kind": "piece", "image": "youtube-vermelho", "col": [1, 7], "mobile": 2, "speed": 2, "caption": "Capa para YouTube" },
-      { "kind": "crop", "art": "symbol", "viewBox": "14.71 14.71 70.58 70.58", "variant": "onPrimary", "col": [8, 5], "mobile": 1 },
-      { "kind": "piece", "image": "post-tamanho-unico", "col": [1, 4], "mobile": 1, "caption": "Post · retrato 4:5" },
-      { "kind": "piece", "image": "post-abordagem", "col": [5, 4], "mobile": 1, "offset": 6, "speed": -3 },
-      { "kind": "piece", "frame": "phone", "image": "reels-talento", "col": [9, 4], "mobile": 1, "offset": 2, "caption": "Reels" },
-      { "kind": "photo", "image": "editorial-mentoria", "col": [1, 6], "mobile": 2, "speed": 4 },
-      { "kind": "piece", "image": "post-cada-perfil", "col": [7, 3], "mobile": 1, "offset": 6 },
-      { "kind": "piece", "image": "post-formacao-vermelho", "col": [10, 3], "mobile": 1, "offset": 12, "speed": -3 },
-      { "kind": "piece", "image": "youtube-azul", "col": [1, 7], "mobile": 2, "speed": 2, "caption": "Capa para YouTube · versão azul" },
-      { "kind": "piece", "image": "post-gamificacao-retrato", "col": [8, 5], "mobile": 1, "offset": 4 },
-      { "kind": "piece", "image": "post-tendencia-escuro", "col": [1, 4], "mobile": 1 },
-      { "kind": "photo", "image": "editorial-notebook", "col": [5, 4], "mobile": 1, "offset": 6, "speed": -4 },
-      { "kind": "mockup", "image": "mockup-ecobag", "col": [9, 4], "mobile": 1, "offset": 2, "caption": "Ecobag",
-        "overlays": [{ "art": "lockup", "variant": "mono", "blend": "multiply", "inset": 0.06, "pin": [[30, 50], [70, 50], [70, 58], [30, 58]] }] },
-      { "kind": "mockup", "image": "mockup-caderno", "col": [1, 6], "mobile": 2, "caption": "Caderno",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.08, "pin": [[36, 44], [64, 44], [64, 52], [36, 52]] }] },
-      { "kind": "mockup", "image": "mockup-caneca", "col": [7, 3], "mobile": 1, "offset": 6, "caption": "Caneca",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.06, "pin": [[30, 50], [62, 50], [62, 57], [30, 57]] }] },
-      { "kind": "mockup", "image": "mockup-cracha", "col": [10, 3], "mobile": 1, "offset": 12, "caption": "Crachá",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.06, "pin": [[37, 50], [63, 50], [63, 56], [37, 56]] }] },
-      { "kind": "photo", "image": "editorial-palestra", "col": [1, 12], "mobile": 2, "speed": 4 }
+        }
+      },
+      {
+        "kind": "piece",
+        "image": "post-desenvolvimento",
+        "col": [
+          7,
+          6
+        ],
+        "mobile": 2,
+        "caption": "Post · 1:1"
+      },
+      {
+        "kind": "piece",
+        "image": "post-rock-lider",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-gamificacao",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-rock-skills",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-rock-planeja",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-rock-vendas",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-tendencia",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-formacao-claro",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-formacao-escuro",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-cada-perfil",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "post-tamanho-unico",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Post · retrato 4:5"
+      },
+      {
+        "kind": "piece",
+        "image": "post-abordagem",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-formacao-vermelho",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "post-gamificacao-retrato",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "post-tendencia-escuro",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "heading",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Stories e reels",
+        "text": "Story em 9:16 e três capas de reels, no formato em que aparecem no celular."
+      },
+      {
+        "kind": "piece",
+        "image": "story-negocios",
+        "col": [
+          1,
+          3
+        ],
+        "mobile": 1,
+        "frame": "phone",
+        "caption": "Story"
+      },
+      {
+        "kind": "piece",
+        "image": "reels-abordagem",
+        "col": [
+          4,
+          3
+        ],
+        "mobile": 1,
+        "frame": "phone",
+        "offset": 4,
+        "caption": "Reels"
+      },
+      {
+        "kind": "piece",
+        "image": "reels-gamificacao",
+        "col": [
+          7,
+          3
+        ],
+        "mobile": 1,
+        "frame": "phone",
+        "offset": 2,
+        "caption": "Reels"
+      },
+      {
+        "kind": "piece",
+        "image": "reels-talento",
+        "col": [
+          10,
+          3
+        ],
+        "mobile": 1,
+        "frame": "phone",
+        "offset": 6,
+        "caption": "Reels"
+      },
+      {
+        "kind": "heading",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Key visual e YouTube",
+        "text": "A campanha “Você no controle da sua carreira” e as capas de vídeo nas versões vermelha e azul."
+      },
+      {
+        "kind": "piece",
+        "image": "kv-carreira",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "speed": 2,
+        "caption": "Key visual · estudo da campanha"
+      },
+      {
+        "kind": "piece",
+        "image": "youtube-vermelho",
+        "col": [
+          1,
+          6
+        ],
+        "mobile": 2,
+        "speed": 2,
+        "caption": "Capa para YouTube"
+      },
+      {
+        "kind": "piece",
+        "image": "youtube-azul",
+        "col": [
+          7,
+          6
+        ],
+        "mobile": 2,
+        "speed": 2,
+        "caption": "Capa para YouTube · versão azul"
+      },
+      {
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "14.71 14.71 70.58 70.58",
+        "variant": "onPrimary",
+        "col": [
+          1,
+          6
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "pattern",
+        "variant": "negative",
+        "col": [
+          7,
+          6
+        ],
+        "mobile": 1
+      }
     ]
   },
-
   "closing": {
     "phrase": "Você no controle da sua carreira.",
     "credits": [
-      { "k": "Cliente", "v": "Rock Ensina" },
-      { "k": "Segmento", "v": "Educação · escola de negócios" },
-      { "k": "Ano", "v": "2024" },
-      { "k": "Serviços", "v": "Identidade visual para redes sociais · grafismo · pictogramas · posts, stories, reels e capas" },
-      { "k": "Logo", "v": "Marca do cliente, mantida como no guia" },
-      { "k": "Design", "v": "Thiago Miedes" }
+      {
+        "k": "Cliente",
+        "v": "Rock Ensina"
+      },
+      {
+        "k": "Segmento",
+        "v": "Educação · escola de negócios"
+      },
+      {
+        "k": "Ano",
+        "v": "2024"
+      },
+      {
+        "k": "Serviços",
+        "v": "Identidade visual para redes sociais · grafismo · pictogramas · posts, stories, reels e capas"
+      },
+      {
+        "k": "Logo",
+        "v": "Marca do cliente, mantida como no guia"
+      },
+      {
+        "k": "Design",
+        "v": "Thiago Miedes"
+      }
     ],
-    "cta": { "text": "Tem uma marca para construir?", "label": "Vamos conversar", "href": "/#contato" },
-    "image": "editorial-plateia"
+    "cta": {
+      "text": "Tem uma marca para construir?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    }
   },
-
   "images": [
-    { "id": "hero-palco", "section": "intro", "w": 2400, "h": 1350, "essential": true,
-      "alt": "Auditório escuro visto do palco, com luzes azuis, vermelhas, verdes e amarelas desfocadas sobre a plateia" },
-    { "id": "editorial-aula", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Professor diante de um quadro com anotações, conversando com uma turma de adultos, em preto e branco" },
-    { "id": "editorial-mentoria", "mono": true, "section": "applications", "w": 2000, "h": 1333, "essential": true,
-      "alt": "Duas pessoas conversando numa mesa com notebook e caderno aberto, numa mentoria, em preto e branco" },
-    { "id": "mockup-caderno", "section": "applications", "w": 2400, "h": 1600, "essential": true,
-      "alt": "Caderno de capa branca com o logo da Rock Ensina sobre uma mesa de trabalho" },
-    { "id": "mockup-caneca", "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Caneca branca com o logo da Rock Ensina ao lado de um notebook" },
-    { "id": "editorial-palestra", "mono": true, "section": "applications", "w": 2400, "h": 1200, "essential": false,
-      "alt": "Palestrante com microfone no palco, de costas para a câmera, diante da plateia, em preto e branco" },
-    { "id": "editorial-plateia", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
-      "alt": "Plateia de um evento aplaudindo, em preto e branco" },
-    { "id": "editorial-notebook", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": false,
-      "alt": "Mãos fazendo anotações num caderno ao lado de um notebook, em preto e branco" },
-    { "id": "mockup-cracha", "section": "applications", "w": 1600, "h": 2000, "essential": false,
-      "alt": "Crachá branco de evento com o logo da Rock Ensina, preso a um cordão" },
-    { "id": "mockup-ecobag", "section": "applications", "w": 1600, "h": 2000, "essential": false,
-      "alt": "Ecobag de algodão cru com o logo da Rock Ensina, no ombro de uma pessoa" },
-
-    { "id": "kv-carreira", "section": "applications", "w": 2400, "h": 1350, "essential": true,
-      "alt": "Key visual “Você no controle da sua carreira”: mulher sorrindo diante de um círculo azul, grafismo colorido à esquerda e o logo rockensina" },
-    { "id": "story-negocios", "section": "applications", "w": 1080, "h": 1920, "essential": true,
-      "alt": "Story com mulher de fone sem fio segurando um notebook, moldura de pictogramas e o texto “A tendência de ensino prático, com foco em negócios, que gera resultado”" },
-    { "id": "post-rock-lider", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post “Rock Líder”: mulher de braços cruzados atrás das letras gigantes e a frase “Desperte um talento há muito tempo adormecido”" },
-    { "id": "post-rock-planeja", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post “Rock Planeja”: mulher sorrindo olhando o celular, com grafismo vermelho e o olho do pictograma atenção" },
-    { "id": "post-desenvolvimento", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post com mulher segurando cadernos e café sobre fundo azul, e o texto “Propostas de desenvolvimento com acompanhamento e relatório periódico”" },
-    { "id": "post-gamificacao", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post “Gamificação” com um palestrante apontando, de microfone na mão" },
-    { "id": "post-rock-skills", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post “Rock Skills”: homem sentado com notebook entre formas verdes do grafismo" },
-    { "id": "post-rock-vendas", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post “Rock Vendas”: mulher de blazer com o celular, grafismo amarelo e laranja" },
-    { "id": "post-tendencia", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post claro com mulher segurando um notebook, moldura colorida e o texto “A tendência de ensino prático, com foco em negócios”" },
-    { "id": "post-formacao-claro", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post “Formação prática com foco em negócios” sobre fundo claro, com moldura de grafismo" },
-    { "id": "post-formacao-escuro", "section": "applications", "w": 1080, "h": 1080, "essential": true,
-      "alt": "Post “Formação prática com foco em negócios” sobre fundo azul-noite, com grafismo colorido" },
-    { "id": "reels-abordagem", "section": "applications", "w": 1080, "h": 1920, "essential": true,
-      "alt": "Capa de reels “Uma abordagem educacional vibrante e poderosa” com homem de barba e grafismo amarelo" },
-    { "id": "reels-gamificacao", "section": "applications", "w": 1080, "h": 1920, "essential": true,
-      "alt": "Capa de reels “Gamificação” com homem sorrindo e grafismo verde" },
-    { "id": "reels-talento", "section": "applications", "w": 1080, "h": 1920, "essential": true,
-      "alt": "Capa de reels com homem grisalho sorrindo e o texto “Desperte um talento há muito tempo adormecido” em caixa amarela" },
-    { "id": "youtube-vermelho", "section": "applications", "w": 1280, "h": 720, "essential": true,
-      "alt": "Capa de vídeo “Perfil profissional, como descobrir?” com palestrante ao microfone e grafismo vermelho" },
-    { "id": "youtube-azul", "section": "applications", "w": 1280, "h": 720, "essential": true,
-      "alt": "Capa de vídeo “Perfil profissional, como descobrir?” na versão com grafismo azul" },
-    { "id": "post-tamanho-unico", "section": "applications", "w": 1080, "h": 1350, "essential": true,
-      "alt": "Post “Treinamento não pode ser tamanho único” com duas pessoas conversando entre formas amarelas" },
-    { "id": "post-abordagem", "section": "applications", "w": 1080, "h": 1350, "essential": true,
-      "alt": "Post “Uma abordagem educacional vibrante e poderosa” com homem de camisa escura segurando o celular" },
-    { "id": "post-cada-perfil", "section": "applications", "w": 1080, "h": 1350, "essential": true,
-      "alt": "Post “Cada cor, um perfil. Cada perfil, um potencial!” com quatro fotos em azul, amarelo, verde e vermelho" },
-    { "id": "post-formacao-vermelho", "section": "applications", "w": 1080, "h": 1350, "essential": true,
-      "alt": "Post “Formação prática com foco em negócios” com mulher de blazer e o nome rockensina em vermelho ao fundo" },
-    { "id": "post-gamificacao-retrato", "section": "applications", "w": 1080, "h": 1350, "essential": true,
-      "alt": "Post “Gamificação” em retrato, com mulher segurando um tablet entre formas verdes" },
-    { "id": "post-tendencia-escuro", "section": "applications", "w": 1080, "h": 1350, "essential": true,
-      "alt": "Post escuro com homem olhando um tablet e o texto “A tendência de ensino prático, com foco em negócios, que gera resultado”" }
+    {
+      "id": "kv-carreira",
+      "section": "applications",
+      "w": 2400,
+      "h": 1350,
+      "essential": true,
+      "alt": "Key visual “Você no controle da sua carreira”: mulher sorrindo diante de um círculo azul, grafismo colorido à esquerda e o logo rockensina"
+    },
+    {
+      "id": "story-negocios",
+      "section": "applications",
+      "w": 1080,
+      "h": 1920,
+      "essential": true,
+      "alt": "Story com mulher de fone sem fio segurando um notebook, moldura de pictogramas e o texto “A tendência de ensino prático, com foco em negócios, que gera resultado”"
+    },
+    {
+      "id": "post-rock-lider",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post “Rock Líder”: mulher de braços cruzados atrás das letras gigantes e a frase “Desperte um talento há muito tempo adormecido”"
+    },
+    {
+      "id": "post-rock-planeja",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post “Rock Planeja”: mulher sorrindo olhando o celular, com grafismo vermelho e o olho do pictograma atenção"
+    },
+    {
+      "id": "post-desenvolvimento",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post com mulher segurando cadernos e café sobre fundo azul, e o texto “Propostas de desenvolvimento com acompanhamento e relatório periódico”"
+    },
+    {
+      "id": "post-gamificacao",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post “Gamificação” com um palestrante apontando, de microfone na mão"
+    },
+    {
+      "id": "post-rock-skills",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post “Rock Skills”: homem sentado com notebook entre formas verdes do grafismo"
+    },
+    {
+      "id": "post-rock-vendas",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post “Rock Vendas”: mulher de blazer com o celular, grafismo amarelo e laranja"
+    },
+    {
+      "id": "post-tendencia",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post claro com mulher segurando um notebook, moldura colorida e o texto “A tendência de ensino prático, com foco em negócios”"
+    },
+    {
+      "id": "post-formacao-claro",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post “Formação prática com foco em negócios” sobre fundo claro, com moldura de grafismo"
+    },
+    {
+      "id": "post-formacao-escuro",
+      "section": "applications",
+      "w": 1080,
+      "h": 1080,
+      "essential": true,
+      "alt": "Post “Formação prática com foco em negócios” sobre fundo azul-noite, com grafismo colorido"
+    },
+    {
+      "id": "reels-abordagem",
+      "section": "applications",
+      "w": 1080,
+      "h": 1920,
+      "essential": true,
+      "alt": "Capa de reels “Uma abordagem educacional vibrante e poderosa” com homem de barba e grafismo amarelo"
+    },
+    {
+      "id": "reels-gamificacao",
+      "section": "applications",
+      "w": 1080,
+      "h": 1920,
+      "essential": true,
+      "alt": "Capa de reels “Gamificação” com homem sorrindo e grafismo verde"
+    },
+    {
+      "id": "reels-talento",
+      "section": "applications",
+      "w": 1080,
+      "h": 1920,
+      "essential": true,
+      "alt": "Capa de reels com homem grisalho sorrindo e o texto “Desperte um talento há muito tempo adormecido” em caixa amarela"
+    },
+    {
+      "id": "youtube-vermelho",
+      "section": "applications",
+      "w": 1280,
+      "h": 720,
+      "essential": true,
+      "alt": "Capa de vídeo “Perfil profissional, como descobrir?” com palestrante ao microfone e grafismo vermelho"
+    },
+    {
+      "id": "youtube-azul",
+      "section": "applications",
+      "w": 1280,
+      "h": 720,
+      "essential": true,
+      "alt": "Capa de vídeo “Perfil profissional, como descobrir?” na versão com grafismo azul"
+    },
+    {
+      "id": "post-tamanho-unico",
+      "section": "applications",
+      "w": 1080,
+      "h": 1350,
+      "essential": true,
+      "alt": "Post “Treinamento não pode ser tamanho único” com duas pessoas conversando entre formas amarelas"
+    },
+    {
+      "id": "post-abordagem",
+      "section": "applications",
+      "w": 1080,
+      "h": 1350,
+      "essential": true,
+      "alt": "Post “Uma abordagem educacional vibrante e poderosa” com homem de camisa escura segurando o celular"
+    },
+    {
+      "id": "post-cada-perfil",
+      "section": "applications",
+      "w": 1080,
+      "h": 1350,
+      "essential": true,
+      "alt": "Post “Cada cor, um perfil. Cada perfil, um potencial!” com quatro fotos em azul, amarelo, verde e vermelho"
+    },
+    {
+      "id": "post-formacao-vermelho",
+      "section": "applications",
+      "w": 1080,
+      "h": 1350,
+      "essential": true,
+      "alt": "Post “Formação prática com foco em negócios” com mulher de blazer e o nome rockensina em vermelho ao fundo"
+    },
+    {
+      "id": "post-gamificacao-retrato",
+      "section": "applications",
+      "w": 1080,
+      "h": 1350,
+      "essential": true,
+      "alt": "Post “Gamificação” em retrato, com mulher segurando um tablet entre formas verdes"
+    },
+    {
+      "id": "post-tendencia-escuro",
+      "section": "applications",
+      "w": 1080,
+      "h": 1350,
+      "essential": true,
+      "alt": "Post escuro com homem olhando um tablet e o texto “A tendência de ensino prático, com foco em negócios, que gera resultado”"
+    }
   ]
 }
