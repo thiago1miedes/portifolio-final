@@ -494,12 +494,12 @@ const list: CaseData[] = [
     sector: "Varejo · moda infantil",
     year: "2023",
     cats: ["brand"],
-    accent: "#8E6BBF",
-    summary: "Identidade lúdica para uma loja de moda infantil e teen, com três propostas e aplicações em fachada e sacola.",
+    accent: "#8971A0",
+    summary: "Marca de uma loja de moda infantil e teen cujo nome mistura as duas sócias, Grazi e Simone, em letras infladas e cores pastel.",
     about: [
-      "Cada proposta explora um caminho — letreiro colorido, coração e balão de fala — sempre com roxo e verde-água como base. As aplicações em fachada, sacola e redes ajudaram a cliente a visualizar a marca no dia a dia da loja.",
+      "O G do símbolo ganha uma segunda camada em sálvia, e o logotipo usa letras infladas e arredondadas. Lavanda e sálvia em tom pastel deixam a marca leve, sem nada saturado.",
     ],
-    deliverables: ["3 propostas de logo", "Paleta", "Fachada e sacola", "Aplicações digitais"],
+    deliverables: ["Logotipo", "Símbolo", "Paleta", "Versões de cor"],
     tools: ["Illustrator", "Photoshop"],
   },
   {

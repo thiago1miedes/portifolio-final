@@ -267,6 +267,8 @@ export const cases = {
       { id: "site-directories", src: "Easy/Prints Site/screencapture-easydirectories-2023-08-02-16_23_56.png", kind: "page", label: "Easy Directories" },
     ],
   },
+  // A página é o case de marca (cases/grasie/case.json, só com o logo final); a capa vem de
+  // `npm run brand -- grasie thumb`. Rodar `npm run assets -- grasie` a sobrescreve.
   grasie: {
     thumb: { from: "logo-07" },
     items: [

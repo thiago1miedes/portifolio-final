@@ -1,0 +1,243 @@
+{
+  "slug": "grasie",
+  "client": "Grasiê Kids & Teen",
+  "segment": "Varejo · moda infantil e teen",
+  "year": "2023",
+  "assets": "/brand/grasie",
+
+  "seo": {
+    "title": "Grasiê Kids & Teen — Identidade visual",
+    "description": "[rascunho] Case de identidade visual da Grasiê Kids & Teen, loja de roupas infantis de duas sócias: o nome que mistura Grazi e Simone, o G macio com a camada em sálvia, a tipografia inflada, as cores pastel, o sistema de logo e aplicações em fachada, sacola, tag e caixa.",
+    "image": "og.png"
+  },
+
+  "theme": {
+    "dark": "#2A2230",
+    "light": "#FBF8F3",
+    "primary": "#8971A0",
+    "secondary": "#82A192",
+    "support": "#E7E0EF",
+    "accent": "#F4D98E",
+    "inkOnLight": "#2A2230",
+    "mutedOnLight": "#675D70",
+    "inkOnDark": "#FBF8F3",
+    "mutedOnDark": "#BDB2C8"
+  },
+
+  "font": {
+    "family": "DynaPuff",
+    "fallback": "\"Baloo 2\", \"Fredoka\", \"Arial Rounded MT Bold\", system-ui, sans-serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "400 700": "fonts/dynapuff-var.woff2"
+    },
+    "preload": [600],
+    "display": { "weight": 600, "tracking": "-0.01em" },
+    "text": {
+      "family": "Nunito",
+      "fallback": "\"Nunito Sans\", \"Arial Rounded MT Bold\", system-ui, \"Segoe UI\", sans-serif",
+      "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+      "files": {
+        "200 1000": "fonts/nunito-var.woff2"
+      },
+      "preload": [400]
+    }
+  },
+
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": { "desktop": ["symbol", "wordmark"], "mobile": ["symbol"], "wordmarkHeight": 22, "dark": "onDark", "light": "positive" },
+    "variants": {
+      "positive":    { "label": "Positivo",              "bg": "#FFFFFF", "symbol-main": "#8971A0", "symbol-accent": "#82A192", "wordmark": "#8971A0", "tagline": "#82A192" },
+      "negative":    { "label": "Negativo",              "bg": "#2A2230", "symbol-main": "#FBF8F3", "symbol-accent": "#FBF8F3", "wordmark": "#FBF8F3", "tagline": "#FBF8F3" },
+      "onDark":      { "label": "Cores sobre ameixa",    "bg": "#2A2230", "symbol-main": "#8971A0", "symbol-accent": "#82A192", "wordmark": "#8971A0", "tagline": "#82A192" },
+      "onPrimary":   { "label": "Sobre lavanda",         "bg": "#8971A0", "symbol-main": "#FBF8F3", "symbol-accent": "#FBF8F3", "wordmark": "#FBF8F3", "tagline": "#FBF8F3" },
+      "onSecondary": { "label": "Sobre sálvia",          "bg": "#82A192", "symbol-main": "#FBF8F3", "symbol-accent": "#FBF8F3", "wordmark": "#FBF8F3", "tagline": "#FBF8F3" },
+      "onSupport":   { "label": "Sobre lilás bruma",     "bg": "#E7E0EF", "symbol-main": "#8971A0", "symbol-accent": "#82A192", "wordmark": "#8971A0", "tagline": "#82A192" },
+      "onAccent":    { "label": "Ameixa sobre manteiga", "bg": "#F4D98E", "symbol-main": "#2A2230", "symbol-accent": "#2A2230", "wordmark": "#2A2230", "tagline": "#2A2230" },
+      "mono":        { "label": "Monocromático",         "bg": "#FFFFFF", "symbol-main": "#2A2230", "symbol-accent": "#2A2230", "wordmark": "#2A2230", "tagline": "#2A2230" }
+    }
+  },
+
+  "intro": {
+    "kicker": "Identidade visual · 2023",
+    "subtitle": "Marca da loja de roupas infantis da Grazi e da Simone: o nome mistura as duas, e as cores pastel deixam tudo leve para as crianças.",
+    "scrollHint": "Role para conhecer a marca",
+    "image": "hero-baloes",
+    "variant": "onDark"
+  },
+
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "01 — Símbolo",
+    "title": "[rascunho] Um G que ganha um abraço.",
+    "text": [
+      "[rascunho] Grasiê nasce de duas pessoas: Grazi e Simone juntaram os próprios nomes para batizar a loja. O símbolo guarda essa soma em duas camadas. O G, em lavanda, vem na frente; atrás dele, uma forma em sálvia contorna a letra pelo alto e pela curva de baixo, como um abraço.",
+      "[rascunho] As formas são cheias e macias, sem nenhuma ponta, como um brinquedo de pano ou uma letra de balão. A criança reconhece o desenho, e os pais leem nele o cuidado que esperam de uma loja de roupa infantil."
+    ],
+    "pieces": [
+      { "piece": "abraco", "label": "Abraço", "text": "[rascunho] a camada em sálvia que envolve a letra", "shift": -46, "y": 14 },
+      { "piece": "letra", "label": "Letra", "text": "[rascunho] o G de Grasiê, macio e sem pontas", "shift": 0, "y": 84 }
+    ],
+    "variant": "onDark",
+    "image": "textura-algodao"
+  },
+
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "02 — Tipografia",
+    "title": "DynaPuff",
+    "glyphs": ["G", "r", "a", "ê", "&", "K"],
+    "weights": [400, 500, 600, 700],
+    "text": "[rascunho] O logotipo tem o desenho da DynaPuff no peso Bold: letras infladas, terminais redondos e o r com uma bolinha na ponta. As letras ficam bem próximas, quase encostadas, e o circunflexo vira um chapeuzinho sobre o e. A mesma família escreve o descritor KIDS & TEEN em caixa-alta. Nos textos corridos entra a Nunito, também arredondada e fácil de ler em qualquer tamanho.",
+    "spec": [
+      { "k": "Família", "v": "DynaPuff — Toshi Omagari e Jennifer Daniel" },
+      { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
+      { "k": "Logotipo", "v": "Desenho da DynaPuff Bold 700, com as letras aproximadas" },
+      { "k": "Descritor", "v": "DynaPuff Bold em caixa-alta" },
+      { "k": "Títulos", "v": "DynaPuff 400–700 · variável" },
+      { "k": "Textos", "v": "Nunito 200–1000 — Vernon Adams, Cyreal e Jacques Le Bailly" },
+      { "k": "Alternativas", "v": "Fredoka · Baloo 2 · Sniglet" }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz & ê ç 0123456789"
+  },
+
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "03 — Manifesto",
+    "headline": "[rascunho] Roupa de criança é feita para correr, brincar e crescer. A Grasiê recebe essa fase com calma: cores suaves, formas macias e uma loja pensada para as crianças e para quem cuida delas.",
+    "attributes": [
+      { "word": "Leve", "text": "Cores pastel e nada saturado: a marca respira e não pesa ao lado das roupas." },
+      { "word": "Calma", "text": "[rascunho] Um projeto tranquilo, que não grita por atenção: o contrário da vitrine barulhenta." },
+      { "word": "Macia", "text": "[rascunho] Letras infladas e cantos redondos, como um tecido de algodão ou um brinquedo de pano." },
+      { "word": "Juntas", "text": "[rascunho] Duas sócias, dois nomes, duas cores. A marca é feita da soma." }
+    ]
+  },
+
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "04 — Cores",
+    "title": "[rascunho] Lavanda e sálvia, em tom de algodão.",
+    "text": "[rascunho] A lavanda e a sálvia vêm do logo, num tom pastel de propósito: nada saturado, para a marca não pesar. Em volta delas entram um algodão quente nos fundos claros, um lilás bruma nas superfícies, a manteiga como destaque pontual e uma ameixa profunda que segura os textos e as aberturas.",
+    "note": "Lavanda e sálvia tiradas do SVG do logo; o CMYK da lavanda é o da apresentação de 2023 (Pantone P 97-12 C). As outras cores são derivadas e têm CMYK aproximado: confirme no perfil da gráfica. A sálvia sobre fundo claro (2,7:1) e a lavanda sobre o algodão (4,0:1) ficam para o logo, títulos grandes e grafismo, nunca para texto miúdo.",
+    "swatches": [
+      { "name": "Lavanda Grasiê", "role": "Principal · G e logotipo", "hex": "#8971A0", "weight": 2.4, "cmyk": "54 59 14 1" },
+      { "name": "Sálvia Grasiê", "role": "Secundária · abraço e descritor", "hex": "#82A192", "weight": 2.0 },
+      { "name": "Ameixa", "role": "Fundo escuro · textos", "hex": "#2A2230", "weight": 1.4 },
+      { "name": "Algodão", "role": "Fundo claro", "hex": "#FBF8F3", "weight": 1.6 },
+      { "name": "Lilás bruma", "role": "Apoio · superfícies e embalagens", "hex": "#E7E0EF", "weight": 1.3 },
+      { "name": "Manteiga", "role": "Destaque · detalhes", "hex": "#F4D98E", "weight": 1.1 }
+    ]
+  },
+
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "05 — Sistema",
+    "title": "[rascunho] Da fachada à etiqueta, o mesmo abraço.",
+    "tiles": [
+      { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
+      { "kind": "symbol", "variant": "onDark", "size": "tall", "label": "Símbolo" },
+      { "kind": "sizes", "variant": "positive", "size": "sm", "label": "Tamanhos pequenos", "sizes": [48, 32, 24, 16] },
+      { "kind": "lockup", "variant": "mono", "size": "sm", "label": "Monocromático" },
+      { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo" },
+      { "kind": "lockup", "variant": "onSecondary", "size": "sm", "label": "Sobre sálvia" },
+      { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre manteiga" },
+      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 74, "note": "[rascunho] Margem mínima igual ao pingo do i." },
+      { "kind": "icon", "variant": "onPrimary", "size": "sm", "label": "Ícone e perfil" },
+      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 140, "note": "[rascunho] Abaixo de 140 px de largura, use só o símbolo." }
+    ]
+  },
+
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "06 — Aplicações",
+    "title": "[rascunho] Da fachada à sacolinha.",
+    "text": "[rascunho] Estudo de aplicações para a loja: fotografia em preto e branco clara e arejada, fachada, sacola, tag de preço, caixa de presente, cartões e a loja no celular. A Grasiê assina a loja, não as roupas: o logo aparece no ponto de venda e na embalagem, nunca estampado nas peças.",
+    "marquee": "Grasiê",
+    "marqueeArts": ["wordmark", "symbol"],
+    "items": [
+      { "kind": "photo", "image": "editorial-cabides", "col": [1, 5], "mobile": 2, "speed": -4 },
+      { "kind": "crop", "art": "wordmark", "viewBox": "885 405 300 266", "variant": "onPrimary", "col": [6, 7], "mobile": 2 },
+      { "kind": "mockup", "image": "mockup-tag", "col": [1, 4], "mobile": 1, "caption": "Tag de preço",
+        "overlays": [{ "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.2, "pin": [[36, 40], [64, 40], [64, 68], [36, 68]] }] },
+      { "kind": "app", "variant": "positive", "col": [5, 4], "mobile": 1, "caption": "Loja no celular (estudo)",
+        "screen": {
+          "alt": "Estudo de loja no celular da Grasiê Kids & Teen, com roupas infantis e teen",
+          "greeting": "Oi! Que bom te ver por aqui",
+          "cards": [
+            { "label": "Kids", "title": "Para brincar o dia todo", "meta": "Ver peças" },
+            { "label": "Teen", "title": "Do seu jeito", "meta": "Ver peças" }
+          ],
+          "progress": { "label": "Seu pedido · separando com carinho", "value": 60 }
+        } },
+      { "kind": "photo", "image": "editorial-pezinhos", "col": [9, 4], "mobile": 2, "offset": 8, "speed": 5 },
+      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
+      { "kind": "mockup", "image": "mockup-fachada", "col": [1, 7], "mobile": 2, "caption": "Fachada",
+        "overlays": [
+          { "art": "wordmark", "variant": "positive", "blend": "multiply", "inset": 0.16, "pin": [[22, 18], [70, 18], [70, 34], [22, 34]] },
+          { "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.2, "pin": [[78, 30], [90, 30], [90, 48], [78, 48]] }
+        ] },
+      { "kind": "photo", "image": "editorial-maos", "col": [8, 5], "mobile": 2, "offset": 7, "speed": -5 },
+      { "kind": "mockup", "image": "mockup-sacola", "col": [1, 6], "mobile": 1, "caption": "Sacola",
+        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.16, "pin": [[30, 42], [70, 42], [70, 74], [30, 74]] }] },
+      { "kind": "pattern", "variant": "onSupport", "col": [7, 6], "mobile": 1 },
+      { "kind": "photo", "image": "editorial-dobradas", "col": [1, 5], "mobile": 1, "speed": 3 },
+      { "kind": "mockup", "image": "mockup-cartoes", "col": [6, 7], "mobile": 1, "offset": 6, "caption": "Cartões",
+        "overlays": [
+          { "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.16, "pin": [[12.6, 38.4], [48.2, 30.9], [51.4, 65.6], [15.8, 73.1]] },
+          { "art": "symbol", "variant": "onPrimary", "blend": "screen", "inset": 0.24, "pin": [[54.2, 27.3], [90.0, 32.9], [87.5, 67.7], [51.7, 62.1]] }
+        ] },
+      { "kind": "crop", "art": "wordmark", "viewBox": "-1 440 470 370", "variant": "onSecondary", "col": [1, 5], "mobile": 1 },
+      { "kind": "mockup", "image": "mockup-caixa", "col": [6, 7], "mobile": 1, "caption": "Caixa de presente",
+        "overlays": [{ "art": "lockup", "variant": "onPrimary", "blend": "screen", "inset": 0.2, "pin": [[30, 26], [70, 26], [70, 70], [30, 70]] }] },
+      { "kind": "photo", "image": "editorial-brincar", "col": [1, 12], "mobile": 2, "speed": 4 }
+    ]
+  },
+
+  "closing": {
+    "phrase": "[rascunho] Leve como a infância pede.",
+    "credits": [
+      { "k": "Cliente", "v": "Grasiê Kids Store" },
+      { "k": "Segmento", "v": "Varejo · moda infantil e teen" },
+      { "k": "Ano", "v": "2023" },
+      { "k": "Serviços", "v": "Logotipo · símbolo · paleta · tipografia · sistema de logo · estudo de aplicações" },
+      { "k": "Ferramentas", "v": "Illustrator · Photoshop" },
+      { "k": "Design", "v": "Thiago Miedes" }
+    ],
+    "cta": { "text": "Tem uma marca para construir?", "label": "Vamos conversar", "href": "/#contato" },
+    "image": "editorial-loja"
+  },
+
+  "images": [
+    { "id": "editorial-cabides", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Roupinhas infantis em cabides de madeira numa arara simples, perto de uma janela clara, em preto e branco" },
+    { "id": "hero-baloes", "section": "intro", "w": 2400, "h": 1350, "essential": true,
+      "alt": "Balões foscos em lavanda e sálvia entrando pelas bordas de um fundo ameixa escuro e calmo" },
+    { "id": "mockup-fachada", "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Fachada de loja pintada em sálvia, com o logotipo Grasiê na placa creme e o símbolo numa placa redonda lateral" },
+    { "id": "mockup-sacola", "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Sacola de papel creme com o logo da Grasiê Kids & Teen e alças de cordão lavanda" },
+    { "id": "mockup-tag", "section": "applications", "w": 1600, "h": 2000, "essential": true,
+      "alt": "Tag de papel creme com o símbolo da Grasiê presa por um cordão a um casaquinho de tricô no cabide" },
+    { "id": "editorial-pezinhos", "mono": true, "section": "applications", "w": 1500, "h": 1500, "essential": true,
+      "alt": "Pés de criança de meia, na ponta dos pés, ao lado de um par de tênis pequenos, em preto e branco" },
+    { "id": "mockup-caixa", "section": "applications", "w": 2400, "h": 1600, "essential": true,
+      "alt": "Caixa de presente lavanda com o logo da Grasiê em branco na tampa, ao lado de papel de seda e uma roupinha dobrada" },
+    { "id": "editorial-maos", "mono": true, "section": "applications", "w": 2000, "h": 1333, "essential": true,
+      "alt": "Mão pequena de criança segurando a mão de um adulto durante uma caminhada, em preto e branco" },
+    { "id": "textura-algodao", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Malha de algodão macia em macro, em tons de lavanda e ameixa" },
+    { "id": "editorial-dobradas", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": false,
+      "alt": "Pilha de roupinhas infantis dobradas numa prateleira branca, em preto e branco" },
+    { "id": "mockup-cartoes", "section": "applications", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Cartões da Grasiê, um creme com o logo colorido e um lavanda com o símbolo em branco" },
+    { "id": "editorial-brincar", "mono": true, "section": "applications", "w": 2400, "h": 1200, "essential": false,
+      "alt": "Criança pulando numa sala clara, de costas e com o movimento desfocado, em preto e branco" },
+    { "id": "editorial-loja", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
+      "alt": "Interior de uma loja de roupas infantis com arara baixa, banquinho e prateleiras claras, em preto e branco" }
+  ]
+}
