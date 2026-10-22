@@ -36,7 +36,10 @@ async function save(input, kind, file) {
   const m = await img.metadata();
   const box = BOX[kind] ?? 1600;
   let w = m.width, h = m.height;
-  if (kind === "page" || kind === "mobile") {
+  if (kind === "story" || kind === "feed" || kind === "banner") {
+    // artes de rede social e banners: tamanho original (nunca ampliam), para o zoom ficar nítido
+    if (w > 2600) { h = Math.round((h * 2600) / w); w = 2600; }
+  } else if (kind === "page" || kind === "mobile") {
     if (w > box) { h = Math.round((h * box) / w); w = box; }
   } else {
     const s = Math.min(1, box / Math.max(w, h));

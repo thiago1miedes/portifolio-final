@@ -37,7 +37,7 @@ export interface AssetItem {
   src: string;
   w: number;
   h: number;
-  kind: "page" | "mobile" | "slide" | "image" | "post";
+  kind: "page" | "mobile" | "slide" | "image" | "post" | "story" | "feed" | "banner";
   label?: string;
   group?: string;
 }
@@ -662,11 +662,12 @@ const list: CaseData[] = [
     year: "2026",
     cats: ["social"],
     accent: "#C1121F",
-    summary: "Campanhas para redes sociais e banners de e-commerce de uma loja de perfumes importados.",
+    summary: "Stories, feed e banners de site para as campanhas de uma loja online de perfumes importados e decants.",
     about: [
-      "Black Decants, Semana do Consumidor, aniversário da loja e desconto progressivo: cada campanha ganhou feed, stories e banners de site (desktop e mobile), sempre com o frasco como herói da peça.",
+      "A SG Importados vende perfumes importados e decants pela internet, e cada data do calendário vira campanha: Black Decants, Semana do Consumidor, desconto progressivo de verão e o aniversário da loja.",
+      "Cada campanha foi desdobrada nos formatos que a loja usa: stories e feed para o Instagram, banners de home em desktop e mobile e banners de categoria. O frasco é o herói da peça, e o preto e o dourado do logo seguem de uma tela para a outra.",
     ],
-    deliverables: ["Posts de feed", "Stories", "Banners de site", "Banners mobile"],
+    deliverables: ["Stories", "Série de stories", "Post de feed", "Banners de site", "Banners mobile", "Banners de categoria"],
     tools: ["Photoshop", "Illustrator"],
   },
   {

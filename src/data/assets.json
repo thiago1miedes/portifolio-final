@@ -2659,62 +2659,195 @@
    "w": 1200,
    "h": 800
   },
+  "cover": "capa",
   "items": [
+   {
+    "id": "capa",
+    "src": "/cases/sg-importados/capa.webp",
+    "w": 1080,
+    "h": 864,
+    "kind": "image",
+    "label": "Logo",
+    "group": "capa"
+   },
+   {
+    "id": "story-black",
+    "src": "/cases/sg-importados/story-black.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Black Decants",
+    "group": "stories"
+   },
+   {
+    "id": "story-aniversario",
+    "src": "/cases/sg-importados/story-aniversario.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Aniversário",
+    "group": "stories"
+   },
+   {
+    "id": "story-consumidor-1",
+    "src": "/cases/sg-importados/story-consumidor-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Semana do Consumidor · 1",
+    "group": "stories"
+   },
+   {
+    "id": "story-consumidor-2",
+    "src": "/cases/sg-importados/story-consumidor-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Semana do Consumidor · 2",
+    "group": "stories"
+   },
+   {
+    "id": "story-consumidor-3",
+    "src": "/cases/sg-importados/story-consumidor-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Semana do Consumidor · 3",
+    "group": "stories"
+   },
+   {
+    "id": "story-verao",
+    "src": "/cases/sg-importados/story-verao.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Perfumes de verão",
+    "group": "stories"
+   },
+   {
+    "id": "story-desconto",
+    "src": "/cases/sg-importados/story-desconto.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Desconto progressivo",
+    "group": "stories"
+   },
+   {
+    "id": "story-progressivo",
+    "src": "/cases/sg-importados/story-progressivo.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Seu verão merece mais",
+    "group": "stories"
+   },
+   {
+    "id": "serie-01",
+    "src": "/cases/sg-importados/serie-01.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Vantagens do decant · 1",
+    "group": "serie"
+   },
+   {
+    "id": "serie-02",
+    "src": "/cases/sg-importados/serie-02.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Vantagens do decant · 2",
+    "group": "serie"
+   },
+   {
+    "id": "serie-03",
+    "src": "/cases/sg-importados/serie-03.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Vantagens do decant · 3",
+    "group": "serie"
+   },
+   {
+    "id": "serie-04",
+    "src": "/cases/sg-importados/serie-04.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Vantagens do decant · 4",
+    "group": "serie"
+   },
+   {
+    "id": "serie-05",
+    "src": "/cases/sg-importados/serie-05.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Vantagens do decant · 5",
+    "group": "serie"
+   },
+   {
+    "id": "serie-06",
+    "src": "/cases/sg-importados/serie-06.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Antes e depois · 1",
+    "group": "serie"
+   },
+   {
+    "id": "serie-07",
+    "src": "/cases/sg-importados/serie-07.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Antes e depois · 2",
+    "group": "serie"
+   },
+   {
+    "id": "serie-08",
+    "src": "/cases/sg-importados/serie-08.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Antes e depois · 3",
+    "group": "serie"
+   },
+   {
+    "id": "serie-09",
+    "src": "/cases/sg-importados/serie-09.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Cupom de boas-vindas",
+    "group": "serie"
+   },
    {
     "id": "feed",
     "src": "/cases/sg-importados/feed.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Black Decants",
+    "group": "feed"
    },
    {
-    "id": "story",
-    "src": "/cases/sg-importados/story.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "consumidor-1",
-    "src": "/cases/sg-importados/consumidor-1.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "consumidor-2",
-    "src": "/cases/sg-importados/consumidor-2.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "aniversario",
-    "src": "/cases/sg-importados/aniversario.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "desconto",
-    "src": "/cases/sg-importados/desconto.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "progressivo",
-    "src": "/cases/sg-importados/progressivo.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post"
+    "id": "banner-verao",
+    "src": "/cases/sg-importados/banner-verao.webp",
+    "w": 1580,
+    "h": 450,
+    "kind": "banner",
+    "label": "Perfumes de verão",
+    "group": "banners"
    },
    {
     "id": "banner-black",
     "src": "/cases/sg-importados/banner-black.webp",
     "w": 1580,
     "h": 450,
-    "kind": "image",
+    "kind": "banner",
+    "label": "Black Decants",
     "group": "banners"
    },
    {
@@ -2722,7 +2855,8 @@
     "src": "/cases/sg-importados/banner-decants.webp",
     "w": 1580,
     "h": 450,
-    "kind": "image",
+    "kind": "banner",
+    "label": "Decants",
     "group": "banners"
    },
    {
@@ -2730,15 +2864,8 @@
     "src": "/cases/sg-importados/banner-vendidos.webp",
     "w": 1580,
     "h": 450,
-    "kind": "image",
-    "group": "banners"
-   },
-   {
-    "id": "banner-consumidor",
-    "src": "/cases/sg-importados/banner-consumidor.webp",
-    "w": 1580,
-    "h": 450,
-    "kind": "image",
+    "kind": "banner",
+    "label": "Os mais vendidos",
     "group": "banners"
    },
    {
@@ -2746,11 +2873,110 @@
     "src": "/cases/sg-importados/banner-aniversario.webp",
     "w": 1580,
     "h": 450,
-    "kind": "image",
+    "kind": "banner",
+    "label": "Aniversário",
     "group": "banners"
+   },
+   {
+    "id": "banner-consumidor",
+    "src": "/cases/sg-importados/banner-consumidor.webp",
+    "w": 1580,
+    "h": 450,
+    "kind": "banner",
+    "label": "Semana do Consumidor",
+    "group": "banners"
+   },
+   {
+    "id": "mobile-verao",
+    "src": "/cases/sg-importados/mobile-verao.webp",
+    "w": 820,
+    "h": 1000,
+    "kind": "banner",
+    "label": "Perfumes de verão",
+    "group": "banners-mobile"
+   },
+   {
+    "id": "mobile-black",
+    "src": "/cases/sg-importados/mobile-black.webp",
+    "w": 820,
+    "h": 1000,
+    "kind": "banner",
+    "label": "Black Decants",
+    "group": "banners-mobile"
+   },
+   {
+    "id": "mobile-decants",
+    "src": "/cases/sg-importados/mobile-decants.webp",
+    "w": 820,
+    "h": 1000,
+    "kind": "banner",
+    "label": "Decants",
+    "group": "banners-mobile"
+   },
+   {
+    "id": "mobile-vendidos",
+    "src": "/cases/sg-importados/mobile-vendidos.webp",
+    "w": 820,
+    "h": 1000,
+    "kind": "banner",
+    "label": "Os mais vendidos",
+    "group": "banners-mobile"
+   },
+   {
+    "id": "mobile-aniversario",
+    "src": "/cases/sg-importados/mobile-aniversario.webp",
+    "w": 820,
+    "h": 1000,
+    "kind": "banner",
+    "label": "Aniversário",
+    "group": "banners-mobile"
+   },
+   {
+    "id": "mobile-consumidor",
+    "src": "/cases/sg-importados/mobile-consumidor.webp",
+    "w": 820,
+    "h": 1000,
+    "kind": "banner",
+    "label": "Semana do Consumidor",
+    "group": "banners-mobile"
+   },
+   {
+    "id": "categoria-verao",
+    "src": "/cases/sg-importados/categoria-verao.webp",
+    "w": 2580,
+    "h": 450,
+    "kind": "banner",
+    "label": "Perfumes de verão",
+    "group": "banners-categoria"
+   },
+   {
+    "id": "categoria-aniversario",
+    "src": "/cases/sg-importados/categoria-aniversario.webp",
+    "w": 2580,
+    "h": 450,
+    "kind": "banner",
+    "label": "Aniversário",
+    "group": "banners-categoria"
+   },
+   {
+    "id": "categoria-black",
+    "src": "/cases/sg-importados/categoria-black.webp",
+    "w": 2580,
+    "h": 450,
+    "kind": "banner",
+    "label": "Black Decants",
+    "group": "banners-categoria"
+   },
+   {
+    "id": "categoria-consumidor",
+    "src": "/cases/sg-importados/categoria-consumidor.webp",
+    "w": 2580,
+    "h": 450,
+    "kind": "banner",
+    "label": "Semana do Consumidor",
+    "group": "banners-categoria"
    }
-  ],
-  "cover": "feed"
+  ]
  },
  "cau-pe": {
   "thumb": {

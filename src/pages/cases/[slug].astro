@@ -32,13 +32,25 @@ const labels: Record<string, string> = {
 };
 const layoutOf = (k: string) =>
   k === "slide" ? "slides" : k === "banners" ? "banners" : k === "post" || k === "social" || k === "stories" ? "posts" : "images";
+// peças de rede social e banners: cada formato vira uma seção própria, com medida e uso
+const formats: Record<string, { label: string; title: string; note: string; ratio: string; layout: string; split?: boolean; chrome?: boolean }> = {
+  stories: { label: "Stories", title: "Campanhas em 9:16", ratio: "9:16", layout: "stories", note: "Uma peça por campanha: Black Decants, aniversário, Semana do Consumidor e desconto progressivo de verão." },
+  serie: { label: "Série de stories", title: "Vantagens de ter um decant", ratio: "9:16", layout: "track", note: "Nove stories em sequência para apresentar o decant: vantagens, antes e depois e o cupom de boas-vindas." },
+  feed: { label: "Feed", title: "Post em 4:5", ratio: "4:5", layout: "feed", split: true, note: "O formato vertical do feed ocupa mais tela que o quadrado. Aqui, o lançamento da Black Decants." },
+  banners: { label: "Banners de site", title: "Home em desktop", ratio: "1580 × 450", layout: "banners", chrome: true, note: "Os banners principais da home da loja, um por campanha." },
+  "banners-mobile": { label: "Banners mobile", title: "Home em celular", ratio: "41:50", layout: "mobile", note: "A versão vertical de cada banner, recomposta para a tela pequena em vez de apenas reduzida." },
+  "banners-categoria": { label: "Banners de categoria", title: "Faixa larga das categorias", ratio: "2580 × 450", layout: "banners", chrome: true, note: "A faixa que abre as páginas de categoria, mais baixa e mais larga que o banner da home." },
+};
 const groups: { key: string; items: AssetItem[] }[] = [];
-for (const it of rest.filter((x) => x !== visualCover)) {
+for (const it of rest.filter((x) => x !== visualCover && x.group !== "capa")) {
   const key = it.group ?? it.kind;
   let g = groups.find((x) => x.key === key);
   if (!g) groups.push((g = { key, items: [] }));
   g.items.push(it);
 }
+const logoCover = visualCover?.group === "capa";
+const hasFormats = groups.some((g) => formats[g.key]);
+const specOf = (g: { items: AssetItem[] }) => `${g.items[0].w} × ${g.items[0].h} px`;
 const meta = [
   { k: "Cliente", v: c.client },
   { k: "Segmento", v: c.sector },
@@ -82,8 +94,8 @@ const meta = [
     )}
     {visualCover && (
       <section class="case-cover-img container">
-        <div class="cover-img" data-parallax-wrap>
-          <img src={visualCover.src} width={visualCover.w} height={visualCover.h} alt={`Projeto ${c.title}`} data-parallax-img loading="eager" />
+        <div class:list={["cover-img", { "cover-img--logo": logoCover }]} data-parallax-wrap={logoCover ? undefined : ""}>
+          <img src={visualCover.src} width={visualCover.w} height={visualCover.h} alt={logoCover ? `Logo ${c.title}` : `Projeto ${c.title}`} data-parallax-img={logoCover ? undefined : ""} loading="eager" />
         </div>
       </section>
     )}
@@ -143,21 +155,50 @@ const meta = [
       </section>
     )}
 
-    {groups.map((g) => (
-      <section class="case-gallery container">
+    {hasFormats && (
+      <nav class="case-formats container" aria-label="Formatos do projeto">
+        <p class="eyebrow" data-reveal>Formatos</p>
+        <ol class="cf-list">
+          {groups.map((g, k) => formats[g.key] && (
+            <li data-reveal>
+              <a href={`#f-${g.key}`} class="cf-link">
+                <span class="cf-n">{String(k + 1).padStart(2, "0")}</span>
+                <span class="cf-label">{formats[g.key].label}</span>
+                <span class="cf-meta">{`${g.items.length} ${g.items.length === 1 ? "peça" : "peças"} · ${formats[g.key].ratio}`}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+
+    {groups.map((g, gi) => {
+      const f = formats[g.key];
+      return (
+      <section class:list={["case-gallery container", { "cg-sec--split": f?.split }]} id={f ? `f-${g.key}` : undefined}>
         <div class="cg-head">
-          <p class="eyebrow" data-reveal>{labels[g.key] ?? "Galeria"}</p>
-          <span class="cg-count" data-reveal>{String(g.items.length).padStart(2, "0")} {g.items.length === 1 ? "peça" : "peças"}</span>
+          <div class="cg-title">
+            <p class="eyebrow" data-reveal>{f ? `${String(gi + 1).padStart(2, "0")} — ${f.label}` : (labels[g.key] ?? "Galeria")}</p>
+            {f && <h2 class="h-card" data-reveal>{f.title}</h2>}
+            {f && <p class="cg-note" data-reveal>{f.note}</p>}
+          </div>
+          <span class="cg-count" data-reveal>
+            {f && <b>{specOf(g)}</b>}
+            {`${String(g.items.length).padStart(2, "0")} ${g.items.length === 1 ? "peça" : "peças"}`}
+          </span>
         </div>
-        <div class:list={["cg", `cg--${layoutOf(g.key)}`]}>
+        <div class:list={["cg", `cg--${f?.layout ?? layoutOf(g.key)}`]}>
           {g.items.map((it) => (
-            <button type="button" class="cg-item" data-lightbox={it.src} data-w={it.w} data-h={it.h} data-reveal aria-label="Ampliar imagem">
-              <img src={it.src} width={it.w} height={it.h} alt={`${labels[g.key] ?? "Imagem"} — ${c.title}`} loading="lazy" decoding="async" />
+            <button type="button" class:list={["cg-item", { "has-bar": f?.chrome }]} data-lightbox={it.src} data-w={it.w} data-h={it.h} data-reveal aria-label={`Ampliar ${it.label ?? "imagem"}`}>
+              {f?.chrome && <span class="cg-bar" aria-hidden="true"><i></i><i></i><i></i></span>}
+              <img src={it.src} width={it.w} height={it.h} alt={f ? `${f.label}: ${it.label} — ${c.title}` : `${labels[g.key] ?? "Imagem"} — ${c.title}`} loading="lazy" decoding="async" />
+              {f && it.label && <span class="cg-cap">{it.label}</span>}
             </button>
           ))}
         </div>
       </section>
-    ))}
+      );
+    })}
 
     <nav class="case-next" aria-label="Próximo projeto">
       <a href={`/cases/${next.slug}/`} class="next-link container" data-cursor="view">
@@ -208,6 +249,9 @@ const meta = [
   .case-cover-img { padding-bottom: clamp(20px, 4vw, 40px); }
   .cover-img { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--bg-elev); aspect-ratio: 16 / 9; }
   .cover-img img { width: 100%; height: 118%; object-fit: cover; }
+  .cover-img--logo { aspect-ratio: 21 / 9; background: #000; position: relative; }
+  .cover-img--logo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+  @media (max-width: 700px) { .cover-img--logo { aspect-ratio: 4 / 3; } }
 
   .case-about { display: grid; gap: 36px; padding-block: clamp(56px, 7vw, 104px); }
   @media (min-width: 1000px) { .case-about { grid-template-columns: 1.4fr 0.6fr; gap: 80px; } }
@@ -264,6 +308,38 @@ const meta = [
   .cg--posts .cg-item { break-inside: avoid; margin-bottom: clamp(12px, 1.6vw, 20px); }
   @media (min-width: 760px) { .cg--posts { columns: 3; } }
   @media (min-width: 1100px) { .cg--posts { columns: 4; } }
+
+  .case-formats { display: grid; gap: 18px; padding-bottom: clamp(40px, 5vw, 72px); }
+  .cf-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (min-width: 900px) { .cf-list { grid-template-columns: repeat(3, 1fr); } }
+  .cf-link { display: grid; grid-template-columns: 2.25rem 1fr; column-gap: 14px; row-gap: 2px; align-items: baseline; height: 100%; padding: 16px 18px; border-radius: 16px; background: var(--surface-glass); border: 1px solid var(--border); transition: border-color 0.25s, background-color 0.25s; }
+  .cf-link:hover { border-color: var(--accent); background: var(--bg-elev); }
+  .cf-n { grid-row: span 2; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); line-height: 1; }
+  .cf-label { font-weight: 600; letter-spacing: -0.01em; }
+  .cf-meta { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  .cg-sec--split { display: grid; gap: 0 clamp(28px, 5vw, 80px); }
+  @media (min-width: 900px) { .cg-sec--split { grid-template-columns: 1fr minmax(0, 440px); } .cg-sec--split .cg-head { border-bottom: 0; align-items: start; justify-content: flex-start; flex-direction: column; gap: 18px; } }
+  .cg-title { display: grid; gap: 10px; max-width: 620px; }
+  .cg-note { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.55; }
+  .cg-count { display: inline-flex; flex-direction: column; align-items: flex-end; gap: 2px; text-align: right; flex: none; }
+  .cg-count b { font-weight: 500; color: var(--text); }
+  .cg-sec--split .cg-count { align-items: flex-start; text-align: left; }
+  .cg-head { gap: 24px; align-items: flex-end; }
+  .cg-item.has-bar, .cg-item:has(.cg-cap) { display: flex; flex-direction: column; text-align: left; }
+  .cg-bar { display: flex; gap: 6px; padding: 10px 14px; background: var(--surface-glass-2); border-bottom: 1px solid var(--border); }
+  .cg-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); }
+  .cg-cap { padding: 10px 14px 12px; font-size: 0.8125rem; color: var(--text-muted); border-top: 1px solid var(--border); }
+  .cg-item:hover .cg-cap { color: var(--text); }
+  .cg--stories { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  @media (min-width: 760px) { .cg--stories { grid-template-columns: repeat(4, 1fr); } }
+  .cg--track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+  .cg--track .cg-item { flex: 0 0 clamp(190px, 24vw, 300px); width: auto; scroll-snap-align: start; align-self: flex-start; }
+  .cg--feed { grid-template-columns: 1fr; align-items: start; }
+  .cg--feed .cg-item { max-width: 440px; }
+  .cg--mobile { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  @media (min-width: 760px) { .cg--mobile { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px) { .cg--banners .cg-item { overflow-x: auto; } .cg--banners .cg-item img { min-width: 640px; } }
 
   .case-next { border-top: 1px solid var(--border); }
   .next-link { display: grid; gap: 14px; padding-block: clamp(56px, 7vw, 104px); }
