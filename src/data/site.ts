@@ -41,8 +41,8 @@ export const skills = [
   "Identidade Visual", "Web Design", "UI Design", "Social Media", "Photoshop", "Illustrator", "Figma",
 ];
 
-/** Slugs dos cases que aparecem na home (ordem = ordem no grid: grande, pequeno, pequeno, grande…). */
-export const homeProjects = ["smartbox", "dor-e-saude", "hu-ufnt", "firework", "arie-capital", "efpi"];
+/** Slugs dos cases que aparecem na home: 2 sites + 2 identidades, em xadrez (site, marca / marca, site). */
+export const homeProjects = ["smartbox", "faggian", "dor-e-saude", "arie-capital"];
 
 /** Ferramentas (ícones do bloco "Ferramentas que eu uso"). */
 export const tools = [

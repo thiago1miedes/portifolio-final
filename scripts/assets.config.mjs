@@ -288,24 +288,9 @@ export const cases = {
       { id: "papelaria-3", src: "LifeStyle/img-papelaria-v3-p1.jpg", kind: "image" },
     ],
   },
-  "hu-ufnt": {
-    thumb: { from: "mock-01", crop: "center" },
-    items: [
-      { id: "apresentacao", src: "Apex Comunicação/Apresentação logo HU/Apresentação_HuUFNT_apex.pdf", kind: "slide", pages: range(1, 16) },
-      ...range(1, 8).map((n) => ({ id: `mock-0${n}`, src: `Apex Comunicação/Apresentação logo HU/mockups_0${n}.png`, kind: "image" })),
-    ],
-  },
-  "royal-lash": {
-    thumb: { from: "logo-05" },
-    items: [{ id: "logo", src: "RainhaDoLash_StudioXavier/Congresso-royal-lash/RainhaDoLash_logo-congresso-apresentação-v2.pdf", kind: "slide", pages: range(2, 10) }],
-  },
   "rock-ensina": {
     thumb: { from: "id-09" },
     items: [{ id: "id", src: "Rockensina/Proposta Id Visual/202412_Slides_Proposta_IdVisual_Rock_Ensina.pdf", kind: "slide", pages: range(1, 15) }],
-  },
-  "reputation-architecture": {
-    thumb: { from: "id-03" },
-    items: [{ id: "id", src: "Reputation Architeture/_Apresentação identidade - MANU BORGES.pdf", kind: "slide", pages: range(1, 8) }],
   },
   // A capa (thumb.webp) vem de `npm run brand -- confraria thumb` (logo final); rodar `npm run assets -- confraria` a sobrescreve.
   confraria: {

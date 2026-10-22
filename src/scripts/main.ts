@@ -227,8 +227,8 @@ if (hero) {
 /* ------------------------------------------------------------------ projetos: parallax leve na imagem */
 if (!reduce) {
   $$("[data-project-img]").forEach((img) => {
-    gsap.fromTo(img, { yPercent: -4 }, {
-      yPercent: 4, ease: "none",
+    gsap.fromTo(img, { yPercent: -2.5 }, {
+      yPercent: 2.5, ease: "none",
       scrollTrigger: { trigger: img.closest("[data-project]"), start: "top bottom", end: "bottom top", scrub: true },
     });
   });
@@ -306,51 +306,62 @@ if (footerName && !reduce) {
 }
 
 /* ------------------------------------------------------------------ página de todos os projetos (filtro + Flip) */
+// Cada card é revelado uma única vez (data-revealed). Os gatilhos de rolagem não usam `once`:
+// assim um card escondido pelo filtro continua com gatilho válido e nunca anima de novo depois de visto.
 $$("[data-projects]").forEach((wrap) => {
   const items = $$<HTMLElement>(".case-card", wrap);
   const buttons = $$<HTMLButtonElement>("[data-filter]", wrap);
+  const shown = () => items.filter((i) => !i.classList.contains("is-hidden"));
+
+  const reveal = (els: HTMLElement[], delay = 0) => {
+    const fresh = els.filter((e) => e.dataset.revealed !== "1" && !e.classList.contains("is-hidden"));
+    if (!fresh.length) return;
+    fresh.forEach((e) => (e.dataset.revealed = "1"));
+    // os que já ficaram acima da tela (ex.: recarregar no meio da lista) aparecem sem animação
+    const above = fresh.filter((e) => e.getBoundingClientRect().bottom < 0);
+    gsap.set(reduce ? fresh : above, { opacity: 1, y: 0 });
+    if (reduce || above.length === fresh.length) return;
+    gsap.fromTo(fresh.filter((e) => !above.includes(e)),{ opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: "expo.out", stagger: 0.07, delay, overwrite: true });
+  };
 
   const apply = (cat: string, animate = true) => {
-    const state = animate && !reduce ? Flip.getState(items) : null;
-    const before = new Set(items.filter((i) => !i.classList.contains("is-hidden")));
-    items.forEach((it) => {
-      const ok = cat === "all" || it.dataset.cats!.split(" ").includes(cat);
-      it.classList.toggle("is-hidden", !ok);
-    });
+    const before = new Set(shown());
+    const state = animate && !reduce ? Flip.getState([...before]) : null;
+    items.forEach((it) => it.classList.toggle("is-hidden", !(cat === "all" || it.dataset.cats!.split(" ").includes(cat))));
     buttons.forEach((b) => {
       const on = b.dataset.filter === cat;
       b.classList.toggle("is-active", on);
       b.setAttribute("aria-pressed", String(on));
     });
+    const now = shown();
+    // quem volta a aparecer entra animado se estiver na tela; o resto espera a rolagem
+    now.filter((i) => !before.has(i)).forEach((i) => {
+      i.dataset.revealed = "0";
+      gsap.set(i, { opacity: 0, y: 0 });
+    });
     if (state) {
-      const now = items.filter((i) => !i.classList.contains("is-hidden"));
-      const entering = now.filter((i) => !before.has(i) || i.dataset.revealed !== "1");
-      Flip.from(state, {
-        targets: now.filter((i) => before.has(i)),
-        duration: 0.7, ease: "power3.inOut", absolute: true, stagger: 0.02,
-        onComplete: () => ScrollTrigger.refresh(),
-      });
-      gsap.fromTo(entering, { opacity: 0, y: 40, scale: 0.96 }, {
-        opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "expo.out", stagger: 0.05, delay: 0.2, overwrite: true,
-        onComplete: () => entering.forEach((e) => (e.dataset.revealed = "1")),
-      });
+      const stay = now.filter((i) => before.has(i));
+      const onScreen = now.filter((i) => i.getBoundingClientRect().top < innerHeight);
+      // as posições dos gatilhos só valem depois que o Flip devolve os cards ao fluxo do grid
+      if (stay.length) Flip.from(state, { targets: stay, duration: 0.7, ease: "power3.inOut", absolute: true, stagger: 0.02, onComplete: () => ScrollTrigger.refresh() });
+      else ScrollTrigger.refresh();
+      reveal(onScreen, 0.25);
+      // se o filtro foi trocado com a lista já rolada, volta para o topo dela
+      if (wrap.getBoundingClientRect().top < 0) scrollTo(wrap);
     }
     const url = new URL(location.href);
     if (cat === "all") url.searchParams.delete("cat"); else url.searchParams.set("cat", cat);
     if (animate) history.replaceState(null, "", url);
   };
 
-  buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter!)));
+  buttons.forEach((b) => b.addEventListener("click", () => { if (!b.classList.contains("is-active")) apply(b.dataset.filter!); }));
   const initial = new URLSearchParams(location.search).get("cat");
   apply(initial && buttons.some((b) => b.dataset.filter === initial) ? initial : "all", false);
 
-  const visible = items.filter((i) => !i.classList.contains("is-hidden"));
   if (reduce) gsap.set(items, { opacity: 1 });
-  else
-    ScrollTrigger.batch(visible, {
-      start: "top 94%", once: true,
-      onEnter: (b) => { b.forEach((e) => ((e as HTMLElement).dataset.revealed = "1")); gsap.fromTo(b, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1, ease: "expo.out", stagger: 0.09, overwrite: true }); },
-    });
+  else ScrollTrigger.batch(items, { start: "top 92%", onEnter: (b) => reveal(b as HTMLElement[]) });
+  // revela juntos (com stagger) os que já estão na primeira dobra
+  if (!reduce) reveal(shown().filter((i) => i.getBoundingClientRect().top < innerHeight * 0.92),root.classList.contains("is-arriving") ? 0.5 : 0.15);
 });
 
 /* ------------------------------------------------------------------ página de case */

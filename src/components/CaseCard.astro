@@ -19,7 +19,7 @@ const { c } = Astro.props;
 
 <style>
   .case-card { display: grid; gap: 16px; align-content: start; }
-  .js .case-card { opacity: 0; }
+  :global(.js) .case-card { opacity: 0; }
   .cc-media {
     position: relative;
     aspect-ratio: 3 / 2;
