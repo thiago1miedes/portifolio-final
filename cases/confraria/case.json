@@ -4,13 +4,11 @@
   "segment": "Perfumes caseiros e velas aromáticas",
   "year": "2022",
   "assets": "/brand/confraria",
-
   "seo": {
     "title": "Confraria dos Aromas — Identidade visual",
     "description": "Case de identidade visual da Confraria dos Aromas, marca de perfumes caseiros e velas aromáticas: lettering com vinhas, monograma, tipografia, cores, sistema de logo e aplicações.",
     "image": "og.png"
   },
-
   "theme": {
     "dark": "#082A23",
     "light": "#F8F5E2",
@@ -23,7 +21,6 @@
     "inkOnDark": "#F8F5E2",
     "mutedOnDark": "#A9BCA6"
   },
-
   "font": {
     "family": "Gloock",
     "fallback": "\"DM Serif Display\", \"Playfair Display\", Georgia, \"Times New Roman\", serif",
@@ -31,7 +28,9 @@
     "files": {
       "400": "fonts/gloock-400.woff2"
     },
-    "preload": [400],
+    "preload": [
+      400
+    ],
     "text": {
       "family": "Figtree",
       "fallback": "system-ui, \"Segoe UI\", Roboto, sans-serif",
@@ -39,34 +38,83 @@
       "files": {
         "300 900": "fonts/figtree-var.woff2"
       },
-      "preload": [400]
+      "preload": [
+        400
+      ]
     }
   },
-
   "logo": {
     "lockup": "logo/lockup.svg",
     "symbol": "logo/symbol.svg",
     "outline": "logo/symbol-outline.svg",
     "wordmark": "logo/wordmark.svg",
     "tagline": "logo/tagline.svg",
-    "nav": { "desktop": ["wordmark"], "mobile": ["symbol"], "wordmarkHeight": 26 },
+    "nav": {
+      "desktop": [
+        "wordmark"
+      ],
+      "mobile": [
+        "symbol"
+      ],
+      "wordmarkHeight": 26
+    },
     "variants": {
-      "positive":    { "label": "Positivo",        "bg": "#F8F5E2", "symbol-main": "#074D40", "symbol-accent": "#C1715B", "wordmark": "#074D40", "tagline": "#C1715B" },
-      "negative":    { "label": "Negativo",        "bg": "#082A23", "symbol-main": "#F8F5E2", "symbol-accent": "#C1715B", "wordmark": "#F8F5E2", "tagline": "#C1715B" },
-      "onPrimary":   { "label": "Sobre verde",     "bg": "#074D40", "symbol-main": "#C1715B", "symbol-accent": "#F8F5E2", "wordmark": "#C1715B", "tagline": "#C1715B" },
-      "onSecondary": { "label": "Sobre terracota", "bg": "#C1715B", "symbol-main": "#074D40", "symbol-accent": "#F8F5E2", "wordmark": "#074D40", "tagline": "#074D40" },
-      "onAccent":    { "label": "Sobre dourado",   "bg": "#D3A94F", "symbol-main": "#074D40", "symbol-accent": "#F8F5E2", "wordmark": "#074D40", "tagline": "#074D40" },
-      "mono":        { "label": "Monocromático",   "bg": "#FFFFFF", "symbol-main": "#074D40", "symbol-accent": "#074D40", "wordmark": "#074D40", "tagline": "#074D40" }
+      "positive": {
+        "label": "Positivo",
+        "bg": "#F8F5E2",
+        "symbol-main": "#074D40",
+        "symbol-accent": "#C1715B",
+        "wordmark": "#074D40",
+        "tagline": "#C1715B"
+      },
+      "negative": {
+        "label": "Negativo",
+        "bg": "#082A23",
+        "symbol-main": "#F8F5E2",
+        "symbol-accent": "#C1715B",
+        "wordmark": "#F8F5E2",
+        "tagline": "#C1715B"
+      },
+      "onPrimary": {
+        "label": "Sobre verde",
+        "bg": "#074D40",
+        "symbol-main": "#C1715B",
+        "symbol-accent": "#F8F5E2",
+        "wordmark": "#C1715B",
+        "tagline": "#C1715B"
+      },
+      "onSecondary": {
+        "label": "Sobre terracota",
+        "bg": "#C1715B",
+        "symbol-main": "#074D40",
+        "symbol-accent": "#F8F5E2",
+        "wordmark": "#074D40",
+        "tagline": "#074D40"
+      },
+      "onAccent": {
+        "label": "Sobre dourado",
+        "bg": "#D3A94F",
+        "symbol-main": "#074D40",
+        "symbol-accent": "#F8F5E2",
+        "wordmark": "#074D40",
+        "tagline": "#074D40"
+      },
+      "mono": {
+        "label": "Monocromático",
+        "bg": "#FFFFFF",
+        "symbol-main": "#074D40",
+        "symbol-accent": "#074D40",
+        "wordmark": "#074D40",
+        "tagline": "#074D40"
+      }
     }
   },
-
   "intro": {
     "kicker": "Identidade visual · 2022",
     "subtitle": "Lettering para uma marca de perfumes caseiros e velas aromáticas, com vinhas que brotam das letras como o aroma que se espalha pela casa.",
     "scrollHint": "Role para conhecer a marca",
     "image": "hero-fumaca"
   },
-
   "symbol": {
     "nav": "Monograma",
     "eyebrow": "01 — Monograma",
@@ -76,42 +124,90 @@
       "O C de abertura, com a vinha enrolada embaixo, funciona sozinho como monograma. Assina tampas, etiquetas e o perfil nas redes quando o nome inteiro não cabe."
     ],
     "pieces": [
-      { "piece": "letra", "label": "Letra", "text": "serifa clássica, de alto contraste", "shift": 0, "y": 34 },
-      { "piece": "vinha", "label": "Vinha", "text": "o aroma que se espalha", "shift": 0, "y": 88 }
+      {
+        "piece": "letra",
+        "label": "Letra",
+        "text": "serifa clássica, de alto contraste",
+        "shift": 0,
+        "y": 34
+      },
+      {
+        "piece": "vinha",
+        "label": "Vinha",
+        "text": "o aroma que se espalha",
+        "shift": 0,
+        "y": 88
+      }
     ],
     "image": "textura-folhas"
   },
-
   "typography": {
     "nav": "Tipografia",
     "eyebrow": "02 — Tipografia",
     "title": "Gloock",
-    "glyphs": ["C", "o", "f", "r", "a", "&"],
-    "weights": [400],
+    "glyphs": [
+      "C",
+      "o",
+      "f",
+      "r",
+      "a",
+      "&"
+    ],
+    "weights": [
+      400
+    ],
     "text": "O lettering parte de uma serifada de alto contraste, com altura-x generosa e terminais em gota no a, no r e no s. A Gloock é a fonte gratuita mais próxima desse desenho e assume títulos e destaques. A Figtree, limpa e arredondada, cuida dos textos.",
     "spec": [
-      { "k": "Família", "v": "Gloock — Duarte Pinheiro" },
-      { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
-      { "k": "Títulos", "v": "Gloock Regular 400 · peso único" },
-      { "k": "Logotipo", "v": "Lettering serifado com vinhas" },
-      { "k": "Textos", "v": "Figtree 400 · 600 — Erik Kennedy" },
-      { "k": "Alternativas", "v": "DM Serif Display · Playfair Display · Georgia" }
+      {
+        "k": "Família",
+        "v": "Gloock — Duarte Pinheiro"
+      },
+      {
+        "k": "Licença",
+        "v": "SIL Open Font License · Google Fonts"
+      },
+      {
+        "k": "Títulos",
+        "v": "Gloock Regular 400 · peso único"
+      },
+      {
+        "k": "Logotipo",
+        "v": "Lettering serifado com vinhas"
+      },
+      {
+        "k": "Textos",
+        "v": "Figtree 400 · 600 — Erik Kennedy"
+      },
+      {
+        "k": "Alternativas",
+        "v": "DM Serif Display · Playfair Display · Georgia"
+      }
     ],
     "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz & 0123456789"
   },
-
   "manifesto": {
     "nav": "Manifesto",
     "eyebrow": "03 — Manifesto",
     "headline": "Uma confraria é gente reunida em torno do que ama. Aqui, quem reúne é o aroma: feito à mão, para encher a casa de memória.",
     "attributes": [
-      { "word": "Artesanal", "text": "Feito à mão, em casa, com o cuidado de quem prepara um presente." },
-      { "word": "Natureza", "text": "As vinhas do logotipo trazem o verde e o frescor do jardim para dentro de casa." },
-      { "word": "Acolhimento", "text": "Aromas que transformam a casa em lugar de ficar." },
-      { "word": "Encontro", "text": "Confraria é reunião: a marca convida a sentir junto." }
+      {
+        "word": "Artesanal",
+        "text": "Feito à mão, em casa, com o cuidado de quem prepara um presente."
+      },
+      {
+        "word": "Natureza",
+        "text": "As vinhas do logotipo trazem o verde e o frescor do jardim para dentro de casa."
+      },
+      {
+        "word": "Acolhimento",
+        "text": "Aromas que transformam a casa em lugar de ficar."
+      },
+      {
+        "word": "Encontro",
+        "text": "Confraria é reunião: a marca convida a sentir junto."
+      }
     ]
   },
-
   "colors": {
     "nav": "Cores",
     "eyebrow": "04 — Cores",
@@ -119,116 +215,455 @@
     "text": "O verde e a terracota são as cores oficiais da marca. Deles derivam um fundo de mata fechada, um creme de papel e a sálvia de apoio. O dourado vem do estudo de rótulos dourados e entra pouco, como a luz de uma vela.",
     "note": "CMYK oficial no verde e na terracota (apresentação da marca); nas demais, aproximado — confirme no perfil da gráfica.",
     "swatches": [
-      { "name": "Verde Confraria", "role": "Principal · logotipo e textos", "hex": "#074D40", "cmyk": "90 41 70 47", "weight": 2.6 },
-      { "name": "Terracota", "role": "Secundária · o “dos”", "hex": "#C1715B", "cmyk": "20 61 61 9", "weight": 1.8 },
-      { "name": "Mata", "role": "Fundo escuro", "hex": "#082A23", "weight": 1.6 },
-      { "name": "Creme", "role": "Fundo claro", "hex": "#F8F5E2", "weight": 1.6 },
-      { "name": "Sálvia", "role": "Apoio · textos sobre o escuro", "hex": "#A9BCA6", "weight": 1.3 },
-      { "name": "Dourado", "role": "Destaque", "hex": "#D3A94F", "weight": 1.3 }
+      {
+        "name": "Verde Confraria",
+        "role": "Principal · logotipo e textos",
+        "hex": "#074D40",
+        "cmyk": "90 41 70 47",
+        "weight": 2.6
+      },
+      {
+        "name": "Terracota",
+        "role": "Secundária · o “dos”",
+        "hex": "#C1715B",
+        "cmyk": "20 61 61 9",
+        "weight": 1.8
+      },
+      {
+        "name": "Mata",
+        "role": "Fundo escuro",
+        "hex": "#082A23",
+        "weight": 1.6
+      },
+      {
+        "name": "Creme",
+        "role": "Fundo claro",
+        "hex": "#F8F5E2",
+        "weight": 1.6
+      },
+      {
+        "name": "Sálvia",
+        "role": "Apoio · textos sobre o escuro",
+        "hex": "#A9BCA6",
+        "weight": 1.3
+      },
+      {
+        "name": "Dourado",
+        "role": "Destaque",
+        "hex": "#D3A94F",
+        "weight": 1.3
+      }
     ]
   },
-
   "system": {
     "nav": "Sistema",
     "eyebrow": "05 — Sistema",
     "title": "Do rótulo ao perfil, a mesma assinatura.",
     "tiles": [
-      { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
-      { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Monograma" },
-      { "kind": "sizes", "variant": "positive", "size": "sm", "label": "Tamanhos pequenos", "sizes": [48, 32, 24, 16] },
-      { "kind": "lockup", "variant": "mono", "size": "sm", "label": "Monocromático" },
-      { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo" },
-      { "kind": "lockup", "variant": "onSecondary", "size": "sm", "label": "Sobre terracota" },
-      { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre dourado" },
-      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 78, "note": "Margem mínima igual à altura do “o” de aromas." },
-      { "kind": "icon", "variant": "negative", "size": "sm", "label": "Ícone e perfil" },
-      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 140, "note": "Abaixo de 140 px de largura, use só o monograma." }
+      {
+        "kind": "lockup",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão principal"
+      },
+      {
+        "kind": "symbol",
+        "variant": "onPrimary",
+        "size": "tall",
+        "label": "Monograma"
+      },
+      {
+        "kind": "sizes",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Tamanhos pequenos",
+        "sizes": [
+          48,
+          32,
+          24,
+          16
+        ]
+      },
+      {
+        "kind": "lockup",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Monocromático"
+      },
+      {
+        "kind": "lockup",
+        "variant": "negative",
+        "size": "wide",
+        "label": "Negativo"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onSecondary",
+        "size": "sm",
+        "label": "Sobre terracota"
+      },
+      {
+        "kind": "symbol",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Sobre dourado"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área de proteção",
+        "unit": 78,
+        "note": "Margem mínima igual à altura do “o” de aromas."
+      },
+      {
+        "kind": "icon",
+        "variant": "negative",
+        "size": "sm",
+        "label": "Ícone e perfil"
+      },
+      {
+        "kind": "minimum",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Redução mínima",
+        "minWidth": 140,
+        "note": "Abaixo de 140 px de largura, use só o monograma."
+      }
     ]
   },
-
   "applications": {
     "nav": "Aplicações",
     "eyebrow": "06 — Aplicações",
     "title": "A marca na mesa, na estante e na tela.",
     "text": "Estudo de aplicações: fotografia editorial em preto e branco, vela, aromatizador, caixa de presente, etiquetas e a loja no celular.",
     "marquee": "Confraria",
-    "marqueeArts": ["wordmark"],
+    "marqueeArts": [
+      "wordmark"
+    ],
     "items": [
-      { "kind": "photo", "image": "editorial-maos-cera", "col": [1, 5], "mobile": 2, "speed": -4 },
-      { "kind": "crop", "art": "lockup", "viewBox": "250 0 300 230", "variant": "onPrimary", "col": [6, 7], "mobile": 2 },
-      { "kind": "mockup", "image": "mockup-vela", "col": [1, 4], "mobile": 1, "caption": "Vela aromática",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.1, "pin": [[33, 53], [67, 53], [67, 69], [33, 69]] }] },
-      { "kind": "app", "variant": "positive", "col": [5, 4], "mobile": 1, "caption": "Loja no celular (estudo)", "head": ["wordmark"],
+      {
+        "kind": "photo",
+        "image": "editorial-maos-cera",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 2,
+        "speed": -4
+      },
+      {
+        "kind": "crop",
+        "art": "lockup",
+        "viewBox": "250 0 300 230",
+        "variant": "onPrimary",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-vela",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Vela aromática"
+      },
+      {
+        "kind": "app",
+        "variant": "positive",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Loja no celular (estudo)",
+        "head": [
+          "wordmark"
+        ],
         "screen": {
           "alt": "Estudo de loja no celular da Confraria dos Aromas, com velas aromáticas e aromatizador de ambiente",
           "greeting": "Qual aroma hoje?",
           "cards": [
-            { "label": "Feito à mão", "title": "Velas aromáticas", "meta": "Ver coleção" },
-            { "label": "Para a casa", "title": "Aromatizador de ambiente", "meta": "1 litro" }
+            {
+              "label": "Feito à mão",
+              "title": "Velas aromáticas",
+              "meta": "Ver coleção"
+            },
+            {
+              "label": "Para a casa",
+              "title": "Aromatizador de ambiente",
+              "meta": "1 litro"
+            }
           ],
-          "progress": { "label": "Seu pedido · em preparo", "value": 60 }
-        } },
-      { "kind": "photo", "image": "editorial-botanicos", "col": [9, 4], "mobile": 2, "offset": 8, "speed": 5 },
-      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
-      { "kind": "mockup", "image": "mockup-borrifador", "col": [1, 7], "mobile": 2, "caption": "Aromatizador de ambiente",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.12, "pin": [[31, 44], [53, 44], [53, 70], [31, 70]] }] },
-      { "kind": "photo", "image": "editorial-conta-gotas", "col": [8, 5], "mobile": 2, "offset": 7, "speed": -5 },
-      { "kind": "mockup", "image": "mockup-caixa", "col": [1, 6], "mobile": 1, "caption": "Caixa de presente",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.14, "pin": [[24, 30], [76, 30], [76, 70], [24, 70]] }] },
-      { "kind": "pattern", "variant": "negative", "col": [7, 6], "mobile": 1 },
-      { "kind": "photo", "image": "rotulo-aromatizador", "col": [1, 5], "mobile": 1, "speed": 3, "caption": "Proposta de rótulo do aromatizador, 2022" },
-      { "kind": "mockup", "image": "mockup-tag", "col": [6, 7], "mobile": 1, "offset": 6, "caption": "Etiquetas",
-        "overlays": [{ "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.18, "pin": [[40, 30], [60, 30], [60, 66], [40, 66]] }] },
-      { "kind": "crop", "art": "wordmark", "viewBox": "770 40 190 190", "variant": "onSecondary", "col": [1, 5], "mobile": 1 },
-      { "kind": "mockup", "image": "mockup-cartoes", "col": [6, 7], "mobile": 1, "caption": "Cartões de visita",
-        "overlays": [
-          { "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.16, "pin": [[12.6, 38.4], [48.2, 30.9], [51.4, 65.6], [15.8, 73.1]] },
-          { "art": "symbol", "variant": "negative", "blend": "screen", "inset": 0.24, "pin": [[54.2, 27.3], [90.0, 32.9], [87.5, 67.7], [51.7, 62.1]] }
-        ] },
-      { "kind": "photo", "image": "editorial-olfato", "col": [1, 12], "mobile": 2, "speed": 4 }
+          "progress": {
+            "label": "Seu pedido · em preparo",
+            "value": 60
+          }
+        }
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-botanicos",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2,
+        "offset": 8,
+        "speed": 5
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-borrifador",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Aromatizador de ambiente"
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-conta-gotas",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "offset": 7,
+        "speed": -5
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-caixa",
+        "col": [
+          1,
+          6
+        ],
+        "mobile": 1,
+        "caption": "Caixa de presente"
+      },
+      {
+        "kind": "pattern",
+        "variant": "negative",
+        "col": [
+          7,
+          6
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "photo",
+        "image": "rotulo-aromatizador",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 1,
+        "speed": 3,
+        "caption": "Proposta de rótulo do aromatizador, 2022"
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-tag",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 1,
+        "offset": 6,
+        "caption": "Etiquetas"
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "770 40 190 190",
+        "variant": "onSecondary",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-cartoes",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 1,
+        "caption": "Cartões de visita"
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-olfato",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "speed": 4
+      }
     ]
   },
-
   "closing": {
     "phrase": "Aromas que reúnem.",
     "credits": [
-      { "k": "Cliente", "v": "Confraria dos Aromas" },
-      { "k": "Segmento", "v": "Perfumes caseiros e velas aromáticas" },
-      { "k": "Ano", "v": "2022" },
-      { "k": "Serviços", "v": "Lettering · paleta · versões de cor · proposta de rótulo" },
-      { "k": "Ferramentas", "v": "Illustrator" },
-      { "k": "Design", "v": "Thiago Miedes" }
+      {
+        "k": "Cliente",
+        "v": "Confraria dos Aromas"
+      },
+      {
+        "k": "Segmento",
+        "v": "Perfumes caseiros e velas aromáticas"
+      },
+      {
+        "k": "Ano",
+        "v": "2022"
+      },
+      {
+        "k": "Serviços",
+        "v": "Lettering · paleta · versões de cor · proposta de rótulo"
+      },
+      {
+        "k": "Ferramentas",
+        "v": "Illustrator"
+      },
+      {
+        "k": "Design",
+        "v": "Thiago Miedes"
+      }
     ],
-    "cta": { "text": "Tem uma marca para construir?", "label": "Vamos conversar", "href": "/#contato" },
+    "cta": {
+      "text": "Tem uma marca para construir?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    },
     "image": "editorial-confraria"
   },
-
   "images": [
-    { "id": "editorial-maos-cera", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Mãos despejando cera derretida em um pote de vidro, em preto e branco" },
-    { "id": "hero-fumaca", "section": "intro", "w": 2400, "h": 1350, "essential": true,
-      "alt": "Fumaça de uma vela recém-apagada subindo em espirais sobre fundo verde-escuro" },
-    { "id": "mockup-vela", "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Vela aromática em pote de vidro âmbar com o rótulo da Confraria dos Aromas" },
-    { "id": "editorial-botanicos", "mono": true, "section": "applications", "w": 1500, "h": 1500, "essential": true,
-      "alt": "Ramos secos de ervas e flores amarrados com barbante sobre linho, em preto e branco" },
-    { "id": "editorial-conta-gotas", "mono": true, "section": "applications", "w": 2000, "h": 1333, "essential": true,
-      "alt": "Conta-gotas soltando uma gota de essência em um frasco pequeno, em preto e branco" },
-    { "id": "mockup-borrifador", "section": "applications", "w": 2400, "h": 1600, "essential": true,
-      "alt": "Frasco de aromatizador de ambiente com o rótulo da Confraria dos Aromas sobre uma bancada de madeira" },
-    { "id": "mockup-caixa", "section": "applications", "w": 1800, "h": 1800, "essential": true,
-      "alt": "Caixa de presente com o logo da Confraria dos Aromas na tampa, com barbante e ramos secos" },
-    { "id": "rotulo-aromatizador", "section": "applications", "w": 1200, "h": 1800, "essential": false,
-      "alt": "Rótulo do aromatizador de ambiente de 1 litro, com o logo da Confraria dos Aromas e ilustrações de folhas" },
-    { "id": "textura-folhas", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
-      "alt": "Folhas e gavinhas de trepadeira em verde profundo, em macro" },
-    { "id": "editorial-confraria", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
-      "alt": "Mesa com velas acesas e mãos de várias pessoas reunidas, em preto e branco" },
-    { "id": "mockup-tag", "section": "applications", "w": 2400, "h": 1600, "essential": false,
-      "alt": "Etiquetas de papel kraft com o monograma da Confraria dos Aromas, presas com barbante" },
-    { "id": "mockup-cartoes", "section": "applications", "w": 2400, "h": 1600, "essential": false,
-      "alt": "Cartões de visita da Confraria dos Aromas, um creme e um verde" },
-    { "id": "editorial-olfato", "mono": true, "section": "applications", "w": 2400, "h": 1200, "essential": false,
-      "alt": "Pessoa sentindo o perfume de uma fita olfativa de papel, em preto e branco" }
+    {
+      "id": "editorial-maos-cera",
+      "mono": true,
+      "section": "applications",
+      "w": 1600,
+      "h": 2000,
+      "essential": true,
+      "alt": "Mãos despejando cera derretida em um pote de vidro, em preto e branco"
+    },
+    {
+      "id": "hero-fumaca",
+      "section": "intro",
+      "w": 2400,
+      "h": 1350,
+      "essential": true,
+      "alt": "Fumaça de uma vela recém-apagada subindo em espirais sobre fundo verde-escuro"
+    },
+    {
+      "id": "mockup-vela",
+      "section": "applications",
+      "w": 1600,
+      "h": 2000,
+      "essential": true,
+      "alt": "Vela aromática em pote de vidro âmbar com o rótulo da Confraria dos Aromas"
+    },
+    {
+      "id": "editorial-botanicos",
+      "mono": true,
+      "section": "applications",
+      "w": 1500,
+      "h": 1500,
+      "essential": true,
+      "alt": "Ramos secos de ervas e flores amarrados com barbante sobre linho, em preto e branco"
+    },
+    {
+      "id": "editorial-conta-gotas",
+      "mono": true,
+      "section": "applications",
+      "w": 2000,
+      "h": 1333,
+      "essential": true,
+      "alt": "Conta-gotas soltando uma gota de essência em um frasco pequeno, em preto e branco"
+    },
+    {
+      "id": "mockup-borrifador",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "essential": true,
+      "alt": "Frasco de aromatizador de ambiente com o rótulo da Confraria dos Aromas sobre uma bancada de madeira"
+    },
+    {
+      "id": "mockup-caixa",
+      "section": "applications",
+      "w": 1800,
+      "h": 1800,
+      "essential": true,
+      "alt": "Caixa de presente com o logo da Confraria dos Aromas na tampa, com barbante e ramos secos"
+    },
+    {
+      "id": "rotulo-aromatizador",
+      "section": "applications",
+      "w": 1200,
+      "h": 1800,
+      "essential": false,
+      "alt": "Rótulo do aromatizador de ambiente de 1 litro, com o logo da Confraria dos Aromas e ilustrações de folhas"
+    },
+    {
+      "id": "textura-folhas",
+      "section": "symbol",
+      "w": 2400,
+      "h": 1600,
+      "essential": false,
+      "alt": "Folhas e gavinhas de trepadeira em verde profundo, em macro"
+    },
+    {
+      "id": "editorial-confraria",
+      "mono": true,
+      "section": "closing",
+      "w": 2400,
+      "h": 1350,
+      "essential": false,
+      "alt": "Mesa com velas acesas e mãos de várias pessoas reunidas, em preto e branco"
+    },
+    {
+      "id": "mockup-tag",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "essential": false,
+      "alt": "Etiquetas de papel kraft com o monograma da Confraria dos Aromas, presas com barbante"
+    },
+    {
+      "id": "mockup-cartoes",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "essential": false,
+      "alt": "Cartões de visita da Confraria dos Aromas, um creme e um verde"
+    },
+    {
+      "id": "editorial-olfato",
+      "mono": true,
+      "section": "applications",
+      "w": 2400,
+      "h": 1200,
+      "essential": false,
+      "alt": "Pessoa sentindo o perfume de uma fita olfativa de papel, em preto e branco"
+    }
   ]
 }
