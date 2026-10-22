@@ -231,6 +231,54 @@ html:not(.js) [data-intro-outline] { display: none; }
   .js .bc-sticky { position: sticky; top: 0; height: 100svh; display: grid; align-items: center; overflow: clip; }
 }
 
+/* ---------------------------------------------------------------- 1b. processo (caminhos e síntese) */
+.bc-process { position: relative; padding-block: var(--bc-pad); overflow: clip; }
+/* celular: os caminhos numa faixa que desliza com o dedo; desktop: três colunas no container */
+.bc-routes { overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding-block: 4px; }
+.bc-routes::-webkit-scrollbar { display: none; }
+.bc-routes-row { display: flex; gap: var(--bc-gap); width: max-content; padding-inline: var(--gutter); }
+.bc-route { flex: none; width: min(80vw, 380px); scroll-snap-align: center; }
+@media (min-width: 900px) {
+  .bc-routes { overflow: visible; scroll-snap-type: none; }
+  .bc-routes-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: auto; max-width: calc(var(--max) + var(--gutter) * 2); margin-inline: auto; }
+  .bc-route { width: auto; }
+  .bc-route:nth-child(2) { margin-top: clamp(32px, 4vw, 64px); }
+  .bc-routes .bc-routes-hint { display: none; } /* mais específico que .bc-track-hint, que vem depois */
+}
+.bc-route figure { position: relative; height: 100%; display: grid; grid-template-rows: auto 1fr; border-radius: var(--bc-radius); overflow: hidden; background: #fff; color: var(--bc-ink-on-light); }
+.bc-route-art { aspect-ratio: 16 / 9; }
+.bc-route-art .bc-ph { height: 100%; aspect-ratio: auto !important; }
+.bc-route-info { display: grid; gap: 8px; align-content: start; padding: 18px 20px 22px; border-top: 1px solid rgba(15, 28, 46, 0.08); }
+.bc-route-label, .bc-synthesis .bc-route-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bc-accent); }
+.bc-route .bc-route-label { color: var(--bc-muted-on-light); }
+.bc-route-title { font-size: clamp(1.3rem, 1.8vw, 1.6rem); font-weight: 600; line-height: 1.1; }
+.bc-route-text { font-size: 0.9375rem; line-height: 1.45; color: var(--bc-muted-on-light); }
+.bc-route-colors { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; }
+.bc-route-colors li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.75rem; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; color: var(--bc-muted-on-light); }
+.bc-route-colors li::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(15, 28, 46, 0.12); }
+.bc-route-kept {
+  position: absolute; left: 12px; top: 12px;
+  display: inline-flex; gap: 6px; align-items: center;
+  padding: 7px 12px 6px; border-radius: 999px;
+  background: var(--bc-dark); color: var(--bc-ink-on-dark);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+}
+.bc-route-kept span { color: var(--bc-accent); text-transform: uppercase; letter-spacing: 0.18em; }
+/* o caminho que não ficou se apaga (sem JS já aparece assim; com JS a rolagem chega nesse estado) */
+.bc-route:not([data-kept]) figure { opacity: 0.42; filter: grayscale(1); }
+.js .bc-route:not([data-kept]) figure { opacity: 1; filter: none; }
+.js [data-bc-route-kept] { opacity: 0; }
+.js [data-bc-route] { opacity: 0; }
+.bc-routes-hint { margin-top: 14px; }
+
+.bc-synthesis { display: grid; gap: clamp(28px, 4vw, 56px); margin-top: clamp(64px, 9vw, 128px); align-items: center; }
+@media (min-width: 900px) { .bc-synthesis { grid-template-columns: 1.15fr 0.85fr; } }
+.bc-synthesis-art { display: grid; place-items: center; aspect-ratio: 16 / 10; padding: 9%; border-radius: var(--bc-radius); background: var(--logo-bg); }
+.bc-synthesis-logo { width: min(100%, 520px); height: auto; }
+.bc-synthesis-text { display: grid; gap: 18px; align-content: center; }
+.bc-synthesis-title { font-size: clamp(1.8rem, 3.4vw, 3rem); font-weight: 600; line-height: 1.05; max-width: 18ch; }
+.js [data-bc-synthesis] { clip-path: inset(0 0 100% 0); }
+
 /* ---------------------------------------------------------------- 2. símbolo */
 .bc-symbol { position: relative; padding-block: var(--bc-pad); }
 @media (min-width: 900px) { .js .bc-symbol { height: 220svh; padding: 0; } }
@@ -264,6 +312,11 @@ html:not(.js) [data-intro-outline] { display: none; }
 /* symbol.grid: linhas de construção; sem JS (ou com movimento reduzido) já aparecem desenhadas */
 .bc-symbol-lines line { stroke: var(--bc-muted); stroke-width: 0.7; opacity: 0.45; }
 .js .bc-symbol-lines line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+/* symbol.carve: sem JS (ou com movimento reduzido) mostra o símbolo pronto; com JS começa maciço e o vazio se abre */
+.bc-carve-solid, .bc-carve-void { opacity: 0; }
+.bc-carve-void path { fill: none; stroke: var(--bc-accent); stroke-width: 0.45; stroke-linejoin: round; }
+.js .bc-carve-solid, .js .bc-carve-void { opacity: 1; }
+.js .bc-carve-void path { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .bc-symbol-text { display: grid; gap: 22px; align-content: start; }
 .bc-symbol-text .bc-h2 { margin-top: 0; }
 
@@ -408,7 +461,7 @@ html:not(.js) [data-intro-outline] { display: none; }
 .bc-tile-lockup { width: min(80%, 300px); height: auto; }
 .bc-tile[data-size="lg"] .bc-tile-lockup { width: min(78%, 520px); }
 .bc-tile[data-size="wide"] .bc-tile-lockup { width: min(64%, 400px); }
-.bc-tile-symbol { height: min(56%, 220px); width: auto; }
+.bc-tile-symbol { height: min(56%, 220px); width: auto; max-width: 100%; } /* símbolo largo num bloco estreito (celular): encolhe sem distorcer */
 .bc-tile[data-size="sm"] .bc-tile-symbol { height: min(64%, 120px); }
 .bc-sizes { display: flex; align-items: flex-end; gap: clamp(14px, 2vw, 24px); }
 .bc-sizes li { display: grid; justify-items: center; gap: 10px; }

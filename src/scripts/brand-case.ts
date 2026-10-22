@@ -24,6 +24,7 @@ if (root) {
     if (!reduce) {
       reveals(root);
       intro(root);
+      processRoutes(root);
       symbolPieces(root);
       graphics(root);
       typeMorph(root);
@@ -165,6 +166,33 @@ function intro(root: HTMLElement) {
   if (bg) gsap.to(bg, { yPercent: 14, ease: "none", scrollTrigger: { trigger: section, start: "top top", end: "bottom top", scrub: true } });
 }
 
+/* ------------------------------------------------------------------ 1b. processo: os caminhos entram, o que não ficou se apaga */
+function processRoutes(root: HTMLElement) {
+  const section = $("[data-bc-process]", root);
+  if (!section) return;
+  const routes = $$("[data-bc-route]", section);
+  const row = $("[data-bc-routes]", section)!;
+  gsap.fromTo(routes, { opacity: 0, y: 48, rotate: (i) => (i - 1) * 2 }, {
+    opacity: 1, y: 0, rotate: 0, duration: 1.1, ease: "expo.out", stagger: 0.12,
+    scrollTrigger: { trigger: row, start: "top 85%", toggleActions: "play none none none" },
+  });
+
+  // a escolha acontece com a rolagem: os caminhos que não ficaram perdem a cor e os que ficaram ganham a etiqueta
+  const dropped = routes.filter((r) => !r.dataset.kept).map((r) => $("figure", r)!);
+  const kept = $$("[data-bc-route-kept]", section);
+  gsap.timeline({ scrollTrigger: { trigger: row, start: "top 45%", end: "bottom 35%", scrub: 0.6 } })
+    .fromTo(dropped, { opacity: 1, filter: "grayscale(0)" }, { opacity: 0.42, filter: "grayscale(1)", duration: 1, ease: "none" }, 0)
+    .fromTo(kept, { opacity: 0, y: -10, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(2)", stagger: 0.2 }, 0.3);
+
+  // síntese: a versão final sobe por trás de uma cortina
+  const result = $("[data-bc-synthesis]", section);
+  if (result) {
+    gsap.timeline({ scrollTrigger: { trigger: result, start: "top 80%", toggleActions: "play none none none" } })
+      .fromTo(result, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "expo.inOut" })
+      .fromTo(result.firstElementChild, { scale: 1.12, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "expo.out" }, 0.45);
+  }
+}
+
 /* ------------------------------------------------------------------ 2. símbolo: as peças se separam */
 function symbolPieces(root: HTMLElement) {
   const section = $("[data-bc-symbol]", root);
@@ -176,6 +204,9 @@ function symbolPieces(root: HTMLElement) {
   const outline = $("[data-bc-crop-outline]", section);
   // symbol.grid: a grade de construção se desenha antes de as peças andarem
   const gridLines = $$("[data-bc-grid-line]", section);
+  // symbol.carve: o traço do vazio se desenha sobre o volume maciço, que então se abre
+  const solid = $("[data-bc-carve-solid]", section);
+  const voidLines = $$("[data-bc-carve-void] > *", section);
   gsap.matchMedia().add({ desktop: DESKTOP, mobile: MOBILE }, (ctx) => {
     const desktop = ctx.conditions?.desktop;
     const tl = gsap.timeline({
@@ -187,7 +218,14 @@ function symbolPieces(root: HTMLElement) {
         .fromTo(full, { opacity: 1 }, { opacity: 0, duration: 0.6, ease: "none" }, 0.75)
         .fromTo(outline, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "none" }, 0.75);
     }
-    const at = gridLines.length ? 0.45 : 0;
+    let at = gridLines.length ? 0.45 : 0;
+    if (solid && voidLines.length) {
+      const c0 = gridLines.length ? 0.35 : 0;
+      tl.fromTo(voidLines, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut", stagger: 0.12 }, c0)
+        .fromTo(solid, { opacity: 1 }, { opacity: 0, duration: 0.6, ease: "power1.inOut" }, c0 + 0.85)
+        .fromTo(voidLines, { opacity: 1 }, { opacity: 0.35, duration: 0.5, ease: "none" }, c0 + 1.2);
+      at = c0 + 1.05;
+    }
     labels.forEach((label, i) => {
       const piece = $(`[data-piece="${label.dataset.pieceLabel}"]`, section);
       if (piece) tl.fromTo(piece, { y: 0 }, { y: Number(label.dataset.shift) || 0, duration: 1, ease: "power2.inOut" }, at);

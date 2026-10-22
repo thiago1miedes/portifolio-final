@@ -317,6 +317,7 @@ export const cases = {
     thumb: { from: "logo-02" },
     items: [{ id: "logo", src: "EFPI/EFPI_logo_apresentação(out21).pdf", kind: "slide", pages: range(1, 9) }],
   },
+  // A capa (thumb.webp) deste case vem do logo final (`npm run brand -- debora-sandrin thumb`); rodar `npm run assets -- debora-sandrin` a sobrescreve.
   "debora-sandrin": {
     thumb: { from: "logo-06" },
     items: [{ id: "logo", src: "DeboraSandrin/Logo_DeboraSandrin.pdf", kind: "slide", pages: range(2, 10) }],

@@ -2,10 +2,11 @@
 // 2. Símbolo grande ao lado do conceito; ao rolar, as peças se separam e ganham legenda.
 //    Com symbol.crop, um quadrado recorta o símbolo: dentro fica o módulo do grafismo, fora só o contorno.
 //    Com symbol.grid, as linhas da grade de construção se desenham atrás do símbolo.
+//    Com symbol.carve, o símbolo começa maciço: o traço do vazio se desenha e o volume se abre até a forma real.
 import BrandLogo from "./BrandLogo.astro";
 import BrandImg from "./BrandImg.astro";
 import BrandText from "./BrandText.astro";
-import { readSvg, variantVars, type BrandCaseData } from "../../data/brand-cases";
+import { readSvg, readSvgFile, variantVars, type BrandCaseData } from "../../data/brand-cases";
 
 interface Props { data: BrandCaseData }
 const { data } = Astro.props;
@@ -24,6 +25,8 @@ const gridLines = s.grid
       ...s.grid.y.map((y) => ({ x1: sx - ext, y1: y, x2: sx + w + ext * 0.3, y2: y })),
     ]
   : [];
+const carve = s.carve && { solid: readSvgFile(data, s.carve.solid), void: readSvgFile(data, s.carve.void) };
+const drawnLabel = [symbol.label, gridLines.length && "sobre a grade de construção"].filter(Boolean).join(", ");
 ---
 <section class="bc-symbol" id="simbolo" data-theme="dark" data-bc-section data-bc-symbol>
   <div class="bc-sticky">
@@ -48,19 +51,23 @@ const gridLines = s.grid
               <g clip-path={`url(#${clipId})`} aria-hidden="true" set:html={symbol.inner} />
               <rect class="bc-crop-frame" data-bc-crop-frame x={crop[0]} y={crop[1]} width={crop[2]} height={crop[3]} pathLength="1" />
             </svg>
-          ) : gridLines.length ? (
+          ) : gridLines.length || carve ? (
             <svg
               class="bc-logo bc-symbol-svg"
               xmlns="http://www.w3.org/2000/svg"
               viewBox={symbol.viewBox.join(" ")}
               style={vars}
               role="img"
-              aria-label={`${symbol.label}, sobre a grade de construção`}
+              aria-label={drawnLabel}
             >
-              <g class="bc-symbol-lines" aria-hidden="true">
-                {gridLines.map((l, i) => <line {...l} pathLength="1" data-bc-grid-line data-index={i} />)}
-              </g>
+              {gridLines.length > 0 && (
+                <g class="bc-symbol-lines" aria-hidden="true">
+                  {gridLines.map((l, i) => <line {...l} pathLength="1" data-bc-grid-line data-index={i} />)}
+                </g>
+              )}
               <g set:html={symbol.inner} />
+              {carve && <g class="bc-carve-solid" aria-hidden="true" data-bc-carve-solid set:html={carve.solid.inner} />}
+              {carve && <g class="bc-carve-void" aria-hidden="true" data-bc-carve-void set:html={carve.void.inner} />}
             </svg>
           ) : (
             <BrandLogo data={data} art="symbol" variant={variant} class="bc-symbol-svg" />

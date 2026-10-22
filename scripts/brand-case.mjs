@@ -60,6 +60,8 @@ async function refs() {
     ["lockup", "accent", "onAccent", t.accent],
     ["symbol", "transparent", "positive", null],
     ["symbol", "dark", "negative", t.dark],
+    // segunda composição do logo (logo.horizontal), quando o case tem uma
+    ...(data.logo.horizontal ? [["horizontal", "transparent", "positive", null], ["horizontal", "light", "positive", t.light]] : []),
   ];
   for (const [key, name, v, bg] of jobs) {
     const svg = recolor(logoSvg(key), variant(v));

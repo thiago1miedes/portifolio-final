@@ -7,7 +7,8 @@ import { fileURLToPath } from "node:url";
 /** wordmark-accent: parte do logotipo em outra cor (ex.: "Easy" verde + "Work" azul); sem ela, segue o wordmark.
  *  symbol-3 / symbol-4: terceira e quarta cor de um símbolo multicolorido (ex.: as barras da Rock Ensina); sem elas, seguem o symbol-accent. */
 export type LogoPart = "symbol-main" | "symbol-accent" | "symbol-3" | "symbol-4" | "wordmark" | "wordmark-accent" | "tagline";
-export type LogoArt = "lockup" | "symbol" | "outline" | "wordmark" | "tagline";
+/** horizontal: segunda composição do logo (ex.: símbolo ao lado do nome), opcional como o tagline */
+export type LogoArt = "lockup" | "symbol" | "outline" | "wordmark" | "tagline" | "horizontal";
 type OptionalPart = "wordmark-accent" | "symbol-3" | "symbol-4";
 export type Variant = Record<Exclude<LogoPart, OptionalPart>, string> & Partial<Record<OptionalPart, string>> & { label: string; bg: string };
 type Pin = [number, number][];
@@ -61,6 +62,16 @@ export interface SystemTile {
 }
 interface FontFiles { family: string; fallback: string; unicodeRange?: string; files: Record<string, string>; preload?: number[] }
 
+/** Seção opcional de processo, logo depois da abertura: os caminhos apresentados ao cliente (imagens reais
+ *  da apresentação, em images[]) e a síntese que virou a marca. kept: o que aquele caminho deixou na versão final. */
+export interface ProcessSection {
+  nav: string; eyebrow: string; title: string; text: string;
+  /** dica do deslize no celular, onde os caminhos ficam numa faixa lateral */
+  hint: string;
+  routes: { image: string; label: string; title: string; text: string; colors: string[]; kept?: string }[];
+  result: { label: string; title: string; text: string; art?: LogoArt; variant?: string };
+}
+
 /** Prints de página inteira do site, navegáveis numa janela de navegador (gerados por `npm run brand -- <slug> site`). */
 export interface SitePage {
   id: string; label: string; url: string; alt: string;
@@ -87,8 +98,8 @@ export interface BrandCaseData {
   /** fonte da marca (títulos); `text` é a fonte opcional de textos e interface;
    *  display: peso e espaçamento dos títulos, quando a marca pede outro tom (padrão: 600 e o espaçamento de cada título) */
   font: FontFiles & { preload: number[]; text?: FontFiles; display?: { weight?: number; tracking?: string } };
-  /** tagline é opcional: logos sem descritor não precisam do arquivo */
-  logo: Record<Exclude<LogoArt, "tagline">, string> & { tagline?: string } & {
+  /** tagline e horizontal são opcionais: logos sem descritor ou sem segunda composição não precisam do arquivo */
+  logo: Record<Exclude<LogoArt, "tagline" | "horizontal">, string> & { tagline?: string; horizontal?: string } & {
     variants: Record<string, Variant>;
     /** partes do logo na navegação (padrão: desktop símbolo + logotipo, celular só o símbolo);
      *  dark/light: variante usada sobre seções escuras/claras (padrão: cores do tema) */
@@ -98,10 +109,13 @@ export interface BrandCaseData {
   intro: { kicker: string; subtitle: string; scrollHint: string; image?: string; variant?: string };
   /** crop: quadrado [x, y, lado, lado] em unidades do símbolo; ao rolar, ele recorta o símbolo e mostra o módulo do grafismo
    *  grid: linhas da grade de construção (posições x e y em unidades do símbolo), desenhadas ao rolar
-   *  variant: versão do símbolo na seção (padrão: onPrimary) */
+   *  variant: versão do símbolo na seção (padrão: onPrimary)
+   *  carve: símbolo feito de vazio (ex.: uma letra escavada noutra). solid é o volume ainda inteiro e void o traço do vazio,
+   *  ambos SVG em public/<assets>/ no mesmo viewBox do símbolo; ao rolar, o vazio se desenha e o volume se abre */
   symbol: {
     nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[];
     image?: string; crop?: [number, number, number, number]; grid?: { x: number[]; y: number[] }; variant?: string;
+    carve?: { solid: string; void: string };
   };
   /** font "text": a letra gigante e a amostra usam a fonte de textos (ex.: a fonte do logotipo não é a dos títulos) */
   typography: { nav: string; eyebrow: string; title: string; glyphs: string[]; weights: number[]; text: string; spec: { k: string; v: string }[]; sample: string; font?: "text" };
@@ -115,6 +129,8 @@ export interface BrandCaseData {
   site?: SiteSection;
   /** opcional: pictogramas e padrões, logo depois do símbolo */
   graphics?: GraphicsSection;
+  /** opcional: os caminhos apresentados e a síntese, logo depois da abertura */
+  process?: ProcessSection;
   closing: { phrase: string; credits: { k: string; v: string }[]; cta: { text: string; label: string; href: string }; image?: string };
   images: BrandImage[];
 }
@@ -184,6 +200,10 @@ const decode = (s: string) => s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").repl
 export function readSvg(c: BrandCaseData, art: LogoArt): SvgFile {
   const rel = c.logo[art];
   if (!rel) throw new Error(`[brand-case] ${c.slug}: logo.${art} não está no case.json`);
+  return readSvgFile(c, rel);
+}
+/** Qualquer SVG de public/<assets>/ (ex.: as camadas de symbol.carve), lido como os arquivos do logo. */
+export function readSvgFile(c: BrandCaseData, rel: string): SvgFile {
   const file = publicPath(c, rel);
   const key = `${file}:${fs.statSync(file).mtimeMs}`;
   if (!svgCache.has(key)) {
@@ -203,7 +223,7 @@ export function readSvg(c: BrandCaseData, art: LogoArt): SvgFile {
  *  uma variante pode usar "url(#id)" como cor, e a referência não quebra quando a cópia do logo está com display:none. */
 export function logoDefs(c: BrandCaseData) {
   const byId = new Map<string, string>();
-  for (const art of ["lockup", "symbol", "outline", "wordmark", "tagline"] as const) {
+  for (const art of ["lockup", "symbol", "outline", "wordmark", "tagline", "horizontal"] as const) {
     if (!c.logo[art]) continue;
     for (const m of readSvg(c, art).defs.matchAll(/<(\w+)\b[^>]*\bid="([^"]+)"[\s\S]*?<\/\1>/g)) {
       if (!byId.has(m[2])) byId.set(m[2], m[0]);

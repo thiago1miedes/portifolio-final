@@ -4,6 +4,7 @@
 import Base from "../../layouts/Base.astro";
 import BrandNav from "./BrandNav.astro";
 import CaseIntro from "./CaseIntro.astro";
+import CaseProcess from "./CaseProcess.astro";
 import CaseSymbol from "./CaseSymbol.astro";
 import CaseGraphics from "./CaseGraphics.astro";
 import CaseType from "./CaseType.astro";
@@ -42,6 +43,7 @@ const rootVars = {
 const style = Object.entries(rootVars).map(([k, v]) => `${k}:${v}`).join(";");
 const defs = logoDefs(data);
 const sections = [
+  ...(data.process ? [{ id: "processo", label: data.process.nav }] : []),
   { id: "simbolo", label: data.symbol.nav },
   ...(data.graphics ? [{ id: "grafismo", label: data.graphics.nav }] : []),
   { id: "tipografia", label: data.typography.nav },
@@ -73,6 +75,7 @@ const sections = [
     )}
     <BrandNav data={data} sections={sections} />
     <CaseIntro data={data} />
+    {data.process && <CaseProcess data={data} />}
     <CaseSymbol data={data} />
     {data.graphics && <CaseGraphics data={data} />}
     <CaseType data={data} />

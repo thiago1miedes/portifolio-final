@@ -1,0 +1,60 @@
+---
+// 1b. Processo (opcional): os caminhos apresentados ao cliente e a síntese que virou a marca.
+//     As imagens são as pranchas reais da apresentação (images[] do case.json), nada passa pela IA.
+//     Ao rolar, os caminhos que não ficaram se apagam e os que ficaram ganham a etiqueta do que deixaram.
+import BrandImg from "./BrandImg.astro";
+import BrandLogo from "./BrandLogo.astro";
+import BrandText from "./BrandText.astro";
+import { swatchInfo, variantVars, type BrandCaseData } from "../../data/brand-cases";
+
+interface Props { data: BrandCaseData }
+const { data } = Astro.props;
+const p = data.process!;
+const variant = p.result.variant ?? "positive";
+const resultStyle = [
+  ...Object.entries(variantVars(data, variant)).map(([k, v]) => `${k}:${v}`),
+  `--tile-ink:${swatchInfo(data, data.logo.variants[variant].bg).ink}`,
+].join(";");
+---
+<section class="bc-process" id="processo" data-theme="dark" data-bc-section data-bc-process>
+  <div class="container bc-section-head bc-section-head--split">
+    <div>
+      <p class="bc-eyebrow">{p.eyebrow}</p>
+      <BrandText as="h2" class="bc-h2" text={p.title} data-bc-split />
+    </div>
+    <BrandText as="p" class="bc-body" text={p.text} data-bc-reveal />
+  </div>
+
+  <div class="bc-routes" data-bc-routes>
+    <ol class="bc-routes-row" role="list">
+      {p.routes.map((r, i) => (
+        <li class="bc-route" data-index={i} data-kept={r.kept ? "true" : undefined} data-bc-route>
+          <figure>
+            <div class="bc-route-art"><BrandImg data={data} id={r.image} sizes="(min-width: 900px) 31vw, 80vw" /></div>
+            <figcaption class="bc-route-info">
+              <span class="bc-route-label">{r.label}</span>
+              <BrandText as="h3" class="bc-route-title" text={r.title} />
+              <BrandText as="p" class="bc-route-text" text={r.text} />
+              <ul class="bc-route-colors" aria-label={`Paleta: ${r.colors.join(", ")}`}>
+                {r.colors.map((hex) => <li style={`--c:${hex}`}><span>{hex}</span></li>)}
+              </ul>
+            </figcaption>
+            {r.kept && <p class="bc-route-kept" data-bc-route-kept><span>Ficou</span> <BrandText text={r.kept} /></p>}
+          </figure>
+        </li>
+      ))}
+    </ol>
+    <p class="bc-track-hint bc-routes-hint" aria-hidden="true"><span>{p.hint}</span><i></i></p>
+  </div>
+
+  <div class="container bc-synthesis">
+    <div class="bc-synthesis-art" style={resultStyle} data-bc-synthesis>
+      <BrandLogo data={data} art={p.result.art ?? "lockup"} class="bc-synthesis-logo" />
+    </div>
+    <div class="bc-synthesis-text">
+      <span class="bc-route-label">{p.result.label}</span>
+      <BrandText as="h3" class="bc-synthesis-title" text={p.result.title} data-bc-split />
+      <BrandText as="p" class="bc-body" text={p.result.text} data-bc-reveal />
+    </div>
+  </div>
+</section>
