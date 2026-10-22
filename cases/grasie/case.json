@@ -7,7 +7,7 @@
 
   "seo": {
     "title": "Grasiê Kids & Teen — Identidade visual",
-    "description": "[rascunho] Case de identidade visual da Grasiê Kids & Teen, loja de roupas infantis de duas sócias: o nome que mistura Grazi e Simone, o G macio com a camada em sálvia, a tipografia inflada, as cores pastel, o sistema de logo e aplicações em fachada, sacola, tag e caixa.",
+    "description": "Case de identidade visual da Grasiê Kids & Teen, loja de roupas infantis de duas sócias: o nome que mistura Grazi e Simone, o G macio com a camada em sálvia, a tipografia inflada, as cores pastel, o sistema de logo e aplicações em fachada, sacola, tag e caixa.",
     "image": "og.png"
   },
 
@@ -74,14 +74,14 @@
   "symbol": {
     "nav": "Símbolo",
     "eyebrow": "01 — Símbolo",
-    "title": "[rascunho] Um G que ganha um abraço.",
+    "title": "Um G que ganha um abraço.",
     "text": [
-      "[rascunho] Grasiê nasce de duas pessoas: Grazi e Simone juntaram os próprios nomes para batizar a loja. O símbolo guarda essa soma em duas camadas. O G, em lavanda, vem na frente; atrás dele, uma forma em sálvia contorna a letra pelo alto e pela curva de baixo, como um abraço.",
-      "[rascunho] As formas são cheias e macias, sem nenhuma ponta, como um brinquedo de pano ou uma letra de balão. A criança reconhece o desenho, e os pais leem nele o cuidado que esperam de uma loja de roupa infantil."
+      "Grasiê nasce de duas pessoas: Grazi e Simone juntaram os próprios nomes para batizar a loja. O símbolo guarda essa soma em duas camadas. O G, em lavanda, vem na frente; atrás dele, uma forma em sálvia contorna a letra pelo alto e pela curva de baixo, como um abraço.",
+      "As formas são cheias e macias, sem nenhuma ponta, como um brinquedo de pano ou uma letra de balão. A criança reconhece o desenho, e os pais leem nele o cuidado que esperam de uma loja de roupa infantil."
     ],
     "pieces": [
-      { "piece": "abraco", "label": "Abraço", "text": "[rascunho] a camada em sálvia que envolve a letra", "shift": -46, "y": 14 },
-      { "piece": "letra", "label": "Letra", "text": "[rascunho] o G de Grasiê, macio e sem pontas", "shift": 0, "y": 84 }
+      { "piece": "abraco", "label": "Abraço", "text": "a camada em sálvia que envolve a letra", "shift": -46, "y": 14 },
+      { "piece": "letra", "label": "Letra", "text": "o G de Grasiê, macio e sem pontas", "shift": 0, "y": 84 }
     ],
     "variant": "onDark",
     "image": "textura-algodao"
@@ -93,7 +93,7 @@
     "title": "DynaPuff",
     "glyphs": ["G", "r", "a", "ê", "&", "K"],
     "weights": [400, 500, 600, 700],
-    "text": "[rascunho] O logotipo tem o desenho da DynaPuff no peso Bold: letras infladas, terminais redondos e o r com uma bolinha na ponta. As letras ficam bem próximas, quase encostadas, e o circunflexo vira um chapeuzinho sobre o e. A mesma família escreve o descritor KIDS & TEEN em caixa-alta. Nos textos corridos entra a Nunito, também arredondada e fácil de ler em qualquer tamanho.",
+    "text": "O logotipo tem o desenho da DynaPuff no peso Bold: letras infladas, terminais redondos e o r com uma bolinha na ponta. As letras ficam bem próximas, quase encostadas, e o circunflexo vira um chapeuzinho sobre o e. A mesma família escreve o descritor KIDS & TEEN em caixa-alta. Nos textos corridos entra a Nunito, também arredondada e fácil de ler em qualquer tamanho.",
     "spec": [
       { "k": "Família", "v": "DynaPuff — Toshi Omagari e Jennifer Daniel" },
       { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
@@ -109,20 +109,20 @@
   "manifesto": {
     "nav": "Manifesto",
     "eyebrow": "03 — Manifesto",
-    "headline": "[rascunho] Roupa de criança é feita para correr, brincar e crescer. A Grasiê recebe essa fase com calma: cores suaves, formas macias e uma loja pensada para as crianças e para quem cuida delas.",
+    "headline": "Roupa de criança é feita para correr, brincar e crescer. A Grasiê recebe essa fase com calma: cores suaves, formas macias e uma loja pensada para as crianças e para quem cuida delas.",
     "attributes": [
       { "word": "Leve", "text": "Cores pastel e nada saturado: a marca respira e não pesa ao lado das roupas." },
-      { "word": "Calma", "text": "[rascunho] Um projeto tranquilo, que não grita por atenção: o contrário da vitrine barulhenta." },
-      { "word": "Macia", "text": "[rascunho] Letras infladas e cantos redondos, como um tecido de algodão ou um brinquedo de pano." },
-      { "word": "Juntas", "text": "[rascunho] Duas sócias, dois nomes, duas cores. A marca é feita da soma." }
+      { "word": "Calma", "text": "Um projeto tranquilo, que não grita por atenção: o contrário da vitrine barulhenta." },
+      { "word": "Macia", "text": "Letras infladas e cantos redondos, como um tecido de algodão ou um brinquedo de pano." },
+      { "word": "Juntas", "text": "Duas sócias, dois nomes, duas cores. A marca é feita da soma." }
     ]
   },
 
   "colors": {
     "nav": "Cores",
     "eyebrow": "04 — Cores",
-    "title": "[rascunho] Lavanda e sálvia, em tom de algodão.",
-    "text": "[rascunho] A lavanda e a sálvia vêm do logo, num tom pastel de propósito: nada saturado, para a marca não pesar. Em volta delas entram um algodão quente nos fundos claros, um lilás bruma nas superfícies, a manteiga como destaque pontual e uma ameixa profunda que segura os textos e as aberturas.",
+    "title": "Lavanda e sálvia, em tom de algodão.",
+    "text": "A lavanda e a sálvia vêm do logo, num tom pastel de propósito: nada saturado, para a marca não pesar. Em volta delas entram um algodão quente nos fundos claros, um lilás bruma nas superfícies, a manteiga como destaque pontual e uma ameixa profunda que segura os textos e as aberturas.",
     "note": "Lavanda e sálvia tiradas do SVG do logo; o CMYK da lavanda é o da apresentação de 2023 (Pantone P 97-12 C). As outras cores são derivadas e têm CMYK aproximado: confirme no perfil da gráfica. A sálvia sobre fundo claro (2,7:1) e a lavanda sobre o algodão (4,0:1) ficam para o logo, títulos grandes e grafismo, nunca para texto miúdo.",
     "swatches": [
       { "name": "Lavanda Grasiê", "role": "Principal · G e logotipo", "hex": "#8971A0", "weight": 2.4, "cmyk": "54 59 14 1" },
@@ -137,7 +137,7 @@
   "system": {
     "nav": "Sistema",
     "eyebrow": "05 — Sistema",
-    "title": "[rascunho] Da fachada à etiqueta, o mesmo abraço.",
+    "title": "Da fachada à etiqueta, o mesmo abraço.",
     "tiles": [
       { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
       { "kind": "symbol", "variant": "onDark", "size": "tall", "label": "Símbolo" },
@@ -146,17 +146,17 @@
       { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo" },
       { "kind": "lockup", "variant": "onSecondary", "size": "sm", "label": "Sobre sálvia" },
       { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre manteiga" },
-      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 74, "note": "[rascunho] Margem mínima igual ao pingo do i." },
+      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 74, "note": "Margem mínima igual ao pingo do i." },
       { "kind": "icon", "variant": "onPrimary", "size": "sm", "label": "Ícone e perfil" },
-      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 140, "note": "[rascunho] Abaixo de 140 px de largura, use só o símbolo." }
+      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "minWidth": 140, "note": "Abaixo de 140 px de largura, use só o símbolo." }
     ]
   },
 
   "applications": {
     "nav": "Aplicações",
     "eyebrow": "06 — Aplicações",
-    "title": "[rascunho] Da fachada à sacolinha.",
-    "text": "[rascunho] Estudo de aplicações para a loja: fotografia em preto e branco clara e arejada, fachada, sacola, tag de preço, caixa de presente, cartões e a loja no celular. A Grasiê assina a loja, não as roupas: o logo aparece no ponto de venda e na embalagem, nunca estampado nas peças.",
+    "title": "Da fachada à sacolinha.",
+    "text": "Estudo de aplicações para a loja: fotografia em preto e branco clara e arejada, fachada, sacola, tag de preço, caixa de presente, cartões e a loja no celular. A Grasiê assina a loja, não as roupas: o logo aparece no ponto de venda e na embalagem, nunca estampado nas peças.",
     "marquee": "Grasiê",
     "marqueeArts": ["wordmark", "symbol"],
     "items": [
@@ -199,7 +199,7 @@
   },
 
   "closing": {
-    "phrase": "[rascunho] Leve como a infância pede.",
+    "phrase": "Leve como a infância pede.",
     "credits": [
       { "k": "Cliente", "v": "Grasiê Kids Store" },
       { "k": "Segmento", "v": "Varejo · moda infantil e teen" },
