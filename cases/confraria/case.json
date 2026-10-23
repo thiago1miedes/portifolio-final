@@ -618,10 +618,10 @@
     {
       "id": "rotulo-aromatizador",
       "section": "applications",
-      "w": 1200,
-      "h": 1800,
+      "w": 1600,
+      "h": 2000,
       "essential": false,
-      "alt": "Rótulo do aromatizador de ambiente de 1 litro, com o logo da Confraria dos Aromas e ilustrações de folhas"
+      "alt": "Frasco âmbar de aromatizador de ambiente de 1 litro com o rótulo da Confraria dos Aromas, ao lado de um vaso com eucalipto"
     },
     {
       "id": "textura-folhas",
