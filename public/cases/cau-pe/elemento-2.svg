@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1021.38 1021.38">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke-linejoin: round;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #b95000;
+        stroke-width: 5.12px;
+      }
+
+      .cls-2 {
+        fill: #006d72;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g id="Camada_1-2" data-name="Camada 1">
+    <g>
+      <polygon class="cls-1" points="510.69 2.56 510.69 149.44 869.99 151.39 766.13 255.25 1018.82 510.69 871.94 510.69 869.99 869.99 766.13 766.13 510.69 1018.82 510.69 871.94 151.39 869.99 255.25 766.13 2.56 510.69 149.44 510.69 151.39 151.39 255.25 255.25 510.69 2.56"/>
+      <g>
+        <circle class="cls-2" cx="945.38" cy="510.37" r="35.05"/>
+        <circle class="cls-2" cx="76" cy="510.69" r="35.05"/>
+        <circle class="cls-2" cx="817.83" cy="202.93" r="35.05"/>
+        <circle class="cls-2" cx="203.55" cy="818.14" r="35.05"/>
+        <circle class="cls-2" cx="510.53" cy="75.84" r="35.05"/>
+        <circle class="cls-2" cx="510.85" cy="945.22" r="35.05"/>
+        <circle class="cls-2" cx="203.09" cy="203.39" r="35.05"/>
+        <circle class="cls-2" cx="818.29" cy="817.67" r="35.05"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -4,6 +4,8 @@ import BrowserFrame from "../../components/BrowserFrame.astro";
 import PhoneFrame from "../../components/PhoneFrame.astro";
 import Icon from "../../components/Icon.astro";
 import BrandCase from "../../components/brand/BrandCase.astro";
+import SocialCover from "../../components/social/SocialCover.astro";
+import SocialShowcase from "../../components/social/SocialShowcase.astro";
 import { cases, categories, type AssetItem } from "../../data/cases";
 import { brandCases } from "../../data/brand-cases";
 
@@ -15,12 +17,15 @@ const c = cases[i];
 const next = cases[(i + 1) % cases.length];
 // com cases/<slug>/case.json, a página vira o case narrativo de marca
 const brand = brandCases[c.slug];
+// com c.social, a galeria vira a vitrine de carrosséis (capa com o emblema, linguagem dos posts e um post por carrossel)
+const social = c.social;
+const socialItem = (id: string) => c.items.find((it) => it.id === id)!;
 
 const pages = c.items.filter((it) => it.kind === "page");
 const mobiles = c.items.filter((it) => it.kind === "mobile");
 const rest = c.items.filter((it) => it.kind !== "page" && it.kind !== "mobile");
 const cover = pages[0];
-const visualCover = !cover ? (rest.find((it) => it.id === c.cover) ?? rest[0]) : undefined;
+const visualCover = !cover && !social ? (rest.find((it) => it.id === c.cover) ?? rest[0]) : undefined;
 
 const host = (u?: string) => (u ? new URL(u).host.replace(/^www\./, "") : "");
 const fakeUrl = (label?: string) => `${host(c.live) || c.slug + ".com.br"}${label && !/home|site no ar|landing|one page/i.test(label) ? "/" + label.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") : ""}`;
@@ -42,7 +47,7 @@ const formats: Record<string, { label: string; title: string; note: string; rati
   "banners-categoria": { label: "Banners de categoria", title: "Faixa larga das categorias", ratio: "2580 × 450", layout: "banners", chrome: true, note: "A faixa que abre as páginas de categoria, mais baixa e mais larga que o banner da home." },
 };
 const groups: { key: string; items: AssetItem[] }[] = [];
-for (const it of rest.filter((x) => x !== visualCover && x.group !== "capa")) {
+for (const it of social ? [] : rest.filter((x) => x !== visualCover && x.group !== "capa")) {
   const key = it.group ?? it.kind;
   let g = groups.find((x) => x.key === key);
   if (!g) groups.push((g = { key, items: [] }));
@@ -76,7 +81,7 @@ const meta = [
               Visitar site <Icon name="arrow-up-right" class="icon--arrow" />
             </a>
           )}
-          <a href="#galeria" class="btn btn--ghost">Ver projeto</a>
+          <a href="#galeria" class="btn btn--ghost">{social ? "Ver carrosséis" : "Ver projeto"}</a>
         </div>
       </div>
       <dl class="case-meta" data-hero-fade>
@@ -92,6 +97,7 @@ const meta = [
         </div>
       </section>
     )}
+    {social && <SocialCover logo={socialItem("logo")} pattern={socialItem("padrao").src} title={c.title} />}
     {visualCover && (
       <section class="case-cover-img container">
         <div class:list={["cover-img", { "cover-img--logo": logoCover }]} data-parallax-wrap={logoCover ? undefined : ""}>
@@ -113,6 +119,8 @@ const meta = [
     </section>
 
     <div id="galeria"></div>
+
+    {social && <SocialShowcase c={c} />}
 
     {pages.length > 0 && (
       <section class="case-pages container" data-tabs>
@@ -215,7 +223,7 @@ const meta = [
   <dialog class="lightbox" data-lightbox-dialog aria-label="Imagem ampliada">
     <button type="button" class="lb-close" data-lb-close aria-label="Fechar">×</button>
     <button type="button" class="lb-nav lb-prev" data-lb-prev aria-label="Anterior">←</button>
-    <div class="lb-stage" data-lenis-prevent><img alt="" data-lb-img /></div>
+    <div class="lb-stage" data-lenis-prevent><img alt="" data-lb-img /><video class="is-hidden" muted loop playsinline controls data-lb-video></video></div>
     <button type="button" class="lb-nav lb-next" data-lb-next aria-label="Próxima">→</button>
     <span class="lb-count" data-lb-count></span>
   </dialog>
@@ -357,6 +365,7 @@ const meta = [
   .lightbox::backdrop { background: transparent; }
   .lb-stage { height: 100svh; overflow: auto; display: grid; place-items: center; padding: 64px 8px; }
   .lb-stage img { max-width: min(1400px, 100%); height: auto; border-radius: 10px; }
+  .lb-stage video, .lb-stage.is-fit img { max-width: 100%; max-height: calc(100svh - 128px); width: auto; height: auto; border-radius: 10px; }
   .lb-close { position: absolute; top: 16px; right: 16px; z-index: 2; width: 48px; height: 48px; border-radius: 50%; background: var(--surface-glass-2); border: 1px solid var(--border); font-size: 28px; line-height: 1; }
   .lb-nav { width: 56px; height: 56px; margin: 0 8px; border-radius: 50%; background: var(--surface-glass-2); border: 1px solid var(--border); font-size: 22px; }
   .lb-nav:hover, .lb-close:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }

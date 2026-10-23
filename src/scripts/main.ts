@@ -440,27 +440,113 @@ $$("[data-tabs]").forEach((wrap) => {
   });
 });
 
+/* ------------------------------------------------------------------ carrosséis de Instagram (data-carousel) */
+// Rolagem nativa com snap; setas, teclado e miniaturas (data-car-go) só levam o trilho até a tela.
+// Vídeos tocam apenas na tela ativa e enquanto o post está visível.
+$$("[data-carousel]").forEach((root) => {
+  const track = $("[data-car-track]", root)!;
+  const slides = Array.from(track.children) as HTMLElement[];
+  const count = $("[data-car-count]", root)!;
+  const prev = $("[data-car-prev]", root)!;
+  const next = $("[data-car-next]", root)!;
+  const dots = $$("[data-car-dot]", root);
+  const thumbs = $$<HTMLButtonElement>("[data-car-go]", root);
+  const videos = slides.map((s) => $<HTMLVideoElement>("[data-car-video]", s));
+  let cur = 0;
+  let visible = false;
+  const syncVideos = () => videos.forEach((v, i) => {
+    if (!v) return;
+    if (i === cur && visible && !reduce) v.play().catch(() => {});
+    else v.pause();
+  });
+  const update = (k: number) => {
+    cur = k;
+    count.textContent = `${k + 1}/${slides.length}`;
+    prev.classList.toggle("is-hidden", k === 0);
+    next.classList.toggle("is-hidden", k === slides.length - 1);
+    dots.forEach((d, i) => d.classList.toggle("is-active", i === k));
+    thumbs.forEach((t, i) => t.classList.toggle("is-active", i === k));
+    // no celular a sequência rola de lado: mantém a miniatura ativa à vista (sem mexer na rolagem da página)
+    const strip = thumbs[k]?.closest("ol");
+    if (strip && strip.scrollWidth > strip.clientWidth) {
+      const li = thumbs[k].parentElement!;
+      strip.scrollTo({ left: li.offsetLeft - (strip.clientWidth - li.offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" });
+    }
+    syncVideos();
+  };
+  const go = (k: number) => {
+    const n = Math.max(0, Math.min(slides.length - 1, k));
+    track.scrollTo({ left: n * track.clientWidth, behavior: reduce ? "auto" : "smooth" });
+  };
+  track.addEventListener("scroll", () => {
+    const k = Math.round(track.scrollLeft / track.clientWidth);
+    if (k !== cur) update(k);
+  }, { passive: true });
+  prev.addEventListener("click", () => go(cur - 1));
+  next.addEventListener("click", () => go(cur + 1));
+  thumbs.forEach((t, i) => t.addEventListener("click", () => go(i)));
+  track.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    go(cur + (e.key === "ArrowRight" ? 1 : -1));
+  });
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; syncVideos(); }, { threshold: 0.4 }).observe(track);
+});
+
+// capa dos cases de social: o emblema entra girando e os ladrilhos descem devagar com a rolagem
+const scWall = $("[data-sc-wall]");
+if (scWall && !reduce) {
+  gsap.from($("[data-sc-emblem]", scWall), { scale: 0.7, rotate: -25, opacity: 0, duration: 1.4, ease: "expo.out", delay: root.classList.contains("is-arriving") ? 0.6 : 0.35 });
+  gsap.fromTo(scWall, { backgroundPosition: "50% 0px" }, { backgroundPosition: "50% -140px", ease: "none", scrollTrigger: { trigger: scWall, start: "top bottom", end: "bottom top", scrub: true } });
+}
+
 const dialog = $<HTMLDialogElement>("[data-lightbox-dialog]");
 if (dialog) {
-  const shots = $$<HTMLButtonElement>("[data-lightbox]");
+  // Com data-lb-group, as setas percorrem só as telas do mesmo grupo (ex.: um carrossel).
+  const all = $$<HTMLButtonElement>("[data-lightbox]");
   const img = $<HTMLImageElement>("[data-lb-img]", dialog)!;
+  const video = $<HTMLVideoElement>("[data-lb-video]", dialog)!;
   const count = $("[data-lb-count]", dialog)!;
+  let shots = all;
   let cur = 0;
   const show = (k: number) => {
     cur = (k + shots.length) % shots.length;
     const b = shots[cur];
-    img.src = b.dataset.lightbox!;
-    img.width = Number(b.dataset.w); img.height = Number(b.dataset.h);
-    img.alt = b.querySelector("img")?.alt ?? "";
+    // itens de vídeo trazem o pôster em data-poster e o mp4 em data-lightbox
+    const isVideo = b.dataset.poster !== undefined;
+    img.classList.toggle("is-hidden", isVideo);
+    video.classList.toggle("is-hidden", !isVideo);
+    if (isVideo) {
+      video.poster = b.dataset.poster!;
+      video.src = b.dataset.lightbox!;
+      video.width = Number(b.dataset.w); video.height = Number(b.dataset.h);
+      video.setAttribute("aria-label", b.getAttribute("aria-label") ?? "");
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+      video.removeAttribute("src");
+      img.src = b.dataset.lightbox!;
+      img.width = Number(b.dataset.w); img.height = Number(b.dataset.h);
+      img.alt = b.querySelector("img")?.alt ?? "";
+    }
     count.textContent = `${String(cur + 1).padStart(2, "0")} / ${String(shots.length).padStart(2, "0")}`;
-    $(".lb-stage", dialog)!.scrollTop = 0;
-    if (!reduce) gsap.fromTo(img, { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" });
+    const stage = $(".lb-stage", dialog)!;
+    stage.scrollTop = 0;
+    // telas de carrossel cabem inteiras na altura; páginas de site continuam rolando dentro do lightbox
+    stage.classList.toggle("is-fit", b.dataset.lbGroup !== undefined);
+    if (!reduce) gsap.fromTo(isVideo ? video : img, { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" });
   };
-  shots.forEach((b, k) => b.addEventListener("click", () => { show(k); dialog.showModal(); lenis?.stop(); }));
+  all.forEach((b) => b.addEventListener("click", () => {
+    const group = b.dataset.lbGroup;
+    shots = all.filter((x) => x.dataset.lbGroup === group);
+    show(shots.indexOf(b));
+    dialog.showModal();
+    lenis?.stop();
+  }));
   $("[data-lb-close]", dialog)!.addEventListener("click", () => dialog.close());
   $("[data-lb-prev]", dialog)!.addEventListener("click", () => show(cur - 1));
   $("[data-lb-next]", dialog)!.addEventListener("click", () => show(cur + 1));
-  dialog.addEventListener("close", () => lenis?.start());
+  dialog.addEventListener("close", () => { video.pause(); lenis?.start(); });
   dialog.addEventListener("click", (e) => { if (e.target === dialog || (e.target as Element).classList.contains("lb-stage")) dialog.close(); });
   dialog.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") show(cur + 1);

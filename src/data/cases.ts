@@ -30,6 +30,21 @@ export interface CaseData {
   tools: string[];
   live?: string;
   credit?: string;
+  /** case de carrosséis de Instagram (as telas vêm dos itens com group = key) */
+  social?: SocialShowcase;
+}
+
+export interface SocialShowcase {
+  /** perfil, sem @ */
+  profile: string;
+  /** linha abaixo do perfil no cabeçalho do post */
+  place: string;
+  stats: { n: string; label: string }[];
+  /** frentes de conteúdo, na ordem da página */
+  fronts: { key: string; label: string; note: string }[];
+  carousels: { key: string; front: string; title: string; note: string; when: string }[];
+  /** paleta e nomes dos elementos gráficos (itens do group "elementos", na ordem) */
+  system: { title: string; note: string; palette: { name: string; hex: string }[]; elements: string[] };
 }
 
 export interface AssetItem {
@@ -37,9 +52,11 @@ export interface AssetItem {
   src: string;
   w: number;
   h: number;
-  kind: "page" | "mobile" | "slide" | "image" | "post" | "story" | "feed" | "banner";
+  kind: "page" | "mobile" | "slide" | "image" | "post" | "story" | "feed" | "banner" | "svg" | "video";
   label?: string;
   group?: string;
+  /** mp4 dos itens de vídeo (src é o pôster) */
+  video?: string;
 }
 
 const list: CaseData[] = [
@@ -630,17 +647,86 @@ const list: CaseData[] = [
     slug: "cau-pe",
     title: "CAU/PE",
     client: "Conselho de Arquitetura e Urbanismo de Pernambuco",
-    sector: "Conselho profissional",
+    sector: "Conselho profissional · arquitetura e urbanismo",
     year: "2026",
     cats: ["social"],
-    accent: "#E06A2C",
-    summary: "Carrosséis para o Instagram do CAU/PE: colóquios, datas comemorativas e campanhas.",
+    accent: "#B95000",
+    summary: "Nove carrosséis para o Instagram do Conselho de Arquitetura e Urbanismo de Pernambuco: colóquios pelo interior, datas da arquitetura e os prazos que todo profissional precisa saber.",
     about: [
-      "Patrimônio histórico, turismo, colóquios e o save the date da conferência regional — os carrosséis misturam fotografia de arquitetura pernambucana, cores quentes e tipografia de impacto.",
+      "O CAU/PE é a autarquia federal que orienta, disciplina e fiscaliza o exercício da arquitetura e do urbanismo em Pernambuco. Criado pela Lei 12.378/2010, tem sede no Recife e escritórios em Caruaru, no Agreste, e em Petrolina, no Sertão — e uma missão curta: promover Arquitetura e Urbanismo para todos.",
+      "No Instagram, o conselho fala com dois públicos ao mesmo tempo: os arquitetos e urbanistas registrados, que precisam de prazos e regras claros, e a sociedade, que encontra ali o valor da arquitetura do estado. Desenhei os carrosséis de 2026 para as duas conversas — dos colóquios em Carpina, Caruaru e Petrolina ao registro de chapas das Eleições CAU.",
+      "Cada carrossel foi pensado para ser deslizado: uma capa que segura o polegar, uma ideia por tela e um fechamento com a próxima ação. As formas cortadas na borda continuam na tela seguinte, então a sequência se lê como um painel só.",
     ],
-    deliverables: ["Carrosséis", "Posts de evento", "Save the date"],
+    deliverables: ["9 carrosséis de feed", "46 telas em 4:5", "5 vídeos curtos", "Posts de evento e palestrantes", "Campanhas de prazo", "Datas comemorativas"],
     tools: ["Photoshop", "Illustrator", "Firefly"],
     credit: "Projeto realizado com a Apex Comunicação",
+    social: {
+      profile: "oficialcaupe",
+      place: "Pernambuco",
+      stats: [
+        { n: "09", label: "carrosséis" },
+        { n: "46", label: "telas em 4:5" },
+        { n: "05", label: "vídeos curtos" },
+        { n: "06", label: "cidades no feed" },
+      ],
+      fronts: [
+        { key: "agenda", label: "Agenda", note: "Os eventos do conselho pelo estado: datas, palestrantes e inscrições." },
+        { key: "cultura", label: "Cultura", note: "Datas comemorativas e interação, com a arquitetura pernambucana como assunto." },
+        { key: "servico", label: "Serviço", note: "Prazos e regras que todo profissional registrado precisa saber." },
+      ],
+      carousels: [
+        {
+          key: "travessia", front: "agenda", title: "Colóquio Caruaru–Petrolina", when: "28 ago e 24 set 2026",
+          note: "“Arquiteturas em Travessia”: o Sertão visita o Agreste e o Agreste visita o Sertão. A capa traz as duas datas, cada cidade ganha uma abertura com dia, hora e local, e cada palestrante, uma tela com foto, tema e minicurrículo. O fechamento avisa das vagas limitadas e aponta o link da inscrição.",
+        },
+        {
+          key: "caruaru", front: "agenda", title: "Colóquio Caruaru — inscrições", when: "Agosto de 2026",
+          note: "A primeira chamada do colóquio de Caruaru: três palestras para quem projeta o espaço e a própria carreira. Petróleo e terracota se alternam a cada tela para separar os palestrantes, e a moldura circular do emblema recorta as fotos.",
+        },
+        {
+          key: "save", front: "agenda", title: "Save the date dos colóquios", when: "21 e 28 ago 2026",
+          note: "Duas telas para reservar a data antes da programação: Carpina em 21 de agosto e Caruaru em 28. Na capa, a estrela do emblema do CAU/PE vira moldura para o título.",
+        },
+        {
+          key: "patrimonio", front: "cultura", title: "Dia Nacional do Patrimônio Histórico", when: "17 ago 2026",
+          note: "Sete telas de fotografia — igrejas, casarões, o farol e o Recife visto do alto — com caixas de texto em terracota e petróleo. O texto avança uma ideia por tela: patrimônio não é só o que é antigo, e preservar não impede a cidade de se transformar.",
+        },
+        {
+          key: "turismo", front: "cultura", title: "Dia Mundial do Turismo", when: "27 set 2026",
+          note: "“Que tal conhecer Pernambuco pela arquitetura?” Entre a capa ilustrada e a tela de fechamento, cinco vídeos curtos levam a Olinda, ao Recife, a Porto de Galinhas, ao Alto do Moura, em Caruaru, e a Petrolina.",
+        },
+        {
+          key: "projeto", front: "cultura", title: "Qual é o projeto?", when: "Agosto de 2026",
+          note: "Um quiz para movimentar os comentários: a planta colorida de uma obra histórica do Recife, emoldurada por ladrilhos, e o pedido de palpite. Os círculos começam na primeira tela e terminam na segunda.",
+        },
+        {
+          key: "chapas", front: "servico", title: "Eleições CAU 2026 — registro de chapas", when: "17 ago a 4 set 2026",
+          note: "O regulamento eleitoral em oito telas: período de registro, vagas em disputa, regras de representatividade, quem pode se candidatar e o que é preciso para registrar. Faixas de título em petróleo e grandes círculos conduzem a leitura.",
+        },
+        {
+          key: "prazo", front: "servico", title: "Eleições — último dia de registro", when: "4 set 2026",
+          note: "O lembrete da sexta-feira em que o prazo acabava: a chamada sobre uma faixa de ladrilhos, os requisitos para se candidatar e o perfil do CAU/PE apontando o link da bio.",
+        },
+        {
+          key: "anuidade", front: "servico", title: "Anuidade 2026 — Pessoa Jurídica", when: "Agosto de 2026",
+          note: "Últimos dias de desconto para empresas: 30% à vista até 31 de agosto e o calendário de parcelamento até dezembro. O arco que nasce na segunda tela termina na terceira.",
+        },
+      ],
+      system: {
+        title: "Ladrilhos que viram <em>carrossel</em>",
+        note: "Os posts dividem um repertório de módulos quadrados, como azulejos: sol, rosácea, catavento, cubos e a estrela de oito pontas do emblema. Juntos, formam painéis de capa; sozinhos, viram detalhe de canto; cortados na borda, passam de uma tela para a outra.",
+        palette: [
+          { name: "Petróleo", hex: "#183C46" },
+          { name: "Maré", hex: "#006D72" },
+          { name: "Céu", hex: "#98C2C8" },
+          { name: "Cal", hex: "#FFFBD4" },
+          { name: "Areia", hex: "#F2BE79" },
+          { name: "Terracota", hex: "#B95000" },
+          { name: "Barro", hex: "#731900" },
+        ],
+        elements: ["Arcos", "Estrela do emblema", "Sol", "Catavento", "Catavento invertido", "Cubos"],
+      },
+    },
   },
   {
     slug: "dedicad",

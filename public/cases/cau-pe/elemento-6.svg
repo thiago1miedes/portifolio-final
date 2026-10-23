@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 509.07 552.13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fffbd4;
+      }
+
+      .cls-2 {
+        fill: #183c46;
+      }
+
+      .cls-3 {
+        fill: #f2be79;
+      }
+
+      .cls-4 {
+        fill: #b95000;
+      }
+
+      .cls-5 {
+        fill: #731900;
+      }
+
+      .cls-6 {
+        fill: #006d72;
+      }
+    </style>
+  </defs>
+  <g id="Camada_1-2" data-name="Camada 1">
+    <g>
+      <g>
+        <polygon class="cls-6" points="188.99 293.91 316.26 220.44 188.99 146.96 188.99 293.91"/>
+        <polygon class="cls-1" points="61.72 220.44 188.99 293.91 188.99 146.96 61.72 220.44"/>
+        <polygon class="cls-2" points="316.26 220.44 316.26 73.48 188.99 146.96 316.26 220.44"/>
+        <polygon class="cls-5" points="316.26 73.48 188.99 0 188.99 146.96 316.26 73.48"/>
+        <polygon class="cls-4" points="188.99 0 61.72 73.48 188.99 146.96 188.99 0"/>
+        <polygon class="cls-3" points="188.99 146.96 61.72 73.48 61.72 220.44 188.99 146.96"/>
+      </g>
+      <g>
+        <polygon class="cls-6" points="254.54 403.03 381.81 476.51 381.81 329.55 254.54 403.03"/>
+        <polygon class="cls-1" points="254.54 256.07 254.54 403.03 381.81 329.55 254.54 256.07"/>
+        <polygon class="cls-2" points="381.81 476.51 509.07 403.03 381.81 329.55 381.81 476.51"/>
+        <polygon class="cls-5" points="509.07 403.03 509.07 256.07 381.81 329.55 509.07 403.03"/>
+        <polygon class="cls-4" points="509.07 256.07 381.81 182.59 381.81 329.55 509.07 256.07"/>
+        <polygon class="cls-3" points="381.81 329.55 381.81 182.59 254.54 256.07 381.81 329.55"/>
+      </g>
+      <g>
+        <polygon class="cls-6" points="127.27 258.22 0 331.69 127.27 405.17 127.27 258.22"/>
+        <polygon class="cls-1" points="254.54 331.69 127.27 258.22 127.27 405.17 254.54 331.69"/>
+        <polygon class="cls-2" points="0 331.69 0 478.65 127.27 405.17 0 331.69"/>
+        <polygon class="cls-5" points="0 478.65 127.27 552.13 127.27 405.17 0 478.65"/>
+        <polygon class="cls-4" points="127.27 552.13 254.54 478.65 127.27 405.17 127.27 552.13"/>
+        <polygon class="cls-3" points="127.27 405.17 254.54 478.65 254.54 331.69 127.27 405.17"/>
+      </g>
+    </g>
+  </g>
+</svg>

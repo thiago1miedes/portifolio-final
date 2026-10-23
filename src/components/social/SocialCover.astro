@@ -1,0 +1,35 @@
+---
+// Capa dos cases de social media: o emblema do cliente sobre a repetição do padrão de ladrilhos.
+interface Props { logo: { src: string; w: number; h: number }; pattern: string; title: string }
+const { logo, pattern, title } = Astro.props;
+---
+<section class="sc container">
+  <div class="sc-wall" style={`--pattern: url(${pattern})`} data-sc-wall>
+    <div class="sc-emblem" data-sc-emblem>
+      <img src={logo.src} width={logo.w} height={logo.h} alt={`Emblema do ${title}`} loading="eager" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .sc { padding-bottom: clamp(20px, 4vw, 40px); }
+  .sc-wall {
+    --tile: clamp(300px, 40vw, 600px);
+    position: relative; isolation: isolate;
+    display: grid; place-items: center;
+    aspect-ratio: 21 / 9; border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--border);
+    background: #0a0a0b var(--pattern) 50% 50% / var(--tile) repeat;
+  }
+  /* escurece o centro para o emblema respirar sobre os ladrilhos */
+  .sc-wall::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: radial-gradient(closest-side, rgba(10, 10, 11, 0.92) 30%, rgba(10, 10, 11, 0.4) 70%, rgba(10, 10, 11, 0.15));
+  }
+  .sc-emblem { width: min(30%, 400px); filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.55)); }
+  .sc-emblem img { width: 100%; height: auto; }
+  @media (max-width: 700px) {
+    .sc-wall { aspect-ratio: 4 / 3; --tile: 320px; }
+    .sc-emblem { width: 58%; }
+  }
+</style>

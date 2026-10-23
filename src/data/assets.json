@@ -2667,135 +2667,467 @@
    "w": 1200,
    "h": 800
   },
+  "cover": "logo",
   "items": [
+   {
+    "id": "logo",
+    "src": "/cases/cau-pe/logo.svg",
+    "w": 1065,
+    "h": 1065,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "padrao",
+    "src": "/cases/cau-pe/padrao.svg",
+    "w": 1080,
+    "h": 1080,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "padrao-2",
+    "src": "/cases/cau-pe/padrao-2.svg",
+    "w": 864,
+    "h": 216,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "padrao-3",
+    "src": "/cases/cau-pe/padrao-3.svg",
+    "w": 864,
+    "h": 216,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "elemento-1",
+    "src": "/cases/cau-pe/elemento-1.svg",
+    "w": 519,
+    "h": 1080,
+    "kind": "svg",
+    "group": "elementos"
+   },
+   {
+    "id": "elemento-2",
+    "src": "/cases/cau-pe/elemento-2.svg",
+    "w": 1021,
+    "h": 1021,
+    "kind": "svg",
+    "group": "elementos"
+   },
+   {
+    "id": "elemento-3",
+    "src": "/cases/cau-pe/elemento-3.svg",
+    "w": 882,
+    "h": 882,
+    "kind": "svg",
+    "group": "elementos"
+   },
+   {
+    "id": "elemento-4",
+    "src": "/cases/cau-pe/elemento-4.svg",
+    "w": 850,
+    "h": 850,
+    "kind": "svg",
+    "group": "elementos"
+   },
+   {
+    "id": "elemento-5",
+    "src": "/cases/cau-pe/elemento-5.svg",
+    "w": 170,
+    "h": 170,
+    "kind": "svg",
+    "group": "elementos"
+   },
+   {
+    "id": "elemento-6",
+    "src": "/cases/cau-pe/elemento-6.svg",
+    "w": 509,
+    "h": 552,
+    "kind": "svg",
+    "group": "elementos"
+   },
+   {
+    "id": "travessia-1",
+    "src": "/cases/cau-pe/travessia-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "travessia"
+   },
+   {
+    "id": "travessia-2",
+    "src": "/cases/cau-pe/travessia-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "travessia"
+   },
+   {
+    "id": "travessia-3",
+    "src": "/cases/cau-pe/travessia-3.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "travessia"
+   },
+   {
+    "id": "travessia-4",
+    "src": "/cases/cau-pe/travessia-4.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "travessia"
+   },
+   {
+    "id": "travessia-5",
+    "src": "/cases/cau-pe/travessia-5.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "travessia"
+   },
+   {
+    "id": "travessia-6",
+    "src": "/cases/cau-pe/travessia-6.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "travessia"
+   },
+   {
+    "id": "travessia-7",
+    "src": "/cases/cau-pe/travessia-7.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "travessia"
+   },
+   {
+    "id": "travessia-8",
+    "src": "/cases/cau-pe/travessia-8.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "travessia"
+   },
+   {
+    "id": "caruaru-1",
+    "src": "/cases/cau-pe/caruaru-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "caruaru"
+   },
+   {
+    "id": "caruaru-2",
+    "src": "/cases/cau-pe/caruaru-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "caruaru"
+   },
+   {
+    "id": "caruaru-3",
+    "src": "/cases/cau-pe/caruaru-3.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "caruaru"
+   },
+   {
+    "id": "caruaru-4",
+    "src": "/cases/cau-pe/caruaru-4.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "caruaru"
+   },
+   {
+    "id": "caruaru-5",
+    "src": "/cases/cau-pe/caruaru-5.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "caruaru"
+   },
    {
     "id": "save-1",
     "src": "/cases/cau-pe/save-1.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "save"
    },
    {
     "id": "save-2",
     "src": "/cases/cau-pe/save-2.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "coloquio-1",
-    "src": "/cases/cau-pe/coloquio-1.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "coloquio-2",
-    "src": "/cases/cau-pe/coloquio-2.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "coloquio-3",
-    "src": "/cases/cau-pe/coloquio-3.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "coloquio-4",
-    "src": "/cases/cau-pe/coloquio-4.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
-   },
-   {
-    "id": "coloquio-5",
-    "src": "/cases/cau-pe/coloquio-5.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "save"
    },
    {
     "id": "patrimonio-1",
     "src": "/cases/cau-pe/patrimonio-1.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "patrimonio"
    },
    {
     "id": "patrimonio-2",
     "src": "/cases/cau-pe/patrimonio-2.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "patrimonio"
    },
    {
     "id": "patrimonio-3",
     "src": "/cases/cau-pe/patrimonio-3.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "patrimonio"
    },
    {
     "id": "patrimonio-4",
     "src": "/cases/cau-pe/patrimonio-4.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "patrimonio"
    },
    {
     "id": "patrimonio-5",
     "src": "/cases/cau-pe/patrimonio-5.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "patrimonio"
    },
    {
     "id": "patrimonio-6",
     "src": "/cases/cau-pe/patrimonio-6.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "patrimonio"
    },
    {
     "id": "patrimonio-7",
     "src": "/cases/cau-pe/patrimonio-7.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "patrimonio"
    },
    {
     "id": "turismo-1",
     "src": "/cases/cau-pe/turismo-1.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "turismo"
+   },
+   {
+    "id": "turismo-2",
+    "src": "/cases/cau-pe/turismo-2.webp",
+    "video": "/cases/cau-pe/turismo-2.mp4",
+    "w": 1080,
+    "h": 1350,
+    "kind": "video",
+    "label": "Olinda",
+    "group": "turismo"
+   },
+   {
+    "id": "turismo-3",
+    "src": "/cases/cau-pe/turismo-3.webp",
+    "video": "/cases/cau-pe/turismo-3.mp4",
+    "w": 1080,
+    "h": 1350,
+    "kind": "video",
+    "label": "Recife",
+    "group": "turismo"
+   },
+   {
+    "id": "turismo-4",
+    "src": "/cases/cau-pe/turismo-4.webp",
+    "video": "/cases/cau-pe/turismo-4.mp4",
+    "w": 1080,
+    "h": 1350,
+    "kind": "video",
+    "label": "Porto de Galinhas",
+    "group": "turismo"
+   },
+   {
+    "id": "turismo-5",
+    "src": "/cases/cau-pe/turismo-5.webp",
+    "video": "/cases/cau-pe/turismo-5.mp4",
+    "w": 1080,
+    "h": 1350,
+    "kind": "video",
+    "label": "Caruaru",
+    "group": "turismo"
+   },
+   {
+    "id": "turismo-6",
+    "src": "/cases/cau-pe/turismo-6.webp",
+    "video": "/cases/cau-pe/turismo-6.mp4",
+    "w": 1080,
+    "h": 1350,
+    "kind": "video",
+    "label": "Petrolina",
+    "group": "turismo"
    },
    {
     "id": "turismo-7",
     "src": "/cases/cau-pe/turismo-7.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "turismo"
    },
    {
     "id": "projeto-1",
     "src": "/cases/cau-pe/projeto-1.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "projeto"
    },
    {
     "id": "projeto-2",
     "src": "/cases/cau-pe/projeto-2.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post"
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "projeto"
+   },
+   {
+    "id": "chapas-1",
+    "src": "/cases/cau-pe/chapas-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "chapas"
+   },
+   {
+    "id": "chapas-2",
+    "src": "/cases/cau-pe/chapas-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "chapas"
+   },
+   {
+    "id": "chapas-3",
+    "src": "/cases/cau-pe/chapas-3.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "chapas"
+   },
+   {
+    "id": "chapas-4",
+    "src": "/cases/cau-pe/chapas-4.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "chapas"
+   },
+   {
+    "id": "chapas-5",
+    "src": "/cases/cau-pe/chapas-5.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "chapas"
+   },
+   {
+    "id": "chapas-6",
+    "src": "/cases/cau-pe/chapas-6.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "chapas"
+   },
+   {
+    "id": "chapas-7",
+    "src": "/cases/cau-pe/chapas-7.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "chapas"
+   },
+   {
+    "id": "chapas-8",
+    "src": "/cases/cau-pe/chapas-8.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "chapas"
+   },
+   {
+    "id": "prazo-1",
+    "src": "/cases/cau-pe/prazo-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "prazo"
+   },
+   {
+    "id": "prazo-2",
+    "src": "/cases/cau-pe/prazo-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "prazo"
+   },
+   {
+    "id": "prazo-3",
+    "src": "/cases/cau-pe/prazo-3.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "prazo"
+   },
+   {
+    "id": "anuidade-1",
+    "src": "/cases/cau-pe/anuidade-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "anuidade"
+   },
+   {
+    "id": "anuidade-2",
+    "src": "/cases/cau-pe/anuidade-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "anuidade"
+   },
+   {
+    "id": "anuidade-3",
+    "src": "/cases/cau-pe/anuidade-3.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "anuidade"
+   },
+   {
+    "id": "anuidade-4",
+    "src": "/cases/cau-pe/anuidade-4.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "anuidade"
    }
-  ],
-  "cover": "save-1"
+  ]
  },
  "dedicad": {
   "thumb": {

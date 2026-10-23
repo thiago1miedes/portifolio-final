@@ -3,10 +3,12 @@
 // - Os demais são relativos à pasta Freelancer (SRC).
 // - PDFs: `pages` define quais páginas renderizar (1 = primeira). Sem `pages`, só a 1ª.
 // kinds: page (página inteira de site, 1440px) · mobile (print de celular) ·
-//        slide (16:9, 1600px) · image (até 1600px) · post (até 1080px)
+//        slide (16:9, 1600px) · image (até 1600px) · post (até 1080px) ·
+//        story / feed / banner (tamanho original) · svg (copiado) · video (mp4 copiado + pôster)
 export const SRC = "F:/Freelancer";
 
 const W = "Websites";
+const CAU = "Apex Comunicação/CAU - PE/Projeto Case";
 const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
 
 export const cases = {
@@ -378,16 +380,26 @@ export const cases = {
     ],
   },
   "cau-pe": {
-    thumb: { from: "save-1", crop: "center" },
+    // capa da listagem: o emblema do CAU/PE sobre o painel de ladrilhos
+    thumb: { logo: "logo", pattern: "padrao" },
     items: [
-      { id: "save-1", src: "Apex Comunicação/CAU - PE/Redes Sociais/Carrossel - Save the date/CAU-PE_Save_the_date_01.png", kind: "post" },
-      { id: "save-2", src: "Apex Comunicação/CAU - PE/Redes Sociais/Carrossel - Save the date/CAU-PE_Save_the_date_02.png", kind: "post" },
-      ...range(1, 5).map((n) => ({ id: `coloquio-${n}`, src: `Apex Comunicação/CAU - PE/Redes Sociais/Carrossel - Colóquio Caruaru inscrições/CAU_PE_Colóquio_Caruaru_inscrições_0${n}.png`, kind: "post" })),
-      ...range(1, 7).map((n) => ({ id: `patrimonio-${n}`, src: `Apex Comunicação/CAU - PE/Redes Sociais/Carrossel - Dia do Patrimonio/images/CAU_PE_Patrimônio_0${n}.png`, kind: "post" })),
-      { id: "turismo-1", src: "Apex Comunicação/CAU - PE/Redes Sociais/Carrossel - Dia do Turismo/CAUPE_Dia_Do_Turismo_01.png", kind: "post" },
-      { id: "turismo-7", src: "Apex Comunicação/CAU - PE/Redes Sociais/Carrossel - Dia do Turismo/CAUPE_Dia_Do_Turismo_07.png", kind: "post" },
-      { id: "projeto-1", src: "Apex Comunicação/CAU - PE/Redes Sociais/Carrossel - Qual é o projeto - Agosto/Opção 01/CAU_PE_Qual_é_o_projeto_Agosto_01.png", kind: "post" },
-      { id: "projeto-2", src: "Apex Comunicação/CAU - PE/Redes Sociais/Carrossel - Qual é o projeto - Agosto/Opção 01/CAU_PE_Qual_é_o_projeto_Agosto_02.png", kind: "post" },
+      { id: "logo", src: `${CAU}/Logo_CAU_Pe.svg`, kind: "svg", group: "marca" },
+      { id: "padrao", src: `${CAU}/Parttern_CAU.svg`, kind: "svg", group: "marca" },
+      { id: "padrao-2", src: `${CAU}/Parttern_CAU_v2.svg`, kind: "svg", group: "marca" },
+      { id: "padrao-3", src: `${CAU}/Parttern_CAU_v3.svg`, kind: "svg", group: "marca" },
+      ...range(1, 6).map((n) => ({ id: `elemento-${n}`, src: `${CAU}/Elemento_grafico_v${n}.svg`, kind: "svg", group: "elementos" })),
+      // carrosséis do feed (4:5) — o group é a chave do carrossel em cases.ts (social.carousels)
+      ...range(1, 8).map((n) => ({ id: `travessia-${n}`, src: `${CAU}/CAU_PE_Colóquio_Caruaru_Petrolina_0${n}.png`, kind: "feed", group: "travessia" })),
+      ...range(1, 5).map((n) => ({ id: `caruaru-${n}`, src: `${CAU}/CAU_PE_Colóquio_Caruaru_inscrições_0${n}.png`, kind: "feed", group: "caruaru" })),
+      ...range(1, 2).map((n) => ({ id: `save-${n}`, src: `${CAU}/CAU-PE_Save_the_date_0${n}.png`, kind: "feed", group: "save" })),
+      ...range(1, 7).map((n) => ({ id: `patrimonio-${n}`, src: `${CAU}/CAU_PE_Patrimônio_0${n}.png`, kind: "feed", group: "patrimonio" })),
+      { id: "turismo-1", src: `${CAU}/CAUPE_Dia_Do_Turismo_01.png`, kind: "feed", group: "turismo" },
+      ...["Olinda", "Recife", "Porto de Galinhas", "Caruaru", "Petrolina"].map((label, i) => ({ id: `turismo-${i + 2}`, src: `${CAU}/CAUPE_Dia_Do_Turismo_0${i + 2}.mp4`, kind: "video", group: "turismo", label })),
+      { id: "turismo-7", src: `${CAU}/CAUPE_Dia_Do_Turismo_07.png`, kind: "feed", group: "turismo" },
+      ...range(1, 2).map((n) => ({ id: `projeto-${n}`, src: `${CAU}/CAU_PE_Qual_é_o_projeto_Agosto_0${n}.png`, kind: "feed", group: "projeto" })),
+      ...[1, 2, 3, 4, 5, 6, 7, 10].map((n, i) => ({ id: `chapas-${i + 1}`, src: `${CAU}/CAUPE_Formação_de_chapas_${String(n).padStart(2, "0")}.png`, kind: "feed", group: "chapas" })),
+      ...range(1, 3).map((n) => ({ id: `prazo-${n}`, src: `${CAU}/CAU_PE_Registro_chapas_0${n}.png`, kind: "feed", group: "prazo" })),
+      ...range(1, 4).map((n) => ({ id: `anuidade-${n}`, src: `${CAU}/CAU_PE_Anuidade_0${n}.png`, kind: "feed", group: "anuidade" })),
     ],
   },
 

@@ -1,0 +1,269 @@
+---
+// Corpo dos cases de carrosséis (c.social): números, linguagem dos posts, índice e um bloco por carrossel,
+// agrupados por frente de conteúdo. As telas são os itens de assets.json com group = chave do carrossel.
+import CarouselPost from "./CarouselPost.astro";
+import Icon from "../Icon.astro";
+import type { Case, AssetItem } from "../../data/cases";
+
+interface Props { c: Case }
+const { c } = Astro.props;
+const s = c.social!;
+const byId = (id: string) => c.items.find((it) => it.id === id)!;
+const slides = (key: string) => c.items.filter((it) => it.group === key);
+const logo = byId("logo");
+const elements = c.items.filter((it) => it.group === "elementos");
+// uma faixa de ladrilhos para cada frente: as duas tiras de 4 ladrilhos e uma fileira do painel 5×5
+// (cols = ladrilhos por fileira; a imagem é cortada nessa proporção)
+const tiles: { src: string; cols: number }[] = [
+  { src: byId("padrao-2").src, cols: 4 },
+  { src: byId("padrao-3").src, cols: 4 },
+  { src: byId("padrao").src, cols: 5 },
+];
+const pad = (n: number) => String(n).padStart(2, "0");
+const words = ["zero", "uma", "duas", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze"];
+const inWords = (n: number) => words[n] ?? String(n);
+const order = s.fronts.flatMap((f) => s.carousels.filter((k) => k.front === f.key));
+const numberOf = (key: string) => pad(order.findIndex((k) => k.key === key) + 1);
+const count = (items: AssetItem[]) => {
+  const v = items.filter((it) => it.video).length;
+  return `${items.length} telas${v ? ` · ${v} em vídeo` : ""}`;
+};
+---
+<section class="ss-stats container" aria-label="O projeto em números">
+  <ul>
+    {s.stats.map((st) => (
+      <li data-reveal><b class="display">{st.n}</b><span>{st.label}</span></li>
+    ))}
+  </ul>
+</section>
+
+<section class="ss-system">
+  <div class="container">
+    <header class="ss-system-head">
+      <p class="eyebrow" data-reveal>Linguagem dos posts</p>
+      <h2 class="title-section" data-split set:html={s.system.title} />
+      <p class="lead" data-reveal>{s.system.note}</p>
+    </header>
+    <div class="ss-system-grid">
+      <figure class="ss-mosaic" data-reveal>
+        <img src={byId("padrao").src} width="1080" height="1080" alt="Painel de ladrilhos usado nas capas" loading="lazy" />
+      </figure>
+      <ul class="ss-elements">
+        {elements.map((el, k) => (
+          <li data-reveal>
+            <span class="ss-el-art"><img src={el.src} width={el.w} height={el.h} alt="" loading="lazy" /></span>
+            <span class="ss-el-label">{s.system.elements[k]}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <ul class="ss-palette" aria-label="Paleta">
+      {s.system.palette.map((p) => (
+        <li data-reveal>
+          <span class="ss-swatch" style={`background:${p.hex}`}></span>
+          <span class="ss-color"><b>{p.name}</b><span>{p.hex}</span></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<nav class="ss-index container" aria-label="Carrosséis do projeto">
+  <div class="ss-index-head">
+    <p class="eyebrow" data-reveal>Carrosséis</p>
+    <h2 class="title-section" data-split>{`${inWords(s.fronts.length)[0].toUpperCase()}${inWords(s.fronts.length).slice(1)} frentes, `}<em>{inWords(s.carousels.length)}</em> sequências</h2>
+  </div>
+  <div class="ss-index-cols">
+    {s.fronts.map((f, fi) => (
+      <div class="ss-index-col" data-reveal>
+        <p class="ss-index-front"><span>{pad(fi + 1)}</span>{f.label}</p>
+        <ol>
+          {s.carousels.filter((k) => k.front === f.key).map((k) => {
+            const items = slides(k.key);
+            return (
+              <li>
+                <a href={`#c-${k.key}`} class="ss-index-link">
+                  <img src={items[0].src} width={items[0].w} height={items[0].h} alt="" loading="lazy" />
+                  <span class="ss-index-n">{numberOf(k.key)}</span>
+                  <span class="ss-index-t">{k.title}</span>
+                  <span class="ss-index-m">{count(items)}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    ))}
+  </div>
+</nav>
+
+{s.fronts.map((f, fi) => (
+  <section class="ss-front" id={`frente-${f.key}`} aria-labelledby={`frente-${f.key}-t`}>
+    <header class="ss-front-head container">
+      <div class="ss-front-text">
+        <p class="eyebrow" data-reveal>{`Frente ${pad(fi + 1)}`}</p>
+        <h2 class="ss-front-title display" id={`frente-${f.key}-t`} data-reveal>{f.label}</h2>
+        <p class="lead" data-reveal>{f.note}</p>
+      </div>
+      <img class="ss-front-tiles" src={tiles[fi % tiles.length].src} style={`--cols:${tiles[fi % tiles.length].cols}`} alt="" loading="lazy" data-reveal />
+    </header>
+
+    {s.carousels.filter((k) => k.front === f.key).map((k) => {
+      const items = slides(k.key);
+      const flip = Number(numberOf(k.key)) % 2 === 0;
+      return (
+        <article class:list={["cb container", { "cb--flip": flip }]} id={`c-${k.key}`} data-carousel>
+          <div class="cb-head">
+            <p class="eyebrow" data-reveal>{`${numberOf(k.key)} — ${f.label}`}</p>
+            <h3 class="cb-title" data-reveal>{k.title}</h3>
+            <p class="cb-note" data-reveal>{k.note}</p>
+            <ul class="cb-meta" data-reveal>
+              <li>{k.when}</li>
+              <li>{count(items)}</li>
+              <li>{`4:5 · ${items[0].w} × ${items[0].h} px`}</li>
+            </ul>
+          </div>
+          <div class="cb-post" data-reveal>
+            <CarouselPost group={k.key} title={k.title} profile={s.profile} place={s.place} avatar={logo.src} items={items} />
+          </div>
+          <div class="cb-strip" data-reveal>
+            <p class="cb-strip-label">Sequência completa <span>— as telas lado a lado, como a pessoa desliza</span></p>
+            <ol class="strip">
+              {items.map((it, i) => (
+                <li>
+                  <button type="button" class:list={["strip-btn", { "is-active": i === 0 }]} data-car-go={i} aria-label={`Ver tela ${i + 1}`}>
+                    <img src={it.src} width={it.w} height={it.h} alt="" loading="lazy" decoding="async" />
+                    {it.video && <span class="strip-play"><Icon name="play" size={12} /></span>}
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </article>
+      );
+    })}
+  </section>
+))}
+
+<style>
+  /* números */
+  .ss-stats { padding-bottom: clamp(56px, 7vw, 104px); }
+  .ss-stats ul { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--border); }
+  @media (min-width: 800px) { .ss-stats ul { grid-template-columns: repeat(4, 1fr); } }
+  .ss-stats li { display: grid; gap: 6px; padding: 24px 20px 0 0; }
+  .ss-stats b { font-size: clamp(3.5rem, 8vw, 6.5rem); color: var(--accent); }
+  .ss-stats span { color: var(--text-muted); font-size: 0.9375rem; }
+
+  /* linguagem dos posts */
+  .ss-system { background: var(--bg-elev); border-block: 1px solid var(--border); padding-block: clamp(64px, 8vw, 120px); }
+  .ss-system-head { display: grid; gap: 20px; max-width: 760px; margin-bottom: clamp(36px, 5vw, 64px); }
+  .ss-system-grid { display: grid; gap: clamp(12px, 1.6vw, 20px); }
+  @media (min-width: 900px) { .ss-system-grid { grid-template-columns: 1fr 1.3fr; } }
+  .ss-mosaic { aspect-ratio: 1; border-radius: var(--radius-card); overflow: hidden; }
+  .ss-mosaic img { width: 100%; height: 100%; object-fit: cover; }
+  .ss-elements { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(12px, 1.6vw, 20px); }
+  @media (min-width: 600px) { .ss-elements { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); } }
+  .ss-elements li {
+    display: grid; grid-template-rows: 1fr auto; gap: 14px; min-height: 180px;
+    padding: 18px; border-radius: var(--radius-card);
+    background: var(--bg); border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .ss-elements li:hover { border-color: var(--border-strong); }
+  .ss-el-art { position: relative; display: grid; place-items: center; min-height: 0; }
+  .ss-el-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: scale 0.6s var(--ease); }
+  .ss-elements li:hover .ss-el-art img { scale: 1.06; }
+  .ss-el-label { font-size: 0.875rem; color: var(--text-muted); }
+  .ss-palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 20px); margin-top: clamp(28px, 4vw, 48px); }
+  @media (min-width: 900px) { .ss-palette { grid-template-columns: repeat(7, 1fr); } }
+  .ss-palette li { display: grid; gap: 10px; }
+  .ss-swatch { height: clamp(64px, 8vw, 120px); border-radius: 16px; box-shadow: inset 0 0 0 1px var(--border); }
+  .ss-color { display: grid; font-size: 0.8125rem; line-height: 1.4; }
+  .ss-color b { font-weight: 600; }
+  .ss-color span { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  /* índice */
+  .ss-index { display: grid; gap: clamp(28px, 4vw, 48px); padding-block: clamp(72px, 9vw, 136px) clamp(24px, 4vw, 48px); }
+  .ss-index-head { display: grid; gap: 16px; }
+  .ss-index-cols { display: grid; gap: 28px; }
+  @media (min-width: 900px) { .ss-index-cols { grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 28px); } }
+  .ss-index-front { display: flex; align-items: baseline; gap: 10px; padding-bottom: 14px; margin-bottom: 6px; border-bottom: 1px solid var(--border); font-family: var(--font-heading); font-weight: 600; font-size: 1.125rem; }
+  .ss-index-front span { font-family: var(--font-display); color: var(--accent); }
+  .ss-index-link {
+    display: grid; grid-template-columns: 48px 2rem 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center;
+    padding: 12px 8px 12px 0; border-bottom: 1px solid var(--border);
+    transition: background-color 0.25s, padding 0.35s var(--ease);
+  }
+  .ss-index-link img { grid-row: span 2; width: 48px; height: 60px; object-fit: cover; border-radius: 8px; }
+  .ss-index-n { grid-row: span 2; font-family: var(--font-display); font-size: 1.25rem; color: var(--text-muted); transition: color 0.25s; }
+  .ss-index-t { font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+  .ss-index-m { font-size: 0.8125rem; color: var(--text-muted); }
+  .ss-index-link:hover { padding-left: 8px; background: var(--surface-glass); }
+  .ss-index-link:hover .ss-index-n { color: var(--accent); }
+
+  /* frentes */
+  .ss-front { padding-top: clamp(56px, 7vw, 96px); }
+  .ss-front-head { display: grid; gap: 28px; align-items: end; padding-bottom: clamp(8px, 2vw, 24px); }
+  @media (min-width: 900px) { .ss-front-head { grid-template-columns: 1fr auto; } }
+  .ss-front-text { display: grid; gap: 16px; max-width: 640px; }
+  .ss-front-title { font-size: clamp(4rem, 12vw, 10rem); }
+  .ss-front-tiles { --h: clamp(64px, 8vw, 104px); height: var(--h); width: calc(var(--h) * var(--cols)); max-width: 100%; object-fit: cover; border-radius: 12px; }
+
+  /* bloco de cada carrossel */
+  .cb {
+    display: grid; gap: 28px; justify-items: start;
+    grid-template-areas: "head" "post" "strip";
+    padding-block: clamp(48px, 6vw, 88px);
+    border-bottom: 1px solid var(--border);
+  }
+  .cb:last-child { border-bottom: 0; }
+  .cb-head { grid-area: head; display: grid; gap: 16px; max-width: 620px; }
+  .cb-post { grid-area: post; width: 100%; display: grid; justify-items: center; }
+  .cb-strip { grid-area: strip; width: 100%; display: grid; gap: 12px; }
+  @media (min-width: 1000px) {
+    .cb {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "head post" "strip post";
+      column-gap: clamp(48px, 7vw, 120px); row-gap: 32px;
+    }
+    .cb--flip { grid-template-columns: minmax(0, 460px) minmax(0, 1fr); grid-template-areas: "post head" "post strip"; }
+    .cb-head { align-self: start; padding-top: 12px; }
+    .cb-strip { align-self: end; }
+  }
+  .cb-title { font-size: clamp(1.75rem, 3.4vw, 2.75rem); letter-spacing: -0.035em; }
+  .cb-note { color: var(--text-muted); line-height: 1.6; }
+  .cb-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cb-meta li {
+    display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px;
+    border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--surface-glass);
+    font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums;
+  }
+  .cb-meta li:first-child { color: var(--text); border-color: var(--accent); }
+  .cb-strip-label { font-size: 0.8125rem; color: var(--text); font-weight: 500; }
+  .cb-strip-label span { color: var(--text-muted); font-weight: 400; }
+
+  /* as telas encostadas umas nas outras: o que atravessa a borda aparece inteiro */
+  .strip {
+    display: flex; overflow-x: auto; scrollbar-width: none; padding-bottom: 10px;
+    margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter);
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  @media (min-width: 1000px) { .strip { margin-inline: 0; padding-inline: 0; } }
+  .strip li { flex: 1 1 0; min-width: 72px; max-width: 150px; }
+  .strip-btn { position: relative; display: block; width: 100%; }
+  .strip-btn img { width: 100%; height: auto; opacity: 0.55; transition: opacity 0.3s; }
+  .strip li:first-child .strip-btn img { border-radius: 10px 0 0 10px; }
+  .strip li:last-child .strip-btn img { border-radius: 0 10px 10px 0; }
+  .strip-btn:hover img, .strip-btn.is-active img { opacity: 1; }
+  .strip-btn::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 2px;
+    background: var(--accent); transform: scaleX(0); transition: transform 0.4s var(--ease);
+  }
+  .strip-btn.is-active::after { transform: scaleX(1); }
+  .strip-play {
+    position: absolute; top: 6px; left: 6px; display: grid; place-items: center;
+    width: 20px; height: 20px; border-radius: 50%; background: rgba(10, 10, 11, 0.72); color: var(--accent);
+  }
+  .strip-play :global(.icon) { fill: currentColor; }
+</style>

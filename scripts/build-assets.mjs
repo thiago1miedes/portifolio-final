@@ -5,7 +5,7 @@ import * as mupdf from "mupdf";
 import sharp from "sharp";
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { SRC, cases } from "./assets.config.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -67,6 +67,55 @@ function renderPdf(file, pageNo, kind) {
   return Buffer.from(pix.asPNG());
 }
 
+// SVG vai como está; o tamanho sai do viewBox.
+function copySvg(file, out) {
+  fs.copyFileSync(file, out);
+  const [, , w, h] = /viewBox="([^"]+)"/.exec(fs.readFileSync(file, "utf8"))[1].split(/[\s,]+/).map(Number);
+  return { w: Math.round(w), h: Math.round(h) };
+}
+
+// Vídeo vai como está; o pôster (primeiro quadro) é capturado no Chrome, já que não há ffmpeg na máquina.
+let browser = null;
+async function videoPoster(file, out) {
+  if (!browser) {
+    const { default: puppeteer } = await import("puppeteer-core");
+    browser = await puppeteer.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true, args: ["--allow-file-access-from-files"] });
+  }
+  const page = await browser.newPage();
+  await page.goto(pathToFileURL(file).href);
+  const png = await page.evaluate(async () => {
+    const v = document.querySelector("video");
+    v.muted = true; v.pause();
+    if (v.readyState < 2) await new Promise((r) => (v.onloadeddata = r));
+    v.currentTime = 0.05;
+    await new Promise((r) => (v.onseeked = r));
+    const c = document.createElement("canvas");
+    c.width = v.videoWidth; c.height = v.videoHeight;
+    c.getContext("2d").drawImage(v, 0, 0);
+    return c.toDataURL("image/png");
+  });
+  await page.close();
+  return save(Buffer.from(png.split(",")[1], "base64"), "feed", out);
+}
+
+// Capa da listagem com o logo do cliente sobre a repetição de um padrão (os dois em SVG).
+async function logoThumb(logoFile, patternFile, file) {
+  const W = 1200, H = 800, T = 800, L = 470;
+  const pattern = await sharp(patternFile, { density: 120 }).resize(T, T).png().toBuffer();
+  const wall = await sharp({ create: { width: W + 400, height: H, channels: 4, background: "#0a0a0b" } })
+    .composite([{ input: pattern, tile: true, left: 0, top: 0 }])
+    .png()
+    .toBuffer();
+  const shade = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><radialGradient id="g" r="55%"><stop offset="0.28" stop-color="#0a0a0b" stop-opacity="0.92"/><stop offset="0.62" stop-color="#0a0a0b" stop-opacity="0.35"/><stop offset="1" stop-color="#0a0a0b" stop-opacity="0.15"/></radialGradient></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>`;
+  const logo = await sharp(logoFile, { density: 72 * (L / 300) }).resize(L, L, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+  await sharp(wall)
+    .extract({ left: 200, top: 0, width: W, height: H })
+    .composite([{ input: Buffer.from(shade) }, { input: logo, left: (W - L) / 2, top: (H - L) / 2 }])
+    .webp({ quality: 82 })
+    .toFile(file);
+  return { w: W, h: H };
+}
+
 async function thumb(srcFile, crop, file) {
   const m = await sharp(srcFile, { limitInputPixels: false }).metadata();
   const ratio = 3 / 2;
@@ -94,6 +143,17 @@ for (const slug of slugs) {
   for (const it of conf.items) {
     try {
       const file = resolve(it.src);
+      if (it.kind === "svg") {
+        const size = copySvg(file, path.join(dir, `${it.id}.svg`));
+        items.push({ id: it.id, src: `/cases/${slug}/${it.id}.svg`, ...size, kind: it.kind, label: it.label, group: it.group });
+        continue;
+      }
+      if (it.kind === "video") {
+        fs.copyFileSync(file, path.join(dir, `${it.id}.mp4`));
+        const size = await videoPoster(file, path.join(dir, `${it.id}.webp`));
+        items.push({ id: it.id, src: `/cases/${slug}/${it.id}.webp`, video: `/cases/${slug}/${it.id}.mp4`, ...size, kind: it.kind, label: it.label, group: it.group });
+        continue;
+      }
       const isPdf = file.toLowerCase().endsWith(".pdf");
       const pages = isPdf ? (it.pages ?? [1]) : [null];
       for (const p of pages) {
@@ -109,7 +169,10 @@ for (const slug of slugs) {
   }
   let t = null;
   const from = items.find((i) => i.id === conf.thumb?.from) ?? items[0];
-  if (from) {
+  if (conf.thumb?.logo) {
+    const svg = (id) => path.join(dir, `${id}.svg`);
+    t = { src: `/cases/${slug}/thumb.webp`, ...(await logoThumb(svg(conf.thumb.logo), svg(conf.thumb.pattern), path.join(dir, "thumb.webp"))) };
+  } else if (from) {
     const size = await thumb(path.join(ROOT, "public", from.src), conf.thumb?.crop ?? "top", path.join(dir, "thumb.webp"));
     t = { src: `/cases/${slug}/thumb.webp`, ...size };
   }
@@ -117,6 +180,7 @@ for (const slug of slugs) {
   console.log(`${slug}: ${items.length} imagens`);
 }
 
+await browser?.close();
 fs.mkdirSync(path.dirname(INDEX), { recursive: true });
 fs.writeFileSync(INDEX, JSON.stringify(index, null, 1));
 console.log("ok →", path.relative(ROOT, INDEX));
