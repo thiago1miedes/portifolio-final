@@ -7,8 +7,9 @@ import { fileURLToPath } from "node:url";
 /** wordmark-accent: parte do logotipo em outra cor (ex.: "Easy" verde + "Work" azul); sem ela, segue o wordmark.
  *  symbol-3 / symbol-4: terceira e quarta cor de um símbolo multicolorido (ex.: as barras da Rock Ensina); sem elas, seguem o symbol-accent. */
 export type LogoPart = "symbol-main" | "symbol-accent" | "symbol-3" | "symbol-4" | "wordmark" | "wordmark-accent" | "tagline";
-/** horizontal: segunda composição do logo (ex.: símbolo ao lado do nome), opcional como o tagline */
-export type LogoArt = "lockup" | "symbol" | "outline" | "wordmark" | "tagline" | "horizontal";
+/** horizontal: segunda composição do logo (ex.: símbolo ao lado do nome), opcional como o tagline
+ *  untagged: o lockup sem descritor (símbolo + logotipo), quando a versão principal da marca não leva o descritor */
+export type LogoArt = "lockup" | "symbol" | "outline" | "wordmark" | "tagline" | "horizontal" | "untagged";
 type OptionalPart = "wordmark-accent" | "symbol-3" | "symbol-4";
 export type Variant = Record<Exclude<LogoPart, OptionalPart>, string> & Partial<Record<OptionalPart, string>> & { label: string; bg: string };
 type Pin = [number, number][];
@@ -98,8 +99,8 @@ export interface BrandCaseData {
   /** fonte da marca (títulos); `text` é a fonte opcional de textos e interface;
    *  display: peso e espaçamento dos títulos, quando a marca pede outro tom (padrão: 600 e o espaçamento de cada título) */
   font: FontFiles & { preload: number[]; text?: FontFiles; display?: { weight?: number; tracking?: string } };
-  /** tagline e horizontal são opcionais: logos sem descritor ou sem segunda composição não precisam do arquivo */
-  logo: Record<Exclude<LogoArt, "tagline" | "horizontal">, string> & { tagline?: string; horizontal?: string } & {
+  /** tagline, horizontal e untagged são opcionais: logos sem descritor ou sem segunda composição não precisam do arquivo */
+  logo: Record<Exclude<LogoArt, "tagline" | "horizontal" | "untagged">, string> & { tagline?: string; horizontal?: string; untagged?: string } & {
     variants: Record<string, Variant>;
     /** partes do logo na navegação (padrão: desktop símbolo + logotipo, celular só o símbolo);
      *  dark/light: variante usada sobre seções escuras/claras (padrão: cores do tema) */
@@ -223,7 +224,7 @@ export function readSvgFile(c: BrandCaseData, rel: string): SvgFile {
  *  uma variante pode usar "url(#id)" como cor, e a referência não quebra quando a cópia do logo está com display:none. */
 export function logoDefs(c: BrandCaseData) {
   const byId = new Map<string, string>();
-  for (const art of ["lockup", "symbol", "outline", "wordmark", "tagline", "horizontal"] as const) {
+  for (const art of ["lockup", "symbol", "outline", "wordmark", "tagline", "horizontal", "untagged"] as const) {
     if (!c.logo[art]) continue;
     for (const m of readSvg(c, art).defs.matchAll(/<(\w+)\b[^>]*\bid="([^"]+)"[\s\S]*?<\/\1>/g)) {
       if (!byId.has(m[2])) byId.set(m[2], m[0]);

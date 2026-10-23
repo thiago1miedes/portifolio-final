@@ -15,6 +15,8 @@
   font-family: var(--bc-font-text, var(--bc-font));
   /* fonte de peso único (ex.: display serifada) não ganha negrito falso */
   font-synthesis-weight: none;
+  /* algarismos alinhados: fontes como a Raleway vêm com algarismos de texto (o "01" vira "o1") */
+  font-variant-numeric: lining-nums;
   font-size: 1.0625rem;
   line-height: 1.55;
   color: var(--bc-ink-on-dark);
