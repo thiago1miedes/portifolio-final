@@ -4,13 +4,11 @@
   "segment": "Educação",
   "year": "2021",
   "assets": "/brand/efpi",
-
   "seo": {
     "title": "EFPI — Identidade visual",
     "description": "Case de identidade visual da EFPI: símbolo, tipografia, cores, sistema de logo e aplicações para uma escola de formação. Conhecimento que muda o mundo.",
     "image": "og.png"
   },
-
   "theme": {
     "dark": "#0F1C2E",
     "light": "#F2F5F8",
@@ -23,7 +21,6 @@
     "inkOnDark": "#F2F5F8",
     "mutedOnDark": "#B3CBDA"
   },
-
   "font": {
     "family": "Barlow",
     "fallback": "\"Bahnschrift\", \"DIN Alternate\", \"Roboto Condensed\", system-ui, sans-serif",
@@ -39,9 +36,12 @@
       "800": "fonts/barlow-800.woff2",
       "900": "fonts/barlow-900.woff2"
     },
-    "preload": [300, 600, 700]
+    "preload": [
+      300,
+      600,
+      700
+    ]
   },
-
   "logo": {
     "lockup": "logo/lockup.svg",
     "symbol": "logo/symbol.svg",
@@ -49,22 +49,62 @@
     "wordmark": "logo/wordmark.svg",
     "tagline": "logo/tagline.svg",
     "variants": {
-      "positive":    { "label": "Positivo",       "bg": "#F2F5F8", "symbol-main": "#1D3557", "symbol-accent": "#457B9D", "wordmark": "#1D3557", "tagline": "#457B9D" },
-      "negative":    { "label": "Negativo",       "bg": "#0F1C2E", "symbol-main": "#F2F5F8", "symbol-accent": "#B3CBDA", "wordmark": "#F2F5F8", "tagline": "#B3CBDA" },
-      "onPrimary":   { "label": "Sobre Azul EFPI", "bg": "#1D3557", "symbol-main": "#F2F5F8", "symbol-accent": "#457B9D", "wordmark": "#F2F5F8", "tagline": "#B3CBDA" },
-      "onSecondary": { "label": "Sobre Prisma",   "bg": "#457B9D", "symbol-main": "#F2F5F8", "symbol-accent": "#B3CBDA", "wordmark": "#F2F5F8", "tagline": "#F2F5F8" },
-      "onAccent":    { "label": "Sobre Âmbar",    "bg": "#EC9D20", "symbol-main": "#1D3557", "symbol-accent": "#F2F5F8", "wordmark": "#1D3557", "tagline": "#1D3557" },
-      "mono":        { "label": "Monocromático",  "bg": "#FFFFFF", "symbol-main": "#1D3557", "symbol-accent": "#FFFFFF", "wordmark": "#1D3557", "tagline": "#1D3557" }
+      "positive": {
+        "label": "Positivo",
+        "bg": "#F2F5F8",
+        "symbol-main": "#1D3557",
+        "symbol-accent": "#457B9D",
+        "wordmark": "#1D3557",
+        "tagline": "#457B9D"
+      },
+      "negative": {
+        "label": "Negativo",
+        "bg": "#0F1C2E",
+        "symbol-main": "#F2F5F8",
+        "symbol-accent": "#B3CBDA",
+        "wordmark": "#F2F5F8",
+        "tagline": "#B3CBDA"
+      },
+      "onPrimary": {
+        "label": "Sobre Azul EFPI",
+        "bg": "#1D3557",
+        "symbol-main": "#F2F5F8",
+        "symbol-accent": "#457B9D",
+        "wordmark": "#F2F5F8",
+        "tagline": "#B3CBDA"
+      },
+      "onSecondary": {
+        "label": "Sobre Prisma",
+        "bg": "#457B9D",
+        "symbol-main": "#F2F5F8",
+        "symbol-accent": "#B3CBDA",
+        "wordmark": "#F2F5F8",
+        "tagline": "#F2F5F8"
+      },
+      "onAccent": {
+        "label": "Sobre Âmbar",
+        "bg": "#EC9D20",
+        "symbol-main": "#1D3557",
+        "symbol-accent": "#F2F5F8",
+        "wordmark": "#1D3557",
+        "tagline": "#1D3557"
+      },
+      "mono": {
+        "label": "Monocromático",
+        "bg": "#FFFFFF",
+        "symbol-main": "#1D3557",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#1D3557",
+        "tagline": "#1D3557"
+      }
     }
   },
-
   "intro": {
     "kicker": "Identidade visual · 2021",
     "subtitle": "Marca para uma escola de formação que trata o conhecimento como movimento.",
     "scrollHint": "Role para conhecer a marca",
     "image": "hero-prisma"
   },
-
   "symbol": {
     "nav": "Símbolo",
     "eyebrow": "01 — Símbolo",
@@ -74,43 +114,100 @@
       "Juntas, as duas peças desenham um losango lapidado — firme na base, apontado para cima."
     ],
     "pieces": [
-      { "piece": "arrow", "label": "Seta", "text": "o conhecimento sempre elevando", "shift": -30, "y": 22 },
-      { "piece": "prism", "label": "Prisma", "text": "conhecimentos que transparecem", "shift": 22, "y": 66 }
+      {
+        "piece": "arrow",
+        "label": "Seta",
+        "text": "o conhecimento sempre elevando",
+        "shift": -30,
+        "y": 22
+      },
+      {
+        "piece": "prism",
+        "label": "Prisma",
+        "text": "conhecimentos que transparecem",
+        "shift": 22,
+        "y": 66
+      }
     ],
     "image": "textura-vidro"
   },
-
   "typography": {
     "nav": "Tipografia",
     "eyebrow": "02 — Tipografia",
     "title": "Barlow",
-    "glyphs": ["E", "F", "P", "I"],
-    "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    "glyphs": [
+      "E",
+      "F",
+      "P",
+      "I"
+    ],
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
     "text": "O logotipo é praticamente a Barlow Bold com espaçamento aberto; o descritor, a Barlow Light em caixa-alta, com cortes no N, no A e no D. Por isso a Barlow assume toda a comunicação: uma grotesca de raiz DIN, técnica sem ser fria.",
     "spec": [
-      { "k": "Família", "v": "Barlow — Jeremy Tribby" },
-      { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
-      { "k": "Logotipo", "v": "Bold 700 · espaçamento aberto" },
-      { "k": "Descritor", "v": "Light 300 · caixa-alta · tracking amplo" },
-      { "k": "Títulos", "v": "SemiBold 600" },
-      { "k": "Textos", "v": "Regular 400" },
-      { "k": "Alternativas", "v": "Bahnschrift · DIN Alternate · Roboto Condensed" }
+      {
+        "k": "Família",
+        "v": "Barlow — Jeremy Tribby"
+      },
+      {
+        "k": "Licença",
+        "v": "SIL Open Font License · Google Fonts"
+      },
+      {
+        "k": "Logotipo",
+        "v": "Bold 700 · espaçamento aberto"
+      },
+      {
+        "k": "Descritor",
+        "v": "Light 300 · caixa-alta · tracking amplo"
+      },
+      {
+        "k": "Títulos",
+        "v": "SemiBold 600"
+      },
+      {
+        "k": "Textos",
+        "v": "Regular 400"
+      },
+      {
+        "k": "Alternativas",
+        "v": "Bahnschrift · DIN Alternate · Roboto Condensed"
+      }
     ],
     "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789"
   },
-
   "manifesto": {
     "nav": "Manifesto",
     "eyebrow": "03 — Manifesto",
     "headline": "Todo conhecimento começa pequeno. Ele sobe, ganha clareza e, quando atravessa alguém, muda o mundo ao redor.",
     "attributes": [
-      { "word": "Elevação", "text": "Aprender é um movimento para cima — sempre um degrau além." },
-      { "word": "Transparência", "text": "Como num prisma, o saber atravessa e se revela por inteiro." },
-      { "word": "Diálogo", "text": "Ideias que se formam na conversa aberta, com espaço para cada opinião." },
-      { "word": "Transformação", "text": "Conhecimento que muda o mundo, começando por quem aprende." }
+      {
+        "word": "Elevação",
+        "text": "Aprender é um movimento para cima — sempre um degrau além."
+      },
+      {
+        "word": "Transparência",
+        "text": "Como num prisma, o saber atravessa e se revela por inteiro."
+      },
+      {
+        "word": "Diálogo",
+        "text": "Ideias que se formam na conversa aberta, com espaço para cada opinião."
+      },
+      {
+        "word": "Transformação",
+        "text": "Conhecimento que muda o mundo, começando por quem aprende."
+      }
     ]
   },
-
   "colors": {
     "nav": "Cores",
     "eyebrow": "04 — Cores",
@@ -118,33 +215,119 @@
     "text": "Os dois azuis do logo comandam a paleta. Deles derivam um fundo noturno, um claro de névoa e uma bruma de apoio. O âmbar entra pouco, como a faísca do conhecimento.",
     "note": "CMYK aproximado — confirme no perfil de impressão da gráfica.",
     "swatches": [
-      { "name": "Azul EFPI", "role": "Principal · textos", "hex": "#1D3557", "weight": 3 },
-      { "name": "Azul Prisma", "role": "Apoio · faixa do prisma", "hex": "#457B9D", "weight": 2 },
-      { "name": "Noite", "role": "Fundo escuro", "hex": "#0F1C2E", "weight": 2 },
-      { "name": "Névoa", "role": "Fundo claro", "hex": "#F2F5F8", "weight": 2 },
-      { "name": "Bruma", "role": "Apoio claro", "hex": "#B3CBDA", "weight": 1.3 },
-      { "name": "Âmbar", "role": "Destaque", "hex": "#EC9D20", "weight": 1 }
+      {
+        "name": "Azul EFPI",
+        "role": "Principal · textos",
+        "hex": "#1D3557",
+        "weight": 3
+      },
+      {
+        "name": "Azul Prisma",
+        "role": "Apoio · faixa do prisma",
+        "hex": "#457B9D",
+        "weight": 2
+      },
+      {
+        "name": "Noite",
+        "role": "Fundo escuro",
+        "hex": "#0F1C2E",
+        "weight": 2
+      },
+      {
+        "name": "Névoa",
+        "role": "Fundo claro",
+        "hex": "#F2F5F8",
+        "weight": 2
+      },
+      {
+        "name": "Bruma",
+        "role": "Apoio claro",
+        "hex": "#B3CBDA",
+        "weight": 1.3
+      },
+      {
+        "name": "Âmbar",
+        "role": "Destaque",
+        "hex": "#EC9D20",
+        "weight": 1
+      }
     ]
   },
-
   "system": {
     "nav": "Sistema",
     "eyebrow": "05 — Sistema",
     "title": "Uma marca, muitas escalas.",
     "tiles": [
-      { "kind": "lockup", "variant": "positive", "size": "lg", "label": "Versão principal" },
-      { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Símbolo isolado" },
-      { "kind": "sizes", "variant": "positive", "size": "sm", "label": "Tamanhos pequenos", "sizes": [48, 32, 24, 16] },
-      { "kind": "lockup", "variant": "mono", "size": "sm", "label": "Monocromático" },
-      { "kind": "lockup", "variant": "negative", "size": "wide", "label": "Negativo" },
-      { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre âmbar" },
-      { "kind": "symbol", "variant": "onSecondary", "size": "sm", "label": "Sobre Prisma" },
-      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "note": "Margem mínima igual à altura do E do logotipo." },
-      { "kind": "icon", "variant": "negative", "size": "sm", "label": "Ícone de app" },
-      { "kind": "minimum", "variant": "positive", "size": "sm", "label": "Redução mínima", "note": "Abaixo de 160 px de largura, use só o símbolo." }
+      {
+        "kind": "lockup",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão principal"
+      },
+      {
+        "kind": "symbol",
+        "variant": "onPrimary",
+        "size": "tall",
+        "label": "Símbolo isolado"
+      },
+      {
+        "kind": "sizes",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Tamanhos pequenos",
+        "sizes": [
+          48,
+          32,
+          24,
+          16
+        ]
+      },
+      {
+        "kind": "lockup",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Monocromático"
+      },
+      {
+        "kind": "lockup",
+        "variant": "negative",
+        "size": "wide",
+        "label": "Negativo"
+      },
+      {
+        "kind": "symbol",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Sobre âmbar"
+      },
+      {
+        "kind": "symbol",
+        "variant": "onSecondary",
+        "size": "sm",
+        "label": "Sobre Prisma"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área de proteção",
+        "note": "Margem mínima igual à altura do E do logotipo."
+      },
+      {
+        "kind": "icon",
+        "variant": "negative",
+        "size": "sm",
+        "label": "Ícone de app"
+      },
+      {
+        "kind": "minimum",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Redução mínima",
+        "note": "Abaixo de 160 px de largura, use só o símbolo."
+      }
     ]
   },
-
   "applications": {
     "nav": "Aplicações",
     "eyebrow": "06 — Aplicações",
@@ -152,73 +335,275 @@
     "text": "Estudo de aplicações: fotografia editorial em preto e branco, papelaria, objetos e o app do aluno.",
     "marquee": "EFPI",
     "items": [
-      { "kind": "photo", "image": "editorial-estudante", "col": [1, 5], "mobile": 2, "speed": -4 },
-      { "kind": "crop", "art": "wordmark", "viewBox": "217.33 60 128 60", "variant": "onPrimary", "col": [6, 7], "mobile": 2 },
-      { "kind": "mockup", "image": "mockup-caneca", "col": [1, 4], "mobile": 1, "caption": "Caneca",
-        "overlays": [{ "art": "symbol", "variant": "positive", "blend": "multiply", "inset": 0.06, "pin": [[39, 37], [57, 37], [57, 64], [39, 64]] }] },
-      { "kind": "app", "variant": "positive", "col": [5, 4], "mobile": 1, "caption": "App do aluno",
+      {
+        "kind": "photo",
+        "image": "editorial-estudante",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 2,
+        "speed": -4
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "217.33 60 128 60",
+        "variant": "onPrimary",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-caneca",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Caneca"
+      },
+      {
+        "kind": "app",
+        "variant": "positive",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "caption": "App do aluno",
         "screen": {
           "greeting": "Bom dia!",
           "cards": [
-            { "label": "Próxima aula", "title": "Ética e cidadania", "meta": "Hoje · 19h30" },
-            { "label": "Leitura da semana", "title": "Capítulo 3", "meta": "12 min" }
+            {
+              "label": "Próxima aula",
+              "title": "Ética e cidadania",
+              "meta": "Hoje · 19h30"
+            },
+            {
+              "label": "Leitura da semana",
+              "title": "Capítulo 3",
+              "meta": "12 min"
+            }
           ],
-          "progress": { "label": "Sua trilha", "value": 64 }
-        } },
-      { "kind": "photo", "image": "editorial-maos-livro", "col": [9, 4], "mobile": 2, "offset": 8, "speed": 5 },
-      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
-      { "kind": "mockup", "image": "mockup-cartoes", "col": [1, 7], "mobile": 2, "caption": "Cartões de visita",
-        "overlays": [
-          { "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.16, "pin": [[12.6, 38.4], [48.2, 30.9], [51.4, 65.6], [15.8, 73.1]] },
-          { "art": "symbol", "variant": "negative", "blend": "screen", "inset": 0.24, "pin": [[54.2, 27.3], [90.0, 32.9], [87.5, 67.7], [51.7, 62.1]] }
-        ] },
-      { "kind": "photo", "image": "editorial-dialogo", "col": [8, 5], "mobile": 2, "offset": 7, "speed": -5 },
-      { "kind": "mockup", "image": "mockup-caixa", "col": [1, 6], "mobile": 1, "caption": "Kit de boas-vindas",
-        "overlays": [{ "art": "lockup", "variant": "negative", "blend": "screen", "inset": 0.18, "pin": [[24, 30], [70, 24], [82, 42], [36, 49]] }] },
-      { "kind": "pattern", "variant": "negative", "col": [7, 6], "mobile": 1 },
-      { "kind": "mockup", "image": "mockup-placa", "col": [1, 7], "mobile": 2, "caption": "Placa de fachada",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.14, "pin": [[30, 30], [70, 32], [70, 66], [30, 68]] }] },
-      { "kind": "mockup", "image": "mockup-caderno", "col": [8, 5], "mobile": 2, "offset": 6, "caption": "Caderno",
-        "overlays": [{ "art": "symbol", "variant": "negative", "blend": "screen", "inset": 0.3, "pin": [[22, 16], [78, 13], [82, 86], [26, 89]] }] }
+          "progress": {
+            "label": "Sua trilha",
+            "value": 64
+          }
+        }
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-maos-livro",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2,
+        "offset": 8,
+        "speed": 5
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-cartoes",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Cartões de visita"
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-dialogo",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "offset": 7,
+        "speed": -5
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-caixa",
+        "col": [
+          1,
+          6
+        ],
+        "mobile": 1,
+        "caption": "Kit de boas-vindas"
+      },
+      {
+        "kind": "pattern",
+        "variant": "negative",
+        "col": [
+          7,
+          6
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-placa",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Placa de fachada"
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-caderno",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "offset": 6,
+        "caption": "Caderno"
+      }
     ]
   },
-
   "closing": {
     "phrase": "Conhecimento que muda o mundo.",
     "credits": [
-      { "k": "Cliente", "v": "EFPI" },
-      { "k": "Segmento", "v": "Educação" },
-      { "k": "Ano", "v": "2021" },
-      { "k": "Serviços", "v": "Criação de marca · paleta · tipografia · estudo de aplicações" },
-      { "k": "Ferramentas", "v": "Illustrator" },
-      { "k": "Design", "v": "Thiago Miedes" }
+      {
+        "k": "Cliente",
+        "v": "EFPI"
+      },
+      {
+        "k": "Segmento",
+        "v": "Educação"
+      },
+      {
+        "k": "Ano",
+        "v": "2021"
+      },
+      {
+        "k": "Serviços",
+        "v": "Criação de marca · paleta · tipografia · estudo de aplicações"
+      },
+      {
+        "k": "Ferramentas",
+        "v": "Illustrator"
+      },
+      {
+        "k": "Design",
+        "v": "Thiago Miedes"
+      }
     ],
-    "cta": { "text": "Tem uma marca para construir?", "label": "Vamos conversar", "href": "/#contato" },
+    "cta": {
+      "text": "Tem uma marca para construir?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    },
     "image": "editorial-sala"
   },
-
   "images": [
-    { "id": "hero-prisma", "section": "intro", "w": 2400, "h": 1350, "essential": true,
-      "alt": "Prisma de vidro em fundo azul-noite, atravessado por um feixe de luz" },
-    { "id": "editorial-estudante", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Retrato em preto e branco de uma estudante lendo junto à janela" },
-    { "id": "editorial-dialogo", "mono": true, "section": "applications", "w": 2000, "h": 1333, "essential": true,
-      "alt": "Pessoas conversando em volta de uma mesa com cadernos, em preto e branco" },
-    { "id": "editorial-maos-livro", "mono": true, "section": "applications", "w": 1500, "h": 1500, "essential": true,
-      "alt": "Mãos segurando um livro aberto, em preto e branco" },
-    { "id": "mockup-caneca", "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Caneca branca com o símbolo da EFPI" },
-    { "id": "mockup-cartoes", "section": "applications", "w": 2400, "h": 1600, "essential": true,
-      "alt": "Cartões de visita da EFPI, um branco e um azul" },
-    { "id": "mockup-caixa", "section": "applications", "w": 1800, "h": 1800, "essential": true,
-      "alt": "Caixa azul do kit de boas-vindas com o logo da EFPI na tampa" },
-    { "id": "textura-vidro", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
-      "alt": "Facetas de vidro em azul, em macro" },
-    { "id": "editorial-sala", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
-      "alt": "Sala de aula vazia com luz de janela, em preto e branco" },
-    { "id": "mockup-placa", "section": "applications", "w": 2400, "h": 1600, "essential": false,
-      "alt": "Placa de fachada da EFPI em parede clara" },
-    { "id": "mockup-caderno", "section": "applications", "w": 1600, "h": 2000, "essential": false,
-      "alt": "Caderno de capa azul com o símbolo da EFPI" }
+    {
+      "id": "hero-prisma",
+      "section": "intro",
+      "w": 2400,
+      "h": 1350,
+      "essential": true,
+      "alt": "Prisma de vidro em fundo azul-noite, atravessado por um feixe de luz"
+    },
+    {
+      "id": "editorial-estudante",
+      "mono": true,
+      "section": "applications",
+      "w": 1600,
+      "h": 2000,
+      "essential": true,
+      "alt": "Retrato em preto e branco de uma estudante lendo junto à janela"
+    },
+    {
+      "id": "editorial-dialogo",
+      "mono": true,
+      "section": "applications",
+      "w": 2000,
+      "h": 1333,
+      "essential": true,
+      "alt": "Pessoas conversando em volta de uma mesa com cadernos, em preto e branco"
+    },
+    {
+      "id": "editorial-maos-livro",
+      "mono": true,
+      "section": "applications",
+      "w": 1500,
+      "h": 1500,
+      "essential": true,
+      "alt": "Mãos segurando um livro aberto, em preto e branco"
+    },
+    {
+      "id": "mockup-caneca",
+      "section": "applications",
+      "w": 1600,
+      "h": 2000,
+      "essential": true,
+      "alt": "Caneca branca com o símbolo da EFPI"
+    },
+    {
+      "id": "mockup-cartoes",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "essential": true,
+      "alt": "Cartões de visita da EFPI, um branco e um azul"
+    },
+    {
+      "id": "mockup-caixa",
+      "section": "applications",
+      "w": 1800,
+      "h": 1800,
+      "essential": true,
+      "alt": "Caixa azul do kit de boas-vindas com o logo da EFPI na tampa"
+    },
+    {
+      "id": "textura-vidro",
+      "section": "symbol",
+      "w": 2400,
+      "h": 1600,
+      "essential": false,
+      "alt": "Facetas de vidro em azul, em macro"
+    },
+    {
+      "id": "editorial-sala",
+      "mono": true,
+      "section": "closing",
+      "w": 2400,
+      "h": 1350,
+      "essential": false,
+      "alt": "Sala de aula vazia com luz de janela, em preto e branco"
+    },
+    {
+      "id": "mockup-placa",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "essential": false,
+      "alt": "Placa de fachada da EFPI em parede clara"
+    },
+    {
+      "id": "mockup-caderno",
+      "section": "applications",
+      "w": 1600,
+      "h": 2000,
+      "essential": false,
+      "alt": "Caderno de capa azul com o símbolo da EFPI"
+    }
   ]
 }
