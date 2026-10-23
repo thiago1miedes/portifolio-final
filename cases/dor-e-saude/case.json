@@ -75,7 +75,7 @@
   "process": {
     "nav": "Processo",
     "eyebrow": "01 — Processo",
-    "title": "[rascunho] Três caminhos, uma escolha.",
+    "title": "Três caminhos, uma escolha.",
     "text": "Apresentei três caminhos para o Instituto, todos com a mesma paleta de azul oceano, dourado e bege areia, cada um com um conceito próprio. O escolhido foi o segundo: a figura do paciente, com a coluna em pontos, dentro de um círculo que não se fecha.",
     "hint": "Deslize para ver os caminhos",
     "routes": [
@@ -91,7 +91,7 @@
     ],
     "result": {
       "label": "Escolhida",
-      "title": "[rascunho] O segundo caminho, do jeito que foi apresentado.",
+      "title": "O segundo caminho, do jeito que foi apresentado.",
       "text": "A marca aprovada é o caminho 02: a figura em azul, a coluna e o círculo em dourado, o logotipo em serifa clássica com o & dourado e o descritor Dor • Ortopedia • Regeneração. Depois vieram o pacote de arquivos, com guia de uso, e a papelaria."
     }
   },
@@ -99,11 +99,11 @@
   "symbol": {
     "nav": "Símbolo",
     "eyebrow": "02 — Símbolo",
-    "title": "[rascunho] O paciente no centro do cuidado.",
+    "title": "O paciente no centro do cuidado.",
     "text": [
       "A figura central é o paciente na sua jornada de transformação: sair da dor para uma vida com mais mobilidade e qualidade. A coluna em pontos é a estrutura física e também o processo gradual de recuperação, que respeita o tempo e a individualidade de cada pessoa.",
       "O círculo incompleto traz a ideia de movimento contínuo e evolução: o cuidado com a saúde é um processo constante, acompanhado de perto pelo Instituto.",
-      "[rascunho] São quinze pontos, que crescem até o meio da coluna e voltam a diminuir. E a figura, com a cabeça sobre a curva, também se lê como o i de Instituto."
+      "São quinze pontos, que crescem até o meio da coluna e voltam a diminuir. E a figura, com a cabeça sobre a curva, também se lê como o i de Instituto."
     ],
     "pieces": [
       { "piece": "circulo", "label": "Círculo aberto", "text": "o cuidado que continua", "shift": -26, "y": 11 },
@@ -120,7 +120,7 @@
     "title": "Cormorant Garamond",
     "glyphs": ["D", "&", "S", "Ú", "R", "g"],
     "weights": [300, 400, 500, 600, 700],
-    "text": "[rascunho] O logotipo é uma serifada clássica de alto contraste, em caixa-alta, com um & caligráfico em dourado no meio do nome. A Cormorant Garamond é a fonte gratuita mais próxima desse desenho e assume os títulos. A palavra INSTITUTO, bem espaçada, e o descritor usam uma sem serifa geométrica e fina: a Raleway, que fica com os textos.",
+    "text": "O logotipo é uma serifada clássica de alto contraste, em caixa-alta, com um & caligráfico em dourado no meio do nome. A Cormorant Garamond é a fonte gratuita mais próxima desse desenho e assume os títulos. A palavra INSTITUTO, bem espaçada, e o descritor usam uma sem serifa geométrica e fina: a Raleway, que fica com os textos.",
     "spec": [
       { "k": "Família", "v": "Cormorant Garamond — Christian Thalmann" },
       { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
@@ -136,7 +136,7 @@
   "manifesto": {
     "nav": "Manifesto",
     "eyebrow": "04 — Manifesto",
-    "headline": "[rascunho] Ninguém sai da dor de uma vez. A recuperação acontece ponto a ponto, no tempo de cada pessoa, e o Instituto acompanha cada passo até o movimento voltar a ser livre.",
+    "headline": "Ninguém sai da dor de uma vez. A recuperação acontece ponto a ponto, no tempo de cada pessoa, e o Instituto acompanha cada passo até o movimento voltar a ser livre.",
     "attributes": [
       { "word": "Confiança", "text": "Seriedade, ética e autoridade médica, com calma nos momentos de vulnerabilidade." },
       { "word": "Acolhimento", "text": "Calor humano ao lado da técnica: o paciente é a figura no centro do símbolo." },
@@ -148,14 +148,14 @@
   "colors": {
     "nav": "Cores",
     "eyebrow": "05 — Cores",
-    "title": "[rascunho] Azul oceano, dourado e areia.",
+    "title": "Azul oceano, dourado e areia.",
     "text": "O azul oceano é a cor da autoridade: apresenta o Instituto como uma instituição séria, ética e tecnicamente impecável, e transmite calma em momentos de vulnerabilidade. O dourado ocre representa o padrão ouro da medicina e traz calor, luz e vitalidade. O bege areia e o off-white criam tranquilidade, clareza e limpeza, essenciais num ambiente de saúde.",
     "note": "Azul oceano, dourado ocre, bege areia e off-white são as cores da apresentação da marca. O azul da figura vem do SVG do símbolo e o azul noturno é proposta para os fundos escuros. CMYK aproximado em todas: confirme no perfil da gráfica.",
     "swatches": [
       { "name": "Azul Oceano", "role": "Principal · logotipo e fundos institucionais", "hex": "#172E4D", "weight": 2.6 },
       { "name": "Dourado Ocre", "role": "Destaque · coluna, círculo e &", "hex": "#B79359", "weight": 2 },
-      { "name": "[rascunho] Azul Figura", "role": "Secundária · figura do símbolo", "hex": "#203D5F", "weight": 1.2 },
-      { "name": "[rascunho] Azul Noturno", "role": "Fundo escuro (proposta)", "hex": "#0D1828", "weight": 1.6 },
+      { "name": "Azul Figura", "role": "Secundária · figura do símbolo", "hex": "#203D5F", "weight": 1.2 },
+      { "name": "Azul Noturno", "role": "Fundo escuro (proposta)", "hex": "#0D1828", "weight": 1.6 },
       { "name": "Bege Areia", "role": "Apoio · superfícies e papelaria", "hex": "#E3D8C8", "weight": 1.4 },
       { "name": "Off-White", "role": "Fundo claro · respiro", "hex": "#FCFCFC", "weight": 1.6 }
     ]
@@ -164,7 +164,7 @@
   "system": {
     "nav": "Sistema",
     "eyebrow": "06 — Sistema",
-    "title": "[rascunho] Do receituário à recepção, a mesma assinatura.",
+    "title": "Do receituário à recepção, a mesma assinatura.",
     "tiles": [
       { "kind": "lockup", "art": "untagged", "variant": "positive", "size": "lg", "label": "Versão principal", "note": "Vertical, sem descritor." },
       { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Símbolo" },
@@ -173,26 +173,26 @@
       { "kind": "lockup", "art": "horizontal", "variant": "positive", "size": "wide", "label": "Horizontal com descritor" },
       { "kind": "lockup", "art": "untagged", "variant": "white", "size": "sm", "label": "Branca" },
       { "kind": "lockup", "art": "untagged", "variant": "gold", "size": "sm", "label": "Cor única · dourado" },
-      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 71, "note": "[rascunho] Margem mínima igual à altura do D de DOR." },
+      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 71, "note": "Margem mínima igual à altura do D de DOR." },
       { "kind": "lockup", "art": "untagged", "variant": "blue", "size": "sm", "label": "Cor única · azul" },
       { "kind": "icon", "variant": "onPrimary", "size": "sm", "label": "Ícone e perfil", "note": "WhatsApp Business e favicon." },
       { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre dourado" },
       { "kind": "lockup", "art": "untagged", "variant": "mono", "size": "sm", "label": "Preta", "note": "Carimbos e documentos." },
-      { "kind": "minimum", "variant": "positive", "size": "wide", "label": "Redução mínima", "minWidth": 180, "note": "[rascunho] Abaixo de 180 px de largura, use a versão sem descritor ou só o símbolo." }
+      { "kind": "minimum", "variant": "positive", "size": "wide", "label": "Redução mínima", "minWidth": 180, "note": "Abaixo de 180 px de largura, use a versão sem descritor ou só o símbolo." }
     ]
   },
 
   "applications": {
     "nav": "Aplicações",
     "eyebrow": "07 — Aplicações",
-    "title": "[rascunho] A marca no consultório, no papel e no corpo.",
-    "text": "[rascunho] A papelaria é a que foi entregue ao Instituto: cartão, pasta, bloco e os dois receituários. Em volta dela, um estudo de aplicações com fotografia editorial em preto e branco, recepção, jaleco, garrafa e uma tela de agendamento no celular.",
+    "title": "A marca no consultório, no papel e no corpo.",
+    "text": "A papelaria é a que foi entregue ao Instituto: cartão, pasta, bloco e os dois receituários. Em volta dela, um estudo de aplicações com fotografia editorial em preto e branco, recepção, jaleco, garrafa e uma tela de agendamento no celular.",
     "marquee": "Instituto Dor & Saúde",
     "marqueeArts": ["wordmark", "symbol"],
     "items": [
       { "kind": "photo", "image": "editorial-coluna", "col": [1, 5], "mobile": 2, "speed": -4 },
       { "kind": "crop", "art": "wordmark", "viewBox": "222 468 82 76", "variant": "onPrimary", "col": [6, 3], "mobile": 1 },
-      { "kind": "app", "variant": "positive", "col": [9, 4], "mobile": 1, "caption": "[rascunho] Agendamento no celular (estudo)",
+      { "kind": "app", "variant": "positive", "col": [9, 4], "mobile": 1, "caption": "Agendamento no celular (estudo)",
         "screen": {
           "alt": "Estudo de aplicativo do Instituto Dor & Saúde com a próxima consulta e o plano de reabilitação",
           "greeting": "Olá! Sua próxima consulta",
@@ -237,7 +237,7 @@
       { "k": "Ferramentas", "v": "Illustrator · Photoshop · InDesign" },
       { "k": "Design", "v": "Thiago Miedes" }
     ],
-    "cta": { "text": "[rascunho] Tem uma marca que precisa de cuidado?", "label": "Vamos conversar", "href": "/#contato" },
+    "cta": { "text": "Tem uma marca que precisa de cuidado?", "label": "Vamos conversar", "href": "/#contato" },
     "image": "editorial-caminhada"
   },
 
