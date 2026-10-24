@@ -629,7 +629,7 @@ const list: CaseData[] = [
     year: "2022",
     cats: ["brand", "print"],
     accent: "#C8553D",
-    summary: "Lettering para uma marca de roupas feitas à mão: a linha sai do i, contorna o G e vira o monograma Gi.",
+    summary: "Marca de roupas feitas à mão criada por Giovanna: nome e sobrenome se misturam em Faggian, e o Gi vira o monograma.",
     about: [
       "Uma tipografia de contraste alto com ligaduras próprias e o monograma “Gi” formam a base de uma linha completa de materiais para a marca.",
     ],
