@@ -493,6 +493,31 @@ $$("[data-carousel]").forEach((root) => {
   new IntersectionObserver(([e]) => { visible = e.isIntersecting; syncVideos(); }, { threshold: 0.4 }).observe(track);
 });
 
+/* ------------------------------------------------------------------ galerias de marketplace (data-listing) */
+// Uma imagem por vez, como na página do produto: miniaturas e legendas (data-listing-go) trocam a imagem do palco.
+// Todas as imagens ficam no palco (só a ativa visível), então o lightbox percorre a galeria inteira.
+$$("[data-listing]").forEach((root) => {
+  const shots = $$("[data-listing-shot]", root);
+  const gos = $$<HTMLButtonElement>("[data-listing-go]", root);
+  let cur = 0;
+  const select = (k: number) => {
+    if (k === cur) return;
+    cur = k;
+    shots.forEach((s, i) => s.classList.toggle("is-hidden", i !== k));
+    gos.forEach((g) => {
+      const on = Number(g.dataset.listingGo) === k;
+      g.classList.toggle("is-active", on);
+      g.setAttribute("aria-pressed", String(on));
+    });
+    if (!reduce) gsap.fromTo(shots[k], { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" });
+  };
+  gos.forEach((g) => {
+    g.addEventListener("click", () => select(Number(g.dataset.listingGo)));
+    // na lateral de miniaturas, passar o mouse já troca a imagem (como nas lojas)
+    if (finePointer && g.closest(".lv-rail")) g.addEventListener("pointerenter", () => select(Number(g.dataset.listingGo)));
+  });
+});
+
 // capa dos cases de social: o emblema entra girando e os ladrilhos descem devagar com a rolagem
 const scWall = $("[data-sc-wall]");
 if (scWall && !reduce) {

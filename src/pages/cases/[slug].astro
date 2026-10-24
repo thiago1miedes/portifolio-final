@@ -6,6 +6,7 @@ import Icon from "../../components/Icon.astro";
 import BrandCase from "../../components/brand/BrandCase.astro";
 import SocialCover from "../../components/social/SocialCover.astro";
 import SocialShowcase from "../../components/social/SocialShowcase.astro";
+import ProductShowcase from "../../components/product/ProductShowcase.astro";
 import { cases, categories, type AssetItem } from "../../data/cases";
 import { brandCases } from "../../data/brand-cases";
 
@@ -20,6 +21,8 @@ const brand = brandCases[c.slug];
 // com c.social, a galeria vira a vitrine de carrosséis (capa com o emblema, linguagem dos posts e um post por carrossel)
 const social = c.social;
 const socialItem = (id: string) => c.items.find((it) => it.id === id)!;
+// com c.product, a galeria vira embalagens + ensaios de foto + galerias de marketplace (a capa continua sendo a foto de c.cover)
+const product = c.product;
 
 const pages = c.items.filter((it) => it.kind === "page");
 const mobiles = c.items.filter((it) => it.kind === "mobile");
@@ -47,7 +50,7 @@ const formats: Record<string, { label: string; title: string; note: string; rati
   "banners-categoria": { label: "Banners de categoria", title: "Faixa larga das categorias", ratio: "2580 × 450", layout: "banners", chrome: true, note: "A faixa que abre as páginas de categoria, mais baixa e mais larga que o banner da home." },
 };
 const groups: { key: string; items: AssetItem[] }[] = [];
-for (const it of social ? [] : rest.filter((x) => x !== visualCover && x.group !== "capa")) {
+for (const it of social || product ? [] : rest.filter((x) => x !== visualCover && x.group !== "capa")) {
   const key = it.group ?? it.kind;
   let g = groups.find((x) => x.key === key);
   if (!g) groups.push((g = { key, items: [] }));
@@ -121,6 +124,7 @@ const meta = [
     <div id="galeria"></div>
 
     {social && <SocialShowcase c={c} />}
+    {product && <ProductShowcase c={c} />}
 
     {pages.length > 0 && (
       <section class="case-pages container" data-tabs>

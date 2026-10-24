@@ -14,7 +14,7 @@ const INDEX = path.join(ROOT, "src", "data", "assets.json");
 const only = process.argv.slice(2);
 
 sharp.cache(false);
-const BOX = { page: 1440, slide: 1600, image: 1600, post: 1080, mobile: 780 };
+const BOX = { page: 1440, slide: 1600, image: 1600, photo: 2000, label: 2600, post: 1080, mobile: 780 };
 
 // Resolve caminhos tolerando diferenças de acentuação (NFC/NFD) e maiúsculas.
 function resolve(rel) {
@@ -154,7 +154,8 @@ for (const slug of slugs) {
         items.push({ id: it.id, src: `/cases/${slug}/${it.id}.webp`, video: `/cases/${slug}/${it.id}.mp4`, ...size, kind: it.kind, label: it.label, group: it.group });
         continue;
       }
-      const isPdf = file.toLowerCase().endsWith(".pdf");
+      // .ai salvo com compatibilidade PDF abre do mesmo jeito
+      const isPdf = /\.(pdf|ai)$/i.test(file);
       const pages = isPdf ? (it.pages ?? [1]) : [null];
       for (const p of pages) {
         const id = p && it.pages ? `${it.id}-${String(p).padStart(2, "0")}` : it.id;
@@ -176,7 +177,8 @@ for (const slug of slugs) {
     const size = await thumb(path.join(ROOT, "public", from.src), conf.thumb?.crop ?? "top", path.join(dir, "thumb.webp"));
     t = { src: `/cases/${slug}/thumb.webp`, ...size };
   }
-  index[slug] = { thumb: t, cover: from?.id ?? null, items };
+  // a capa da página é a mesma imagem da listagem, a não ser que o config indique outra
+  index[slug] = { thumb: t, cover: conf.cover ?? from?.id ?? null, items };
   console.log(`${slug}: ${items.length} imagens`);
 }
 

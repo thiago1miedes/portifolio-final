@@ -32,6 +32,32 @@ export interface CaseData {
   credit?: string;
   /** case de carrosséis de Instagram (as telas vêm dos itens com group = key) */
   social?: SocialShowcase;
+  /** case de produto: embalagens, ensaio de fotos e galerias de marketplace (as imagens vêm dos itens pelo id) */
+  product?: ProductShowcase;
+}
+
+export interface ProductShowcase {
+  stats: { n: string; label: string }[];
+  packaging: {
+    title: string;
+    note: string;
+    /** medida do rótulo planificado */
+    labelSize: string;
+    /** cada versão usa os itens `${key}-front`, `${key}-left`, `${key}-right` (vistas do pote) e `${key}-label` (planificação) */
+    versions: { key: string; name: string; glow: string; note: string; views: string[]; palette: { name: string; hex: string }[] }[];
+  };
+  photos: {
+    title: string;
+    note: string;
+    /** ids das fotos por linha: cada linha ocupa a largura toda, com todas as fotos na mesma altura */
+    shoots: { key: string; label: string; note: string; rows: string[][] }[];
+  };
+  campaigns: {
+    title: string;
+    note: string;
+    /** as imagens são os itens com group = key; uma legenda por imagem, na ordem da galeria */
+    list: { key: string; brand: string; product: string; note: string; captions: { t: string; d: string }[] }[];
+  };
 }
 
 export interface SocialShowcase {
@@ -52,7 +78,7 @@ export interface AssetItem {
   src: string;
   w: number;
   h: number;
-  kind: "page" | "mobile" | "slide" | "image" | "post" | "story" | "feed" | "banner" | "svg" | "video";
+  kind: "page" | "mobile" | "slide" | "image" | "photo" | "label" | "post" | "story" | "feed" | "banner" | "svg" | "video";
   label?: string;
   group?: string;
   /** mp4 dos itens de vídeo (src é o pôster) */
@@ -731,17 +757,109 @@ const list: CaseData[] = [
   {
     slug: "dedicad",
     title: "Dedicad",
-    client: "Dedicad · Welbuda",
-    sector: "Suplementos",
+    client: "Welbuda · Dedicad",
+    sector: "Suplementos · Amazon EUA",
     year: "2023",
     cats: ["packaging", "social"],
     accent: "#E11D2E",
-    summary: "Rótulos de creatina em duas versões e posts para uma linha de suplementos.",
+    summary: "Duas embalagens para a creatina Dedicad, o ensaio de fotos feito para elas e duas galerias de imagens para vender suplementos na Amazon americana.",
     about: [
-      "Duas direções de rótulo para a creatina Dedicad — vermelha e dourada — com mockups em 3D, além de peças de social media para a linha Welbuda.",
+      "A Welbuda vende suplementos na Amazon dos Estados Unidos com duas marcas, a própria Welbuda e a Dedicad. O pedido começou pela embalagem da creatina Dedicad e foi até o que faz um suplemento vender online: a foto de produto e a galeria de imagens da página.",
+      "Para a creatina monohidratada, desenhei duas embalagens — uma vermelha, de impacto, e uma dourada, mais premium — sobre o mesmo pote e a mesma hierarquia, com rótulo, modo de uso e tabela em inglês para o mercado americano.",
+      "Com os rótulos prontos, os potes ganharam 19 fotos: as duas versões juntas e cada uma no seu cenário. Para outros dois produtos da casa, o Lions Mane da Welbuda e o Mushroom Coffee da Dedicad, montei duas sequências de sete imagens para a galeria da Amazon e para as redes.",
     ],
-    deliverables: ["Rótulos de embalagem", "Mockups 3D", "Posts"],
-    tools: ["Illustrator", "Photoshop"],
+    deliverables: ["2 embalagens de creatina", "Rótulos de 206 × 66 mm", "Vistas 3D dos potes", "19 fotos de produto", "2 galerias para a Amazon", "14 imagens 1:1 para listing e redes"],
+    tools: ["Illustrator", "Photoshop", "Gemini"],
+    product: {
+      stats: [
+        { n: "02", label: "embalagens" },
+        { n: "19", label: "fotos de produto" },
+        { n: "02", label: "campanhas" },
+        { n: "14", label: "imagens de galeria" },
+      ],
+      packaging: {
+        title: "Uma creatina, <em>duas</em> embalagens",
+        note: "As duas partem do mesmo pote preto e da mesma hierarquia: o D da Dedicad no topo, CREATINE em caixa alta condensada, Monohydrate em itálico logo abaixo e a dose de 10000 mg em destaque. O que muda é a temperatura da cor e o grafismo de linhas que corta o rótulo.",
+        labelSize: "206 × 66 mm",
+        versions: [
+          {
+            key: "red", name: "Vermelha", glow: "#B41919",
+            note: "A versão de impacto. O vermelho ocupa a frente inteira, CREATINE vem em branco por cima e um feixe de linhas atravessa o rótulo de ponta a ponta. Os selos de qualidade ficam na lateral, junto da tabela, para a frente falar só de produto e dose.",
+            views: ["Frente", "Modo de uso e advertências", "Supplement Facts"],
+            palette: [
+              { name: "Vermelho", hex: "#B41919" },
+              { name: "Grafite", hex: "#2B2B2A" },
+              { name: "Prata", hex: "#C4C5C8" },
+              { name: "Branco", hex: "#FFFFFF" },
+            ],
+          },
+          {
+            key: "gold", name: "Dourada", glow: "#DABB4E",
+            note: "A versão premium. Fundo preto, dourado em degradê metálico e as mesmas linhas, agora finas como filetes. Aqui os selos Lab Tested, FDA, GMP e Vegan sobem para a frente do pote, ao lado do Premium Powder.",
+            views: ["Frente", "Modo de uso e advertências", "Supplement Facts"],
+            palette: [
+              { name: "Ouro claro", hex: "#F4E478" },
+              { name: "Ouro", hex: "#DABB4E" },
+              { name: "Ouro velho", hex: "#BE9937" },
+              { name: "Preto", hex: "#1D1D1B" },
+            ],
+          },
+        ],
+      },
+      photos: {
+        title: "Os potes <em>em cena</em>",
+        note: "Com os rótulos fechados, os potes ganharam um ensaio criado com IA a partir das embalagens finais: academia, vestiário, quadra, estúdio e explosões de pó. Primeiro as duas versões juntas, depois cada uma no seu cenário.",
+        shoots: [
+          {
+            key: "duo", label: "Juntas",
+            note: "Lado a lado, as duas versões se apresentam como uma linha: no banco da academia, no vestiário, na quadra e no meio de uma explosão de pó.",
+            rows: [["duo-burst"], ["duo-bench", "duo-lockers"], ["duo-court", "duo-stone"], ["duo-lineup"]],
+          },
+          {
+            key: "red", label: "Só a vermelha",
+            note: "Luz dura e cenas de treino pesado: o atleta, a caixa de envio, o pedestal, a mochila e o banco da academia.",
+            rows: [["red-athlete", "red-box", "red-flatlay"], ["red-gym", "red-podium", "red-bag"]],
+          },
+          {
+            key: "gold", label: "Só a dourada",
+            note: "Luz quente e materiais nobres — pedra, couro, toalha — para cenas mais editoriais, do vestiário à quadra de tênis.",
+            rows: [["gold-stone", "gold-burst", "gold-tote"], ["gold-locker", "gold-court", "gold-pattern"]],
+          },
+        ],
+      },
+      campaigns: {
+        title: "Galerias para a <em>Amazon</em>",
+        note: "Na Amazon, a galeria da página faz o papel do vendedor. Para outros dois produtos da casa, montei duas sequências de sete imagens quadradas que também rodam nas redes: cada uma tem uma função — chamar, explicar, provar, convencer — e a ordem conta a história.",
+        list: [
+          {
+            key: "lions", brand: "Welbuda", product: "Lions Mane",
+            note: "Verde-limão sobre verde-floresta, folhas soltas no ar e o frasco sempre em primeiro plano. A sequência começa pelo produto, abre a fórmula com a dose de cada erva, lista os benefícios, compara a Welbuda com uma marca genérica e fecha com estilo de vida, modo de uso e selos.",
+            captions: [
+              { t: "Capa", d: "o frasco e a promessa da marca" },
+              { t: "Fórmula", d: "as quatro ervas e a dose de cada uma" },
+              { t: "Benefícios", d: "força, humor e imunidade em destaque" },
+              { t: "Comparativo", d: "Welbuda contra uma marca genérica" },
+              { t: "Estilo de vida", d: "o produto na rotina de quem usa" },
+              { t: "Modo de uso", d: "cápsulas por frasco, dose e frequência" },
+              { t: "Selos", d: "certificações e o que a fórmula não tem" },
+            ],
+          },
+          {
+            key: "coffee", brand: "Dedicad", product: "Mushroom Coffee",
+            note: "Café torrado, cobre e creme, com grãos e cogumelos voando em volta do pote. Aqui a galeria abre pela confiança — o laudo de laboratório — e segue para os ingredientes, o preparo, os momentos de consumo, a tabela nutricional e os selos.",
+            captions: [
+              { t: "Laudo", d: "metais pesados e microbiológico aprovados" },
+              { t: "Ingredientes", d: "café arábica e sete cogumelos funcionais" },
+              { t: "Preparo", d: "da colher ao copo, em uma cena" },
+              { t: "Momento", d: "o café que começa o dia" },
+              { t: "Receitas", d: "também gelado, em versão frappé" },
+              { t: "Tabela", d: "porções, calorias e rendimento do pote" },
+              { t: "Benefícios e selos", d: "foco, energia, imunidade e certificações" },
+            ],
+          },
+        ],
+      },
+    },
   },
 
   /* ============================================================ apresentações */

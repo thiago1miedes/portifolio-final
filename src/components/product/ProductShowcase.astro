@@ -1,0 +1,352 @@
+---
+// Corpo dos cases de produto (c.product): números, índice, as embalagens (vistas do pote + planificação do rótulo),
+// os ensaios de foto em linhas de mesma altura e as galerias de marketplace (uma imagem por vez, como na página do produto).
+import type { Case, AssetItem } from "../../data/cases";
+
+interface Props { c: Case }
+const { c } = Astro.props;
+const p = c.product!;
+const byId = (id: string) => c.items.find((it) => it.id === id)!;
+const inGroup = (key: string) => c.items.filter((it) => it.group === key);
+const pad = (n: number) => String(n).padStart(2, "0");
+const ratio = (it: AssetItem) => +(it.w / it.h).toFixed(4);
+// no palco, a frente fica no meio e as laterais abrem para os lados
+const views = ["left", "front", "right"] as const;
+const viewIndex = { front: 0, left: 1, right: 2 };
+// todas as fotos do ensaio, inclusive a que virou capa da página
+const photoCount = c.items.filter((it) => it.kind === "photo").length;
+const campaigns = p.campaigns.list.map((k) => ({ ...k, items: inGroup(k.key) }));
+// os números das partes seguem o índice: 01 embalagens, 02 fotos, 03 em diante as campanhas
+const index = [
+  { href: "#embalagens", label: "Embalagens", meta: `${p.packaging.versions.length} versões · rótulo ${p.packaging.labelSize}`, img: byId(`${p.packaging.versions[0].key}-front`), cutout: true },
+  { href: "#fotos", label: "Fotos de produto", meta: `${photoCount} fotos · ${p.photos.shoots.length} ensaios`, img: byId(p.photos.shoots[0].rows[0][0]), cutout: false },
+  ...campaigns.map((k) => ({ href: `#c-${k.key}`, label: k.product, meta: `${k.brand} · ${k.items.length} imagens`, img: k.items[0], cutout: false })),
+];
+---
+<section class="ps-stats container" aria-label="O projeto em números">
+  <ul>
+    {p.stats.map((st) => (
+      <li data-reveal><b class="display">{st.n}</b><span>{st.label}</span></li>
+    ))}
+  </ul>
+</section>
+
+<nav class="ps-index container" aria-label="Partes do projeto">
+  <p class="eyebrow" data-reveal>Neste projeto</p>
+  <ol class="ps-index-list">
+    {index.map((x, k) => (
+      <li data-reveal>
+        <a href={x.href} class="ps-index-link">
+          <span class:list={["ps-index-img", { "is-cutout": x.cutout }]}><img src={x.img.src} width={x.img.w} height={x.img.h} alt="" loading="lazy" /></span>
+          <span class="ps-index-n">{pad(k + 1)}</span>
+          <span class="ps-index-t">{x.label}</span>
+          <span class="ps-index-m">{x.meta}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<section class="ps-packs" id="embalagens" aria-labelledby="embalagens-t">
+  <div class="container">
+    <header class="ps-head">
+      <p class="eyebrow" data-reveal>01 — Embalagens</p>
+      <h2 class="title-section" id="embalagens-t" data-split set:html={p.packaging.title} />
+      <p class="lead" data-reveal>{p.packaging.note}</p>
+    </header>
+
+    {p.packaging.versions.map((v, k) => {
+      const label = byId(`${v.key}-label`);
+      return (
+        <article class:list={["pk", { "pk--flip": k % 2 === 1 }]} style={`--glow:${v.glow}`} aria-labelledby={`pk-${v.key}`}>
+          <div class="pk-text">
+            <p class="pk-tag" data-reveal><span>{pad(k + 1)}</span>Embalagem</p>
+            <h3 class="pk-name display" id={`pk-${v.key}`} data-reveal>{v.name}</h3>
+            <p class="pk-note" data-reveal>{v.note}</p>
+            <ul class="pk-palette" aria-label={`Paleta da embalagem ${v.name}`} data-reveal>
+              {v.palette.map((s) => (
+                <li><span class="pk-swatch" style={`background:${s.hex}`}></span><span class="pk-color"><b>{s.name}</b><span>{s.hex}</span></span></li>
+              ))}
+            </ul>
+          </div>
+          <div class="pk-stage" data-reveal>
+            {views.map((view) => {
+              const it = byId(`${v.key}-${view}`);
+              const name = v.views[viewIndex[view]];
+              return (
+                <button type="button" class:list={["pk-view", `pk-view--${view}`]} data-lightbox={it.src} data-w={it.w} data-h={it.h} data-lb-group={`pack-${v.key}`} aria-label={`Ampliar ${name.toLowerCase()} — embalagem ${v.name}`}>
+                  <img src={it.src} width={it.w} height={it.h} alt={`Pote da embalagem ${v.name}: ${name.toLowerCase()}`} loading="lazy" decoding="async" />
+                  <span class="pk-cap">{name}</span>
+                </button>
+              );
+            })}
+          </div>
+          <button type="button" class="pk-label" data-lightbox={label.src} data-w={label.w} data-h={label.h} data-lb-group={`pack-${v.key}`} data-reveal aria-label={`Ampliar a planificação do rótulo ${v.name}`}>
+            <span class="pk-label-bar"><b>Planificação do rótulo</b><span>{p.packaging.labelSize}</span></span>
+            <span class="pk-label-art"><img src={label.src} width={label.w} height={label.h} alt={`Planificação do rótulo da embalagem ${v.name}`} loading="lazy" decoding="async" /></span>
+          </button>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<section class="ps-photos" id="fotos" aria-labelledby="fotos-t">
+  <header class="ps-head container">
+    <p class="eyebrow" data-reveal>02 — Fotos de produto</p>
+    <h2 class="title-section" id="fotos-t" data-split set:html={p.photos.title} />
+    <p class="lead" data-reveal>{p.photos.note}</p>
+  </header>
+
+  {p.photos.shoots.map((s, k) => {
+    const count = s.rows.flat().length;
+    return (
+      <div class="sh container" id={`f-${s.key}`}>
+        <div class="sh-head">
+          <h3 class="sh-title" data-reveal><span>{`2.${k + 1}`}</span>{s.label}</h3>
+          <p class="sh-note" data-reveal>{s.note}</p>
+          <span class="sh-count" data-reveal>{`${pad(count)} ${count === 1 ? "foto" : "fotos"}`}</span>
+        </div>
+        <div class="jr">
+          {s.rows.map((row) => (
+            <div class="jr-row" data-reveal>
+              {row.map((id) => {
+                const it = byId(id);
+                return (
+                  <button type="button" class="jr-item" style={`--r:${ratio(it)}`} data-lightbox={it.src} data-w={it.w} data-h={it.h} data-lb-group={`shoot-${s.key}`} aria-label={`Ampliar foto: ${it.label}`}>
+                    <img src={it.src} width={it.w} height={it.h} alt={it.label} loading="lazy" decoding="async" />
+                  </button>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+        <p class="jr-hint" aria-hidden="true">Deslize para ver as outras fotos →</p>
+      </div>
+    );
+  })}
+</section>
+
+<section class="ps-camps" aria-labelledby="campanhas-t">
+  <header class="ps-head container">
+    <p class="eyebrow" data-reveal>Campanhas</p>
+    <h2 class="title-section" id="campanhas-t" data-split set:html={p.campaigns.title} />
+    <p class="lead" data-reveal>{p.campaigns.note}</p>
+  </header>
+
+  {campaigns.map((k, ki) => (
+    <article class:list={["lv container", { "lv--flip": ki % 2 === 1 }]} id={`c-${k.key}`} aria-labelledby={`c-${k.key}-t`} data-listing>
+      <div class="lv-head">
+        <p class="eyebrow" data-reveal>{`${pad(ki + 3)} — ${k.brand}`}</p>
+        <h3 class="lv-title" id={`c-${k.key}-t`} data-reveal>{k.product}</h3>
+        <p class="lv-note" data-reveal>{k.note}</p>
+        <ul class="lv-meta" data-reveal>
+          <li>{`${pad(k.items.length)} imagens`}</li>
+          <li>{`1:1 · ${k.items[0].w} × ${k.items[0].h} px`}</li>
+          <li>Amazon e redes sociais</li>
+        </ul>
+      </div>
+
+      <div class="lv-view" data-reveal>
+        <div class="lv-stage">
+          {k.items.map((it, i) => (
+            <button type="button" class:list={["lv-shot", { "is-hidden": i !== 0 }]} data-listing-shot data-lightbox={it.src} data-w={it.w} data-h={it.h} data-lb-group={`camp-${k.key}`} aria-label={`Ampliar imagem ${i + 1}: ${k.captions[i].t}`}>
+              <img src={it.src} width={it.w} height={it.h} alt={`${k.product}, imagem ${i + 1} da galeria: ${k.captions[i].t.toLowerCase()}, ${k.captions[i].d}`} loading="lazy" decoding="async" />
+            </button>
+          ))}
+        </div>
+        <ol class="lv-rail" aria-label={`Imagens da galeria ${k.product}`}>
+          {k.items.map((it, i) => (
+            <li>
+              <button type="button" class:list={["lv-thumb", { "is-active": i === 0 }]} data-listing-go={i} aria-pressed={i === 0 ? "true" : "false"} aria-label={`Ver imagem ${i + 1}: ${k.captions[i].t}`}>
+                <img src={it.src} width={it.w} height={it.h} alt="" loading="lazy" />
+              </button>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <ol class="lv-steps" aria-label="A ordem da galeria" data-reveal>
+        {k.captions.map((cap, i) => (
+          <li>
+            <button type="button" class:list={["lv-step", { "is-active": i === 0 }]} data-listing-go={i} aria-pressed={i === 0 ? "true" : "false"}>
+              <span class="lv-step-n">{pad(i + 1)}</span>
+              <span class="lv-step-t"><b>{cap.t}</b><span>{cap.d}</span></span>
+            </button>
+          </li>
+        ))}
+      </ol>
+    </article>
+  ))}
+</section>
+
+<style>
+  /* números */
+  .ps-stats { padding-bottom: clamp(48px, 6vw, 88px); }
+  .ps-stats ul { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--border); }
+  @media (min-width: 800px) { .ps-stats ul { grid-template-columns: repeat(4, 1fr); } }
+  .ps-stats li { display: grid; gap: 6px; padding: 24px 20px 0 0; }
+  .ps-stats b { font-size: clamp(3.5rem, 8vw, 6.5rem); color: var(--accent); }
+  .ps-stats span { color: var(--text-muted); font-size: 0.9375rem; }
+
+  /* índice */
+  .ps-index { display: grid; gap: 18px; padding-bottom: clamp(64px, 8vw, 120px); }
+  .ps-index-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(10px, 1.4vw, 18px); }
+  @media (min-width: 900px) { .ps-index-list { grid-template-columns: repeat(4, 1fr); } }
+  .ps-index-link {
+    display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 2px; align-items: baseline; height: 100%;
+    padding: 10px 10px 16px; border-radius: 20px; background: var(--surface-glass); border: 1px solid var(--border);
+    transition: border-color 0.25s, background-color 0.25s;
+  }
+  .ps-index-link:hover { border-color: var(--accent); background: var(--bg-elev); }
+  .ps-index-img { grid-column: 1 / -1; display: block; aspect-ratio: 4 / 3; margin-bottom: 12px; border-radius: 12px; overflow: hidden; background: var(--bg-elev-2); }
+  .ps-index-img img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.7s var(--ease); }
+  .ps-index-img.is-cutout img { object-fit: contain; padding: 10% 0 0; }
+  .ps-index-link:hover .ps-index-img img { scale: 1.05; }
+  .ps-index-n { grid-row: span 2; padding-left: 6px; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); line-height: 1; }
+  .ps-index-t { font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
+  .ps-index-m { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  /* cabeçalho das partes */
+  .ps-head { display: grid; gap: 20px; margin-bottom: clamp(36px, 5vw, 64px); }
+  .ps-head > * { max-width: 760px; }
+
+  /* embalagens */
+  .ps-packs { background: var(--bg-elev); border-block: 1px solid var(--border); padding-block: clamp(64px, 8vw, 120px); }
+  .pk {
+    display: grid; gap: 28px; grid-template-areas: "text" "stage" "label";
+    padding-top: clamp(40px, 5vw, 72px); margin-top: clamp(40px, 5vw, 72px); border-top: 1px solid var(--border);
+  }
+  .pk:first-of-type { margin-top: 0; }
+  @media (min-width: 1000px) {
+    .pk { grid-template-columns: minmax(0, 400px) minmax(0, 1fr); grid-template-areas: "text stage" "label label"; column-gap: clamp(40px, 5vw, 80px); row-gap: 24px; align-items: center; }
+    .pk--flip { grid-template-columns: minmax(0, 1fr) minmax(0, 400px); grid-template-areas: "stage text" "label label"; }
+  }
+  .pk-text { grid-area: text; display: grid; gap: 18px; align-content: start; }
+  .pk-tag { display: flex; align-items: baseline; gap: 10px; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+  .pk-tag span { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0; color: var(--accent); }
+  .pk-name { font-size: clamp(3.75rem, 6vw, 5.75rem); }
+  .pk-note { color: var(--text-muted); line-height: 1.6; }
+  .pk-palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 6px; }
+  .pk-palette li { display: grid; gap: 8px; }
+  .pk-swatch { height: 56px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--border); }
+  .pk-color { display: grid; font-size: 0.75rem; line-height: 1.35; }
+  .pk-color b { font-weight: 600; }
+  .pk-color span { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  /* o pote em três vistas, sobre a luz da cor da embalagem */
+  .pk-stage {
+    grid-area: stage; position: relative; isolation: isolate;
+    display: grid; grid-template-columns: 1fr 1.32fr 1fr; align-items: end;
+    padding: clamp(28px, 5vw, 64px) clamp(12px, 3vw, 40px) clamp(16px, 2vw, 24px);
+    border-radius: var(--radius-card); border: 1px solid var(--border); overflow: hidden;
+    background:
+      radial-gradient(60% 55% at 50% 58%, color-mix(in srgb, var(--glow) 34%, transparent), transparent 72%),
+      linear-gradient(to top, rgba(255, 255, 255, 0.035), transparent 32%),
+      var(--bg);
+  }
+  .pk-view { position: relative; display: grid; justify-items: center; gap: 12px; cursor: zoom-in; }
+  .pk-view img { width: 100%; height: auto; filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.55)); transition: transform 0.6s var(--ease); }
+  .pk-view:hover img { transform: translateY(-8px); }
+  .pk-view--front { z-index: 1; }
+  .pk-view--left { margin-right: -9%; }
+  .pk-view--right { margin-left: -9%; }
+  .pk-view--left img, .pk-view--right img { filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.55)) brightness(0.86); }
+  .pk-cap { font-size: 0.75rem; color: var(--text-muted); text-align: center; line-height: 1.35; transition: color 0.25s; }
+  .pk-view--front .pk-cap { color: var(--text); }
+  .pk-view:hover .pk-cap { color: var(--text); }
+  @media (max-width: 600px) { .pk-cap { font-size: 0.6875rem; } .pk-view--left .pk-cap, .pk-view--right .pk-cap { max-width: 11ch; } }
+
+  .pk-label { grid-area: label; display: grid; width: 100%; text-align: left; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); background: var(--bg); cursor: zoom-in; }
+  .pk-label-bar { display: flex; justify-content: space-between; gap: 12px; padding: 12px 16px; font-size: 0.8125rem; color: var(--text-muted); border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+  .pk-label-bar b { font-weight: 500; color: var(--text); }
+  .pk-label-art { display: block; overflow: hidden; }
+  .pk-label-art img { width: 100%; height: auto; transition: scale 0.8s var(--ease); }
+  .pk-label:hover .pk-label-art img { scale: 1.015; }
+  .pk-label:hover { border-color: var(--border-strong); }
+
+  /* fotos: cada linha ocupa a largura toda e as fotos dividem a mesma altura (largura proporcional ao formato) */
+  .ps-photos { padding-top: clamp(72px, 9vw, 136px); }
+  .sh { display: grid; gap: 20px; padding-bottom: clamp(48px, 6vw, 88px); }
+  .sh-head { display: grid; gap: 8px 32px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+  @media (min-width: 900px) { .sh-head { grid-template-columns: minmax(0, 300px) minmax(0, 1fr) auto; align-items: baseline; } }
+  .sh-title { display: flex; align-items: baseline; gap: 12px; font-size: clamp(1.5rem, 2.6vw, 2.125rem); letter-spacing: -0.03em; }
+  .sh-title span { font-family: var(--font-display); font-weight: 400; font-size: 0.8em; letter-spacing: 0; color: var(--accent); }
+  .sh-note { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.55; max-width: 620px; }
+  .sh-count { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  .jr { display: grid; gap: clamp(10px, 1.4vw, 18px); }
+  .jr-row { display: flex; align-items: flex-start; gap: clamp(10px, 1.4vw, 18px); }
+  .jr-item { flex: var(--r) 1 0; min-width: 0; aspect-ratio: var(--r); display: block; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-elev); cursor: zoom-in; }
+  .jr-item img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.9s var(--ease); }
+  .jr-item:hover img { scale: 1.03; }
+  .jr-hint { display: none; font-size: 0.8125rem; color: var(--text-muted); }
+  /* no celular, cada ensaio vira um trilho que desliza de lado, com as fotos na mesma altura */
+  @media (max-width: 699px) {
+    .jr {
+      display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+      margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+    }
+    .jr::-webkit-scrollbar { display: none; }
+    .jr-row { display: contents; }
+    .jr-item { flex: none; height: min(58svh, 420px); width: auto; scroll-snap-align: start; border-radius: 14px; }
+    .jr-hint { display: block; }
+  }
+
+  /* campanhas: a galeria da página do produto, uma imagem por vez */
+  .ps-camps { padding-top: clamp(72px, 9vw, 136px); border-top: 1px solid var(--border); }
+  .lv {
+    display: grid; gap: 28px; grid-template-areas: "head" "view" "steps";
+    padding-block: clamp(40px, 5vw, 72px);
+    border-bottom: 1px solid var(--border);
+  }
+  .lv:last-child { border-bottom: 0; padding-bottom: clamp(64px, 8vw, 112px); }
+  @media (min-width: 1000px) {
+    .lv {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 660px); grid-template-rows: auto 1fr;
+      grid-template-areas: "head view" "steps view"; column-gap: clamp(48px, 6vw, 96px); row-gap: 28px;
+    }
+    .lv--flip { grid-template-columns: minmax(0, 660px) minmax(0, 1fr); grid-template-areas: "view head" "view steps"; }
+  }
+  .lv-head { grid-area: head; display: grid; gap: 16px; align-content: start; max-width: 560px; }
+  .lv-title { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.04em; }
+  .lv-note { color: var(--text-muted); line-height: 1.6; }
+  .lv-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lv-meta li {
+    display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px;
+    border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--surface-glass);
+    font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums;
+  }
+  .lv-meta li:first-child { color: var(--text); border-color: var(--accent); }
+
+  .lv-view { grid-area: view; display: grid; gap: 12px; align-self: start; }
+  @media (min-width: 1000px) {
+    .lv-view { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; position: sticky; top: 104px; }
+    .lv-rail { grid-column: 1; grid-row: 1; flex-direction: column; }
+    .lv-stage { grid-column: 2; grid-row: 1; }
+  }
+  .lv-stage { position: relative; aspect-ratio: 1; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-elev); }
+  .lv-shot { position: absolute; inset: 0; display: block; cursor: zoom-in; }
+  .lv-shot img { width: 100%; height: 100%; object-fit: cover; }
+  .lv-rail { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .lv-rail::-webkit-scrollbar { display: none; }
+  .lv-rail li { flex: none; }
+  .lv-thumb { display: block; width: 56px; aspect-ratio: 1; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); opacity: 0.55; transition: opacity 0.25s, border-color 0.25s, box-shadow 0.25s; }
+  @media (min-width: 1000px) { .lv-thumb { width: 64px; } }
+  .lv-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .lv-thumb:hover { opacity: 1; }
+  .lv-thumb.is-active { opacity: 1; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+
+  .lv-steps { grid-area: steps; align-self: end; display: grid; border-top: 1px solid var(--border); }
+  .lv-step {
+    display: grid; grid-template-columns: 2.25rem 1fr; gap: 12px; align-items: baseline; width: 100%; text-align: left;
+    padding: 12px 12px 12px 0; border-bottom: 1px solid var(--border);
+    transition: background-color 0.25s, padding 0.35s var(--ease);
+  }
+  .lv-step-n { font-family: var(--font-display); font-size: 1.125rem; color: var(--text-muted); transition: color 0.25s; }
+  .lv-step-t { display: flex; flex-wrap: wrap; gap: 0 8px; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.45; }
+  .lv-step-t b { font-weight: 600; color: var(--text); }
+  .lv-step:hover { padding-left: 8px; background: var(--surface-glass); }
+  .lv-step.is-active { padding-left: 12px; background: var(--surface-glass); box-shadow: inset 2px 0 0 var(--accent); }
+  .lv-step.is-active .lv-step-n, .lv-step:hover .lv-step-n { color: var(--accent); }
+</style>

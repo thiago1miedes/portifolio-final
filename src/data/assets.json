@@ -3135,76 +3135,356 @@
    "w": 1200,
    "h": 800
   },
+  "cover": "duo-splash",
   "items": [
    {
-    "id": "mockup-v4",
-    "src": "/cases/dedicad/mockup-v4.webp",
+    "id": "red-label",
+    "src": "/cases/dedicad/red-label.webp",
+    "w": 2600,
+    "h": 834,
+    "kind": "label",
+    "group": "pack"
+   },
+   {
+    "id": "red-front",
+    "src": "/cases/dedicad/red-front.webp",
     "w": 1275,
     "h": 1500,
-    "kind": "image"
+    "kind": "image",
+    "group": "pack"
    },
    {
-    "id": "mockup",
-    "src": "/cases/dedicad/mockup.webp",
+    "id": "red-left",
+    "src": "/cases/dedicad/red-left.webp",
     "w": 1275,
     "h": 1500,
-    "kind": "image"
+    "kind": "image",
+    "group": "pack"
    },
    {
-    "id": "mockup-v3",
-    "src": "/cases/dedicad/mockup-v3.webp",
+    "id": "red-right",
+    "src": "/cases/dedicad/red-right.webp",
     "w": 1275,
     "h": 1500,
-    "kind": "image"
+    "kind": "image",
+    "group": "pack"
    },
    {
-    "id": "opcao-1",
-    "src": "/cases/dedicad/opcao-1.webp",
-    "w": 1600,
-    "h": 513,
-    "kind": "image"
+    "id": "gold-label",
+    "src": "/cases/dedicad/gold-label.webp",
+    "w": 2600,
+    "h": 834,
+    "kind": "label",
+    "group": "pack"
    },
    {
-    "id": "opcao-2",
-    "src": "/cases/dedicad/opcao-2.webp",
-    "w": 1600,
-    "h": 513,
-    "kind": "image"
+    "id": "gold-front",
+    "src": "/cases/dedicad/gold-front.webp",
+    "w": 1275,
+    "h": 1500,
+    "kind": "image",
+    "group": "pack"
    },
    {
-    "id": "welbuda-1",
-    "src": "/cases/dedicad/welbuda-1.webp",
+    "id": "gold-left",
+    "src": "/cases/dedicad/gold-left.webp",
+    "w": 1275,
+    "h": 1500,
+    "kind": "image",
+    "group": "pack"
+   },
+   {
+    "id": "gold-right",
+    "src": "/cases/dedicad/gold-right.webp",
+    "w": 1275,
+    "h": 1500,
+    "kind": "image",
+    "group": "pack"
+   },
+   {
+    "id": "duo-splash",
+    "src": "/cases/dedicad/duo-splash.webp",
+    "w": 2000,
+    "h": 1116,
+    "kind": "photo",
+    "label": "Os potes dourado e vermelho lado a lado, entre respingos de água",
+    "group": "shoot"
+   },
+   {
+    "id": "duo-burst",
+    "src": "/cases/dedicad/duo-burst.webp",
+    "w": 2000,
+    "h": 1116,
+    "kind": "photo",
+    "label": "Os dois potes abertos no ar, no meio de uma explosão de pó",
+    "group": "shoot"
+   },
+   {
+    "id": "duo-bench",
+    "src": "/cases/dedicad/duo-bench.webp",
+    "w": 2000,
+    "h": 1116,
+    "kind": "photo",
+    "label": "As duas versões no banco de uma academia",
+    "group": "shoot"
+   },
+   {
+    "id": "duo-lockers",
+    "src": "/cases/dedicad/duo-lockers.webp",
+    "w": 2000,
+    "h": 1116,
+    "kind": "photo",
+    "label": "Cada versão no seu armário de vestiário, sobre toalhas",
+    "group": "shoot"
+   },
+   {
+    "id": "duo-court",
+    "src": "/cases/dedicad/duo-court.webp",
+    "w": 2000,
+    "h": 1116,
+    "kind": "photo",
+    "label": "As duas versões numa bolsa de treino, na quadra de tênis",
+    "group": "shoot"
+   },
+   {
+    "id": "duo-stone",
+    "src": "/cases/dedicad/duo-stone.webp",
+    "w": 1611,
+    "h": 2000,
+    "kind": "photo",
+    "label": "O pote dourado sobre uma pedra e o vermelho sobre uma anilha, ao lado de halteres",
+    "group": "shoot"
+   },
+   {
+    "id": "duo-lineup",
+    "src": "/cases/dedicad/duo-lineup.webp",
+    "w": 2000,
+    "h": 1116,
+    "kind": "photo",
+    "label": "A linha completa, do dourado ao vermelho, sobre um pedestal branco",
+    "group": "shoot"
+   },
+   {
+    "id": "red-athlete",
+    "src": "/cases/dedicad/red-athlete.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "Atleta estende o pote vermelho para a câmera numa academia ao ar livre",
+    "group": "shoot"
+   },
+   {
+    "id": "red-box",
+    "src": "/cases/dedicad/red-box.webp",
+    "w": 1116,
+    "h": 2000,
+    "kind": "photo",
+    "label": "Potes vermelhos caindo dentro de uma caixa de papelão",
+    "group": "shoot"
+   },
+   {
+    "id": "red-flatlay",
+    "src": "/cases/dedicad/red-flatlay.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "Potes vermelhos espalhados sobre concreto, vistos de cima",
+    "group": "shoot"
+   },
+   {
+    "id": "red-gym",
+    "src": "/cases/dedicad/red-gym.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "O pote vermelho no banco de uma academia",
+    "group": "shoot"
+   },
+   {
+    "id": "red-podium",
+    "src": "/cases/dedicad/red-podium.webp",
+    "w": 1116,
+    "h": 2000,
+    "kind": "photo",
+    "label": "Cinco potes vermelhos sobre um pedestal branco",
+    "group": "shoot"
+   },
+   {
+    "id": "red-bag",
+    "src": "/cases/dedicad/red-bag.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "O pote vermelho dentro de uma bolsa de treino, no vestiário",
+    "group": "shoot"
+   },
+   {
+    "id": "gold-stone",
+    "src": "/cases/dedicad/gold-stone.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "O pote dourado inclinado sobre pedras, com medidor de pó e kettlebell",
+    "group": "shoot"
+   },
+   {
+    "id": "gold-burst",
+    "src": "/cases/dedicad/gold-burst.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "O pote dourado aberto no ar, numa nuvem de pó",
+    "group": "shoot"
+   },
+   {
+    "id": "gold-tote",
+    "src": "/cases/dedicad/gold-tote.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "Mulher guarda o pote dourado numa bolsa de tecido",
+    "group": "shoot"
+   },
+   {
+    "id": "gold-locker",
+    "src": "/cases/dedicad/gold-locker.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "O pote dourado num armário de vestiário, sobre toalhas",
+    "group": "shoot"
+   },
+   {
+    "id": "gold-court",
+    "src": "/cases/dedicad/gold-court.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "Mão coloca o pote dourado numa bolsa de treino, na quadra de tênis",
+    "group": "shoot"
+   },
+   {
+    "id": "gold-pattern",
+    "src": "/cases/dedicad/gold-pattern.webp",
+    "w": 1493,
+    "h": 2000,
+    "kind": "photo",
+    "label": "Potes dourados enfileirados na diagonal, formando um padrão",
+    "group": "shoot"
+   },
+   {
+    "id": "lions-1",
+    "src": "/cases/dedicad/lions-1.webp",
     "w": 550,
     "h": 550,
     "kind": "post",
-    "group": "social"
+    "group": "lions"
    },
    {
-    "id": "welbuda-2",
-    "src": "/cases/dedicad/welbuda-2.webp",
+    "id": "lions-2",
+    "src": "/cases/dedicad/lions-2.webp",
     "w": 550,
     "h": 550,
     "kind": "post",
-    "group": "social"
+    "group": "lions"
    },
    {
-    "id": "welbuda-3",
-    "src": "/cases/dedicad/welbuda-3.webp",
+    "id": "lions-3",
+    "src": "/cases/dedicad/lions-3.webp",
     "w": 550,
     "h": 550,
     "kind": "post",
-    "group": "social"
+    "group": "lions"
    },
    {
-    "id": "welbuda-4",
-    "src": "/cases/dedicad/welbuda-4.webp",
+    "id": "lions-4",
+    "src": "/cases/dedicad/lions-4.webp",
     "w": 550,
     "h": 550,
     "kind": "post",
-    "group": "social"
+    "group": "lions"
+   },
+   {
+    "id": "lions-5",
+    "src": "/cases/dedicad/lions-5.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "lions"
+   },
+   {
+    "id": "lions-6",
+    "src": "/cases/dedicad/lions-6.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "lions"
+   },
+   {
+    "id": "lions-7",
+    "src": "/cases/dedicad/lions-7.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "lions"
+   },
+   {
+    "id": "coffee-1",
+    "src": "/cases/dedicad/coffee-1.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "coffee"
+   },
+   {
+    "id": "coffee-2",
+    "src": "/cases/dedicad/coffee-2.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "coffee"
+   },
+   {
+    "id": "coffee-3",
+    "src": "/cases/dedicad/coffee-3.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "coffee"
+   },
+   {
+    "id": "coffee-4",
+    "src": "/cases/dedicad/coffee-4.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "coffee"
+   },
+   {
+    "id": "coffee-5",
+    "src": "/cases/dedicad/coffee-5.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "coffee"
+   },
+   {
+    "id": "coffee-6",
+    "src": "/cases/dedicad/coffee-6.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "coffee"
+   },
+   {
+    "id": "coffee-7",
+    "src": "/cases/dedicad/coffee-7.webp",
+    "w": 550,
+    "h": 550,
+    "kind": "post",
+    "group": "coffee"
    }
-  ],
-  "cover": "mockup-v4"
+  ]
  },
  "todateen": {
   "thumb": {

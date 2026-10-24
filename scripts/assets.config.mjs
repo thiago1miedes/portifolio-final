@@ -1,14 +1,17 @@
 // Mapa de origem das imagens de cada case.
 // - Caminhos começando com "shots/" vêm de sources/shots (prints dos sites no ar).
 // - Os demais são relativos à pasta Freelancer (SRC).
-// - PDFs: `pages` define quais páginas renderizar (1 = primeira). Sem `pages`, só a 1ª.
+// - PDFs (e .ai com compatibilidade PDF): `pages` define quais páginas renderizar (1 = primeira). Sem `pages`, só a 1ª.
+// - `cover` (opcional): id da imagem de capa da página, quando não é a mesma da listagem (thumb.from).
 // kinds: page (página inteira de site, 1440px) · mobile (print de celular) ·
-//        slide (16:9, 1600px) · image (até 1600px) · post (até 1080px) ·
+//        slide (16:9, 1600px) · image (até 1600px) · photo (foto de produto, até 2000px) ·
+//        label (rótulo planificado, 2600px) · post (até 1080px) ·
 //        story / feed / banner (tamanho original) · svg (copiado) · video (mp4 copiado + pôster)
 export const SRC = "F:/Freelancer";
 
 const W = "Websites";
 const CAU = "Apex Comunicação/CAU - PE/Projeto Case";
+const GRINGO = "Projeto Gringo";
 const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
 
 export const cases = {
@@ -404,15 +407,41 @@ export const cases = {
   },
 
   /* ---------------------------------------------------------------- embalagem */
+  // os ids são lidos por c.product em cases.ts (vistas `${versão}-front|left|right|label`, fotos por linha, campanhas por group)
   dedicad: {
-    thumb: { from: "mockup-v4", crop: "center" },
+    thumb: { from: "duo-burst", crop: "center" },
+    cover: "duo-splash",
     items: [
-      { id: "mockup-v4", src: "Projeto Gringo/Embalagem Creatina/img-mockup-v4.png", kind: "image" },
-      { id: "mockup", src: "Projeto Gringo/Embalagem Creatina/img-mockup.png", kind: "image" },
-      { id: "mockup-v3", src: "Projeto Gringo/Embalagem Creatina/img-mockup-v3.png", kind: "image" },
-      { id: "opcao-1", src: "Projeto Gringo/Embalagem Creatina/Embalagem 01/Dedicad-option01.png", kind: "image" },
-      { id: "opcao-2", src: "Projeto Gringo/Embalagem Creatina/Embalagem 02/Dedicad-option02_Prancheta 1.png", kind: "image" },
-      ...range(1, 4).map((n) => ({ id: `welbuda-${n}`, src: `Projeto Gringo/Projeto  01/Images/art-0${n}.png`, kind: "post", group: "social" })),
+      // embalagens: planificação do rótulo (o .ai abre como PDF, sem a marca d'água dos PNGs) e as três vistas do pote
+      { id: "red-label", src: `${GRINGO}/Embalagem Creatina/Embalagem 01/packaging_creatine_openfile_01.ai`, kind: "label", group: "pack" },
+      ...["front", "left", "right"].map((v) => ({ id: `red-${v}`, src: `${GRINGO}/Embalagem Creatina/Embalagem 01/Dedicad-option01-${v}.png`, kind: "image", group: "pack" })),
+      { id: "gold-label", src: `${GRINGO}/Embalagem Creatina/Embalagem 02/packaging_creatine_openfile-02.ai`, kind: "label", group: "pack" },
+      ...["front", "left", "right"].map((v) => ({ id: `gold-${v}`, src: `${GRINGO}/Embalagem Creatina/Embalagem 02/Dedicad-option02-${v}.png`, kind: "image", group: "pack" })),
+      // fotos de produto (o label é o texto alternativo)
+      ...[
+        ["duo-splash", "cbql8pcbql8pcbql", "Os potes dourado e vermelho lado a lado, entre respingos de água"],
+        ["duo-burst", "sehho9sehho9sehh", "Os dois potes abertos no ar, no meio de uma explosão de pó"],
+        ["duo-bench", "4brgqn4brgqn4brg", "As duas versões no banco de uma academia"],
+        ["duo-lockers", "8pf7xh8pf7xh8pf7", "Cada versão no seu armário de vestiário, sobre toalhas"],
+        ["duo-court", "pkanytpkanytpkan", "As duas versões numa bolsa de treino, na quadra de tênis"],
+        ["duo-stone", "kht867kht867kht8", "O pote dourado sobre uma pedra e o vermelho sobre uma anilha, ao lado de halteres"],
+        ["duo-lineup", "1z5r341z5r341z5r", "A linha completa, do dourado ao vermelho, sobre um pedestal branco"],
+        ["red-athlete", "hcgvcxhcgvcxhcgv", "Atleta estende o pote vermelho para a câmera numa academia ao ar livre"],
+        ["red-box", "c6yii4c6yii4c6yi", "Potes vermelhos caindo dentro de uma caixa de papelão"],
+        ["red-flatlay", "bn9wewbn9wewbn9w", "Potes vermelhos espalhados sobre concreto, vistos de cima"],
+        ["red-gym", "ydewwlydewwlydew", "O pote vermelho no banco de uma academia"],
+        ["red-podium", "hf8agghf8agghf8a", "Cinco potes vermelhos sobre um pedestal branco"],
+        ["red-bag", "bfexaubfexaubfex", "O pote vermelho dentro de uma bolsa de treino, no vestiário"],
+        ["gold-stone", "az5jwxaz5jwxaz5j", "O pote dourado inclinado sobre pedras, com medidor de pó e kettlebell"],
+        ["gold-burst", "c6nopyc6nopyc6no", "O pote dourado aberto no ar, numa nuvem de pó"],
+        ["gold-tote", "k1fzlvk1fzlvk1fz", "Mulher guarda o pote dourado numa bolsa de tecido"],
+        ["gold-locker", "c2t3ehc2t3ehc2t3", "O pote dourado num armário de vestiário, sobre toalhas"],
+        ["gold-court", "o2wydqo2wydqo2wy", "Mão coloca o pote dourado numa bolsa de treino, na quadra de tênis"],
+        ["gold-pattern", "p1ib9bp1ib9bp1ib", "Potes dourados enfileirados na diagonal, formando um padrão"],
+      ].map(([id, file, label]) => ({ id, src: `${GRINGO}/Projeto case/Gemini_Generated_Image_${file}.jpg`, kind: "photo", group: "shoot", label })),
+      // campanhas para a galeria da Amazon (1:1, 550px): op1 = Lions Mane da Welbuda, op2 = Mushroom Coffee da Dedicad
+      ...range(1, 7).map((n) => ({ id: `lions-${n}`, src: `${GRINGO}/Projeto case/Images para campanha - op1/art-0${n}.png`, kind: "post", group: "lions" })),
+      ...range(1, 7).map((n) => ({ id: `coffee-${n}`, src: `${GRINGO}/Projeto case/Images para campanha - op2/art-0${n}.png`, kind: "post", group: "coffee" })),
     ],
   },
 
