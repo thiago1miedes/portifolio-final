@@ -171,11 +171,9 @@
       { "kind": "cutout", "image": "mockup-digital", "col": [2, 10], "mobile": 2, "speed": 2, "tilt": true, "caption": "Notebook, tablet, carta, envelope e cartão" },
       { "kind": "photo", "image": "editorial-rotina", "col": [1, 5], "mobile": 1, "speed": 4 },
       { "kind": "crop", "art": "wordmark", "viewBox": "582 0 192 166", "variant": "negative", "col": [6, 7], "mobile": 1 },
-      { "kind": "mockup", "image": "mockup-recepcao", "col": [1, 12], "mobile": 2, "caption": "Recepção",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.06, "pin": [[34, 26], [66, 26], [66, 52], [34, 52]] }] },
+      { "kind": "mockup", "image": "mockup-recepcao", "col": [1, 12], "mobile": 2, "caption": "Recepção" },
       { "kind": "photo", "image": "editorial-cafe", "col": [1, 7], "mobile": 2, "speed": -3 },
-      { "kind": "mockup", "image": "mockup-cracha", "col": [8, 5], "mobile": 2, "offset": 4, "caption": "Crachá de evento",
-        "overlays": [{ "art": "lockup", "variant": "positive", "blend": "multiply", "inset": 0.12, "pin": [[33, 44], [67, 44], [67, 66], [33, 66]] }] }
+      { "kind": "mockup", "image": "mockup-cracha", "col": [8, 5], "mobile": 2, "offset": 4, "caption": "Crachá de evento" }
     ]
   },
 
@@ -214,19 +212,19 @@
       "alt": "Notebook e tablet com fotos de uma profissional sorrindo e o logo da LifeStyle, ao lado de carta, envelope laranja e cartão com o grafismo" },
 
     { "id": "hero-atmosfera", "section": "intro", "w": 2400, "h": 1350, "essential": true,
-      "alt": "Luz laranja de fim de tarde atravessando uma persiana e desenhando faixas sobre uma parede bordô de escritório" },
+      "alt": "Faixas de luz laranja de persiana sobre uma parede bordô num escritório vazio, com a silhueta de uma cadeira no canto" },
     { "id": "editorial-entrevista", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Profissional de RH ouvindo uma candidata numa entrevista, vista por cima do ombro, com um currículo sobre a mesa, em preto e branco" },
+      "alt": "Entrevista de emprego numa sala clara: a profissional de RH ouve o candidato, visto de costas, com um currículo sobre a mesa, em preto e branco" },
     { "id": "editorial-workshop", "mono": true, "section": "applications", "w": 2400, "h": 1600, "essential": true,
       "alt": "Mãos colando notas adesivas num quadro de vidro durante um workshop de equipe, em preto e branco" },
     { "id": "editorial-rotina", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
       "alt": "Profissional caminhando para o trabalho de manhã, com uma bolsa no ombro e um copo de café, numa calçada com sombras longas, em preto e branco" },
     { "id": "mockup-recepcao", "section": "applications", "w": 2400, "h": 1200, "essential": false,
-      "alt": "Recepção de escritório com o logo da LifeStyle na parede clara, um banco de madeira e uma planta" },
+      "alt": "Recepção de escritório com o logo da LifeStyle na parede clara, um balcão bordô, um banco de madeira, uma planta e quadrados arredondados em laranja e bordô na parede" },
     { "id": "editorial-cafe", "mono": true, "section": "applications", "w": 2400, "h": 1600, "essential": false,
       "alt": "Duas colegas conversando e rindo na copa do escritório, com xícaras na mão, em preto e branco" },
     { "id": "mockup-cracha", "section": "applications", "w": 1600, "h": 2000, "essential": false,
-      "alt": "Crachá de evento com o logo da LifeStyle pendurado num cordão laranja, sobre fundo bordô" },
+      "alt": "Crachá de evento da LifeStyle em suporte transparente, pendurado num cordão laranja sobre fundo bordô, com foto e nome de uma psicóloga organizacional" },
     { "id": "textura-feltro", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
       "alt": "Feltro de lã bordô em macro, com fibras iluminadas por uma luz rasante quente" },
     { "id": "editorial-movimento", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
