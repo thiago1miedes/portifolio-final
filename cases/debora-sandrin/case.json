@@ -546,20 +546,31 @@
         "image": "editorial-maquete",
         "col": [
           1,
-          5
+          4
         ],
         "mobile": 1,
         "speed": 3
       },
       {
+        "kind": "photo",
+        "image": "editorial-arquiteta",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "offset": 6,
+        "speed": 4
+      },
+      {
         "kind": "mockup",
         "image": "mockup-placa-porta",
         "col": [
-          7,
-          5
+          9,
+          4
         ],
-        "mobile": 1,
-        "offset": 8,
+        "mobile": 2,
+        "offset": 3,
         "caption": "Placa da porta do escritório"
       },
       {
@@ -701,6 +712,14 @@
       "h": 2000,
       "essential": false,
       "alt": "Placa de metal vinho com o logo da Débora Sandrin na parede ao lado da porta do escritório"
+    },
+    {
+      "id": "editorial-arquiteta",
+      "section": "applications",
+      "w": 1600,
+      "h": 2000,
+      "essential": false,
+      "alt": "Arquiteta de costas caminhando por um espaço de concreto aparente com paredes curvas, carregando uma prancha enrolada, sob a luz de uma fresta alta"
     },
     {
       "id": "editorial-luz",
