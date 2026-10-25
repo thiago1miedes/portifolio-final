@@ -173,7 +173,9 @@
       { "kind": "crop", "art": "wordmark", "viewBox": "582 0 192 166", "variant": "negative", "col": [6, 7], "mobile": 1 },
       { "kind": "mockup", "image": "mockup-recepcao", "col": [1, 12], "mobile": 2, "caption": "Recepção" },
       { "kind": "photo", "image": "editorial-cafe", "col": [1, 7], "mobile": 2, "speed": -3 },
-      { "kind": "mockup", "image": "mockup-cracha", "col": [8, 5], "mobile": 2, "offset": 4, "caption": "Crachá de evento" }
+      { "kind": "mockup", "image": "mockup-cracha", "col": [8, 5], "mobile": 2, "offset": 4, "caption": "Crachá de evento" },
+      { "kind": "photo", "image": "foto-reuniao", "col": [1, 7], "mobile": 2, "speed": -3 },
+      { "kind": "photo", "image": "foto-mesa", "col": [8, 5], "mobile": 2, "offset": 5, "speed": 4 }
     ]
   },
 
@@ -225,6 +227,10 @@
       "alt": "Duas colegas conversando e rindo na copa do escritório, com xícaras na mão, em preto e branco" },
     { "id": "mockup-cracha", "section": "applications", "w": 1600, "h": 2000, "essential": false,
       "alt": "Crachá de evento da LifeStyle em suporte transparente, pendurado num cordão laranja sobre fundo bordô, com foto e nome de uma psicóloga organizacional" },
+    { "id": "foto-reuniao", "section": "applications", "w": 2400, "h": 1600, "essential": false,
+      "alt": "Dois profissionais de costas conversando numa mesa de madeira, com caderno laranja e xícaras, numa sala de paredes bordô iluminada por luz quente de janela" },
+    { "id": "foto-mesa", "section": "applications", "w": 1600, "h": 2000, "essential": false,
+      "alt": "Mesa de trabalho vista de cima, com caderno bordô, caneta laranja, óculos, xícara de café e uma suculenta sobre superfície clara" },
     { "id": "textura-feltro", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
       "alt": "Feltro de lã bordô em macro, com fibras iluminadas por uma luz rasante quente" },
     { "id": "editorial-movimento", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
