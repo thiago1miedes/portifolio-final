@@ -4,13 +4,11 @@
   "segment": "Saúde · dor, ortopedia e regeneração · Fortaleza (CE)",
   "year": "2026",
   "assets": "/brand/dor-e-saude",
-
   "seo": {
     "title": "Instituto Dor & Saúde — Identidade visual",
-    "description": "Case de identidade visual do Instituto Dor & Saúde, de Fortaleza: três caminhos de processo, o símbolo com a figura do paciente e a coluna em pontos, tipografia, cores, sistema de logo e a papelaria institucional entregue.",
+    "description": "Case de identidade visual do Instituto Dor & Saúde, de Fortaleza: o símbolo com a figura do paciente e a coluna em pontos, tipografia, cores, sistema de logo, papelaria institucional e aplicações em recepção, fachada, jaleco, crachá e brindes.",
     "image": "og.png"
   },
-
   "theme": {
     "dark": "#0D1828",
     "light": "#FCFCFC",
@@ -23,7 +21,6 @@
     "inkOnDark": "#FCFCFC",
     "mutedOnDark": "#A3AFBF"
   },
-
   "font": {
     "family": "Cormorant Garamond",
     "fallback": "\"Cormorant\", \"EB Garamond\", Garamond, Georgia, serif",
@@ -31,7 +28,9 @@
     "files": {
       "300 700": "fonts/cormorant-garamond-var.woff2"
     },
-    "preload": [600],
+    "preload": [
+      600
+    ],
     "text": {
       "family": "Raleway",
       "fallback": "\"Montserrat\", \"Century Gothic\", system-ui, \"Segoe UI\", sans-serif",
@@ -39,10 +38,11 @@
       "files": {
         "100 900": "fonts/raleway-var.woff2"
       },
-      "preload": [400]
+      "preload": [
+        400
+      ]
     }
   },
-
   "logo": {
     "lockup": "logo/lockup.svg",
     "untagged": "logo/untagged.svg",
@@ -51,19 +51,93 @@
     "outline": "logo/symbol-outline.svg",
     "wordmark": "logo/wordmark.svg",
     "tagline": "logo/tagline.svg",
-    "nav": { "desktop": ["symbol", "wordmark"], "mobile": ["symbol"], "wordmarkHeight": 24, "dark": "negative", "light": "positive" },
+    "nav": {
+      "desktop": [
+        "symbol",
+        "wordmark"
+      ],
+      "mobile": [
+        "symbol"
+      ],
+      "wordmarkHeight": 24,
+      "dark": "negative",
+      "light": "positive"
+    },
     "variants": {
-      "positive":  { "label": "Colorida",              "bg": "#FCFCFC", "symbol-main": "#203D5F", "symbol-accent": "#B79359", "wordmark": "#172E4D", "wordmark-accent": "#B79359", "tagline": "#B79359" },
-      "negative":  { "label": "Colorida sobre noturno", "bg": "#0D1828", "symbol-main": "#FCFCFC", "symbol-accent": "#B79359", "wordmark": "#FCFCFC", "wordmark-accent": "#B79359", "tagline": "#B79359" },
-      "onPrimary": { "label": "Sobre azul oceano",     "bg": "#172E4D", "symbol-main": "#FCFCFC", "symbol-accent": "#B79359", "wordmark": "#FCFCFC", "wordmark-accent": "#B79359", "tagline": "#B79359" },
-      "white":     { "label": "Branca",                "bg": "#203D5F", "symbol-main": "#FCFCFC", "symbol-accent": "#FCFCFC", "wordmark": "#FCFCFC", "wordmark-accent": "#FCFCFC", "tagline": "#FCFCFC" },
-      "gold":      { "label": "Cor única · dourado",   "bg": "#0D1828", "symbol-main": "#B79359", "symbol-accent": "#B79359", "wordmark": "#B79359", "wordmark-accent": "#B79359", "tagline": "#B79359" },
-      "blue":      { "label": "Cor única · azul",      "bg": "#E3D8C8", "symbol-main": "#172E4D", "symbol-accent": "#172E4D", "wordmark": "#172E4D", "wordmark-accent": "#172E4D", "tagline": "#172E4D" },
-      "onAccent":  { "label": "Azul sobre dourado",    "bg": "#B79359", "symbol-main": "#172E4D", "symbol-accent": "#172E4D", "wordmark": "#172E4D", "wordmark-accent": "#172E4D", "tagline": "#172E4D" },
-      "mono":      { "label": "Preta",                 "bg": "#FFFFFF", "symbol-main": "#000000", "symbol-accent": "#000000", "wordmark": "#000000", "wordmark-accent": "#000000", "tagline": "#000000" }
+      "positive": {
+        "label": "Colorida",
+        "bg": "#FCFCFC",
+        "symbol-main": "#203D5F",
+        "symbol-accent": "#B79359",
+        "wordmark": "#172E4D",
+        "wordmark-accent": "#B79359",
+        "tagline": "#B79359"
+      },
+      "negative": {
+        "label": "Colorida sobre noturno",
+        "bg": "#0D1828",
+        "symbol-main": "#FCFCFC",
+        "symbol-accent": "#B79359",
+        "wordmark": "#FCFCFC",
+        "wordmark-accent": "#B79359",
+        "tagline": "#B79359"
+      },
+      "onPrimary": {
+        "label": "Sobre azul oceano",
+        "bg": "#172E4D",
+        "symbol-main": "#FCFCFC",
+        "symbol-accent": "#B79359",
+        "wordmark": "#FCFCFC",
+        "wordmark-accent": "#B79359",
+        "tagline": "#B79359"
+      },
+      "white": {
+        "label": "Branca",
+        "bg": "#203D5F",
+        "symbol-main": "#FCFCFC",
+        "symbol-accent": "#FCFCFC",
+        "wordmark": "#FCFCFC",
+        "wordmark-accent": "#FCFCFC",
+        "tagline": "#FCFCFC"
+      },
+      "gold": {
+        "label": "Cor única · dourado",
+        "bg": "#0D1828",
+        "symbol-main": "#B79359",
+        "symbol-accent": "#B79359",
+        "wordmark": "#B79359",
+        "wordmark-accent": "#B79359",
+        "tagline": "#B79359"
+      },
+      "blue": {
+        "label": "Cor única · azul",
+        "bg": "#E3D8C8",
+        "symbol-main": "#172E4D",
+        "symbol-accent": "#172E4D",
+        "wordmark": "#172E4D",
+        "wordmark-accent": "#172E4D",
+        "tagline": "#172E4D"
+      },
+      "onAccent": {
+        "label": "Azul sobre dourado",
+        "bg": "#B79359",
+        "symbol-main": "#172E4D",
+        "symbol-accent": "#172E4D",
+        "wordmark": "#172E4D",
+        "wordmark-accent": "#172E4D",
+        "tagline": "#172E4D"
+      },
+      "mono": {
+        "label": "Preta",
+        "bg": "#FFFFFF",
+        "symbol-main": "#000000",
+        "symbol-accent": "#000000",
+        "wordmark": "#000000",
+        "wordmark-accent": "#000000",
+        "tagline": "#000000"
+      }
     }
   },
-
   "intro": {
     "kicker": "Identidade visual · 2026",
     "subtitle": "Marca e papelaria de um instituto de dor, ortopedia e regeneração em Fortaleza (CE): a figura do paciente, a coluna em pontos e o círculo aberto do cuidado.",
@@ -71,34 +145,9 @@
     "image": "hero-atmosfera",
     "variant": "negative"
   },
-
-  "process": {
-    "nav": "Processo",
-    "eyebrow": "01 — Processo",
-    "title": "Três caminhos, uma escolha.",
-    "text": "Apresentei três caminhos para o Instituto, todos com a mesma paleta de azul oceano, dourado e bege areia, cada um com um conceito próprio. O escolhido foi o segundo: a figura do paciente, com a coluna em pontos, dentro de um círculo que não se fecha.",
-    "hint": "Deslize para ver os caminhos",
-    "routes": [
-      { "image": "caminho-1", "label": "Caminho 01", "title": "A coluna em movimento",
-        "text": "Vértebras douradas sobre uma curva azul: sair da dor para o movimento, da limitação para a liberdade.",
-        "colors": ["#172E4D", "#B79359", "#FCFCFC"] },
-      { "image": "caminho-2", "label": "Caminho 02", "title": "A figura e a coluna em pontos",
-        "text": "O paciente no centro, a coluna como recuperação gradual e um círculo incompleto: o cuidado que continua.",
-        "colors": ["#172E4D", "#B79359", "#E3D8C8"], "kept": "a marca inteira" },
-      { "image": "caminho-3", "label": "Caminho 03", "title": "A coluna dentro do círculo",
-        "text": "Vértebras arredondadas num círculo fechado: a visão de 360° do paciente, a proteção e o ciclo de recuperação.",
-        "colors": ["#172E4D", "#B79359", "#E3D8C8"] }
-    ],
-    "result": {
-      "label": "Escolhida",
-      "title": "O segundo caminho, do jeito que foi apresentado.",
-      "text": "A marca aprovada é o caminho 02: a figura em azul, a coluna e o círculo em dourado, o logotipo em serifa clássica com o & dourado e o descritor Dor • Ortopedia • Regeneração. Depois vieram o pacote de arquivos, com guia de uso, e a papelaria."
-    }
-  },
-
   "symbol": {
     "nav": "Símbolo",
-    "eyebrow": "02 — Símbolo",
+    "eyebrow": "01 — Símbolo",
     "title": "O paciente no centro do cuidado.",
     "text": [
       "A figura central é o paciente na sua jornada de transformação: sair da dor para uma vida com mais mobilidade e qualidade. A coluna em pontos é a estrutura física e também o processo gradual de recuperação, que respeita o tempo e a individualidade de cada pessoa.",
@@ -106,181 +155,753 @@
       "São quinze pontos, que crescem até o meio da coluna e voltam a diminuir. E a figura, com a cabeça sobre a curva, também se lê como o i de Instituto."
     ],
     "pieces": [
-      { "piece": "circulo", "label": "Círculo aberto", "text": "o cuidado que continua", "shift": -26, "y": 11 },
-      { "piece": "figura", "label": "Figura", "text": "o paciente, no centro", "shift": 0, "y": 36 },
-      { "piece": "coluna", "label": "Coluna", "text": "a recuperação, ponto a ponto", "shift": 26, "y": 62 }
+      {
+        "piece": "circulo",
+        "label": "Círculo aberto",
+        "text": "o cuidado que continua",
+        "shift": -26,
+        "y": 11
+      },
+      {
+        "piece": "figura",
+        "label": "Figura",
+        "text": "o paciente, no centro",
+        "shift": 0,
+        "y": 36
+      },
+      {
+        "piece": "coluna",
+        "label": "Coluna",
+        "text": "a recuperação, ponto a ponto",
+        "shift": 26,
+        "y": 62
+      }
     ],
-    "grid": { "x": [141.7, 334.2, 503.2], "y": [0, 55.23, 364.1] },
-    "image": "textura-linho"
+    "grid": {
+      "x": [
+        141.7,
+        334.2,
+        503.2
+      ],
+      "y": [
+        0,
+        55.23,
+        364.1
+      ]
+    }
   },
-
   "typography": {
     "nav": "Tipografia",
-    "eyebrow": "03 — Tipografia",
+    "eyebrow": "02 — Tipografia",
     "title": "Cormorant Garamond",
-    "glyphs": ["D", "&", "S", "Ú", "R", "g"],
-    "weights": [300, 400, 500, 600, 700],
+    "glyphs": [
+      "D",
+      "&",
+      "S",
+      "Ú",
+      "R",
+      "g"
+    ],
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
     "text": "O logotipo é uma serifada clássica de alto contraste, em caixa-alta, com um & caligráfico em dourado no meio do nome. A Cormorant Garamond é a fonte gratuita mais próxima desse desenho e assume os títulos. A palavra INSTITUTO, bem espaçada, e o descritor usam uma sem serifa geométrica e fina: a Raleway, que fica com os textos.",
     "spec": [
-      { "k": "Família", "v": "Cormorant Garamond — Christian Thalmann" },
-      { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
-      { "k": "Títulos", "v": "Cormorant Garamond 300–700" },
-      { "k": "Logotipo", "v": "Serifada de alto contraste, caixa-alta e & caligráfico" },
-      { "k": "Apoio", "v": "Raleway — INSTITUTO espaçado e descritor" },
-      { "k": "Textos", "v": "Raleway 300–700 — Matt McInerney, Pablo Impallari e Rodrigo Fuenzalida" },
-      { "k": "Alternativas", "v": "EB Garamond · Cormorant · Montserrat" }
+      {
+        "k": "Família",
+        "v": "Cormorant Garamond — Christian Thalmann"
+      },
+      {
+        "k": "Licença",
+        "v": "SIL Open Font License · Google Fonts"
+      },
+      {
+        "k": "Títulos",
+        "v": "Cormorant Garamond 300–700"
+      },
+      {
+        "k": "Logotipo",
+        "v": "Serifada de alto contraste, caixa-alta e & caligráfico"
+      },
+      {
+        "k": "Apoio",
+        "v": "Raleway — INSTITUTO espaçado e descritor"
+      },
+      {
+        "k": "Textos",
+        "v": "Raleway 300–700 — Matt McInerney, Pablo Impallari e Rodrigo Fuenzalida"
+      },
+      {
+        "k": "Alternativas",
+        "v": "EB Garamond · Cormorant · Montserrat"
+      }
     ],
     "sample": "Instituto Dor & Saúde · Dor, Ortopedia e Regeneração · ABCDEFGHIJKLMNOPQRSTUVWXYZ & 0123456789"
   },
-
   "manifesto": {
     "nav": "Manifesto",
-    "eyebrow": "04 — Manifesto",
+    "eyebrow": "03 — Manifesto",
     "headline": "Ninguém sai da dor de uma vez. A recuperação acontece ponto a ponto, no tempo de cada pessoa, e o Instituto acompanha cada passo até o movimento voltar a ser livre.",
     "attributes": [
-      { "word": "Confiança", "text": "Seriedade, ética e autoridade médica, com calma nos momentos de vulnerabilidade." },
-      { "word": "Acolhimento", "text": "Calor humano ao lado da técnica: o paciente é a figura no centro do símbolo." },
-      { "word": "Excelência", "text": "O dourado do padrão ouro da medicina: cuidado de alto nível e regeneração." },
-      { "word": "Equilíbrio", "text": "A coluna como eixo do corpo e da qualidade de vida." }
+      {
+        "word": "Confiança",
+        "text": "Seriedade, ética e autoridade médica, com calma nos momentos de vulnerabilidade."
+      },
+      {
+        "word": "Acolhimento",
+        "text": "Calor humano ao lado da técnica: o paciente é a figura no centro do símbolo."
+      },
+      {
+        "word": "Excelência",
+        "text": "O dourado do padrão ouro da medicina: cuidado de alto nível e regeneração."
+      },
+      {
+        "word": "Equilíbrio",
+        "text": "A coluna como eixo do corpo e da qualidade de vida."
+      }
     ]
   },
-
   "colors": {
     "nav": "Cores",
-    "eyebrow": "05 — Cores",
+    "eyebrow": "04 — Cores",
     "title": "Azul oceano, dourado e areia.",
     "text": "O azul oceano é a cor da autoridade: apresenta o Instituto como uma instituição séria, ética e tecnicamente impecável, e transmite calma em momentos de vulnerabilidade. O dourado ocre representa o padrão ouro da medicina e traz calor, luz e vitalidade. O bege areia e o off-white criam tranquilidade, clareza e limpeza, essenciais num ambiente de saúde.",
     "note": "Azul oceano, dourado ocre, bege areia e off-white são as cores da apresentação da marca. O azul da figura vem do SVG do símbolo e o azul noturno é proposta para os fundos escuros. CMYK aproximado em todas: confirme no perfil da gráfica.",
     "swatches": [
-      { "name": "Azul Oceano", "role": "Principal · logotipo e fundos institucionais", "hex": "#172E4D", "weight": 2.6 },
-      { "name": "Dourado Ocre", "role": "Destaque · coluna, círculo e &", "hex": "#B79359", "weight": 2 },
-      { "name": "Azul Figura", "role": "Secundária · figura do símbolo", "hex": "#203D5F", "weight": 1.2 },
-      { "name": "Azul Noturno", "role": "Fundo escuro (proposta)", "hex": "#0D1828", "weight": 1.6 },
-      { "name": "Bege Areia", "role": "Apoio · superfícies e papelaria", "hex": "#E3D8C8", "weight": 1.4 },
-      { "name": "Off-White", "role": "Fundo claro · respiro", "hex": "#FCFCFC", "weight": 1.6 }
+      {
+        "name": "Azul Oceano",
+        "role": "Principal · logotipo e fundos institucionais",
+        "hex": "#172E4D",
+        "weight": 2.6
+      },
+      {
+        "name": "Dourado Ocre",
+        "role": "Destaque · coluna, círculo e &",
+        "hex": "#B79359",
+        "weight": 2
+      },
+      {
+        "name": "Azul Figura",
+        "role": "Secundária · figura do símbolo",
+        "hex": "#203D5F",
+        "weight": 1.2
+      },
+      {
+        "name": "Azul Noturno",
+        "role": "Fundo escuro (proposta)",
+        "hex": "#0D1828",
+        "weight": 1.6
+      },
+      {
+        "name": "Bege Areia",
+        "role": "Apoio · superfícies e papelaria",
+        "hex": "#E3D8C8",
+        "weight": 1.4
+      },
+      {
+        "name": "Off-White",
+        "role": "Fundo claro · respiro",
+        "hex": "#FCFCFC",
+        "weight": 1.6
+      }
     ]
   },
-
   "system": {
     "nav": "Sistema",
-    "eyebrow": "06 — Sistema",
+    "eyebrow": "05 — Sistema",
     "title": "Do receituário à recepção, a mesma assinatura.",
     "tiles": [
-      { "kind": "lockup", "art": "untagged", "variant": "positive", "size": "lg", "label": "Versão principal", "note": "Vertical, sem descritor." },
-      { "kind": "symbol", "variant": "onPrimary", "size": "tall", "label": "Símbolo" },
-      { "kind": "sizes", "variant": "positive", "size": "sm", "label": "Tamanhos pequenos", "sizes": [48, 32, 24, 16] },
-      { "kind": "lockup", "variant": "negative", "size": "sm", "label": "Com descritor" },
-      { "kind": "lockup", "art": "horizontal", "variant": "positive", "size": "wide", "label": "Horizontal com descritor" },
-      { "kind": "lockup", "art": "untagged", "variant": "white", "size": "sm", "label": "Branca" },
-      { "kind": "lockup", "art": "untagged", "variant": "gold", "size": "sm", "label": "Cor única · dourado" },
-      { "kind": "clearspace", "variant": "positive", "size": "wide", "label": "Área de proteção", "unit": 71, "note": "Margem mínima igual à altura do D de DOR." },
-      { "kind": "lockup", "art": "untagged", "variant": "blue", "size": "sm", "label": "Cor única · azul" },
-      { "kind": "icon", "variant": "onPrimary", "size": "sm", "label": "Ícone e perfil", "note": "WhatsApp Business e favicon." },
-      { "kind": "symbol", "variant": "onAccent", "size": "sm", "label": "Sobre dourado" },
-      { "kind": "lockup", "art": "untagged", "variant": "mono", "size": "sm", "label": "Preta", "note": "Carimbos e documentos." },
-      { "kind": "minimum", "variant": "positive", "size": "wide", "label": "Redução mínima", "minWidth": 180, "note": "Abaixo de 180 px de largura, use a versão sem descritor ou só o símbolo." }
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão principal",
+        "note": "Vertical, sem descritor."
+      },
+      {
+        "kind": "symbol",
+        "variant": "onPrimary",
+        "size": "tall",
+        "label": "Símbolo"
+      },
+      {
+        "kind": "sizes",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Tamanhos pequenos",
+        "sizes": [
+          48,
+          32,
+          24,
+          16
+        ]
+      },
+      {
+        "kind": "lockup",
+        "variant": "negative",
+        "size": "sm",
+        "label": "Com descritor"
+      },
+      {
+        "kind": "lockup",
+        "art": "horizontal",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Horizontal com descritor"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "white",
+        "size": "sm",
+        "label": "Branca"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "gold",
+        "size": "sm",
+        "label": "Cor única · dourado"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área de proteção",
+        "unit": 71,
+        "note": "Margem mínima igual à altura do D de DOR."
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "blue",
+        "size": "sm",
+        "label": "Cor única · azul"
+      },
+      {
+        "kind": "icon",
+        "variant": "onPrimary",
+        "size": "sm",
+        "label": "Ícone e perfil",
+        "note": "WhatsApp Business e favicon."
+      },
+      {
+        "kind": "symbol",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Sobre dourado"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Preta",
+        "note": "Carimbos e documentos."
+      },
+      {
+        "kind": "minimum",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Redução mínima",
+        "minWidth": 180,
+        "note": "Abaixo de 180 px de largura, use a versão sem descritor ou só o símbolo."
+      }
     ]
   },
-
   "applications": {
     "nav": "Aplicações",
-    "eyebrow": "07 — Aplicações",
+    "eyebrow": "06 — Aplicações",
     "title": "A marca no consultório, no papel e no corpo.",
-    "text": "A papelaria é a que foi entregue ao Instituto: cartão, pasta, bloco e os dois receituários. Em volta dela, um estudo de aplicações com fotografia editorial em preto e branco, recepção, jaleco, garrafa e uma tela de agendamento no celular.",
+    "text": "A papelaria é a que foi entregue ao Instituto: cartão, pasta, bloco e os dois receituários. Em volta dela, um estudo de aplicações: fotografia editorial, recepção, fachada, jaleco, crachá, garrafa, sacola, material de sala de espera e uma tela de agendamento no celular.",
     "marquee": "Instituto Dor & Saúde",
-    "marqueeArts": ["wordmark", "symbol"],
+    "marqueeArts": [
+      "wordmark",
+      "symbol"
+    ],
     "items": [
-      { "kind": "photo", "image": "editorial-coluna", "col": [1, 5], "mobile": 2, "speed": -4 },
-      { "kind": "crop", "art": "wordmark", "viewBox": "222 468 82 76", "variant": "onPrimary", "col": [6, 3], "mobile": 1 },
-      { "kind": "app", "variant": "positive", "col": [9, 4], "mobile": 1, "caption": "Agendamento no celular (estudo)",
+      {
+        "kind": "photo",
+        "image": "editorial-costas",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 2,
+        "speed": -4
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "222 468 82 76",
+        "variant": "onPrimary",
+        "col": [
+          6,
+          3
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "app",
+        "variant": "positive",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Agendamento no celular (estudo)",
         "screen": {
           "alt": "Estudo de aplicativo do Instituto Dor & Saúde com a próxima consulta e o plano de reabilitação",
           "greeting": "Olá! Sua próxima consulta",
           "cards": [
-            { "label": "Consulta de retorno", "title": "Quinta, 14h30", "meta": "Confirmar presença" },
-            { "label": "Orientações", "title": "Exercícios para casa", "meta": "Ver plano" }
+            {
+              "label": "Consulta de retorno",
+              "title": "Quinta, 14h30",
+              "meta": "Confirmar presença"
+            },
+            {
+              "label": "Orientações",
+              "title": "Exercícios para casa",
+              "meta": "Ver plano"
+            }
           ],
-          "progress": { "label": "Plano de reabilitação", "value": 60 }
-        } },
-      { "kind": "mockup", "image": "mockup-recepcao", "col": [1, 8], "mobile": 2, "caption": "Recepção",
-        "overlays": [{ "art": "horizontal", "variant": "negative", "blend": "screen", "inset": 0.1, "pin": [[30, 26], [70, 26], [70, 46], [30, 46]] }] },
-      { "kind": "photo", "image": "editorial-movimento", "col": [9, 4], "mobile": 2, "offset": 8, "speed": 5 },
-      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
-      { "kind": "heading", "caption": "Cinco peças, uma só identidade", "text": "A papelaria institucional entregue: cartão de visita, pasta com bolso e papel timbrado, bloco de notas, receituário médico e receituário de controle especial, todos com o mesmo azul, o mesmo dourado e a mesma aplicação da marca.", "col": [1, 12], "mobile": 2 },
-      { "kind": "piece", "image": "papelaria-cartao", "col": [1, 7], "mobile": 2, "caption": "Cartão de visita · frente e verso" },
-      { "kind": "piece", "image": "papelaria-pasta", "col": [8, 5], "mobile": 2, "offset": 6, "caption": "Pasta com bolso e papel timbrado" },
-      { "kind": "piece", "image": "papelaria-bloco", "col": [1, 4], "mobile": 2, "caption": "Bloco de notas" },
-      { "kind": "piece", "image": "papelaria-receituario", "col": [5, 4], "mobile": 1, "offset": 4, "caption": "Receituário médico" },
-      { "kind": "piece", "image": "papelaria-controle", "col": [9, 4], "mobile": 1, "offset": 2, "caption": "Receituário de controle especial" },
-      { "kind": "mockup", "image": "mockup-jaleco", "col": [1, 5], "mobile": 1, "offset": 4, "caption": "Jaleco bordado",
-        "overlays": [{ "art": "untagged", "variant": "positive", "blend": "multiply", "inset": 0.12, "pin": [[56, 32], [74, 32], [74, 47], [56, 47]] }] },
-      { "kind": "crop", "art": "symbol", "viewBox": "215 90 150 208", "variant": "blue", "col": [6, 3], "mobile": 1 },
-      { "kind": "mockup", "image": "mockup-garrafa", "col": [9, 4], "mobile": 2, "offset": 6, "caption": "Garrafa térmica",
-        "overlays": [{ "art": "symbol", "variant": "negative", "blend": "screen", "inset": 0.2, "pin": [[38, 40], [62, 40], [62, 58], [38, 58]] }] },
-      { "kind": "photo", "image": "editorial-modelo", "col": [1, 5], "mobile": 1, "speed": 3 },
-      { "kind": "pattern", "variant": "negative", "col": [6, 7], "mobile": 2 },
-      { "kind": "mockup", "image": "mockup-placa-porta", "col": [2, 5], "mobile": 1, "caption": "Placa da porta do consultório",
-        "overlays": [{ "art": "untagged", "variant": "negative", "blend": "screen", "inset": 0.14, "pin": [[33, 34], [67, 34], [67, 56], [33, 56]] }] },
-      { "kind": "mockup", "image": "mockup-sacola", "col": [8, 5], "mobile": 1, "offset": 5, "caption": "Sacola do kit de boas-vindas",
-        "overlays": [{ "art": "untagged", "variant": "negative", "blend": "screen", "inset": 0.16, "pin": [[32, 40], [68, 40], [68, 64], [32, 64]] }] },
-      { "kind": "photo", "image": "editorial-maos", "col": [1, 12], "mobile": 2, "speed": 4 }
+          "progress": {
+            "label": "Plano de reabilitação",
+            "value": 60
+          }
+        }
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-recepcao",
+        "col": [
+          1,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Recepção"
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-consulta",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2,
+        "offset": 8,
+        "speed": 5
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "heading",
+        "caption": "Cinco peças, uma só identidade",
+        "text": "A papelaria institucional entregue: cartão de visita, pasta com bolso e papel timbrado, bloco de notas, receituário médico e receituário de controle especial, todos com o mesmo azul, o mesmo dourado e a mesma aplicação da marca.",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "papelaria-cartao",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Cartão de visita · frente e verso"
+      },
+      {
+        "kind": "piece",
+        "image": "papelaria-pasta",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "offset": 6,
+        "caption": "Pasta com bolso e papel timbrado"
+      },
+      {
+        "kind": "piece",
+        "image": "papelaria-bloco",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 2,
+        "caption": "Bloco de notas"
+      },
+      {
+        "kind": "piece",
+        "image": "papelaria-receituario",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "offset": 4,
+        "caption": "Receituário médico"
+      },
+      {
+        "kind": "piece",
+        "image": "papelaria-controle",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 1,
+        "offset": 2,
+        "caption": "Receituário de controle especial"
+      },
+      {
+        "kind": "heading",
+        "caption": "No dia a dia do Instituto",
+        "text": "A marca fora do papel: a fachada, o crachá da equipe, o jaleco, a placa do consultório e os brindes de boas-vindas.",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-fachada",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Fachada"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-cracha",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "offset": 6,
+        "caption": "Crachá da equipe"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-jaleco",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Jaleco bordado"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-placa-porta",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "offset": 4,
+        "caption": "Placa do consultório"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-garrafa",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2,
+        "offset": 2,
+        "caption": "Garrafa térmica"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-folhetos",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Folhetos de orientação ao paciente"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-banner",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "offset": 5,
+        "caption": "Banner de congresso"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-sacola",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Sacola do kit de boas-vindas"
+      },
+      {
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "215 90 150 208",
+        "variant": "blue",
+        "col": [
+          6,
+          3
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-modelo",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-fisioterapia",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "speed": 4
+      },
+      {
+        "kind": "pattern",
+        "variant": "negative",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 2
+      }
     ]
   },
-
   "closing": {
     "phrase": "Sua vida sem dor começa aqui.",
     "credits": [
-      { "k": "Cliente", "v": "Instituto Dor & Saúde" },
-      { "k": "Segmento", "v": "Saúde · dor, ortopedia e regeneração · Fortaleza (CE)" },
-      { "k": "Ano", "v": "2026" },
-      { "k": "Serviços", "v": "3 propostas de marca · símbolo e logotipo · paleta · tipografia · pacote de arquivos com guia de uso · papelaria institucional" },
-      { "k": "Ferramentas", "v": "Illustrator · Photoshop · InDesign" },
-      { "k": "Design", "v": "Thiago Miedes" }
+      {
+        "k": "Cliente",
+        "v": "Instituto Dor & Saúde"
+      },
+      {
+        "k": "Segmento",
+        "v": "Saúde · dor, ortopedia e regeneração · Fortaleza (CE)"
+      },
+      {
+        "k": "Ano",
+        "v": "2026"
+      },
+      {
+        "k": "Serviços",
+        "v": "3 propostas de marca · símbolo e logotipo · paleta · tipografia · pacote de arquivos com guia de uso · papelaria institucional"
+      },
+      {
+        "k": "Ferramentas",
+        "v": "Illustrator · Photoshop · InDesign"
+      },
+      {
+        "k": "Design",
+        "v": "Thiago Miedes"
+      }
     ],
-    "cta": { "text": "Tem uma marca que precisa de cuidado?", "label": "Vamos conversar", "href": "/#contato" },
+    "cta": {
+      "text": "Tem uma marca que precisa de cuidado?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    },
     "image": "editorial-caminhada"
   },
-
   "images": [
-    { "id": "caminho-1", "section": "process", "w": 1600, "h": 900, "essential": true,
-      "alt": "Caminho 1 da apresentação: vértebras douradas sobre uma curva azul, acima do logotipo Instituto Dor & Saúde" },
-    { "id": "caminho-2", "section": "process", "w": 1600, "h": 900, "essential": true,
-      "alt": "Caminho 2 da apresentação: a figura azul com a coluna em pontos dourados dentro de um círculo aberto, acima do logotipo" },
-    { "id": "caminho-3", "section": "process", "w": 1600, "h": 900, "essential": true,
-      "alt": "Caminho 3 da apresentação: vértebras arredondadas dentro de um círculo azul, sobre o nome Instituto Dor & Saúde" },
-    { "id": "papelaria-cartao", "section": "applications", "w": 1920, "h": 1280, "essential": true,
-      "alt": "Cartões de visita do Instituto Dor & Saúde, frente azul com o logo e verso claro com contato e QR Code, sobre madeira" },
-    { "id": "papelaria-pasta", "section": "applications", "w": 1920, "h": 1280, "essential": true,
-      "alt": "Pasta azul com bolso, aberta ao lado de uma fechada, com o papel timbrado do Instituto Dor & Saúde dentro" },
-    { "id": "papelaria-bloco", "section": "applications", "w": 1920, "h": 1280, "essential": true,
-      "alt": "Bloco de notas com capa azul e padrão dourado, ao lado do miolo aberto e de um lápis azul" },
-    { "id": "papelaria-receituario", "section": "applications", "w": 2000, "h": 1600, "essential": true,
-      "alt": "Receituário médico do Instituto Dor & Saúde com a marca no topo, QR Code e filete dourado no rodapé, ao lado de uma caneta" },
-    { "id": "papelaria-controle", "section": "applications", "w": 1920, "h": 1440, "essential": true,
-      "alt": "Receituário de controle especial com cabeçalho azul e dourado e os campos do emitente, do comprador e do fornecedor" },
-    { "id": "hero-atmosfera", "section": "intro", "w": 2400, "h": 1350, "essential": true,
-      "alt": "Costas de uma pessoa na penumbra azul, com a linha da coluna marcada por uma luz dourada lateral" },
-    { "id": "editorial-coluna", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Mãos de um profissional de saúde percorrendo a coluna de um paciente deitado, em preto e branco" },
-    { "id": "editorial-movimento", "mono": true, "section": "applications", "w": 2000, "h": 1333, "essential": true,
-      "alt": "Mulher de costas espreguiçando os braços acima da cabeça numa sala clara, em preto e branco" },
-    { "id": "mockup-recepcao", "section": "applications", "w": 2400, "h": 1600, "essential": true,
-      "alt": "Recepção de clínica com parede azul oceano, balcão de pedra clara e o logo do Instituto Dor & Saúde na parede" },
-    { "id": "mockup-jaleco", "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Peito de um jaleco branco com o logo do Instituto Dor & Saúde bordado acima do bolso" },
-    { "id": "mockup-garrafa", "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Garrafa térmica azul fosca com o símbolo do Instituto Dor & Saúde, sobre uma bancada de pedra clara" },
-    { "id": "editorial-modelo", "mono": true, "section": "applications", "w": 1600, "h": 2000, "essential": true,
-      "alt": "Modelo anatômico de coluna vertebral sobre uma mesa de consultório, em preto e branco" },
-    { "id": "textura-linho", "section": "symbol", "w": 2400, "h": 1600, "essential": false,
-      "alt": "Tecido de linho azul profundo com uma faixa de luz dourada atravessando a trama" },
-    { "id": "mockup-placa-porta", "section": "applications", "w": 1600, "h": 2000, "essential": false,
-      "alt": "Placa azul na porta de um consultório com o logo do Instituto Dor & Saúde" },
-    { "id": "mockup-sacola", "section": "applications", "w": 1600, "h": 2000, "essential": false,
-      "alt": "Sacola de papel azul oceano do kit de boas-vindas, com o logo do Instituto Dor & Saúde, sobre uma bancada clara" },
-    { "id": "editorial-maos", "mono": true, "section": "applications", "w": 2400, "h": 1200, "essential": false,
-      "alt": "Mão de uma paciente apoiada na mão de uma profissional de saúde, em preto e branco" },
-    { "id": "editorial-caminhada", "mono": true, "section": "closing", "w": 2400, "h": 1350, "essential": false,
-      "alt": "Pessoa caminhando descalça na beira do mar ao amanhecer, vista de longe, em preto e branco" }
+    {
+      "id": "papelaria-cartao",
+      "section": "applications",
+      "w": 1920,
+      "h": 1280,
+      "essential": true,
+      "alt": "Cartões de visita do Instituto Dor & Saúde, frente azul com o logo e verso claro com contato e QR Code, sobre madeira"
+    },
+    {
+      "id": "papelaria-pasta",
+      "section": "applications",
+      "w": 1920,
+      "h": 1280,
+      "essential": true,
+      "alt": "Pasta azul com bolso, aberta ao lado de uma fechada, com o papel timbrado do Instituto Dor & Saúde dentro"
+    },
+    {
+      "id": "papelaria-bloco",
+      "section": "applications",
+      "w": 1920,
+      "h": 1280,
+      "essential": true,
+      "alt": "Bloco de notas com capa azul e padrão dourado, ao lado do miolo aberto e de um lápis azul"
+    },
+    {
+      "id": "papelaria-receituario",
+      "section": "applications",
+      "w": 2000,
+      "h": 1600,
+      "essential": true,
+      "alt": "Receituário médico do Instituto Dor & Saúde com a marca no topo, QR Code e filete dourado no rodapé, ao lado de uma caneta"
+    },
+    {
+      "id": "papelaria-controle",
+      "section": "applications",
+      "w": 1920,
+      "h": 1440,
+      "essential": true,
+      "alt": "Receituário de controle especial com cabeçalho azul e dourado e os campos do emitente, do comprador e do fornecedor"
+    },
+    {
+      "id": "hero-atmosfera",
+      "section": "intro",
+      "w": 2400,
+      "h": 1350,
+      "essential": true,
+      "alt": "Mar azul-noturno ao entardecer, com uma trilha de luz dourada sobre a água"
+    },
+    {
+      "id": "editorial-costas",
+      "mono": true,
+      "section": "applications",
+      "w": 1500,
+      "h": 2000,
+      "essential": true,
+      "alt": "Mulher de costas sentada num banco de madeira numa sala de fisioterapia, com uma toalha branca ao lado, em preto e branco"
+    },
+    {
+      "id": "editorial-consulta",
+      "section": "applications",
+      "w": 2000,
+      "h": 1500,
+      "essential": true,
+      "alt": "Médico escrevendo numa prancheta durante a consulta, de frente para um paciente, numa sala com luz de janela"
+    },
+    {
+      "id": "editorial-modelo",
+      "mono": true,
+      "section": "applications",
+      "w": 1500,
+      "h": 2000,
+      "essential": true,
+      "alt": "Médico mostrando um modelo anatômico da coluna vertebral a um paciente, em preto e branco"
+    },
+    {
+      "id": "editorial-fisioterapia",
+      "section": "applications",
+      "w": 2000,
+      "h": 1500,
+      "essential": true,
+      "alt": "Fisioterapeuta apoiando as mãos nas costas de um paciente deitado numa maca, com toalha azul ao lado"
+    },
+    {
+      "id": "editorial-caminhada",
+      "mono": true,
+      "section": "closing",
+      "w": 2000,
+      "h": 1500,
+      "essential": true,
+      "alt": "Pessoa caminhando descalça na beira do mar ao amanhecer, vista de longe, em preto e branco"
+    },
+    {
+      "id": "mockup-recepcao",
+      "section": "applications",
+      "w": 2000,
+      "h": 1500,
+      "essential": true,
+      "alt": "Recepção da clínica com parede azul oceano, o símbolo e o logo do Instituto Dor & Saúde e balcão de pedra clara"
+    },
+    {
+      "id": "mockup-fachada",
+      "section": "applications",
+      "w": 2000,
+      "h": 1500,
+      "essential": true,
+      "alt": "Fachada do Instituto Dor & Saúde, com letreiro azul com o logo sobre a entrada de porta de madeira"
+    },
+    {
+      "id": "mockup-cracha",
+      "section": "applications",
+      "w": 1500,
+      "h": 2000,
+      "essential": true,
+      "alt": "Crachá da equipe do Instituto Dor & Saúde em cordão azul, com foto e nome de uma fisioterapeuta"
+    },
+    {
+      "id": "mockup-jaleco",
+      "section": "applications",
+      "w": 1500,
+      "h": 2000,
+      "essential": true,
+      "alt": "Médica de jaleco branco com o logo do Instituto Dor & Saúde e o nome bordados acima do bolso"
+    },
+    {
+      "id": "mockup-placa-porta",
+      "section": "applications",
+      "w": 1500,
+      "h": 2000,
+      "essential": true,
+      "alt": "Placa branca na parede do Consultório 02, com o símbolo do Instituto Dor & Saúde e o nome da médica"
+    },
+    {
+      "id": "mockup-garrafa",
+      "section": "applications",
+      "w": 1500,
+      "h": 2000,
+      "essential": true,
+      "alt": "Garrafa térmica azul fosca com o logo do Instituto Dor & Saúde, sobre uma bancada de pedra clara"
+    },
+    {
+      "id": "mockup-folhetos",
+      "section": "applications",
+      "w": 2000,
+      "h": 1500,
+      "essential": true,
+      "alt": "Dois folhetos do Instituto Dor & Saúde, um azul com “Exercícios para casa” e outro branco com contatos, ao lado de uma caneta dourada"
+    },
+    {
+      "id": "mockup-banner",
+      "section": "applications",
+      "w": 1500,
+      "h": 2000,
+      "essential": true,
+      "alt": "Banner de congresso azul com o logo e a frase “Sua vida sem dor começa aqui.” numa sala de eventos"
+    },
+    {
+      "id": "mockup-sacola",
+      "section": "applications",
+      "w": 1500,
+      "h": 2000,
+      "essential": true,
+      "alt": "Sacola de algodão cru pendurada num gancho, com o logo do Instituto Dor & Saúde e a coluna em pontos dourados"
+    }
   ]
 }
