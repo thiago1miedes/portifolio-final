@@ -5,7 +5,7 @@
 // - `cover` (opcional): id da imagem de capa da página, quando não é a mesma da listagem (thumb.from).
 // kinds: page (página inteira de site, 1440px) · mobile (print de celular) ·
 //        slide (16:9, 1600px) · image (até 1600px) · photo (foto de produto, até 2000px) ·
-//        label (rótulo planificado, 2600px) · post (até 1080px) ·
+//        label (rótulo planificado, 2600px) · book (página de e-book, 1800px de altura) · post (até 1080px) ·
 //        story / feed / banner (tamanho original) · svg (copiado) · video (mp4 copiado + pôster)
 export const SRC = "F:/Freelancer";
 
@@ -456,9 +456,5 @@ export const cases = {
       { id: "conteudo", src: `${W}/TodaTeen/Slide 16_9 - 28-exported-by-super-pdf.pdf`, kind: "slide", pages: [2, 8, 10] },
       { id: "responde", src: `${W}/TodaTeen/Slide 16_9 - 39-exported-by-super-pdf.pdf`, kind: "slide", pages: [6, 8, 10] },
     ],
-  },
-  mgk: {
-    thumb: { from: "ebook-01" },
-    items: [{ id: "ebook", src: "MGK/Ebook_MGK_CodigoDeEtica_v4(jan23).pdf", kind: "slide", pages: [1, 2, 3, 5, 7, 9, 13, 17, 21, 25] }],
   },
 };

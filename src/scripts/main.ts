@@ -518,6 +518,313 @@ $$("[data-listing]").forEach((root) => {
   });
 });
 
+/* ------------------------------------------------------------------ e-book em formato de livro (data-book) */
+// As páginas giram em torno da lombada. No modo duplo (computador), a folha j junta a página 2j (frente, à direita)
+// e a 2j + 1 (verso, que aparece à esquerda depois de virada); no modo simples (celular), cada página é uma folha.
+// O ângulo de cada folha (0 = deitada à direita, -180 = virada) é o único estado visual: transformação, luz,
+// empilhamento e o deslocamento do livro fechado saem dele. `pos` é a posição lógica: folhas viradas no modo
+// duplo, página aberta no simples. Arrastar, tocar, setas, controle deslizante e sumário só mudam `pos`.
+$$("[data-book]").forEach((bk) => {
+  const stage = $("[data-book-stage]", bk)!;
+  const bookEl = $("[data-book-book]", bk)!;
+  const pages = $$("[data-book-page]", bk);
+  const imgs = pages.map((p) => $<HTMLImageElement>("img", p)!);
+  const shades = pages.map((p) => $(".bk-shade", p)!);
+  const baseL = $('[data-book-base="l"]', bk)!;
+  const baseR = $('[data-book-base="r"]', bk)!;
+  const count = $("[data-book-count]", bk)!;
+  const chapter = $("[data-book-chapter]", bk)!;
+  const range = $<HTMLInputElement>("[data-book-range]", bk)!;
+  const prevs = $$<HTMLButtonElement>("[data-book-prev]", bk);
+  const nexts = $$<HTMLButtonElement>("[data-book-next]", bk);
+  const tocToggle = $<HTMLButtonElement>("[data-book-toc-toggle]", bk)!;
+  const toc = $("[data-book-toc]", bk)!;
+  const tocItems = $$<HTMLButtonElement>("[data-book-go]", toc);
+  const full = $<HTMLButtonElement>("[data-book-full]", bk)!;
+  const N = pages.length;
+  const mq = window.matchMedia("(max-width: 759px)");
+
+  type Leaf = { a: number; to: number; tween?: gsap.core.Tween };
+  let single = mq.matches;
+  let leaves: Leaf[] = [];
+  let pos = 0;
+  let persp = 2000;
+  let spine = 0.25; // posição da lombada no palco (0 a 1); com o livro fechado na capa, fica a um quarto
+  let peek = -1;
+
+  const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
+  const maxPos = () => (single ? N - 1 : Math.floor(N / 2));
+  const pagesOf = (j: number) => (single ? [j] : [2 * j, 2 * j + 1].filter((i) => i < N));
+  // páginas à vista (no modo duplo: o verso da folha anterior e a frente da atual)
+  const shown = () => (single ? [pos] : [2 * pos - 1, 2 * pos].filter((i) => i >= 0 && i < N));
+  const rest = (j: number) => (j < pos ? -180 : 0);
+
+  const paint = (j: number) => {
+    const a = leaves[j].a;
+    // à direita, as primeiras folhas ficam por cima; à esquerda, as últimas viradas
+    const z = single ? N - j : a > -90 ? 2 * N - j : N + j;
+    const light = (Math.abs(Math.sin((a * Math.PI) / 180)) * 0.55).toFixed(3);
+    for (const i of pagesOf(j)) {
+      const back = !single && i % 2 === 1;
+      // no modo simples a perspectiva fica centrada na página; no duplo, na lombada (a origem da página)
+      pages[i].style.transform = single
+        ? `translateX(50%) perspective(${persp}px) translateX(-50%) rotateY(${a}deg)`
+        : `perspective(${persp}px) rotateY(${a}deg)${back ? " translateX(100%) rotateY(180deg)" : ""}`;
+      pages[i].style.zIndex = String(z);
+      shades[i].style.opacity = light;
+    }
+  };
+
+  // deslocamento do livro fechado (capa ou última página sozinha ficam no centro) e espessura do miolo
+  const frame = () => {
+    const turned = leaves.filter((l) => l.a <= -90).length;
+    const open = leaves.length - turned;
+    if (!single) {
+      const first = -leaves[0].a / 180;
+      const last = N % 2 === 0 ? -leaves[leaves.length - 1].a / 180 : 0;
+      const shift = -25 * (1 - first) + 25 * last;
+      spine = 0.5 + shift / 100;
+      bookEl.style.transform = `translateX(${shift.toFixed(3)}%)`;
+      baseL.style.opacity = turned ? "1" : "0";
+      baseL.style.setProperty("--thick", `${((turned / leaves.length) * 6).toFixed(2)}px`);
+    } else {
+      bookEl.style.transform = "";
+    }
+    baseR.style.opacity = open ? "1" : "0";
+    baseR.style.setProperty("--thick", `${((open / leaves.length) * 6).toFixed(2)}px`);
+  };
+
+  // só as folhas perto da página aberta (ou em movimento) ficam visíveis
+  const setShown = (j: number, on: boolean) => pagesOf(j).forEach((i) => (pages[i].style.visibility = on ? "" : "hidden"));
+  const cull = () => leaves.forEach((l, j) => setShown(j, !!l.tween || Math.abs(j - pos) <= 2));
+
+  const load = (from: number, to: number) => {
+    for (let i = Math.max(0, from); i <= Math.min(N - 1, to); i++) {
+      const src = imgs[i].dataset.src;
+      if (src && !imgs[i].getAttribute("src")) imgs[i].src = src;
+    }
+  };
+  const preload = () => {
+    const first = shown()[0];
+    load(first - 3, first + 6);
+  };
+
+  const turn = (j: number, to: number, duration = 0.9, delay = 0, ease = "power2.inOut") => {
+    const leaf = leaves[j];
+    leaf.tween?.kill();
+    leaf.tween = undefined;
+    leaf.to = to;
+    if (reduce || duration === 0) { leaf.a = to; paint(j); frame(); cull(); return; }
+    setShown(j, true);
+    leaf.tween = gsap.to(leaf, {
+      a: to, duration, delay, ease,
+      onUpdate: () => { paint(j); frame(); },
+      onComplete: () => { leaf.tween = undefined; if (!leaves.some((l) => l.tween)) cull(); },
+    });
+  };
+
+  const sync = () => {
+    const v = shown();
+    // o capítulo é o da página da direita (onde um capítulo novo costuma abrir)
+    const ch = pages[v[v.length - 1]].dataset.chapter ?? "";
+    count.textContent = `${v.map((i) => i + 1).join("–")} / ${N}`;
+    chapter.textContent = ch;
+    range.max = String(maxPos());
+    range.value = String(pos);
+    range.style.setProperty("--fill", `${(pos / maxPos()) * 100}%`);
+    prevs.forEach((b) => (b.disabled = pos === 0));
+    nexts.forEach((b) => (b.disabled = pos === maxPos()));
+    tocItems.forEach((t) => t.classList.toggle("is-active", pages[Number(t.dataset.bookGo)].dataset.chapter === ch));
+  };
+
+  // leva as folhas até `target`: indo para frente, viram da primeira para a última; voltando, ao contrário
+  // (saltos longos folheiam o livro com um pequeno intervalo entre as folhas)
+  const goTo = (target: number) => {
+    const from = pos;
+    pos = clamp(Math.round(target), 0, maxPos());
+    peek = -1;
+    const list = leaves.map((_, j) => j).filter((j) => leaves[j].to !== rest(j));
+    if (pos < from) list.reverse();
+    const many = list.length > 1;
+    if (list.length <= 6) list.forEach((j) => pagesOf(j).forEach((i) => load(i, i)));
+    list.forEach((j, k) => turn(j, rest(j), many ? 0.75 : 0.9, k * (many ? Math.min(0.1, 0.9 / list.length) : 0)));
+    preload();
+    sync();
+  };
+  const goToPage = (i: number) => goTo(single ? i : Math.ceil(i / 2));
+
+  const measure = () => {
+    const w = stage.clientWidth;
+    persp = Math.round((single ? w : w / 2) * 5);
+  };
+  const build = () => {
+    leaves.forEach((l) => l.tween?.kill());
+    leaves = Array.from({ length: single ? N : Math.ceil(N / 2) }, (_, j) => ({ a: rest(j), to: rest(j) }));
+    bk.classList.toggle("is-single", single);
+    measure();
+    leaves.forEach((_, j) => paint(j));
+    frame();
+    cull();
+    preload();
+    sync();
+  };
+
+  // celular <-> computador: continua na mesma página
+  mq.addEventListener("change", () => {
+    const first = shown()[0];
+    single = mq.matches;
+    pos = single ? first : Math.ceil(first / 2);
+    build();
+  });
+  new ResizeObserver(() => { measure(); leaves.forEach((_, j) => paint(j)); }).observe(stage);
+
+  /* arrastar a página (mouse ou dedo); um toque sem arraste vira para o lado tocado */
+  let drag: { id: number; x0: number; right: boolean; on: boolean; j: number; dir: 1 | -1; from: number; w: number; vx: number; lx: number; lt: number } | null = null;
+  stage.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0) return;
+    // um arraste que perdeu o "soltar" (ex.: outro dedo) volta para o lugar antes de começar o novo
+    if (drag) release(new PointerEvent("pointercancel", { pointerId: drag.id }), true);
+    const r = stage.getBoundingClientRect();
+    drag = {
+      id: e.pointerId, x0: e.clientX, right: (e.clientX - r.left) / r.width > spine, on: false, j: -1, dir: 1, from: 0,
+      w: single ? r.width : r.width / 2, vx: 0, lx: e.clientX, lt: e.timeStamp,
+    };
+  });
+  stage.addEventListener("pointermove", (e) => {
+    if (!drag || e.pointerId !== drag.id) return hover(e);
+    const dx = e.clientX - drag.x0;
+    if (!drag.on) {
+      if (Math.abs(dx) < 8) return;
+      const dir = dx < 0 ? 1 : -1; // para a esquerda, avança
+      const j = dir === 1 ? pos : pos - 1;
+      // no modo duplo, avança quem pega a página da direita e volta quem pega a da esquerda
+      if ((!single && (dir === 1) !== drag.right) || (dir === 1 ? pos >= maxPos() : pos <= 0)) { drag = null; return; }
+      drag.on = true; drag.dir = dir; drag.j = j;
+      leaves[j].tween?.kill();
+      leaves[j].tween = undefined;
+      drag.from = leaves[j].a;
+      peek = -1;
+      setShown(j, true);
+      pagesOf(j).forEach((i) => load(i - 1, i + 1));
+      try { stage.setPointerCapture(e.pointerId); } catch {}
+    }
+    const p = clamp((drag.dir === 1 ? -dx : dx) / (drag.w * (single ? 1 : 1.3)), 0, 1);
+    const leaf = leaves[drag.j];
+    leaf.a = drag.from + ((drag.dir === 1 ? -180 : 0) - drag.from) * p;
+    leaf.to = leaf.a;
+    paint(drag.j);
+    frame();
+    const dt = e.timeStamp - drag.lt;
+    if (dt > 0) drag.vx = (e.clientX - drag.lx) / dt;
+    drag.lx = e.clientX; drag.lt = e.timeStamp;
+  });
+  const release = (e: PointerEvent, cancel: boolean) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const d = drag;
+    drag = null;
+    if (!d.on) {
+      if (cancel) return;
+      const r = stage.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      goTo(pos + ((single ? x > 1 / 3 : x > spine) ? 1 : -1));
+      return;
+    }
+    const leaf = leaves[d.j];
+    const p = Math.abs(leaf.a - d.from) / Math.max(1, Math.abs((d.dir === 1 ? -180 : 0) - d.from));
+    const flick = d.dir === 1 ? d.vx < -0.4 : d.vx > 0.4;
+    if (!cancel && (p > 0.35 || flick)) pos += d.dir;
+    const to = rest(d.j);
+    turn(d.j, to, 0.2 + 0.6 * (Math.abs(to - leaf.a) / 180), 0, "power2.out");
+    preload();
+    sync();
+  };
+  stage.addEventListener("pointerup", (e) => release(e, false));
+  stage.addEventListener("pointercancel", (e) => release(e, true));
+
+  // com o mouse na borda de fora de uma página, ela levanta um pouco (convite para virar)
+  const unpeek = () => {
+    if (peek < 0) return;
+    const j = peek;
+    peek = -1;
+    if (leaves[j]) turn(j, rest(j), 0.4, 0, "power2.out");
+  };
+  const hover = (e: PointerEvent) => {
+    if (!finePointer || reduce || e.pointerType !== "mouse") return;
+    const r = stage.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    let j = -1, a = 0;
+    if (single) { if (x > 0.86 && pos < maxPos()) { j = pos; a = -10; } }
+    else if (x > spine + 0.43 && x < spine + 0.5 && pos < maxPos()) { j = pos; a = -12; }
+    else if (x < spine - 0.43 && x > spine - 0.5 && pos > 0) { j = pos - 1; a = -168; }
+    if (j === peek) return;
+    unpeek();
+    if (j >= 0 && !leaves[j].tween) { peek = j; turn(j, a, 0.45, 0, "power2.out"); }
+  };
+  stage.addEventListener("pointerleave", unpeek);
+
+  prevs.forEach((b) => b.addEventListener("click", () => goTo(pos - 1)));
+  nexts.forEach((b) => b.addEventListener("click", () => goTo(pos + 1)));
+  range.addEventListener("input", () => goTo(Number(range.value)));
+
+  // setas do teclado enquanto o livro está à vista (ou em tela cheia)
+  let inView = false;
+  new IntersectionObserver(([en]) => (inView = en.intersectionRatio > 0.45), { threshold: [0, 0.45, 1] }).observe(stage);
+  const dialog = $<HTMLDialogElement>("[data-lightbox-dialog]");
+  window.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    if (!(inView || document.fullscreenElement === bk) || dialog?.open) return;
+    const t = e.target instanceof Element ? e.target : null;
+    if (t?.closest("input, textarea, select, [contenteditable]")) return;
+    e.preventDefault();
+    goTo(pos + (e.key === "ArrowRight" ? 1 : -1));
+  });
+
+  // sumário (pop-up da barra)
+  const closeToc = () => { tocToggle.setAttribute("aria-expanded", "false"); toc.classList.add("is-hidden"); };
+  tocToggle.addEventListener("click", () => {
+    const open = tocToggle.getAttribute("aria-expanded") !== "true";
+    tocToggle.setAttribute("aria-expanded", String(open));
+    toc.classList.toggle("is-hidden", !open);
+    if (open && !reduce) gsap.fromTo(toc, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" });
+  });
+  document.addEventListener("click", (e) => {
+    const t = e.target as Node;
+    if (!toc.contains(t) && !tocToggle.contains(t)) closeToc();
+  });
+  toc.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeToc(); tocToggle.focus(); } });
+
+  // capítulos e recortes (no sumário ou fora do leitor) abrem o livro na página; de fora, a página rola até ele
+  $$<HTMLButtonElement>("[data-book-go]").forEach((b) => b.addEventListener("click", () => {
+    const i = Number(b.dataset.bookGo);
+    closeToc();
+    if (bk.contains(b)) return goToPage(i);
+    scrollTo(bk);
+    setTimeout(() => goToPage(i), reduce ? 0 : 900);
+  }));
+
+  // Ampliar abre a página no lightbox; ao fechar, o livro vai para a última página vista lá
+  let seen = -1;
+  $("[data-book-zoom]", bk)!.addEventListener("click", () => $<HTMLButtonElement>(`[data-book-zoom-page="${shown()[0]}"]`, bk)?.click());
+  bk.addEventListener("lightbox:show", (e) => { seen = Number((e.target as HTMLElement).dataset.bookZoomPage); });
+  dialog?.addEventListener("close", () => { if (seen >= 0) { goToPage(seen); seen = -1; } });
+
+  // tela cheia
+  if (!document.fullscreenEnabled) full.classList.add("is-hidden");
+  full.addEventListener("click", () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else bk.requestFullscreen().catch(() => {});
+  });
+  document.addEventListener("fullscreenchange", () => {
+    const on = document.fullscreenElement === bk;
+    full.setAttribute("aria-pressed", String(on));
+    full.setAttribute("aria-label", on ? "Sair da tela cheia" : "Tela cheia");
+    if (on) lenis?.stop();
+    else lenis?.start();
+  });
+
+  build();
+});
+
 // capa dos cases de social: o emblema entra girando e os ladrilhos descem devagar com a rolagem
 const scWall = $("[data-sc-wall]");
 if (scWall && !reduce) {
@@ -552,13 +859,18 @@ if (dialog) {
       video.removeAttribute("src");
       img.src = b.dataset.lightbox!;
       img.width = Number(b.dataset.w); img.height = Number(b.dataset.h);
-      img.alt = b.querySelector("img")?.alt ?? "";
+      img.alt = b.querySelector("img")?.alt ?? b.getAttribute("aria-label") ?? "";
     }
     count.textContent = `${String(cur + 1).padStart(2, "0")} / ${String(shots.length).padStart(2, "0")}`;
     const stage = $(".lb-stage", dialog)!;
     stage.scrollTop = 0;
-    // telas de carrossel cabem inteiras na altura; páginas de site continuam rolando dentro do lightbox
-    stage.classList.toggle("is-fit", b.dataset.lbGroup !== undefined);
+    // telas de carrossel cabem inteiras na altura; páginas de site continuam rolando dentro do lightbox;
+    // páginas de e-book (data-lb-read) ficam na largura de leitura e rolam
+    const read = b.dataset.lbRead !== undefined;
+    stage.classList.toggle("is-fit", b.dataset.lbGroup !== undefined && !read);
+    stage.classList.toggle("is-read", read);
+    // avisa quem abriu (o leitor do e-book volta para a última página vista)
+    b.dispatchEvent(new CustomEvent("lightbox:show", { bubbles: true }));
     if (!reduce) gsap.fromTo(isVideo ? video : img, { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" });
   };
   all.forEach((b) => b.addEventListener("click", () => {

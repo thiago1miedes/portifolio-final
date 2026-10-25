@@ -14,7 +14,7 @@ const INDEX = path.join(ROOT, "src", "data", "assets.json");
 const only = process.argv.slice(2);
 
 sharp.cache(false);
-const BOX = { page: 1440, slide: 1600, image: 1600, photo: 2000, label: 2600, post: 1080, mobile: 780 };
+const BOX = { page: 1440, slide: 1600, image: 1600, photo: 2000, label: 2600, book: 1800, post: 1080, mobile: 780 };
 
 // Resolve caminhos tolerando diferenças de acentuação (NFC/NFD) e maiúsculas.
 function resolve(rel) {

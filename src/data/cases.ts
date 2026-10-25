@@ -34,6 +34,23 @@ export interface CaseData {
   social?: SocialShowcase;
   /** case de produto: embalagens, ensaio de fotos e galerias de marketplace (as imagens vêm dos itens pelo id) */
   product?: ProductShowcase;
+  /** e-book lido como livro: as páginas são os itens de kind "book", na ordem do PDF */
+  book?: BookShowcase;
+}
+
+export interface BookShowcase {
+  /** formato das páginas, ex.: "A4 retrato" */
+  format: string;
+  stats: { n: string; label: string }[];
+  /** capítulos na ordem do livro; page = página do PDF onde o capítulo começa (1 = capa) */
+  chapters: { title: string; page: number }[];
+  /** linguagem do e-book: paleta e recortes de detalhes (x, y e w em fração da página; o recorte é 4:3) */
+  system: {
+    title: string;
+    note: string;
+    palette: { name: string; hex: string }[];
+    details: { page: number; x: number; y: number; w: number; title: string; note: string }[];
+  };
 }
 
 export interface ProductShowcase {
@@ -78,7 +95,7 @@ export interface AssetItem {
   src: string;
   w: number;
   h: number;
-  kind: "page" | "mobile" | "slide" | "image" | "photo" | "label" | "post" | "story" | "feed" | "banner" | "svg" | "video";
+  kind: "page" | "mobile" | "slide" | "image" | "photo" | "label" | "book" | "post" | "story" | "feed" | "banner" | "svg" | "video";
   label?: string;
   group?: string;
   /** mp4 dos itens de vídeo (src é o pôster) */
@@ -877,21 +894,6 @@ const list: CaseData[] = [
     ],
     deliverables: ["Apresentações comerciais", "Media kits", "Cotas de patrocínio"],
     tools: ["Figma", "Photoshop"],
-  },
-  {
-    slug: "mgk",
-    title: "Código de Ética MGK",
-    client: "MGK",
-    sector: "Corporativo",
-    year: "2023",
-    cats: ["deck"],
-    accent: "#8B1E3F",
-    summary: "Diagramação de e-book do código de ética de uma empresa, com ilustrações e hierarquia clara.",
-    about: [
-      "Um documento extenso virou leitura agradável: capa marcante, ícones, ilustrações e uma hierarquia de títulos que facilita encontrar cada tema.",
-    ],
-    deliverables: ["Diagramação editorial", "Capa", "Ícones e ilustrações"],
-    tools: ["Illustrator", "InDesign"],
   },
 ];
 

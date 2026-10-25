@@ -1,0 +1,214 @@
+---
+// Leitor do e-book em formato de livro (c.book): as páginas giram em 3D em torno da lombada.
+// No computador são duas páginas por vez (a capa abre sozinha à direita e a última fecha sozinha à esquerda);
+// no celular, uma página por vez, virando para a esquerda. A lógica fica em main.ts (data-book):
+// aqui ficam o palco, as páginas, a barra de controles e os botões ocultos que levam cada página ao lightbox.
+import Icon from "../Icon.astro";
+import type { Case } from "../../data/cases";
+
+interface Props { c: Case }
+const { c } = Astro.props;
+const b = c.book!;
+const pages = c.items.filter((it) => it.kind === "book");
+const n = pages.length;
+const pad = (k: number) => String(k).padStart(2, "0");
+// capítulo de cada página: o último que começa nela ou antes (antes do primeiro, é a capa)
+const chapterOf = (page: number) => [...b.chapters].reverse().find((ch) => ch.page <= page)?.title ?? "Capa";
+// a capa e a primeira dupla vêm com src; as outras carregam perto da página aberta
+const EAGER = 3;
+// estado inicial (livro fechado na capa) já no HTML, para o primeiro quadro sair certo antes do script:
+// as frentes ficam empilhadas com a capa por cima e os versos virados para trás
+const initial = (i: number) =>
+  i % 2 ? `z-index:${2 * n - (i - 1) / 2};transform:translateX(100%) rotateY(180deg)` : `z-index:${2 * n - i / 2}`;
+---
+<section class="bk container" id="leitor" aria-label={`Leitor do e-book ${c.title}`} data-book>
+  <div class="bk-desk" data-reveal>
+    <button type="button" class="bk-nav bk-nav--prev" data-book-prev aria-label="Página anterior" disabled><Icon name="chevron-left" size={22} /></button>
+    <div class="bk-stage" tabindex="0" aria-roledescription="livro" aria-label={`${c.title}: use as setas para virar as páginas`} data-book-stage>
+      <div class="bk-book" data-book-book>
+        <span class="bk-base bk-base--l" data-book-base="l"></span>
+        <span class="bk-base bk-base--r" data-book-base="r"></span>
+        {pages.map((p, i) => (
+          <figure class:list={["bk-page", i % 2 ? "bk-page--back" : "bk-page--front"]} style={initial(i)} data-book-page={i} data-chapter={chapterOf(i + 1)}>
+            <img
+              {...(i < EAGER ? { src: p.src } : { "data-src": p.src })}
+              width={p.w} height={p.h}
+              alt={`Página ${i + 1} de ${n} — ${chapterOf(i + 1)}`}
+              draggable="false" decoding="async"
+            />
+            <span class="bk-shade" aria-hidden="true"></span>
+          </figure>
+        ))}
+      </div>
+    </div>
+    <button type="button" class="bk-nav bk-nav--next" data-book-next aria-label="Próxima página"><Icon name="chevron-right" size={22} /></button>
+  </div>
+
+  <div class="bk-bar">
+    <div class="bk-where" aria-live="polite">
+      <b data-book-count>{`1 / ${n}`}</b>
+      <span data-book-chapter>Capa</span>
+    </div>
+    <div class="bk-scrub">
+      <button type="button" class="bk-step" data-book-prev aria-label="Página anterior" disabled><Icon name="chevron-left" size={18} /></button>
+      <input type="range" class="bk-range" min="0" max={Math.floor(n / 2)} value="0" step="1" aria-label="Ir para a página" data-book-range />
+      <button type="button" class="bk-step" data-book-next aria-label="Próxima página"><Icon name="chevron-right" size={18} /></button>
+    </div>
+    <div class="bk-tools">
+      <div class="bk-toc">
+        <button type="button" class="bk-tool" aria-expanded="false" aria-controls="bk-toc" data-book-toc-toggle>
+          <Icon name="list" size={18} /><span>Sumário</span>
+        </button>
+        <ol class="bk-toc-panel is-hidden" id="bk-toc" data-lenis-prevent data-book-toc>
+          {b.chapters.map((ch, k) => (
+            <li>
+              <button type="button" class="bk-toc-item" data-book-go={ch.page - 1}>
+                <span class="bk-toc-n">{pad(k + 1)}</span>
+                <span class="bk-toc-t">{ch.title}</span>
+                <span class="bk-toc-p">{`p. ${ch.page}`}</span>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <button type="button" class="bk-tool" data-book-zoom><Icon name="zoom-in" size={18} /><span>Ampliar</span></button>
+      <button type="button" class="bk-tool bk-tool--icon" aria-label="Tela cheia" aria-pressed="false" data-book-full>
+        <Icon name="maximize" size={18} class="bk-full-on" /><Icon name="minimize" size={18} class="bk-full-off" />
+      </button>
+    </div>
+  </div>
+  <p class="bk-hint">
+    <span class="bk-hint--mouse">Clique na página ou arraste o canto para virar. As setas do teclado também funcionam.</span>
+    <span class="bk-hint--touch">Deslize para virar a página. Use Ampliar para ler de perto.</span>
+  </p>
+
+  <div class="is-hidden">
+    {pages.map((p, i) => (
+      <button type="button" tabindex="-1" data-lightbox={p.src} data-w={p.w} data-h={p.h} data-lb-group="ebook" data-lb-read data-book-zoom-page={i} aria-label={`Página ${i + 1} de ${n} do e-book ${c.title}`}></button>
+    ))}
+  </div>
+</section>
+
+<style>
+  .bk { --chrome: 280px; display: grid; gap: 14px; padding-bottom: clamp(24px, 4vw, 48px); }
+
+  /* a mesa: o livro fica sobre um palco escuro com uma luz laranja bem fraca */
+  .bk-desk {
+    position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(8px, 2vw, 28px);
+    padding: clamp(28px, 4vw, 56px) clamp(12px, 2.4vw, 32px);
+    border-radius: var(--radius-lg); border: 1px solid var(--border);
+    background:
+      radial-gradient(55% 60% at 50% 46%, rgba(255, 90, 31, 0.1), transparent 72%),
+      linear-gradient(to top, rgba(255, 255, 255, 0.03), transparent 40%),
+      var(--bg-elev);
+  }
+  .bk-stage {
+    position: relative; width: min(100%, calc((100svh - var(--chrome)) * 1.4133)); aspect-ratio: 1190 / 842; margin-inline: auto;
+    touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; border-radius: 4px;
+  }
+  .bk-stage:active { cursor: grabbing; }
+  .bk-stage:focus-visible { outline-offset: 10px; }
+  .bk-book { position: absolute; inset: 0; transform: translateX(-25%); }
+
+  /* a base é o miolo parado: sombra no chão e a espessura das páginas que faltam (--thick) */
+  .bk-base {
+    position: absolute; top: 0; width: 50%; height: 100%; z-index: 0; background: #fff; opacity: 0;
+    box-shadow: var(--edge, 0px) 0 0 0 #c9c9ce, 0 40px 60px -24px rgba(0, 0, 0, 0.8), 0 12px 24px -12px rgba(0, 0, 0, 0.6);
+  }
+  .bk-base--l { left: 0; --edge: calc(var(--thick, 0px) * -1); border-radius: 3px 0 0 3px; }
+  .bk-base--r { left: 50%; --edge: var(--thick, 0px); border-radius: 0 3px 3px 0; opacity: 1; }
+
+  .bk-page {
+    position: absolute; top: 0; left: 50%; width: 50%; height: 100%; margin: 0; overflow: hidden;
+    background: #fff; transform-origin: 0 50%;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden; will-change: transform;
+  }
+  .bk-page img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .bk-page img:not([src]) { visibility: hidden; }
+  /* a curva perto da lombada: a frente escurece na borda esquerda, o verso na direita */
+  .bk-page::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.05) 3%, transparent 9%); }
+  .bk-page--back::after { background: linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.05) 3%, transparent 9%); }
+  /* luz da página em movimento (a opacidade vem do ângulo) */
+  .bk-shade { position: absolute; inset: 0; opacity: 0; pointer-events: none; background: linear-gradient(to right, rgba(10, 10, 11, 0.7), rgba(10, 10, 11, 0.25)); }
+  .bk-page--back .bk-shade { background: linear-gradient(to left, rgba(10, 10, 11, 0.7), rgba(10, 10, 11, 0.25)); }
+
+  /* uma página por vez: o palco tem a proporção de uma página e corta a que sai pela esquerda */
+  .bk.is-single .bk-stage { aspect-ratio: 595 / 842; width: min(100%, calc((100svh - var(--chrome)) * 0.7067)); overflow: hidden; }
+  .bk.is-single .bk-book { transform: none; }
+  .bk.is-single .bk-page { left: 0; width: 100%; }
+  .bk.is-single .bk-page--back::after { background: linear-gradient(to right, rgba(0, 0, 0, 0.14), transparent 5%); }
+  .bk.is-single .bk-page--back .bk-shade { background: linear-gradient(to right, rgba(10, 10, 11, 0.7), rgba(10, 10, 11, 0.25)); }
+  .bk.is-single .bk-base--l { display: none; }
+  .bk.is-single .bk-base--r { left: 0; width: 100%; }
+
+  .bk-nav {
+    display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+    background: var(--surface-glass-2); border: 1px solid var(--border); color: var(--text);
+    transition: background-color 0.25s, border-color 0.25s, color 0.25s, opacity 0.25s;
+  }
+  .bk-nav:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .bk-nav:disabled { opacity: 0.3; cursor: default; }
+
+  /* barra de controles */
+  .bk-bar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr); align-items: center; gap: 16px 24px; }
+  .bk-where { display: grid; gap: 2px; min-width: 0; }
+  .bk-where b { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .bk-where span { font-size: 0.875rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bk-scrub { display: flex; align-items: center; gap: 10px; }
+  .bk-step { display: none; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--surface-glass-2); border: 1px solid var(--border); }
+  .bk-step:disabled { opacity: 0.3; cursor: default; }
+  .bk-range { flex: 1; min-width: 0; height: 28px; margin: 0; background: transparent; cursor: pointer; -webkit-appearance: none; appearance: none; }
+  .bk-range::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(var(--accent), var(--accent)) 0 / var(--fill, 0%) 100% no-repeat, var(--border-strong); }
+  .bk-range::-moz-range-track { height: 4px; border-radius: 4px; background: var(--border-strong); }
+  .bk-range::-moz-range-progress { height: 4px; border-radius: 4px; background: var(--accent); }
+  .bk-range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7px; border-radius: 50%; background: var(--text); border: 4px solid var(--accent); box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.18); }
+  .bk-range::-moz-range-thumb { width: 10px; height: 10px; border-radius: 50%; background: var(--text); border: 4px solid var(--accent); box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.18); }
+  .bk-tools { display: flex; justify-content: flex-end; gap: 8px; }
+  .bk-tool {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px; border-radius: var(--radius-pill);
+    background: var(--surface-glass); border: 1px solid var(--border); font-weight: 500; font-size: 0.875rem; color: var(--text-muted);
+    transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+  }
+  .bk-tool:hover, .bk-tool[aria-expanded="true"] { border-color: var(--border-strong); color: var(--text); background: var(--surface-glass-2); }
+  .bk-tool--icon { width: 42px; padding: 0; justify-content: center; }
+  .bk-tool[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+  .bk-tool :global(.bk-full-off), .bk-tool[aria-pressed="true"] :global(.bk-full-on) { display: none; }
+  .bk-tool[aria-pressed="true"] :global(.bk-full-off) { display: block; }
+
+  .bk-toc { position: relative; }
+  .bk-toc-panel {
+    position: absolute; right: 0; bottom: calc(100% + 10px); z-index: 120; width: min(340px, 86vw); max-height: min(440px, 60svh); overflow-y: auto;
+    padding: 8px; border-radius: 20px; border: 1px solid var(--border-strong); background: rgba(19, 19, 22, 0.96);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+    scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent;
+  }
+  .bk-toc-item {
+    display: grid; grid-template-columns: 2rem 1fr auto; gap: 10px; align-items: baseline; width: 100%; text-align: left;
+    padding: 10px 12px; border-radius: 12px; font-size: 0.9375rem; transition: background-color 0.2s;
+  }
+  .bk-toc-item:hover, .bk-toc-item.is-active { background: var(--surface-glass-2); }
+  .bk-toc-n { font-family: var(--font-display); color: var(--text-muted); }
+  .bk-toc-item.is-active .bk-toc-n, .bk-toc-item:hover .bk-toc-n { color: var(--accent); }
+  .bk-toc-p { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  .bk-hint { font-size: 0.8125rem; color: var(--text-muted); text-align: center; }
+  .bk-hint--touch { display: none; }
+  @media (hover: none) { .bk-hint--mouse { display: none; } .bk-hint--touch { display: inline; } }
+
+  /* celular: as setas laterais saem e entram na barra, junto do controle de páginas */
+  @media (max-width: 759px) {
+    .bk { --chrome: 300px; }
+    .bk-desk { grid-template-columns: minmax(0, 1fr); padding: 24px 16px; }
+    .bk-nav { display: none; }
+    .bk-bar { grid-template-columns: 1fr auto; }
+    .bk-scrub { grid-column: 1 / -1; grid-row: 1; }
+    .bk-step { display: grid; }
+    .bk-tool span { display: none; }
+    .bk-tool:not(.bk-tool--icon) { width: 42px; padding: 0; justify-content: center; }
+  }
+
+  /* tela cheia: só o livro e a barra, sobre o fundo do site */
+  .bk:fullscreen { --chrome: 170px; max-width: none; align-content: center; padding: 24px clamp(16px, 4vw, 48px); background: var(--bg); overflow-y: auto; }
+  .bk:fullscreen .bk-desk { border: 0; background: radial-gradient(55% 60% at 50% 46%, rgba(255, 90, 31, 0.1), transparent 72%); padding-block: 12px; }
+  .bk:fullscreen .bk-hint { display: none; }
+</style>

@@ -1,0 +1,127 @@
+---
+// Corpo dos cases de e-book (c.book), depois do "Sobre": números, a linguagem do livro (paleta e recortes de
+// páginas) e o sumário. Recortes e capítulos abrem o leitor na página certa (data-book-go, tratado em main.ts).
+import type { Case } from "../../data/cases";
+
+interface Props { c: Case }
+const { c } = Astro.props;
+const b = c.book!;
+const pages = c.items.filter((it) => it.kind === "book");
+const pad = (k: number) => String(k).padStart(2, "0");
+// recorte 4:3 de uma página: a imagem inteira é ampliada e deslocada dentro da moldura
+const crop = (d: (typeof b.system.details)[number]) => {
+  const p = pages[d.page - 1];
+  const imgH = 1 / d.w / (p.w / p.h); // altura da página em larguras de moldura
+  return `width:${(100 / d.w).toFixed(3)}%;left:${((-d.x / d.w) * 100).toFixed(3)}%;top:${((-d.y * imgH) / 0.75 * 100).toFixed(3)}%`;
+};
+const last = (k: number) => (b.chapters[k + 1]?.page ?? pages.length + 1) - 1;
+const span = (k: number) => (b.chapters[k].page === last(k) ? `p. ${b.chapters[k].page}` : `p. ${b.chapters[k].page}–${last(k)}`);
+---
+<section class="bs-stats container" aria-label="O e-book em números">
+  <ul>
+    {b.stats.map((st) => (
+      <li data-reveal><b class="display">{st.n}</b><span>{st.label}</span></li>
+    ))}
+  </ul>
+</section>
+
+<section class="bs-system" aria-labelledby="bs-system-t">
+  <div class="container">
+    <header class="bs-head">
+      <p class="eyebrow" data-reveal>Linguagem do e-book</p>
+      <h2 class="title-section" id="bs-system-t" data-split set:html={b.system.title} />
+      <p class="lead" data-reveal>{b.system.note}</p>
+    </header>
+    <ul class="bs-palette" aria-label="Paleta do e-book" data-reveal>
+      {b.system.palette.map((s) => (
+        <li><span class="bs-swatch" style={`background:${s.hex}`}></span><span class="bs-color"><b>{s.name}</b><span>{s.hex}</span></span></li>
+      ))}
+    </ul>
+    <ol class="bs-details">
+      {b.system.details.map((d) => (
+        <li data-reveal>
+          <button type="button" class="bs-detail" data-book-go={d.page - 1} aria-label={`Abrir o e-book na página ${d.page}: ${d.title}`}>
+            <span class="bs-crop"><img src={pages[d.page - 1].src} width={pages[d.page - 1].w} height={pages[d.page - 1].h} alt="" style={crop(d)} loading="lazy" decoding="async" /></span>
+            <span class="bs-detail-t"><b>{d.title}</b><span class="bs-detail-p">{`p. ${d.page}`}</span></span>
+            <span class="bs-detail-n">{d.note}</span>
+          </button>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="bs-toc container" aria-labelledby="bs-toc-t">
+  <header class="bs-head">
+    <p class="eyebrow" data-reveal>Sumário</p>
+    <h2 class="title-section" id="bs-toc-t" data-split>Comece por <em>qualquer tema</em>.</h2>
+  </header>
+  <ol class="bs-chapters">
+    {b.chapters.map((ch, k) => (
+      <li data-reveal>
+        <button type="button" class="bs-chapter" data-book-go={ch.page - 1}>
+          <span class="bs-chapter-img"><img src={pages[ch.page - 1].src} width={pages[ch.page - 1].w} height={pages[ch.page - 1].h} alt="" loading="lazy" decoding="async" /></span>
+          <span class="bs-chapter-n">{pad(k + 1)}</span>
+          <span class="bs-chapter-t">{ch.title}</span>
+          <span class="bs-chapter-p">{span(k)}</span>
+        </button>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .bs-stats { padding-bottom: clamp(56px, 7vw, 104px); }
+  .bs-stats ul { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
+  .bs-stats li { display: grid; gap: 6px; align-content: start; padding: 24px 20px 0 0; }
+  .bs-stats b { font-size: clamp(3.5rem, 8vw, 6.5rem); color: var(--accent); }
+  .bs-stats span { color: var(--text-muted); font-size: 0.9375rem; }
+
+  .bs-head { display: grid; gap: 20px; margin-bottom: clamp(32px, 4vw, 56px); }
+  .bs-head > * { max-width: 760px; }
+
+  /* linguagem: paleta e recortes de páginas */
+  .bs-system { background: var(--bg-elev); border-block: 1px solid var(--border); padding-block: clamp(64px, 8vw, 120px); }
+  .bs-palette { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: clamp(32px, 4vw, 56px); }
+  @media (min-width: 700px) { .bs-palette { grid-template-columns: repeat(4, 1fr); } }
+  .bs-palette li { display: grid; gap: 10px; }
+  .bs-swatch { height: 72px; border-radius: 14px; box-shadow: inset 0 0 0 1px var(--border); }
+  .bs-color { display: grid; font-size: 0.8125rem; line-height: 1.4; }
+  .bs-color b { font-weight: 600; }
+  .bs-color span { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  .bs-details { display: grid; gap: clamp(12px, 1.6vw, 20px); }
+  @media (min-width: 700px) { .bs-details { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) { .bs-details { grid-template-columns: repeat(4, 1fr); } }
+  .bs-detail {
+    display: grid; gap: 6px; width: 100%; height: 100%; align-content: start; text-align: left;
+    padding: 10px 10px 18px; border-radius: 20px; background: var(--bg); border: 1px solid var(--border);
+    transition: border-color 0.25s;
+  }
+  .bs-detail:hover { border-color: var(--accent); }
+  .bs-crop { position: relative; display: block; aspect-ratio: 4 / 3; margin-bottom: 10px; border-radius: 12px; overflow: hidden; background: #fff; }
+  .bs-crop img { position: absolute; max-width: none; height: auto; transition: scale 0.8s var(--ease); transform-origin: 50% 30%; }
+  .bs-detail:hover .bs-crop img { scale: 1.04; }
+  .bs-detail-t { display: flex; justify-content: space-between; gap: 12px; padding-inline: 6px; align-items: baseline; }
+  .bs-detail-t b { font-weight: 600; letter-spacing: -0.01em; }
+  .bs-detail-p { font-size: 0.8125rem; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .bs-detail-n { padding-inline: 6px; font-size: 0.875rem; line-height: 1.5; color: var(--text-muted); }
+
+  /* sumário: cada capítulo abre o leitor na página de abertura */
+  .bs-toc { padding-block: clamp(72px, 9vw, 136px) clamp(48px, 6vw, 88px); }
+  .bs-chapters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 18px); }
+  @media (min-width: 700px) { .bs-chapters { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .bs-chapters { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+  .bs-chapter {
+    display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 2px; align-items: baseline; width: 100%; height: 100%; text-align: left;
+    padding: 8px 8px 14px; border-radius: 18px; background: var(--surface-glass); border: 1px solid var(--border);
+    transition: border-color 0.25s, background-color 0.25s;
+  }
+  .bs-chapter:hover { border-color: var(--accent); background: var(--bg-elev); }
+  .bs-chapter-img { grid-column: 1 / -1; display: block; aspect-ratio: 595 / 842; margin-bottom: 10px; border-radius: 8px; overflow: hidden; background: #fff; }
+  .bs-chapter-img img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.7s var(--ease); }
+  .bs-chapter:hover .bs-chapter-img img { scale: 1.04; }
+  .bs-chapter-n { grid-row: span 2; padding-left: 4px; font-family: var(--font-display); font-size: 1.25rem; line-height: 1; color: var(--accent); }
+  .bs-chapter-t { min-width: 0; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; line-height: 1.25; overflow-wrap: break-word; hyphens: auto; }
+  .bs-chapter-p { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+</style>
