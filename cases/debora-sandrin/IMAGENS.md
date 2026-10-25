@@ -1,6 +1,6 @@
 # Débora Sandrin — plano de imagens
 
-Página: `/cases/debora-sandrin/` · conteúdo: `cases/debora-sandrin/case.json` · 8 essenciais + 5 opcionais geradas por IA, mais 3 imagens reais que já estão prontas.
+Página: `/cases/debora-sandrin/` · conteúdo: `cases/debora-sandrin/case.json` · 8 essenciais + 5 opcionais geradas por IA.
 
 ## Como entregar cada imagem
 
@@ -13,7 +13,6 @@ Página: `/cases/debora-sandrin/` · conteúdo: `cases/debora-sandrin/case.json`
 
 **Feito em código, sem IA:** o símbolo que começa maciço e se abre até o S escavado, os recortes gigantes do logotipo (o A sem travessão e o N de haste aberta), a faixa "Débora Sandrin" em movimento, o padrão com o monograma, o app de acompanhamento do projeto, o sistema do logo e os blocos de cor.
 
-**Imagens reais, já prontas:** `caminho-1`, `caminho-2` e `caminho-3` (seção Processo) foram recortadas da apresentação original (`DeboraSandrin/Logo_DeboraSandrin.pdf`, páginas 2, 5 e 8). Os originais em alta estão em `cases/debora-sandrin/raw/`.
 
 ## Coerência visual (vale para todas)
 
@@ -46,7 +45,6 @@ Gere `hero-vazio` em seguida: é a âncora de **cor** para `textura-concreto` e 
 | 11 | `mockup-placa-porta.webp` | Aplicações | 4:5 · 1600×2000 | Nano Banana (Gemini) | opcional |
 | 12 | `editorial-luz.webp` | Aplicações (faixa larga final) | 2:1 · 2400×1200 | Midjourney v7 | opcional |
 | 13 | `editorial-cidade.webp` | Fechamento (fundo) | 16:9 · 2400×1350 | Midjourney v7 | opcional |
-| — | `caminho-1/2/3.webp` | Processo | 16:9 · 1600×900 | recorte do PDF de 2022 | **pronto** |
 
 Opcionais que faltarem somem do site publicado; no `npm run dev` elas aparecem como placeholder para você ver o lugar.
 
