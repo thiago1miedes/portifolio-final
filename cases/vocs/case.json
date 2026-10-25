@@ -344,7 +344,7 @@
     "nav": "Aplicações",
     "eyebrow": "06 — Aplicações",
     "title": "Do consultório à sala de treinamento.",
-    "text": "Estudo de aplicações: fotografia editorial em preto e branco, recortes gigantes do logotipo, o & em padrão e um app para acompanhar o processo.",
+    "text": "Estudo de aplicações: fotografia editorial, cartões, crachá de evento, recepção, caneca, caderno de treinamento e um app para acompanhar o processo.",
     "marquee": "VOC&S",
     "marqueeArts": [
       "wordmark"
@@ -372,10 +372,20 @@
         "mobile": 2
       },
       {
+        "kind": "piece",
+        "image": "mockup-cartoes",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Cartões de visita"
+      },
+      {
         "kind": "app",
         "variant": "positive",
         "col": [
-          1,
+          8,
           5
         ],
         "mobile": 2,
@@ -405,16 +415,6 @@
         }
       },
       {
-        "kind": "photo",
-        "image": "editorial-equipe",
-        "col": [
-          6,
-          7
-        ],
-        "mobile": 2,
-        "speed": -3
-      },
-      {
         "kind": "marquee",
         "col": [
           1,
@@ -434,22 +434,94 @@
         "speed": 4
       },
       {
+        "kind": "piece",
+        "image": "mockup-cracha",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Crachá de evento"
+      },
+      {
         "kind": "crop",
         "art": "wordmark",
         "viewBox": "336 22 124 136",
         "variant": "negative",
         "col": [
-          5,
+          9,
           4
         ],
-        "mobile": 1
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-recepcao",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Recepção"
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-equipe",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "speed": -3
       },
       {
         "kind": "pattern",
         "variant": "negative",
         "col": [
-          9,
-          4
+          8,
+          5
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-caneca",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 1,
+        "caption": "Caneca"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-caderno",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 1,
+        "caption": "Caderno de treinamento",
+        "offset": 5
+      },
+      {
+        "kind": "photo",
+        "image": "foto-conversa",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "speed": 3
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "336 22 124 136",
+        "variant": "onAccent",
+        "col": [
+          8,
+          5
         ],
         "mobile": 2
       },
@@ -522,8 +594,8 @@
       "id": "mockup-cartoes",
       "section": "applications",
       "w": 2400,
-      "h": 1600,
-      "essential": false,
+      "h": 1792,
+      "essential": true,
       "alt": "Cartões de visita da VOC&S, um branco com o logo e um azul-noite com o &"
     },
     {
@@ -538,17 +610,17 @@
     {
       "id": "mockup-cracha",
       "section": "applications",
-      "w": 1600,
+      "w": 1500,
       "h": 2000,
-      "essential": false,
+      "essential": true,
       "alt": "Crachá de evento da VOC&S pendurado num cordão, sobre fundo areia"
     },
     {
       "id": "mockup-recepcao",
       "section": "applications",
       "w": 2400,
-      "h": 1200,
-      "essential": false,
+      "h": 1350,
+      "essential": true,
       "alt": "Recepção de escritório com o logo da VOC&S na parede clara, uma poltrona azul-marinho e um vaso com capim seco"
     },
     {
@@ -565,15 +637,15 @@
       "section": "applications",
       "w": 1800,
       "h": 1800,
-      "essential": false,
+      "essential": true,
       "alt": "Caneca branca com o & da VOC&S sobre uma mesa de madeira clara, ao lado de um caderno"
     },
     {
       "id": "mockup-caderno",
       "section": "applications",
       "w": 2400,
-      "h": 1600,
-      "essential": false,
+      "h": 1350,
+      "essential": true,
       "alt": "Caderno de capa branca com o logo da VOC&S sobre uma mesa, com caneta e post-its laranja"
     },
     {
@@ -601,6 +673,14 @@
       "h": 1350,
       "essential": false,
       "alt": "Silhuetas de duas pessoas conversando perto de uma janela grande, em contraluz, em preto e branco"
+    },
+    {
+      "id": "foto-conversa",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Duas mulheres conversando frente a frente em poltronas, numa sala de paredes azuis, com uma almofada laranja"
     }
   ]
 }
