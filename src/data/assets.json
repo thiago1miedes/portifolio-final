@@ -146,6 +146,7 @@
    "w": 1200,
    "h": 800
   },
+  "cover": "live",
   "items": [
    {
     "id": "live",
@@ -163,167 +164,1442 @@
     "kind": "mobile"
    },
    {
-    "id": "post-1",
-    "src": "/cases/smartbox/post-1.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
-   },
-   {
-    "id": "post-2",
-    "src": "/cases/smartbox/post-2.webp",
-    "w": 810,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
-   },
-   {
-    "id": "post-3",
-    "src": "/cases/smartbox/post-3.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
-   },
-   {
-    "id": "post-4",
-    "src": "/cases/smartbox/post-4.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
-   },
-   {
-    "id": "post-5",
-    "src": "/cases/smartbox/post-5.webp",
+    "id": "logo",
+    "src": "/cases/smartbox/logo.webp",
     "w": 1080,
-    "h": 675,
-    "kind": "post",
-    "group": "social"
-   },
-   {
-    "id": "post-6",
-    "src": "/cases/smartbox/post-6.webp",
-    "w": 810,
     "h": 1080,
     "kind": "post",
-    "group": "social"
+    "group": "marca"
    },
    {
-    "id": "post-7",
-    "src": "/cases/smartbox/post-7.webp",
-    "w": 810,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
+    "id": "destaque-1",
+    "src": "/cases/smartbox/destaque-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Como comprar",
+    "group": "destaques"
    },
    {
-    "id": "post-8",
-    "src": "/cases/smartbox/post-8.webp",
-    "w": 810,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
+    "id": "destaque-2",
+    "src": "/cases/smartbox/destaque-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Contato",
+    "group": "destaques"
    },
    {
-    "id": "post-9",
-    "src": "/cases/smartbox/post-9.webp",
-    "w": 810,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
+    "id": "destaque-3",
+    "src": "/cases/smartbox/destaque-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Dúvidas",
+    "group": "destaques"
    },
    {
-    "id": "post-10",
-    "src": "/cases/smartbox/post-10.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
+    "id": "destaque-4",
+    "src": "/cases/smartbox/destaque-4.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Indique e ganhe",
+    "group": "destaques"
    },
    {
-    "id": "post-11",
-    "src": "/cases/smartbox/post-11.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
+    "id": "destaque-5",
+    "src": "/cases/smartbox/destaque-5.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Onde estamos",
+    "group": "destaques"
    },
    {
-    "id": "post-12",
-    "src": "/cases/smartbox/post-12.webp",
-    "w": 864,
-    "h": 1080,
-    "kind": "post",
-    "group": "social"
+    "id": "pegou-1",
+    "src": "/cases/smartbox/pegou-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "pegou"
    },
    {
-    "id": "story-1",
-    "src": "/cases/smartbox/story-1.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post",
+    "id": "pegou-2",
+    "src": "/cases/smartbox/pegou-2.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "pegou"
+   },
+   {
+    "id": "pegou-3",
+    "src": "/cases/smartbox/pegou-3.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "pegou"
+   },
+   {
+    "id": "pegou-4",
+    "src": "/cases/smartbox/pegou-4.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "pegou"
+   },
+   {
+    "id": "pegou-5",
+    "src": "/cases/smartbox/pegou-5.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "pegou"
+   },
+   {
+    "id": "pegou-6",
+    "src": "/cases/smartbox/pegou-6.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "pegou"
+   },
+   {
+    "id": "pegou-st-1",
+    "src": "/cases/smartbox/pegou-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "pegou-st"
+   },
+   {
+    "id": "pegou-st-2",
+    "src": "/cases/smartbox/pegou-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "pegou-st"
+   },
+   {
+    "id": "pegou-st-3",
+    "src": "/cases/smartbox/pegou-st-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "pegou-st"
+   },
+   {
+    "id": "pegou-st-4",
+    "src": "/cases/smartbox/pegou-st-4.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "pegou-st"
+   },
+   {
+    "id": "pegou-st-5",
+    "src": "/cases/smartbox/pegou-st-5.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "pegou-st"
+   },
+   {
+    "id": "pegou-st-6",
+    "src": "/cases/smartbox/pegou-st-6.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "pegou-st"
+   },
+   {
+    "id": "opcoes-1",
+    "src": "/cases/smartbox/opcoes-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "opcoes"
+   },
+   {
+    "id": "opcoes-2",
+    "src": "/cases/smartbox/opcoes-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "opcoes"
+   },
+   {
+    "id": "opcoes-3",
+    "src": "/cases/smartbox/opcoes-3.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "opcoes"
+   },
+   {
+    "id": "opcoes-4",
+    "src": "/cases/smartbox/opcoes-4.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "opcoes"
+   },
+   {
+    "id": "opcoes-5",
+    "src": "/cases/smartbox/opcoes-5.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "opcoes"
+   },
+   {
+    "id": "opcoes-6",
+    "src": "/cases/smartbox/opcoes-6.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "opcoes"
+   },
+   {
+    "id": "opcoes-7",
+    "src": "/cases/smartbox/opcoes-7.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "opcoes"
+   },
+   {
+    "id": "opcoes-8",
+    "src": "/cases/smartbox/opcoes-8.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "opcoes"
+   },
+   {
+    "id": "opcoes-st-1",
+    "src": "/cases/smartbox/opcoes-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "opcoes-st"
+   },
+   {
+    "id": "opcoes-st-2",
+    "src": "/cases/smartbox/opcoes-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "opcoes-st"
+   },
+   {
+    "id": "opcoes-st-3",
+    "src": "/cases/smartbox/opcoes-st-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "opcoes-st"
+   },
+   {
+    "id": "opcoes-st-4",
+    "src": "/cases/smartbox/opcoes-st-4.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "opcoes-st"
+   },
+   {
+    "id": "opcoes-st-5",
+    "src": "/cases/smartbox/opcoes-st-5.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "opcoes-st"
+   },
+   {
+    "id": "opcoes-st-6",
+    "src": "/cases/smartbox/opcoes-st-6.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "opcoes-st"
+   },
+   {
+    "id": "opcoes-st-7",
+    "src": "/cases/smartbox/opcoes-st-7.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "opcoes-st"
+   },
+   {
+    "id": "opcoes-st-8",
+    "src": "/cases/smartbox/opcoes-st-8.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "opcoes-st"
+   },
+   {
+    "id": "onde-1",
+    "src": "/cases/smartbox/onde-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-2",
+    "src": "/cases/smartbox/onde-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-3",
+    "src": "/cases/smartbox/onde-3.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-4",
+    "src": "/cases/smartbox/onde-4.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-5",
+    "src": "/cases/smartbox/onde-5.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-6",
+    "src": "/cases/smartbox/onde-6.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-7",
+    "src": "/cases/smartbox/onde-7.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-8",
+    "src": "/cases/smartbox/onde-8.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-9",
+    "src": "/cases/smartbox/onde-9.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-10",
+    "src": "/cases/smartbox/onde-10.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "onde"
+   },
+   {
+    "id": "onde-st-1",
+    "src": "/cases/smartbox/onde-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-2",
+    "src": "/cases/smartbox/onde-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-3",
+    "src": "/cases/smartbox/onde-st-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-4",
+    "src": "/cases/smartbox/onde-st-4.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-5",
+    "src": "/cases/smartbox/onde-st-5.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-6",
+    "src": "/cases/smartbox/onde-st-6.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-7",
+    "src": "/cases/smartbox/onde-st-7.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-8",
+    "src": "/cases/smartbox/onde-st-8.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-9",
+    "src": "/cases/smartbox/onde-st-9.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "onde-st-10",
+    "src": "/cases/smartbox/onde-st-10.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "onde-st"
+   },
+   {
+    "id": "indique-1",
+    "src": "/cases/smartbox/indique-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "indique"
+   },
+   {
+    "id": "indique-2",
+    "src": "/cases/smartbox/indique-2.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "indique"
+   },
+   {
+    "id": "indique-3",
+    "src": "/cases/smartbox/indique-3.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "indique"
+   },
+   {
+    "id": "indique-st-1",
+    "src": "/cases/smartbox/indique-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "indique-st"
+   },
+   {
+    "id": "indique-st-2",
+    "src": "/cases/smartbox/indique-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "indique-st"
+   },
+   {
+    "id": "indique-st-3",
+    "src": "/cases/smartbox/indique-st-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "indique-st"
+   },
+   {
+    "id": "indicou-1",
+    "src": "/cases/smartbox/indicou-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "indicou"
+   },
+   {
+    "id": "indicou-st-1",
+    "src": "/cases/smartbox/indicou-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "indicou-st"
+   },
+   {
+    "id": "indicou-st-2",
+    "src": "/cases/smartbox/indicou-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "indicou-st"
+   },
+   {
+    "id": "indicou-st-3",
+    "src": "/cases/smartbox/indicou-st-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "indicou-st"
+   },
+   {
+    "id": "indicou-st-4",
+    "src": "/cases/smartbox/indicou-st-4.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "indicou-st"
+   },
+   {
+    "id": "agosto-1",
+    "src": "/cases/smartbox/agosto-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "agosto"
+   },
+   {
+    "id": "agosto-st-1",
+    "src": "/cases/smartbox/agosto-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "agosto-st"
+   },
+   {
+    "id": "agosto-st-2",
+    "src": "/cases/smartbox/agosto-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "agosto-st"
+   },
+   {
+    "id": "trabalhador-1",
+    "src": "/cases/smartbox/trabalhador-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "trabalhador-2",
+    "src": "/cases/smartbox/trabalhador-2.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "trabalhador-3",
+    "src": "/cases/smartbox/trabalhador-3.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "trabalhador-4",
+    "src": "/cases/smartbox/trabalhador-4.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "trabalhador-5",
+    "src": "/cases/smartbox/trabalhador-5.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "trabalhador-6",
+    "src": "/cases/smartbox/trabalhador-6.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "trabalhador-7",
+    "src": "/cases/smartbox/trabalhador-7.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "trabalhador-8",
+    "src": "/cases/smartbox/trabalhador-8.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "trabalhador-9",
+    "src": "/cases/smartbox/trabalhador-9.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "trabalhador"
+   },
+   {
+    "id": "maes-1",
+    "src": "/cases/smartbox/maes-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "maes"
+   },
+   {
+    "id": "maes-2",
+    "src": "/cases/smartbox/maes-2.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "maes"
+   },
+   {
+    "id": "maes-3",
+    "src": "/cases/smartbox/maes-3.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "maes"
+   },
+   {
+    "id": "maes-4",
+    "src": "/cases/smartbox/maes-4.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "maes"
+   },
+   {
+    "id": "maes-st-1",
+    "src": "/cases/smartbox/maes-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "maes-st"
+   },
+   {
+    "id": "maes-st-2",
+    "src": "/cases/smartbox/maes-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "maes-st"
+   },
+   {
+    "id": "maes-st-3",
+    "src": "/cases/smartbox/maes-st-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "maes-st"
+   },
+   {
+    "id": "maes-st-4",
+    "src": "/cases/smartbox/maes-st-4.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "maes-st"
+   },
+   {
+    "id": "namorados-1",
+    "src": "/cases/smartbox/namorados-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "namorados"
+   },
+   {
+    "id": "namorados-st-1",
+    "src": "/cases/smartbox/namorados-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "namorados-st"
+   },
+   {
+    "id": "namorados-st-2",
+    "src": "/cases/smartbox/namorados-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "namorados-st"
+   },
+   {
+    "id": "namorados-st-3",
+    "src": "/cases/smartbox/namorados-st-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "namorados-st"
+   },
+   {
+    "id": "copa-1",
+    "src": "/cases/smartbox/copa-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "copa"
+   },
+   {
+    "id": "copa-2",
+    "src": "/cases/smartbox/copa-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "group": "copa"
+   },
+   {
+    "id": "copa-st-1",
+    "src": "/cases/smartbox/copa-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "copa-st"
+   },
+   {
+    "id": "copa-st-2",
+    "src": "/cases/smartbox/copa-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "copa-st"
+   },
+   {
+    "id": "meme-1",
+    "src": "/cases/smartbox/meme-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "meme"
+   },
+   {
+    "id": "meme-2",
+    "src": "/cases/smartbox/meme-2.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "meme"
+   },
+   {
+    "id": "meme-3",
+    "src": "/cases/smartbox/meme-3.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "meme"
+   },
+   {
+    "id": "meme-4",
+    "src": "/cases/smartbox/meme-4.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "group": "meme"
+   },
+   {
+    "id": "meme-st-1",
+    "src": "/cases/smartbox/meme-st-1.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "meme-st"
+   },
+   {
+    "id": "meme-st-2",
+    "src": "/cases/smartbox/meme-st-2.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "meme-st"
+   },
+   {
+    "id": "meme-st-3",
+    "src": "/cases/smartbox/meme-st-3.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "meme-st"
+   },
+   {
+    "id": "meme-st-4",
+    "src": "/cases/smartbox/meme-st-4.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "group": "meme-st"
+   },
+   {
+    "id": "cliente-1",
+    "src": "/cases/smartbox/cliente-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Dia do Cliente",
+    "group": "cliente"
+   },
+   {
+    "id": "aniversario-1",
+    "src": "/cases/smartbox/aniversario-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "SmartBox 2 anos",
+    "group": "aniversario"
+   },
+   {
+    "id": "semana-1",
+    "src": "/cases/smartbox/semana-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Semana de aniversário",
+    "group": "semana"
+   },
+   {
+    "id": "esquenta-1",
+    "src": "/cases/smartbox/esquenta-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Esquenta de aniversário",
+    "group": "esquenta"
+   },
+   {
+    "id": "esquenta-precos-1",
+    "src": "/cases/smartbox/esquenta-precos-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Preços do esquenta",
+    "group": "esquenta-precos"
+   },
+   {
+    "id": "esquenta-precos-2",
+    "src": "/cases/smartbox/esquenta-precos-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Preços do esquenta",
+    "group": "esquenta-precos"
+   },
+   {
+    "id": "pais-1",
+    "src": "/cases/smartbox/pais-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Dia dos Pais",
+    "group": "pais"
+   },
+   {
+    "id": "pais-2",
+    "src": "/cases/smartbox/pais-2.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Dia dos Pais",
+    "group": "pais"
+   },
+   {
+    "id": "vem-ai-1",
+    "src": "/cases/smartbox/vem-ai-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Novos pontos chegando",
+    "group": "vem-ai"
+   },
+   {
+    "id": "crush-1",
+    "src": "/cases/smartbox/crush-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Crush no escritório",
+    "group": "crush"
+   },
+   {
+    "id": "pascoa-semana-1",
+    "src": "/cases/smartbox/pascoa-semana-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Semana de Páscoa",
+    "group": "pascoa-semana"
+   },
+   {
+    "id": "pascoa-1",
+    "src": "/cases/smartbox/pascoa-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Páscoa",
+    "group": "pascoa"
+   },
+   {
+    "id": "novo-site-1",
+    "src": "/cases/smartbox/novo-site-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Site novo no ar",
+    "group": "novo-site"
+   },
+   {
+    "id": "site-obra-1",
+    "src": "/cases/smartbox/site-obra-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Site em manutenção",
+    "group": "site-obra"
+   },
+   {
+    "id": "faria-lima-1",
+    "src": "/cases/smartbox/faria-lima-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Faria Lima Square",
+    "group": "faria-lima"
+   },
+   {
+    "id": "academia-1",
+    "src": "/cases/smartbox/academia-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Vending na academia",
+    "group": "academia"
+   },
+   {
+    "id": "onde-lista-1",
+    "src": "/cases/smartbox/onde-lista-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Onde estamos",
+    "group": "onde-lista"
+   },
+   {
+    "id": "onde-querem-1",
+    "src": "/cases/smartbox/onde-querem-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Onde você quer uma SmartBox?",
+    "group": "onde-querem"
+   },
+   {
+    "id": "onde-mapa-1",
+    "src": "/cases/smartbox/onde-mapa-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Onde estamos?",
+    "group": "onde-mapa"
+   },
+   {
+    "id": "onde-atua-1",
+    "src": "/cases/smartbox/onde-atua-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Onde a SmartBox atua",
+    "group": "onde-atua"
+   },
+   {
+    "id": "beneficio-1",
+    "src": "/cases/smartbox/beneficio-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "O benefício que todo colaborador merece",
+    "group": "beneficio"
+   },
+   {
+    "id": "notas-1",
+    "src": "/cases/smartbox/notas-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Notas",
+    "group": "notas"
+   },
+   {
+    "id": "empresas-1",
+    "src": "/cases/smartbox/empresas-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Como ter uma SmartBox na empresa",
+    "group": "empresas"
+   },
+   {
+    "id": "enquete-1",
+    "src": "/cases/smartbox/enquete-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "A gente quer saber",
+    "group": "enquete"
+   },
+   {
+    "id": "bold-1",
+    "src": "/cases/smartbox/bold-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Bold Whey",
+    "group": "bold"
+   },
+   {
+    "id": "foco-1",
+    "src": "/cases/smartbox/foco-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "Modo foco",
+    "group": "foco"
+   },
+   {
+    "id": "yopro-1",
+    "src": "/cases/smartbox/yopro-1.webp",
+    "w": 1080,
+    "h": 1440,
+    "kind": "feed",
+    "label": "YoPro e Bold",
+    "group": "yopro"
+   },
+   {
+    "id": "salgadinhos-1",
+    "src": "/cases/smartbox/salgadinhos-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Fominha de fim de tarde",
+    "group": "salgadinhos"
+   },
+   {
+    "id": "chicletes-1",
+    "src": "/cases/smartbox/chicletes-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Tem novidade na SmartBox",
+    "group": "chicletes"
+   },
+   {
+    "id": "lua-1",
+    "src": "/cases/smartbox/lua-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Tem gente que já foi até a lua",
+    "group": "lua"
+   },
+   {
+    "id": "coca-1",
+    "src": "/cases/smartbox/coca-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Coquinha bem gelada",
+    "group": "coca"
+   },
+   {
+    "id": "docinho-1",
+    "src": "/cases/smartbox/docinho-1.webp",
+    "w": 1080,
+    "h": 1350,
+    "kind": "feed",
+    "label": "Bateu vontade de um docinho",
+    "group": "docinho"
+   },
+   {
+    "id": "story-01",
+    "src": "/cases/smartbox/story-01.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Benefício",
     "group": "stories"
    },
    {
-    "id": "story-2",
-    "src": "/cases/smartbox/story-2.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post",
+    "id": "story-02",
+    "src": "/cases/smartbox/story-02.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Como ter uma SmartBox",
     "group": "stories"
    },
    {
-    "id": "story-3",
-    "src": "/cases/smartbox/story-3.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post",
+    "id": "story-03",
+    "src": "/cases/smartbox/story-03.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Notas",
     "group": "stories"
    },
    {
-    "id": "story-4",
-    "src": "/cases/smartbox/story-4.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post",
+    "id": "story-04",
+    "src": "/cases/smartbox/story-04.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Onde estamos",
     "group": "stories"
    },
    {
-    "id": "story-5",
-    "src": "/cases/smartbox/story-5.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post",
+    "id": "story-05",
+    "src": "/cases/smartbox/story-05.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Onde estamos?",
     "group": "stories"
    },
    {
-    "id": "story-6",
-    "src": "/cases/smartbox/story-6.webp",
-    "w": 608,
-    "h": 1080,
-    "kind": "post",
+    "id": "story-06",
+    "src": "/cases/smartbox/story-06.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Onde você quer",
     "group": "stories"
    },
    {
-    "id": "folder-1",
-    "src": "/cases/smartbox/folder-1.webp",
-    "w": 437,
-    "h": 613,
-    "kind": "image",
-    "group": "print"
+    "id": "story-07",
+    "src": "/cases/smartbox/story-07.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Onde a SmartBox atua",
+    "group": "stories"
    },
    {
-    "id": "folder-2",
-    "src": "/cases/smartbox/folder-2.webp",
-    "w": 437,
-    "h": 613,
-    "kind": "image",
-    "group": "print"
+    "id": "story-08",
+    "src": "/cases/smartbox/story-08.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Novos pontos",
+    "group": "stories"
+   },
+   {
+    "id": "story-09",
+    "src": "/cases/smartbox/story-09.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Vem aí na academia",
+    "group": "stories"
+   },
+   {
+    "id": "story-10",
+    "src": "/cases/smartbox/story-10.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Vending na academia",
+    "group": "stories"
+   },
+   {
+    "id": "story-11",
+    "src": "/cases/smartbox/story-11.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Faria Lima Square",
+    "group": "stories"
+   },
+   {
+    "id": "story-12",
+    "src": "/cases/smartbox/story-12.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "A gente quer saber",
+    "group": "stories"
+   },
+   {
+    "id": "story-13",
+    "src": "/cases/smartbox/story-13.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Energéticos",
+    "group": "stories"
+   },
+   {
+    "id": "story-14",
+    "src": "/cases/smartbox/story-14.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Bold Whey",
+    "group": "stories"
+   },
+   {
+    "id": "story-15",
+    "src": "/cases/smartbox/story-15.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Modo foco",
+    "group": "stories"
+   },
+   {
+    "id": "story-16",
+    "src": "/cases/smartbox/story-16.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "YoPro e Bold",
+    "group": "stories"
+   },
+   {
+    "id": "story-17",
+    "src": "/cases/smartbox/story-17.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Hidratação",
+    "group": "stories"
+   },
+   {
+    "id": "story-18",
+    "src": "/cases/smartbox/story-18.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Salgadinhos",
+    "group": "stories"
+   },
+   {
+    "id": "story-19",
+    "src": "/cases/smartbox/story-19.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Docinho de sexta",
+    "group": "stories"
+   },
+   {
+    "id": "story-20",
+    "src": "/cases/smartbox/story-20.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Coca no escritório",
+    "group": "stories"
+   },
+   {
+    "id": "story-21",
+    "src": "/cases/smartbox/story-21.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Coquinha gelada",
+    "group": "stories"
+   },
+   {
+    "id": "story-22",
+    "src": "/cases/smartbox/story-22.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "O VR caiu",
+    "group": "stories"
+   },
+   {
+    "id": "story-23",
+    "src": "/cases/smartbox/story-23.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Chicletes",
+    "group": "stories"
+   },
+   {
+    "id": "story-24",
+    "src": "/cases/smartbox/story-24.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Páscoa",
+    "group": "stories"
+   },
+   {
+    "id": "story-25",
+    "src": "/cases/smartbox/story-25.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Semana de Páscoa",
+    "group": "stories"
+   },
+   {
+    "id": "story-26",
+    "src": "/cases/smartbox/story-26.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Crush no escritório",
+    "group": "stories"
+   },
+   {
+    "id": "story-27",
+    "src": "/cases/smartbox/story-27.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Convocação da Copa",
+    "group": "stories"
+   },
+   {
+    "id": "story-28",
+    "src": "/cases/smartbox/story-28.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Dia dos Pais",
+    "group": "stories"
+   },
+   {
+    "id": "story-29",
+    "src": "/cases/smartbox/story-29.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Dia dos Pais",
+    "group": "stories"
+   },
+   {
+    "id": "story-30",
+    "src": "/cases/smartbox/story-30.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Esquenta 2 anos",
+    "group": "stories"
+   },
+   {
+    "id": "story-31",
+    "src": "/cases/smartbox/story-31.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Semana de aniversário",
+    "group": "stories"
+   },
+   {
+    "id": "story-32",
+    "src": "/cases/smartbox/story-32.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Dia do Cliente",
+    "group": "stories"
+   },
+   {
+    "id": "story-33",
+    "src": "/cases/smartbox/story-33.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Até a lua",
+    "group": "stories"
+   },
+   {
+    "id": "story-34",
+    "src": "/cases/smartbox/story-34.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Site em manutenção",
+    "group": "stories"
+   },
+   {
+    "id": "story-35",
+    "src": "/cases/smartbox/story-35.webp",
+    "w": 1080,
+    "h": 1920,
+    "kind": "story",
+    "label": "Site novo no ar",
+    "group": "stories"
+   },
+   {
+    "id": "tela-1",
+    "src": "/cases/smartbox/tela-1.webp",
+    "video": "/cases/smartbox/tela-1.mp4",
+    "w": 1080,
+    "h": 1920,
+    "kind": "video",
+    "label": "Indicou, fechou, ganhou",
+    "group": "tela"
+   },
+   {
+    "id": "tela-2",
+    "src": "/cases/smartbox/tela-2.webp",
+    "video": "/cases/smartbox/tela-2.mp4",
+    "w": 1080,
+    "h": 1920,
+    "kind": "video",
+    "label": "Halloween",
+    "group": "tela"
    }
-  ],
-  "cover": "live"
+  ]
  },
  "firework": {
   "thumb": {

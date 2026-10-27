@@ -82,12 +82,32 @@ export interface SocialShowcase {
   profile: string;
   /** linha abaixo do perfil no cabeçalho do post */
   place: string;
+  /** id do item usado como avatar (padrão: "logo") */
+  avatar?: string;
+  /** abertura da parte de redes, quando o case começa pelo site */
+  intro?: { title: string; note: string };
   stats: { n: string; label: string }[];
+  /** perfil simulado: feed = groups na ordem da grade (o 1º item de cada um é a capa); destaques = group "destaques" */
+  page?: { title: string; note: string; name: string; category: string; bio: string[]; link: string; feed: string[]; visible: number };
   /** frentes de conteúdo, na ordem da página */
   fronts: { key: string; label: string; note: string }[];
+  /** as telas vêm do group = key; os stories da mesma campanha, quando existem, do group `${key}-st` */
   carousels: { key: string; front: string; title: string; note: string; when: string }[];
-  /** paleta e nomes dos elementos gráficos (itens do group "elementos", na ordem) */
-  system: { title: string; note: string; palette: { name: string; hex: string }[]; elements: string[] };
+  /**
+   * paleta + elementos gráficos em SVG (itens do group "elementos", na ordem) ou recortes 4:3 de posts
+   * (details: id do item; x, y e w em fração da arte)
+   */
+  system: {
+    title: string;
+    note: string;
+    palette: { name: string; hex: string }[];
+    elements?: string[];
+    details?: { id: string; x: number; y: number; w: number; title: string; note: string }[];
+  };
+  /** faixa de stories avulsos (group "stories") */
+  stories?: { title: string; note: string };
+  /** vídeos fora do Instagram (group "tela") */
+  screen?: { eyebrow: string; title: string; note: string; spec: string };
 }
 
 export interface AssetItem {
@@ -110,17 +130,138 @@ const list: CaseData[] = [
     client: "Smart Box",
     sector: "Varejo autônomo · mini mercados inteligentes",
     year: "2026",
-    cats: ["dev", "web", "social", "print"],
+    cats: ["dev", "web", "social"],
     featured: 1,
-    accent: "#A6CE39",
-    summary: "Site institucional em código, conteúdo para redes sociais e impressos para uma rede de mini mercados autônomos.",
+    accent: "#BCCF0F",
+    summary: "Site institucional em código e o Instagram de uma rede de mini mercados autônomos: carrosséis, stories, destaques e as campanhas do ano.",
     about: [
-      "A Smart Box instala mini mercados inteligentes em empresas, condomínios e academias. O desafio era traduzir uma operação 100% autoatendimento em uma marca próxima, prática e fácil de entender — do primeiro contato no Instagram até o pedido de orçamento no site.",
-      "Desenhei e desenvolvi o site do zero em HTML, CSS e JavaScript, com páginas de soluções, quem somos, onde estamos e formulário para empresas. Em paralelo, criei a linha editorial visual das redes — posts, stories, capas de destaque e campanhas sazonais — e o folder comercial impresso.",
+      "A Smart Box instala mini mercados inteligentes e vending machines em empresas, condomínios e academias da região metropolitana de São Paulo. O desafio era traduzir uma operação 100% autoatendimento em uma marca próxima, prática e fácil de entender — do primeiro contato no Instagram até o pedido de orçamento no site.",
+      "Desenhei e desenvolvi o site do zero em HTML, CSS e JavaScript, com páginas de soluções, quem somos, onde estamos e formulário para empresas.",
+      "No Instagram, criei a linha visual do perfil: carrosséis que explicam o modelo para RH e síndicos, stories de produto, capas de destaque, datas comemorativas e campanhas de indicação — sempre em Poppins, com o verde-limão da marca e fotos reais das máquinas.",
     ],
-    deliverables: ["UI design do site", "Desenvolvimento front-end", "Formulário de orçamento", "Posts e stories", "Capas de destaque", "Folder impresso"],
-    tools: ["Figma", "HTML", "CSS", "JavaScript", "Photoshop", "Illustrator"],
+    deliverables: ["UI design do site", "Desenvolvimento front-end", "Formulário de orçamento", "41 posts de feed", "81 stories", "Capas de destaque", "Campanha de indicação", "Vídeos para a tela da máquina"],
+    tools: ["Figma", "HTML", "CSS", "JavaScript", "Photoshop", "Illustrator", "After Effects"],
     live: "https://smartboxbr.com.br",
+    social: {
+      profile: "brsmartbox",
+      place: "São Paulo",
+      intro: {
+        title: "Um feed que se reconhece <em>de longe</em>",
+        note: "Além do site, a Smart Box ganhou uma linha visual para o Instagram: verde-limão, grafite e fotos reais das máquinas, repetidos em posts, stories e destaques. Primeiro, o perfil montado com as peças do ano; depois, as sequências contadas uma a uma.",
+      },
+      stats: [
+        { n: "41", label: "posts de feed" },
+        { n: "81", label: "stories" },
+        { n: "10", label: "carrosséis" },
+        { n: "05", label: "capas de destaque" },
+      ],
+      page: {
+        title: "O perfil inteiro, <em>de uma vez</em>",
+        note: "Os 41 posts do case na grade da @brsmartbox, com as capas de destaque no topo. Toque num post para ver as telas.",
+        name: "Smart Box",
+        category: "Mini mercado inteligente",
+        bio: ["Conveniência que alimenta sua rotina.", "Empresas, condomínios e academias em SP."],
+        link: "smartboxbr.com.br",
+        visible: 9,
+        feed: [
+          "indicou", "aniversario", "cliente",
+          "esquenta-precos", "meme", "semana",
+          "agosto", "pais", "esquenta",
+          "opcoes", "copa", "onde",
+          "namorados", "trabalhador", "crush",
+          "maes", "pegou", "indique",
+          "vem-ai", "pascoa-semana", "pascoa",
+          "novo-site", "site-obra", "faria-lima",
+          "academia", "onde-lista", "onde-querem",
+          "onde-mapa", "beneficio", "onde-atua",
+          "notas", "empresas", "enquete",
+          "bold", "foco", "yopro",
+          "salgadinhos", "chicletes", "lua",
+          "coca", "docinho",
+        ],
+      },
+      fronts: [
+        { key: "como", label: "Como funciona", note: "Para quem decide e para quem compra: como pagar, qual formato cabe em cada espaço e onde já tem Smart Box." },
+        { key: "campanhas", label: "Campanhas", note: "Prêmio, preço e prazo na tela: campanhas para trazer novos pontos e girar o estoque." },
+        { key: "datas", label: "Calendário", note: "Datas comemorativas puxadas para a rotina do escritório, sempre com um produto da máquina no meio." },
+        { key: "humor", label: "Bom humor", note: "Memes com as situações de todo escritório, resolvidas a poucos passos da mesa." },
+      ],
+      carousels: [
+        {
+          key: "pegou", front: "como", title: "Escolheu, pagou, pegou", when: "Passo a passo",
+          note: "A compra explicada sem texto corrido: escolher na máquina, aproximar o cartão ou o celular, pegar o produto. Cada verbo ganha uma pílula sobre uma foto real, e o fechamento resume a promessa — sem filas, sem estresse, compra concluída.",
+        },
+        {
+          key: "opcoes", front: "como", title: "Mini mercado ou vending machine?", when: "Comparativo",
+          note: "Oito telas para o RH decidir. A capa faz a pergunta, as do meio comparam os dois formatos lado a lado (espaço disponível, experiência de compra, produtos e para quem é cada um) e o fechamento oferece a análise gratuita do espaço.",
+        },
+        {
+          key: "onde", front: "como", title: "Onde nós estamos", when: "Mapa de pontos",
+          note: "Um ponto por tela, numa etiqueta sobre o mapa que segue de uma tela para a outra: Continental Tower, Iguatemi Offices, Riverview, a academia VO2 e a chegada a São Bernardo do Campo. A última pergunta onde o seguidor quer ver a próxima Smart Box.",
+        },
+        {
+          key: "indique", front: "campanhas", title: "Indique a Smart Box", when: "Indicação",
+          note: "Três telas que formam uma foto só: a máquina em uso, os motivos para levar a Smart Box para a empresa em cartões e o convite final com o endereço do site. Nos stories, a mesma sequência recomposta em 9:16.",
+        },
+        {
+          key: "indicou", front: "campanhas", title: "Indicou, fechou, ganhou", when: "Campanha com prêmio",
+          note: "Quem apresenta uma empresa que fecha com a Smart Box ganha cupom, cesta de produtos ou até R$ 500 no Pix. Os stories criam expectativa em três passos — curiosidade, revelação dos prêmios e o teaser do Pix — antes da cesta. A campanha teve ainda roteiros de Reels com um gancho para cada público dos anúncios: síndicos, RH e funcionários.",
+        },
+        {
+          key: "agosto", front: "campanhas", title: "Promoção Agosto Infinito", when: "Agosto de 2026",
+          note: "“Se agosto vai ser longo mesmo, que seja com desconto.” O post reúne sete produtos com o preço de/por em etiquetas verdes; nos stories, a lista se divide em duas telas para o preço continuar grande.",
+        },
+        {
+          key: "maes", front: "datas", title: "Dia das Mães", when: "Maio de 2026",
+          note: "“Ela não para, a gente também não.” A sequência acompanha a mãe no escritório e na academia — dois lugares onde a Smart Box está — e fecha com uma colagem de polaroids das mães da Smart Box.",
+        },
+        {
+          key: "namorados", front: "datas", title: "Dia dos Namorados", when: "12 de junho",
+          note: "Para quem esqueceu a data: o 12 preso no mural avisa que ainda dá tempo de salvar o dia com um chocolate da máquina. Nos stories, a piada vem em três telas — “a gente não te julga, mas ela vai” — até o aviso final.",
+        },
+        {
+          key: "copa", front: "datas", title: "Copa do Mundo", when: "Junho de 2026",
+          note: "“Escalamos nossa própria seleção de snacks para a Copa do Mundo.” A bandeira cobre a máquina na primeira tela e o campo continua na segunda, com salgadinhos, refrigerantes e energéticos no lugar dos jogadores.",
+        },
+        {
+          key: "trabalhador", front: "humor", title: "Qual seu tipo de trabalhador?", when: "1º de maio",
+          note: "Nove telas de memes para o Dia do Trabalho: o que resolve, o azarado, o do 5º dia útil, o bem-sucedido, o amigão, o animado e o prometedor, cada um com sua descrição. A última lembra que, seja qual for o tipo, a empresa pode ter uma Smart Box para salvar o dia.",
+        },
+        {
+          key: "meme", front: "humor", title: "Não importa a situação", when: "Humor",
+          note: "A reunião de 5 minutos que virou 2 horas, a reunião marcada na hora do almoço, o salário que ainda não caiu — cada situação com a saída na máquina: energético, lanche rápido, pagamento com VR. As fotos foram feitas na frente das próprias máquinas.",
+        },
+      ],
+      system: {
+        title: "Limão, grafite e <em>foto de verdade</em>",
+        note: "Os posts dividem poucos recursos, repetidos com disciplina: Poppins pesada e em itálico nos títulos, a palavra-chave em verde-limão, pílulas arredondadas para os textos curtos e o selo da marca numa aba no topo. A foto é sempre a máquina real — no escritório, no prédio, na academia.",
+        palette: [
+          { name: "Limão", hex: "#BCCF0F" },
+          { name: "Oliva", hex: "#212504" },
+          { name: "Grafite", hex: "#1C1C1A" },
+          { name: "Papel", hex: "#FBF9F5" },
+          { name: "Branco", hex: "#FFFFFF" },
+        ],
+        details: [
+          { id: "pegou-1", x: 0.05, y: 0.45, w: 0.9, title: "Pílulas", note: "Verbos curtos em cápsulas, lidos de relance até no story." },
+          { id: "opcoes-1", x: 0.04, y: 0.44, w: 0.92, title: "Título com palavra-chave", note: "Poppins pesada; a palavra que importa ganha o verde ou uma tarja." },
+          { id: "notas-1", x: 0.12, y: 0, w: 0.76, title: "Selo na aba", note: "O logo numa aba escura presa à borda de cima, como etiqueta de caixa." },
+          { id: "maes-2", x: 0.3, y: 0.08, w: 0.62, title: "Moldura com canto", note: "O canto chanfrado da caixa do logo vira moldura de foto." },
+          { id: "onde-2", x: 0, y: 0.25, w: 1, title: "Etiquetas e pins", note: "Endereços em etiquetas e pins 3D sobre um mapa que atravessa as telas." },
+          { id: "esquenta-precos-1", x: 0.33, y: 0.06, w: 0.65, title: "Preço em destaque", note: "De/por em etiquetas tracejadas: o desconto se lê antes do produto." },
+        ],
+      },
+      stories: {
+        title: "Stories do <em>dia a dia</em>",
+        note: "Produto, aviso e lembrete: os stories avulsos que mantêm a máquina na cabeça de quem está no escritório — da coquinha gelada na hora do almoço ao VR que acabou de cair.",
+      },
+      screen: {
+        eyebrow: "Fora do Instagram",
+        title: "Na tela da <em>máquina</em>",
+        note: "A vending tem uma tela vertical, e a mesma linguagem chega até ela: a campanha de indicação com o QR code para indicar ali mesmo e uma vinheta de Halloween — “Deu fome? Vai de Smart Box”.",
+        spec: "Vídeo 1080 × 1920",
+      },
+    },
   },
   {
     slug: "deliziare",

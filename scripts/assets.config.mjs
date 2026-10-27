@@ -12,7 +12,12 @@ export const SRC = "F:/Freelancer";
 const W = "Websites";
 const CAU = "Apex Comunicação/CAU - PE/Projeto Case";
 const GRINGO = "Projeto Gringo";
+const SB = "SmartBox/SmartBox - entregas";
+const SBP = `${SB}/Postados`;
 const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
+const pad2 = (n) => String(n).padStart(2, "0");
+// sequência de telas de um mesmo group: ids `${group}-1`, `${group}-2`…
+const seq = (group, srcs, kind) => srcs.map((src, i) => ({ id: `${group}-${i + 1}`, src, kind, group }));
 
 export const cases = {
   /* ---------------------------------------------------------------- sites no ar */
@@ -55,35 +60,125 @@ export const cases = {
       { id: "mobile-fundos", src: "shots/arie-fundos-mobile.webp", kind: "mobile" },
     ],
   },
+  // site no topo e, embaixo, o Instagram (c.social em cases.ts). Cada post do feed é um group (a capa é o 1º item);
+  // os stories de um carrossel ficam em `${group}-st`; stories avulsos em "stories"; vídeos da tela da máquina em "tela".
   smartbox: {
     thumb: { from: "live" },
     items: [
       { id: "live", src: "shots/smartbox-desktop.webp", kind: "page", label: "Home" },
       { id: "mobile", src: "shots/smartbox-mobile.webp", kind: "mobile" },
+      // logo sobre preto (prancheta 4 do .ai) para o avatar do perfil
+      { id: "logo", src: "SmartBox/smartbox.ai", kind: "post", pages: [4], group: "marca" },
+      ...[["ComoComprar", "Como comprar"], ["Contato", "Contato"], ["Dúvidas", "Dúvidas"], ["IndiqueEganhe", "Indique e ganhe"], ["OndeEstamos", "Onde estamos"]]
+        .map(([f, label], i) => ({ id: `destaque-${i + 1}`, src: `${SB}/Destaques/SmartBox_Destaques_${f}.png`, kind: "story", group: "destaques", label })),
+
+      // carrosséis com blocos próprios: feed + stories da mesma campanha
+      ...seq("pegou", range(1, 6).map((n) => `${SB}/Posts Frequentes/Pegou pagou/Feed/SmartBox_PegouPagou_insta_v1_0${n}.png`), "feed"),
+      ...seq("pegou-st", range(1, 6).map((n) => `${SB}/Posts Frequentes/Pegou pagou/Story/SmartBox_PegouPagou_story_0${n}.png`), "story"),
+      ...seq("opcoes", range(1, 8).map((n) => `${SB}/Opções de produtos/Feed/SmartBox_Opções_insta_0${n}.png`), "feed"),
+      ...seq("opcoes-st", range(1, 8).map((n) => `${SB}/Posts Frequentes/Opções/Story/SmartBox_Opções_story_0${n}.png`), "story"),
+      ...seq("onde", range(1, 10).map((n) => `${SB}/Localização/Feed/SmartBox_localização_insta_${pad2(n)}.png`), "feed"),
+      ...seq("onde-st", range(1, 10).map((n) => `${SB}/Localização/Story/SmartBox_localização_story_${pad2(n)}.png`), "story"),
+      ...seq("indique", range(1, 3).map((n) => `${SB}/Indique e ganhe/Feed/SmartBox_Indiqueeganhe_insta_v1_0${n}.png`), "feed"),
+      ...seq("indique-st", range(1, 3).map((n) => `${SB}/Indique e ganhe/Story/SmartBox_Indiqueeganhe_story_0${n}.png`), "story"),
+      { id: "indicou-1", src: `${SB}/Indicou, fechou, ganhou/feed.png`, kind: "feed", group: "indicou" },
+      ...seq("indicou-st", [
+        `${SB}/Indicou, fechou, ganhou/Storys/Story 1 — Gancho curiosidade@1x.png`,
+        `${SB}/Indicou, fechou, ganhou/Storys/Story 2 — Revelação prêmios@1x.png`,
+        `${SB}/Indicou, fechou, ganhou/Storys/Story 3 — Teaser Pix@1x.png`,
+        `${SB}/Indicou, fechou, ganhou/story.png`,
+      ], "story"),
+      { id: "agosto-1", src: `${SBP}/AgostoInfinito/Feed/smartbox_AgostoInfinito_insta.png`, kind: "feed", group: "agosto" },
+      ...seq("agosto-st", range(1, 2).map((n) => `${SBP}/AgostoInfinito/Story/smartbox_AgostoInfinito_story_0${n}.png`), "story"),
+      ...seq("trabalhador", range(1, 9).map((n) => `${SBP}/Dia do Trabalhador/Artes separadas/SmartBox_DiaDoTrabalhador_insta_0${n}.${n === 1 ? "png" : "jpg"}`), "feed"),
+      ...seq("maes", range(1, 4).map((n) => `${SBP}/Dia das Mães/Feed/SmartBox_DiadasMães_insta_0${n}.png`), "feed"),
+      ...seq("maes-st", range(1, 4).map((n) => `${SBP}/Dia das Mães/Story/SmartBox_DiadasMães_story_0${n}.png`), "story"),
+      { id: "namorados-1", src: `${SBP}/Dia dos namorados/Feed/Smartbox_DiaDosNamorados_insta_v1.png`, kind: "feed", group: "namorados" },
+      ...seq("namorados-st", [1, 2, 3].map((n) => `${SBP}/Dia dos namorados/Story/Smartbox_DiaDosNamorados_story_v1_0${n}.${n === 1 ? "png" : "jpg"}`), "story"),
+      ...seq("copa", range(1, 2).map((n) => `${SBP}/Copa do mundo/Feed/SmartBox_CopaDoMundo_insta_v2_0${n}.png`), "feed"),
+      ...seq("copa-st", range(1, 2).map((n) => `${SBP}/Copa do mundo/Story/SmartBox_CopaDoMundo_story_0${n}.png`), "story"),
+      ...seq("meme", range(1, 4).map((n) => `${SBP}/Meme/Feed/SmartBox_MemeSmartBox_insta_v1_0${n}.png`), "feed"),
+      ...seq("meme-st", range(1, 4).map((n) => `${SBP}/Meme/Story/SmartBox_MemeSmartBox_story_0${n}.png`), "story"),
+
+      // demais posts do feed (só aparecem no perfil): um group por post, com o título no label
       ...[
-        "AgostoInfinito/smartbox_AgostoInfinito_insta.png",
-        "Bold Whey/SmartBox_BOLDWHEY_insta_v1.png",
-        "Coca Gelada/SmartBox_CocaGelada_insta_v1.png",
-        "Beneficio/SmartBox_beneficio_insta.png",
-        "Copa do mundo/SmartBox_CopaDoMundo_insta.png",
-        "Empresas/SmartBox_Empresas_insta_v1.png",
-        "Foco/SmartBox_Foco_insta_v1.png",
-        "Pascoa/SmartBox_Pascoa_insta_v1.png",
-        "YoPro Bold/SmartBox_YoproBold_insta_v1.png",
-        "Coca Gelada/SmartBox_docinho_insta_v1.png",
-        "Salgadinhos/SmartBox_salgadinhos_insta.png",
-        "Onde Estamos/SmartBox_OndeEstamos_insta_v1.png",
-      ].map((p, i) => ({ id: `post-${i + 1}`, src: `SmartBox/Social Media/${p}`, kind: "post", group: "social" })),
+        ["cliente", "Dia do Cliente", `${SBP}/Dia do cliente/Feed/SmartBox_DiaDoCliente_insta.png`],
+        ["aniversario", "SmartBox 2 anos", `${SBP}/Aniversario/Feed/SmartBox_Aniversario_insta.png`],
+        ["semana", "Semana de aniversário", `${SB}/Semana de aniversário/Feed/SmartBox_Semana_de_aniversário_insta.png`],
+        ["esquenta", "Esquenta de aniversário", `${SBP}/Esquenta 2 anos/Feed/SmartBox_esquenta_2_anos_insta.png`],
+        ["esquenta-precos", "Preços do esquenta", `${SBP}/Esquenta 2 anos - segunda semana/Feed/SmartBox_Esquenta_feed_01.png`],
+        ["esquenta-precos", "Preços do esquenta", `${SBP}/Esquenta 2 anos - segunda semana/Feed/SmartBox_Esquenta_feed_02.png`],
+        ["pais", "Dia dos Pais", `${SBP}/Dia dos Pais/Feed/Smartbox_diadospais_insta_01.png`],
+        ["pais", "Dia dos Pais", `${SBP}/Dia dos Pais/Feed/Smartbox_diadospais_insta_02.png`],
+        ["vem-ai", "Novos pontos chegando", `${SB}/Novos pontos/SmartBox_VemAi_insta.png`],
+        ["crush", "Crush no escritório", `${SBP}/Dia dos namorados/Feed/Smartbox_DiaDosNamorados_feed_v2.png`],
+        ["pascoa-semana", "Semana de Páscoa", `${SBP}/Pascoa/Feed/SmartBox_Pascoa_insta_v2.png`],
+        ["pascoa", "Páscoa", `${SBP}/Pascoa/Feed/SmartBox_Pascoa_insta_v1.png`],
+        ["novo-site", "Site novo no ar", `${SBP}/Novo Site/Feed - Instagram/Smartbox_novosite_insta_v1.png`],
+        ["site-obra", "Site em manutenção", `${SBP}/Site em construção/Feed/SmartBox_SiteEmConstrução_insta.png`],
+        ["faria-lima", "Faria Lima Square", `${SBP}/Faria Lima Square/Feed/SmartBox_FariaLima_insta.png`],
+        ["academia", "Vending na academia", `${SB}/Vending academia/Smartbox_Academia_op2.png`],
+        ["onde-lista", "Onde estamos", `${SB}/Onde estamos/Onde estamos - v2/Feed/SmartBox_OndeEstamos_insta_v2.png`],
+        ["onde-querem", "Onde você quer uma SmartBox?", `${SB}/Onde estamos/Feed/SmartBox_OndeQuerem_insta.png`],
+        ["onde-mapa", "Onde estamos?", `${SB}/Onde estamos/Feed/SmartBox_OndeEstamos_insta.png`],
+        ["onde-atua", "Onde a SmartBox atua", `${SB}/Posts Frequentes/Onde atuamos/Feed/SmartBox_OndeAtua_insta.png`],
+        ["beneficio", "O benefício que todo colaborador merece", `${SB}/Beneficio/Feed/SmartBox_beneficio_insta.png`],
+        ["notas", "Notas", `${SB}/Notas/Feed/SmartBox_Notas_insta.png`],
+        ["empresas", "Como ter uma SmartBox na empresa", `${SB}/Posts Frequentes/Como ter uma smatbox na minha empresa_/SmartBox_Empresas_insta_v1.png`],
+        ["enquete", "A gente quer saber", `${SB}/Enquete produtos/SmartBox_QueremosSaber_insta.png`],
+        ["bold", "Bold Whey", `${SB}/Posts Frequentes/Proteínas - Bold - YoPRO/Feed/SmartBox_BOLDWHEY_insta_v1.png`],
+        ["foco", "Modo foco", `${SB}/Posts Frequentes/Proteínas - Bold - YoPRO/Feed/SmartBox_Foco_insta_v1.png`],
+        ["yopro", "YoPro e Bold", `${SB}/Posts Frequentes/Proteínas - Bold - YoPRO/Feed/SmartBox_YoproBold_insta_v1.png`],
+        ["salgadinhos", "Fominha de fim de tarde", `${SB}/Posts Frequentes/Salgadinhos/Feed/SmartBox_salgadinhos_insta.png`],
+        ["chicletes", "Tem novidade na SmartBox", `${SBP}/Chicletes/Feed/SmartBox_chicletes_insta.png`],
+        ["lua", "Tem gente que já foi até a lua", `${SBP}/Meme Lua/7.png`],
+        // primeira leva, que não voltou na pasta de entregas
+        ["coca", "Coquinha bem gelada", "SmartBox/Social Media/Coca Gelada/SmartBox_CocaGelada_insta_v1.png"],
+        ["docinho", "Bateu vontade de um docinho", "SmartBox/Social Media/Coca Gelada/SmartBox_docinho_insta_v1.png"],
+      ].map(([group, label, src], i, all) => ({ id: `${group}-${all.slice(0, i + 1).filter((x) => x[0] === group).length}`, src, kind: "feed", group, label })),
+
+      // stories avulsos (na ordem da faixa)
       ...[
-        "AgostoInfinito/smartbox_AgostoInfinito_story_01.png",
-        "Bold Whey/SmartBox_BOLDWHEY_story.png",
-        "Coca Gelada/SmartBox_CocaGelada_story.png",
-        "Energéticos/SmartBox_Energeticos_story.png",
-        "Pascoa/SmartBox_Pascoa_story_op1.png",
-        "Cartão VR/SmartBox_VR_story.png",
-      ].map((p, i) => ({ id: `story-${i + 1}`, src: `SmartBox/Social Media/${p}`, kind: "post", group: "stories" })),
-      { id: "folder-1", src: "SmartBox/Impressos/Smartbox_folder_v1-01.png", kind: "image", group: "print" },
-      { id: "folder-2", src: "SmartBox/Impressos/Smartbox_folder_v1-02.png", kind: "image", group: "print" },
+        ["Benefício", `${SB}/Beneficio/Story/SmartBox_beneficio_story.png`],
+        ["Como ter uma SmartBox", `${SB}/Posts Frequentes/Como ter uma smatbox na minha empresa_/SmartBox_Empresas_story.png`],
+        ["Notas", `${SB}/Notas/Story/SmartBox_Notas_story.png`],
+        ["Onde estamos", `${SB}/Onde estamos/Onde estamos - v2/Story/SmartBox_OndeEstamos_story_v2.png`],
+        ["Onde estamos?", `${SB}/Onde estamos/Story/SmartBox_OndeEstamos_story.png`],
+        ["Onde você quer", `${SB}/Onde estamos/Story/SmartBox_OndeQuerem_story.png`],
+        ["Onde a SmartBox atua", `${SB}/Posts Frequentes/Onde atuamos/Story/SmartBox_OndeAtua_story.png`],
+        ["Novos pontos", `${SB}/Novos pontos/SmartBox_VemAi_story.png`],
+        ["Vem aí na academia", `${SB}/Vem ai/Storys/SmartBox_VemAi_story_acad.png`],
+        ["Vending na academia", `${SB}/Vending academia/Smartbox_Academia_story_op2.png`],
+        ["Faria Lima Square", `${SBP}/Faria Lima Square/Story/SmartBox_FariaLima_story.png`],
+        ["A gente quer saber", `${SB}/Enquete produtos/SmartBox_QueremosSaber_story.png`],
+        ["Energéticos", `${SB}/Energeticos/SmartBox_Energeticos_story.png`],
+        ["Bold Whey", `${SB}/Posts Frequentes/Proteínas - Bold - YoPRO/Story/SmartBox_BOLDWHEY_story.png`],
+        ["Modo foco", `${SB}/Posts Frequentes/Proteínas - Bold - YoPRO/Story/SmartBox_Foco_story.png`],
+        ["YoPro e Bold", `${SB}/Posts Frequentes/Proteínas - Bold - YoPRO/Story/SmartBox_YoproBold_story.png`],
+        ["Hidratação", `${SB}/Posts Frequentes/Hidratação/SmartBox_hidratação_story.png`],
+        ["Salgadinhos", `${SB}/Posts Frequentes/Salgadinhos/Story/SmartBox_salgadinhos_story.png`],
+        ["Docinho de sexta", `${SB}/Posts Frequentes/Docinho de sexta/Story/SmartBox_Docinho_story.png`],
+        ["Coca no escritório", `${SB}/Posts Frequentes/Coca Escritorio/SmartBox_CocaEscritorio_story.png`],
+        ["Coquinha gelada", "SmartBox/Social Media/Coca Gelada/SmartBox_CocaGelada_story.png"],
+        ["O VR caiu", "SmartBox/Social Media/Cartão VR/SmartBox_VR_story.png"],
+        ["Chicletes", `${SBP}/Chicletes/Story/SmartBox_chicletes_story.png`],
+        ["Páscoa", `${SBP}/Pascoa/Story/SmartBox_Pascoa_story_op1.png`],
+        ["Semana de Páscoa", `${SBP}/Pascoa/Story/SmartBox_Pascoa_story_op2.png`],
+        ["Crush no escritório", `${SBP}/Dia dos namorados/Story/Smartbox_DiaDosNamorados_story_v2.png`],
+        ["Convocação da Copa", `${SBP}/Meme Neymar/SmartBox_MemeNeymar_story.png`],
+        ["Dia dos Pais", `${SBP}/Dia dos Pais/Story/Smartbox_diadospais_story_01.png`],
+        ["Dia dos Pais", `${SBP}/Dia dos Pais/Story/Smartbox_diadospais_story_02.png`],
+        ["Esquenta 2 anos", `${SBP}/Esquenta 2 anos/Story/SmartBox_esquenta_2_anos_story.png`],
+        ["Semana de aniversário", `${SB}/Semana de aniversário/Story/SmartBox_Semana_de_aniversário_story.png`],
+        ["Dia do Cliente", `${SBP}/Dia do cliente/Story/SmartBox_DiaDoCliente_story.png`],
+        ["Até a lua", `${SBP}/Meme Lua/8.png`],
+        ["Site em manutenção", `${SBP}/Site em construção/Story/SmartBox_SiteEmConstrução_story.png`],
+        ["Site novo no ar", `${SBP}/Novo Site/Story/Smartbox_novosite_story_v1.png`],
+      ].map(([label, src], i) => ({ id: `story-${pad2(i + 1)}`, src, kind: "story", group: "stories", label })),
+
+      // vídeos da tela vertical da máquina (o pôster sai do segundo `at`)
+      { id: "tela-1", src: `${SB}/Indicou, fechou, ganhou/vídeo máquina.mp4`, kind: "video", group: "tela", label: "Indicou, fechou, ganhou", at: 4 },
+      { id: "tela-2", src: `${SB}/Tela interativa/vídeo tela smartbox  (halloween).mp4`, kind: "video", group: "tela", label: "Halloween", at: 27 },
     ],
   },
 

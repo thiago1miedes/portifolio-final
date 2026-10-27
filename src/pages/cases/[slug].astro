@@ -20,7 +20,8 @@ const c = cases[i];
 const next = cases[(i + 1) % cases.length];
 // com cases/<slug>/case.json, a página vira o case narrativo de marca
 const brand = brandCases[c.slug];
-// com c.social, a galeria vira a vitrine de carrosséis (capa com o emblema, linguagem dos posts e um post por carrossel)
+// com c.social, a galeria vira a vitrine de carrosséis (capa com o emblema, linguagem dos posts e um post por carrossel);
+// se o case também tem site, o site vem primeiro (capa navegável, páginas e mobile) e as redes depois
 const social = c.social;
 const socialItem = (id: string) => c.items.find((it) => it.id === id)!;
 // com c.product, a galeria vira embalagens + ensaios de foto + galerias de marketplace (a capa continua sendo a foto de c.cover)
@@ -88,7 +89,7 @@ const meta = [
               Visitar site <Icon name="arrow-up-right" class="icon--arrow" />
             </a>
           )}
-          <a href={book ? "#leitor" : "#galeria"} class="btn btn--ghost">{social ? "Ver carrosséis" : book ? "Ler o e-book" : "Ver projeto"}</a>
+          <a href={book ? "#leitor" : "#galeria"} class="btn btn--ghost">{social && !cover ? "Ver carrosséis" : book ? "Ler o e-book" : "Ver projeto"}</a>
         </div>
       </div>
       <dl class="case-meta" data-hero-fade>
@@ -104,7 +105,7 @@ const meta = [
         </div>
       </section>
     )}
-    {social && <SocialCover logo={socialItem("logo")} pattern={socialItem("padrao").src} title={c.title} />}
+    {social && !cover && <SocialCover logo={socialItem("logo")} pattern={socialItem("padrao").src} title={c.title} />}
     {book && <BookReader c={c} />}
     {visualCover && (
       <section class="case-cover-img container">
@@ -128,7 +129,6 @@ const meta = [
 
     <div id="galeria"></div>
 
-    {social && <SocialShowcase c={c} />}
     {product && <ProductShowcase c={c} />}
     {book && <BookShowcase c={c} />}
 
@@ -172,6 +172,8 @@ const meta = [
         </div>
       </section>
     )}
+
+    {social && <SocialShowcase c={c} />}
 
     {hasFormats && (
       <nav class="case-formats container" aria-label="Formatos do projeto">

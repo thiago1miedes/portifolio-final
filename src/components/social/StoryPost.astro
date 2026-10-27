@@ -1,0 +1,97 @@
+---
+// Uma sequência de stories no formato do Instagram: barras de progresso, perfil, setas e zoom no lightbox.
+// Usa o mesmo comportamento do carrossel (data-carousel em src/scripts/main.ts, no elemento que envolve
+// este story e a sequência); as barras e o perfil ficam acima da arte para não cobrir o topo dela.
+import Icon from "../Icon.astro";
+import type { AssetItem } from "../../data/cases";
+
+interface Props { group: string; title: string; profile: string; avatar: string; items: AssetItem[] }
+const { group, title, profile, avatar, items } = Astro.props;
+const n = items.length;
+---
+<figure class="st">
+  <div class="st-top" aria-hidden="true">
+    <span class="st-bars">{items.map((_, k) => <i class:list={{ "is-active": k === 0 }} data-car-dot></i>)}</span>
+    <span class="st-id">
+      <span class="st-avatar"><img src={avatar} width="28" height="28" alt="" loading="lazy" /></span>
+      <b>{profile}</b>
+      <small>{title}</small>
+      <span class="st-close"><Icon name="close" size={18} /></span>
+    </span>
+  </div>
+
+  <div class="st-screen">
+    <ol class="st-track" data-car-track data-lenis-prevent-horizontal tabindex="0" aria-label={`${title}: ${n} stories. Use as setas do teclado para navegar.`}>
+      {items.map((it, k) => (
+        <li class="st-slide" aria-label={`Story ${k + 1} de ${n}`}>
+          <button
+            type="button" class="st-zoom" data-cursor="view"
+            data-lightbox={it.video ?? it.src} data-poster={it.video ? it.src : undefined} data-lb-group={group}
+            data-w={it.w} data-h={it.h} aria-label={`Ampliar story ${k + 1}${it.label ? ` (${it.label})` : ""}`}
+          >
+            {it.video ? (
+              <video width={it.w} height={it.h} poster={it.src} muted loop playsinline preload="none" data-car-video>
+                <source src={it.video} type="video/mp4" />
+              </video>
+            ) : (
+              <img src={it.src} width={it.w} height={it.h} alt={`${title} — story ${k + 1}`} loading="lazy" decoding="async" />
+            )}
+          </button>
+        </li>
+      ))}
+    </ol>
+    <span class="sr-only" data-car-count>{`1/${n}`}</span>
+    <button type="button" class="st-nav st-prev is-hidden" data-car-prev aria-label="Story anterior"><Icon name="chevron-left" size={18} /></button>
+    <button type="button" class:list={["st-nav st-next", { "is-hidden": n < 2 }]} data-car-next aria-label="Próximo story"><Icon name="chevron-right" size={18} /></button>
+  </div>
+
+  <footer class="st-foot" aria-hidden="true">
+    <span class="st-reply">Enviar mensagem</span>
+    <Icon name="heart" size={20} />
+    <Icon name="send" size={20} />
+  </footer>
+</figure>
+
+<style>
+  .st {
+    margin: 0; width: 100%; max-width: 280px; padding: 10px;
+    border-radius: 30px; background: #000; border: 1px solid var(--border);
+    box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.9);
+  }
+  .st-top { display: grid; gap: 10px; padding: 4px 4px 10px; }
+  .st-bars { display: flex; gap: 3px; }
+  .st-bars i { position: relative; flex: 1; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, 0.28); overflow: hidden; }
+  .st-bars i::after { content: ""; position: absolute; inset: 0; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--ease); }
+  .st-bars i.is-active::after, .st-bars i.is-done::after { transform: scaleX(1); }
+  .st-id { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 0.75rem; line-height: 1.2; }
+  .st-id b { font-weight: 600; flex: none; }
+  .st-id small { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-muted); font-size: 0.75rem; }
+  .st-avatar { flex: none; width: 28px; height: 28px; padding: 2px; border-radius: 50%; background: var(--accent); }
+  .st-avatar img { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #000; background: #000; }
+  .st-close { margin-left: auto; flex: none; color: var(--text-muted); display: inline-flex; }
+
+  .st-screen { position: relative; border-radius: 16px; overflow: hidden; background: #111; }
+  .st-track { display: flex; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .st-track::-webkit-scrollbar { display: none; }
+  .st-track:focus-visible { outline-offset: -3px; }
+  .st-slide { position: relative; flex: 0 0 100%; aspect-ratio: 9 / 16; scroll-snap-align: start; scroll-snap-stop: always; }
+  .st-zoom { display: block; width: 100%; height: 100%; cursor: zoom-in; }
+  .st-zoom img, .st-zoom video { width: 100%; height: 100%; object-fit: cover; }
+  .st-nav {
+    position: absolute; top: 50%; translate: 0 -50%;
+    display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9); color: var(--on-accent);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: background-color 0.25s, scale 0.3s var(--ease);
+  }
+  .st-nav:hover { background: var(--accent); scale: 1.08; }
+  .st-prev { left: 10px; }
+  .st-next { right: 10px; }
+
+  .st-foot { display: flex; align-items: center; gap: 12px; padding: 10px 4px 2px; color: var(--text); }
+  .st-reply {
+    flex: 1; display: flex; align-items: center; height: 34px; padding: 0 14px;
+    border-radius: var(--radius-pill); border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 0.75rem; color: var(--text-muted);
+  }
+</style>

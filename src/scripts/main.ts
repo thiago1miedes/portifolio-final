@@ -464,7 +464,8 @@ $$("[data-carousel]").forEach((root) => {
     count.textContent = `${k + 1}/${slides.length}`;
     prev.classList.toggle("is-hidden", k === 0);
     next.classList.toggle("is-hidden", k === slides.length - 1);
-    dots.forEach((d, i) => d.classList.toggle("is-active", i === k));
+    // nos stories, as barras anteriores ficam cheias (is-done)
+    dots.forEach((d, i) => { d.classList.toggle("is-active", i === k); d.classList.toggle("is-done", i < k); });
     thumbs.forEach((t, i) => t.classList.toggle("is-active", i === k));
     // no celular a sequência rola de lado: mantém a miniatura ativa à vista (sem mexer na rolagem da página)
     const strip = thumbs[k]?.closest("ol");
@@ -491,6 +492,26 @@ $$("[data-carousel]").forEach((root) => {
     go(cur + (e.key === "ArrowRight" ? 1 : -1));
   });
   new IntersectionObserver(([e]) => { visible = e.isIntersecting; syncVideos(); }, { threshold: 0.4 }).observe(track);
+});
+
+/* ------------------------------------------------------------------ perfil de Instagram e faixa de stories (cases de social) */
+// "Ver o feed inteiro" mostra os posts além dos primeiros da grade.
+$$<HTMLButtonElement>("[data-feed-more]").forEach((btn) => btn.addEventListener("click", () => {
+  $$("[data-feed-extra]", btn.parentElement!).forEach((li) => li.classList.remove("is-hidden"));
+  btn.classList.add("is-hidden");
+  ScrollTrigger.refresh();
+}));
+// Setas da faixa de stories: rolam quase uma tela de cada vez.
+$$("[data-tray]").forEach((root) => {
+  const track = $("[data-tray-track]", root)!;
+  const by = (dir: number) => track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: reduce ? "auto" : "smooth" });
+  $("[data-tray-prev]", root)?.addEventListener("click", () => by(-1));
+  $("[data-tray-next]", root)?.addEventListener("click", () => by(1));
+});
+// Vídeos com data-autoplay tocam (mudos, em loop) só enquanto estão na tela.
+$$<HTMLVideoElement>("video[data-autoplay]").forEach((v) => {
+  if (reduce) return;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: 0.35 }).observe(v);
 });
 
 /* ------------------------------------------------------------------ galerias de marketplace (data-listing) */

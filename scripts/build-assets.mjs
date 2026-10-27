@@ -74,26 +74,26 @@ function copySvg(file, out) {
   return { w: Math.round(w), h: Math.round(h) };
 }
 
-// Vídeo vai como está; o pôster (primeiro quadro) é capturado no Chrome, já que não há ffmpeg na máquina.
+// Vídeo vai como está; o pôster (o quadro do segundo `at`, por padrão o primeiro) é capturado no Chrome, já que não há ffmpeg na máquina.
 let browser = null;
-async function videoPoster(file, out) {
+async function videoPoster(file, out, at = 0.05) {
   if (!browser) {
     const { default: puppeteer } = await import("puppeteer-core");
     browser = await puppeteer.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true, args: ["--allow-file-access-from-files"] });
   }
   const page = await browser.newPage();
   await page.goto(pathToFileURL(file).href);
-  const png = await page.evaluate(async () => {
+  const png = await page.evaluate(async (at) => {
     const v = document.querySelector("video");
     v.muted = true; v.pause();
     if (v.readyState < 2) await new Promise((r) => (v.onloadeddata = r));
-    v.currentTime = 0.05;
+    v.currentTime = Math.min(at, v.duration - 0.05);
     await new Promise((r) => (v.onseeked = r));
     const c = document.createElement("canvas");
     c.width = v.videoWidth; c.height = v.videoHeight;
     c.getContext("2d").drawImage(v, 0, 0);
     return c.toDataURL("image/png");
-  });
+  }, at);
   await page.close();
   return save(Buffer.from(png.split(",")[1], "base64"), "feed", out);
 }
@@ -150,7 +150,7 @@ for (const slug of slugs) {
       }
       if (it.kind === "video") {
         fs.copyFileSync(file, path.join(dir, `${it.id}.mp4`));
-        const size = await videoPoster(file, path.join(dir, `${it.id}.webp`));
+        const size = await videoPoster(file, path.join(dir, `${it.id}.webp`), it.at);
         items.push({ id: it.id, src: `/cases/${slug}/${it.id}.webp`, video: `/cases/${slug}/${it.id}.mp4`, ...size, kind: it.kind, label: it.label, group: it.group });
         continue;
       }
@@ -158,7 +158,8 @@ for (const slug of slugs) {
       const isPdf = /\.(pdf|ai)$/i.test(file);
       const pages = isPdf ? (it.pages ?? [1]) : [null];
       for (const p of pages) {
-        const id = p && it.pages ? `${it.id}-${String(p).padStart(2, "0")}` : it.id;
+        // com uma página só, o id fica como está
+        const id = p && it.pages?.length > 1 ? `${it.id}-${String(p).padStart(2, "0")}` : it.id;
         const input = isPdf ? renderPdf(file, p, it.kind) : file;
         const outFile = path.join(dir, `${id}.webp`);
         const { w, h } = await save(input, it.kind, outFile);

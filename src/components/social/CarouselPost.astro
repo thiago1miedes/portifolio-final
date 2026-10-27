@@ -7,8 +7,10 @@ import type { AssetItem } from "../../data/cases";
 interface Props { group: string; title: string; profile: string; place: string; avatar: string; items: AssetItem[] }
 const { group, title, profile, place, avatar, items } = Astro.props;
 const n = items.length;
+// a proporção das telas vem da primeira (4:5, 3:4…)
+const ratio = `--ratio:${items[0].w} / ${items[0].h}`;
 ---
-<figure class="ig">
+<figure class="ig" style={ratio}>
   <header class="ig-head">
     <span class="ig-avatar"><img src={avatar} width="40" height="40" alt="" loading="lazy" /></span>
     <span class="ig-id"><b>{profile}</b><small>{place}</small></span>
@@ -70,7 +72,7 @@ const n = items.length;
   }
   .ig-track::-webkit-scrollbar { display: none; }
   .ig-track:focus-visible { outline-offset: -3px; border-radius: 0; }
-  .ig-slide { position: relative; flex: 0 0 100%; aspect-ratio: 4 / 5; scroll-snap-align: start; scroll-snap-stop: always; }
+  .ig-slide { position: relative; flex: 0 0 100%; aspect-ratio: var(--ratio, 4 / 5); scroll-snap-align: start; scroll-snap-stop: always; }
   .ig-zoom { display: block; width: 100%; height: 100%; cursor: zoom-in; }
   .ig-zoom img, .ig-zoom video { width: 100%; height: 100%; object-fit: cover; }
   .ig-badge {
