@@ -34,6 +34,7 @@ const order = s.fronts.flatMap((f) => s.carousels.filter((k) => k.front === f.ke
 const numberOf = (key: string) => pad(order.findIndex((k) => k.key === key) + 1);
 const count = (items: AssetItem[]) => {
   const v = items.filter((it) => it.video).length;
+  if (items.length === 1 && !v) return "Post único";
   return `${items.length} telas${v ? ` · ${v} em vídeo` : ""}`;
 };
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
@@ -50,6 +51,7 @@ const crop = (d: NonNullable<typeof s.system.details>[number]) => {
   const imgH = 1 / d.w / (it.w / it.h); // altura da arte em larguras de moldura
   return `width:${(100 / d.w).toFixed(3)}%;left:${((-d.x / d.w) * 100).toFixed(3)}%;top:${((-d.y * imgH) / 0.75 * 100).toFixed(3)}%`;
 };
+const brandTile = (id: string) => c.items.find((it) => it.id === id);
 const looseStories = slides("stories");
 const screens = slides("tela");
 ---
@@ -59,6 +61,36 @@ const screens = slides("tela");
     <h2 class="title-section" data-split set:html={s.intro.title} />
     <p class="lead" data-reveal>{s.intro.note}</p>
   </header>
+)}
+
+{s.brand && (
+  <section class="ss-brand container" aria-labelledby="ss-brand-t">
+    <header class="ss-brand-head">
+      <p class="eyebrow" data-reveal>A marca</p>
+      <h2 class="title-section" id="ss-brand-t" data-split set:html={s.brand.title} />
+      <p class="lead" data-reveal>{s.brand.note}</p>
+    </header>
+    <div class="ss-brand-tiles">
+      {[
+        { id: "logo-cor", bg: s.brand.light, cap: "Logotipo", cls: "" },
+        { id: "logo", bg: s.brand.dark, cap: "Versão em negativo", cls: "" },
+      ].map((t) => { const it = brandTile(t.id)!; return (
+        <figure class="ss-bt" style={`background:${t.bg}`} data-reveal>
+          <img src={it.src} width={it.w} height={it.h} alt={`${t.cap} ${c.title}`} loading="lazy" />
+          <figcaption>{t.cap}</figcaption>
+        </figure>
+      ); })}
+      <figure class="ss-bt ss-bt--sym" style={`background:${s.brand.light}`} data-reveal>
+        <img src={brandTile("simbolo")!.src} width={brandTile("simbolo")!.w} height={brandTile("simbolo")!.h} alt={`Símbolo ${c.title}`} loading="lazy" />
+        <figcaption>Símbolo</figcaption>
+      </figure>
+      <ol class="ss-concept">
+        {s.brand.concept.map((k, n) => (
+          <li data-reveal><b>{pad(n + 1)}</b><span class="ss-concept-t">{k.t}</span><span class="ss-concept-d">{k.d}</span></li>
+        ))}
+      </ol>
+    </div>
+  </section>
 )}
 
 <section class="ss-stats container" aria-label="O projeto em números">
@@ -120,7 +152,7 @@ const screens = slides("tela");
   </div>
 </section>
 
-<nav class="ss-index container" aria-label="Carrosséis do projeto">
+{!s.hideIndex && <nav class="ss-index container" aria-label="Carrosséis do projeto">
   <div class="ss-index-head">
     <p class="eyebrow" data-reveal>Carrosséis</p>
     <h2 class="title-section" data-split>{`${inWords(s.fronts.length)[0].toUpperCase()}${inWords(s.fronts.length).slice(1)} frentes, `}<em>{inWords(s.carousels.length)}</em> sequências</h2>
@@ -147,7 +179,7 @@ const screens = slides("tela");
       </div>
     ))}
   </div>
-</nav>
+</nav>}
 
 {s.fronts.map((f, fi) => (
   <section class="ss-front" id={`frente-${f.key}`} aria-labelledby={`frente-${f.key}-t`}>
@@ -233,7 +265,7 @@ const screens = slides("tela");
           <div class="cb-post" data-reveal>
             <CarouselPost group={k.key} title={k.title} profile={s.profile} place={s.place} avatar={logo.src} items={items} />
           </div>
-          <div class="cb-strip" data-reveal>
+          {items.length > 1 && <div class="cb-strip" data-reveal>
             <p class="cb-strip-label">Sequência completa <span>— as telas lado a lado, como a pessoa desliza</span></p>
             <ol class="strip">
               {items.map((it, i) => (
@@ -245,7 +277,7 @@ const screens = slides("tela");
                 </li>
               ))}
             </ol>
-          </div>
+          </div>}
         </article>
       );
     })}
@@ -332,6 +364,24 @@ const screens = slides("tela");
   /* abertura (quando o case começa pelo site) */
   .ss-intro { display: grid; gap: 20px; padding-block: clamp(24px, 4vw, 56px) clamp(40px, 5vw, 72px); }
   .ss-intro > * { max-width: 820px; }
+
+  /* a marca */
+  .ss-brand { display: grid; gap: clamp(28px, 4vw, 48px); padding-block: clamp(24px, 4vw, 56px) clamp(56px, 7vw, 104px); }
+  .ss-brand-head { display: grid; gap: 20px; max-width: 760px; }
+  .ss-brand-tiles { display: grid; gap: clamp(12px, 1.6vw, 20px); }
+  @media (min-width: 800px) { .ss-brand-tiles { grid-template-columns: repeat(6, 1fr); } .ss-bt:nth-child(-n+2) { grid-column: span 3; } .ss-bt--sym { grid-column: span 2; } .ss-concept { grid-column: span 4; } }
+  .ss-bt { position: relative; margin: 0; display: grid; place-items: center; aspect-ratio: 16 / 9; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--border); }
+  .ss-bt img { width: 62%; height: auto; max-height: 62%; object-fit: contain; }
+  .ss-bt--sym { aspect-ratio: auto; min-height: 220px; }
+  .ss-bt--sym img { width: 44%; }
+  .ss-bt figcaption { position: absolute; left: 16px; bottom: 12px; font-size: 0.75rem; letter-spacing: 0.02em; color: #5a6672; }
+  .ss-bt:nth-child(2) figcaption { color: #b8c7d3; }
+  .ss-concept { display: grid; align-content: center; gap: 0; }
+  .ss-concept li { display: grid; grid-template-columns: 2.25rem 1fr; column-gap: 8px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .ss-concept li:first-child { border-top: 1px solid var(--border); }
+  .ss-concept b { grid-row: span 2; font-family: var(--font-display); font-weight: 400; color: var(--accent); }
+  .ss-concept-t { font-weight: 600; letter-spacing: -0.01em; }
+  .ss-concept-d { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.55; }
 
   /* números */
   .ss-stats { padding-bottom: clamp(56px, 7vw, 104px); }

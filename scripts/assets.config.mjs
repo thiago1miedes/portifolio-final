@@ -24,6 +24,10 @@ const seq = (group, srcs, kind) => srcs.map((src, i) => ({ id: `${group}-${i + 1
 const MV = "Mentivitalle";
 const pick = (dir, parts) => parts.map((p) => `${MV}/${dir}/${fs.readdirSync(`${SRC}/${MV}/${dir}`).find((n) => n.includes(p))}`);
 
+const LFD = "LF Serviços elétricos";
+// os 24 posts do Instagram da LF (1:1) vêm em arquivos baixados; cada um é um group próprio (a chave é o id)
+const lfPost = (n) => `${LFD}/${fs.readdirSync(`${SRC}/${LFD}`).filter((x) => x.endsWith(".png")).sort()[n]}`;
+
 export const cases = {
   /* ---------------------------------------------------------------- sites no ar */
   deliziare: {
@@ -536,6 +540,41 @@ export const cases = {
         ["reuniao", "Post 08", "Primeira reunião"],
         ["tres-dias", "Post 09", "3 dias para o lançamento"],
       ].map(([id, dir, label]) => ({ id: `${id}-1`, src: pick(dir, [""])[0], kind: "feed", group: id, label })),
+    ],
+  },
+
+  // LF Serviços Elétricos: logo (negativo para capa/miniatura e avatar derivados do SVG em sources/shots) + 24 posts únicos
+  "lf-servicos-eletricos": {
+    thumb: { logo: "logo", bg: "#103E5A" },
+    items: [
+      { id: "logo", src: "shots/lf-logo-negativo.svg", kind: "svg", group: "marca" },
+      { id: "avatar", src: "shots/lf-avatar.svg", kind: "svg", group: "marca" },
+      { id: "logo-cor", src: `${LFD}/Logo_Lf_2.svg`, kind: "svg", group: "marca" },
+      { id: "simbolo", src: `${LFD}/Logo_Lf_icone_1.svg`, kind: "svg", group: "marca" },
+      { id: "alarme-1", src: lfPost(0), kind: "feed", group: "alarme", label: "Alarme e combate a incêndio" },
+      { id: "quadro-1", src: lfPost(1), kind: "feed", group: "quadro", label: "Quadro de distribuição" },
+      { id: "profissionalismo-1", src: lfPost(2), kind: "feed", group: "profissionalismo", label: "Profissionalismo na LF" },
+      { id: "instalacao-1", src: lfPost(3), kind: "feed", group: "instalacao", label: "Instalação elétrica especializada" },
+      { id: "seguro-1", src: lfPost(4), kind: "feed", group: "seguro", label: "Trabalho seguro e de qualidade" },
+      { id: "pais-1", src: lfPost(5), kind: "feed", group: "pais", label: "Dia dos Pais" },
+      { id: "profissionais-1", src: lfPost(6), kind: "feed", group: "profissionais", label: "Profissionalismo e segurança" },
+      { id: "consumidor-1", src: lfPost(7), kind: "feed", group: "consumidor", label: "Mês do Consumidor" },
+      { id: "produza-1", src: lfPost(8), kind: "feed", group: "produza", label: "Produza a sua energia" },
+      { id: "chame-1", src: lfPost(9), kind: "feed", group: "chame", label: "Chame a LF" },
+      { id: "qualidade-1", src: lfPost(10), kind: "feed", group: "qualidade", label: "Qualidade e segurança" },
+      { id: "ajuda-1", src: lfPost(11), kind: "feed", group: "ajuda", label: "A LF te ajuda" },
+      { id: "oitenta-1", src: lfPost(12), kind: "feed", group: "oitenta", label: "Mais de 80 serviços" },
+      { id: "bauru126-1", src: lfPost(13), kind: "feed", group: "bauru126", label: "126 anos de Bauru" },
+      { id: "spda-1", src: lfPost(14), kind: "feed", group: "spda", label: "Proteção contra descargas" },
+      { id: "placas-1", src: lfPost(15), kind: "feed", group: "placas", label: "Placas fotovoltaicas" },
+      { id: "cabeamento-1", src: lfPost(16), kind: "feed", group: "cabeamento", label: "Troca de cabeamento" },
+      { id: "referencia-1", src: lfPost(17), kind: "feed", group: "referencia", label: "Referência no setor elétrico" },
+      { id: "natal-1", src: lfPost(18), kind: "feed", group: "natal", label: "Feliz Natal" },
+      { id: "infra-1", src: lfPost(19), kind: "feed", group: "infra", label: "Infraestrutura elétrica" },
+      { id: "encontra-1", src: lfPost(20), kind: "feed", group: "encontra", label: "Tudo o que você precisa" },
+      { id: "problemas-1", src: lfPost(21), kind: "feed", group: "problemas", label: "Problemas elétricos" },
+      { id: "meio-ambiente-1", src: lfPost(22), kind: "feed", group: "meio-ambiente", label: "Meio Ambiente" },
+      { id: "processo-1", src: lfPost(23), kind: "feed", group: "processo", label: "Processo de instalação" },
     ],
   },
 

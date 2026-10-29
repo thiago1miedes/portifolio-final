@@ -104,6 +104,10 @@ export interface SocialShowcase {
     elements?: string[];
     details?: { id: string; x: number; y: number; w: number; title: string; note: string }[];
   };
+  /** bloco "A marca": logotipo (item "logo-cor") sobre light, versão em negativo (item "logo") sobre dark, símbolo (item "simbolo") e o conceito */
+  brand?: { title: string; note: string; light: string; dark: string; concept: { t: string; d: string }[] };
+  /** esconde o índice de carrosséis (quando as sequências são posts únicos) */
+  hideIndex?: boolean;
   /** cor da capa quando o case não tem o painel de ladrilhos (item "padrao"): o logotipo (item "logo") vai sobre ela */
   coverBg?: string;
   /** posts únicos fora dos carrosséis: cada um é um group próprio, com o título no label do item */
@@ -1031,6 +1035,120 @@ const list: CaseData[] = [
           { id: "familia-1", x: 0, y: 0.12, w: 1, title: "Foto sobre a mancha", note: "A foto sai do retângulo e se apoia na onda índigo: gente de verdade para convidar, ilustração para explicar." },
           { id: "enquete-1", x: 0.02, y: 0.27, w: 0.96, title: "Dados com cara de marca", note: "A enquete usa só tons de índigo, com o ícone da marca no centro do gráfico." },
           { id: "vem-ai-1", x: 0, y: 0.15, w: 0.65, title: "Título em destaque", note: "Itálico e negrito em índigo sobre branco, ou em branco sobre índigo, com o texto de apoio bem menor." },
+        ],
+      },
+    },
+  },
+  {
+    slug: "lf-servicos-eletricos",
+    title: "LF Serviços Elétricos",
+    client: "LF Serviços Elétricos",
+    sector: "Serviços elétricos e energia solar · Bauru",
+    year: "2021–22",
+    cats: ["brand", "social"],
+    accent: "#FF9D01",
+    summary: "O logotipo da LF, empresa de serviços elétricos e energia solar de Bauru, e 24 posts de Instagram que o puseram em uso: serviços, energia solar, prova de confiança e datas do ano.",
+    about: [
+      "A LF faz instalação, manutenção e infraestrutura elétrica para casas, empresas e obras, e também instala placas de energia solar em Bauru e região. Precisava de uma marca que passasse segurança a quem contrata um serviço elétrico e que não fosse mais um raio amarelo sobre fundo azul.",
+      "Desenhei o logotipo: um símbolo geométrico, feito de quatro peças e um corte em diagonal, e o nome LF em letras de cantos arredondados, com a etiqueta Serviços Elétricos ao lado. Do azul-petróleo e do laranja saiu todo o resto: nos posts, a marca aparece sempre no canto, sobre uma faixa laranja ou um triângulo azul.",
+      "Com a identidade pronta, fiz os posts do Instagram da empresa. Eles alternam fotos de profissionais recortados sobre fundo claro, obras concluídas, ofertas de energia solar e datas comemorativas, sempre com o mesmo contorno em raio e a mesma assinatura no rodapé.",
+    ],
+    deliverables: ["Logotipo e símbolo", "Versão em negativo", "24 posts em 1:1", "Posts de serviços", "Energia solar", "Datas comemorativas"],
+    tools: ["Illustrator", "Photoshop"],
+    credit: "Projeto realizado na Olive Marketing e Comunicação",
+    social: {
+      profile: "lfservicoseletricosbauru",
+      place: "Bauru e região",
+      avatar: "avatar",
+      coverBg: "#103E5A",
+      hideIndex: true,
+      brand: {
+        title: "Um raio feito de <em>vazio</em>",
+        note: "O símbolo da LF não desenha um raio: ele aparece no corte entre quatro peças. O logotipo completo reúne o símbolo, o nome em letras arredondadas e uma etiqueta com o segmento.",
+        light: "#F4F5F7",
+        dark: "#103E5A",
+        concept: [
+          { t: "O raio no espaço vazio", d: "A diagonal branca entre as quatro peças forma o raio. Quem é do setor lê energia; quem não é vê uma forma limpa, que funciona pequena, como avatar, ou grande, num uniforme." },
+          { t: "Duas cores, duas energias", d: "O azul-petróleo traz a seriedade e a segurança que um serviço elétrico pede. O laranja traz a energia e o sol, que já cobre a frente de energia solar." },
+          { t: "Cantos arredondados", d: "Os dois quartos de círculo laranja se repetem nas letras e na etiqueta e voltam, nos posts, nas molduras das fotos." },
+        ],
+      },
+      stats: [
+        { n: "24", label: "posts" },
+        { n: "04", label: "frentes de conteúdo" },
+        { n: "04", label: "datas comemorativas" },
+        { n: "01", label: "logotipo" },
+      ],
+      page: {
+        title: "O feed da <em>LF</em>",
+        note: "Os 24 posts juntos, na grade do perfil: a faixa laranja, o azul-petróleo e o logotipo no canto aparecem de um quadrado para o outro. Toque num post para ampliar.",
+        name: "LF Serviços Elétricos",
+        category: "Serviços elétricos",
+        bio: ["Instalação e manutenção elétrica", "Energia solar", "Bauru e região"],
+        link: "",
+        feed: ["quadro","produza","pais","alarme","seguro","bauru126","spda","chame","consumidor","oitenta","instalacao","natal","placas","referencia","cabeamento","meio-ambiente","profissionalismo","infra","ajuda","processo","problemas","encontra","qualidade","profissionais"],
+        visible: 9,
+      },
+      fronts: [
+        { key: "servicos", label: "Serviços", note: "O que a LF faz, mostrado em obra: quadros de distribuição, proteção contra descargas, cabeamento, infraestrutura e combate a incêndio." },
+        { key: "solar", label: "Solar", note: "A frente de energia solar: geração própria, economia na conta e instalação de placas." },
+        { key: "confianca", label: "Confiança", note: "Profissionais sorrindo, recortados sobre o fundo claro, e números que mostram a experiência da empresa." },
+        { key: "datas", label: "Datas", note: "O aniversário de Bauru e o Dia do Meio Ambiente, com a marca assinando discretamente no topo." },
+      ],
+      carousels: [
+        { key: "quadro", front: "servicos", title: "Montagem de quadro de distribuição", when: "Serviços",
+          note: "A foto do quadro ocupa o quadrado e o contorno em raio, em azul, sai da borda esquerda. A pergunta aponta para a marca: aqui você encontra." },
+        { key: "spda", front: "servicos", title: "Sistema de proteção contra descargas atmosféricas", when: "Obra concluída",
+          note: "Seis fotos da instalação na laje e no topo do prédio, cada uma numa moldura de canto arredondado com borda laranja, e o selo de concluído antes do logotipo." },
+        { key: "produza", front: "solar", title: "Produza a sua própria energia", when: "Energia solar",
+          note: "Um técnico instala placas fotovoltaicas dentro de uma moldura arredondada. A chamada destaca em laranja os benefícios: energia própria e economia todo mês." },
+        { key: "oitenta", front: "confianca", title: "Mais de 80 serviços em Bauru e região", when: "Prova social",
+          note: "O número enorme em laranja, o técnico de polegar para cima e a faixa azul no rodapé, com a área de atuação." },
+        { key: "bauru126", front: "datas", title: "126 anos de Bauru", when: "Aniversário da cidade",
+          note: "Os números vazados com fotos da cidade sobre Bauru em preto e branco. “A energia que nos move é a mesma” faz a ponte entre a cidade e a marca." },
+        { key: "meio-ambiente", front: "datas", title: "Dia Mundial do Meio Ambiente", when: "5 de junho",
+          note: "Uma hashtag gigante em laranja e azul, com o convite para deslizar. É a capa de um carrossel, e a única que usa o verde, só nesta data." },
+      ],
+      singles: {
+        title: "Dezoito posts, <em>um só</em> quadrado",
+        note: "Além dos destaques, o feed teve mais posts simples: serviços de obra, ofertas de energia solar, as chamadas com os profissionais e as datas do ano.",
+        list: [
+          { key: "alarme", title: "Alarme e comandos de combate a incêndio", when: "Serviços" },
+          { key: "instalacao", title: "Instalação elétrica especializada", when: "Serviços" },
+          { key: "cabeamento", title: "Troca de cabeamento elétrico", when: "Serviços" },
+          { key: "infra", title: "Execução de infraestrutura elétrica", when: "Serviços" },
+          { key: "problemas", title: "Problemas elétricos não têm hora para acontecer", when: "Serviços" },
+          { key: "processo", title: "Processo de instalação: quadro de distribuição geral", when: "Capa de carrossel" },
+          { key: "consumidor", title: "Mês do Consumidor", when: "Energia solar" },
+          { key: "placas", title: "Instalação e manutenção de placas fotovoltaicas", when: "Energia solar" },
+          { key: "profissionalismo", title: "Profissionalismo na LF", when: "Confiança" },
+          { key: "seguro", title: "Um trabalho seguro e de qualidade", when: "Confiança" },
+          { key: "profissionais", title: "Serviços elétricos com profissionalismo e segurança", when: "Confiança" },
+          { key: "chame", title: "Sua empresa precisa de instalação ou manutenção?", when: "Confiança" },
+          { key: "qualidade", title: "A qualidade e a segurança que você precisa", when: "Confiança" },
+          { key: "ajuda", title: "Precisando de serviços elétricos?", when: "Confiança" },
+          { key: "referencia", title: "Por que a LF é referência no setor elétrico", when: "Confiança" },
+          { key: "encontra", title: "Na LF você encontra tudo isso", when: "Confiança" },
+          { key: "pais", title: "Dia dos Pais", when: "14 de agosto" },
+          { key: "natal", title: "Feliz Natal", when: "Dezembro" },
+        ],
+      },
+      system: {
+        title: "Azul, laranja e uma <em>faixa</em>",
+        note: "Os posts partem de fundo claro, com fotos de gente trabalhando recortadas sobre ele. A faixa laranja e o triângulo azul no rodapé seguram o logotipo, o contorno em raio aparece atrás da pessoa e os destaques do texto vão em laranja.",
+        palette: [
+          { name: "Laranja LF", hex: "#FF9D01" },
+          { name: "Azul-petróleo", hex: "#103E5A" },
+          { name: "Gelo", hex: "#F4F5F7" },
+          { name: "Branco", hex: "#FFFFFF" },
+        ],
+        details: [
+          { id: "alarme-1", x: 0, y: 0.25, w: 1, title: "A faixa laranja", note: "Segura o texto e o logotipo no rodapé, com um triângulo azul fechando o canto." },
+          { id: "quadro-1", x: 0, y: 0, w: 1, title: "O contorno em raio", note: "Uma linha fina em azul, atrás da pessoa ou do equipamento, repete o recorte do símbolo." },
+          { id: "seguro-1", x: 0.3, y: 0.05, w: 0.7, title: "Gente recortada", note: "Profissionais sobre o fundo claro, de luva e uniforme, apontando para a mensagem." },
+          { id: "spda-1", x: 0, y: 0.08, w: 1, title: "Molduras arredondadas", note: "O quarto de círculo do símbolo volta como canto das fotos, com borda laranja." },
+          { id: "produza-1", x: 0, y: 0, w: 1, title: "Destaque em laranja", note: "A palavra que importa vai em laranja e negrito; o resto do texto fica leve." },
+          { id: "natal-1", x: 0.1, y: 0.4, w: 0.8, title: "Logotipo em negativo", note: "Sobre o azul de fim de ano, as letras e a etiqueta viram brancas." },
         ],
       },
     },
