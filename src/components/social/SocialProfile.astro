@@ -21,7 +21,7 @@ const counts = [
   { n: posts.length, label: "posts" },
   { n: stories, label: "stories" },
   { n: highlights.length, label: "destaques" },
-];
+].filter((k) => k.n > 0);
 ---
 <section class="sp" aria-labelledby="sp-t">
   <div class="container sp-grid-wrap">
@@ -51,7 +51,7 @@ const counts = [
         </div>
       </div>
 
-      <ul class="sp-highlights" aria-label="Capas de destaque">
+      {highlights.length > 0 && <ul class="sp-highlights" aria-label="Capas de destaque">
         {highlights.map((h) => (
           <li>
             <button type="button" class="sp-hl" data-lightbox={h.src} data-lb-group="destaques" data-w={h.w} data-h={h.h} aria-label={`Ampliar a capa do destaque ${h.label}`}>
@@ -60,7 +60,7 @@ const counts = [
             </button>
           </li>
         ))}
-      </ul>
+      </ul>}
 
       <div class="sp-tabs" aria-hidden="true">
         <span class="is-active"><Icon name="grid" size={14} />Posts</span>
@@ -68,7 +68,7 @@ const counts = [
         <span><Icon name="tagged" size={14} />Marcados</span>
       </div>
 
-      <ol class="sp-feed" aria-label={`Feed de @${s.profile}`}>
+      <ol class="sp-feed" style={`--sp-ratio:${posts[0].items[0].w} / ${posts[0].items[0].h}`} aria-label={`Feed de @${s.profile}`}>
         {posts.map((post, k) => (
           <li class:list={{ "is-hidden": k >= p.visible }} data-feed-extra={k >= p.visible ? "" : undefined}>
             {post.items.map((it, i) => (
@@ -150,7 +150,7 @@ const counts = [
 
   /* grade 3:4, como o perfil do Instagram */
   .sp-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-  .sp-post { position: relative; display: block; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: #000; cursor: zoom-in; }
+  .sp-post { position: relative; display: block; width: 100%; aspect-ratio: var(--sp-ratio, 3 / 4); overflow: hidden; background: #000; cursor: zoom-in; }
   .sp-post img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.6s var(--ease); }
   .sp-post:hover img { scale: 1.04; }
   .sp-multi { position: absolute; top: 8px; right: 8px; color: #fff; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6)); display: inline-flex; }

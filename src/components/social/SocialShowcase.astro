@@ -252,6 +252,29 @@ const screens = slides("tela");
   </section>
 ))}
 
+{s.singles && (
+  <section class="ss-singles container" aria-labelledby="ss-singles-t">
+    <header class="ss-singles-head">
+      <p class="eyebrow" data-reveal>Posts avulsos</p>
+      <h2 class="title-section" id="ss-singles-t" data-split set:html={s.singles.title} />
+      <p class="lead" data-reveal>{s.singles.note}</p>
+    </header>
+    <ol class="ss-singles-grid">
+      {s.singles.list.map((p, k) => {
+        const it = slides(p.key)[0];
+        return (
+          <li data-reveal>
+            <button type="button" class="ss-single" data-lightbox={it.src} data-lb-group="avulsos" data-w={it.w} data-h={it.h} data-cursor="view" aria-label={`Ampliar o post ${p.title}`}>
+              <span class="ss-single-art"><img src={it.src} width={it.w} height={it.h} alt={`${p.title} — post de ${c.title}`} loading="lazy" decoding="async" /></span>
+              <span class="ss-single-cap"><b>{pad(k + 1)}</b><span class="ss-single-t">{p.title}</span><small>{p.when}</small></span>
+            </button>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+)}
+
 {s.stories && looseStories.length > 0 && (
   <section class="ss-stories" aria-labelledby="ss-stories-t" data-tray>
     <div class="container ss-stories-head">
@@ -393,6 +416,21 @@ const screens = slides("tela");
   .ss-front-text { display: grid; gap: 16px; max-width: 640px; }
   .ss-front-title { font-size: clamp(4rem, 12vw, 10rem); }
   .ss-front-tiles { --h: clamp(64px, 8vw, 104px); height: var(--h); width: calc(var(--h) * var(--cols)); max-width: 100%; object-fit: cover; border-radius: 12px; }
+
+  /* posts únicos */
+  .ss-singles { padding-block: clamp(64px, 8vw, 120px) clamp(24px, 4vw, 48px); border-top: 1px solid var(--border); margin-top: clamp(56px, 7vw, 96px); }
+  .ss-singles-head { display: grid; gap: 20px; max-width: 760px; margin-bottom: clamp(32px, 5vw, 56px); }
+  .ss-singles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 3vw, 36px) clamp(12px, 1.6vw, 20px); }
+  @media (min-width: 700px) { .ss-singles-grid { grid-template-columns: repeat(3, 1fr); } }
+  .ss-single { display: grid; gap: 14px; width: 100%; text-align: left; cursor: zoom-in; }
+  .ss-single-art { display: block; aspect-ratio: 1; overflow: hidden; border-radius: 16px; border: 1px solid var(--border); background: var(--bg-elev); transition: border-color 0.25s; }
+  .ss-single-art img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.8s var(--ease); }
+  .ss-single:hover .ss-single-art { border-color: var(--accent); }
+  .ss-single:hover .ss-single-art img { scale: 1.04; }
+  .ss-single-cap { display: grid; grid-template-columns: 2rem 1fr; column-gap: 8px; align-items: baseline; font-size: 0.9375rem; line-height: 1.35; }
+  .ss-single-cap b { font-family: var(--font-display); color: var(--text-muted); font-weight: 400; }
+  .ss-single-t { font-weight: 600; letter-spacing: -0.01em; }
+  .ss-single-cap small { grid-column: 2; font-size: 0.8125rem; color: var(--text-muted); }
 
   /* bloco de cada carrossel */
   .cb {

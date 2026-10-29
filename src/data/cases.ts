@@ -104,6 +104,10 @@ export interface SocialShowcase {
     elements?: string[];
     details?: { id: string; x: number; y: number; w: number; title: string; note: string }[];
   };
+  /** cor da capa quando o case não tem o painel de ladrilhos (item "padrao"): o logotipo (item "logo") vai sobre ela */
+  coverBg?: string;
+  /** posts únicos fora dos carrosséis: cada um é um group próprio, com o título no label do item */
+  singles?: { title: string; note: string; list: { key: string; title: string; when: string }[] };
   /** faixa de stories avulsos (group "stories") */
   stories?: { title: string; note: string };
   /** vídeos fora do Instagram (group "tela") */
@@ -909,6 +913,125 @@ const list: CaseData[] = [
           { name: "Barro", hex: "#731900" },
         ],
         elements: ["Arcos", "Estrela do emblema", "Sol", "Catavento", "Catavento invertido", "Cubos"],
+      },
+    },
+  },
+  {
+    slug: "mentevitale",
+    title: "MenteVitale",
+    client: "MenteVitale",
+    sector: "Clínica de saúde mental on-line · psicologia e psiquiatria",
+    year: "2021–22",
+    cats: ["social"],
+    accent: "#6B79C4",
+    live: "https://mentevitale.com.br/",
+    summary: "O Instagram da MenteVitale, plataforma de psicologia e psiquiatria on-line: nove carrosséis de saúde mental, do estresse ao pânico, e nove posts avulsos, do pré-lançamento às datas do ano.",
+    about: [
+      "A MenteVitale é uma clínica de saúde mental com atendimento on-line: psicólogos, com foco em terapia cognitivo-comportamental, e psiquiatras, que o paciente encontra e agenda pelo site. Nas redes, ela precisava ser, ao mesmo tempo, a plataforma que acabava de chegar e uma voz confiável para quem nunca fez terapia.",
+      "A identidade visual da marca foi pensada sobretudo para o site e para as redes, e foi nelas que ela ganhou corpo. Desenhei os posts de 2021 e 2022 com um único índigo, o do logotipo, uma onda que sobe do rodapé e ilustrações simples, que explicam sem pesar. Fotos de gente sorrindo, recortadas sobre a mancha, ficam com o convite; as ilustrações ficam com o conteúdo.",
+      "O feed contou a história em duas etapas. Primeiro, a expectativa: o aviso de que a plataforma estava chegando, a contagem regressiva e a primeira reunião com os profissionais. Depois, o conteúdo que sustenta uma clínica — o que é o estresse, o que fazer numa crise de pânico, por que a ansiedade não passa — e o fechamento de sempre: procure ajuda profissional.",
+    ],
+    deliverables: ["9 carrosséis de feed", "37 telas em 1:1", "9 posts avulsos", "Datas comemorativas", "Campanha de lançamento", "Conteúdo de saúde mental"],
+    tools: ["Photoshop", "Illustrator"],
+    credit: "Projeto realizado na Olive Marketing e Comunicação",
+    social: {
+      profile: "mentevitaleoficial",
+      place: "Saúde mental on-line",
+      avatar: "avatar",
+      coverBg: "#525FA3",
+      stats: [
+        { n: "09", label: "carrosséis" },
+        { n: "37", label: "telas em carrossel" },
+        { n: "09", label: "posts avulsos" },
+        { n: "03", label: "frentes de conteúdo" },
+      ],
+      page: {
+        title: "O feed da <em>MenteVitale</em>",
+        note: "As 46 artes juntas, na grade do perfil: o índigo e a onda branca repetem de um quadrado para o outro, e a foto de uma pessoa sorrindo aparece sempre que o assunto é acolher. Toque num post para ver as telas.",
+        name: "MenteVitale",
+        category: "Clínica de saúde mental",
+        bio: ["Psicologia e psiquiatria on-line", "Terapia cognitivo-comportamental", "Agende sua consulta pelo site"],
+        link: "mentevitale.com.br",
+        feed: ["vem-ai", "tres-dias", "reuniao", "funciona", "ajudar", "rotina", "cuidar", "estresse", "panico", "ansiedade", "passos", "enquete", "natal", "ano-novo", "fim-de-ano", "familia", "gratidao", "janeiro-branco"],
+        visible: 9,
+      },
+      fronts: [
+        { key: "plataforma", label: "A plataforma", note: "A chegada da plataforma: primeiro a expectativa, depois a explicação de como encontrar e agendar um profissional pelo site." },
+        { key: "saude", label: "Saúde mental", note: "Conteúdo para quem busca informação antes de buscar ajuda: estresse, crise de pânico, ansiedade e hábitos de cuidado." },
+        { key: "datas", label: "Datas e fim de ano", note: "A virada de 2021 para 2022, quando a saúde mental entra na pauta das festas." },
+      ],
+      carousels: [
+        {
+          key: "rotina", front: "plataforma", title: "A rotina está estressante", when: "Pré-lançamento",
+          note: "Uma imagem panorâmica cortada em duas telas. Na primeira, a pergunta sobre a rotina corrida; na segunda, o celular com o site da MenteVitale e a promessa de ajuda em breve. A foto atravessa a emenda, então deslizar completa a imagem.",
+        },
+        {
+          key: "ajudar", front: "plataforma", title: "Como nossa plataforma pode te ajudar?", when: "Pré-lançamento",
+          note: "Três telas de expectativa: a pergunta sobre fundo índigo, a foto de quem pensa na resposta e o aviso de que, em breve, dá para agendar consulta e terapia on-line em poucos cliques. A moça recortada passa de uma tela para a outra, e a última fecha com uma ilustração: mal podemos esperar para compartilhar essa facilidade.",
+        },
+        {
+          key: "funciona", front: "plataforma", title: "Como funciona a plataforma", when: "Lançamento",
+          note: "O caminho do paciente em quatro telas: a MenteVitale conecta pacientes e profissionais de saúde mental, o pré-cadastro leva ao profissional certo para cada necessidade, depois é só escolher a melhor data. A última tela traz o endereço do site e o e-mail de contato.",
+        },
+        {
+          key: "estresse", front: "saude", title: "Estresse: tipos e sintomas", when: "Educação em saúde mental",
+          note: "A capa pergunta “Estresse?” e convida a deslizar. As três telas seguintes explicam o estresse agudo, o agudo episódico e o crônico, cada um com uma ilustração, e o fechamento pergunta se a pessoa se identifica com algum sintoma. A mesma onda índigo sobe do rodapé em todas as telas.",
+        },
+        {
+          key: "panico", front: "saude", title: "3 dicas para controlar uma crise de pânico", when: "Educação em saúde mental",
+          note: "Seis telas de orientação: evitar a cafeína, que pode servir de gatilho, entender o que o corpo faz, respirar de forma natural e a dica de contar até quatro ao inspirar e ao expirar. A última lembra que consultar um profissional também é importante.",
+        },
+        {
+          key: "ansiedade", front: "saude", title: "3 motivos pelos quais você não consegue lidar com a ansiedade", when: "Educação em saúde mental",
+          note: "Angústia em relação ao futuro, instabilidade econômica e traumas, um por tela, com retratos em círculo e balões de pensamento. O fechamento, com a consulta on-line ilustrada, manda procurar ajuda profissional.",
+        },
+        {
+          key: "passos", front: "saude", title: "4 passos essenciais para cuidar da saúde mental", when: "Educação em saúde mental",
+          note: "Alimentação saudável, boas horas de sono, não se cobrar tanto e consultar-se regularmente. O cérebro zen da capa aparece cortado na tela seguinte, e a última diz que a pessoa merece viver uma vida que vale a pena ser vivida.",
+        },
+        {
+          key: "ano-novo", front: "datas", title: "Saúde mental para 2022", when: "Virada de 2021 para 2022",
+          note: "Três dicas para refletir na virada do ano: mudar os pensamentos antes do entorno, ter o apoio de pessoas boas e adotar uma postura realista, com metas viáveis. A capa tem pingentes de brilho no topo e o fechamento é um brinde: feliz ano novo!",
+        },
+        {
+          key: "fim-de-ano", front: "datas", title: "Síndrome do fim do ano", when: "Fim de 2021",
+          note: "Duas telas sobre os casos de ansiedade e depressão que aumentam no fim do ano. Na capa, o rosto escondido nas mãos; na segunda, o abraço em si mesma e a frase que fecha a sequência: você não está sozinho.",
+        },
+      ],
+      singles: {
+        title: "Nove posts, <em>um só</em> quadrado",
+        note: "Além dos carrosséis, o feed teve posts únicos: a promessa da marca, datas comemorativas, uma enquete sobre o estado da saúde mental e a contagem para o lançamento da plataforma.",
+        list: [
+          { key: "cuidar", title: "Cuidar da mente é tão importante quanto cuidar do corpo", when: "Convite para agendar" },
+          { key: "vem-ai", title: "Vem aí!", when: "Pré-lançamento" },
+          { key: "tres-dias", title: "3 dias para o lançamento da plataforma", when: "Contagem regressiva" },
+          { key: "reuniao", title: "Primeira reunião de apresentação da plataforma", when: "Com os profissionais" },
+          { key: "enquete", title: "Em qual porcentagem sua saúde mental está atualmente?", when: "Enquete" },
+          { key: "familia", title: "Dia Nacional da Família", when: "8 de dezembro" },
+          { key: "natal", title: "Feliz Natal", when: "Dezembro" },
+          { key: "gratidao", title: "Dia da Gratidão", when: "6 de janeiro" },
+          { key: "janeiro-branco", title: "Janeiro Branco", when: "Janeiro" },
+        ],
+      },
+      system: {
+        title: "Um índigo, uma <em>onda</em>",
+        note: "Os posts partem de um único índigo, o do logotipo, sobre branco e cinza-gelo. A onda que sobe do rodapé separa o título do conteúdo, as ilustrações planas dão leveza a assuntos pesados e o ícone da marca reaparece, pequeno e claro, como assinatura.",
+        palette: [
+          { name: "Índigo", hex: "#525FA3" },
+          { name: "Índigo profundo", hex: "#3E4DAA" },
+          { name: "Lavanda", hex: "#D5DCEF" },
+          { name: "Gelo", hex: "#F6F6F6" },
+          { name: "Rosa", hex: "#FCA1A0" },
+          { name: "Pêssego", hex: "#FCB78D" },
+        ],
+        details: [
+          { id: "estresse-5", x: 0, y: 0.25, w: 1, title: "A onda", note: "Sobe do rodapé e sustenta a pergunta, o logotipo ou a ilustração." },
+          { id: "fim-de-ano-1", x: 0.45, y: 0.12, w: 0.55, title: "O ícone como assinatura", note: "Pequeno e claro, solto pela tela, quando o post não tem espaço para o logotipo inteiro." },
+          { id: "passos-1", x: 0.5, y: 0.2, w: 0.5, title: "Ilustração chapada", note: "Personagens em cores lisas, sem contorno pesado, para falar de ansiedade e pânico sem assustar." },
+          { id: "familia-1", x: 0, y: 0.12, w: 1, title: "Foto sobre a mancha", note: "A foto sai do retângulo e se apoia na onda índigo: gente de verdade para convidar, ilustração para explicar." },
+          { id: "enquete-1", x: 0.02, y: 0.27, w: 0.96, title: "Dados com cara de marca", note: "A enquete usa só tons de índigo, com o ícone da marca no centro do gráfico." },
+          { id: "vem-ai-1", x: 0, y: 0.15, w: 0.65, title: "Título em destaque", note: "Itálico e negrito em índigo sobre branco, ou em branco sobre índigo, com o texto de apoio bem menor." },
+        ],
       },
     },
   },

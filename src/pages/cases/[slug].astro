@@ -105,7 +105,7 @@ const meta = [
         </div>
       </section>
     )}
-    {social && !cover && <SocialCover logo={socialItem("logo")} pattern={socialItem("padrao").src} title={c.title} />}
+    {social && !cover && <SocialCover logo={socialItem("logo")} pattern={c.items.find((it) => it.id === "padrao")?.src} bg={social.coverBg} title={c.title} />}
     {book && <BookReader c={c} />}
     {visualCover && (
       <section class="case-cover-img container">

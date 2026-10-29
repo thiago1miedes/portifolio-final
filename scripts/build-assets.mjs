@@ -116,6 +116,19 @@ async function logoThumb(logoFile, patternFile, file) {
   return { w: W, h: H };
 }
 
+// Capa da listagem com o logotipo (já em branco) sobre uma cor da marca, com duas ondas claras no rodapé.
+async function brandThumb(logoFile, bg, file) {
+  const W = 1200, H = 800, L = 720;
+  const logo = await sharp(logoFile, { density: 220 }).resize({ width: L }).png().toBuffer();
+  const lh = (await sharp(logo).metadata()).height;
+  const waves = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><rect width="100%" height="100%" fill="${bg}"/><path d="M0 640C220 560 380 700 620 640S1000 560 1200 650V800H0Z" fill="#fff" fill-opacity="0.09"/><path d="M0 700C260 640 420 760 700 710S1040 650 1200 720V800H0Z" fill="#fff" fill-opacity="0.12"/></svg>`;
+  await sharp(Buffer.from(waves))
+    .composite([{ input: logo, left: (W - L) / 2, top: Math.round((H - lh) / 2) - 30 }])
+    .webp({ quality: 84 })
+    .toFile(file);
+  return { w: W, h: H };
+}
+
 async function thumb(srcFile, crop, file) {
   const m = await sharp(srcFile, { limitInputPixels: false }).metadata();
   const ratio = 3 / 2;
@@ -171,9 +184,11 @@ for (const slug of slugs) {
   }
   let t = null;
   const from = items.find((i) => i.id === conf.thumb?.from) ?? items[0];
-  if (conf.thumb?.logo) {
+  if (conf.thumb?.logo && conf.thumb.bg) {
+    t = { src: `/cases/${slug}/thumb.webp`, ...(await brandThumb(path.join(dir, `${conf.thumb.logo}.svg`), conf.thumb.bg, path.join(dir, "thumb.webp"))) };
+  } else if (conf.thumb?.logo) {
     const svg = (id) => path.join(dir, `${id}.svg`);
-    t = { src: `/cases/${slug}/thumb.webp`, ...(await logoThumb(svg(conf.thumb.logo), svg(conf.thumb.pattern), path.join(dir, "thumb.webp"))) };
+    t ={ src: `/cases/${slug}/thumb.webp`, ...(await logoThumb(svg(conf.thumb.logo), svg(conf.thumb.pattern), path.join(dir, "thumb.webp"))) };
   } else if (from) {
     const size = await thumb(path.join(ROOT, "public", from.src), conf.thumb?.crop ?? "top", path.join(dir, "thumb.webp"));
     t = { src: `/cases/${slug}/thumb.webp`, ...size };

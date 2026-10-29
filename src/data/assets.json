@@ -4967,5 +4967,408 @@
    }
   ],
   "cover": "nightrun-01"
+ },
+ "mentevitale": {
+  "thumb": {
+   "src": "/cases/mentevitale/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": "logo",
+  "items": [
+   {
+    "id": "logo",
+    "src": "/cases/mentevitale/logo.svg",
+    "w": 1594,
+    "h": 267,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "avatar",
+    "src": "/cases/mentevitale/avatar.svg",
+    "w": 400,
+    "h": 400,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "rotina-1",
+    "src": "/cases/mentevitale/rotina-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "rotina"
+   },
+   {
+    "id": "rotina-2",
+    "src": "/cases/mentevitale/rotina-2.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "rotina"
+   },
+   {
+    "id": "ajudar-1",
+    "src": "/cases/mentevitale/ajudar-1.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "ajudar"
+   },
+   {
+    "id": "ajudar-2",
+    "src": "/cases/mentevitale/ajudar-2.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "ajudar"
+   },
+   {
+    "id": "ajudar-3",
+    "src": "/cases/mentevitale/ajudar-3.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "ajudar"
+   },
+   {
+    "id": "funciona-1",
+    "src": "/cases/mentevitale/funciona-1.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "funciona"
+   },
+   {
+    "id": "funciona-2",
+    "src": "/cases/mentevitale/funciona-2.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "funciona"
+   },
+   {
+    "id": "funciona-3",
+    "src": "/cases/mentevitale/funciona-3.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "funciona"
+   },
+   {
+    "id": "funciona-4",
+    "src": "/cases/mentevitale/funciona-4.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "funciona"
+   },
+   {
+    "id": "estresse-1",
+    "src": "/cases/mentevitale/estresse-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "estresse"
+   },
+   {
+    "id": "estresse-2",
+    "src": "/cases/mentevitale/estresse-2.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "estresse"
+   },
+   {
+    "id": "estresse-3",
+    "src": "/cases/mentevitale/estresse-3.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "estresse"
+   },
+   {
+    "id": "estresse-4",
+    "src": "/cases/mentevitale/estresse-4.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "estresse"
+   },
+   {
+    "id": "estresse-5",
+    "src": "/cases/mentevitale/estresse-5.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "estresse"
+   },
+   {
+    "id": "panico-1",
+    "src": "/cases/mentevitale/panico-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "panico"
+   },
+   {
+    "id": "panico-2",
+    "src": "/cases/mentevitale/panico-2.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "panico"
+   },
+   {
+    "id": "panico-3",
+    "src": "/cases/mentevitale/panico-3.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "panico"
+   },
+   {
+    "id": "panico-4",
+    "src": "/cases/mentevitale/panico-4.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "panico"
+   },
+   {
+    "id": "panico-5",
+    "src": "/cases/mentevitale/panico-5.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "panico"
+   },
+   {
+    "id": "panico-6",
+    "src": "/cases/mentevitale/panico-6.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "panico"
+   },
+   {
+    "id": "ansiedade-1",
+    "src": "/cases/mentevitale/ansiedade-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ansiedade"
+   },
+   {
+    "id": "ansiedade-2",
+    "src": "/cases/mentevitale/ansiedade-2.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ansiedade"
+   },
+   {
+    "id": "ansiedade-3",
+    "src": "/cases/mentevitale/ansiedade-3.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ansiedade"
+   },
+   {
+    "id": "ansiedade-4",
+    "src": "/cases/mentevitale/ansiedade-4.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ansiedade"
+   },
+   {
+    "id": "ansiedade-5",
+    "src": "/cases/mentevitale/ansiedade-5.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ansiedade"
+   },
+   {
+    "id": "passos-1",
+    "src": "/cases/mentevitale/passos-1.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "passos"
+   },
+   {
+    "id": "passos-2",
+    "src": "/cases/mentevitale/passos-2.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "passos"
+   },
+   {
+    "id": "passos-3",
+    "src": "/cases/mentevitale/passos-3.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "passos"
+   },
+   {
+    "id": "passos-4",
+    "src": "/cases/mentevitale/passos-4.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "passos"
+   },
+   {
+    "id": "passos-5",
+    "src": "/cases/mentevitale/passos-5.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "group": "passos"
+   },
+   {
+    "id": "ano-novo-1",
+    "src": "/cases/mentevitale/ano-novo-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ano-novo"
+   },
+   {
+    "id": "ano-novo-2",
+    "src": "/cases/mentevitale/ano-novo-2.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ano-novo"
+   },
+   {
+    "id": "ano-novo-3",
+    "src": "/cases/mentevitale/ano-novo-3.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ano-novo"
+   },
+   {
+    "id": "ano-novo-4",
+    "src": "/cases/mentevitale/ano-novo-4.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ano-novo"
+   },
+   {
+    "id": "ano-novo-5",
+    "src": "/cases/mentevitale/ano-novo-5.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "ano-novo"
+   },
+   {
+    "id": "fim-de-ano-1",
+    "src": "/cases/mentevitale/fim-de-ano-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "fim-de-ano"
+   },
+   {
+    "id": "fim-de-ano-2",
+    "src": "/cases/mentevitale/fim-de-ano-2.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "group": "fim-de-ano"
+   },
+   {
+    "id": "cuidar-1",
+    "src": "/cases/mentevitale/cuidar-1.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "label": "Cuidar da mente",
+    "group": "cuidar"
+   },
+   {
+    "id": "familia-1",
+    "src": "/cases/mentevitale/familia-1.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "label": "Dia Nacional da Família",
+    "group": "familia"
+   },
+   {
+    "id": "vem-ai-1",
+    "src": "/cases/mentevitale/vem-ai-1.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "label": "Vem aí!",
+    "group": "vem-ai"
+   },
+   {
+    "id": "janeiro-branco-1",
+    "src": "/cases/mentevitale/janeiro-branco-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Janeiro Branco",
+    "group": "janeiro-branco"
+   },
+   {
+    "id": "gratidao-1",
+    "src": "/cases/mentevitale/gratidao-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia da Gratidão",
+    "group": "gratidao"
+   },
+   {
+    "id": "enquete-1",
+    "src": "/cases/mentevitale/enquete-1.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "label": "Enquete",
+    "group": "enquete"
+   },
+   {
+    "id": "natal-1",
+    "src": "/cases/mentevitale/natal-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Feliz Natal",
+    "group": "natal"
+   },
+   {
+    "id": "reuniao-1",
+    "src": "/cases/mentevitale/reuniao-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Primeira reunião",
+    "group": "reuniao"
+   },
+   {
+    "id": "tres-dias-1",
+    "src": "/cases/mentevitale/tres-dias-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "3 dias para o lançamento",
+    "group": "tres-dias"
+   }
+  ]
  }
 }

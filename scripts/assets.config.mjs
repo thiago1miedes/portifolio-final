@@ -7,6 +7,8 @@
 //        slide (16:9, 1600px) · image (até 1600px) · photo (foto de produto, até 2000px) ·
 //        label (rótulo planificado, 2600px) · book (página de e-book, 1800px de altura) · post (até 1080px) ·
 //        story / feed / banner (tamanho original) · svg (copiado) · video (mp4 copiado + pôster)
+import fs from "node:fs";
+
 export const SRC = "F:/Freelancer";
 
 const W = "Websites";
@@ -18,6 +20,9 @@ const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
 const pad2 = (n) => String(n).padStart(2, "0");
 // sequência de telas de um mesmo group: ids `${group}-1`, `${group}-2`…
 const seq = (group, srcs, kind) => srcs.map((src, i) => ({ id: `${group}-${i + 1}`, src, kind, group }));
+// arquivos baixados do Instagram têm nomes longos: a ordem das telas é dada pelo trecho numérico de cada nome
+const MV = "Mentivitalle";
+const pick = (dir, parts) => parts.map((p) => `${MV}/${dir}/${fs.readdirSync(`${SRC}/${MV}/${dir}`).find((n) => n.includes(p))}`);
 
 export const cases = {
   /* ---------------------------------------------------------------- sites no ar */
@@ -498,6 +503,39 @@ export const cases = {
       ...[1, 2, 3, 4, 5, 6, 7, 10].map((n, i) => ({ id: `chapas-${i + 1}`, src: `${CAU}/CAUPE_Formação_de_chapas_${String(n).padStart(2, "0")}.png`, kind: "feed", group: "chapas" })),
       ...range(1, 3).map((n) => ({ id: `prazo-${n}`, src: `${CAU}/CAU_PE_Registro_chapas_0${n}.png`, kind: "feed", group: "prazo" })),
       ...range(1, 4).map((n) => ({ id: `anuidade-${n}`, src: `${CAU}/CAU_PE_Anuidade_0${n}.png`, kind: "feed", group: "anuidade" })),
+    ],
+  },
+  // feed da MenteVitale (1:1): carrosséis em `Carrossel NN`, posts únicos em `Post NN`; cada post único é um group próprio.
+  // "logo" = logotipo em branco (capa) e "avatar" = ícone no círculo índigo (derivados do SVG original, em sources/shots).
+  mentevitale: {
+    thumb: { logo: "logo", bg: "#525FA3" },
+    items: [
+      { id: "logo", src: "shots/mentevitale-logo-branco.svg", kind: "svg", group: "marca" },
+      { id: "avatar", src: "shots/mentevitale-avatar.svg", kind: "svg", group: "marca" },
+      // frente "A plataforma"
+      ...seq("rotina", pick("Carrossel 06", ["651430979", "651891131"]), "feed"),
+      ...seq("ajudar", pick("Carrossel 02", ["imgi_2_650251957", "653452284", "651776029"]), "feed"),
+      ...seq("funciona", pick("Carrossel 01", ["657344508", "655930562", "649576391", "655890212"]), "feed"),
+      // frente "Saúde mental"
+      ...seq("estresse", pick("Carrossel 09", ["652569706", "652102279", "654012612", "656292364", "653902739"]), "feed"),
+      ...seq("panico", pick("Carrossel 07", ["656620916", "651782877", "655995501", "656686618", "653917190", "650021091"]), "feed"),
+      ...seq("ansiedade", pick("Carrossel 08", ["656021082", "651961267", "654028596", "659144697", "655004243"]), "feed"),
+      ...seq("passos", pick("Carrossel 03", ["658962387", "656207431", "659079790", "653640010", "652078236"]), "feed"),
+      // frente "Datas"
+      ...seq("ano-novo", pick("Carrossel 05", ["652882992", "650889188", "650913306", "651810570", "650031160"]), "feed"),
+      ...seq("fim-de-ano", pick("Carrossel 04", ["655040995", "651706786"]), "feed"),
+      // posts únicos (label = título no perfil e na grade)
+      ...[
+        ["cuidar", "Post 01", "Cuidar da mente"],
+        ["familia", "Post 02", "Dia Nacional da Família"],
+        ["vem-ai", "Post 03", "Vem aí!"],
+        ["janeiro-branco", "Post 04", "Janeiro Branco"],
+        ["gratidao", "Post 05", "Dia da Gratidão"],
+        ["enquete", "Post 06", "Enquete"],
+        ["natal", "Post 07", "Feliz Natal"],
+        ["reuniao", "Post 08", "Primeira reunião"],
+        ["tres-dias", "Post 09", "3 dias para o lançamento"],
+      ].map(([id, dir, label]) => ({ id: `${id}-1`, src: pick(dir, [""])[0], kind: "feed", group: id, label })),
     ],
   },
 

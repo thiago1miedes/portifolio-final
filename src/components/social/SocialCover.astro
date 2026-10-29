@@ -1,11 +1,13 @@
 ---
-// Capa dos cases de social media: o emblema do cliente sobre a repetição do padrão de ladrilhos.
-interface Props { logo: { src: string; w: number; h: number }; pattern: string; title: string }
-const { logo, pattern, title } = Astro.props;
+// Capa dos cases de social media: o emblema do cliente sobre a repetição do padrão de ladrilhos
+// ou, sem padrão, o logotipo sobre uma cor da marca (bg).
+interface Props { logo: { src: string; w: number; h: number }; pattern?: string; bg?: string; title: string }
+const { logo, pattern, bg, title } = Astro.props;
+const wide = logo.w / logo.h > 2;
 ---
 <section class="sc container">
-  <div class="sc-wall" style={`--pattern: url(${pattern})`} data-sc-wall>
-    <div class="sc-emblem" data-sc-emblem>
+  <div class:list={["sc-wall", { "sc-wall--solid": !pattern }]} style={pattern ? `--pattern: url(${pattern})` : `--bg: ${bg ?? "#0a0a0b"}`} data-sc-wall>
+    <div class:list={["sc-emblem", { "sc-emblem--wide": wide }]} data-sc-emblem>
       <img src={logo.src} width={logo.w} height={logo.h} alt={`Emblema do ${title}`} loading="eager" />
     </div>
   </div>
@@ -28,8 +30,18 @@ const { logo, pattern, title } = Astro.props;
   }
   .sc-emblem { width: min(30%, 400px); filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.55)); }
   .sc-emblem img { width: 100%; height: auto; }
+  /* capa lisa: a cor da marca e duas ondas claras no rodapé, como nos posts */
+  .sc-wall--solid { background: var(--bg); }
+  .sc-wall--solid::before {
+    z-index: 0; background:
+      radial-gradient(120% 60% at 30% 118%, rgba(255, 255, 255, 0.14) 40%, transparent 41%),
+      radial-gradient(110% 55% at 78% 124%, rgba(255, 255, 255, 0.1) 40%, transparent 41%);
+  }
+  .sc-wall--solid .sc-emblem { position: relative; z-index: 1; filter: none; }
+  .sc-emblem--wide { width: min(52%, 760px); }
   @media (max-width: 700px) {
     .sc-wall { aspect-ratio: 4 / 3; --tile: 320px; }
     .sc-emblem { width: 58%; }
+    .sc-emblem--wide { width: 72%; }
   }
 </style>
