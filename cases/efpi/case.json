@@ -5,7 +5,7 @@
   "year": "2021",
   "assets": "/brand/efpi",
   "seo": {
-    "title": "EFPI — Identidade visual",
+    "title": "EFPI · Identidade visual",
     "description": "Case de identidade visual da EFPI: símbolo, tipografia, cores, sistema de logo e aplicações para uma escola de formação. Conhecimento que muda o mundo.",
     "image": "og.png"
   },
@@ -111,7 +111,7 @@
     "title": "Uma seta que sobe. Um prisma que revela.",
     "text": [
       "O símbolo nasce da soma de duas formas. No alto, uma seta: o conhecimento pessoal sempre em elevação. Embaixo, um prisma: saberes que transparecem e se mostram por inteiro.",
-      "Juntas, as duas peças desenham um losango lapidado — firme na base, apontado para cima."
+      "Juntas, as duas peças desenham um losango lapidado, firme na base e apontado para cima."
     ],
     "pieces": [
       {
@@ -156,7 +156,7 @@
     "spec": [
       {
         "k": "Família",
-        "v": "Barlow — Jeremy Tribby"
+        "v": "Barlow, de Jeremy Tribby"
       },
       {
         "k": "Licença",
@@ -192,7 +192,7 @@
     "attributes": [
       {
         "word": "Elevação",
-        "text": "Aprender é um movimento para cima — sempre um degrau além."
+        "text": "Aprender é um movimento para cima, sempre um degrau além."
       },
       {
         "word": "Transparência",
@@ -213,7 +213,7 @@
     "eyebrow": "04 — Cores",
     "title": "Do azul profundo à faísca do âmbar.",
     "text": "Os dois azuis do logo comandam a paleta. Deles derivam um fundo noturno, um claro de névoa e uma bruma de apoio. O âmbar entra pouco, como a faísca do conhecimento.",
-    "note": "CMYK aproximado — confirme no perfil de impressão da gráfica.",
+    "note": "CMYK aproximado. Confirme no perfil de impressão da gráfica.",
     "swatches": [
       {
         "name": "Azul EFPI",
@@ -331,7 +331,7 @@
   "applications": {
     "nav": "Aplicações",
     "eyebrow": "06 — Aplicações",
-    "title": "A marca fora da tela — e dentro dela.",
+    "title": "A marca fora da tela e dentro dela.",
     "text": "Estudo de aplicações: fotografia editorial em preto e branco, papelaria, objetos e o app do aluno.",
     "marquee": "EFPI",
     "items": [

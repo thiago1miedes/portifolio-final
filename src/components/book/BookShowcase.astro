@@ -7,7 +7,6 @@ interface Props { c: Case }
 const { c } = Astro.props;
 const b = c.book!;
 const pages = c.items.filter((it) => it.kind === "book");
-const pad = (k: number) => String(k).padStart(2, "0");
 // recorte 4:3 de uma página: a imagem inteira é ampliada e deslocada dentro da moldura
 const crop = (d: (typeof b.system.details)[number]) => {
   const p = pages[d.page - 1];
@@ -15,7 +14,7 @@ const crop = (d: (typeof b.system.details)[number]) => {
   return `width:${(100 / d.w).toFixed(3)}%;left:${((-d.x / d.w) * 100).toFixed(3)}%;top:${((-d.y * imgH) / 0.75 * 100).toFixed(3)}%`;
 };
 const last = (k: number) => (b.chapters[k + 1]?.page ?? pages.length + 1) - 1;
-const span = (k: number) => (b.chapters[k].page === last(k) ? `p. ${b.chapters[k].page}` : `p. ${b.chapters[k].page}–${last(k)}`);
+const span = (k: number) => (b.chapters[k].page === last(k) ? `p. ${b.chapters[k].page}` : `p. ${b.chapters[k].page} a ${last(k)}`);
 ---
 <section class="bs-stats container" aria-label="O e-book em números">
   <ul>
@@ -28,7 +27,6 @@ const span = (k: number) => (b.chapters[k].page === last(k) ? `p. ${b.chapters[k
 <section class="bs-system" aria-labelledby="bs-system-t">
   <div class="container">
     <header class="bs-head">
-      <p class="eyebrow" data-reveal>Linguagem do e-book</p>
       <h2 class="title-section" id="bs-system-t" data-split set:html={b.system.title} />
       <p class="lead" data-reveal>{b.system.note}</p>
     </header>
@@ -53,7 +51,6 @@ const span = (k: number) => (b.chapters[k].page === last(k) ? `p. ${b.chapters[k
 
 <section class="bs-toc container" aria-labelledby="bs-toc-t">
   <header class="bs-head">
-    <p class="eyebrow" data-reveal>Sumário</p>
     <h2 class="title-section" id="bs-toc-t" data-split>Comece por <em>qualquer tema</em>.</h2>
   </header>
   <ol class="bs-chapters">
@@ -61,7 +58,6 @@ const span = (k: number) => (b.chapters[k].page === last(k) ? `p. ${b.chapters[k
       <li data-reveal>
         <button type="button" class="bs-chapter" data-book-go={ch.page - 1}>
           <span class="bs-chapter-img"><img src={pages[ch.page - 1].src} width={pages[ch.page - 1].w} height={pages[ch.page - 1].h} alt="" loading="lazy" decoding="async" /></span>
-          <span class="bs-chapter-n">{pad(k + 1)}</span>
           <span class="bs-chapter-t">{ch.title}</span>
           <span class="bs-chapter-p">{span(k)}</span>
         </button>
@@ -113,7 +109,7 @@ const span = (k: number) => (b.chapters[k].page === last(k) ? `p. ${b.chapters[k
   @media (min-width: 700px) { .bs-chapters { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   @media (min-width: 1100px) { .bs-chapters { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
   .bs-chapter {
-    display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 2px; align-items: baseline; width: 100%; height: 100%; text-align: left;
+    display: grid; row-gap: 2px; align-content: start; width: 100%; height: 100%; text-align: left;
     padding: 8px 8px 14px; border-radius: 18px; background: var(--surface-glass); border: 1px solid var(--border);
     transition: border-color 0.25s, background-color 0.25s;
   }
@@ -121,7 +117,7 @@ const span = (k: number) => (b.chapters[k].page === last(k) ? `p. ${b.chapters[k
   .bs-chapter-img { grid-column: 1 / -1; display: block; aspect-ratio: 595 / 842; margin-bottom: 10px; border-radius: 8px; overflow: hidden; background: #fff; }
   .bs-chapter-img img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.7s var(--ease); }
   .bs-chapter:hover .bs-chapter-img img { scale: 1.04; }
-  .bs-chapter-n { grid-row: span 2; padding-left: 4px; font-family: var(--font-display); font-size: 1.25rem; line-height: 1; color: var(--accent); }
+  .bs-chapter-t, .bs-chapter-p { padding-inline: 4px; }
   .bs-chapter-t { min-width: 0; font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; line-height: 1.25; overflow-wrap: break-word; hyphens: auto; }
   .bs-chapter-p { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 </style>

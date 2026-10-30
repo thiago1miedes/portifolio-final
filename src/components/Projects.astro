@@ -13,7 +13,6 @@ const kindOf = (c: (typeof list)[number]) => (c.cats.includes("brand") ? "Identi
   <div class="container">
     <header class="section-head section-head--split">
       <div class="projects-heading">
-        <p class="eyebrow" data-reveal>Trabalhos selecionados</p>
         <h2 class="title-section" data-split>Meus <em>Projetos</em></h2>
       </div>
     </header>
@@ -27,9 +26,8 @@ const kindOf = (c: (typeof list)[number]) => (c.cats.includes("brand") ? "Identi
             </div>
             <div class="project-info">
               <div>
-                <p class="project-tag">{kindOf(c)}{c.year && ` · ${c.year}`}</p>
                 <h3 class="project-title">{c.title}</h3>
-                <p class="project-cat">{c.sector}</p>
+                <p class="project-cat">{kindOf(c)} · {c.sector}</p>
               </div>
               <span class="project-more">Ver projeto <Icon name="arrow-up-right" /></span>
             </div>
@@ -77,12 +75,6 @@ const kindOf = (c: (typeof list)[number]) => (c.cats.includes("brand") ? "Identi
   .project-link:hover .project-media img,
   .project-link:focus-visible .project-media img { scale: 1.04; }
 
-  .project-tag {
-    margin-bottom: 8px;
-    font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--accent);
-  }
 
   .project-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
   .project-title { font-size: clamp(1.25rem, 1.8vw, 1.625rem); letter-spacing: -0.03em; transition: color 0.3s; }

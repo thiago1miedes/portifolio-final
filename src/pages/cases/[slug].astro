@@ -62,11 +62,11 @@ for (const it of social || product || book ? [] : rest.filter((x) => x !== visua
   g.items.push(it);
 }
 const logoCover = visualCover?.group === "capa";
-const hasFormats = groups.some((g) => formats[g.key]);
 const specOf = (g: { items: AssetItem[] }) => `${g.items[0].w} × ${g.items[0].h} px`;
 const meta = [
   { k: "Cliente", v: c.client },
   { k: "Segmento", v: c.sector },
+  { k: "Escopo", v: c.cats.map((k) => categories[k]).join(", ") },
   ...(c.year ? [{ k: "Ano", v: c.year }] : []),
   { k: "Ferramentas", v: c.tools.join(", ") },
 ];
@@ -76,10 +76,6 @@ const meta = [
   <article class="case" data-project={c.slug}>
     <header class="case-hero container">
       <a href="/cases/" class="case-back"><Icon name="arrow-left" size={18} /> Todos os projetos</a>
-      <div class="case-cats" data-hero-fade>
-        {c.cats.map((k) => <span class="chip">{categories[k]}</span>)}
-        {c.live && <span class="chip chip--live"><i></i>Site no ar</span>}
-      </div>
       <h1 class="case-title display" data-page-title>{c.title}</h1>
       <div class="case-intro">
         <p class="lead" data-hero-fade>{c.summary}</p>
@@ -89,7 +85,7 @@ const meta = [
               Visitar site <Icon name="arrow-up-right" class="icon--arrow" />
             </a>
           )}
-          <a href={book ? "#leitor" : "#galeria"} class="btn btn--ghost">{social && !cover ? "Ver carrosséis" : book ? "Ler o e-book" : "Ver projeto"}</a>
+          <a href={book ? "#leitor" : "#galeria"} class="btn btn--ghost">{social && !cover ? (social.carousels.length ? "Ver carrosséis" : "Ver posts") : book ? "Ler o e-book" : "Ver projeto"}</a>
         </div>
       </div>
       <dl class="case-meta" data-hero-fade>
@@ -101,11 +97,11 @@ const meta = [
       <section class="case-cover" data-cover-scrub>
         <div class="cover-sticky container">
           <BrowserFrame src={cover.src} w={cover.w} h={cover.h} alt={`Página ${cover.label ?? "inicial"} do site ${c.title}`} url={fakeUrl(cover.label)} mode="scrub" ratio="16 / 9" class="cover-browser" eager />
-          <p class="cover-hint"><i aria-hidden="true"></i>Role a página para navegar pelo layout</p>
+          <p class="cover-hint">Role a página para navegar pelo layout</p>
         </div>
       </section>
     )}
-    {social && !cover && <SocialCover logo={socialItem("logo")} pattern={c.items.find((it) => it.id === "padrao")?.src} bg={social.coverBg} title={c.title} />}
+    {social && !cover && <SocialCover logo={socialItem("logo")} pattern={c.items.find((it) => it.id === "padrao")?.src} bg={social.coverBg} style={social.coverStyle} symbol={c.items.find((it) => it.id === "simbolo")?.src} title={c.title} />}
     {book && <BookReader c={c} />}
     {visualCover && (
       <section class="case-cover-img container">
@@ -117,7 +113,6 @@ const meta = [
 
     <section class="case-about container">
       <div class="ca-text">
-        <p class="eyebrow" data-reveal>Sobre o projeto</p>
         {c.about.map((p, k) => <p class:list={[{ lead: k === 0 }]} data-reveal>{p}</p>)}
         {c.credit && <p class="ca-credit" data-reveal>{c.credit}.</p>}
       </div>
@@ -135,7 +130,6 @@ const meta = [
     {pages.length > 0 && (
       <section class="case-pages container" data-tabs>
         <div class="cp-head">
-          <p class="eyebrow" data-reveal>{pages.length > 1 ? "Páginas do site" : "Layout completo"}</p>
           <h2 class="h-card" data-reveal>{pages.length > 1 ? `${pages.length} telas desenhadas` : "Navegue pela página inteira"}</h2>
         </div>
         <div class:list={["cp-tabs", { "is-hidden": pages.length < 2 }]} role="tablist" aria-label="Páginas do site">
@@ -158,9 +152,8 @@ const meta = [
       <section class="case-mobile">
         <div class="container cm-grid">
           <div class="cm-text">
-            <p class="eyebrow" data-reveal>Versão mobile</p>
             <h2 class="title-section" data-split>Pensado para o <em>polegar</em>.</h2>
-            <p class="lead" data-reveal>Hierarquia, botões e menus adaptados para o celular — onde acontece a maior parte das visitas.</p>
+            <p class="lead" data-reveal>Hierarquia, botões e menus redesenhados para o celular, que é de onde vem a maior parte das visitas.</p>
           </div>
           <div class="cm-phones">
             {mobiles.slice(0, 2).map((m, k) => (
@@ -175,43 +168,25 @@ const meta = [
 
     {social && <SocialShowcase c={c} />}
 
-    {hasFormats && (
-      <nav class="case-formats container" aria-label="Formatos do projeto">
-        <p class="eyebrow" data-reveal>Formatos</p>
-        <ol class="cf-list">
-          {groups.map((g, k) => formats[g.key] && (
-            <li data-reveal>
-              <a href={`#f-${g.key}`} class="cf-link">
-                <span class="cf-n">{String(k + 1).padStart(2, "0")}</span>
-                <span class="cf-label">{formats[g.key].label}</span>
-                <span class="cf-meta">{`${g.items.length} ${g.items.length === 1 ? "peça" : "peças"} · ${formats[g.key].ratio}`}</span>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-    )}
-
-    {groups.map((g, gi) => {
+    {groups.map((g) => {
       const f = formats[g.key];
       return (
       <section class:list={["case-gallery container", { "cg-sec--split": f?.split }]} id={f ? `f-${g.key}` : undefined}>
         <div class="cg-head">
           <div class="cg-title">
-            <p class="eyebrow" data-reveal>{f ? `${String(gi + 1).padStart(2, "0")} — ${f.label}` : (labels[g.key] ?? "Galeria")}</p>
-            {f && <h2 class="h-card" data-reveal>{f.title}</h2>}
+            {f ? <h2 class="h-card" data-reveal>{f.title}</h2> : groups.length > 1 && <h2 class="h-card" data-reveal>{labels[g.key] ?? "Galeria"}</h2>}
             {f && <p class="cg-note" data-reveal>{f.note}</p>}
           </div>
           <span class="cg-count" data-reveal>
             {f && <b>{specOf(g)}</b>}
-            {`${String(g.items.length).padStart(2, "0")} ${g.items.length === 1 ? "peça" : "peças"}`}
+            {`${g.items.length} ${g.items.length === 1 ? "peça" : "peças"}`}
           </span>
         </div>
         <div class:list={["cg", `cg--${f?.layout ?? layoutOf(g.key)}`]}>
           {g.items.map((it) => (
             <button type="button" class:list={["cg-item", { "has-bar": f?.chrome }]} data-lightbox={it.src} data-w={it.w} data-h={it.h} data-reveal aria-label={`Ampliar ${it.label ?? "imagem"}`}>
               {f?.chrome && <span class="cg-bar" aria-hidden="true"><i></i><i></i><i></i></span>}
-              <img src={it.src} width={it.w} height={it.h} alt={f ? `${f.label}: ${it.label} — ${c.title}` : `${labels[g.key] ?? "Imagem"} — ${c.title}`} loading="lazy" decoding="async" />
+              <img src={it.src} width={it.w} height={it.h} alt={f ? `${f.label}: ${it.label}, ${c.title}` : `${labels[g.key] ?? "Imagem"}, ${c.title}`} loading="lazy" decoding="async" />
               {f && it.label && <span class="cg-cap">{it.label}</span>}
             </button>
           ))}
@@ -246,7 +221,6 @@ const meta = [
   .case-hero { position: relative; padding-top: clamp(124px, 17vh, 168px); padding-bottom: clamp(32px, 4vw, 56px); display: grid; gap: 24px; }
   .case-back { justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; color: var(--text-muted); font-size: 0.9375rem; transition: color 0.25s, gap 0.3s var(--ease); }
   .case-back:hover { color: var(--accent); gap: 12px; }
-  .case-cats { display: flex; flex-wrap: wrap; gap: 6px; }
   .case-title { font-size: clamp(3.25rem, 10vw, 9rem); max-width: 12ch; }
   .case-intro { display: grid; gap: 24px; align-items: end; }
   @media (min-width: 1000px) { .case-intro { grid-template-columns: 1fr auto; gap: 48px; } }
@@ -256,15 +230,11 @@ const meta = [
   .case-meta div { padding: 18px 20px 0 0; display: grid; gap: 4px; }
   .case-meta dt { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
   .case-meta dd { margin: 0; font-size: 0.9375rem; color: var(--text); }
-  .chip--live i { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
-  .chip--live { color: var(--text); }
 
   .case-cover { position: relative; }
   .cover-sticky { position: sticky; top: 92px; display: grid; gap: 14px; }
   .cover-sticky :global(.cover-browser .browser-view) { max-height: calc(100svh - 190px); }
   .cover-hint { display: inline-flex; align-items: center; gap: 10px; justify-self: center; font-size: 0.875rem; color: var(--text-muted); }
-  .cover-hint i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: blink 1.6s ease-in-out infinite; }
-  @keyframes blink { 50% { opacity: 0.25; } }
 
   .case-cover-img { padding-bottom: clamp(20px, 4vw, 40px); }
   .cover-img { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--bg-elev); aspect-ratio: 16 / 9; }
@@ -329,14 +299,6 @@ const meta = [
   @media (min-width: 760px) { .cg--posts { columns: 3; } }
   @media (min-width: 1100px) { .cg--posts { columns: 4; } }
 
-  .case-formats { display: grid; gap: 18px; padding-bottom: clamp(40px, 5vw, 72px); }
-  .cf-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  @media (min-width: 900px) { .cf-list { grid-template-columns: repeat(3, 1fr); } }
-  .cf-link { display: grid; grid-template-columns: 2.25rem 1fr; column-gap: 14px; row-gap: 2px; align-items: baseline; height: 100%; padding: 16px 18px; border-radius: 16px; background: var(--surface-glass); border: 1px solid var(--border); transition: border-color 0.25s, background-color 0.25s; }
-  .cf-link:hover { border-color: var(--accent); background: var(--bg-elev); }
-  .cf-n { grid-row: span 2; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); line-height: 1; }
-  .cf-label { font-weight: 600; letter-spacing: -0.01em; }
-  .cf-meta { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 
   .cg-sec--split { display: grid; gap: 0 clamp(28px, 5vw, 80px); }
   @media (min-width: 900px) { .cg-sec--split { grid-template-columns: 1fr minmax(0, 440px); } .cg-sec--split .cg-head { border-bottom: 0; align-items: start; justify-content: flex-start; flex-direction: column; gap: 18px; } }

@@ -6,7 +6,7 @@
   "assets": "/brand/lifestyle",
 
   "seo": {
-    "title": "LifeStyle — Identidade visual",
+    "title": "LifeStyle · Identidade visual",
     "description": "Case de identidade visual da LifeStyle, marca de psicologia e soluções em gestão de pessoas: o símbolo modular com a peça fora do quadrado, a tipografia, as cores, o sistema de logo e as aplicações em papelaria e objetos.",
     "image": "og.png"
   },
@@ -55,7 +55,7 @@
 
   "intro": {
     "kicker": "Identidade visual · 2023",
-    "subtitle": "Marca de psicologia e soluções em gestão de pessoas, feita para quem trabalha — ou quer trabalhar — com RH e psicologia e faz disso um estilo de vida.",
+    "subtitle": "Marca de psicologia e soluções em gestão de pessoas, feita para quem trabalha (ou quer trabalhar) com RH e psicologia e faz disso um estilo de vida.",
     "scrollHint": "Role para conhecer a marca",
     "image": "hero-atmosfera",
     "variant": "onDark"
@@ -86,11 +86,11 @@
     "weights": [300, 400, 500, 600, 700, 800, 900],
     "text": "O logotipo parte da Inter ExtraBold e ganha detalhes do símbolo: o L, o i, o f e o l herdam o canto arredondado do alto da moldura, e a barra do e termina na mesma curva da base da peça solta. O descritor é a própria Inter, no peso regular. Desenhada para telas, ela fica clara do cartão de visita ao celular, e uma só família cobre toda a comunicação.",
     "spec": [
-      { "k": "Família", "v": "Inter — Rasmus Andersson" },
+      { "k": "Família", "v": "Inter, de Rasmus Andersson" },
       { "k": "Licença", "v": "SIL Open Font License · Google Fonts" },
       { "k": "Logotipo", "v": "Inter ExtraBold 800, redesenhada" },
       { "k": "Descritor", "v": "Inter Regular 400, em duas linhas" },
-      { "k": "Títulos e textos", "v": "Inter 300–900 · variável" },
+      { "k": "Títulos e textos", "v": "Inter 300 a 900 · variável" },
       { "k": "Alternativas", "v": "Roboto · Helvetica Neue · Arial" }
     ],
     "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz Ç ã õ 0123456789"

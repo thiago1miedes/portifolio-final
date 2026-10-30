@@ -86,7 +86,7 @@ export interface SocialShowcase {
   avatar?: string;
   /** abertura da parte de redes, quando o case começa pelo site */
   intro?: { title: string; note: string };
-  stats: { n: string; label: string }[];
+  stats?: { n: string; label: string }[];
   /** perfil simulado: feed = groups na ordem da grade (o 1º item de cada um é a capa); destaques = group "destaques" */
   page?: { title: string; note: string; name: string; category: string; bio: string[]; link: string; feed: string[]; visible: number };
   /** frentes de conteúdo, na ordem da página */
@@ -97,25 +97,27 @@ export interface SocialShowcase {
    * paleta + elementos gráficos em SVG (itens do group "elementos", na ordem) ou recortes 4:3 de posts
    * (details: id do item; x, y e w em fração da arte)
    */
-  system: {
+  system?: {
     title: string;
     note: string;
     palette: { name: string; hex: string }[];
     elements?: string[];
     details?: { id: string; x: number; y: number; w: number; title: string; note: string }[];
   };
-  /** bloco "A marca": logotipo (item "logo-cor") sobre light, versão em negativo (item "logo") sobre dark, símbolo (item "simbolo") e o conceito */
-  brand?: { title: string; note: string; light: string; dark: string; concept: { t: string; d: string }[] };
+  /** bloco "A marca": logotipo (item "logo-cor") sobre light, versão em negativo (item "logo") sobre dark, símbolo (item "simbolo") e as cores */
+  brand?: { title: string; note: string; light: string; dark: string; palette?: { name: string; hex: string }[] };
   /** esconde o índice de carrosséis (quando as sequências são posts únicos) */
   hideIndex?: boolean;
   /** cor da capa quando o case não tem o painel de ladrilhos (item "padrao"): o logotipo (item "logo") vai sobre ela */
   coverBg?: string;
+  /** estilo da capa lisa: ondas no rodapé (padrão) ou o símbolo (item "simbolo") grande, montado peça por peça */
+  coverStyle?: "wave" | "symbol";
   /** posts únicos fora dos carrosséis: cada um é um group próprio, com o título no label do item */
-  singles?: { title: string; note: string; list: { key: string; title: string; when: string }[] };
+  singles?: { title: string; note: string; list: { key: string; title: string; when: string; big?: boolean }[] };
   /** faixa de stories avulsos (group "stories") */
   stories?: { title: string; note: string };
   /** vídeos fora do Instagram (group "tela") */
-  screen?: { eyebrow: string; title: string; note: string; spec: string };
+  screen?: { title: string; note: string; spec: string };
 }
 
 export interface AssetItem {
@@ -143,9 +145,9 @@ const list: CaseData[] = [
     accent: "#BCCF0F",
     summary: "Site institucional em código e o Instagram de uma rede de mini mercados autônomos: carrosséis, stories, destaques e as campanhas do ano.",
     about: [
-      "A Smart Box instala mini mercados inteligentes e vending machines em empresas, condomínios e academias da região metropolitana de São Paulo. O desafio era traduzir uma operação 100% autoatendimento em uma marca próxima, prática e fácil de entender — do primeiro contato no Instagram até o pedido de orçamento no site.",
+      "A Smart Box instala mini mercados inteligentes e vending machines em empresas, condomínios e academias da região metropolitana de São Paulo. O desafio era traduzir uma operação 100% autoatendimento em uma marca próxima e fácil de entender, do primeiro contato no Instagram ao pedido de orçamento no site.",
       "Desenhei e desenvolvi o site do zero em HTML, CSS e JavaScript, com páginas de soluções, quem somos, onde estamos e formulário para empresas.",
-      "No Instagram, criei a linha visual do perfil: carrosséis que explicam o modelo para RH e síndicos, stories de produto, capas de destaque, datas comemorativas e campanhas de indicação — sempre em Poppins, com o verde-limão da marca e fotos reais das máquinas.",
+      "No Instagram, criei a linha visual do perfil: carrosséis que explicam o modelo para RH e síndicos, stories de produto, capas de destaque, datas comemorativas e campanhas de indicação, sempre em Poppins, com o verde-limão da marca e fotos reais das máquinas.",
     ],
     deliverables: ["UI design do site", "Desenvolvimento front-end", "Formulário de orçamento", "41 posts de feed", "81 stories", "Capas de destaque", "Campanha de indicação", "Vídeos para a tela da máquina"],
     tools: ["Figma", "HTML", "CSS", "JavaScript", "Photoshop", "Illustrator", "After Effects"],
@@ -161,7 +163,7 @@ const list: CaseData[] = [
         { n: "41", label: "posts de feed" },
         { n: "81", label: "stories" },
         { n: "10", label: "carrosséis" },
-        { n: "05", label: "capas de destaque" },
+        { n: "5", label: "capas de destaque" },
       ],
       page: {
         title: "O perfil inteiro, <em>de uma vez</em>",
@@ -197,7 +199,7 @@ const list: CaseData[] = [
       carousels: [
         {
           key: "pegou", front: "como", title: "Escolheu, pagou, pegou", when: "Passo a passo",
-          note: "A compra explicada sem texto corrido: escolher na máquina, aproximar o cartão ou o celular, pegar o produto. Cada verbo ganha uma pílula sobre uma foto real, e o fechamento resume a promessa — sem filas, sem estresse, compra concluída.",
+          note: "A compra explicada sem texto corrido: escolher na máquina, aproximar o cartão ou o celular, pegar o produto. Cada verbo ganha uma pílula sobre uma foto real, e o fechamento resume a promessa: sem filas, sem estresse, compra concluída.",
         },
         {
           key: "opcoes", front: "como", title: "Mini mercado ou vending machine?", when: "Comparativo",
@@ -213,19 +215,19 @@ const list: CaseData[] = [
         },
         {
           key: "indicou", front: "campanhas", title: "Indicou, fechou, ganhou", when: "Campanha com prêmio",
-          note: "Quem apresenta uma empresa que fecha com a Smart Box ganha cupom, cesta de produtos ou até R$ 500 no Pix. Os stories criam expectativa em três passos — curiosidade, revelação dos prêmios e o teaser do Pix — antes da cesta. A campanha teve ainda roteiros de Reels com um gancho para cada público dos anúncios: síndicos, RH e funcionários.",
+          note: "Quem apresenta uma empresa que fecha com a Smart Box ganha cupom, cesta de produtos ou até R$ 500 no Pix. Os stories criam expectativa em três passos (curiosidade, revelação dos prêmios e o teaser do Pix) antes da cesta. A campanha teve ainda roteiros de Reels com um gancho para cada público dos anúncios: síndicos, RH e funcionários.",
         },
         {
           key: "agosto", front: "campanhas", title: "Promoção Agosto Infinito", when: "Agosto de 2026",
-          note: "“Se agosto vai ser longo mesmo, que seja com desconto.” O post reúne sete produtos com o preço de/por em etiquetas verdes; nos stories, a lista se divide em duas telas para o preço continuar grande.",
+          note: "“Se agosto vai ser longo mesmo, que seja com desconto.” O post reúne sete produtos com o preço antigo e o novo em etiquetas verdes; nos stories, a lista se divide em duas telas para o preço continuar grande.",
         },
         {
           key: "maes", front: "datas", title: "Dia das Mães", when: "Maio de 2026",
-          note: "“Ela não para, a gente também não.” A sequência acompanha a mãe no escritório e na academia — dois lugares onde a Smart Box está — e fecha com uma colagem de polaroids das mães da Smart Box.",
+          note: "“Ela não para, a gente também não.” A sequência acompanha a mãe no escritório e na academia, dois lugares onde a Smart Box está, e fecha com uma colagem de polaroids das mães da Smart Box.",
         },
         {
           key: "namorados", front: "datas", title: "Dia dos Namorados", when: "12 de junho",
-          note: "Para quem esqueceu a data: o 12 preso no mural avisa que ainda dá tempo de salvar o dia com um chocolate da máquina. Nos stories, a piada vem em três telas — “a gente não te julga, mas ela vai” — até o aviso final.",
+          note: "Para quem esqueceu a data: o 12 preso no mural avisa que ainda dá tempo de salvar o dia com um chocolate da máquina. Nos stories, a piada se estende por três telas (“a gente não te julga, mas ela vai”) até o aviso final.",
         },
         {
           key: "copa", front: "datas", title: "Copa do Mundo", when: "Junho de 2026",
@@ -237,12 +239,12 @@ const list: CaseData[] = [
         },
         {
           key: "meme", front: "humor", title: "Não importa a situação", when: "Humor",
-          note: "A reunião de 5 minutos que virou 2 horas, a reunião marcada na hora do almoço, o salário que ainda não caiu — cada situação com a saída na máquina: energético, lanche rápido, pagamento com VR. As fotos foram feitas na frente das próprias máquinas.",
+          note: "A reunião de 5 minutos que virou 2 horas, a reunião marcada na hora do almoço, o salário que ainda não caiu. Cada situação tem a saída na máquina: energético, lanche rápido, pagamento com VR. As fotos foram feitas na frente das próprias máquinas.",
         },
       ],
       system: {
         title: "Limão, grafite e <em>foto de verdade</em>",
-        note: "Os posts dividem poucos recursos, repetidos com disciplina: Poppins pesada e em itálico nos títulos, a palavra-chave em verde-limão, pílulas arredondadas para os textos curtos e o selo da marca numa aba no topo. A foto é sempre a máquina real — no escritório, no prédio, na academia.",
+        note: "Os posts dividem poucos recursos, repetidos com disciplina: Poppins pesada e em itálico nos títulos, a palavra-chave em verde-limão, pílulas arredondadas para os textos curtos e o selo da marca numa aba no topo. A foto é sempre a máquina real, no escritório, no prédio ou na academia.",
         palette: [
           { name: "Limão", hex: "#BCCF0F" },
           { name: "Oliva", hex: "#212504" },
@@ -256,17 +258,16 @@ const list: CaseData[] = [
           { id: "notas-1", x: 0.12, y: 0, w: 0.76, title: "Selo na aba", note: "O logo numa aba escura presa à borda de cima, como etiqueta de caixa." },
           { id: "maes-2", x: 0.3, y: 0.08, w: 0.62, title: "Moldura com canto", note: "O canto chanfrado da caixa do logo vira moldura de foto." },
           { id: "onde-2", x: 0, y: 0.25, w: 1, title: "Etiquetas e pins", note: "Endereços em etiquetas e pins 3D sobre um mapa que atravessa as telas." },
-          { id: "esquenta-precos-1", x: 0.33, y: 0.06, w: 0.65, title: "Preço em destaque", note: "De/por em etiquetas tracejadas: o desconto se lê antes do produto." },
+          { id: "esquenta-precos-1", x: 0.33, y: 0.06, w: 0.65, title: "Preço em destaque", note: "Preço antigo e novo em etiquetas tracejadas: o desconto se lê antes do produto." },
         ],
       },
       stories: {
         title: "Stories do <em>dia a dia</em>",
-        note: "Produto, aviso e lembrete: os stories avulsos que mantêm a máquina na cabeça de quem está no escritório — da coquinha gelada na hora do almoço ao VR que acabou de cair.",
+        note: "Produto, aviso e lembrete: os stories avulsos que mantêm a máquina na cabeça de quem está no escritório, da coquinha gelada no almoço ao VR que acabou de cair.",
       },
       screen: {
-        eyebrow: "Fora do Instagram",
         title: "Na tela da <em>máquina</em>",
-        note: "A vending tem uma tela vertical, e a mesma linguagem chega até ela: a campanha de indicação com o QR code para indicar ali mesmo e uma vinheta de Halloween — “Deu fome? Vai de Smart Box”.",
+        note: "A vending tem uma tela vertical, e a mesma linguagem chega até ela: a campanha de indicação com o QR code para indicar ali mesmo e uma vinheta de Halloween: “Deu fome? Vai de Smart Box”.",
         spec: "Vídeo 1080 × 1920",
       },
     },
@@ -300,7 +301,7 @@ const list: CaseData[] = [
     accent: "#F5A524",
     summary: "Implementação pixel-perfect em código do site de uma gestora de investimentos, com animações ao rolar a página.",
     about: [
-      "A partir do protótipo aprovado, desenvolvi o site da Arie Capital em código, reproduzindo cada detalhe da interface e construindo as interações e fluxos entre as páginas — home, fundos e políticas.",
+      "A partir do protótipo aprovado, desenvolvi o site da Arie Capital em código, reproduzindo cada detalhe da interface e construindo as interações entre home, fundos e políticas.",
       "O resultado é um site 100% responsivo, com animações suaves em GSAP que respeitam quem prefere menos movimento, SEO configurado, área de artigos, newsletter, formulário de contato e botão de WhatsApp.",
     ],
     deliverables: ["Implementação pixel-perfect", "Responsividade e versão mobile", "Animações com GSAP", "SEO", "Blog e newsletter", "Formulário de contato"],
@@ -316,7 +317,7 @@ const list: CaseData[] = [
     accent: "#FF7A1A",
     summary: "Site de uma empresa de produtos digitais com narrativa espacial: do MVP ao escalonamento, como uma missão rumo ao espaço.",
     about: [
-      "A Firework se apresenta como o “motor de ignição” para criação de produtos digitais. Transformei essa metáfora em um universo visual: fundo estrelado, astronauta, foguete e uma linha do tempo que acompanha as etapas do processo — MVP, validação, produto, go to market e escala.",
+      "A Firework se apresenta como o “motor de ignição” para criação de produtos digitais. Transformei essa metáfora em um universo visual: fundo estrelado, astronauta, foguete e uma linha do tempo com as etapas do processo: MVP, validação, produto, go to market e escala.",
       "O projeto contempla sete páginas: home, sobre, construção de produto digital, firesourcing, insights, vagas e contato, todas com o mesmo sistema de componentes e ícones lineares em laranja.",
     ],
     deliverables: ["UI design de 7 páginas", "Sistema de componentes", "Iconografia", "Direção de arte"],
@@ -333,8 +334,8 @@ const list: CaseData[] = [
     accent: "#1C2D4F",
     summary: "Identidade visual e papelaria institucional para uma clínica especializada em dor, ortopedia e regeneração.",
     about: [
-      "Foram desenvolvidas três propostas de marca, cada uma com conceito próprio — movimento, equilíbrio da coluna e regeneração — sempre com a combinação de azul profundo e dourado para transmitir confiança e cuidado de alto padrão.",
-      "Com a marca aprovada, criei a papelaria completa da clínica: cartão de visita, pasta com bolso, bloco de notas, receituário médico, receituário de controle especial e papel timbrado — “cinco peças, uma só identidade”.",
+      "Foram desenvolvidas três propostas de marca, cada uma com um conceito (movimento, equilíbrio da coluna e regeneração), sempre com a combinação de azul profundo e dourado para transmitir confiança e cuidado de alto padrão.",
+      "Com a marca aprovada, criei a papelaria completa da clínica: cartão de visita, pasta com bolso, bloco de notas, receituário médico, receituário de controle especial e papel timbrado.",
     ],
     deliverables: ["3 propostas de logo", "Paleta e tipografia", "Mockups de aplicação", "Cartão de visita", "Pasta e bloco", "Receituários e timbrado"],
     tools: ["Illustrator", "Photoshop", "InDesign"],
@@ -347,7 +348,7 @@ const list: CaseData[] = [
     cats: ["web"],
     featured: 6,
     accent: "#8B1FD1",
-    summary: "Redesign do site de uma plataforma para hospedar, gerenciar e vender cursos online — para infoprodutores e empresas.",
+    summary: "Redesign do site de uma plataforma para hospedar, gerenciar e vender cursos online, feita para infoprodutores e empresas.",
     about: [
       "A EAD Plataforma atende dois públicos bem diferentes: quem vende cursos (infoprodutores) e quem treina equipes (empresas). O novo site separa essas jornadas em páginas dedicadas, com argumentos, recursos e planos para cada perfil.",
       "Partindo de uma primeira versão escura e densa, a v2 ganhou uma linguagem mais clara, com roxo vibrante, prints reais da plataforma, números de resultado e uma página de planos comparativa.",
@@ -383,7 +384,7 @@ const list: CaseData[] = [
     accent: "#6D2C9E",
     summary: "Site para uma rede de centros auditivos, com conteúdo educativo sobre perda auditiva e zumbido e agendamento de consulta.",
     about: [
-      "Muita gente adia o cuidado com a audição por falta de informação. Por isso o site combina páginas comerciais com páginas educativas — perda auditiva, zumbido e aparelhos — escritas e diagramadas para leitura leve.",
+      "Muita gente adia o cuidado com a audição por falta de informação. Por isso o site junta páginas comerciais e páginas educativas sobre perda auditiva, zumbido e aparelhos, escritas para uma leitura leve.",
       "A home recebe o visitante com uma saudação direta (“Olá, somos a Conexão Auditiva”), apresenta as unidades e termina em um formulário de agendamento.",
     ],
     deliverables: ["UI design de 6 páginas", "Páginas educativas", "Blog", "Formulário de agendamento"],
@@ -470,7 +471,7 @@ const list: CaseData[] = [
     summary: "Site para uma clínica de cuidado integrativo, com tons neutros, fotografia leve e páginas por especialidade e unidade.",
     about: [
       "A proposta da Wissence é transformar saúde em hábito. A interface acompanha esse tom: paleta areia e marrom, muito respiro, fotografia de movimento e bem-estar.",
-      "Foram cinco telas em alta fidelidade — home, landing page, especialidades, unidades e contato.",
+      "Foram cinco telas em alta fidelidade: home, landing page, especialidades, unidades e contato.",
     ],
     deliverables: ["UI design de 5 páginas", "Landing page", "Newsletter"],
     tools: ["Figma", "Photoshop"],
@@ -484,7 +485,7 @@ const list: CaseData[] = [
     accent: "#1A6FD1",
     summary: "Site de uma distribuidora de produtos cirúrgicos, organizado por especialidades médicas.",
     about: [
-      "As especialidades — ortopedia, bucomaxilo, coluna e neuro — ganharam cores e entradas próprias logo na home, facilitando a navegação de quem já sabe o que procura.",
+      "Ortopedia, bucomaxilo, coluna e neuro ganharam cores e entradas próprias logo na home, para quem já sabe o que procura chegar mais rápido.",
       "O projeto tem cinco páginas: home, sobre, especialidades, categoria de produtos e contato com mapa.",
     ],
     deliverables: ["UI design de 5 páginas", "Catálogo por especialidade"],
@@ -615,7 +616,7 @@ const list: CaseData[] = [
     accent: "#1257C4",
     summary: "Site de uma empresa de síndico profissional, com números, depoimentos e pedido de orçamento.",
     about: [
-      "A página responde de cara à pergunta principal — “por que contratar um síndico profissional?” — e sustenta a resposta com números, depoimentos de moradores e conteúdo em blog.",
+      "A página responde de cara à pergunta principal, “por que contratar um síndico profissional?”, e sustenta a resposta com números, depoimentos de moradores e conteúdo em blog.",
     ],
     deliverables: ["UI design", "Blog", "Formulário de orçamento"],
     tools: ["Figma", "Photoshop"],
@@ -658,7 +659,7 @@ const list: CaseData[] = [
     accent: "#1A9A72",
     summary: "Site de dez páginas para uma consultoria de tecnologia, gestão e soluções para o setor público.",
     about: [
-      "Cada unidade de negócio — consultoria, tecnologia, governança, setor público, inteligência de mercado, contratos e alianças — ganhou uma página própria dentro de um mesmo sistema visual, além de carreiras e contato.",
+      "Consultoria, tecnologia, governança, setor público, inteligência de mercado, contratos e alianças: cada unidade de negócio ganhou uma página própria dentro do mesmo sistema visual, além de carreiras e contato.",
     ],
     deliverables: ["UI design de 10 páginas", "Sistema de componentes"],
     tools: ["Figma", "Photoshop"],
@@ -673,7 +674,7 @@ const list: CaseData[] = [
     accent: "#B8955A",
     summary: "E-commerce de joias com pedras brasileiras: home, listagem, página de produto, sobre e contato.",
     about: [
-      "Tons dourados, fotografia de produto em fundo claro e uma navegação de loja virtual completa — da coleção ao produto, com newsletter e joias personalizadas.",
+      "Tons dourados, fotografia de produto em fundo claro e uma navegação de loja completa, da coleção ao produto, com newsletter e joias personalizadas.",
     ],
     deliverables: ["Home", "Listagem de produtos", "Página de produto", "Sobre e contato"],
     tools: ["Figma", "Photoshop"],
@@ -752,7 +753,7 @@ const list: CaseData[] = [
     accent: "#1E6B45",
     summary: "Três caminhos de marca para uma confraria de aromas, do lettering clássico ao símbolo botânico.",
     about: [
-      "Lettering com ligaduras, monograma em folha e um selo botânico — cada proposta foi testada em diferentes paletas e em cartão de visita.",
+      "Lettering com ligaduras, monograma em folha e um selo botânico. Cada proposta foi testada em paletas diferentes e no cartão de visita.",
     ],
     deliverables: ["3 propostas de logo", "Paletas", "Cartão de visita"],
     tools: ["Illustrator"],
@@ -767,7 +768,7 @@ const list: CaseData[] = [
     accent: "#1C3A6B",
     summary: "Marca para uma instituição de ensino com o conceito “conhecimento que muda o mundo”.",
     about: [
-      "Três propostas geométricas — losango, bloco e monograma — apresentadas com variações de cor e aplicação em cartão.",
+      "Três propostas geométricas (losango, bloco e monograma), apresentadas com variações de cor e aplicação em cartão.",
     ],
     deliverables: ["3 propostas de logo", "Variações de cor"],
     tools: ["Illustrator"],
@@ -845,8 +846,8 @@ const list: CaseData[] = [
     accent: "#B95000",
     summary: "Nove carrosséis para o Instagram do Conselho de Arquitetura e Urbanismo de Pernambuco: colóquios pelo interior, datas da arquitetura e os prazos que todo profissional precisa saber.",
     about: [
-      "O CAU/PE é a autarquia federal que orienta, disciplina e fiscaliza o exercício da arquitetura e do urbanismo em Pernambuco. Criado pela Lei 12.378/2010, tem sede no Recife e escritórios em Caruaru, no Agreste, e em Petrolina, no Sertão — e uma missão curta: promover Arquitetura e Urbanismo para todos.",
-      "No Instagram, o conselho fala com dois públicos ao mesmo tempo: os arquitetos e urbanistas registrados, que precisam de prazos e regras claros, e a sociedade, que encontra ali o valor da arquitetura do estado. Desenhei os carrosséis de 2026 para as duas conversas — dos colóquios em Carpina, Caruaru e Petrolina ao registro de chapas das Eleições CAU.",
+      "O CAU/PE é a autarquia federal que orienta, disciplina e fiscaliza o exercício da arquitetura e do urbanismo em Pernambuco. Criado pela Lei 12.378/2010, tem sede no Recife e escritórios em Caruaru, no Agreste, e em Petrolina, no Sertão. A missão cabe numa frase: promover Arquitetura e Urbanismo para todos.",
+      "No Instagram, o conselho fala com dois públicos ao mesmo tempo: os arquitetos e urbanistas registrados, que precisam de prazos e regras claros, e a sociedade, que encontra ali o valor da arquitetura do estado. Desenhei os carrosséis de 2026 para as duas conversas, dos colóquios em Carpina, Caruaru e Petrolina ao registro de chapas das Eleições CAU.",
       "Cada carrossel foi pensado para ser deslizado: uma capa que segura o polegar, uma ideia por tela e um fechamento com a próxima ação. As formas cortadas na borda continuam na tela seguinte, então a sequência se lê como um painel só.",
     ],
     deliverables: ["9 carrosséis de feed", "46 telas em 4:5", "5 vídeos curtos", "Posts de evento e palestrantes", "Campanhas de prazo", "Datas comemorativas"],
@@ -856,10 +857,10 @@ const list: CaseData[] = [
       profile: "oficialcaupe",
       place: "Pernambuco",
       stats: [
-        { n: "09", label: "carrosséis" },
+        { n: "9", label: "carrosséis" },
         { n: "46", label: "telas em 4:5" },
-        { n: "05", label: "vídeos curtos" },
-        { n: "06", label: "cidades no feed" },
+        { n: "5", label: "vídeos curtos" },
+        { n: "6", label: "cidades no feed" },
       ],
       fronts: [
         { key: "agenda", label: "Agenda", note: "Os eventos do conselho pelo estado: datas, palestrantes e inscrições." },
@@ -868,11 +869,11 @@ const list: CaseData[] = [
       ],
       carousels: [
         {
-          key: "travessia", front: "agenda", title: "Colóquio Caruaru–Petrolina", when: "28 ago e 24 set 2026",
+          key: "travessia", front: "agenda", title: "Colóquio Caruaru e Petrolina", when: "28 ago e 24 set 2026",
           note: "“Arquiteturas em Travessia”: o Sertão visita o Agreste e o Agreste visita o Sertão. A capa traz as duas datas, cada cidade ganha uma abertura com dia, hora e local, e cada palestrante, uma tela com foto, tema e minicurrículo. O fechamento avisa das vagas limitadas e aponta o link da inscrição.",
         },
         {
-          key: "caruaru", front: "agenda", title: "Colóquio Caruaru — inscrições", when: "Agosto de 2026",
+          key: "caruaru", front: "agenda", title: "Inscrições para o Colóquio Caruaru", when: "Agosto de 2026",
           note: "A primeira chamada do colóquio de Caruaru: três palestras para quem projeta o espaço e a própria carreira. Petróleo e terracota se alternam a cada tela para separar os palestrantes, e a moldura circular do emblema recorta as fotos.",
         },
         {
@@ -881,7 +882,7 @@ const list: CaseData[] = [
         },
         {
           key: "patrimonio", front: "cultura", title: "Dia Nacional do Patrimônio Histórico", when: "17 ago 2026",
-          note: "Sete telas de fotografia — igrejas, casarões, o farol e o Recife visto do alto — com caixas de texto em terracota e petróleo. O texto avança uma ideia por tela: patrimônio não é só o que é antigo, e preservar não impede a cidade de se transformar.",
+          note: "Sete telas de fotografia (igrejas, casarões, o farol e o Recife visto do alto) com caixas de texto em terracota e petróleo. O texto avança uma ideia por tela: patrimônio não é só o que é antigo, e preservar não impede a cidade de se transformar.",
         },
         {
           key: "turismo", front: "cultura", title: "Dia Mundial do Turismo", when: "27 set 2026",
@@ -892,15 +893,15 @@ const list: CaseData[] = [
           note: "Um quiz para movimentar os comentários: a planta colorida de uma obra histórica do Recife, emoldurada por ladrilhos, e o pedido de palpite. Os círculos começam na primeira tela e terminam na segunda.",
         },
         {
-          key: "chapas", front: "servico", title: "Eleições CAU 2026 — registro de chapas", when: "17 ago a 4 set 2026",
+          key: "chapas", front: "servico", title: "Eleições CAU 2026: registro de chapas", when: "17 ago a 4 set 2026",
           note: "O regulamento eleitoral em oito telas: período de registro, vagas em disputa, regras de representatividade, quem pode se candidatar e o que é preciso para registrar. Faixas de título em petróleo e grandes círculos conduzem a leitura.",
         },
         {
-          key: "prazo", front: "servico", title: "Eleições — último dia de registro", when: "4 set 2026",
+          key: "prazo", front: "servico", title: "Último dia de registro de chapas", when: "4 set 2026",
           note: "O lembrete da sexta-feira em que o prazo acabava: a chamada sobre uma faixa de ladrilhos, os requisitos para se candidatar e o perfil do CAU/PE apontando o link da bio.",
         },
         {
-          key: "anuidade", front: "servico", title: "Anuidade 2026 — Pessoa Jurídica", when: "Agosto de 2026",
+          key: "anuidade", front: "servico", title: "Anuidade 2026 para Pessoa Jurídica", when: "Agosto de 2026",
           note: "Últimos dias de desconto para empresas: 30% à vista até 31 de agosto e o calendário de parcelamento até dezembro. O arco que nasce na segunda tela termina na terceira.",
         },
       ],
@@ -925,17 +926,17 @@ const list: CaseData[] = [
     title: "MenteVitale",
     client: "MenteVitale",
     sector: "Clínica de saúde mental on-line · psicologia e psiquiatria",
-    year: "2021–22",
+    year: "2021 e 2022",
     cats: ["social"],
     accent: "#6B79C4",
     live: "https://mentevitale.com.br/",
-    summary: "O Instagram da MenteVitale, plataforma de psicologia e psiquiatria on-line: nove carrosséis de saúde mental, do estresse ao pânico, e nove posts avulsos, do pré-lançamento às datas do ano.",
+    summary: "Nove carrosséis e nove posts para o Instagram da MenteVitale, clínica de psicologia e psiquiatria on-line, do pré-lançamento ao conteúdo de saúde mental.",
     about: [
-      "A MenteVitale é uma clínica de saúde mental com atendimento on-line: psicólogos, com foco em terapia cognitivo-comportamental, e psiquiatras, que o paciente encontra e agenda pelo site. Nas redes, ela precisava ser, ao mesmo tempo, a plataforma que acabava de chegar e uma voz confiável para quem nunca fez terapia.",
-      "A identidade visual da marca foi pensada sobretudo para o site e para as redes, e foi nelas que ela ganhou corpo. Desenhei os posts de 2021 e 2022 com um único índigo, o do logotipo, uma onda que sobe do rodapé e ilustrações simples, que explicam sem pesar. Fotos de gente sorrindo, recortadas sobre a mancha, ficam com o convite; as ilustrações ficam com o conteúdo.",
-      "O feed contou a história em duas etapas. Primeiro, a expectativa: o aviso de que a plataforma estava chegando, a contagem regressiva e a primeira reunião com os profissionais. Depois, o conteúdo que sustenta uma clínica — o que é o estresse, o que fazer numa crise de pânico, por que a ansiedade não passa — e o fechamento de sempre: procure ajuda profissional.",
+      "A MenteVitale reúne psicólogos e psiquiatras que atendem on-line. Quando a plataforma estava para nascer, o Instagram tinha duas tarefas: anunciar a chegada e ganhar a confiança de quem nunca fez terapia.",
+      "Os posts usam o índigo do logotipo, a onda que sobe do rodapé e ilustrações leves, que deixam temas pesados mais fáceis de ler. Quando o assunto é acolher, entram fotos de gente de verdade.",
+      "Primeiro veio a expectativa, com contagem regressiva e a apresentação da plataforma. Depois, o conteúdo: estresse, crise de pânico, ansiedade e cuidados do dia a dia.",
     ],
-    deliverables: ["9 carrosséis de feed", "37 telas em 1:1", "9 posts avulsos", "Datas comemorativas", "Campanha de lançamento", "Conteúdo de saúde mental"],
+    deliverables: ["9 carrosséis de feed", "37 telas em 1:1", "9 posts avulsos", "Campanha de lançamento", "Datas comemorativas", "Conteúdo de saúde mental"],
     tools: ["Photoshop", "Illustrator"],
     credit: "Projeto realizado na Olive Marketing e Comunicação",
     social: {
@@ -944,14 +945,13 @@ const list: CaseData[] = [
       avatar: "avatar",
       coverBg: "#525FA3",
       stats: [
-        { n: "09", label: "carrosséis" },
+        { n: "9", label: "carrosséis" },
         { n: "37", label: "telas em carrossel" },
-        { n: "09", label: "posts avulsos" },
-        { n: "03", label: "frentes de conteúdo" },
+        { n: "9", label: "posts avulsos" },
       ],
       page: {
         title: "O feed da <em>MenteVitale</em>",
-        note: "As 46 artes juntas, na grade do perfil: o índigo e a onda branca repetem de um quadrado para o outro, e a foto de uma pessoa sorrindo aparece sempre que o assunto é acolher. Toque num post para ver as telas.",
+        note: "Todos os posts na grade do perfil. Toque em um para ver as telas.",
         name: "MenteVitale",
         category: "Clínica de saúde mental",
         bio: ["Psicologia e psiquiatria on-line", "Terapia cognitivo-comportamental", "Agende sua consulta pelo site"],
@@ -960,51 +960,51 @@ const list: CaseData[] = [
         visible: 9,
       },
       fronts: [
-        { key: "plataforma", label: "A plataforma", note: "A chegada da plataforma: primeiro a expectativa, depois a explicação de como encontrar e agendar um profissional pelo site." },
-        { key: "saude", label: "Saúde mental", note: "Conteúdo para quem busca informação antes de buscar ajuda: estresse, crise de pânico, ansiedade e hábitos de cuidado." },
-        { key: "datas", label: "Datas e fim de ano", note: "A virada de 2021 para 2022, quando a saúde mental entra na pauta das festas." },
+        { key: "plataforma", label: "Lançamento", note: "Do aviso de que a plataforma estava chegando ao passo a passo para agendar a primeira consulta." },
+        { key: "saude", label: "Saúde mental", note: "Estresse, pânico e ansiedade explicados para quem ainda está decidindo se procura ajuda." },
+        { key: "datas", label: "Fim de ano", note: "A virada de 2021 para 2022, quando a saúde mental entra na pauta das festas." },
       ],
       carousels: [
         {
           key: "rotina", front: "plataforma", title: "A rotina está estressante", when: "Pré-lançamento",
-          note: "Uma imagem panorâmica cortada em duas telas. Na primeira, a pergunta sobre a rotina corrida; na segunda, o celular com o site da MenteVitale e a promessa de ajuda em breve. A foto atravessa a emenda, então deslizar completa a imagem.",
+          note: "Uma foto panorâmica dividida em duas telas: a pergunta sobre a rotina de um lado, o site da MenteVitale no celular do outro. Deslizar completa a imagem.",
         },
         {
           key: "ajudar", front: "plataforma", title: "Como nossa plataforma pode te ajudar?", when: "Pré-lançamento",
-          note: "Três telas de expectativa: a pergunta sobre fundo índigo, a foto de quem pensa na resposta e o aviso de que, em breve, dá para agendar consulta e terapia on-line em poucos cliques. A moça recortada passa de uma tela para a outra, e a última fecha com uma ilustração: mal podemos esperar para compartilhar essa facilidade.",
+          note: "A moça recortada atravessa a emenda entre as telas e leva a pergunta até a resposta: em breve, consulta e terapia on-line em poucos cliques.",
         },
         {
           key: "funciona", front: "plataforma", title: "Como funciona a plataforma", when: "Lançamento",
-          note: "O caminho do paciente em quatro telas: a MenteVitale conecta pacientes e profissionais de saúde mental, o pré-cadastro leva ao profissional certo para cada necessidade, depois é só escolher a melhor data. A última tela traz o endereço do site e o e-mail de contato.",
+          note: "O caminho do paciente em quatro telas, do pré-cadastro à escolha da data, com o site e o e-mail de contato no fechamento.",
         },
         {
-          key: "estresse", front: "saude", title: "Estresse: tipos e sintomas", when: "Educação em saúde mental",
-          note: "A capa pergunta “Estresse?” e convida a deslizar. As três telas seguintes explicam o estresse agudo, o agudo episódico e o crônico, cada um com uma ilustração, e o fechamento pergunta se a pessoa se identifica com algum sintoma. A mesma onda índigo sobe do rodapé em todas as telas.",
+          key: "estresse", front: "saude", title: "Estresse: tipos e sintomas", when: "Saúde mental",
+          note: "A capa só pergunta “Estresse?”. As telas seguintes explicam os três tipos, cada um com uma ilustração, e a última devolve a pergunta para quem lê.",
         },
         {
-          key: "panico", front: "saude", title: "3 dicas para controlar uma crise de pânico", when: "Educação em saúde mental",
-          note: "Seis telas de orientação: evitar a cafeína, que pode servir de gatilho, entender o que o corpo faz, respirar de forma natural e a dica de contar até quatro ao inspirar e ao expirar. A última lembra que consultar um profissional também é importante.",
+          key: "panico", front: "saude", title: "3 dicas para controlar uma crise de pânico", when: "Saúde mental",
+          note: "Uma orientação por tela, com frases curtas o bastante para ler no meio de uma crise: cortar a cafeína, respirar no ritmo natural e contar até quatro.",
         },
         {
-          key: "ansiedade", front: "saude", title: "3 motivos pelos quais você não consegue lidar com a ansiedade", when: "Educação em saúde mental",
-          note: "Angústia em relação ao futuro, instabilidade econômica e traumas, um por tela, com retratos em círculo e balões de pensamento. O fechamento, com a consulta on-line ilustrada, manda procurar ajuda profissional.",
+          key: "ansiedade", front: "saude", title: "3 motivos pelos quais você não consegue lidar com a ansiedade", when: "Saúde mental",
+          note: "Três motivos, três retratos em círculo com balões de pensamento e um fechamento que aponta para a consulta on-line.",
         },
         {
-          key: "passos", front: "saude", title: "4 passos essenciais para cuidar da saúde mental", when: "Educação em saúde mental",
-          note: "Alimentação saudável, boas horas de sono, não se cobrar tanto e consultar-se regularmente. O cérebro zen da capa aparece cortado na tela seguinte, e a última diz que a pessoa merece viver uma vida que vale a pena ser vivida.",
+          key: "passos", front: "saude", title: "4 passos essenciais para cuidar da saúde mental", when: "Saúde mental",
+          note: "Alimentação, sono, menos cobrança e consultas regulares. O cérebro zen da capa continua na tela seguinte e puxa o dedo para o lado.",
         },
         {
-          key: "ano-novo", front: "datas", title: "Saúde mental para 2022", when: "Virada de 2021 para 2022",
-          note: "Três dicas para refletir na virada do ano: mudar os pensamentos antes do entorno, ter o apoio de pessoas boas e adotar uma postura realista, com metas viáveis. A capa tem pingentes de brilho no topo e o fechamento é um brinde: feliz ano novo!",
+          key: "ano-novo", front: "datas", title: "Saúde mental para 2022", when: "Virada do ano",
+          note: "Três ideias para começar o ano mais leve, com pingentes de brilho no topo e um brinde no fechamento.",
         },
         {
-          key: "fim-de-ano", front: "datas", title: "Síndrome do fim do ano", when: "Fim de 2021",
-          note: "Duas telas sobre os casos de ansiedade e depressão que aumentam no fim do ano. Na capa, o rosto escondido nas mãos; na segunda, o abraço em si mesma e a frase que fecha a sequência: você não está sozinho.",
+          key: "fim-de-ano", front: "datas", title: "Síndrome do fim do ano", when: "Dezembro de 2021",
+          note: "A ansiedade que cresce no fim do ano em duas telas, do rosto escondido nas mãos ao abraço em si mesma.",
         },
       ],
       singles: {
-        title: "Nove posts, <em>um só</em> quadrado",
-        note: "Além dos carrosséis, o feed teve posts únicos: a promessa da marca, datas comemorativas, uma enquete sobre o estado da saúde mental e a contagem para o lançamento da plataforma.",
+        title: "Um post, <em>um recado</em>",
+        note: "A promessa da marca, a contagem para o lançamento, uma enquete e as datas do ano.",
         list: [
           { key: "cuidar", title: "Cuidar da mente é tão importante quanto cuidar do corpo", when: "Convite para agendar" },
           { key: "vem-ai", title: "Vem aí!", when: "Pré-lançamento" },
@@ -1017,26 +1017,6 @@ const list: CaseData[] = [
           { key: "janeiro-branco", title: "Janeiro Branco", when: "Janeiro" },
         ],
       },
-      system: {
-        title: "Um índigo, uma <em>onda</em>",
-        note: "Os posts partem de um único índigo, o do logotipo, sobre branco e cinza-gelo. A onda que sobe do rodapé separa o título do conteúdo, as ilustrações planas dão leveza a assuntos pesados e o ícone da marca reaparece, pequeno e claro, como assinatura.",
-        palette: [
-          { name: "Índigo", hex: "#525FA3" },
-          { name: "Índigo profundo", hex: "#3E4DAA" },
-          { name: "Lavanda", hex: "#D5DCEF" },
-          { name: "Gelo", hex: "#F6F6F6" },
-          { name: "Rosa", hex: "#FCA1A0" },
-          { name: "Pêssego", hex: "#FCB78D" },
-        ],
-        details: [
-          { id: "estresse-5", x: 0, y: 0.25, w: 1, title: "A onda", note: "Sobe do rodapé e sustenta a pergunta, o logotipo ou a ilustração." },
-          { id: "fim-de-ano-1", x: 0.45, y: 0.12, w: 0.55, title: "O ícone como assinatura", note: "Pequeno e claro, solto pela tela, quando o post não tem espaço para o logotipo inteiro." },
-          { id: "passos-1", x: 0.5, y: 0.2, w: 0.5, title: "Ilustração chapada", note: "Personagens em cores lisas, sem contorno pesado, para falar de ansiedade e pânico sem assustar." },
-          { id: "familia-1", x: 0, y: 0.12, w: 1, title: "Foto sobre a mancha", note: "A foto sai do retângulo e se apoia na onda índigo: gente de verdade para convidar, ilustração para explicar." },
-          { id: "enquete-1", x: 0.02, y: 0.27, w: 0.96, title: "Dados com cara de marca", note: "A enquete usa só tons de índigo, com o ícone da marca no centro do gráfico." },
-          { id: "vem-ai-1", x: 0, y: 0.15, w: 0.65, title: "Título em destaque", note: "Itálico e negrito em índigo sobre branco, ou em branco sobre índigo, com o texto de apoio bem menor." },
-        ],
-      },
     },
   },
   {
@@ -1044,14 +1024,14 @@ const list: CaseData[] = [
     title: "LF Serviços Elétricos",
     client: "LF Serviços Elétricos",
     sector: "Serviços elétricos e energia solar · Bauru",
-    year: "2021–22",
+    year: "2021 e 2022",
     cats: ["brand", "social"],
     accent: "#FF9D01",
-    summary: "O logotipo da LF, empresa de serviços elétricos e energia solar de Bauru, e 24 posts de Instagram que o puseram em uso: serviços, energia solar, prova de confiança e datas do ano.",
+    summary: "Logotipo e 24 posts de Instagram para a LF, empresa de serviços elétricos e energia solar em Bauru.",
     about: [
-      "A LF faz instalação, manutenção e infraestrutura elétrica para casas, empresas e obras, e também instala placas de energia solar em Bauru e região. Precisava de uma marca que passasse segurança a quem contrata um serviço elétrico e que não fosse mais um raio amarelo sobre fundo azul.",
-      "Desenhei o logotipo: um símbolo geométrico, feito de quatro peças e um corte em diagonal, e o nome LF em letras de cantos arredondados, com a etiqueta Serviços Elétricos ao lado. Do azul-petróleo e do laranja saiu todo o resto: nos posts, a marca aparece sempre no canto, sobre uma faixa laranja ou um triângulo azul.",
-      "Com a identidade pronta, fiz os posts do Instagram da empresa. Eles alternam fotos de profissionais recortados sobre fundo claro, obras concluídas, ofertas de energia solar e datas comemorativas, sempre com o mesmo contorno em raio e a mesma assinatura no rodapé.",
+      "A LF faz instalação e manutenção elétrica para casas, empresas e obras, e instala placas solares em Bauru e região. A marca precisava passar segurança sem cair no clichê do raio amarelo sobre fundo azul.",
+      "O símbolo resolve isso com quatro peças e um corte em diagonal: o raio aparece no espaço vazio entre elas. Ao lado, o nome em letras de cantos arredondados e a etiqueta Serviços Elétricos.",
+      "Nos posts, o azul-petróleo e o laranja seguram tudo: fotos de obra, a equipe em campo, ofertas de energia solar e as datas do ano, com o logotipo sempre assinando no canto.",
     ],
     deliverables: ["Logotipo e símbolo", "Versão em negativo", "24 posts em 1:1", "Posts de serviços", "Energia solar", "Datas comemorativas"],
     tools: ["Illustrator", "Photoshop"],
@@ -1061,27 +1041,22 @@ const list: CaseData[] = [
       place: "Bauru e região",
       avatar: "avatar",
       coverBg: "#103E5A",
+      coverStyle: "symbol",
       hideIndex: true,
       brand: {
         title: "Um raio feito de <em>vazio</em>",
-        note: "O símbolo da LF não desenha um raio: ele aparece no corte entre quatro peças. O logotipo completo reúne o símbolo, o nome em letras arredondadas e uma etiqueta com o segmento.",
+        note: "O raio não está desenhado: ele surge no corte entre as quatro peças do símbolo. Funciona pequeno, como avatar, e grande, num uniforme ou na lateral de um carro.",
         light: "#F4F5F7",
         dark: "#103E5A",
-        concept: [
-          { t: "O raio no espaço vazio", d: "A diagonal branca entre as quatro peças forma o raio. Quem é do setor lê energia; quem não é vê uma forma limpa, que funciona pequena, como avatar, ou grande, num uniforme." },
-          { t: "Duas cores, duas energias", d: "O azul-petróleo traz a seriedade e a segurança que um serviço elétrico pede. O laranja traz a energia e o sol, que já cobre a frente de energia solar." },
-          { t: "Cantos arredondados", d: "Os dois quartos de círculo laranja se repetem nas letras e na etiqueta e voltam, nos posts, nas molduras das fotos." },
+        palette: [
+          { name: "Azul-petróleo", hex: "#103E5A" },
+          { name: "Laranja LF", hex: "#FF9D01" },
+          { name: "Gelo", hex: "#F4F5F7" },
         ],
       },
-      stats: [
-        { n: "24", label: "posts" },
-        { n: "04", label: "frentes de conteúdo" },
-        { n: "04", label: "datas comemorativas" },
-        { n: "01", label: "logotipo" },
-      ],
       page: {
         title: "O feed da <em>LF</em>",
-        note: "Os 24 posts juntos, na grade do perfil: a faixa laranja, o azul-petróleo e o logotipo no canto aparecem de um quadrado para o outro. Toque num post para ampliar.",
+        note: "Os 24 posts na grade do perfil. Toque em um para ampliar.",
         name: "LF Serviços Elétricos",
         category: "Serviços elétricos",
         bio: ["Instalação e manutenção elétrica", "Energia solar", "Bauru e região"],
@@ -1089,66 +1064,36 @@ const list: CaseData[] = [
         feed: ["quadro","produza","pais","alarme","seguro","bauru126","spda","chame","consumidor","oitenta","instalacao","natal","placas","referencia","cabeamento","meio-ambiente","profissionalismo","infra","ajuda","processo","problemas","encontra","qualidade","profissionais"],
         visible: 9,
       },
-      fronts: [
-        { key: "servicos", label: "Serviços", note: "O que a LF faz, mostrado em obra: quadros de distribuição, proteção contra descargas, cabeamento, infraestrutura e combate a incêndio." },
-        { key: "solar", label: "Solar", note: "A frente de energia solar: geração própria, economia na conta e instalação de placas." },
-        { key: "confianca", label: "Confiança", note: "Profissionais sorrindo, recortados sobre o fundo claro, e números que mostram a experiência da empresa." },
-        { key: "datas", label: "Datas", note: "O aniversário de Bauru e o Dia do Meio Ambiente, com a marca assinando discretamente no topo." },
-      ],
-      carousels: [
-        { key: "quadro", front: "servicos", title: "Montagem de quadro de distribuição", when: "Serviços",
-          note: "A foto do quadro ocupa o quadrado e o contorno em raio, em azul, sai da borda esquerda. A pergunta aponta para a marca: aqui você encontra." },
-        { key: "spda", front: "servicos", title: "Sistema de proteção contra descargas atmosféricas", when: "Obra concluída",
-          note: "Seis fotos da instalação na laje e no topo do prédio, cada uma numa moldura de canto arredondado com borda laranja, e o selo de concluído antes do logotipo." },
-        { key: "produza", front: "solar", title: "Produza a sua própria energia", when: "Energia solar",
-          note: "Um técnico instala placas fotovoltaicas dentro de uma moldura arredondada. A chamada destaca em laranja os benefícios: energia própria e economia todo mês." },
-        { key: "oitenta", front: "confianca", title: "Mais de 80 serviços em Bauru e região", when: "Prova social",
-          note: "O número enorme em laranja, o técnico de polegar para cima e a faixa azul no rodapé, com a área de atuação." },
-        { key: "bauru126", front: "datas", title: "126 anos de Bauru", when: "Aniversário da cidade",
-          note: "Os números vazados com fotos da cidade sobre Bauru em preto e branco. “A energia que nos move é a mesma” faz a ponte entre a cidade e a marca." },
-        { key: "meio-ambiente", front: "datas", title: "Dia Mundial do Meio Ambiente", when: "5 de junho",
-          note: "Uma hashtag gigante em laranja e azul, com o convite para deslizar. É a capa de um carrossel, e a única que usa o verde, só nesta data." },
-      ],
+      fronts: [],
+      carousels: [],
       singles: {
-        title: "Dezoito posts, <em>um só</em> quadrado",
-        note: "Além dos destaques, o feed teve mais posts simples: serviços de obra, ofertas de energia solar, as chamadas com os profissionais e as datas do ano.",
+        title: "Obra, equipe e <em>energia solar</em>",
+        note: "Quadros montados, para-raios instalados, a equipe em campo, ofertas de placas solares e as datas do ano. Clique em um post para ampliar.",
         list: [
+          { key: "quadro", title: "Montagem de quadro de distribuição", when: "Serviços", big: true },
           { key: "alarme", title: "Alarme e comandos de combate a incêndio", when: "Serviços" },
+          { key: "seguro", title: "Um trabalho seguro e de qualidade", when: "Equipe" },
           { key: "instalacao", title: "Instalação elétrica especializada", when: "Serviços" },
+          { key: "profissionais", title: "Serviços elétricos com profissionalismo e segurança", when: "Equipe" },
           { key: "cabeamento", title: "Troca de cabeamento elétrico", when: "Serviços" },
-          { key: "infra", title: "Execução de infraestrutura elétrica", when: "Serviços" },
-          { key: "problemas", title: "Problemas elétricos não têm hora para acontecer", when: "Serviços" },
-          { key: "processo", title: "Processo de instalação: quadro de distribuição geral", when: "Capa de carrossel" },
-          { key: "consumidor", title: "Mês do Consumidor", when: "Energia solar" },
           { key: "placas", title: "Instalação e manutenção de placas fotovoltaicas", when: "Energia solar" },
-          { key: "profissionalismo", title: "Profissionalismo na LF", when: "Confiança" },
-          { key: "seguro", title: "Um trabalho seguro e de qualidade", when: "Confiança" },
-          { key: "profissionais", title: "Serviços elétricos com profissionalismo e segurança", when: "Confiança" },
-          { key: "chame", title: "Sua empresa precisa de instalação ou manutenção?", when: "Confiança" },
-          { key: "qualidade", title: "A qualidade e a segurança que você precisa", when: "Confiança" },
-          { key: "ajuda", title: "Precisando de serviços elétricos?", when: "Confiança" },
-          { key: "referencia", title: "Por que a LF é referência no setor elétrico", when: "Confiança" },
-          { key: "encontra", title: "Na LF você encontra tudo isso", when: "Confiança" },
+          { key: "produza", title: "Produza a sua própria energia", when: "Energia solar", big: true },
+          { key: "consumidor", title: "Mês do Consumidor", when: "Energia solar" },
+          { key: "infra", title: "Execução de infraestrutura elétrica", when: "Serviços" },
+          { key: "oitenta", title: "Mais de 80 serviços em Bauru e região", when: "Equipe", big: true },
+          { key: "spda", title: "Sistema de proteção contra descargas atmosféricas", when: "Obra concluída" },
+          { key: "problemas", title: "Problemas elétricos não têm hora para acontecer", when: "Serviços" },
+          { key: "chame", title: "Sua empresa precisa de instalação ou manutenção?", when: "Equipe" },
+          { key: "processo", title: "Processo de instalação: quadro de distribuição geral", when: "Serviços" },
+          { key: "qualidade", title: "A qualidade e a segurança que você precisa", when: "Equipe" },
+          { key: "ajuda", title: "Precisando de serviços elétricos?", when: "Equipe" },
+          { key: "bauru126", title: "126 anos de Bauru", when: "Aniversário da cidade", big: true },
+          { key: "referencia", title: "Por que a LF é referência no setor elétrico", when: "Equipe" },
+          { key: "encontra", title: "Na LF você encontra tudo isso", when: "Equipe" },
+          { key: "profissionalismo", title: "Profissionalismo na LF", when: "Equipe" },
+          { key: "meio-ambiente", title: "Dia Mundial do Meio Ambiente", when: "5 de junho" },
           { key: "pais", title: "Dia dos Pais", when: "14 de agosto" },
           { key: "natal", title: "Feliz Natal", when: "Dezembro" },
-        ],
-      },
-      system: {
-        title: "Azul, laranja e uma <em>faixa</em>",
-        note: "Os posts partem de fundo claro, com fotos de gente trabalhando recortadas sobre ele. A faixa laranja e o triângulo azul no rodapé seguram o logotipo, o contorno em raio aparece atrás da pessoa e os destaques do texto vão em laranja.",
-        palette: [
-          { name: "Laranja LF", hex: "#FF9D01" },
-          { name: "Azul-petróleo", hex: "#103E5A" },
-          { name: "Gelo", hex: "#F4F5F7" },
-          { name: "Branco", hex: "#FFFFFF" },
-        ],
-        details: [
-          { id: "alarme-1", x: 0, y: 0.25, w: 1, title: "A faixa laranja", note: "Segura o texto e o logotipo no rodapé, com um triângulo azul fechando o canto." },
-          { id: "quadro-1", x: 0, y: 0, w: 1, title: "O contorno em raio", note: "Uma linha fina em azul, atrás da pessoa ou do equipamento, repete o recorte do símbolo." },
-          { id: "seguro-1", x: 0.3, y: 0.05, w: 0.7, title: "Gente recortada", note: "Profissionais sobre o fundo claro, de luva e uniforme, apontando para a mensagem." },
-          { id: "spda-1", x: 0, y: 0.08, w: 1, title: "Molduras arredondadas", note: "O quarto de círculo do símbolo volta como canto das fotos, com borda laranja." },
-          { id: "produza-1", x: 0, y: 0, w: 1, title: "Destaque em laranja", note: "A palavra que importa vai em laranja e negrito; o resto do texto fica leve." },
-          { id: "natal-1", x: 0.1, y: 0.4, w: 0.8, title: "Logotipo em negativo", note: "Sobre o azul de fim de ano, as letras e a etiqueta viram brancas." },
         ],
       },
     },
@@ -1164,16 +1109,16 @@ const list: CaseData[] = [
     summary: "Duas embalagens para a creatina Dedicad, o ensaio de fotos feito para elas e duas galerias de imagens para vender suplementos na Amazon americana.",
     about: [
       "A Welbuda vende suplementos na Amazon dos Estados Unidos com duas marcas, a própria Welbuda e a Dedicad. O pedido começou pela embalagem da creatina Dedicad e foi até o que faz um suplemento vender online: a foto de produto e a galeria de imagens da página.",
-      "Para a creatina monohidratada, desenhei duas embalagens — uma vermelha, de impacto, e uma dourada, mais premium — sobre o mesmo pote e a mesma hierarquia, com rótulo, modo de uso e tabela em inglês para o mercado americano.",
+      "Para a creatina monohidratada, desenhei duas embalagens, uma vermelha, de impacto, e outra dourada, mais premium, sobre o mesmo pote e a mesma hierarquia, com rótulo, modo de uso e tabela em inglês para o mercado americano.",
       "Com os rótulos prontos, os potes ganharam 19 fotos: as duas versões juntas e cada uma no seu cenário. Para outros dois produtos da casa, o Lions Mane da Welbuda e o Mushroom Coffee da Dedicad, montei duas sequências de sete imagens para a galeria da Amazon e para as redes.",
     ],
     deliverables: ["2 embalagens de creatina", "Rótulos de 206 × 66 mm", "Vistas 3D dos potes", "19 fotos de produto", "2 galerias para a Amazon", "14 imagens 1:1 para listing e redes"],
     tools: ["Illustrator", "Photoshop", "Gemini"],
     product: {
       stats: [
-        { n: "02", label: "embalagens" },
+        { n: "2", label: "embalagens" },
         { n: "19", label: "fotos de produto" },
-        { n: "02", label: "campanhas" },
+        { n: "2", label: "galerias para a Amazon" },
         { n: "14", label: "imagens de galeria" },
       ],
       packaging: {
@@ -1221,14 +1166,14 @@ const list: CaseData[] = [
           },
           {
             key: "gold", label: "Só a dourada",
-            note: "Luz quente e materiais nobres — pedra, couro, toalha — para cenas mais editoriais, do vestiário à quadra de tênis.",
+            note: "Luz quente e materiais nobres, como pedra, couro e toalha, para cenas mais editoriais, do vestiário à quadra de tênis.",
             rows: [["gold-stone", "gold-burst", "gold-tote"], ["gold-locker", "gold-court", "gold-pattern"]],
           },
         ],
       },
       campaigns: {
         title: "Galerias para a <em>Amazon</em>",
-        note: "Na Amazon, a galeria da página faz o papel do vendedor. Para outros dois produtos da casa, montei duas sequências de sete imagens quadradas que também rodam nas redes: cada uma tem uma função — chamar, explicar, provar, convencer — e a ordem conta a história.",
+        note: "Na Amazon, a galeria da página faz o papel do vendedor. Para outros dois produtos da casa, montei duas sequências de sete imagens quadradas que também rodam nas redes: cada imagem tem uma função (chamar, explicar, provar, convencer) e a ordem conta a história.",
         list: [
           {
             key: "lions", brand: "Welbuda", product: "Lions Mane",
@@ -1245,7 +1190,7 @@ const list: CaseData[] = [
           },
           {
             key: "coffee", brand: "Dedicad", product: "Mushroom Coffee",
-            note: "Café torrado, cobre e creme, com grãos e cogumelos voando em volta do pote. Aqui a galeria abre pela confiança — o laudo de laboratório — e segue para os ingredientes, o preparo, os momentos de consumo, a tabela nutricional e os selos.",
+            note: "Café torrado, cobre e creme, com grãos e cogumelos voando em volta do pote. Aqui a galeria abre pela confiança, com o laudo de laboratório, e segue para os ingredientes, o preparo, os momentos de consumo, a tabela nutricional e os selos.",
             captions: [
               { t: "Laudo", d: "metais pesados e microbiológico aprovados" },
               { t: "Ingredientes", d: "café arábica e sete cogumelos funcionais" },

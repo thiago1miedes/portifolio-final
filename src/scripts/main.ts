@@ -846,11 +846,38 @@ $$("[data-book]").forEach((bk) => {
   build();
 });
 
-// capa dos cases de social: o emblema entra girando e os ladrilhos descem devagar com a rolagem
+// capa dos cases de social, uma entrada por estilo:
+// ladrilhos: o emblema redondo entra girando e o padrão desce devagar com a rolagem
+// ondas: as ondas sobem do rodapé uma a uma e o logotipo emerge de baixo, como se viesse com elas
+// símbolo: as peças do símbolo chegam de fora e se encaixam; o logotipo é revelado da esquerda para a direita
 const scWall = $("[data-sc-wall]");
 if (scWall && !reduce) {
-  gsap.from($("[data-sc-emblem]", scWall), { scale: 0.7, rotate: -25, opacity: 0, duration: 1.4, ease: "expo.out", delay: root.classList.contains("is-arriving") ? 0.6 : 0.35 });
-  gsap.fromTo(scWall, { backgroundPosition: "50% 0px" }, { backgroundPosition: "50% -140px", ease: "none", scrollTrigger: { trigger: scWall, start: "top bottom", end: "bottom top", scrub: true } });
+  const delay = root.classList.contains("is-arriving") ? 0.6 : 0.35;
+  const emblem = $("[data-sc-emblem]", scWall)!;
+  const variant = scWall.dataset.scWall;
+  if (variant === "tiles") {
+    gsap.from(emblem, { scale: 0.7, rotate: -25, opacity: 0, duration: 1.4, ease: "expo.out", delay });
+    gsap.fromTo(scWall, { backgroundPosition: "50% 0px" }, { backgroundPosition: "50% -140px", ease: "none", scrollTrigger: { trigger: scWall, start: "top bottom", end: "bottom top", scrub: true } });
+  } else if (variant === "wave") {
+    const waves = $$("[data-sc-wave]", scWall);
+    gsap.timeline({ delay })
+      .from(waves, { yPercent: 70, duration: 1.6, ease: "expo.out", stagger: 0.14 })
+      .from(emblem, { clipPath: "inset(100% 0% 0% 0%)", y: 40, duration: 1.3, ease: "expo.out" }, 0.35);
+    waves.forEach((w, k) => gsap.to(w, { yPercent: 10 + k * 8, ease: "none", scrollTrigger: { trigger: scWall, start: "top top", end: "bottom top", scrub: true } }));
+  } else if (variant === "symbol") {
+    // cada peça vem do lado em que está no símbolo (pelo centro dela em relação ao centro do desenho)
+    const svg = $<SVGSVGElement>("[data-sc-symbol] svg", scWall)!;
+    const box = svg.viewBox.baseVal;
+    const pieces = $$<SVGGraphicsElement>("[data-sc-piece]", svg);
+    gsap.timeline({ delay })
+      .from(pieces, {
+        x: (_, el: SVGGraphicsElement) => { const b = el.getBBox(); return Math.sign(b.x + b.width / 2 - box.width / 2) * box.width * 0.35; },
+        y: (_, el: SVGGraphicsElement) => { const b = el.getBBox(); return Math.sign(b.y + b.height / 2 - box.height / 2) * box.height * 0.35; },
+        opacity: 0, duration: 1.3, ease: "expo.out", stagger: 0.1,
+      })
+      .from(emblem, { clipPath: "inset(0% 100% 0% 0%)", x: -24, duration: 1.2, ease: "expo.inOut" }, 0.45);
+    gsap.to(svg, { rotate: 8, ease: "none", scrollTrigger: { trigger: scWall, start: "top top", end: "bottom top", scrub: true } });
+  }
 }
 
 const dialog = $<HTMLDialogElement>("[data-lightbox-dialog]");
@@ -882,7 +909,7 @@ if (dialog) {
       img.width = Number(b.dataset.w); img.height = Number(b.dataset.h);
       img.alt = b.querySelector("img")?.alt ?? b.getAttribute("aria-label") ?? "";
     }
-    count.textContent = `${String(cur + 1).padStart(2, "0")} / ${String(shots.length).padStart(2, "0")}`;
+    count.textContent = `${cur + 1} de ${shots.length}`;
     const stage = $(".lb-stage", dialog)!;
     stage.scrollTop = 0;
     // telas de carrossel cabem inteiras na altura; páginas de site continuam rolando dentro do lightbox;

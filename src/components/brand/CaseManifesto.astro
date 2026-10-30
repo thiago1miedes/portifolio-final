@@ -9,13 +9,11 @@ const m = data.manifesto;
 ---
 <section class="bc-manifesto" id="manifesto" data-theme="light" data-bc-section data-bc-turn>
   <div class="container">
-    <p class="bc-eyebrow">{m.eyebrow}</p>
     <BrandText as="p" class="bc-manifesto-headline" text={m.headline} data-bc-scrub-words />
     <ol class="bc-attrs">
       {m.attributes.map((a, i) => (
         <li class="bc-attr" data-index={i} data-bc-attr>
           <span class="bc-attr-line" aria-hidden="true"></span>
-          <span class="bc-attr-num">{String(i + 1).padStart(2, "0")}</span>
           <h3 class="bc-attr-word">{a.word}</h3>
           <BrandText as="p" class="bc-attr-text" text={a.text} />
         </li>

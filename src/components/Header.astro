@@ -4,7 +4,7 @@ import { site, nav, whatsappUrl } from "../data/site";
 ---
 <header class="nav" data-nav>
   <div class="nav-pill">
-    <a href="/" class="nav-brand" aria-label={`${site.name} — início`}>
+    <a href="/" class="nav-brand" aria-label={`${site.name}, início`}>
       <img class="nav-avatar" src="/about/avatar.webp" width="80" height="80" alt="" />
       <span>{site.firstName}</span>
     </a>
@@ -23,10 +23,10 @@ import { site, nav, whatsappUrl } from "../data/site";
   <div class="nav-panel is-hidden" id="nav-panel" data-menu-panel>
     <nav aria-label="Menu">
       <ul class="panel-links">
-        {nav.map((n, i) => (
-          <li><a href={n.href} class="panel-link" data-menu-link><small>0{i + 1}</small>{n.label}</a></li>
+        {nav.map((n) => (
+          <li><a href={n.href} class="panel-link" data-menu-link>{n.label}</a></li>
         ))}
-        <li><a href="/cases/" class="panel-link" data-menu-link><small>0{nav.length + 1}</small>Todos os projetos</a></li>
+        <li><a href="/cases/" class="panel-link" data-menu-link>Todos os projetos</a></li>
       </ul>
     </nav>
     <div class="panel-foot">
@@ -141,7 +141,6 @@ import { site, nav, whatsappUrl } from "../data/site";
     transition: color 0.3s;
   }
   .panel-link:hover { color: var(--accent); }
-  .panel-link small { font-family: var(--font-body); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.08em; }
   .panel-foot { display: flex; flex-wrap: wrap; gap: 10px; }
   .panel-foot .btn { flex: 1 1 140px; }
 </style>

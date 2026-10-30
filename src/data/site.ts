@@ -7,7 +7,7 @@ export const site = {
   city: "Bauru, SP",
   url: "https://thiagomiedes.com.br",
   description:
-    "Portfólio de Thiago Miedes — designer gráfico e web designer em Bauru (SP). Identidade visual, sites, UI design e social media para marcas de todo o Brasil.",
+    "Portfólio de Thiago Miedes, designer gráfico e web designer em Bauru (SP). Identidade visual, sites, UI design e social media para marcas de todo o Brasil.",
   email: "thiagodesign21@outlook.com",
   phone: "(14) 99114-0646",
   whatsapp: "5514991140646",
@@ -31,14 +31,14 @@ export const nav = [
 
 /** Fatos do hero (sem estrelas, sem "clientes"). */
 export const facts = [
-  { value: "6+", label: "anos de experiência" },
-  { value: "Bauru, SP", label: "atendo todo o Brasil" },
-  { value: "WorldSkills", label: "Brasil – Design Gráfico" },
+  { value: "6+ anos", label: "entre agência, produto digital e freela" },
+  { value: "Bauru, SP", label: "com clientes em todo o Brasil" },
+  { value: "WorldSkills", label: "competidor pelo SENAI em Design Gráfico" },
 ];
 
 /** Faixa em movimento do hero. */
 export const skills = [
-  "Identidade Visual", "Web Design", "UI Design", "Social Media", "Photoshop", "Illustrator", "Figma",
+  "Identidade Visual", "Web Design", "UI Design", "Social Media", "Photoshop", "Illustrator", "InDesign", "Figma",
 ];
 
 /** Slugs dos cases que aparecem na home: 2 sites + 2 identidades, em xadrez (site, marca / marca, site). */
@@ -49,9 +49,9 @@ export const tools = [
   { name: "Photoshop", icon: "photoshop" },
   { name: "Illustrator", icon: "illustrator" },
   { name: "Figma", icon: "figma" },
+  { name: "InDesign", icon: "indesign" },
   { name: "After Effects", icon: "aftereffects" },
   { name: "VS Code", icon: "vscode" },
-  { name: "Notion", icon: "notion" },
 ];
 
 /** Serviços (acordeão: só um aberto por vez). */
@@ -59,63 +59,61 @@ export const services = [
   {
     icon: "brand",
     title: "Identidade Visual",
-    text: "Marcas com personalidade e consistência: do conceito ao manual, com aplicações reais para você enxergar a marca funcionando no dia a dia.",
+    text: "Marcas com personalidade, do conceito ao manual, já aplicadas em peças reais para você ver como elas vivem no dia a dia.",
     tags: ["Logotipo", "Manual de marca", "Paleta e tipografia", "Rebranding"],
   },
   {
     icon: "web",
     title: "Web Design",
-    text: "Sites institucionais e landing pages bonitos, rápidos e fáceis de navegar no celular — pensados para transformar visita em contato.",
+    text: "Sites institucionais e landing pages rápidos, bonitos e fáceis de usar no celular, pensados para transformar visita em contato.",
     tags: ["Sites institucionais", "Landing pages", "Responsivo", "SEO básico"],
   },
   {
     icon: "ui",
-    title: "UI/UX",
-    text: "Interfaces de produtos digitais desenhadas no Figma, com fluxos claros, componentes reutilizáveis e protótipos navegáveis.",
+    title: "UI e UX",
+    text: "Interfaces de produtos digitais desenhadas no Figma, com fluxos claros, componentes reaproveitáveis e protótipos para testar antes de programar.",
     tags: ["Wireframes", "Protótipos", "Design system", "Figma"],
   },
   {
     icon: "social",
     title: "Social Media",
-    text: "Posts, carrosséis, stories e capas de destaque com identidade forte, para o feed da sua marca ter cara própria.",
+    text: "Posts, carrosséis e stories com linguagem própria, para o feed da sua marca ser reconhecido antes mesmo de alguém ler o nome.",
     tags: ["Feed", "Carrosséis", "Stories", "Campanhas"],
   },
   {
     icon: "package",
     title: "Embalagem",
-    text: "Rótulos e embalagens que chamam atenção na prateleira e contam a história do produto, com arquivos prontos para produção.",
+    text: "Rótulos e embalagens que se destacam na prateleira e no marketplace, com arquivos fechados e prontos para a gráfica.",
     tags: ["Rótulos", "Caixas", "Mockups", "Fechamento de arquivo"],
   },
   {
     icon: "print",
     title: "Impressos",
-    text: "Papelaria, folders, cartões e materiais de ponto de venda com acabamento caprichado e arquivos técnicos certinhos para a gráfica.",
+    text: "Papelaria, folders, cartões e materiais de ponto de venda, com arquivo técnico certo para não ter surpresa na impressão.",
     tags: ["Papelaria", "Folders", "Cartões", "PDV"],
   },
 ];
 
 /** Sobre: parágrafos curtos. */
 export const about = [
-  "Sou Thiago Miedes, designer gráfico e web designer de Bauru (SP). Há mais de 6 anos transformo ideias em marcas, sites e peças que comunicam com clareza — do primeiro rascunho ao arquivo final.",
-  "Comecei no design gráfico e passei por agência de comunicação e marketing, desenhando sites, identidades e campanhas para marcas de vários segmentos. Hoje sou web designer em uma empresa de tecnologia.",
-  "Fui competidor estadual de São Paulo no WorldSkills Brasil, na modalidade Design Gráfico, e tenho formação pelo UNISAGRADO e pelo SENAI. Gosto de processo, de detalhe e de design que tem motivo para existir.",
+  "Sou Thiago Miedes, designer gráfico e web designer em Bauru (SP). Há mais de 6 anos crio marcas, sites e peças para redes sociais.",
+  "Comecei no SENAI, como competidor do WorldSkills na modalidade Design Gráfico. De 2021 a 2024 trabalhei na Olive Comunicação, onde desenhei sites, identidades e campanhas para clientes de vários segmentos. Hoje sou web designer na EAD Plataforma.",
+  "Sou formado pelo UNISAGRADO. Gosto de processo, de detalhe e de design que tem motivo para existir.",
 ];
 
 /** Trajetória: os 3 primeiros aparecem; o resto abre no "Ver tudo". */
 export const timeline = [
-  { company: "EAD Plataforma", role: "Web Designer", period: "2024 — atual" },
-  { company: "Olive Comunicação", role: "Web Designer", period: "2023 — 2024" },
-  { company: "Abordagem", role: "Designer Gráfico", period: "2020 — 2023" },
-  { company: "WorldSkills Brasil", role: "Competidor estadual (SP) · Design Gráfico", period: "" },
+  { company: "EAD Plataforma", role: "Web Designer", period: "2024 até hoje" },
+  { company: "Olive Comunicação", role: "Designer gráfico e web designer", period: "2021 a 2024" },
+  { company: "WorldSkills no SENAI", role: "Competidor em Design Gráfico", period: "2019 a 2020" },
   { company: "UNISAGRADO", role: "Bacharelado", period: "" },
-  { company: "SENAI", role: "Formação em design", period: "" },
 ];
 
 /** Perguntas frequentes. */
 export const faq = [
   {
     q: "Como começamos um projeto?",
-    a: "Tudo começa com uma conversa rápida — WhatsApp, e-mail ou chamada de vídeo — para entender seu objetivo, prazo e investimento. Depois envio uma proposta com escopo, etapas e valores. Com a proposta aprovada, fazemos o briefing e o projeto começa.",
+    a: "Tudo começa com uma conversa rápida por WhatsApp, e-mail ou vídeo, para entender seu objetivo, prazo e investimento. Depois envio uma proposta com escopo, etapas e valores. Com a proposta aprovada, fazemos o briefing e o projeto começa.",
   },
   {
     q: "Qual o prazo de um projeto?",

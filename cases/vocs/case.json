@@ -5,7 +5,7 @@
   "year": "2021",
   "assets": "/brand/vocs",
   "seo": {
-    "title": "VOC&S — Identidade visual",
+    "title": "VOC&S · Identidade visual",
     "description": "Case de identidade visual da VOC&S, empresa de psicologia e desenvolvimento humano e organizacional: o & no lugar do ê, tipografia, cores, sistema de logo e aplicações.",
     "image": "og.png"
   },
@@ -168,11 +168,11 @@
     "spec": [
       {
         "k": "Fonte do projeto",
-        "v": "Goldplay — Latinotype (comercial)"
+        "v": "Goldplay, de Latinotype (comercial)"
       },
       {
         "k": "Nesta página",
-        "v": "Outfit — Rodrigo Fuenzalida · SIL OFL, Google Fonts"
+        "v": "Outfit, de Rodrigo Fuenzalida · SIL OFL, Google Fonts"
       },
       {
         "k": "Logotipo",
@@ -196,7 +196,7 @@
   "manifesto": {
     "nav": "Manifesto",
     "eyebrow": "03 — Manifesto",
-    "headline": "Ninguém se desenvolve sozinho. Por isso o nome é plural: vocês — a pessoa, a equipe, a empresa e as duas psicólogas que fazem o caminho junto.",
+    "headline": "Ninguém se desenvolve sozinho. Por isso o nome é plural: vocês. A pessoa, a equipe, a empresa e as duas psicólogas que fazem o caminho junto.",
     "attributes": [
       {
         "word": "Escuta",
@@ -221,7 +221,7 @@
     "eyebrow": "04 — Cores",
     "title": "Azul que sustenta, laranja que aquece.",
     "text": "O azul assina o nome e dá a firmeza de uma empresa. O gradiente do laranja ao carmim acende só o &, a parte humana do nome. O grafite vem do descritor; o azul-noite e o areia, quente, são os fundos que deixam o laranja respirar.",
-    "note": "Azul, laranja, carmim e grafite vêm do arquivo do logo (o gradiente do & vai do laranja ao carmim); azul-noite e areia são derivados. CMYK aproximado — confirme no perfil da gráfica.",
+    "note": "Azul, laranja, carmim e grafite vêm do arquivo do logo (o gradiente do & vai do laranja ao carmim); azul-noite e areia são derivados. CMYK aproximado. Confirme no perfil da gráfica.",
     "swatches": [
       {
         "name": "Azul VOC&S",

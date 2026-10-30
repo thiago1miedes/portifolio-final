@@ -2,7 +2,8 @@
 // Ícones de bancos abertos, embutidos como SVG no build (nada é baixado no navegador):
 //  - Lucide (ISC): ícones de interface e de serviços
 //  - Font Awesome 6 Brands (CC BY 4.0): redes sociais e WhatsApp
-//  - Devicon (MIT): ferramentas (Adobe, Figma, VS Code, Notion)
+//  - Devicon (MIT): ferramentas (Adobe, Figma, VS Code)
+//  - InDesign desenhado aqui no mesmo traço do Devicon (o banco não tem)
 // Todos usam currentColor, então herdam a cor do texto.
 import { getIconData, iconToSVG, replaceIDs } from "@iconify/utils";
 import lucide from "@iconify-json/lucide/icons.json";
@@ -12,7 +13,19 @@ import devicon from "@iconify-json/devicon-plain/icons.json";
 interface Props { name: string; size?: number; class?: string }
 const { name, size = 24, class: cls = "" } = Astro.props;
 
-const sets = { lucide, fa: faBrands, dev: devicon } as const;
+// quadrado arredondado do Devicon com "Id" vazado
+const custom = {
+  prefix: "custom",
+  width: 128,
+  height: 128,
+  icons: {
+    indesign: {
+      body: '<mask id="id-mask"><path fill="#fff" d="M22.666 1.6C10.133 1.6 0 11.734 0 24.268v79.464C0 116.266 10.133 126.4 22.666 126.4h82.668c12.533 0 22.666-10.134 22.666-22.668V24.268C128 11.734 117.867 1.6 105.334 1.6z"/><g fill="#000"><rect x="28" y="34" width="12" height="60" rx="1"/><rect x="86" y="30" width="12" height="64" rx="1"/><ellipse cx="70" cy="72" rx="20" ry="22"/></g><ellipse cx="72" cy="72" rx="9" ry="12" fill="#fff"/></mask><rect width="128" height="128" fill="currentColor" mask="url(#id-mask)"/>',
+    },
+  },
+};
+
+const sets = { lucide, fa: faBrands, dev: devicon, custom } as const;
 
 // nome usado no site → [banco, ícone]
 const map: Record<string, [keyof typeof sets, string]> = {
@@ -61,7 +74,7 @@ const map: Record<string, [keyof typeof sets, string]> = {
   aftereffects: ["dev", "aftereffects"],
   figma: ["dev", "figma"],
   vscode: ["dev", "vscode"],
-  notion: ["dev", "notion"],
+  indesign: ["custom", "indesign"],
 };
 
 const [set, id] = map[name] ?? ["lucide", "circle"];

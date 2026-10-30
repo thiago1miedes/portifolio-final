@@ -31,7 +31,7 @@ const ratio = `--ratio:${items[0].w} / ${items[0].h}`;
                 <source src={it.video} type="video/mp4" />
               </video>
             ) : (
-              <img src={it.src} width={it.w} height={it.h} alt={`${title} — tela ${k + 1}`} loading="lazy" decoding="async" />
+              <img src={it.src} width={it.w} height={it.h} alt={`${title}, tela ${k + 1}`} loading="lazy" decoding="async" />
             )}
           </button>
           {it.video && <span class="ig-badge"><Icon name="play" size={12} />Vídeo</span>}

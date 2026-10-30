@@ -143,7 +143,7 @@ export const brandCases: Record<string, BrandCaseData> = Object.fromEntries(
 
 /* ------------------------------------------------------------------ arquivos */
 // A raiz do projeto é achada subindo pastas: funciona no dev (src/) e no build (dist/.prerender/).
-const ROOT = (() => {
+export const ROOT = (() => {
   let dir = path.dirname(fileURLToPath(import.meta.url));
   while (!fs.existsSync(path.join(dir, "astro.config.mjs"))) {
     const up = path.dirname(dir);
@@ -309,7 +309,7 @@ export const contrast = (a: string, b: string) => {
   const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
   return (x + 0.05) / (y + 0.05);
 };
-export const wcag = (ratio: number) => (ratio >= 7 ? "AAA" : ratio >= 4.5 ? "AA" : ratio >= 3 ? "AA grande" : "—");
+export const wcag = (ratio: number) => (ratio >= 7 ? "AAA" : ratio >= 4.5 ? "AA" : ratio >= 3 ? "AA grande" : "Baixo");
 
 /** CMYK aproximado com geração de preto parcial (60%) — só referência, conferir no perfil da gráfica. */
 export function cmyk(hex: string) {

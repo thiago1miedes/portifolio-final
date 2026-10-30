@@ -5,7 +5,6 @@ import { faq, site, whatsappUrl } from "../data/site";
 <section class="section faq" id="faq">
   <div class="container">
     <header class="section-head">
-      <p class="eyebrow" data-reveal>Dúvidas</p>
       <h2 class="title-section" data-split>Perguntas <em>frequentes</em></h2>
     </header>
 
@@ -22,7 +21,6 @@ import { faq, site, whatsappUrl } from "../data/site";
                 aria-controls={`faq-panel-${i}`}
                 data-faq-index={i}
               >
-                <span class="faq-num">{String(i + 1).padStart(2, "0")}</span>
                 <span class="faq-q">{item.q}</span>
                 <span class="faq-icon" aria-hidden="true"><Icon name="plus" size={20} /></span>
               </button>
@@ -43,7 +41,7 @@ import { faq, site, whatsappUrl } from "../data/site";
       <aside class="faq-card on-accent" data-reveal>
         <img class="faq-avatar" src="/about/avatar.webp" width="80" height="80" alt="" loading="lazy" />
         <h3 class="faq-card-title">Quer conversar sobre seu projeto?</h3>
-        <p>Me conta a sua ideia: eu respondo rapidinho e, juntos, a gente define o melhor caminho — sem compromisso.</p>
+        <p>Me conta a sua ideia. Eu respondo rapidinho e a gente define junto o melhor caminho, sem compromisso.</p>
         <div class="faq-actions">
           <a href={whatsappUrl} class="btn btn--dark" target="_blank" rel="noopener"><Icon name="whatsapp" /> Chamar no WhatsApp</a>
           <a href={`mailto:${site.email}`} class="btn btn--outline"><Icon name="mail" /> Enviar e-mail</a>
@@ -65,7 +63,7 @@ import { faq, site, whatsappUrl } from "../data/site";
   .faq-heading { font-size: inherit; letter-spacing: normal; }
   .faq-trigger {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: clamp(14px, 2vw, 28px);
     width: 100%;
@@ -73,7 +71,6 @@ import { faq, site, whatsappUrl } from "../data/site";
     text-align: left;
     border-radius: 12px;
   }
-  .faq-num { font-family: var(--font-heading); font-weight: 600; font-size: 0.9375rem; color: var(--accent); font-variant-numeric: tabular-nums; }
   .faq-q {
     font-family: var(--font-heading);
     font-weight: 600;

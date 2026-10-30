@@ -11,7 +11,6 @@ const { c } = Astro.props;
 const b = c.book!;
 const pages = c.items.filter((it) => it.kind === "book");
 const n = pages.length;
-const pad = (k: number) => String(k).padStart(2, "0");
 // capítulo de cada página: o último que começa nela ou antes (antes do primeiro, é a capa)
 const chapterOf = (page: number) => [...b.chapters].reverse().find((ch) => ch.page <= page)?.title ?? "Capa";
 // a capa e a primeira dupla vêm com src; as outras carregam perto da página aberta
@@ -33,7 +32,7 @@ const initial = (i: number) =>
             <img
               {...(i < EAGER ? { src: p.src } : { "data-src": p.src })}
               width={p.w} height={p.h}
-              alt={`Página ${i + 1} de ${n} — ${chapterOf(i + 1)}`}
+              alt={`Página ${i + 1} de ${n}: ${chapterOf(i + 1)}`}
               draggable="false" decoding="async"
             />
             <span class="bk-shade" aria-hidden="true"></span>
@@ -60,10 +59,9 @@ const initial = (i: number) =>
           <Icon name="list" size={18} /><span>Sumário</span>
         </button>
         <ol class="bk-toc-panel is-hidden" id="bk-toc" data-lenis-prevent data-book-toc>
-          {b.chapters.map((ch, k) => (
+          {b.chapters.map((ch) => (
             <li>
               <button type="button" class="bk-toc-item" data-book-go={ch.page - 1}>
-                <span class="bk-toc-n">{pad(k + 1)}</span>
                 <span class="bk-toc-t">{ch.title}</span>
                 <span class="bk-toc-p">{`p. ${ch.page}`}</span>
               </button>
@@ -183,12 +181,10 @@ const initial = (i: number) =>
     scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent;
   }
   .bk-toc-item {
-    display: grid; grid-template-columns: 2rem 1fr auto; gap: 10px; align-items: baseline; width: 100%; text-align: left;
+    display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: baseline; width: 100%; text-align: left;
     padding: 10px 12px; border-radius: 12px; font-size: 0.9375rem; transition: background-color 0.2s;
   }
   .bk-toc-item:hover, .bk-toc-item.is-active { background: var(--surface-glass-2); }
-  .bk-toc-n { font-family: var(--font-display); color: var(--text-muted); }
-  .bk-toc-item.is-active .bk-toc-n, .bk-toc-item:hover .bk-toc-n { color: var(--accent); }
   .bk-toc-p { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 
   .bk-hint { font-size: 0.8125rem; color: var(--text-muted); text-align: center; }

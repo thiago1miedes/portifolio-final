@@ -53,11 +53,14 @@ const crop = (d: NonNullable<typeof s.system.details>[number]) => {
 };
 const brandTile = (id: string) => c.items.find((it) => it.id === id);
 const looseStories = slides("stories");
+// posts únicos em mosaico (sem legenda) quando algum deles é destaque
+// texto claro ou escuro sobre cada cor, pela luminância
+const ink = (hex: string) => { const n = parseInt(hex.slice(1), 16); return ((n >> 16) * 299 + ((n >> 8) & 255) * 587 + (n & 255) * 114) / 1000 > 150 ? "#0a0a0b" : "#fff"; };
+const mosaic = s.singles?.list.some((p) => p.big) ?? false;
 const screens = slides("tela");
 ---
 {s.intro && (
   <header class="ss-intro container">
-    <p class="eyebrow" data-reveal>Redes sociais</p>
     <h2 class="title-section" data-split set:html={s.intro.title} />
     <p class="lead" data-reveal>{s.intro.note}</p>
   </header>
@@ -66,7 +69,6 @@ const screens = slides("tela");
 {s.brand && (
   <section class="ss-brand container" aria-labelledby="ss-brand-t">
     <header class="ss-brand-head">
-      <p class="eyebrow" data-reveal>A marca</p>
       <h2 class="title-section" id="ss-brand-t" data-split set:html={s.brand.title} />
       <p class="lead" data-reveal>{s.brand.note}</p>
     </header>
@@ -84,29 +86,32 @@ const screens = slides("tela");
         <img src={brandTile("simbolo")!.src} width={brandTile("simbolo")!.w} height={brandTile("simbolo")!.h} alt={`Símbolo ${c.title}`} loading="lazy" />
         <figcaption>Símbolo</figcaption>
       </figure>
-      <ol class="ss-concept">
-        {s.brand.concept.map((k, n) => (
-          <li data-reveal><b>{pad(n + 1)}</b><span class="ss-concept-t">{k.t}</span><span class="ss-concept-d">{k.d}</span></li>
-        ))}
-      </ol>
+      {s.brand.palette && (
+        <ul class="ss-brand-palette" aria-label="Cores da marca" data-reveal>
+          {s.brand.palette.map((p) => (
+            <li style={`--c:${p.hex};--ink:${ink(p.hex)}`}><b>{p.name}</b><span>{p.hex}</span></li>
+          ))}
+        </ul>
+      )}
     </div>
   </section>
 )}
 
-<section class="ss-stats container" aria-label="O projeto em números">
-  <ul>
-    {s.stats.map((st) => (
-      <li data-reveal><b class="display">{st.n}</b><span>{st.label}</span></li>
-    ))}
-  </ul>
-</section>
+{s.stats && (
+  <section class="ss-stats container" aria-label="O projeto em números">
+    <ul>
+      {s.stats.map((st) => (
+        <li data-reveal><b class="display">{st.n}</b><span>{st.label}</span></li>
+      ))}
+    </ul>
+  </section>
+)}
 
 {s.page && <SocialProfile c={c} />}
 
-<section class="ss-system">
+{s.system && <section class="ss-system">
   <div class="container">
     <header class="ss-system-head">
-      <p class="eyebrow" data-reveal>Linguagem dos posts</p>
       <h2 class="title-section" data-split set:html={s.system.title} />
       <p class="lead" data-reveal>{s.system.note}</p>
     </header>
@@ -135,7 +140,7 @@ const screens = slides("tela");
     </ul>
     {s.system.details && (
       <ol class="ss-details">
-        {s.system.details.map((d) => {
+        {s.system!.details!.map((d) => {
           const it = byId(d.id);
           return (
             <li data-reveal>
@@ -150,17 +155,16 @@ const screens = slides("tela");
       </ol>
     )}
   </div>
-</section>
+</section>}
 
-{!s.hideIndex && <nav class="ss-index container" aria-label="Carrosséis do projeto">
+{!s.hideIndex && s.carousels.length > 0 && <nav class="ss-index container" aria-label="Carrosséis do projeto">
   <div class="ss-index-head">
-    <p class="eyebrow" data-reveal>Carrosséis</p>
     <h2 class="title-section" data-split>{`${inWords(s.fronts.length)[0].toUpperCase()}${inWords(s.fronts.length).slice(1)} frentes, `}<em>{inWords(s.carousels.length)}</em> sequências</h2>
   </div>
   <div class:list={["ss-index-cols", { "ss-index-cols--4": s.fronts.length === 4 }]}>
-    {s.fronts.map((f, fi) => (
+    {s.fronts.map((f) => (
       <div class="ss-index-col" data-reveal>
-        <p class="ss-index-front"><span>{pad(fi + 1)}</span>{f.label}</p>
+        <p class="ss-index-front">{f.label}</p>
         <ol>
           {s.carousels.filter((k) => k.front === f.key).map((k) => {
             const items = slides(k.key);
@@ -168,7 +172,6 @@ const screens = slides("tela");
               <li>
                 <a href={`#c-${k.key}`} class="ss-index-link">
                   <img src={items[0].src} width={items[0].w} height={items[0].h} alt="" loading="lazy" />
-                  <span class="ss-index-n">{numberOf(k.key)}</span>
                   <span class="ss-index-t">{k.title}</span>
                   <span class="ss-index-m">{countAll(k.key)}</span>
                 </a>
@@ -185,7 +188,6 @@ const screens = slides("tela");
   <section class="ss-front" id={`frente-${f.key}`} aria-labelledby={`frente-${f.key}-t`}>
     <header class="ss-front-head container">
       <div class="ss-front-text">
-        <p class="eyebrow" data-reveal>{`Frente ${pad(fi + 1)}`}</p>
         <h2 class="ss-front-title display" id={`frente-${f.key}-t`} data-reveal>{f.label}</h2>
         <p class="lead" data-reveal>{f.note}</p>
       </div>
@@ -200,7 +202,6 @@ const screens = slides("tela");
       return duo ? (
         <article class:list={["cb cb--duo container", { "cb--flip": flip }]} id={`c-${k.key}`}>
           <div class="cb-head">
-            <p class="eyebrow" data-reveal>{`${numberOf(k.key)} — ${f.label}`}</p>
             <h3 class="cb-title" data-reveal>{k.title}</h3>
             <p class="cb-note" data-reveal>{k.note}</p>
             <ul class="cb-meta" data-reveal>
@@ -216,7 +217,7 @@ const screens = slides("tela");
               </div>
               {items.length > 1 && (
                 <div class="cb-strip" data-reveal>
-                  <p class="cb-strip-label">Feed <span>— as telas lado a lado, como a pessoa desliza</span></p>
+                  <p class="cb-strip-label">Telas do feed</p>
                   <ol class="strip">
                     {items.map((it, i) => (
                       <li>
@@ -235,7 +236,7 @@ const screens = slides("tela");
               </div>
               {stories.length > 1 && (
                 <div class="cb-strip cb-strip--st" data-reveal>
-                  <p class="cb-strip-label">Stories <span>— na ordem em que aparecem</span></p>
+                  <p class="cb-strip-label">Stories</p>
                   <ol class="strip strip--st">
                     {stories.map((it, i) => (
                       <li>
@@ -253,7 +254,6 @@ const screens = slides("tela");
       ) : (
         <article class:list={["cb container", { "cb--flip": flip }]} id={`c-${k.key}`} data-carousel>
           <div class="cb-head">
-            <p class="eyebrow" data-reveal>{`${numberOf(k.key)} — ${f.label}`}</p>
             <h3 class="cb-title" data-reveal>{k.title}</h3>
             <p class="cb-note" data-reveal>{k.note}</p>
             <ul class="cb-meta" data-reveal>
@@ -266,7 +266,7 @@ const screens = slides("tela");
             <CarouselPost group={k.key} title={k.title} profile={s.profile} place={s.place} avatar={logo.src} items={items} />
           </div>
           {items.length > 1 && <div class="cb-strip" data-reveal>
-            <p class="cb-strip-label">Sequência completa <span>— as telas lado a lado, como a pessoa desliza</span></p>
+            <p class="cb-strip-label">Sequência completa</p>
             <ol class="strip">
               {items.map((it, i) => (
                 <li>
@@ -287,18 +287,17 @@ const screens = slides("tela");
 {s.singles && (
   <section class="ss-singles container" aria-labelledby="ss-singles-t">
     <header class="ss-singles-head">
-      <p class="eyebrow" data-reveal>Posts avulsos</p>
       <h2 class="title-section" id="ss-singles-t" data-split set:html={s.singles.title} />
       <p class="lead" data-reveal>{s.singles.note}</p>
     </header>
-    <ol class="ss-singles-grid">
-      {s.singles.list.map((p, k) => {
+    <ol class:list={["ss-singles-grid", { "ss-singles-grid--mosaic": mosaic }]}>
+      {s.singles.list.map((p) => {
         const it = slides(p.key)[0];
         return (
-          <li data-reveal>
+          <li class:list={{ "is-big": p.big }} data-reveal>
             <button type="button" class="ss-single" data-lightbox={it.src} data-lb-group="avulsos" data-w={it.w} data-h={it.h} data-cursor="view" aria-label={`Ampliar o post ${p.title}`}>
-              <span class="ss-single-art"><img src={it.src} width={it.w} height={it.h} alt={`${p.title} — post de ${c.title}`} loading="lazy" decoding="async" /></span>
-              <span class="ss-single-cap"><b>{pad(k + 1)}</b><span class="ss-single-t">{p.title}</span><small>{p.when}</small></span>
+              <span class="ss-single-art"><img src={it.src} width={it.w} height={it.h} alt={`${p.title}, post de ${c.title}`} loading="lazy" decoding="async" /></span>
+              {!mosaic && <span class="ss-single-cap"><span class="ss-single-t">{p.title}</span><small>{p.when}</small></span>}
             </button>
           </li>
         );
@@ -311,7 +310,6 @@ const screens = slides("tela");
   <section class="ss-stories" aria-labelledby="ss-stories-t" data-tray>
     <div class="container ss-stories-head">
       <div class="ss-stories-text">
-        <p class="eyebrow" data-reveal>Stories avulsos</p>
         <h2 class="title-section" id="ss-stories-t" data-split set:html={s.stories.title} />
         <p class="lead" data-reveal>{s.stories.note}</p>
       </div>
@@ -322,12 +320,12 @@ const screens = slides("tela");
       </div>
     </div>
     <ol class="ss-tray" data-tray-track data-lenis-prevent-horizontal>
-      {looseStories.map((it, k) => (
+      {looseStories.map((it) => (
         <li>
           <button type="button" class="ss-tray-item" data-lightbox={it.src} data-lb-group="stories" data-w={it.w} data-h={it.h} aria-label={`Ampliar o story ${it.label}`}>
-            <img src={it.src} width={it.w} height={it.h} alt={`${it.label} — story de ${c.title}`} loading="lazy" decoding="async" />
+            <img src={it.src} width={it.w} height={it.h} alt={`${it.label}, story de ${c.title}`} loading="lazy" decoding="async" />
           </button>
-          <span class="ss-tray-cap"><b>{pad(k + 1)}</b>{it.label}</span>
+          <span class="ss-tray-cap">{it.label}</span>
         </li>
       ))}
     </ol>
@@ -338,7 +336,6 @@ const screens = slides("tela");
   <section class="ss-screen" aria-labelledby="ss-screen-t">
     <div class="container ss-screen-grid">
       <header class="ss-screen-head">
-        <p class="eyebrow" data-reveal>{s.screen.eyebrow}</p>
         <h2 class="title-section" id="ss-screen-t" data-split set:html={s.screen.title} />
         <p class="lead" data-reveal>{s.screen.note}</p>
       </header>
@@ -369,24 +366,23 @@ const screens = slides("tela");
   .ss-brand { display: grid; gap: clamp(28px, 4vw, 48px); padding-block: clamp(24px, 4vw, 56px) clamp(56px, 7vw, 104px); }
   .ss-brand-head { display: grid; gap: 20px; max-width: 760px; }
   .ss-brand-tiles { display: grid; gap: clamp(12px, 1.6vw, 20px); }
-  @media (min-width: 800px) { .ss-brand-tiles { grid-template-columns: repeat(6, 1fr); } .ss-bt:nth-child(-n+2) { grid-column: span 3; } .ss-bt--sym { grid-column: span 2; } .ss-concept { grid-column: span 4; } }
+  @media (min-width: 800px) { .ss-brand-tiles { grid-template-columns: repeat(6, 1fr); } .ss-bt:nth-child(-n+2) { grid-column: span 3; } .ss-bt--sym { grid-column: span 2; } .ss-brand-palette { grid-column: span 4; } }
   .ss-bt { position: relative; margin: 0; display: grid; place-items: center; aspect-ratio: 16 / 9; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--border); }
   .ss-bt img { width: 62%; height: auto; max-height: 62%; object-fit: contain; }
   .ss-bt--sym { aspect-ratio: auto; min-height: 220px; }
   .ss-bt--sym img { width: 44%; }
   .ss-bt figcaption { position: absolute; left: 16px; bottom: 12px; font-size: 0.75rem; letter-spacing: 0.02em; color: #5a6672; }
   .ss-bt:nth-child(2) figcaption { color: #b8c7d3; }
-  .ss-concept { display: grid; align-content: center; gap: 0; }
-  .ss-concept li { display: grid; grid-template-columns: 2.25rem 1fr; column-gap: 8px; padding: 18px 0; border-bottom: 1px solid var(--border); }
-  .ss-concept li:first-child { border-top: 1px solid var(--border); }
-  .ss-concept b { grid-row: span 2; font-family: var(--font-display); font-weight: 400; color: var(--accent); }
-  .ss-concept-t { font-weight: 600; letter-spacing: -0.01em; }
-  .ss-concept-d { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.55; }
+  /* cores da marca: blocos que dividem a largura na proporção do uso */
+  .ss-brand-palette { display: flex; min-height: 220px; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--border); }
+  .ss-brand-palette li { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; padding: 16px; background: var(--c); color: var(--ink); font-size: 0.8125rem; line-height: 1.3; }
+  .ss-brand-palette li:first-child { flex: 1.6; }
+  .ss-brand-palette b { font-weight: 600; }
+  .ss-brand-palette span { opacity: 0.75; font-variant-numeric: tabular-nums; }
 
   /* números */
   .ss-stats { padding-bottom: clamp(56px, 7vw, 104px); }
-  .ss-stats ul { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--border); }
-  @media (min-width: 800px) { .ss-stats ul { grid-template-columns: repeat(4, 1fr); } }
+  .ss-stats ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-top: 1px solid var(--border); }
   .ss-stats li { display: grid; gap: 6px; padding: 24px 20px 0 0; }
   .ss-stats b { font-size: clamp(3.5rem, 8vw, 6.5rem); color: var(--accent); }
   .ss-stats span { color: var(--text-muted); font-size: 0.9375rem; }
@@ -446,25 +442,22 @@ const screens = slides("tela");
   @media (min-width: 700px) { .ss-index-cols--4 { grid-template-columns: repeat(2, 1fr); gap: 28px clamp(16px, 2vw, 28px); } }
   @media (min-width: 1200px) { .ss-index-cols--4 { grid-template-columns: repeat(4, 1fr); } }
   .ss-index-front { display: flex; align-items: baseline; gap: 10px; padding-bottom: 14px; margin-bottom: 6px; border-bottom: 1px solid var(--border); font-family: var(--font-heading); font-weight: 600; font-size: 1.125rem; }
-  .ss-index-front span { font-family: var(--font-display); color: var(--accent); }
   .ss-index-link {
-    display: grid; grid-template-columns: 48px 2rem 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center;
+    display: grid; grid-template-columns: 48px 1fr; grid-template-rows: auto auto; column-gap: 14px; align-items: center;
     padding: 12px 8px 12px 0; border-bottom: 1px solid var(--border);
     transition: background-color 0.25s, padding 0.35s var(--ease);
   }
   .ss-index-link img { grid-row: span 2; width: 48px; height: 60px; object-fit: cover; border-radius: 8px; }
-  .ss-index-n { grid-row: span 2; font-family: var(--font-display); font-size: 1.25rem; color: var(--text-muted); transition: color 0.25s; }
   .ss-index-t { font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
   .ss-index-m { font-size: 0.8125rem; color: var(--text-muted); }
   .ss-index-link:hover { padding-left: 8px; background: var(--surface-glass); }
-  .ss-index-link:hover .ss-index-n { color: var(--accent); }
 
   /* frentes */
   .ss-front { padding-top: clamp(56px, 7vw, 96px); }
   .ss-front-head { display: grid; gap: 28px; align-items: end; padding-bottom: clamp(8px, 2vw, 24px); }
   @media (min-width: 900px) { .ss-front-head { grid-template-columns: 1fr auto; } }
   .ss-front-text { display: grid; gap: 16px; max-width: 640px; }
-  .ss-front-title { font-size: clamp(4rem, 12vw, 10rem); }
+  .ss-front-title { font-size: clamp(2.75rem, 7.5vw, 6.5rem); }
   .ss-front-tiles { --h: clamp(64px, 8vw, 104px); height: var(--h); width: calc(var(--h) * var(--cols)); max-width: 100%; object-fit: cover; border-radius: 12px; }
 
   /* posts únicos */
@@ -477,10 +470,13 @@ const screens = slides("tela");
   .ss-single-art img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.8s var(--ease); }
   .ss-single:hover .ss-single-art { border-color: var(--accent); }
   .ss-single:hover .ss-single-art img { scale: 1.04; }
-  .ss-single-cap { display: grid; grid-template-columns: 2rem 1fr; column-gap: 8px; align-items: baseline; font-size: 0.9375rem; line-height: 1.35; }
-  .ss-single-cap b { font-family: var(--font-display); color: var(--text-muted); font-weight: 400; }
+  .ss-single-cap { display: grid; gap: 2px; font-size: 0.9375rem; line-height: 1.35; }
   .ss-single-t { font-weight: 600; letter-spacing: -0.01em; }
-  .ss-single-cap small { grid-column: 2; font-size: 0.8125rem; color: var(--text-muted); }
+  .ss-single-cap small { font-size: 0.8125rem; color: var(--text-muted); }
+  /* mosaico: os destaques ocupam 2×2 e o resto preenche os vãos */
+  .ss-singles-grid--mosaic { grid-auto-flow: dense; gap: clamp(8px, 1.2vw, 16px); }
+  @media (min-width: 700px) { .ss-singles-grid--mosaic { grid-template-columns: repeat(4, 1fr); } }
+  .ss-singles-grid--mosaic .is-big { grid-column: span 2; grid-row: span 2; }
 
   /* bloco de cada carrossel */
   .cb {
@@ -514,7 +510,6 @@ const screens = slides("tela");
   }
   .cb-meta li:first-child { color: var(--text); border-color: var(--accent); }
   .cb-strip-label { font-size: 0.8125rem; color: var(--text); font-weight: 500; }
-  .cb-strip-label span { color: var(--text-muted); font-weight: 400; }
 
   /* bloco com feed + stories: o post e o story lado a lado, cada um com a sua sequência embaixo
      (cada .cb-root é um carrossel independente para o main.ts) */
@@ -587,8 +582,7 @@ const screens = slides("tela");
   .ss-tray-item img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.6s var(--ease); }
   .ss-tray-item:hover { border-color: var(--accent); }
   .ss-tray-item:hover img { scale: 1.04; }
-  .ss-tray-cap { display: flex; gap: 8px; align-items: baseline; font-size: 0.8125rem; color: var(--text-muted); line-height: 1.35; }
-  .ss-tray-cap b { font-family: var(--font-display); font-weight: 400; color: var(--accent); }
+  .ss-tray-cap { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.35; }
 
   /* tela da máquina */
   .ss-screen { margin-top: clamp(40px, 5vw, 72px); padding-block: clamp(64px, 8vw, 120px); background: var(--bg-elev); border-top: 1px solid var(--border); }

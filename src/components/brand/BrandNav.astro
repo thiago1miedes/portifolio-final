@@ -18,7 +18,7 @@ const themeVars = (["dark", "light"] as const).flatMap((theme) => {
 const style = [nav.wordmarkHeight && `--nav-wordmark-h:${nav.wordmarkHeight}px`, ...themeVars].filter(Boolean).join(";");
 ---
 <header class="bc-nav" data-bc-nav data-theme="dark" style={style || undefined}>
-  <a href="#intro" class="bc-nav-logo" aria-label={`${data.client} — voltar ao topo do case`}>
+  <a href="#intro" class="bc-nav-logo" aria-label={`${data.client}, voltar ao topo do case`}>
     {arts.map((art) => (
       <BrandLogo
         data={data}
@@ -31,7 +31,7 @@ const style = [nav.wordmarkHeight && `--nav-wordmark-h:${nav.wordmarkHeight}px`,
   <nav class="bc-nav-links" aria-label="Seções do case" data-bc-nav-links>
     {sections.map((s) => <a href={`#${s.id}`} class="bc-nav-link" data-section-link={s.id}>{s.label}</a>)}
   </nav>
-  <a href="/" class="bc-nav-exit" aria-label="Thiago Miedes — voltar para a home do portfólio">
+  <a href="/" class="bc-nav-exit" aria-label="Thiago Miedes, voltar para a home do portfólio">
     <img class="bc-nav-avatar" src="/about/avatar.webp" width="80" height="80" alt="" />
     <span class="bc-nav-exit-label">Thiago</span>
   </a>

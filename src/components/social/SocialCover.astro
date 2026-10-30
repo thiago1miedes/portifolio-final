@@ -1,14 +1,53 @@
 ---
-// Capa dos cases de social media: o emblema do cliente sobre a repetição do padrão de ladrilhos
-// ou, sem padrão, o logotipo sobre uma cor da marca (bg).
-interface Props { logo: { src: string; w: number; h: number }; pattern?: string; bg?: string; title: string }
-const { logo, pattern, bg, title } = Astro.props;
+// Capa dos cases de social media, em três estilos (a entrada de cada um fica em main.ts):
+//  - "tiles": o emblema do cliente sobre a repetição do padrão de ladrilhos (CAU/PE)
+//  - "wave": o logotipo sobre a cor da marca, com ondas claras subindo do rodapé (MenteVitale)
+//  - "symbol": o logotipo ao lado do símbolo em tamanho grande, que se monta peça por peça (LF)
+import fs from "node:fs";
+import path from "node:path";
+import { ROOT } from "../../data/brand-cases";
+
+interface Props {
+  logo: { src: string; w: number; h: number };
+  pattern?: string;
+  bg?: string;
+  title: string;
+  style?: "wave" | "symbol";
+  /** símbolo em SVG (só no estilo "symbol"): as peças são animadas uma a uma */
+  symbol?: string;
+}
+const { logo, pattern, bg, title, style, symbol } = Astro.props;
+const variant = pattern ? "tiles" : (style ?? "wave");
 const wide = logo.w / logo.h > 2;
+
+// o SVG do símbolo entra inline: as classes do Illustrator viram fill direto em cada peça
+let symbolSvg = "";
+if (variant === "symbol" && symbol) {
+  const raw = fs.readFileSync(path.join(ROOT, "public", symbol), "utf8");
+  const fills = Object.fromEntries([...raw.matchAll(/\.(cls-\d+)\s*\{\s*fill:\s*(#[0-9a-f]{3,6})/gi)].map((m) => [m[1], m[2].toLowerCase()]));
+  symbolSvg = raw
+    .replace(/<\?xml[^>]*>\s*/, "")
+    .replace(/<defs>[\s\S]*?<\/defs>/, "")
+    .replace(/class="(cls-\d+)"/g, (_, k) => `fill="${fills[k]}" data-sc-piece`)
+    .replace(/<svg\b[^>]*viewBox="([^"]+)"[^>]*>/, '<svg viewBox="$1" aria-hidden="true" focusable="false">');
+}
 ---
 <section class="sc container">
-  <div class:list={["sc-wall", { "sc-wall--solid": !pattern }]} style={pattern ? `--pattern: url(${pattern})` : `--bg: ${bg ?? "#0a0a0b"}`} data-sc-wall>
+  <div
+    class:list={["sc-wall", `sc-wall--${variant}`]}
+    style={pattern ? `--pattern: url(${pattern})` : `--bg: ${bg ?? "#0a0a0b"}`}
+    data-sc-wall={variant}
+  >
+    {variant === "wave" && (
+      <svg class="sc-waves" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path data-sc-wave d="M0 250 C 240 150 480 150 720 230 S 1200 320 1440 210 L 1440 400 L 0 400 Z" />
+        <path data-sc-wave d="M0 300 C 300 230 560 250 800 300 S 1240 360 1440 280 L 1440 400 L 0 400 Z" />
+        <path data-sc-wave d="M0 350 C 260 310 520 320 760 350 S 1180 390 1440 340 L 1440 400 L 0 400 Z" />
+      </svg>
+    )}
+    {variant === "symbol" && <div class="sc-symbol" data-sc-symbol set:html={symbolSvg} />}
     <div class:list={["sc-emblem", { "sc-emblem--wide": wide }]} data-sc-emblem>
-      <img src={logo.src} width={logo.w} height={logo.h} alt={`Emblema do ${title}`} loading="eager" />
+      <img src={logo.src} width={logo.w} height={logo.h} alt={`Logotipo ${title}`} loading="eager" />
     </div>
   </div>
 </section>
@@ -21,27 +60,43 @@ const wide = logo.w / logo.h > 2;
     display: grid; place-items: center;
     aspect-ratio: 21 / 9; border-radius: var(--radius-lg); overflow: hidden;
     border: 1px solid var(--border);
-    background: #0a0a0b var(--pattern) 50% 50% / var(--tile) repeat;
+    background: var(--bg);
   }
-  /* escurece o centro para o emblema respirar sobre os ladrilhos */
-  .sc-wall::before {
+  .sc-emblem { position: relative; z-index: 1; width: min(30%, 400px); }
+  .sc-emblem img { width: 100%; height: auto; }
+  .sc-emblem--wide { width: min(52%, 760px); }
+
+  /* ladrilhos: escurece o centro para o emblema respirar */
+  .sc-wall--tiles { background: #0a0a0b var(--pattern) 50% 50% / var(--tile) repeat; }
+  .sc-wall--tiles::before {
     content: ""; position: absolute; inset: 0; z-index: -1;
     background: radial-gradient(closest-side, rgba(10, 10, 11, 0.92) 30%, rgba(10, 10, 11, 0.4) 70%, rgba(10, 10, 11, 0.15));
   }
-  .sc-emblem { width: min(30%, 400px); filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.55)); }
-  .sc-emblem img { width: 100%; height: auto; }
-  /* capa lisa: a cor da marca e duas ondas claras no rodapé, como nos posts */
-  .sc-wall--solid { background: var(--bg); }
-  .sc-wall--solid::before {
-    z-index: 0; background:
-      radial-gradient(120% 60% at 30% 118%, rgba(255, 255, 255, 0.14) 40%, transparent 41%),
-      radial-gradient(110% 55% at 78% 124%, rgba(255, 255, 255, 0.1) 40%, transparent 41%);
-  }
-  .sc-wall--solid .sc-emblem { position: relative; z-index: 1; filter: none; }
-  .sc-emblem--wide { width: min(52%, 760px); }
+  .sc-wall--tiles .sc-emblem { filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.55)); }
+
+  /* ondas: três camadas claras no rodapé, como nos posts */
+  .sc-waves { position: absolute; left: 0; bottom: 0; width: 100%; height: 62%; z-index: 0; }
+  .sc-waves path { fill: #fff; }
+  .sc-waves path:nth-child(1) { opacity: 0.08; }
+  .sc-waves path:nth-child(2) { opacity: 0.1; }
+  .sc-waves path:nth-child(3) { opacity: 0.14; }
+  .sc-wall--wave .sc-emblem { margin-bottom: 6%; }
+
+  /* símbolo: grande, sangrando à direita; o logotipo fica à esquerda */
+  .sc-wall--symbol { place-items: center start; padding-left: 8%; }
+  .sc-symbol { position: absolute; right: -4%; top: 50%; width: 44%; translate: 0 -50%; z-index: 0; }
+  .sc-symbol :global(svg) { display: block; width: 100%; height: auto; overflow: visible; }
+  /* as peças azuis somem no fundo azul: ficam um tom acima */
+  .sc-symbol :global([fill="#103e5a"]) { fill: #1a5677; }
+  .sc-wall--symbol .sc-emblem--wide { width: min(46%, 640px); }
+
   @media (max-width: 700px) {
     .sc-wall { aspect-ratio: 4 / 3; --tile: 320px; }
     .sc-emblem { width: 58%; }
     .sc-emblem--wide { width: 72%; }
+    /* celular: o símbolo sangra no canto de cima e o logotipo desce para a base */
+    .sc-wall--symbol { place-items: end start; padding: 0 0 9% 7%; }
+    .sc-symbol { top: -14%; right: -8%; width: 60%; translate: 0 0; }
+    .sc-wall--symbol .sc-emblem--wide { width: 74%; }
   }
 </style>

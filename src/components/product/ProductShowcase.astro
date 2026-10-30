@@ -1,5 +1,5 @@
 ---
-// Corpo dos cases de produto (c.product): números, índice, as embalagens (vistas do pote + planificação do rótulo),
+// Corpo dos cases de produto (c.product): números, as embalagens (vistas do pote + planificação do rótulo),
 // os ensaios de foto em linhas de mesma altura e as galerias de marketplace (uma imagem por vez, como na página do produto).
 import type { Case, AssetItem } from "../../data/cases";
 
@@ -8,20 +8,11 @@ const { c } = Astro.props;
 const p = c.product!;
 const byId = (id: string) => c.items.find((it) => it.id === id)!;
 const inGroup = (key: string) => c.items.filter((it) => it.group === key);
-const pad = (n: number) => String(n).padStart(2, "0");
 const ratio = (it: AssetItem) => +(it.w / it.h).toFixed(4);
 // no palco, a frente fica no meio e as laterais abrem para os lados
 const views = ["left", "front", "right"] as const;
 const viewIndex = { front: 0, left: 1, right: 2 };
-// todas as fotos do ensaio, inclusive a que virou capa da página
-const photoCount = c.items.filter((it) => it.kind === "photo").length;
 const campaigns = p.campaigns.list.map((k) => ({ ...k, items: inGroup(k.key) }));
-// os números das partes seguem o índice: 01 embalagens, 02 fotos, 03 em diante as campanhas
-const index = [
-  { href: "#embalagens", label: "Embalagens", meta: `${p.packaging.versions.length} versões · rótulo ${p.packaging.labelSize}`, img: byId(`${p.packaging.versions[0].key}-front`), cutout: true },
-  { href: "#fotos", label: "Fotos de produto", meta: `${photoCount} fotos · ${p.photos.shoots.length} ensaios`, img: byId(p.photos.shoots[0].rows[0][0]), cutout: false },
-  ...campaigns.map((k) => ({ href: `#c-${k.key}`, label: k.product, meta: `${k.brand} · ${k.items.length} imagens`, img: k.items[0], cutout: false })),
-];
 ---
 <section class="ps-stats container" aria-label="O projeto em números">
   <ul>
@@ -31,26 +22,9 @@ const index = [
   </ul>
 </section>
 
-<nav class="ps-index container" aria-label="Partes do projeto">
-  <p class="eyebrow" data-reveal>Neste projeto</p>
-  <ol class="ps-index-list">
-    {index.map((x, k) => (
-      <li data-reveal>
-        <a href={x.href} class="ps-index-link">
-          <span class:list={["ps-index-img", { "is-cutout": x.cutout }]}><img src={x.img.src} width={x.img.w} height={x.img.h} alt="" loading="lazy" /></span>
-          <span class="ps-index-n">{pad(k + 1)}</span>
-          <span class="ps-index-t">{x.label}</span>
-          <span class="ps-index-m">{x.meta}</span>
-        </a>
-      </li>
-    ))}
-  </ol>
-</nav>
-
 <section class="ps-packs" id="embalagens" aria-labelledby="embalagens-t">
   <div class="container">
     <header class="ps-head">
-      <p class="eyebrow" data-reveal>01 — Embalagens</p>
       <h2 class="title-section" id="embalagens-t" data-split set:html={p.packaging.title} />
       <p class="lead" data-reveal>{p.packaging.note}</p>
     </header>
@@ -60,7 +34,6 @@ const index = [
       return (
         <article class:list={["pk", { "pk--flip": k % 2 === 1 }]} style={`--glow:${v.glow}`} aria-labelledby={`pk-${v.key}`}>
           <div class="pk-text">
-            <p class="pk-tag" data-reveal><span>{pad(k + 1)}</span>Embalagem</p>
             <h3 class="pk-name display" id={`pk-${v.key}`} data-reveal>{v.name}</h3>
             <p class="pk-note" data-reveal>{v.note}</p>
             <ul class="pk-palette" aria-label={`Paleta da embalagem ${v.name}`} data-reveal>
@@ -74,7 +47,7 @@ const index = [
               const it = byId(`${v.key}-${view}`);
               const name = v.views[viewIndex[view]];
               return (
-                <button type="button" class:list={["pk-view", `pk-view--${view}`]} data-lightbox={it.src} data-w={it.w} data-h={it.h} data-lb-group={`pack-${v.key}`} aria-label={`Ampliar ${name.toLowerCase()} — embalagem ${v.name}`}>
+                <button type="button" class:list={["pk-view", `pk-view--${view}`]} data-lightbox={it.src} data-w={it.w} data-h={it.h} data-lb-group={`pack-${v.key}`} aria-label={`Ampliar ${name.toLowerCase()}, embalagem ${v.name}`}>
                   <img src={it.src} width={it.w} height={it.h} alt={`Pote da embalagem ${v.name}: ${name.toLowerCase()}`} loading="lazy" decoding="async" />
                   <span class="pk-cap">{name}</span>
                 </button>
@@ -93,7 +66,6 @@ const index = [
 
 <section class="ps-photos" id="fotos" aria-labelledby="fotos-t">
   <header class="ps-head container">
-    <p class="eyebrow" data-reveal>02 — Fotos de produto</p>
     <h2 class="title-section" id="fotos-t" data-split set:html={p.photos.title} />
     <p class="lead" data-reveal>{p.photos.note}</p>
   </header>
@@ -103,9 +75,9 @@ const index = [
     return (
       <div class="sh container" id={`f-${s.key}`}>
         <div class="sh-head">
-          <h3 class="sh-title" data-reveal><span>{`2.${k + 1}`}</span>{s.label}</h3>
+          <h3 class="sh-title" data-reveal>{s.label}</h3>
           <p class="sh-note" data-reveal>{s.note}</p>
-          <span class="sh-count" data-reveal>{`${pad(count)} ${count === 1 ? "foto" : "fotos"}`}</span>
+          <span class="sh-count" data-reveal>{`${count} ${count === 1 ? "foto" : "fotos"}`}</span>
         </div>
         <div class="jr">
           {s.rows.map((row) => (
@@ -129,7 +101,6 @@ const index = [
 
 <section class="ps-camps" aria-labelledby="campanhas-t">
   <header class="ps-head container">
-    <p class="eyebrow" data-reveal>Campanhas</p>
     <h2 class="title-section" id="campanhas-t" data-split set:html={p.campaigns.title} />
     <p class="lead" data-reveal>{p.campaigns.note}</p>
   </header>
@@ -137,11 +108,11 @@ const index = [
   {campaigns.map((k, ki) => (
     <article class:list={["lv container", { "lv--flip": ki % 2 === 1 }]} id={`c-${k.key}`} aria-labelledby={`c-${k.key}-t`} data-listing>
       <div class="lv-head">
-        <p class="eyebrow" data-reveal>{`${pad(ki + 3)} — ${k.brand}`}</p>
         <h3 class="lv-title" id={`c-${k.key}-t`} data-reveal>{k.product}</h3>
         <p class="lv-note" data-reveal>{k.note}</p>
         <ul class="lv-meta" data-reveal>
-          <li>{`${pad(k.items.length)} imagens`}</li>
+          <li>{k.brand}</li>
+          <li>{`${k.items.length} imagens`}</li>
           <li>{`1:1 · ${k.items[0].w} × ${k.items[0].h} px`}</li>
           <li>Amazon e redes sociais</li>
         </ul>
@@ -170,7 +141,6 @@ const index = [
         {k.captions.map((cap, i) => (
           <li>
             <button type="button" class:list={["lv-step", { "is-active": i === 0 }]} data-listing-go={i} aria-pressed={i === 0 ? "true" : "false"}>
-              <span class="lv-step-n">{pad(i + 1)}</span>
               <span class="lv-step-t"><b>{cap.t}</b><span>{cap.d}</span></span>
             </button>
           </li>
@@ -189,24 +159,6 @@ const index = [
   .ps-stats b { font-size: clamp(3.5rem, 8vw, 6.5rem); color: var(--accent); }
   .ps-stats span { color: var(--text-muted); font-size: 0.9375rem; }
 
-  /* índice */
-  .ps-index { display: grid; gap: 18px; padding-bottom: clamp(64px, 8vw, 120px); }
-  .ps-index-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(10px, 1.4vw, 18px); }
-  @media (min-width: 900px) { .ps-index-list { grid-template-columns: repeat(4, 1fr); } }
-  .ps-index-link {
-    display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 2px; align-items: baseline; height: 100%;
-    padding: 10px 10px 16px; border-radius: 20px; background: var(--surface-glass); border: 1px solid var(--border);
-    transition: border-color 0.25s, background-color 0.25s;
-  }
-  .ps-index-link:hover { border-color: var(--accent); background: var(--bg-elev); }
-  .ps-index-img { grid-column: 1 / -1; display: block; aspect-ratio: 4 / 3; margin-bottom: 12px; border-radius: 12px; overflow: hidden; background: var(--bg-elev-2); }
-  .ps-index-img img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.7s var(--ease); }
-  .ps-index-img.is-cutout img { object-fit: contain; padding: 10% 0 0; }
-  .ps-index-link:hover .ps-index-img img { scale: 1.05; }
-  .ps-index-n { grid-row: span 2; padding-left: 6px; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); line-height: 1; }
-  .ps-index-t { font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
-  .ps-index-m { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
-
   /* cabeçalho das partes */
   .ps-head { display: grid; gap: 20px; margin-bottom: clamp(36px, 5vw, 64px); }
   .ps-head > * { max-width: 760px; }
@@ -223,8 +175,6 @@ const index = [
     .pk--flip { grid-template-columns: minmax(0, 1fr) minmax(0, 400px); grid-template-areas: "stage text" "label label"; }
   }
   .pk-text { grid-area: text; display: grid; gap: 18px; align-content: start; }
-  .pk-tag { display: flex; align-items: baseline; gap: 10px; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
-  .pk-tag span { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0; color: var(--accent); }
   .pk-name { font-size: clamp(3.75rem, 6vw, 5.75rem); }
   .pk-note { color: var(--text-muted); line-height: 1.6; }
   .pk-palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 6px; }
@@ -271,7 +221,6 @@ const index = [
   .sh-head { display: grid; gap: 8px 32px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
   @media (min-width: 900px) { .sh-head { grid-template-columns: minmax(0, 300px) minmax(0, 1fr) auto; align-items: baseline; } }
   .sh-title { display: flex; align-items: baseline; gap: 12px; font-size: clamp(1.5rem, 2.6vw, 2.125rem); letter-spacing: -0.03em; }
-  .sh-title span { font-family: var(--font-display); font-weight: 400; font-size: 0.8em; letter-spacing: 0; color: var(--accent); }
   .sh-note { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.55; max-width: 620px; }
   .sh-count { font-size: 0.8125rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 
@@ -339,14 +288,12 @@ const index = [
 
   .lv-steps { grid-area: steps; align-self: end; display: grid; border-top: 1px solid var(--border); }
   .lv-step {
-    display: grid; grid-template-columns: 2.25rem 1fr; gap: 12px; align-items: baseline; width: 100%; text-align: left;
+    display: grid; width: 100%; text-align: left;
     padding: 12px 12px 12px 0; border-bottom: 1px solid var(--border);
     transition: background-color 0.25s, padding 0.35s var(--ease);
   }
-  .lv-step-n { font-family: var(--font-display); font-size: 1.125rem; color: var(--text-muted); transition: color 0.25s; }
   .lv-step-t { display: flex; flex-wrap: wrap; gap: 0 8px; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.45; }
   .lv-step-t b { font-weight: 600; color: var(--text); }
   .lv-step:hover { padding-left: 8px; background: var(--surface-glass); }
   .lv-step.is-active { padding-left: 12px; background: var(--surface-glass); box-shadow: inset 2px 0 0 var(--accent); }
-  .lv-step.is-active .lv-step-n, .lv-step:hover .lv-step-n { color: var(--accent); }
 </style>
