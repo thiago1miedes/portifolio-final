@@ -177,6 +177,18 @@
 }
 .bc-nav-avatar { width: 28px; height: 28px; margin-left: -6px; border-radius: 50%; object-fit: cover; }
 .bc-nav-exit:hover { background: color-mix(in srgb, currentColor 11%, transparent); }
+/* botão fixo para voltar à lista de projetos: pílula escura neutra, legível sobre fundos claros e escuros */
+.bc-back {
+  position: fixed; left: var(--gutter); bottom: clamp(16px, 3vw, 28px); z-index: 90;
+  display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px 0 14px; border-radius: 999px;
+  background: rgba(14, 14, 16, 0.82); color: #fff; font-size: 0.875rem; font-weight: 500; letter-spacing: 0;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: background-color 0.3s, gap 0.3s var(--ease);
+}
+.bc-back:hover { background: rgba(14, 14, 16, 0.96); gap: 14px; }
+.bc-back:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@media (max-width: 599px) { .bc-back span { display: none; } .bc-back { width: 44px; padding: 0; justify-content: center; } }
 .bc-nav-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; }
 .bc-nav-progress i { display: block; height: 100%; background: var(--bc-accent); transform: scaleX(0); transform-origin: 0 50%; }
 @media (min-width: 900px) { .bc-nav-logo .is-mobile-only { display: none; } }

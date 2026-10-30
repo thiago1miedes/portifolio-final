@@ -74,6 +74,10 @@ const sections = [
       <svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false" set:html={`<defs>${defs}</defs>`} />
     )}
     <BrandNav data={data} sections={sections} />
+    <a href="/cases/" class="bc-back">
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M13 8H3M3 8l4-4M3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <span>Voltar aos projetos</span>
+    </a>
     <CaseIntro data={data} />
     {data.process && <CaseProcess data={data} />}
     <CaseSymbol data={data} />
