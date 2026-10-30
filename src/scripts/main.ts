@@ -326,7 +326,11 @@ $$("[data-projects]").forEach((wrap) => {
 
   const apply = (cat: string, animate = true) => {
     const before = new Set(shown());
-    const state = animate && !reduce ? Flip.getState([...before]) : null;
+    // só voam (Flip) os cards que já estavam visíveis na tela antes do filtro: um card lá embaixo na lista
+    // atravessaria a página inteira até o novo lugar, por cima dos botões e dos outros cards
+    const inView = (el: HTMLElement) => { const b = el.getBoundingClientRect(); return b.bottom > 0 && b.top < innerHeight; };
+    const flyers = new Set([...before].filter(inView));
+    const state = animate && !reduce ? Flip.getState([...flyers]) : null;
     items.forEach((it) => it.classList.toggle("is-hidden", !(cat === "all" || it.dataset.cats!.split(" ").includes(cat))));
     buttons.forEach((b) => {
       const on = b.dataset.filter === cat;
@@ -340,10 +344,10 @@ $$("[data-projects]").forEach((wrap) => {
       gsap.set(i, { opacity: 0, y: 0 });
     });
     if (state) {
-      const stay = now.filter((i) => before.has(i));
+      const stay = now.filter((i) => flyers.has(i) && inView(i));
       const onScreen = now.filter((i) => i.getBoundingClientRect().top < innerHeight);
       // as posições dos gatilhos só valem depois que o Flip devolve os cards ao fluxo do grid
-      if (stay.length) Flip.from(state, { targets: stay, duration: 0.7, ease: "power3.inOut", absolute: true, stagger: 0.02, onComplete: () => ScrollTrigger.refresh() });
+      if (stay.length) Flip.from(state, { targets: stay, duration: 0.7, ease: "power3.inOut", scale: false, stagger: 0.02, onComplete: () => ScrollTrigger.refresh() });
       else ScrollTrigger.refresh();
       reveal(onScreen, 0.25);
       // se o filtro foi trocado com a lista já rolada, volta para o topo dela
