@@ -545,7 +545,7 @@ export const cases = {
 
   // LF Serviços Elétricos: logo (negativo para capa/miniatura e avatar derivados do SVG em sources/shots) + 24 posts únicos
   "lf-servicos-eletricos": {
-    thumb: { logo: "logo", bg: "#103E5A" },
+    thumb: { logo: "logo", bg: "#103E5A", symbol: "simbolo" },
     items: [
       { id: "logo", src: "shots/lf-logo-negativo.svg", kind: "svg", group: "marca" },
       { id: "avatar", src: "shots/lf-avatar.svg", kind: "svg", group: "marca" },
