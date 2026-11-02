@@ -139,7 +139,7 @@
     }
   },
   "intro": {
-    "kicker": "Identidade visual · 2026",
+    "kicker": "",
     "subtitle": "Marca e papelaria de um instituto de dor, ortopedia e regeneração em Fortaleza (CE): a figura do paciente, a coluna em pontos e o círculo aberto do cuidado.",
     "scrollHint": "Role para conhecer a marca",
     "image": "hero-atmosfera",
@@ -147,7 +147,7 @@
   },
   "symbol": {
     "nav": "Símbolo",
-    "eyebrow": "01 — Símbolo",
+    "eyebrow": "",
     "title": "O paciente no centro do cuidado.",
     "text": [
       "A figura central é o paciente na sua jornada de transformação: sair da dor para uma vida com mais mobilidade e qualidade. A coluna em pontos é a estrutura física e também o processo gradual de recuperação, que respeita o tempo e a individualidade de cada pessoa.",
@@ -192,7 +192,7 @@
   },
   "typography": {
     "nav": "Tipografia",
-    "eyebrow": "02 — Tipografia",
+    "eyebrow": "",
     "title": "Cormorant Garamond",
     "glyphs": [
       "D",
@@ -244,7 +244,7 @@
   },
   "manifesto": {
     "nav": "Manifesto",
-    "eyebrow": "03 — Manifesto",
+    "eyebrow": "",
     "headline": "Ninguém sai da dor de uma vez. A recuperação acontece ponto a ponto, no tempo de cada pessoa, e o Instituto acompanha cada passo até o movimento voltar a ser livre.",
     "attributes": [
       {
@@ -267,7 +267,7 @@
   },
   "colors": {
     "nav": "Cores",
-    "eyebrow": "04 — Cores",
+    "eyebrow": "",
     "title": "Azul oceano, dourado e areia.",
     "text": "O azul oceano é a cor da autoridade: apresenta o Instituto como uma instituição séria, ética e tecnicamente impecável, e transmite calma em momentos de vulnerabilidade. O dourado ocre representa o padrão ouro da medicina e traz calor, luz e vitalidade. O bege areia e o off-white criam tranquilidade, clareza e limpeza, essenciais num ambiente de saúde.",
     "note": "Azul oceano, dourado ocre, bege areia e off-white são as cores da apresentação da marca. O azul da figura vem do SVG do símbolo e o azul noturno é proposta para os fundos escuros. CMYK aproximado em todas: confirme no perfil da gráfica.",
@@ -312,7 +312,7 @@
   },
   "system": {
     "nav": "Sistema",
-    "eyebrow": "05 — Sistema",
+    "eyebrow": "",
     "title": "Do receituário à recepção, a mesma assinatura.",
     "tiles": [
       {
@@ -416,7 +416,7 @@
   },
   "applications": {
     "nav": "Aplicações",
-    "eyebrow": "06 — Aplicações",
+    "eyebrow": "",
     "title": "A marca no consultório, no papel e no corpo.",
     "text": "A papelaria é a que foi entregue ao Instituto: cartão, pasta, bloco e os dois receituários. Em volta dela, um estudo de aplicações: fotografia editorial, recepção, fachada, jaleco, crachá, garrafa, sacola, material de sala de espera e uma tela de agendamento no celular.",
     "marquee": "Instituto Dor & Saúde",
@@ -480,8 +480,8 @@
         "kind": "piece",
         "image": "mockup-recepcao",
         "col": [
-          1,
-          8
+          2,
+          10
         ],
         "mobile": 2,
         "caption": "Recepção"
@@ -490,12 +490,21 @@
         "kind": "photo",
         "image": "editorial-consulta",
         "col": [
-          9,
-          4
+          1,
+          6
         ],
         "mobile": 2,
-        "offset": 8,
-        "speed": 5
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-fisioterapia",
+        "col": [
+          7,
+          6
+        ],
+        "mobile": 2,
+        "speed": -3
       },
       {
         "kind": "marquee",
@@ -523,7 +532,7 @@
           7
         ],
         "mobile": 2,
-        "caption": "Cartão de visita · frente e verso"
+        "caption": "Cartão de visita, frente e verso"
       },
       {
         "kind": "piece",
@@ -533,7 +542,6 @@
           5
         ],
         "mobile": 2,
-        "offset": 6,
         "caption": "Pasta com bolso e papel timbrado"
       },
       {
@@ -554,7 +562,6 @@
           4
         ],
         "mobile": 1,
-        "offset": 4,
         "caption": "Receituário médico"
       },
       {
@@ -565,7 +572,6 @@
           4
         ],
         "mobile": 1,
-        "offset": 2,
         "caption": "Receituário de controle especial"
       },
       {
@@ -583,7 +589,7 @@
         "image": "mockup-fachada",
         "col": [
           1,
-          7
+          8
         ],
         "mobile": 2,
         "caption": "Fachada"
@@ -592,11 +598,10 @@
         "kind": "piece",
         "image": "mockup-cracha",
         "col": [
-          8,
-          5
+          9,
+          4
         ],
         "mobile": 2,
-        "offset": 6,
         "caption": "Crachá da equipe"
       },
       {
@@ -617,7 +622,6 @@
           4
         ],
         "mobile": 1,
-        "offset": 4,
         "caption": "Placa do consultório"
       },
       {
@@ -628,7 +632,6 @@
           4
         ],
         "mobile": 2,
-        "offset": 2,
         "caption": "Garrafa térmica"
       },
       {
@@ -636,7 +639,7 @@
         "image": "mockup-folhetos",
         "col": [
           1,
-          7
+          8
         ],
         "mobile": 2,
         "caption": "Folhetos de orientação ao paciente"
@@ -645,11 +648,10 @@
         "kind": "piece",
         "image": "mockup-banner",
         "col": [
-          8,
-          5
+          9,
+          4
         ],
         "mobile": 2,
-        "offset": 5,
         "caption": "Banner de congresso"
       },
       {
@@ -663,42 +665,32 @@
         "caption": "Sacola do kit de boas-vindas"
       },
       {
+        "kind": "photo",
+        "image": "editorial-modelo",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "speed": 3
+      },
+      {
         "kind": "crop",
         "art": "symbol",
         "viewBox": "215 90 150 208",
         "variant": "blue",
         "col": [
-          6,
-          3
+          9,
+          4
         ],
-        "mobile": 1
-      },
-      {
-        "kind": "photo",
-        "image": "editorial-modelo",
-        "col": [
-          8,
-          5
-        ],
-        "mobile": 2,
-        "speed": 3
-      },
-      {
-        "kind": "photo",
-        "image": "editorial-fisioterapia",
-        "col": [
-          1,
-          7
-        ],
-        "mobile": 2,
-        "speed": 4
+        "mobile": 2
       },
       {
         "kind": "pattern",
         "variant": "negative",
         "col": [
-          6,
-          7
+          1,
+          12
         ],
         "mobile": 2
       }
