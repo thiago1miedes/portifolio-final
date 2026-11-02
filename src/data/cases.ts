@@ -819,6 +819,22 @@ const list: CaseData[] = [
     tools: ["Illustrator", "Photoshop", "PowerPoint"],
   },
   {
+    slug: "visual-vidros",
+    title: "Visual Vidros",
+    client: "Visual Vidros",
+    sector: "Vidraçaria · residências e construções",
+    year: "2021",
+    cats: ["brand"],
+    accent: "#ED8C00",
+    summary: "Marca de uma vidraçaria de Bauru: um V feito de lâminas de vidro em marinho, azul e laranja.",
+    about: [
+      "Símbolo de três planos de vidro que se cruzam na ponta de um V, com o azul transparente sobre o marinho, e um logotipo de dois pesos: VISUAL pesado, VIDROS fino.",
+    ],
+    deliverables: ["Símbolo", "Logotipo", "Descritor", "Paleta", "Versões de cor"],
+    tools: ["Illustrator", "Photoshop"],
+    credit: "Projeto desenvolvido na Olive Comunicação",
+  },
+  {
     slug: "equipamentaria",
     title: "Equipamentaria",
     client: "Equipamentaria",

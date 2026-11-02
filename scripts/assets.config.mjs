@@ -431,6 +431,14 @@ export const cases = {
       { id: "destaque-3", src: "Faggian/Destaques/Imagens/faggian_destaque_guardaroupa.png", kind: "post" },
     ],
   },
+  // A página é o case de marca (cases/visual-vidros/case.json, só com o logo); a capa é o logo sobre o noite.
+  "visual-vidros": {
+    thumb: { logo: "logo", bg: "#0C1A2C", symbol: "simbolo" },
+    items: [
+      { id: "logo", src: "Visual Vidros/Logo_VisualVidros.svg", kind: "svg" },
+      { id: "simbolo", src: "Visual Vidros/Logo_VisualVidros_icone.svg", kind: "svg" },
+    ],
+  },
   // A página é o case de marca (cases/vocs/case.json); a capa vem de `npm run brand -- vocs thumb`
   // (logo final). Rodar `npm run assets -- vocs` a sobrescreve.
   vocs: {

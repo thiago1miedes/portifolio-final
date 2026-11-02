@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="206.63 0 320.08 240.93" role="img" aria-label="Símbolo Visual Vidros: um V de lâminas de vidro">
+  <g data-layer="symbol">
+    <g data-piece="azul"><polygon data-part="symbol-3" fill="#0080C3" opacity=".8" points="232.48 105.17 526.71 37.8 370.08 240.93 232.48 105.17"/><polygon data-part="symbol-5" fill="#122B4E" points="271.86 96.16 260.84 98.68 370.08 240.93 271.86 96.16"/></g>
+    <g data-piece="marinho"><polygon data-part="symbol-main" fill="#1C4374" points="206.63 0 370.08 240.93 452.82 131.69 206.63 0"/></g>
+    <g data-piece="laranja"><polygon data-part="symbol-accent" fill="#ED8C00" points="206.63 0 372.05 73.78 526.71 37.8 206.63 0"/><polygon data-part="symbol-4" fill="#A76B03" points="526.71 37.8 364.85 70.57 372.05 73.78 526.71 37.8"/></g>
+  </g>
+</svg>

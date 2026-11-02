@@ -1,0 +1,636 @@
+{
+  "slug": "visual-vidros",
+  "client": "Visual Vidros",
+  "segment": "Vidraçaria para residências e construções",
+  "year": "2021",
+  "assets": "/brand/visual-vidros",
+  "seo": {
+    "title": "Visual Vidros · Identidade visual",
+    "description": "Case de identidade visual da Visual Vidros, vidraçaria de Bauru: um V de lâminas de vidro, tipografia, cores, sistema de logo e aplicações.",
+    "image": "og.png"
+  },
+  "theme": {
+    "dark": "#0C1A2C",
+    "light": "#EEF2F4",
+    "primary": "#1C4374",
+    "secondary": "#0080C3",
+    "support": "#ACACAC",
+    "accent": "#ED8C00",
+    "inkOnLight": "#0C1A2C",
+    "mutedOnLight": "#56667A",
+    "inkOnDark": "#EEF2F4",
+    "mutedOnDark": "#ACACAC"
+  },
+  "font": {
+    "family": "Montserrat",
+    "fallback": "\"Gotham\", \"Avenir Next\", system-ui, sans-serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "100 900": "fonts/montserrat-var.woff2"
+    },
+    "preload": [
+      400
+    ]
+  },
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": {
+      "desktop": [
+        "symbol",
+        "wordmark"
+      ],
+      "mobile": [
+        "symbol"
+      ],
+      "wordmarkHeight": 22,
+      "dark": "negative",
+      "light": "positive"
+    },
+    "variants": {
+      "positive": {
+        "label": "Positivo",
+        "bg": "#FFFFFF",
+        "symbol-main": "#1C4374",
+        "symbol-accent": "#ED8C00",
+        "symbol-3": "#0080C3",
+        "symbol-4": "#A76B03",
+        "symbol-5": "#122B4E",
+        "wordmark": "#1C4374",
+        "wordmark-accent": "#ED8C00",
+        "tagline": "#ACACAC"
+      },
+      "negative": {
+        "label": "Negativo",
+        "bg": "#0C1A2C",
+        "symbol-main": "#EEF2F4",
+        "symbol-accent": "#ED8C00",
+        "symbol-3": "#0080C3",
+        "symbol-4": "#A76B03",
+        "symbol-5": "#0C1A2C",
+        "wordmark": "#EEF2F4",
+        "wordmark-accent": "#ED8C00",
+        "tagline": "#ACACAC"
+      },
+      "onBlue": {
+        "label": "Sobre o marinho",
+        "bg": "#1C4374",
+        "symbol-main": "#EEF2F4",
+        "symbol-accent": "#ED8C00",
+        "symbol-3": "#0080C3",
+        "symbol-4": "#A76B03",
+        "symbol-5": "#1C4374",
+        "wordmark": "#EEF2F4",
+        "wordmark-accent": "#ED8C00",
+        "tagline": "#C9D3DE"
+      },
+      "onAccent": {
+        "label": "Sobre o laranja",
+        "bg": "#ED8C00",
+        "symbol-main": "#0C1A2C",
+        "symbol-accent": "#FFFFFF",
+        "symbol-3": "#1C4374",
+        "symbol-4": "#FFFFFF",
+        "symbol-5": "#0C1A2C",
+        "wordmark": "#0C1A2C",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#0C1A2C"
+      },
+      "mono": {
+        "label": "Uma cor",
+        "bg": "#FFFFFF",
+        "symbol-main": "#1C4374",
+        "symbol-accent": "#1C4374",
+        "symbol-3": "#1C4374",
+        "symbol-4": "#1C4374",
+        "symbol-5": "#1C4374",
+        "wordmark": "#1C4374",
+        "wordmark-accent": "#1C4374",
+        "tagline": "#1C4374"
+      },
+      "monoNegative": {
+        "label": "Negativo em uma cor",
+        "bg": "#0C1A2C",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "symbol-3": "#FFFFFF",
+        "symbol-4": "#FFFFFF",
+        "symbol-5": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      }
+    }
+  },
+  "intro": {
+    "kicker": "Identidade visual · 2021",
+    "subtitle": "Marca de uma vidraçaria de Bauru que leva vidro de muitas cores e formas para casas e construções.",
+    "scrollHint": "Role para conhecer a marca"
+  },
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "",
+    "variant": "negative",
+    "title": "Um V feito de lâminas.",
+    "text": [
+      "Três planos de vidro se cruzam e fecham a ponta de um V. O azul é transparente e deixa ver o marinho por trás, como um vidro de verdade sobre outro.",
+      "O laranja fica por cima, na borda que recebe a luz. As dobras escuras dão a espessura da lâmina e fazem o símbolo parecer recortado, não desenhado."
+    ],
+    "pieces": [
+      {
+        "piece": "laranja",
+        "label": "Laranja",
+        "text": "a borda que pega a luz",
+        "shift": -26,
+        "y": 12
+      },
+      {
+        "piece": "azul",
+        "label": "Azul vidro",
+        "text": "transparente, em 80%",
+        "shift": 0,
+        "y": 48
+      },
+      {
+        "piece": "marinho",
+        "label": "Marinho",
+        "text": "o plano que sustenta",
+        "shift": 22,
+        "y": 84
+      }
+    ]
+  },
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "",
+    "title": "Montserrat",
+    "glyphs": [
+      "V",
+      "S",
+      "A",
+      "R",
+      "O"
+    ],
+    "weights": [
+      100,
+      300,
+      700,
+      900
+    ],
+    "text": "O nome tem dois pesos: VISUAL pesado e largo, com o V aberto ao meio e o A sem travessão, quase um V de cabeça para baixo; VIDROS fino como um perfil de alumínio. O logotipo está em curvas, então esta página usa a Montserrat, gratuita e próxima nas proporções largas e nos pesos extremos.",
+    "spec": [
+      {
+        "k": "Nesta página",
+        "v": "Montserrat, de Julieta Ulanovsky · SIL OFL, Google Fonts"
+      },
+      {
+        "k": "VISUAL",
+        "v": "Geométrica preta, V partido e A sem travessão"
+      },
+      {
+        "k": "VIDROS",
+        "v": "Geométrica fina, mesma largura de caixa"
+      },
+      {
+        "k": "Descritor",
+        "v": "Caixa-alta regular, em prata"
+      },
+      {
+        "k": "Pesos",
+        "v": "Montserrat 100 · 300 · 700 · 900 (variável)"
+      },
+      {
+        "k": "Alternativas",
+        "v": "Gotham · Raleway · Lexend"
+      }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789"
+  },
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "",
+    "headline": "Vidro não é só o que fecha a janela. É a cor que entra na sala, a forma que a arquitetura pede e a luz que muda a casa ao longo do dia.",
+    "attributes": [
+      {
+        "word": "Transparência",
+        "text": "O azul em 80% deixa ver o que está por trás, no símbolo e no trabalho."
+      },
+      {
+        "word": "Precisão",
+        "text": "Vidro cortado na medida, para cada projeto e cada tipo de arquitetura."
+      },
+      {
+        "word": "Cor",
+        "text": "Vidro colorido e de várias formas, para muitos tipos de arquitetura."
+      },
+      {
+        "word": "Forma",
+        "text": "Planos que se dobram e se cruzam, como as peças que saem da oficina."
+      }
+    ]
+  },
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "",
+    "title": "Marinho que estrutura, laranja que reflete.",
+    "text": "O marinho assina VISUAL e dá o peso de quem trabalha com construção. O laranja de VIDROS é a luz batendo na borda da lâmina. O azul vidro só aparece transparente, e a prata do descritor lembra o alumínio dos perfis.",
+    "note": "Marinho, laranja, azul vidro e prata vêm do arquivo do logo, que também tem duas dobras de sombra (ocre #A76B03 e marinho escuro #122B4E). Noite e vidro claro são derivados. CMYK aproximado: confirme no perfil da gráfica.",
+    "swatches": [
+      {
+        "name": "Marinho",
+        "role": "Principal · VISUAL",
+        "hex": "#1C4374",
+        "weight": 2.4
+      },
+      {
+        "name": "Laranja",
+        "role": "Destaque · VIDROS",
+        "hex": "#ED8C00",
+        "weight": 1.9
+      },
+      {
+        "name": "Azul vidro",
+        "role": "Apoio · só em áreas grandes",
+        "hex": "#0080C3",
+        "weight": 1.6
+      },
+      {
+        "name": "Noite",
+        "role": "Fundo escuro · textos",
+        "hex": "#0C1A2C",
+        "weight": 1.6
+      },
+      {
+        "name": "Vidro claro",
+        "role": "Fundo claro",
+        "hex": "#EEF2F4",
+        "weight": 1.4
+      },
+      {
+        "name": "Prata",
+        "role": "Descritor · alumínio",
+        "hex": "#ACACAC",
+        "weight": 1.1
+      }
+    ]
+  },
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "",
+    "title": "Do adesivo no vidro à lateral do caminhão.",
+    "tiles": [
+      {
+        "kind": "lockup",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão principal"
+      },
+      {
+        "kind": "symbol",
+        "variant": "negative",
+        "size": "tall",
+        "label": "Símbolo"
+      },
+      {
+        "kind": "sizes",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Tamanhos pequenos",
+        "sizes": [
+          40,
+          28,
+          16
+        ]
+      },
+      {
+        "kind": "lockup",
+        "art": "wordmark",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Sem símbolo"
+      },
+      {
+        "kind": "lockup",
+        "variant": "negative",
+        "size": "wide",
+        "label": "Negativo"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onBlue",
+        "size": "sm",
+        "label": "Sobre o marinho"
+      },
+      {
+        "kind": "lockup",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Uma cor"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área de proteção",
+        "unit": 26,
+        "note": "Margem mínima igual à largura da haste do I de VISUAL."
+      },
+      {
+        "kind": "icon",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Ícone e perfil"
+      },
+      {
+        "kind": "minimum",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Redução mínima",
+        "minWidth": 120,
+        "note": "Com descritor, no mínimo 120 px; abaixo disso, sem o descritor."
+      }
+    ]
+  },
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "",
+    "title": "Na fachada, na obra e no caminhão.",
+    "text": "Estudo de aplicações: fachada, showroom, caminhão de entrega, uniforme, papelaria, adesivo na lâmina e redes sociais.",
+    "marquee": "VISUAL VIDROS",
+    "marqueeArts": [
+      "symbol",
+      "wordmark"
+    ],
+    "items": [
+      {
+        "kind": "piece",
+        "image": "foto-fachada",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Fachada"
+      },
+      {
+        "kind": "piece",
+        "image": "foto-instalador",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 2,
+        "caption": "Uniforme em obra"
+      },
+      {
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "300 60 230 185",
+        "variant": "negative",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-papelaria",
+        "col": [
+          1,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Papelaria"
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "0 280 150 135",
+        "variant": "onAccent",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-redes",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 2,
+        "caption": "Redes sociais"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-porta",
+        "col": [
+          5,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Porta de vidro"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-caminhao",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Caminhão de entrega"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-lamina",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Adesivo na lâmina"
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-brindes",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Brindes"
+      },
+      {
+        "kind": "pattern",
+        "variant": "negative",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-equipe",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Kit de equipe"
+      },
+      {
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "206 0 200 160",
+        "variant": "onBlue",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "foto-showroom",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Showroom"
+      }
+    ]
+  },
+  "closing": {
+    "phrase": "Uma marca que deixa a luz passar.",
+    "credits": [
+      {
+        "k": "Cliente",
+        "v": "Visual Vidros"
+      },
+      {
+        "k": "Segmento",
+        "v": "Vidraçaria para residências e construções"
+      },
+      {
+        "k": "Ano",
+        "v": "2021"
+      },
+      {
+        "k": "Serviços",
+        "v": "Símbolo · logotipo · descritor · paleta · versões de cor"
+      },
+      {
+        "k": "Ferramentas",
+        "v": "Illustrator · Photoshop"
+      },
+      {
+        "k": "Design",
+        "v": "Thiago Miedes, na Olive Comunicação"
+      }
+    ],
+    "cta": {
+      "text": "Tem uma marca para construir?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    }
+  },
+  "images": [
+    {
+      "id": "foto-fachada",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Fachada da loja Visual Vidros com letreiro marinho, portas de vidro e o símbolo adesivado nas lâminas"
+    },
+    {
+      "id": "foto-instalador",
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Instalador de costas com jaqueta marinho e o logo da Visual Vidros, carregando uma lâmina de vidro com ventosas"
+    },
+    {
+      "id": "mockup-papelaria",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Papel timbrado, pasta, envelope, cartões de visita e caneta da Visual Vidros sobre concreto claro"
+    },
+    {
+      "id": "mockup-redes",
+      "section": "applications",
+      "w": 1536,
+      "h": 2752,
+      "essential": true,
+      "alt": "Celular com o perfil da Visual Vidros numa rede social, com destaques e grade de posts"
+    },
+    {
+      "id": "mockup-lamina",
+      "section": "applications",
+      "w": 2048,
+      "h": 2048,
+      "essential": true,
+      "alt": "Lâmina de vidro numa oficina com o símbolo jateado e uma etiqueta da Visual Vidros"
+    },
+    {
+      "id": "mockup-caminhao",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Caminhão branco e marinho da Visual Vidros com cavalete de vidros na carroceria, numa rua da cidade"
+    },
+    {
+      "id": "mockup-porta",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Porta de vidro de uma sala de reunião com o símbolo e o logo da Visual Vidros aplicados"
+    },
+    {
+      "id": "mockup-brindes",
+      "section": "applications",
+      "w": 2048,
+      "h": 2048,
+      "essential": true,
+      "alt": "Caneca, caderno, ecobag, caneta, chaveiro, trena e flanela com a marca Visual Vidros"
+    },
+    {
+      "id": "mockup-equipe",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Camisa polo, boné, crachá, luvas, óculos e ventosa de instalação com a marca Visual Vidros"
+    },
+    {
+      "id": "foto-showroom",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Showroom da Visual Vidros com balcão, parede marinho com o logo e amostras de box e esquadrias"
+    }
+  ]
+}

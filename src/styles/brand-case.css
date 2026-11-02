@@ -39,6 +39,7 @@
 .bc-logo [data-part="symbol-accent"] { fill: var(--logo-symbol-accent); }
 .bc-logo [data-part="symbol-3"] { fill: var(--logo-symbol-3, var(--logo-symbol-accent)); }
 .bc-logo [data-part="symbol-4"] { fill: var(--logo-symbol-4, var(--logo-symbol-accent)); }
+.bc-logo [data-part="symbol-5"] { fill: var(--logo-symbol-5, var(--logo-symbol-main)); }
 .bc-logo [data-part="wordmark"] { fill: var(--logo-wordmark); }
 .bc-logo [data-part="wordmark-accent"] { fill: var(--logo-wordmark-accent, var(--logo-wordmark)); }
 .bc-logo [data-part="tagline"] { fill: var(--logo-tagline); }
@@ -136,6 +137,7 @@
   --logo-symbol-accent: var(--nav-dark-symbol-accent, var(--bc-support));
   --logo-symbol-3: var(--nav-dark-symbol-3, var(--logo-symbol-accent));
   --logo-symbol-4: var(--nav-dark-symbol-4, var(--logo-symbol-accent));
+  --logo-symbol-5: var(--nav-dark-symbol-5, var(--logo-symbol-main));
   --logo-wordmark: var(--nav-dark-wordmark, var(--bc-ink-on-dark));
   --logo-wordmark-accent: var(--nav-dark-wordmark-accent, var(--logo-wordmark));
 }
@@ -146,6 +148,7 @@
   --logo-symbol-accent: var(--nav-light-symbol-accent, var(--bc-secondary));
   --logo-symbol-3: var(--nav-light-symbol-3, var(--logo-symbol-accent));
   --logo-symbol-4: var(--nav-light-symbol-4, var(--logo-symbol-accent));
+  --logo-symbol-5: var(--nav-light-symbol-5, var(--logo-symbol-main));
   --logo-wordmark: var(--nav-light-wordmark, var(--bc-primary));
   --logo-wordmark-accent: var(--nav-light-wordmark-accent, var(--logo-wordmark));
 }

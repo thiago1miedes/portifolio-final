@@ -5588,5 +5588,29 @@
   },
   "cover": null,
   "items": []
+ },
+ "visual-vidros": {
+  "thumb": {
+   "src": "/cases/visual-vidros/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": "logo",
+  "items": [
+   {
+    "id": "logo",
+    "src": "/cases/visual-vidros/logo.svg",
+    "w": 713,
+    "h": 681,
+    "kind": "svg"
+   },
+   {
+    "id": "simbolo",
+    "src": "/cases/visual-vidros/simbolo.svg",
+    "w": 904,
+    "h": 680,
+    "kind": "svg"
+   }
+  ]
  }
 }
