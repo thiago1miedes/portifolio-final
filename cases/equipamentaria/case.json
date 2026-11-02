@@ -124,7 +124,7 @@
   },
   "intro": {
     "kicker": "Identidade visual · 2022",
-    "subtitle": "[rascunho] Locadora de equipamentos para construção civil. No símbolo, a ferramenta é azul e quem trabalha com ela é laranja.",
+    "subtitle": "Locadora de equipamentos para construção civil. No símbolo, a ferramenta é azul e quem trabalha com ela é laranja.",
     "scrollHint": "Role para conhecer a marca",
     "image": "hero-canteiro",
     "variant": "negative"
@@ -134,8 +134,8 @@
     "eyebrow": "",
     "title": "A ferramenta e quem a carrega.",
     "text": [
-      "[rascunho] O símbolo é um trabalhador em pleno passo, com a pá no ombro. Ele não tem rosto nem contorno fechado: braço, pernas e o movimento do cabelo bastam para a figura aparecer.",
-      "[rascunho] As cores dividem os papéis. O azul fica com o equipamento, que é o que a Equipamentaria aluga. O laranja fica com a pessoa, a cor de sinalização de toda obra. Uma coisa não funciona sem a outra."
+      "O símbolo é um trabalhador em pleno passo, com a pá no ombro. Ele não tem rosto nem contorno fechado: braço, pernas e o movimento do cabelo bastam para a figura aparecer.",
+      "As cores dividem os papéis. O azul fica com o equipamento, que é o que a Equipamentaria aluga. O laranja fica com a pessoa, a cor de sinalização de toda obra. Uma coisa não funciona sem a outra."
     ],
     "pieces": [
       {
@@ -175,7 +175,7 @@
       800,
       900
     ],
-    "text": "[rascunho] O logotipo é uma geométrica larga e pesada, desenhada para ser lida de longe, num caminhão ou numa placa de obra. O Q tem cauda em seta, o A não tem travessão e o U fecha com cantos arredondados. A Unbounded é a gratuita mais próxima dessas proporções e fica com títulos e destaques. A Roboto, a mesma família do descritor, cuida dos textos.",
+    "text": "O logotipo é uma geométrica larga e pesada, desenhada para ser lida de longe, num caminhão ou numa placa de obra. O Q tem cauda em seta, o A não tem travessão e o U fecha com cantos arredondados. A Unbounded é a gratuita mais próxima dessas proporções e fica com títulos e destaques. A Roboto, a mesma família do descritor, cuida dos textos.",
     "spec": [
       {
         "k": "Família",
@@ -211,23 +211,23 @@
   "manifesto": {
     "nav": "Manifesto",
     "eyebrow": "",
-    "headline": "[rascunho] Obra que anda tem equipamento certo, entregue no dia, na mão de quem sabe usar.",
+    "headline": "Obra que anda tem equipamento certo, entregue no dia, na mão de quem sabe usar.",
     "attributes": [
       {
         "word": "Prontidão",
-        "text": "[rascunho] O equipamento chega quando a obra precisa, não quando sobra tempo."
+        "text": "O equipamento chega quando a obra precisa, não quando sobra tempo."
       },
       {
         "word": "Robustez",
-        "text": "[rascunho] Máquinas revisadas e prontas para o trabalho pesado."
+        "text": "Máquinas revisadas e prontas para o trabalho pesado."
       },
       {
         "word": "Técnica",
-        "text": "[rascunho] Perfuração e hidrojateamento feitos por uma equipe treinada."
+        "text": "Perfuração e hidrojateamento feitos por uma equipe treinada."
       },
       {
         "word": "Parceria",
-        "text": "[rascunho] A locadora que entende o canteiro e fala a língua de quem está nele."
+        "text": "A locadora que entende o canteiro e fala a língua de quem está nele."
       }
     ]
   },
@@ -235,7 +235,7 @@
     "nav": "Cores",
     "eyebrow": "",
     "title": "Azul de máquina, laranja de sinalização.",
-    "text": "[rascunho] O azul, o laranja e o grafite vêm do próprio logo. Em volta deles entram os tons do canteiro: um azul quase preto para os fundos, o cimento claro e o cinza do concreto. O laranja aparece pouco e sempre em destaque, como uma faixa de sinalização.",
+    "text": "O azul, o laranja e o grafite vêm do próprio logo. Em volta deles entram os tons do canteiro: um azul quase preto para os fundos, o cimento claro e o cinza do concreto. O laranja aparece pouco e sempre em destaque, como uma faixa de sinalização.",
     "note": "Azul, laranja e grafite tirados do SVG do logo. CMYK aproximado em todas as cores: confirme no perfil da gráfica. Laranja nunca em texto sobre fundo claro (contraste 1,8:1).",
     "swatches": [
       {
@@ -644,7 +644,7 @@
     ]
   },
   "closing": {
-    "phrase": "[rascunho] Equipamento certo, obra andando.",
+    "phrase": "Equipamento certo, obra andando.",
     "credits": [
       {
         "k": "Cliente",
