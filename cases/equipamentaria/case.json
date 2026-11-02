@@ -1,0 +1,724 @@
+{
+  "slug": "equipamentaria",
+  "client": "Equipamentaria",
+  "segment": "Locação de equipamentos para construção civil",
+  "year": "2022",
+  "assets": "/brand/equipamentaria",
+  "seo": {
+    "title": "Equipamentaria · Identidade visual",
+    "description": "Case de identidade visual da Equipamentaria, locadora de equipamentos para construção civil: um trabalhador em laranja carrega a ferramenta em azul. Símbolo, logotipo, tipografia, cores, sistema de logo e aplicações.",
+    "image": "og.png"
+  },
+  "theme": {
+    "dark": "#0E1A2B",
+    "light": "#EEECE7",
+    "primary": "#1D3557",
+    "secondary": "#575756",
+    "support": "#BDB8AE",
+    "accent": "#F69D11",
+    "inkOnLight": "#0E1A2B",
+    "mutedOnLight": "#5E6470",
+    "inkOnDark": "#EEECE7",
+    "mutedOnDark": "#A9B0BC"
+  },
+  "font": {
+    "family": "Unbounded",
+    "fallback": "\"Lexend Zetta\", \"Krona One\", \"Arial Black\", system-ui, sans-serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "200 900": "fonts/unbounded-var.woff2"
+    },
+    "preload": [
+      700
+    ],
+    "text": {
+      "family": "Roboto",
+      "fallback": "\"Segoe UI\", system-ui, -apple-system, Arial, sans-serif",
+      "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+      "files": {
+        "100 900": "fonts/roboto-var.woff2"
+      },
+      "preload": [
+        400
+      ]
+    }
+  },
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "untagged": "logo/untagged.svg",
+    "horizontal": "logo/horizontal.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": {
+      "desktop": [
+        "symbol",
+        "wordmark"
+      ],
+      "mobile": [
+        "symbol"
+      ],
+      "wordmarkHeight": 16,
+      "dark": "negative",
+      "light": "positive"
+    },
+    "variants": {
+      "positive": {
+        "label": "Positivo",
+        "bg": "#EEECE7",
+        "symbol-main": "#1D3557",
+        "symbol-accent": "#F69D11",
+        "wordmark": "#1D3557",
+        "tagline": "#575756"
+      },
+      "negative": {
+        "label": "Negativo",
+        "bg": "#0E1A2B",
+        "symbol-main": "#EEECE7",
+        "symbol-accent": "#F69D11",
+        "wordmark": "#EEECE7",
+        "tagline": "#A9B0BC"
+      },
+      "onPrimary": {
+        "label": "Sobre azul",
+        "bg": "#1D3557",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#F69D11",
+        "wordmark": "#FFFFFF",
+        "tagline": "#BDB8AE"
+      },
+      "onAccent": {
+        "label": "Sobre laranja",
+        "bg": "#F69D11",
+        "symbol-main": "#1D3557",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#1D3557",
+        "tagline": "#0E1A2B"
+      },
+      "onSupport": {
+        "label": "Sobre concreto",
+        "bg": "#BDB8AE",
+        "symbol-main": "#1D3557",
+        "symbol-accent": "#1D3557",
+        "wordmark": "#1D3557",
+        "tagline": "#0E1A2B"
+      },
+      "white": {
+        "label": "Branca",
+        "bg": "#1D3557",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "mono": {
+        "label": "Preta",
+        "bg": "#FFFFFF",
+        "symbol-main": "#0E1A2B",
+        "symbol-accent": "#0E1A2B",
+        "wordmark": "#0E1A2B",
+        "tagline": "#0E1A2B"
+      }
+    }
+  },
+  "intro": {
+    "kicker": "Identidade visual · 2022",
+    "subtitle": "[rascunho] Locadora de equipamentos para construção civil. No símbolo, a ferramenta é azul e quem trabalha com ela é laranja.",
+    "scrollHint": "Role para conhecer a marca",
+    "image": "hero-equipamentos",
+    "variant": "negative"
+  },
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "",
+    "title": "A ferramenta e quem a carrega.",
+    "text": [
+      "[rascunho] O símbolo é um trabalhador em pleno passo, com a pá no ombro. Ele não tem rosto nem contorno fechado: braço, pernas e o movimento do cabelo bastam para a figura aparecer.",
+      "[rascunho] As cores dividem os papéis. O azul fica com o equipamento, que é o que a Equipamentaria aluga. O laranja fica com a pessoa, a cor de sinalização de toda obra. Uma coisa não funciona sem a outra."
+    ],
+    "pieces": [
+      {
+        "piece": "ferramenta",
+        "label": "Ferramenta",
+        "text": "o equipamento, em azul",
+        "shift": -28,
+        "y": 30
+      },
+      {
+        "piece": "trabalhador",
+        "label": "Trabalhador",
+        "text": "quem opera, em laranja",
+        "shift": 28,
+        "y": 78
+      }
+    ]
+  },
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "",
+    "title": "Unbounded",
+    "glyphs": [
+      "Q",
+      "A",
+      "M",
+      "U",
+      "R",
+      "&"
+    ],
+    "weights": [
+      300,
+      400,
+      500,
+      700,
+      800,
+      900
+    ],
+    "text": "[rascunho] O logotipo é uma geométrica larga e pesada, desenhada para ser lida de longe, num caminhão ou numa placa de obra. O Q tem cauda em seta, o A não tem travessão e o U fecha com cantos arredondados. A Unbounded é a gratuita mais próxima dessas proporções e fica com títulos e destaques. A Roboto, a mesma família do descritor, cuida dos textos.",
+    "spec": [
+      {
+        "k": "Família",
+        "v": "Unbounded, de NORD ID"
+      },
+      {
+        "k": "Licença",
+        "v": "SIL Open Font License · Google Fonts"
+      },
+      {
+        "k": "Títulos",
+        "v": "Unbounded 200 a 900 · variável"
+      },
+      {
+        "k": "Logotipo",
+        "v": "Geométrica larga em caixa-alta, Q com cauda em seta e A sem travessão"
+      },
+      {
+        "k": "Descritor",
+        "v": "Roboto Regular em caixa-alta, espaçada"
+      },
+      {
+        "k": "Textos",
+        "v": "Roboto 100 a 900, de Christian Robertson"
+      },
+      {
+        "k": "Alternativas",
+        "v": "Lexend Zetta · Krona One · Arial Black"
+      }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz & 0123456789"
+  },
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "",
+    "headline": "[rascunho] Obra que anda tem equipamento certo, entregue no dia, na mão de quem sabe usar.",
+    "attributes": [
+      {
+        "word": "Prontidão",
+        "text": "[rascunho] O equipamento chega quando a obra precisa, não quando sobra tempo."
+      },
+      {
+        "word": "Robustez",
+        "text": "[rascunho] Máquinas revisadas e prontas para o trabalho pesado."
+      },
+      {
+        "word": "Técnica",
+        "text": "[rascunho] Perfuração e hidrojateamento feitos por uma equipe treinada."
+      },
+      {
+        "word": "Parceria",
+        "text": "[rascunho] A locadora que entende o canteiro e fala a língua de quem está nele."
+      }
+    ]
+  },
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "",
+    "title": "Azul de máquina, laranja de sinalização.",
+    "text": "[rascunho] O azul, o laranja e o grafite vêm do próprio logo. Em volta deles entram os tons do canteiro: um azul quase preto para os fundos, o cimento claro e o cinza do concreto. O laranja aparece pouco e sempre em destaque, como uma faixa de sinalização.",
+    "note": "Azul, laranja e grafite tirados do SVG do logo. CMYK aproximado em todas as cores: confirme no perfil da gráfica. Laranja nunca em texto sobre fundo claro (contraste 1,8:1).",
+    "swatches": [
+      {
+        "name": "Azul Equipamentaria",
+        "role": "Principal · ferramenta e logotipo",
+        "hex": "#1D3557",
+        "weight": 2.4
+      },
+      {
+        "name": "Laranja sinalização",
+        "role": "Destaque · trabalhador",
+        "hex": "#F69D11",
+        "weight": 2
+      },
+      {
+        "name": "Grafite",
+        "role": "Secundária · descritor",
+        "hex": "#575756",
+        "weight": 1.3
+      },
+      {
+        "name": "Noite de obra",
+        "role": "Fundo escuro",
+        "hex": "#0E1A2B",
+        "weight": 1.7
+      },
+      {
+        "name": "Cimento",
+        "role": "Fundo claro",
+        "hex": "#EEECE7",
+        "weight": 1.7
+      },
+      {
+        "name": "Concreto",
+        "role": "Apoio · superfícies",
+        "hex": "#BDB8AE",
+        "weight": 1.2
+      }
+    ]
+  },
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "",
+    "title": "Do caminhão ao capacete, a mesma assinatura.",
+    "tiles": [
+      {
+        "kind": "lockup",
+        "art": "horizontal",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão principal",
+        "note": "Horizontal, com descritor."
+      },
+      {
+        "kind": "symbol",
+        "variant": "onPrimary",
+        "size": "tall",
+        "label": "Símbolo"
+      },
+      {
+        "kind": "sizes",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Tamanhos pequenos",
+        "sizes": [
+          48,
+          32,
+          24,
+          16
+        ]
+      },
+      {
+        "kind": "lockup",
+        "variant": "negative",
+        "size": "sm",
+        "label": "Vertical"
+      },
+      {
+        "kind": "lockup",
+        "art": "horizontal",
+        "variant": "negative",
+        "size": "wide",
+        "label": "Negativo"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Sobre laranja"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "white",
+        "size": "sm",
+        "label": "Branca"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área de proteção",
+        "unit": 84,
+        "note": "Margem mínima igual à altura do E de EQUIPAMENTARIA."
+      },
+      {
+        "kind": "icon",
+        "variant": "onPrimary",
+        "size": "sm",
+        "label": "Ícone e perfil"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Preta",
+        "note": "Carimbos, notas e contratos."
+      },
+      {
+        "kind": "minimum",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Redução mínima",
+        "minWidth": 220,
+        "note": "Abaixo de 220 px de largura, o descritor some: use a versão sem descritor ou só o símbolo."
+      },
+      {
+        "kind": "symbol",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Símbolo sobre laranja"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "onSupport",
+        "size": "sm",
+        "label": "Sobre concreto"
+      }
+    ]
+  },
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "",
+    "title": "A marca no canteiro, no caminhão e na tela.",
+    "text": "Estudo de aplicações: fotografia de obra em preto e branco, frota, capacete, uniforme, placa de obra, cartões e a locação pelo celular.",
+    "marquee": "Equipamentaria",
+    "marqueeArts": [
+      "wordmark",
+      "symbol"
+    ],
+    "items": [
+      {
+        "kind": "photo",
+        "image": "editorial-operario",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 2,
+        "speed": -4
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "60 466 150 92",
+        "variant": "onPrimary",
+        "col": [
+          6,
+          3
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "330 -2 190 240",
+        "variant": "onAccent",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-caminhonete",
+        "col": [
+          1,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Caminhonete de atendimento",
+        "speed": 3
+      },
+      {
+        "kind": "app",
+        "variant": "positive",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2,
+        "caption": "Locação pelo celular (estudo)",
+        "head": [
+          "symbol",
+          "wordmark"
+        ],
+        "screen": {
+          "alt": "Estudo de app da Equipamentaria para pedir equipamentos e acompanhar a entrega na obra",
+          "greeting": "O que a sua obra precisa hoje?",
+          "cards": [
+            {
+              "label": "Serviço",
+              "title": "Perfuração",
+              "meta": "Pedir orçamento"
+            },
+            {
+              "label": "Serviço",
+              "title": "Hidrojateamento",
+              "meta": "Pedir orçamento"
+            }
+          ],
+          "progress": {
+            "label": "Seu pedido · a caminho da obra",
+            "value": 70
+          }
+        }
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-placa",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 1,
+        "caption": "Placa de patrimônio no equipamento",
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-balcao",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 2,
+        "offset": 5,
+        "caption": "Balcão de atendimento",
+        "speed": -3
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-papelaria",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Papelaria",
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-brindes",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "offset": 6,
+        "caption": "Brindes",
+        "speed": -4
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-uniforme",
+        "col": [
+          1,
+          6
+        ],
+        "mobile": 1,
+        "caption": "Uniforme e EPIs",
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-catalogo",
+        "col": [
+          7,
+          6
+        ],
+        "mobile": 1,
+        "offset": 4,
+        "caption": "Catálogo e tablet",
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-tapume",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Tapume e lona de obra",
+        "speed": 3
+      },
+      {
+        "kind": "pattern",
+        "variant": "onPrimary",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-redes",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1,
+        "caption": "Perfil nas redes (estudo)",
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-fachada",
+        "col": [
+          5,
+          8
+        ],
+        "mobile": 1,
+        "offset": 5,
+        "caption": "Fachada da loja",
+        "speed": -3
+      }
+    ]
+  },
+  "closing": {
+    "phrase": "[rascunho] Equipamento certo, obra andando.",
+    "credits": [
+      {
+        "k": "Cliente",
+        "v": "Equipamentaria"
+      },
+      {
+        "k": "Segmento",
+        "v": "Locação de equipamentos para construção civil · perfuração e hidrojateamento"
+      },
+      {
+        "k": "Ano",
+        "v": "2022"
+      },
+      {
+        "k": "Serviços",
+        "v": "Símbolo · logotipo · descritor · paleta · versões horizontal e vertical · estudo de aplicações"
+      },
+      {
+        "k": "Ferramentas",
+        "v": "Illustrator · Photoshop"
+      },
+      {
+        "k": "Design",
+        "v": "Thiago Miedes"
+      }
+    ],
+    "cta": {
+      "text": "Tem uma marca para construir?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    },
+    "image": "mockup-fachada"
+  },
+  "images": [
+    {
+      "id": "hero-equipamentos",
+      "section": "intro",
+      "w": 2752,
+      "h": 1536,
+      "essential": true,
+      "alt": "Pátio com gerador, compactador e betoneira pintados em azul e amarelo, com faixa de sinalização e o logo da Equipamentaria"
+    },
+    {
+      "id": "editorial-operario",
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Operário de uniforme azul com o logo da Equipamentaria nas costas, conduzindo um compactador de solo num canteiro"
+    },
+    {
+      "id": "mockup-caminhonete",
+      "section": "applications",
+      "w": 2752,
+      "h": 1536,
+      "essential": true,
+      "alt": "Caminhonete branca e azul com o logo da Equipamentaria na lateral, parada numa rua"
+    },
+    {
+      "id": "mockup-placa",
+      "section": "applications",
+      "w": 2048,
+      "h": 2048,
+      "essential": true,
+      "alt": "Placa de patrimônio e adesivo do símbolo da Equipamentaria num compactador azul com faixa de sinalização"
+    },
+    {
+      "id": "mockup-balcao",
+      "section": "applications",
+      "w": 2752,
+      "h": 1536,
+      "essential": true,
+      "alt": "Balcão de atendimento da Equipamentaria com o logo na parede, prateleiras de equipamentos ao fundo"
+    },
+    {
+      "id": "mockup-papelaria",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Papel timbrado, envelope, pasta e cartões de visita da Equipamentaria sobre superfície clara"
+    },
+    {
+      "id": "mockup-brindes",
+      "section": "applications",
+      "w": 2048,
+      "h": 2048,
+      "essential": true,
+      "alt": "Caneca, ecobag, caderno, garrafa, trena e crachá com o logo da Equipamentaria"
+    },
+    {
+      "id": "mockup-uniforme",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Polo, boné, capacete, colete, luvas e capacete branco com o logo da Equipamentaria sobre concreto"
+    },
+    {
+      "id": "mockup-catalogo",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Catálogo aberto, capa azul e tablet com o logo da Equipamentaria"
+    },
+    {
+      "id": "mockup-tapume",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Tapume de obra azul com lona e placa da Equipamentaria, faixa amarela e preta e cones"
+    },
+    {
+      "id": "mockup-redes",
+      "section": "applications",
+      "w": 1536,
+      "h": 2752,
+      "essential": true,
+      "alt": "Celular exibindo o perfil da Equipamentaria nas redes sociais, com grade de posts"
+    },
+    {
+      "id": "mockup-fachada",
+      "section": "closing",
+      "w": 2752,
+      "h": 1536,
+      "essential": true,
+      "alt": "Fachada da loja da Equipamentaria com letreiro azul, portão aberto e equipamentos na calçada"
+    }
+  ]
+}

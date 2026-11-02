@@ -5579,5 +5579,14 @@
     "group": "processo"
    }
   ]
+ },
+ "equipamentaria": {
+  "thumb": {
+   "src": "/cases/equipamentaria/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": null,
+  "items": []
  }
 }

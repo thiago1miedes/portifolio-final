@@ -818,6 +818,21 @@ const list: CaseData[] = [
     deliverables: ["Logotipo", "Descritor", "Paleta", "Versões de cor"],
     tools: ["Illustrator", "Photoshop", "PowerPoint"],
   },
+  {
+    slug: "equipamentaria",
+    title: "Equipamentaria",
+    client: "Equipamentaria",
+    sector: "Locação de equipamentos · construção civil",
+    year: "2022",
+    cats: ["brand"],
+    accent: "#F69D11",
+    summary: "Marca de uma locadora de equipamentos para obra: um trabalhador em laranja carrega a ferramenta em azul.",
+    about: [
+      "Símbolo, logotipo largo em caixa-alta com descritor, versões horizontal e vertical e uma paleta tirada do canteiro.",
+    ],
+    deliverables: ["Símbolo", "Logotipo", "Descritor", "Paleta", "Versões de cor"],
+    tools: ["Illustrator", "Photoshop"],
+  },
 
   /* ============================================================ social media */
   {
