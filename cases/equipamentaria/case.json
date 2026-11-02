@@ -126,7 +126,7 @@
     "kicker": "Identidade visual · 2022",
     "subtitle": "[rascunho] Locadora de equipamentos para construção civil. No símbolo, a ferramenta é azul e quem trabalha com ela é laranja.",
     "scrollHint": "Role para conhecer a marca",
-    "image": "hero-equipamentos",
+    "image": "hero-canteiro",
     "variant": "negative"
   },
   "symbol": {
@@ -152,7 +152,8 @@
         "shift": 28,
         "y": 78
       }
-    ]
+    ],
+    "image": "textura-concreto"
   },
   "typography": {
     "nav": "Tipografia",
@@ -468,6 +469,36 @@
       },
       {
         "kind": "photo",
+        "image": "editorial-perfuracao",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-operario",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "speed": -4,
+        "offset": 5,
+        "caption": "Uniforme em campo"
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "photo",
         "image": "mockup-placa",
         "col": [
           1,
@@ -485,17 +516,9 @@
           7
         ],
         "mobile": 2,
-        "offset": 5,
         "caption": "Balcão de atendimento",
-        "speed": -3
-      },
-      {
-        "kind": "marquee",
-        "col": [
-          1,
-          12
-        ],
-        "mobile": 2
+        "speed": -3,
+        "offset": 5
       },
       {
         "kind": "photo",
@@ -516,9 +539,9 @@
           5
         ],
         "mobile": 2,
-        "offset": 6,
         "caption": "Brindes",
-        "speed": -4
+        "speed": -4,
+        "offset": 6
       },
       {
         "kind": "photo",
@@ -539,9 +562,31 @@
           6
         ],
         "mobile": 1,
-        "offset": 4,
         "caption": "Catálogo e tablet",
+        "speed": 3,
+        "offset": 4
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-hidrojateamento",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
         "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-fachada",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "caption": "Fachada da loja",
+        "speed": -3,
+        "offset": 5
       },
       {
         "kind": "photo",
@@ -576,15 +621,25 @@
       },
       {
         "kind": "photo",
-        "image": "mockup-fachada",
+        "image": "hero-equipamentos",
         "col": [
           5,
           8
         ],
         "mobile": 1,
+        "speed": -3,
         "offset": 5,
-        "caption": "Fachada da loja",
-        "speed": -3
+        "caption": "Equipamentos da frota"
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-ferramentas",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "speed": 4
       }
     ]
   },
@@ -621,16 +676,24 @@
       "label": "Vamos conversar",
       "href": "/#contato"
     },
-    "image": "mockup-fachada"
+    "image": "editorial-deposito"
   },
   "images": [
     {
-      "id": "hero-equipamentos",
+      "id": "hero-canteiro",
       "section": "intro",
       "w": 2752,
       "h": 1536,
       "essential": true,
-      "alt": "Pátio com gerador, compactador e betoneira pintados em azul e amarelo, com faixa de sinalização e o logo da Equipamentaria"
+      "alt": "Canteiro de obra ao anoitecer, com estruturas de concreto em azul profundo e luzes de trabalho alaranjadas"
+    },
+    {
+      "id": "textura-concreto",
+      "section": "symbol",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Parede de concreto aparente com marcas de fôrma, em azul escuro"
     },
     {
       "id": "editorial-operario",
@@ -638,7 +701,60 @@
       "w": 1792,
       "h": 2400,
       "essential": true,
+      "mono": true,
+      "alt": "Operário de capacete atravessando um canteiro com uma pá no ombro, em preto e branco"
+    },
+    {
+      "id": "mockup-operario",
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
       "alt": "Operário de uniforme azul com o logo da Equipamentaria nas costas, conduzindo um compactador de solo num canteiro"
+    },
+    {
+      "id": "hero-equipamentos",
+      "section": "applications",
+      "w": 2752,
+      "h": 1536,
+      "essential": true,
+      "alt": "Pátio com gerador, compactador e betoneira pintados em azul e amarelo, com o logo da Equipamentaria"
+    },
+    {
+      "id": "editorial-perfuracao",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "mono": true,
+      "alt": "Operário perfurando uma laje de concreto com uma perfuratriz, em preto e branco"
+    },
+    {
+      "id": "editorial-hidrojateamento",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "mono": true,
+      "alt": "Operário limpando uma parede de concreto com jato de água em alta pressão, em preto e branco"
+    },
+    {
+      "id": "editorial-ferramentas",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "mono": true,
+      "alt": "Fileira de rompedores em um suporte de aço num galpão de locação, em preto e branco"
+    },
+    {
+      "id": "editorial-deposito",
+      "section": "closing",
+      "w": 2752,
+      "h": 1536,
+      "essential": true,
+      "mono": true,
+      "alt": "Pátio de locação ao anoitecer, com betoneiras enfileiradas e estoque de fôrmas, em preto e branco"
     },
     {
       "id": "mockup-caminhonete",
