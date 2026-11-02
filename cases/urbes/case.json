@@ -131,9 +131,10 @@
   },
   "intro": {
     "kicker": "Identidade visual",
-    "subtitle": "[rascunho] Gestão de dados na cidade de São Paulo. O símbolo é um mapa: quadras, ruas e os cabos que passam entre elas.",
+    "subtitle": "Gestão de dados na cidade de São Paulo. O símbolo é um mapa: quadras, ruas e os cabos que passam entre elas.",
     "scrollHint": "Role para conhecer a marca",
-    "variant": "negative"
+    "variant": "negative",
+    "image": "hero-cidade-noite"
   },
   "symbol": {
     "nav": "Símbolo",
@@ -141,21 +142,21 @@
     "variant": "negative",
     "title": "Um mapa dentro do símbolo.",
     "text": [
-      "[rascunho] Treze quadras no mesmo ângulo, separadas por ruas. Visto de cima, o símbolo é um pedaço de cidade: avenidas longas na diagonal e travessas que cortam as quadras em pontos diferentes, como num bairro de verdade.",
-      "[rascunho] As ruas são o caminho dos cabos. A gestão de dados acontece ali, no trajeto entre um ponto e outro da cidade, e é por isso que o vazio entre as quadras importa tanto quanto elas."
+      "Treze quadras no mesmo ângulo, separadas por ruas. Visto de cima, o símbolo é um pedaço de cidade: avenidas longas na diagonal e travessas que cortam as quadras em pontos diferentes, como num bairro de verdade.",
+      "As ruas são o caminho dos cabos. A gestão de dados acontece ali, no trajeto entre um ponto e outro da cidade, e é por isso que o vazio entre as quadras importa tanto quanto elas."
     ],
     "pieces": [
       {
         "piece": "quadras",
         "label": "Quadras",
-        "text": "[rascunho] treze blocos num só ângulo",
+        "text": "treze blocos num só ângulo",
         "shift": 0,
         "y": 18
       },
       {
         "piece": "ruas",
         "label": "Ruas",
-        "text": "[rascunho] por onde os cabos passam",
+        "text": "por onde os cabos passam",
         "shift": 0,
         "y": 74
       }
@@ -237,7 +238,7 @@
       800,
       900
     ],
-    "text": "[rascunho] O logotipo parte de uma geométrica larga e pesada, recortada como uma quadra. O R, o B e o E abrem a haste no mesmo ponto, uma rua que atravessa as três letras, e o U é cortado na diagonal, no ângulo do símbolo. A Montserrat é a gratuita mais próxima dessas proporções e fica com os títulos. A Roboto, a fonte do descritor, cuida dos textos.",
+    "text": "O logotipo parte de uma geométrica larga e pesada, recortada como uma quadra. O R, o B e o E abrem a haste no mesmo ponto, uma rua que atravessa as três letras, e o U é cortado na diagonal, no ângulo do símbolo. A Montserrat é a gratuita mais próxima dessas proporções e fica com os títulos. A Roboto, a fonte do descritor, cuida dos textos.",
     "spec": [
       {
         "k": "Família",
@@ -273,23 +274,23 @@
   "manifesto": {
     "nav": "Manifesto",
     "eyebrow": "",
-    "headline": "[rascunho] Uma cidade do tamanho de São Paulo se entende pelos caminhos: por onde as coisas passam, onde se cruzam e onde param.",
+    "headline": "Uma cidade do tamanho de São Paulo se entende pelos caminhos: por onde as coisas passam, onde se cruzam e onde param.",
     "attributes": [
       {
         "word": "Precisão",
-        "text": "[rascunho] Cada dado no seu lugar, como uma quadra no mapa."
+        "text": "Cada dado no seu lugar, como uma quadra no mapa."
       },
       {
         "word": "Conexão",
-        "text": "[rascunho] Informação que corre de um ponto a outro da cidade sem se perder no trajeto."
+        "text": "Informação que corre de um ponto a outro da cidade sem se perder no trajeto."
       },
       {
         "word": "Clareza",
-        "text": "[rascunho] Um mapa só serve se qualquer pessoa conseguir ler."
+        "text": "Um mapa só serve se qualquer pessoa conseguir ler."
       },
       {
         "word": "Escala",
-        "text": "[rascunho] Pensada para uma metrópole, não para um bairro."
+        "text": "Pensada para uma metrópole, não para um bairro."
       }
     ]
   },
@@ -297,7 +298,7 @@
     "nav": "Cores",
     "eyebrow": "",
     "title": "Luz de poste sobre asfalto.",
-    "text": "[rascunho] O laranja e o cinza vêm do logo. Vista de cima, à noite, a cidade é isso: ruas escuras riscadas pela luz alaranjada dos postes, entre quadras de concreto. Em volta das duas cores entram o asfalto para os fundos escuros, a calçada para os claros, o concreto para linhas e superfícies e um laranja mais fundo, que aguenta texto claro por cima.",
+    "text": "O laranja e o cinza vêm do logo. Vista de cima, à noite, a cidade é isso: ruas escuras riscadas pela luz alaranjada dos postes, entre quadras de concreto. Em volta das duas cores entram o asfalto para os fundos escuros, a calçada para os claros, o concreto para linhas e superfícies e um laranja mais fundo, que aguenta texto claro por cima.",
     "note": "Laranja e cinza tirados do SVG do logo. CMYK aproximado em todas as cores: confirme no perfil da gráfica. Texto pequeno sobre a calçada vai em asfalto: o cinza Urbes fica em 4,4:1 e o laranja em 3,5:1, então os dois só aparecem ali em títulos e no logo.",
     "swatches": [
       {
@@ -395,7 +396,7 @@
         "size": "wide",
         "label": "Área de proteção",
         "unit": 41,
-        "note": "[rascunho] Margem mínima igual à largura de uma quadra, que é também a largura da haste das letras."
+        "note": "Margem mínima igual à largura de uma quadra, que é também a largura da haste das letras."
       },
       {
         "kind": "icon",
@@ -444,7 +445,7 @@
     "nav": "Aplicações",
     "eyebrow": "",
     "title": "O mapa cresce até virar parede.",
-    "text": "Estudo de aplicações: recepção, sala de reunião, painel de dados, perfil nas redes, uniforme, papelaria, brindes, relatório e estande.",
+    "text": "Estudo de aplicações: fotografia urbana em preto e branco, recepção, sala de reunião, painel de dados, perfil nas redes, uniforme, papelaria, brindes, relatório e estande.",
     "marquee": "Urbes",
     "marqueeArts": [
       "wordmark",
@@ -452,26 +453,14 @@
     ],
     "items": [
       {
-        "kind": "piece",
-        "image": "mockup-recepcao",
+        "kind": "photo",
+        "image": "editorial-cruzamento",
         "col": [
           1,
-          8
+          5
         ],
         "mobile": 2,
-        "caption": "Recepção",
-        "speed": 2
-      },
-      {
-        "kind": "crop",
-        "art": "wordmark",
-        "viewBox": "480 62 220 218",
-        "variant": "onAccent",
-        "col": [
-          9,
-          4
-        ],
-        "mobile": 1
+        "speed": -4
       },
       {
         "kind": "crop",
@@ -479,16 +468,48 @@
         "viewBox": "60 110 230 280",
         "variant": "negative",
         "col": [
+          6,
+          7
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "480 62 220 218",
+        "variant": "onAccent",
+        "col": [
           1,
           4
         ],
         "mobile": 1
       },
       {
+        "kind": "photo",
+        "image": "editorial-cabos",
+        "col": [
+          5,
+          8
+        ],
+        "mobile": 2,
+        "speed": 3
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-recepcao",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Recepção",
+        "speed": 2
+      },
+      {
         "kind": "piece",
         "image": "mockup-sala-reuniao",
         "col": [
-          5,
+          1,
           8
         ],
         "mobile": 2,
@@ -496,21 +517,21 @@
         "speed": 2
       },
       {
-        "kind": "piece",
-        "image": "mockup-painel",
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "150 0 253 300",
+        "variant": "deep",
         "col": [
-          1,
-          8
+          9,
+          4
         ],
-        "mobile": 2,
-        "caption": "Painel de dados no monitor e no notebook",
-        "speed": 2
+        "mobile": 2
       },
       {
         "kind": "app",
         "variant": "positive",
         "col": [
-          9,
+          1,
           4
         ],
         "mobile": 2,
@@ -541,6 +562,17 @@
         }
       },
       {
+        "kind": "piece",
+        "image": "mockup-painel",
+        "col": [
+          5,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Painel de dados no monitor e no notebook",
+        "speed": 2
+      },
+      {
         "kind": "marquee",
         "col": [
           1,
@@ -550,26 +582,25 @@
       },
       {
         "kind": "piece",
-        "image": "mockup-perfil",
+        "image": "mockup-uniforme",
         "col": [
           1,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Uniforme e crachá",
+        "speed": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-perfil",
+        "col": [
+          9,
           4
         ],
         "mobile": 2,
         "caption": "Perfil nas redes",
         "speed": 2
-      },
-      {
-        "kind": "piece",
-        "image": "mockup-uniforme",
-        "col": [
-          5,
-          8
-        ],
-        "mobile": 2,
-        "caption": "Uniforme e crachá",
-        "speed": 2,
-        "offset": 4
       },
       {
         "kind": "piece",
@@ -595,9 +626,9 @@
       },
       {
         "kind": "crop",
-        "art": "symbol",
-        "viewBox": "150 0 253 300",
-        "variant": "deep",
+        "art": "wordmark",
+        "viewBox": "305 65 180 220",
+        "variant": "onSupport",
         "col": [
           1,
           4
@@ -629,7 +660,7 @@
     ]
   },
   "closing": {
-    "phrase": "[rascunho] A cidade inteira cabe num mapa bem desenhado.",
+    "phrase": "A cidade inteira cabe num mapa bem desenhado.",
     "credits": [
       {
         "k": "Cliente",
@@ -659,6 +690,32 @@
     }
   },
   "images": [
+    {
+      "id": "hero-cidade-noite",
+      "section": "intro",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Vista aérea de uma cidade à noite, com quadras escuras cortadas na diagonal por ruas iluminadas em laranja"
+    },
+    {
+      "id": "editorial-cruzamento",
+      "mono": true,
+      "section": "applications",
+      "w": 1600,
+      "h": 2143,
+      "essential": true,
+      "alt": "Cruzamento de avenidas visto de cima, com faixas de pedestre, carros e pessoas, em preto e branco"
+    },
+    {
+      "id": "editorial-cabos",
+      "mono": true,
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Poste de rua visto de baixo, com dezenas de cabos e rolos de fibra cruzando o céu entre prédios, em preto e branco"
+    },
     {
       "id": "mockup-recepcao",
       "section": "applications",

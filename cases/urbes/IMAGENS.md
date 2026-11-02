@@ -1,11 +1,14 @@
 # Urbes: imagens
 
-Página: `/cases/urbes/` · conteúdo: `cases/urbes/case.json` · 9 mockups gerados pelo Thiago (Flow), com o logo já aplicado pela IA.
+Página: `/cases/urbes/` · conteúdo: `cases/urbes/case.json` · 12 imagens geradas pelo Thiago no Flow: 3 fotos sem logo e 9 mockups com o logo já aplicado pela IA.
 
 ## O que está na página
 
 | id / arquivo final | peça | proporção · tamanho | arquivo original em `F:\Freelancer\Urbes` |
 |---|---|---|---|
+| `hero-cidade-noite` | Fundo da abertura | 16:9 · 2400×1340 | `Aerial_view_of_city_at…` |
+| `editorial-cruzamento` | Foto P&B na colagem | 3:4 · 1600×2143 | `Aerial_view_of_urban_intersection…` |
+| `editorial-cabos` | Foto P&B na colagem | 16:9 · 2400×1340 | `Cables_crossing_utility_pole…` |
 | `mockup-recepcao` | Recepção | 16:9 · 2400×1340 | `Modern_data_company_reception_in…` |
 | `mockup-sala-reuniao` | Sala de reunião | 16:9 · 2400×1340 | `Logo_displayed_in_modern_meeting…` |
 | `mockup-painel` | Painel no monitor e no notebook | 16:9 · 2400×1340 | `Data_analyst_workspace_desk_setup…` |
@@ -16,7 +19,7 @@ Página: `/cases/urbes/` · conteúdo: `cases/urbes/case.json` · 9 mockups gera
 | `mockup-relatorio` | Relatório e tablet | 4:3 · 2400×1792 | `URBES_brand_report_flat_lay…` |
 | `mockup-estande` | Estande de evento | 16:9 · 2400×1340 | `Trade_show_booth_display…` |
 
-Como o logo já vem nas imagens, elas entram inteiras (kind `piece`), sem overlay do SVG. Feito em código, sem IA: os cabos e os pontos de luz no símbolo, os recortes gigantes do R e das quadras, a faixa em movimento e o painel no celular.
+Como o logo já vem nos mockups, eles entram inteiros (kind `piece`), sem overlay do SVG. As duas fotos P&B usam o kind `photo`, com parallax. Feito em código, sem IA: os cabos e os pontos de luz no símbolo, os recortes gigantes do R, do U e das quadras, a faixa em movimento e o painel no celular.
 
 ## Como trocar uma imagem
 
@@ -33,26 +36,7 @@ Erros no descritor "Gestão de Dados", todos em tamanho pequeno:
 - `mockup-relatorio`: "Gest5o de Dados" na folha interna.
 - `mockup-estande`: "Gestão de Dades" na plaquinha do balcão.
 
-## Fotos que ainda podem entrar
+## Outros detalhes
 
-A página não tem foto urbana nem fundo atrás do logo. Se quiser gerar, estas reforçam o conceito de mapa e cabos. Depois de salvar em `raw/`, a imagem precisa ser cadastrada em `images[]` e ligada no `case.json` (`intro.image`, `symbol.image`, `closing.image` ou um item de `applications.items`).
-
-**Coerência:** cidade à noite iluminada por postes de sódio; sombras no asfalto `#151414`, laranja `#C8650F` só como luz; ruas na diagonal do quadro, cerca de 22° da vertical; P&B com contraste alto e grão 400 ISO. Sem placas, logos nem monumentos reconhecíveis.
-
-### `hero-cidade-noite` (fundo da abertura, 16:9 · 2400×1350, Midjourney v7)
-> Top-down aerial drone photograph of a dense South American megacity at night, a grid of dark rectangular city blocks cut by streets running diagonally across the frame at about 22 degrees, the streets glowing with warm sodium streetlight orange #C8650F, rooftops and blocks almost black asphalt #151414 with cool neutral grey #706F6F highlights, very few lit windows, light haze, large calm darker area in the center of the frame. 24mm lens, straight down view, long exposure, subtle film grain, minimal, cinematic.
-> `--ar 16:9 --style raw --v 7`
-
-**Evitar:** texto, placas, monumentos, rio no centro, céu, neon azul ou roxo, HDR.
-
-### `editorial-cabos` (colagem, P&B, 3:2 · 2400×1600, Midjourney v7)
-> Black and white street photograph looking up at a concrete utility pole in São Paulo with dozens of tangled overhead cables, fiber optic coils and junction boxes, the cables crossing the frame diagonally and continuing between old apartment buildings, overcast sky as a bright flat background. 35mm lens, f/5.6, Tri-X 400 grain, high contrast, rich blacks, documentary editorial.
-> `--ar 3:2 --style raw --v 7`
-
-**Evitar:** cor, logos de operadora, etiquetas legíveis, céu azul dramático.
-
-### `editorial-cruzamento` (colagem, P&B, 4:5 · 1600×2000, Midjourney v7)
-> Black and white top-down aerial photograph of a busy urban intersection, two wide avenues crossing at an angle, zebra crosswalks forming strong white bars, a few cars and pedestrians as small shapes waiting at the light, long afternoon shadows of buildings falling across the asphalt. Drone, 24mm, straight down, Tri-X 400 film grain, deep blacks, high contrast, graphic, editorial magazine photography.
-> `--ar 4:5 --style raw --v 7`
-
-**Evitar:** cor, texto pintado no asfalto, placas, logos de carro, rostos.
+- `hero-cidade-noite`: a área escura do centro saiu com contorno parecido com um coração. Atrás do logo quase não se nota no desktop; no celular o topo do contorno aparece mais.
+- `editorial-cabos`: o cartaz colado no poste tem texto inventado pela IA, em tamanho pequeno.
