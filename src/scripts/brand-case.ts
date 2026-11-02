@@ -204,6 +204,8 @@ function symbolPieces(root: HTMLElement) {
   const outline = $("[data-bc-crop-outline]", section);
   // symbol.grid: a grade de construção se desenha antes de as peças andarem
   const gridLines = $$("[data-bc-grid-line]", section);
+  // symbol.grid.pulse: os pontos de luz acendem quando os cabos terminam de se desenhar
+  const pulses = $("[data-bc-grid-pulses]", section);
   // symbol.carve: o traço do vazio se desenha sobre o volume maciço, que então se abre
   const solid = $("[data-bc-carve-solid]", section);
   const voidLines = $$("[data-bc-carve-void] > *", section);
@@ -213,6 +215,7 @@ function symbolPieces(root: HTMLElement) {
       scrollTrigger: { trigger: section, start: desktop ? "top top" : "top 70%", end: desktop ? "bottom bottom" : "bottom 70%", scrub: 0.6 },
     });
     if (gridLines.length) tl.fromTo(gridLines, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut", stagger: 0.04 }, 0);
+    if (pulses) tl.fromTo(pulses, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "none" }, 0.5 + gridLines.length * 0.04);
     if (frame && full && outline) {
       tl.fromTo(frame, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0.15)
         .fromTo(full, { opacity: 1 }, { opacity: 0, duration: 0.6, ease: "none" }, 0.75)

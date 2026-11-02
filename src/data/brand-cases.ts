@@ -110,13 +110,16 @@ export interface BrandCaseData {
   /** variant: versão do logo na abertura (padrão: negative) */
   intro: { kicker: string; subtitle: string; scrollHint: string; image?: string; variant?: string };
   /** crop: quadrado [x, y, lado, lado] em unidades do símbolo; ao rolar, ele recorta o símbolo e mostra o módulo do grafismo
-   *  grid: linhas da grade de construção (posições x e y em unidades do símbolo), desenhadas ao rolar
+   *  grid: linhas da grade de construção (posições x e y em unidades do símbolo), desenhadas ao rolar;
+   *  lines: segmentos livres [x1, y1, x2, y2] (ex.: os cabos que correm pelas ruas do símbolo da Urbes), no traço de cabo;
+   *  pulse: pontos de luz correm pelos segmentos de lines depois de desenhados; label: descrição das linhas para leitor de tela
    *  variant: versão do símbolo na seção (padrão: onPrimary)
    *  carve: símbolo feito de vazio (ex.: uma letra escavada noutra). solid é o volume ainda inteiro e void o traço do vazio,
    *  ambos SVG em public/<assets>/ no mesmo viewBox do símbolo; ao rolar, o vazio se desenha e o volume se abre */
   symbol: {
     nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[];
-    image?: string; crop?: [number, number, number, number]; grid?: { x: number[]; y: number[] }; variant?: string;
+    image?: string; crop?: [number, number, number, number]; variant?: string;
+    grid?: { x: number[]; y: number[]; lines?: [number, number, number, number][]; pulse?: boolean; label?: string };
     carve?: { solid: string; void: string };
   };
   /** font "text": a letra gigante e a amostra usam a fonte de textos (ex.: a fonte do logotipo não é a dos títulos) */

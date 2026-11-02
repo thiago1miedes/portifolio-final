@@ -38,7 +38,7 @@ const year = new Date().getFullYear();
   </a>
 
   <footer class="container bc-foot">
-    <span>© {year} Thiago Miedes · {data.client}, {data.year}</span>
+    <span>© {year} Thiago Miedes · {data.client}{data.year && `, ${data.year}`}</span>
     <nav aria-label="Portfólio">
       <a href="/cases/">Todos os projetos</a>
       <a href="/#contato">Contato</a>

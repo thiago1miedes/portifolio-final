@@ -19,14 +19,21 @@ const variant = s.variant ?? "onPrimary";
 const vars = Object.entries(variantVars(data, variant)).map(([k, v]) => `${k}:${v}`).join(";");
 // as linhas passam um pouco das bordas do símbolo, como numa prancha de construção (menos à direita, onde ficam as legendas)
 const ext = Math.max(w, h) * 0.08;
+// grid.lines: segmentos livres no traço de cabo (is-cable), desenhados depois da grade
+const cables = (s.grid?.lines ?? []).map(([x1, y1, x2, y2]) => ({ x1, y1, x2, y2, class: "is-cable" }));
 const gridLines = s.grid
   ? [
       ...s.grid.x.map((x) => ({ x1: x, y1: sy - ext, x2: x, y2: sy + h + ext })),
       ...s.grid.y.map((y) => ({ x1: sx - ext, y1: y, x2: sx + w + ext * 0.3, y2: y })),
+      ...cables,
     ]
   : [];
+// grid.pulse: um ponto de luz por cabo, na mesma velocidade em todos (a duração acompanha o comprimento)
+const pulses = s.grid?.pulse
+  ? cables.map((l, i) => ({ ...l, style: `--d:${(Math.hypot(l.x2 - l.x1, l.y2 - l.y1) / Math.max(w, h) * 2.6).toFixed(2)}s;--i:${i}` }))
+  : [];
 const carve = s.carve && { solid: readSvgFile(data, s.carve.solid), void: readSvgFile(data, s.carve.void) };
-const drawnLabel = [symbol.label, gridLines.length && "sobre a grade de construção"].filter(Boolean).join(", ");
+const drawnLabel = [symbol.label, gridLines.length && (s.grid?.label ?? "sobre a grade de construção")].filter(Boolean).join(", ");
 ---
 <section class="bc-symbol" id="simbolo" data-theme="dark" data-bc-section data-bc-symbol>
   <div class="bc-sticky">
@@ -63,6 +70,11 @@ const drawnLabel = [symbol.label, gridLines.length && "sobre a grade de constru�
               {gridLines.length > 0 && (
                 <g class="bc-symbol-lines" aria-hidden="true">
                   {gridLines.map((l, i) => <line {...l} pathLength="1" data-bc-grid-line data-index={i} />)}
+                </g>
+              )}
+              {pulses.length > 0 && (
+                <g class="bc-symbol-pulses" aria-hidden="true" data-bc-grid-pulses>
+                  {pulses.map((l, i) => <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} style={l.style} pathLength="1" data-index={i} />)}
                 </g>
               )}
               <g set:html={symbol.inner} />

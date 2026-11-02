@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 407 437" role="img" aria-label="Símbolo da Urbes: quadras de um mapa separadas por ruas">
+  <g data-layer="symbol">
+    <g data-piece="quadras">
+      <path data-part="symbol-main" fill="#C8650F" d="M69.91,15.04L106.63,0L145.92,95.9L109.2,110.95Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M243.81,135.12L196.22,18.93L158.25,34.49L205.91,150.65Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M230.19,32.26L266.58,17.35L304.62,110.2L268.23,125.11Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M149.76,289.38L68.05,89.97L28.7,106.09L110.39,305.52Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M122.43,143.22L159.14,128.18L214.35,262.92L177.63,277.96Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M83.47,316.55L36.48,201.88L0,216.83L47.04,331.47Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M219.13,183.08L246.46,249.76L284.4,234.21L257.09,167.53Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M369.98,270.15L317.65,142.21L281.12,157.37L333.25,285.39Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M59.8,362.64L96.23,347.71L115.13,393.83L78.7,408.76Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M123.13,336.69L162.51,320.56L184.72,374.77L145.35,390.91Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M190.41,309.12L227.12,294.07L270.02,398.77L233.3,413.81Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M259.22,280.93L297.19,265.37L359.24,416.81L321.26,432.37Z"/>
+      <path data-part="symbol-main" fill="#C8650F" d="M347.13,317.69L383.52,302.78L402.93,350.14L366.53,365.05Z"/>
+    </g>
+  </g>
+</svg>

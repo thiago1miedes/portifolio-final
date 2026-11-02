@@ -1,0 +1,735 @@
+{
+  "slug": "urbes",
+  "client": "Urbes",
+  "segment": "Gestão de dados na cidade de São Paulo",
+  "year": "",
+  "assets": "/brand/urbes",
+  "seo": {
+    "title": "Urbes · Identidade visual",
+    "description": "Case de identidade visual da Urbes, gestão de dados na cidade de São Paulo: o símbolo é um mapa, com quadras, ruas e os cabos que passam entre elas. Símbolo, logotipo, tipografia, cores, sistema de logo e aplicações.",
+    "image": "og.png"
+  },
+  "theme": {
+    "dark": "#151414",
+    "light": "#F2F0EC",
+    "primary": "#151414",
+    "secondary": "#706F6F",
+    "support": "#C8C5C0",
+    "accent": "#C8650F",
+    "inkOnLight": "#151414",
+    "mutedOnLight": "#5F5D5B",
+    "inkOnDark": "#F2F0EC",
+    "mutedOnDark": "#A7A4A0"
+  },
+  "font": {
+    "family": "Montserrat",
+    "fallback": "\"Gotham\", \"Avenir Next\", system-ui, sans-serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "100 900": "fonts/montserrat-var.woff2"
+    },
+    "preload": [
+      600
+    ],
+    "text": {
+      "family": "Roboto",
+      "fallback": "\"Segoe UI\", system-ui, -apple-system, Arial, sans-serif",
+      "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+      "files": {
+        "100 900": "fonts/roboto-var.woff2"
+      },
+      "preload": [
+        400
+      ]
+    }
+  },
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "untagged": "logo/untagged.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": {
+      "desktop": [
+        "symbol",
+        "wordmark"
+      ],
+      "mobile": [
+        "symbol"
+      ],
+      "wordmarkHeight": 15,
+      "dark": "negative",
+      "light": "positive"
+    },
+    "variants": {
+      "positive": {
+        "label": "Positivo",
+        "bg": "#F2F0EC",
+        "symbol-main": "#C8650F",
+        "symbol-accent": "#C8650F",
+        "wordmark": "#706F6F",
+        "tagline": "#706F6F"
+      },
+      "negative": {
+        "label": "Negativo",
+        "bg": "#151414",
+        "symbol-main": "#C8650F",
+        "symbol-accent": "#C8650F",
+        "wordmark": "#F2F0EC",
+        "tagline": "#A7A4A0"
+      },
+      "onPrimary": {
+        "label": "Sobre asfalto",
+        "bg": "#151414",
+        "symbol-main": "#C8650F",
+        "symbol-accent": "#C8650F",
+        "wordmark": "#F2F0EC",
+        "tagline": "#A7A4A0"
+      },
+      "deep": {
+        "label": "Sobre laranja profundo",
+        "bg": "#A9520A",
+        "symbol-main": "#F2F0EC",
+        "symbol-accent": "#F2F0EC",
+        "wordmark": "#F2F0EC",
+        "tagline": "#F2F0EC"
+      },
+      "onAccent": {
+        "label": "Sobre laranja",
+        "bg": "#C8650F",
+        "symbol-main": "#151414",
+        "symbol-accent": "#151414",
+        "wordmark": "#151414",
+        "tagline": "#151414"
+      },
+      "onSupport": {
+        "label": "Sobre concreto",
+        "bg": "#C8C5C0",
+        "symbol-main": "#A9520A",
+        "symbol-accent": "#A9520A",
+        "wordmark": "#151414",
+        "tagline": "#151414"
+      },
+      "white": {
+        "label": "Branca",
+        "bg": "#706F6F",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "mono": {
+        "label": "Preta",
+        "bg": "#FFFFFF",
+        "symbol-main": "#151414",
+        "symbol-accent": "#151414",
+        "wordmark": "#151414",
+        "tagline": "#151414"
+      }
+    }
+  },
+  "intro": {
+    "kicker": "Identidade visual",
+    "subtitle": "[rascunho] Gestão de dados na cidade de São Paulo. O símbolo é um mapa: quadras, ruas e os cabos que passam entre elas.",
+    "scrollHint": "Role para conhecer a marca",
+    "variant": "negative"
+  },
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "",
+    "variant": "negative",
+    "title": "Um mapa dentro do símbolo.",
+    "text": [
+      "[rascunho] Treze quadras no mesmo ângulo, separadas por ruas. Visto de cima, o símbolo é um pedaço de cidade: avenidas longas na diagonal e travessas que cortam as quadras em pontos diferentes, como num bairro de verdade.",
+      "[rascunho] As ruas são o caminho dos cabos. A gestão de dados acontece ali, no trajeto entre um ponto e outro da cidade, e é por isso que o vazio entre as quadras importa tanto quanto elas."
+    ],
+    "pieces": [
+      {
+        "piece": "quadras",
+        "label": "Quadras",
+        "text": "[rascunho] treze blocos num só ângulo",
+        "shift": 0,
+        "y": 18
+      },
+      {
+        "piece": "ruas",
+        "label": "Ruas",
+        "text": "[rascunho] por onde os cabos passam",
+        "shift": 0,
+        "y": 74
+      }
+    ],
+    "grid": {
+      "x": [],
+      "y": [],
+      "lines": [
+        [
+          51.3,
+          9.2,
+          224.2,
+          431.2
+        ],
+        [
+          118,
+          -18.1,
+          309.8,
+          450.1
+        ],
+        [
+          10.3,
+          99.5,
+          136.9,
+          408.6
+        ],
+        [
+          203.6,
+          3,
+          375.8,
+          423.1
+        ],
+        [
+          40.6,
+          352.3,
+          302.8,
+          244.9
+        ],
+        [
+          101.9,
+          132.8,
+          168.6,
+          105.4
+        ],
+        [
+          196.5,
+          173.5,
+          324.1,
+          121.2
+        ],
+        [
+          328,
+          306.5,
+          389.7,
+          281.2
+        ]
+      ],
+      "pulse": true,
+      "label": "com os cabos que correm pelas ruas entre as quadras"
+    }
+  },
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "",
+    "title": "Montserrat",
+    "glyphs": [
+      "U",
+      "R",
+      "B",
+      "E",
+      "S",
+      "&"
+    ],
+    "weights": [
+      300,
+      400,
+      500,
+      700,
+      800,
+      900
+    ],
+    "text": "[rascunho] O logotipo parte de uma geométrica larga e pesada, recortada como uma quadra. O R, o B e o E abrem a haste no mesmo ponto, uma rua que atravessa as três letras, e o U é cortado na diagonal, no ângulo do símbolo. A Montserrat é a gratuita mais próxima dessas proporções e fica com os títulos. A Roboto, a fonte do descritor, cuida dos textos.",
+    "spec": [
+      {
+        "k": "Família",
+        "v": "Montserrat, de Julieta Ulanovsky"
+      },
+      {
+        "k": "Licença",
+        "v": "SIL Open Font License · Google Fonts"
+      },
+      {
+        "k": "Títulos",
+        "v": "Montserrat 100 a 900 · variável"
+      },
+      {
+        "k": "Logotipo",
+        "v": "Geométrica larga em caixa-alta, com R, B e E abertos na haste e o U cortado na diagonal"
+      },
+      {
+        "k": "Descritor",
+        "v": "Roboto Regular, em caixa-alta e baixa"
+      },
+      {
+        "k": "Textos",
+        "v": "Roboto 100 a 900, de Christian Robertson"
+      },
+      {
+        "k": "Alternativas",
+        "v": "Lexend · Red Hat Display · Arial"
+      }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz & 0123456789"
+  },
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "",
+    "headline": "[rascunho] Uma cidade do tamanho de São Paulo se entende pelos caminhos: por onde as coisas passam, onde se cruzam e onde param.",
+    "attributes": [
+      {
+        "word": "Precisão",
+        "text": "[rascunho] Cada dado no seu lugar, como uma quadra no mapa."
+      },
+      {
+        "word": "Conexão",
+        "text": "[rascunho] Informação que corre de um ponto a outro da cidade sem se perder no trajeto."
+      },
+      {
+        "word": "Clareza",
+        "text": "[rascunho] Um mapa só serve se qualquer pessoa conseguir ler."
+      },
+      {
+        "word": "Escala",
+        "text": "[rascunho] Pensada para uma metrópole, não para um bairro."
+      }
+    ]
+  },
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "",
+    "title": "Luz de poste sobre asfalto.",
+    "text": "[rascunho] O laranja e o cinza vêm do logo. Vista de cima, à noite, a cidade é isso: ruas escuras riscadas pela luz alaranjada dos postes, entre quadras de concreto. Em volta das duas cores entram o asfalto para os fundos escuros, a calçada para os claros, o concreto para linhas e superfícies e um laranja mais fundo, que aguenta texto claro por cima.",
+    "note": "Laranja e cinza tirados do SVG do logo. CMYK aproximado em todas as cores: confirme no perfil da gráfica. Texto pequeno sobre a calçada vai em asfalto: o cinza Urbes fica em 4,4:1 e o laranja em 3,5:1, então os dois só aparecem ali em títulos e no logo.",
+    "swatches": [
+      {
+        "name": "Laranja Urbes",
+        "role": "Principal · símbolo e destaques",
+        "hex": "#C8650F",
+        "weight": 2.4
+      },
+      {
+        "name": "Cinza Urbes",
+        "role": "Logotipo e descritor",
+        "hex": "#706F6F",
+        "weight": 1.6
+      },
+      {
+        "name": "Asfalto",
+        "role": "Fundo escuro",
+        "hex": "#151414",
+        "weight": 1.8
+      },
+      {
+        "name": "Calçada",
+        "role": "Fundo claro",
+        "hex": "#F2F0EC",
+        "weight": 1.6
+      },
+      {
+        "name": "Concreto",
+        "role": "Apoio · linhas e superfícies",
+        "hex": "#C8C5C0",
+        "weight": 1.1
+      },
+      {
+        "name": "Laranja profundo",
+        "role": "Apoio · fundo para texto claro",
+        "hex": "#A9520A",
+        "weight": 1.1
+      }
+    ]
+  },
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "",
+    "title": "Do painel ao crachá, o mesmo mapa.",
+    "tiles": [
+      {
+        "kind": "lockup",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão principal",
+        "note": "Horizontal, com descritor."
+      },
+      {
+        "kind": "symbol",
+        "variant": "negative",
+        "size": "tall",
+        "label": "Símbolo"
+      },
+      {
+        "kind": "sizes",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Tamanhos pequenos",
+        "sizes": [
+          48,
+          32,
+          24,
+          16
+        ]
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "negative",
+        "size": "wide",
+        "label": "Negativo"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Sobre laranja"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "deep",
+        "size": "sm",
+        "label": "Sobre laranja profundo"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área de proteção",
+        "unit": 41,
+        "note": "[rascunho] Margem mínima igual à largura de uma quadra, que é também a largura da haste das letras."
+      },
+      {
+        "kind": "icon",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Ícone e perfil"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "white",
+        "size": "sm",
+        "label": "Branca"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Preta",
+        "note": "Carimbos, contratos e relatórios em P&B."
+      },
+      {
+        "kind": "minimum",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Redução mínima",
+        "minWidth": 200,
+        "note": "Abaixo de 200 px de largura, o descritor some: use a versão sem descritor ou só o símbolo."
+      },
+      {
+        "kind": "symbol",
+        "variant": "onSupport",
+        "size": "sm",
+        "label": "Símbolo sobre concreto"
+      },
+      {
+        "kind": "symbol",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Símbolo sobre laranja"
+      }
+    ]
+  },
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "",
+    "title": "O mapa cresce até virar parede.",
+    "text": "Estudo de aplicações: recepção, sala de reunião, painel de dados, perfil nas redes, uniforme, papelaria, brindes, relatório e estande.",
+    "marquee": "Urbes",
+    "marqueeArts": [
+      "wordmark",
+      "symbol"
+    ],
+    "items": [
+      {
+        "kind": "piece",
+        "image": "mockup-recepcao",
+        "col": [
+          1,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Recepção",
+        "speed": 2
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "480 62 220 218",
+        "variant": "onAccent",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "60 110 230 280",
+        "variant": "negative",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-sala-reuniao",
+        "col": [
+          5,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Sala de reunião",
+        "speed": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-painel",
+        "col": [
+          1,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Painel de dados no monitor e no notebook",
+        "speed": 2
+      },
+      {
+        "kind": "app",
+        "variant": "positive",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2,
+        "caption": "Painel no celular (estudo)",
+        "head": [
+          "symbol",
+          "wordmark"
+        ],
+        "screen": {
+          "alt": "Estudo de app da Urbes com um painel de dados da cidade no celular",
+          "greeting": "Bom dia. Estes são os dados de hoje.",
+          "cards": [
+            {
+              "label": "Mapa",
+              "title": "Região central",
+              "meta": "Abrir camadas"
+            },
+            {
+              "label": "Relatório",
+              "title": "Resumo da semana",
+              "meta": "Baixar PDF"
+            }
+          ],
+          "progress": {
+            "label": "Sincronizando com a base",
+            "value": 72
+          }
+        }
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-perfil",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 2,
+        "caption": "Perfil nas redes",
+        "speed": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-uniforme",
+        "col": [
+          5,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Uniforme e crachá",
+        "speed": 2,
+        "offset": 4
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-papelaria",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Papelaria",
+        "speed": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-brindes",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 1,
+        "caption": "Brindes",
+        "speed": 2
+      },
+      {
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "150 0 253 300",
+        "variant": "deep",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-relatorio",
+        "col": [
+          5,
+          8
+        ],
+        "mobile": 2,
+        "caption": "Relatório impresso e no tablet",
+        "speed": 2
+      },
+      {
+        "kind": "piece",
+        "image": "mockup-estande",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "caption": "Estande de evento",
+        "speed": 2
+      }
+    ]
+  },
+  "closing": {
+    "phrase": "[rascunho] A cidade inteira cabe num mapa bem desenhado.",
+    "credits": [
+      {
+        "k": "Cliente",
+        "v": "Urbes"
+      },
+      {
+        "k": "Segmento",
+        "v": "Gestão de dados · cidade de São Paulo"
+      },
+      {
+        "k": "Serviços",
+        "v": "Símbolo · logotipo · descritor · paleta · versões de cor · estudo de aplicações"
+      },
+      {
+        "k": "Ferramentas",
+        "v": "Illustrator"
+      },
+      {
+        "k": "Design",
+        "v": "Thiago Miedes"
+      }
+    ],
+    "cta": {
+      "text": "Tem uma marca para construir?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    }
+  },
+  "images": [
+    {
+      "id": "mockup-recepcao",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Recepção com o logo da Urbes em grande escala numa parede escura, atrás de um balcão ripado em laranja"
+    },
+    {
+      "id": "mockup-sala-reuniao",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Sala de reunião com as quadras do símbolo adesivadas na parede de vidro e o logo numa TV ao fundo"
+    },
+    {
+      "id": "mockup-painel",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Monitor e notebook numa mesa de escritório mostrando um painel de dados com o logo da Urbes"
+    },
+    {
+      "id": "mockup-perfil",
+      "section": "applications",
+      "w": 1200,
+      "h": 2150,
+      "essential": true,
+      "alt": "Celular com um perfil de rede social da Urbes, com o símbolo como foto e uma grade de posts"
+    },
+    {
+      "id": "mockup-uniforme",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Camisa polo escura e colete com detalhes em laranja, boné claro com o símbolo e crachá com o logo da Urbes"
+    },
+    {
+      "id": "mockup-papelaria",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Papel timbrado, envelope escuro, cartões de visita e pasta com as quadras do símbolo em tamanho grande"
+    },
+    {
+      "id": "mockup-brindes",
+      "section": "applications",
+      "w": 2048,
+      "h": 2048,
+      "essential": true,
+      "alt": "Sacola de algodão, caderno, caneca, pen drive, adesivos e mouse pad com o logo e o símbolo da Urbes"
+    },
+    {
+      "id": "mockup-relatorio",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Relatório impresso com capa escura e gráficos em laranja e cinza, ao lado de um tablet com a mesma capa"
+    },
+    {
+      "id": "mockup-estande",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Estande de evento com parede escura, logo da Urbes, banners e um balcão com o símbolo em tamanho grande"
+    }
+  ]
+}

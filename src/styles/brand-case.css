@@ -329,6 +329,15 @@ html:not(.js) [data-intro-outline] { display: none; }
 /* symbol.grid: linhas de construção; sem JS (ou com movimento reduzido) já aparecem desenhadas */
 .bc-symbol-lines line { stroke: var(--bc-muted); stroke-width: 0.7; opacity: 0.45; }
 .js .bc-symbol-lines line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+/* grid.lines: cabos pelas ruas do símbolo; grid.pulse: um ponto de luz corre por cada cabo (com JS, aparece depois do desenho) */
+.bc-symbol-lines line.is-cable { stroke: var(--bc-support); stroke-width: 1.3; opacity: 0.55; stroke-linecap: round; }
+.bc-symbol-pulses line {
+  fill: none; stroke: var(--bc-ink-on-dark); stroke-width: 2.6; stroke-linecap: round;
+  stroke-dasharray: 0.05 0.95; animation: bc-pulse var(--d, 3s) linear infinite; animation-delay: calc(var(--i, 0) * -0.83s);
+}
+.bc-symbol-pulses line:nth-child(even) { animation-direction: reverse; }
+@keyframes bc-pulse { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.js .bc-symbol-pulses { opacity: 0; }
 /* symbol.carve: sem JS (ou com movimento reduzido) mostra o símbolo pronto; com JS começa maciço e o vazio se abre */
 .bc-carve-solid, .bc-carve-void { opacity: 0; }
 .bc-carve-void path { fill: none; stroke: var(--bc-accent); stroke-width: 0.45; stroke-linejoin: round; }
@@ -804,4 +813,5 @@ html:not(.js) [data-intro-outline] { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .bc-scroll-hint i, .bc-track-hint i { animation: none; }
+  .bc-symbol-pulses { display: none; }
 }

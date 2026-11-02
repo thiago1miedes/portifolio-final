@@ -441,6 +441,15 @@ export const cases = {
   },
   // A página é o case de marca (cases/vocs/case.json); a capa vem de `npm run brand -- vocs thumb`
   // (logo final). Rodar `npm run assets -- vocs` a sobrescreve.
+  // A página é o case de marca (cases/urbes/case.json, só com o logo); a capa final vem de
+  // `npm run brand -- urbes thumb` (logo negativo sobre o asfalto). Rodar `npm run assets -- urbes` a troca pela crua.
+  urbes: {
+    thumb: { logo: "logo", bg: "#151414" },
+    items: [
+      { id: "logo", src: "Urbes/Logo_urbes.svg", kind: "svg" },
+      { id: "simbolo", src: "Urbes/Logo_urbes_icone.svg", kind: "svg" },
+    ],
+  },
   vocs: {
     thumb: { from: "cartao-frente", crop: "center" },
     items: [

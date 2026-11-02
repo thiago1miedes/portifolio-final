@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 402.93 432.35">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c8650f;
+      }
+    </style>
+  </defs>
+  <g id="Camada_1-2" data-name="Camada 1">
+    <rect class="cls-1" x="247.74" y="21.06" width="39.33" height="100.34" transform="translate(-7.04 106.7) rotate(-22.28)"/>
+    <g>
+      <polygon class="cls-1" points="83.47 316.55 36.48 201.88 0 216.83 47.04 331.47 83.47 316.55"/>
+      <rect class="cls-1" x="67.79" y="353.31" width="39.37" height="49.84" transform="translate(-136.88 61.41) rotate(-22.28)"/>
+    </g>
+    <g>
+      <polygon class="cls-1" points="149.76 289.38 68.05 89.97 28.7 106.09 110.39 305.52 149.76 289.38"/>
+      <rect class="cls-1" x="132.67" y="326.42" width="42.55" height="58.59" transform="translate(-123.39 84.94) rotate(-22.28)"/>
+    </g>
+    <rect class="cls-1" x="210.38" y="297.37" width="39.68" height="113.14" transform="translate(-117.01 113.71) rotate(-22.28)"/>
+    <rect class="cls-1" x="288.71" y="267.03" width="41.04" height="163.65" transform="translate(-109.18 143.3) rotate(-22.28)"/>
+    <g>
+      <polygon class="cls-1" points="243.81 135.12 196.22 18.93 158.25 34.49 205.91 150.65 243.81 135.12"/>
+      <polygon class="cls-1" points="219.13 183.08 246.46 249.76 284.4 234.21 257.09 167.53 219.13 183.08"/>
+    </g>
+    <g>
+      <rect class="cls-1" x="88.08" y="3.65" width="39.68" height="103.64" transform="translate(-12.98 45.06) rotate(-22.28)"/>
+      <rect class="cls-1" x="148.55" y="130.26" width="39.68" height="145.61" transform="translate(-64.42 79.01) rotate(-22.28)"/>
+    </g>
+    <g>
+      <polygon class="cls-1" points="369.98 270.15 317.65 142.21 281.12 157.37 333.25 285.39 369.98 270.15"/>
+      <rect class="cls-1" x="355.37" y="308.31" width="39.33" height="51.18" transform="translate(-98.6 167.13) rotate(-22.28)"/>
+    </g>
+  </g>
+</svg>

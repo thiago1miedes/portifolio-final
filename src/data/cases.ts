@@ -849,6 +849,20 @@ const list: CaseData[] = [
     deliverables: ["Símbolo", "Logotipo", "Descritor", "Paleta", "Versões de cor"],
     tools: ["Illustrator", "Photoshop"],
   },
+  {
+    slug: "urbes",
+    title: "Urbes",
+    client: "Urbes",
+    sector: "Gestão de dados · São Paulo",
+    cats: ["brand"],
+    accent: "#C8650F",
+    summary: "Marca de gestão de dados na cidade de São Paulo: o símbolo é um mapa, com os cabos passando pelas ruas entre as quadras.",
+    about: [
+      "Símbolo de treze quadras inclinadas no mesmo ângulo, logotipo com as letras abertas como cruzamentos e o descritor Gestão de Dados.",
+    ],
+    deliverables: ["Símbolo", "Logotipo", "Descritor", "Paleta", "Versões de cor"],
+    tools: ["Illustrator"],
+  },
 
   /* ============================================================ social media */
   {

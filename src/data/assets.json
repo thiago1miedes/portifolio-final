@@ -5612,5 +5612,29 @@
     "kind": "svg"
    }
   ]
+ },
+ "urbes": {
+  "thumb": {
+   "src": "/cases/urbes/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": "logo",
+  "items": [
+   {
+    "id": "logo",
+    "src": "/cases/urbes/logo.svg",
+    "w": 1276,
+    "h": 432,
+    "kind": "svg"
+   },
+   {
+    "id": "simbolo",
+    "src": "/cases/urbes/simbolo.svg",
+    "w": 403,
+    "h": 432,
+    "kind": "svg"
+   }
+  ]
  }
 }
