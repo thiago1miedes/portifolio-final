@@ -1,0 +1,718 @@
+{
+  "slug": "kom-saude",
+  "client": "Kom Saúde",
+  "segment": "Kombucha e kefir artesanais",
+  "year": "2022",
+  "assets": "/brand/kom-saude",
+  "seo": {
+    "title": "Kom Saúde · Identidade visual",
+    "description": "Case de identidade visual da Kom Saúde, kombucha e kefir artesanais feitos pelo próprio produtor e vendidos na cidade: duas folhas e um broto nascem de dentro de uma xícara. Símbolo, logotipo, tipografia, cores, sistema de logo e aplicações.",
+    "image": "og.png"
+  },
+  "theme": {
+    "dark": "#0E241D",
+    "light": "#F5EFE3",
+    "primary": "#133A2F",
+    "secondary": "#B7C6A5",
+    "support": "#B7C6A5",
+    "accent": "#CC8032",
+    "inkOnLight": "#133A2F",
+    "mutedOnLight": "#5C6A61",
+    "inkOnDark": "#F5EFE3",
+    "mutedOnDark": "#A9B8AE"
+  },
+  "font": {
+    "family": "Fraunces",
+    "fallback": "\"Recoleta\", \"Cooper Black\", Georgia, serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "100 900": "fonts/fraunces-soft-var.woff2"
+    },
+    "preload": [
+      600
+    ],
+    "text": {
+      "family": "Roboto",
+      "fallback": "\"Segoe UI\", system-ui, -apple-system, Arial, sans-serif",
+      "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+      "files": {
+        "100 900": "fonts/roboto-var.woff2"
+      },
+      "preload": [
+        400
+      ]
+    }
+  },
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "untagged": "logo/untagged.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "tagline": "logo/tagline.svg",
+    "nav": {
+      "desktop": [
+        "symbol",
+        "wordmark"
+      ],
+      "mobile": [
+        "symbol"
+      ],
+      "wordmarkHeight": 30,
+      "dark": "negative",
+      "light": "positive"
+    },
+    "variants": {
+      "positive": {
+        "label": "Positivo",
+        "bg": "#F5EFE3",
+        "symbol-main": "#133A2F",
+        "symbol-accent": "#133A2F",
+        "wordmark": "#CC8032",
+        "tagline": "#666666"
+      },
+      "negative": {
+        "label": "Negativo",
+        "bg": "#0E241D",
+        "symbol-main": "#F5EFE3",
+        "symbol-accent": "#F5EFE3",
+        "wordmark": "#CC8032",
+        "tagline": "#A9B8AE"
+      },
+      "onPrimary": {
+        "label": "Sobre verde",
+        "bg": "#133A2F",
+        "symbol-main": "#F5EFE3",
+        "symbol-accent": "#F5EFE3",
+        "wordmark": "#CC8032",
+        "tagline": "#B7C6A5"
+      },
+      "onAccent": {
+        "label": "Sobre âmbar",
+        "bg": "#CC8032",
+        "symbol-main": "#133A2F",
+        "symbol-accent": "#133A2F",
+        "wordmark": "#133A2F",
+        "tagline": "#133A2F"
+      },
+      "onSupport": {
+        "label": "Sobre sálvia",
+        "bg": "#B7C6A5",
+        "symbol-main": "#133A2F",
+        "symbol-accent": "#133A2F",
+        "wordmark": "#133A2F",
+        "tagline": "#133A2F"
+      },
+      "white": {
+        "label": "Branca",
+        "bg": "#133A2F",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "mono": {
+        "label": "Uma cor",
+        "bg": "#FFFFFF",
+        "symbol-main": "#133A2F",
+        "symbol-accent": "#133A2F",
+        "wordmark": "#133A2F",
+        "tagline": "#133A2F"
+      }
+    }
+  },
+  "intro": {
+    "kicker": "",
+    "subtitle": "Kombucha e kefir artesanais, feitos pelo próprio produtor e vendidos na cidade.",
+    "scrollHint": "Role para conhecer a marca",
+    "variant": "negative",
+    "image": "hero-infusao"
+  },
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "",
+    "title": "A planta nasce dentro da xícara.",
+    "text": [
+      "Duas folhas e um broto saem de uma xícara com alça. O caule não é desenhado: é a linha vazia que corta a xícara até o fundo e se abre nas nervuras das folhas.",
+      "Kombucha e kefir são bebidas vivas, que fermentam devagar. O símbolo conta isso sem precisar de rótulo: o que está na xícara ainda está crescendo."
+    ],
+    "pieces": [
+      {
+        "piece": "leaves",
+        "label": "Folhas",
+        "text": "o chá, de onde a kombucha parte",
+        "shift": -16,
+        "y": 34
+      },
+      {
+        "piece": "cup",
+        "label": "Xícara",
+        "text": "a bebida pronta, servida",
+        "shift": 14,
+        "y": 80
+      }
+    ],
+    "image": "textura-scoby"
+  },
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "",
+    "title": "Fraunces",
+    "glyphs": [
+      "K",
+      "a",
+      "g",
+      "e",
+      "&",
+      "S"
+    ],
+    "weights": [
+      300,
+      400,
+      500,
+      700,
+      800,
+      900
+    ],
+    "text": "O logotipo é um lettering de curvas cheias, em caixa-baixa, com hastes que terminam num pingo, como líquido escorrendo do copo. A Fraunces, com o eixo Soft no máximo, tem o mesmo calor arredondado e fica com títulos e destaques. A Roboto, a família do descritor, cuida dos textos.",
+    "spec": [
+      {
+        "k": "Família",
+        "v": "Fraunces, de Undercase Type"
+      },
+      {
+        "k": "Licença",
+        "v": "SIL Open Font License · Google Fonts"
+      },
+      {
+        "k": "Títulos",
+        "v": "Fraunces 100 a 900 · variável, eixo Soft em 100"
+      },
+      {
+        "k": "Logotipo",
+        "v": "Lettering próprio em caixa-baixa, hastes com remate em gota e acento em forma de folha"
+      },
+      {
+        "k": "Descritor",
+        "v": "Roboto Light em caixa-alta, espaçada"
+      },
+      {
+        "k": "Textos",
+        "v": "Roboto 100 a 900, de Christian Robertson"
+      },
+      {
+        "k": "Alternativas",
+        "v": "Recoleta · Cooper Black · Georgia"
+      }
+    ],
+    "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz & 0123456789"
+  },
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "",
+    "headline": "Fermentada sem pressa, pelas mãos de quem faz, e vendida aqui mesmo na cidade.",
+    "attributes": [
+      {
+        "word": "Viva",
+        "text": "Uma bebida que fermenta e continua mudando até chegar ao copo."
+      },
+      {
+        "word": "Artesanal",
+        "text": "Feita pelo próprio produtor, do chá à garrafa."
+      },
+      {
+        "word": "Paciente",
+        "text": "O tempo da fermentação manda mais do que o relógio."
+      },
+      {
+        "word": "Próxima",
+        "text": "Vendida de mão em mão, na rua de quem bebe."
+      }
+    ]
+  },
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "",
+    "title": "Folha de chá e kombucha no copo.",
+    "text": "O verde e o âmbar vêm do logo: a folha e a bebida pronta. Em volta deles entram um verde quase preto para os fundos, o creme do kefir e uma sálvia clara para superfícies. O cinza do descritor fica nos textos pequenos.",
+    "note": "Verde, âmbar e cinza tirados do SVG do logo. CMYK aproximado em todas as cores: confirme no perfil da gráfica. Âmbar em texto só sobre os verdes; sobre o creme o contraste cai para 2,7:1.",
+    "swatches": [
+      {
+        "name": "Verde folha",
+        "role": "Principal · símbolo",
+        "hex": "#133A2F",
+        "weight": 2.4
+      },
+      {
+        "name": "Âmbar kombucha",
+        "role": "Destaque · logotipo",
+        "hex": "#CC8032",
+        "weight": 2
+      },
+      {
+        "name": "Cinza",
+        "role": "Secundária · descritor",
+        "hex": "#666666",
+        "weight": 1.2
+      },
+      {
+        "name": "Chá escuro",
+        "role": "Fundo escuro",
+        "hex": "#0E241D",
+        "weight": 1.7
+      },
+      {
+        "name": "Kefir",
+        "role": "Fundo claro",
+        "hex": "#F5EFE3",
+        "weight": 1.7
+      },
+      {
+        "name": "Sálvia",
+        "role": "Apoio · superfícies",
+        "hex": "#B7C6A5",
+        "weight": 1.3
+      }
+    ]
+  },
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "",
+    "title": "Da tampa da garrafa à barraca da feira, a mesma assinatura.",
+    "tiles": [
+      {
+        "kind": "lockup",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão principal",
+        "note": "Vertical, com descritor."
+      },
+      {
+        "kind": "symbol",
+        "variant": "onPrimary",
+        "size": "tall",
+        "label": "Símbolo"
+      },
+      {
+        "kind": "sizes",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Tamanhos pequenos",
+        "sizes": [
+          48,
+          32,
+          24,
+          16
+        ]
+      },
+      {
+        "kind": "lockup",
+        "variant": "negative",
+        "size": "sm",
+        "label": "Negativo"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "onPrimary",
+        "size": "wide",
+        "label": "Sem descritor",
+        "note": "Para tampas, adesivos e a barraca vista de longe."
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Sobre âmbar"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "white",
+        "size": "sm",
+        "label": "Branca"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área de proteção",
+        "unit": 130,
+        "note": "Margem mínima igual à altura do o de Kom."
+      },
+      {
+        "kind": "icon",
+        "variant": "onPrimary",
+        "size": "sm",
+        "label": "Ícone e perfil"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Uma cor",
+        "note": "Carimbo em kraft e etiqueta de lote."
+      },
+      {
+        "kind": "minimum",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Redução mínima",
+        "minWidth": 180,
+        "note": "Abaixo de 180 px de largura o descritor fica fino demais: use a versão sem descritor ou só o símbolo."
+      },
+      {
+        "kind": "symbol",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Símbolo sobre âmbar"
+      },
+      {
+        "kind": "lockup",
+        "art": "untagged",
+        "variant": "onSupport",
+        "size": "sm",
+        "label": "Sobre sálvia"
+      }
+    ]
+  },
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "",
+    "title": "A marca na garrafa, na caixa e na barraca da feira.",
+    "text": "Estudo de aplicações: fermentação e kefir em preto e branco, garrafas, pote, caixa de entrega, sacola, papelaria, story no celular, geladeira e barraca de feira. No rótulo, uma faixa de cor separa os sabores.",
+    "marquee": "Kom Saúde",
+    "marqueeArts": [
+      "wordmark",
+      "symbol"
+    ],
+    "items": [
+      {
+        "kind": "photo",
+        "image": "editorial-fermentacao",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 2,
+        "speed": -3
+      },
+      {
+        "kind": "crop",
+        "art": "wordmark",
+        "viewBox": "92 296 190 180",
+        "variant": "onPrimary",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-garrafas",
+        "col": [
+          1,
+          8
+        ],
+        "mobile": 2,
+        "speed": 3
+      },
+      {
+        "kind": "crop",
+        "art": "symbol",
+        "viewBox": "330 -4 166 176",
+        "variant": "onAccent",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-kefir",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "speed": 3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-kefir",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "speed": -3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-mesa",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "speed": 4
+      },
+      {
+        "kind": "marquee",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-producao",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1,
+        "speed": -3
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-sacola",
+        "col": [
+          5,
+          4
+        ],
+        "mobile": 1,
+        "speed": 3
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-geladeira",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-caixa",
+        "col": [
+          1,
+          8
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-celular",
+        "col": [
+          9,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "pattern",
+        "variant": "onPrimary",
+        "col": [
+          1,
+          4
+        ],
+        "mobile": 1
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-papelaria",
+        "col": [
+          5,
+          8
+        ],
+        "mobile": 2
+      },
+      {
+        "kind": "photo",
+        "image": "mockup-barraca",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "speed": 4
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-feira",
+        "col": [
+          1,
+          12
+        ],
+        "mobile": 2,
+        "speed": 4
+      }
+    ]
+  },
+  "closing": {
+    "phrase": "Feita sem pressa, vendida perto de casa.",
+    "credits": [
+      {
+        "k": "Cliente",
+        "v": "Kom Saúde"
+      },
+      {
+        "k": "Segmento",
+        "v": "Kombucha e kefir artesanais · venda na cidade"
+      },
+      {
+        "k": "Ano",
+        "v": "2022"
+      },
+      {
+        "k": "Serviços",
+        "v": "Símbolo · logotipo · descritor · paleta · versões de cor · estudo de aplicações"
+      },
+      {
+        "k": "Ferramentas",
+        "v": "Illustrator"
+      },
+      {
+        "k": "Design",
+        "v": "Thiago Miedes"
+      }
+    ],
+    "cta": {
+      "text": "Tem uma marca para construir?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    }
+  },
+  "images": [
+    {
+      "id": "hero-infusao",
+      "section": "intro",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Cozinha escura em tons de verde com potes de kombucha cor de âmbar nas duas pontas da bancada, iluminados pela luz das janelas"
+    },
+    {
+      "id": "textura-scoby",
+      "section": "symbol",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Superfície de um scoby de kombucha em close, com bolhas e dobras em verde escuro e reflexos âmbar"
+    },
+    {
+      "id": "editorial-fermentacao",
+      "mono": true,
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Três potes grandes de kombucha fermentando sobre uma bancada de madeira, cobertos com pano amarrado com barbante, ao lado de uma janela, em preto e branco"
+    },
+    {
+      "id": "editorial-kefir",
+      "mono": true,
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Mãos coando grãos de kefir numa peneira de bambu sobre um pote de vidro, em preto e branco"
+    },
+    {
+      "id": "editorial-feira",
+      "mono": true,
+      "section": "applications",
+      "w": 2400,
+      "h": 1200,
+      "essential": true,
+      "alt": "Praça de cidade do interior com feira ao fundo, igreja, pessoas caminhando e dois homens conversando num banco, em preto e branco"
+    },
+    {
+      "id": "mockup-garrafas",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Três garrafas de kombucha com o logo da Kom Saúde no rótulo creme e faixas âmbar, vinho e sálvia, numa bancada com gengibre, hibisco e capim-limão"
+    },
+    {
+      "id": "editorial-producao",
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Pessoa de avental verde com o logo da Kom Saúde despejando kombucha de um pote de vidro numa garrafa"
+    },
+    {
+      "id": "mockup-kefir",
+      "section": "applications",
+      "w": 1936,
+      "h": 2048,
+      "essential": true,
+      "alt": "Pote de vidro com kefir, tampa verde com o símbolo e rótulo creme com o logo da Kom Saúde, sobre uma toalha de linho"
+    },
+    {
+      "id": "mockup-mesa",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Garrafa de kombucha com rótulo da Kom Saúde e tag de kraft numa mesa de café da manhã, ao lado de um copo com gelo"
+    },
+    {
+      "id": "mockup-caixa",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Caixa de entrega verde aberta com o logo da Kom Saúde na tampa, garrafas em divisórias de kraft, papel de seda com folhas e um cartão"
+    },
+    {
+      "id": "mockup-papelaria",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Papel timbrado, envelope kraft, cartões de visita, pasta, adesivos e caneta com a marca Kom Saúde sobre uma parede creme"
+    },
+    {
+      "id": "mockup-sacola",
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Sacola de papel kraft com o símbolo da Kom Saúde em verde, cercado de pontos âmbar, com adesivo e tag no fechamento"
+    },
+    {
+      "id": "mockup-celular",
+      "section": "applications",
+      "w": 1536,
+      "h": 2345,
+      "essential": true,
+      "alt": "Mão segurando um celular com um story da Kom Saúde que mostra uma garrafa de kombucha, ao lado de um copo com gelo e uma flor de hibisco"
+    },
+    {
+      "id": "mockup-geladeira",
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Geladeira verde de bebidas com o logo da Kom Saúde no painel, prateleiras de garrafas de kombucha e potes de kefir"
+    },
+    {
+      "id": "mockup-barraca",
+      "section": "applications",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Barraca de feira verde numa praça arborizada, com a placa da Kom Saúde, garrafas e potes na mesa, sacolas de kraft e bandeirinhas com folhas"
+    }
+  ]
+}

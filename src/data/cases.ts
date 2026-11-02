@@ -863,6 +863,22 @@ const list: CaseData[] = [
     deliverables: ["Símbolo", "Logotipo", "Descritor", "Paleta", "Versões de cor"],
     tools: ["Illustrator"],
   },
+  {
+    slug: "kom-saude",
+    title: "Kom Saúde",
+    client: "Kom Saúde",
+    sector: "Bebidas artesanais · kombucha e kefir",
+    year: "2022",
+    cats: ["brand"],
+    accent: "#CC8032",
+    summary: "Marca de kombucha e kefir artesanais vendidos na cidade: duas folhas e um broto nascem de dentro de uma xícara.",
+    about: [
+      "Símbolo com o caule desenhado pelo vazio, lettering de curvas cheias em âmbar, descritor fino e uma paleta tirada da folha de chá e da bebida pronta.",
+    ],
+    deliverables: ["Símbolo", "Logotipo", "Descritor", "Paleta", "Versões de cor"],
+    tools: ["Illustrator"],
+    credit: "Projeto desenvolvido na Olive Comunicação",
+  },
 
   /* ============================================================ social media */
   {

@@ -5636,5 +5636,14 @@
     "kind": "svg"
    }
   ]
+ },
+ "kom-saude": {
+  "thumb": {
+   "src": "/cases/kom-saude/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": null,
+  "items": []
  }
 }
