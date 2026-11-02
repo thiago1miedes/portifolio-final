@@ -128,7 +128,8 @@
   "intro": {
     "kicker": "Identidade visual · 2021",
     "subtitle": "Marca de uma vidraçaria de Bauru que leva vidro de muitas cores e formas para casas e construções.",
-    "scrollHint": "Role para conhecer a marca"
+    "scrollHint": "Role para conhecer a marca",
+    "image": "hero-vidro-luz"
   },
   "symbol": {
     "nav": "Símbolo",
@@ -161,7 +162,8 @@
         "shift": 22,
         "y": 84
       }
-    ]
+    ],
+    "image": "textura-vidro-colorido"
   },
   "typography": {
     "nav": "Tipografia",
@@ -358,7 +360,7 @@
     "nav": "Aplicações",
     "eyebrow": "",
     "title": "Na fachada, na obra e no caminhão.",
-    "text": "Estudo de aplicações: fachada, showroom, caminhão de entrega, uniforme, papelaria, adesivo na lâmina e redes sociais.",
+    "text": "Estudo de aplicações: fachada, showroom, caminhão de entrega, uniforme, papelaria, adesivo no vidro e redes sociais, ao lado de fotos de obra e oficina.",
     "marquee": "VISUAL VIDROS",
     "marqueeArts": [
       "symbol",
@@ -376,14 +378,14 @@
         "caption": "Fachada"
       },
       {
-        "kind": "piece",
-        "image": "foto-instalador",
+        "kind": "photo",
+        "image": "editorial-fachada",
         "col": [
           1,
           5
         ],
         "mobile": 2,
-        "caption": "Uniforme em obra"
+        "speed": -4
       },
       {
         "kind": "crop",
@@ -446,6 +448,26 @@
         "caption": "Porta de vidro"
       },
       {
+        "kind": "photo",
+        "image": "editorial-oficina",
+        "col": [
+          1,
+          7
+        ],
+        "mobile": 2,
+        "speed": 3
+      },
+      {
+        "kind": "piece",
+        "image": "foto-instalador",
+        "col": [
+          8,
+          5
+        ],
+        "mobile": 2,
+        "caption": "Uniforme em obra"
+      },
+      {
         "kind": "piece",
         "image": "mockup-caminhao",
         "col": [
@@ -454,6 +476,52 @@
         ],
         "mobile": 2,
         "caption": "Caminhão de entrega"
+      },
+      {
+        "kind": "photo",
+        "image": "editorial-instalacao",
+        "col": [
+          1,
+          5
+        ],
+        "mobile": 2,
+        "speed": 4
+      },
+      {
+        "kind": "mockup",
+        "image": "mockup-adesivo-vidro",
+        "col": [
+          6,
+          7
+        ],
+        "mobile": 2,
+        "caption": "Adesivo na porta",
+        "overlays": [
+          {
+            "art": "lockup",
+            "variant": "positive",
+            "blend": "multiply",
+            "inset": 0,
+            "pin": [
+              [
+                35,
+                24
+              ],
+              [
+                55,
+                24
+              ],
+              [
+                55,
+                51
+              ],
+              [
+                35,
+                51
+              ]
+            ]
+          }
+        ]
       },
       {
         "kind": "piece",
@@ -495,15 +563,14 @@
         "caption": "Kit de equipe"
       },
       {
-        "kind": "crop",
-        "art": "symbol",
-        "viewBox": "206 0 200 160",
-        "variant": "onBlue",
+        "kind": "photo",
+        "image": "editorial-reflexo",
+        "mobile": 2,
+        "speed": -3,
         "col": [
           8,
           5
-        ],
-        "mobile": 2
+        ]
       },
       {
         "kind": "piece",
@@ -549,7 +616,8 @@
       "text": "Tem uma marca para construir?",
       "label": "Vamos conversar",
       "href": "/#contato"
-    }
+    },
+    "image": "fechamento-vitral"
   },
   "images": [
     {
@@ -631,6 +699,74 @@
       "h": 1340,
       "essential": true,
       "alt": "Showroom da Visual Vidros com balcão, parede marinho com o logo e amostras de box e esquadrias"
+    },
+    {
+      "id": "hero-vidro-luz",
+      "section": "intro",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Lâminas de vidro azul e âmbar encostadas numa oficina escura, com um feixe de luz projetando cor na parede"
+    },
+    {
+      "id": "textura-vidro-colorido",
+      "section": "symbol",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Luz azul e âmbar projetada por vidros em planos geométricos sobre um piso de concreto claro"
+    },
+    {
+      "id": "fechamento-vitral",
+      "section": "closing",
+      "w": 2400,
+      "h": 1340,
+      "essential": true,
+      "alt": "Janela alta com vidros azuis e âmbar em planos geométricos, projetando cor no chão de uma sala escura"
+    },
+    {
+      "id": "mockup-adesivo-vidro",
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Porta de vidro temperado com puxador de alumínio e o logo da Visual Vidros aplicado"
+    },
+    {
+      "id": "editorial-fachada",
+      "mono": true,
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Prédio residencial com fachada de vidro visto de baixo, refletindo as nuvens, em preto e branco"
+    },
+    {
+      "id": "editorial-oficina",
+      "mono": true,
+      "section": "applications",
+      "w": 2400,
+      "h": 1792,
+      "essential": true,
+      "alt": "Mão de luva riscando uma lâmina de vidro ao longo de uma régua de metal numa bancada de oficina, em preto e branco"
+    },
+    {
+      "id": "editorial-instalacao",
+      "mono": true,
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Dois instaladores encaixando uma lâmina de vidro com ventosas numa janela de obra, em preto e branco"
+    },
+    {
+      "id": "editorial-reflexo",
+      "mono": true,
+      "section": "applications",
+      "w": 1792,
+      "h": 2400,
+      "essential": true,
+      "alt": "Espelho grande numa parede de concreto refletindo uma escada e janelas altas, em preto e branco"
     }
   ]
 }

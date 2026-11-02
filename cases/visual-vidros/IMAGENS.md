@@ -1,6 +1,6 @@
 # Visual Vidros: plano de imagens
 
-> **Situação:** o case foi publicado com as 10 imagens que o Thiago gerou (logo desenhado pela IA, sem overlay), com ids próprios em `case.json`. Este plano fica como referência; os ids abaixo não estão mais na página.
+> **Situação:** o case está publicado com 18 imagens do Thiago. Do plano abaixo entraram hero-vidro-luz, textura-vidro-colorido, fechamento-vitral, mockup-adesivo-vidro (logo real por overlay) e as editoriais fachada, oficina, instalação e reflexo. Os outros mockups vieram prontos, com o logo desenhado pela IA e ids próprios em `case.json`.
 
 Página: `/cases/visual-vidros/` · conteúdo: `cases/visual-vidros/case.json` · 7 essenciais + 6 opcionais, todas por IA. Só o logo é do cliente.
 
