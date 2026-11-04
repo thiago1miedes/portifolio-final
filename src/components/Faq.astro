@@ -74,8 +74,8 @@ import { faq, site, whatsappUrl } from "../data/site";
   .faq-q {
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
-    letter-spacing: -0.025em;
+    font-size: var(--fs-card);
+    letter-spacing: -0.03em;
     line-height: 1.2;
     transition: color 0.3s;
   }
@@ -110,8 +110,8 @@ import { faq, site, whatsappUrl } from "../data/site";
     box-shadow: 0 30px 80px -30px var(--accent-glow);
   }
   .faq-avatar { width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--on-accent); }
-  .faq-card-title { font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.04em; line-height: 1; }
-  .faq-card p { font-size: 1rem; line-height: 1.55; }
+  .faq-card-title { font-size: var(--fs-card); letter-spacing: -0.03em; line-height: 1.1; }
+  .faq-card p { line-height: 1.55; }
   .faq-actions { display: grid; gap: 10px; margin-top: 6px; }
   .faq-actions .btn { width: 100%; }
 </style>

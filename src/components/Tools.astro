@@ -1,20 +1,33 @@
 ---
-// Faixa fina com os aplicativos, em forma de dock: os ícones crescem perto do mouse e pulam no clique
-// (src/scripts/playground.ts). Lista em site.ts; ícones do banco Logos, nas cores originais.
+// Título e texto no centro, aplicativos espalhados em volta. Os ícones saem de trás do texto ao entrar na tela,
+// flutuam, respondem ao mouse e dá para arrastar (src/scripts/playground.ts). Posições em site.ts.
 import Icon from "./Icon.astro";
 import { tools } from "../data/site";
 ---
-<section class="tools-band" id="ferramentas">
-  <div class="container tools-inner">
-    <h2 class="tools-heading" data-reveal>Minhas <em>ferramentas</em></h2>
-    <div class="dock-wrap" data-reveal>
-      <ul class="dock" data-dock>
-        {tools.map((t) => (
-          <li class="dock-item" data-dock-item tabindex="0">
-            <span class="dock-name">{t.name}</span>
-            <span class:list={["dock-icon", { "dock-icon--tile": t.tile }]} data-dock-icon>
-              <Icon name={t.icon} size={48} />
-            </span>
+<section class="tools" id="ferramentas">
+  <div class="container">
+    <div class="tools-stage" data-tools>
+      <div class="tools-text">
+        <h2 class="title-section" data-split>Minhas <em>ferramentas</em></h2>
+        <p data-reveal>Ferramentas que eu utilizo no meu dia a dia para o desenvolvimento de projetos.</p>
+      </div>
+
+      <ul class="tools-cloud">
+        {tools.map((t, i) => (
+          <li
+            class="tool"
+            data-tool
+            data-size={t.size}
+            style={`--x:${t.x}%;--y:${t.y}%;--mx:${t.mx}%;--my:${t.my}%;--size:${t.size}px;--r:${t.r}deg;--bob:${4 + (i % 4) * 0.8}s;--bob-delay:-${i * 0.7}s`}
+          >
+            <div class="tool-float" data-tool-float>
+              <div class="tool-tilt">
+                <span class:list={["tool-tile", { "tool-tile--box": t.tile }]}>
+                  <Icon name={t.icon} size={64} />
+                </span>
+              </div>
+            </div>
+            <span class="tool-name">{t.name}</span>
           </li>
         ))}
       </ul>
@@ -23,45 +36,49 @@ import { tools } from "../data/site";
 </section>
 
 <style>
-  .tools-band {
-    position: relative;
-    z-index: 2;
-    padding-block: clamp(24px, 3vw, 36px);
-    border-block: 1px solid var(--border);
-  }
-  .tools-inner { display: grid; gap: 20px; align-items: center; }
-  .tools-heading { font-size: clamp(1.5rem, 2.6vw, 2.25rem); letter-spacing: -0.035em; }
-  .dock-wrap { display: flex; justify-content: center; }
+  .tools { position: relative; isolation: isolate; overflow-x: clip; padding-block: clamp(48px, 6vw, 88px); }
 
-  .dock {
-    --base: 44px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border-radius: 22px;
-    background: var(--surface-glass);
-    border: 1px solid var(--border);
-  }
-  .dock-item {
+  .tools-stage {
+    --k: 0.62;
     position: relative;
-    width: calc(var(--base) * var(--s, 1));
-    height: calc(var(--base) * var(--s, 1));
-    border-radius: 11px;
-    cursor: pointer;
-    touch-action: manipulation;
-    outline-offset: 2px;
+    display: grid;
+    place-items: center;
+    min-height: 520px;
   }
-  .dock-icon { position: absolute; inset: 0; display: grid; place-items: center; will-change: transform; }
-  .dock-icon :global(svg) { width: 100%; height: 100%; }
+  .tools-text { position: relative; display: grid; gap: 16px; max-width: 62%; text-align: center; }
+  .tools-text p { color: var(--text-muted); }
+  .tools-cloud { position: absolute; inset: 0; pointer-events: none; }
+
+  .tool {
+    position: absolute;
+    left: var(--mx);
+    top: var(--my);
+    width: calc(var(--size) * var(--k));
+    aspect-ratio: 1;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .tool:hover, .tool.is-tapped { z-index: 5; }
+
+  /* três camadas: .tool é arrastada e .tool-float acompanha o mouse (GSAP); .tool-tilt inclina e flutua (CSS) */
+  .tool-tilt {
+    rotate: var(--r);
+    animation: tool-bob var(--bob) ease-in-out var(--bob-delay) infinite alternate;
+    transition: rotate 0.4s var(--ease), scale 0.4s var(--ease);
+  }
+  .tool:hover .tool-tilt, .tool.is-tapped .tool-tilt { rotate: 0deg; scale: 1.14; }
+  @keyframes tool-bob { from { translate: 0 -5px; } to { translate: 0 5px; } }
+
+  .tool-tile { display: block; filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.55)); }
+  .tool-tile :global(svg) { width: 100%; height: auto; aspect-ratio: 1; }
   /* quem não tem quadrado próprio no ícone (Figma, VS Code, Blender) ganha um */
-  .dock-icon--tile { padding: 19%; border-radius: 22%; background: #1f1f24; box-shadow: inset 0 0 0 1px var(--border); }
+  .tool-tile--box { padding: 19%; border-radius: 22%; background: #1f1f24; box-shadow: inset 0 0 0 1px var(--border); }
 
-  .dock-name {
+  .tool-name {
     position: absolute;
     left: 50%;
-    bottom: calc(100% + 10px);
+    bottom: calc(100% + 12px);
     translate: -50% 4px;
     padding: 4px 10px;
     border-radius: 8px;
@@ -69,18 +86,22 @@ import { tools } from "../data/site";
     color: #0a0a0b;
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 0.8125rem;
+    font-size: var(--fs-small);
     letter-spacing: -0.01em;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s, translate 0.3s var(--ease);
   }
-  .dock-item:hover .dock-name, .dock-item:focus-visible .dock-name, .dock-item.is-tapped .dock-name { opacity: 1; translate: -50% 0; }
+  .tool:hover .tool-name, .tool.is-tapped .tool-name { opacity: 1; translate: -50% 0; }
 
-  @media (min-width: 900px) {
-    .tools-inner { grid-template-columns: auto minmax(0, 1fr); gap: 32px; }
-    .dock { --base: 48px; flex-wrap: nowrap; align-items: flex-end; height: calc(var(--base) + 22px); }
-    .dock-item { flex: none; }
+  /* telas bem estreitas: o título precisa caber entre os ícones das laterais */
+  @media (max-width: 359px) { .tools-text :global(h2) { font-size: 2.125rem; } }
+
+  @media (min-width: 700px) {
+    .tools-stage { --k: 0.8; min-height: clamp(460px, 42vw, 560px); }
+    .tools-text { max-width: 56%; }
+    .tool { left: var(--x); top: var(--y); }
   }
+  @media (min-width: 1100px) { .tools-stage { --k: 1; } }
 </style>

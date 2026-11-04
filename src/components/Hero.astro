@@ -64,7 +64,7 @@ import { facts, heroPhrases } from "../data/site";
   .hero {
     position: relative;
     /* a faixa de logos e a maior parte da engrenagem, logo abaixo, também cabem na primeira tela */
-    min-height: calc(100svh - var(--belt-h) - 60px);
+    min-height: calc(100svh - var(--belt-h) - 40px);
     display: flex;
     flex-direction: column;
     padding-top: calc(var(--nav-h) + 48px);
@@ -116,7 +116,7 @@ import { facts, heroPhrases } from "../data/site";
     gap: 6px;
     margin-bottom: 18px;
   }
-  .hero-role { display: none; font-family: var(--font-heading); font-weight: 600; font-size: clamp(1rem, 1.7cqi, 1.5rem); letter-spacing: -0.02em; line-height: 1.2; }
+  .hero-role { display: none; font-family: var(--font-heading); font-weight: 600; font-size: var(--fs-card); letter-spacing: -0.02em; line-height: 1.2; }
 
   .hero-avatar {
     position: relative;
@@ -190,7 +190,7 @@ import { facts, heroPhrases } from "../data/site";
     color: #0a0a0b;
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 0.9375rem;
+    font-size: var(--fs-small);
     line-height: 1.15;
     letter-spacing: -0.02em;
     text-align: left;
@@ -202,7 +202,7 @@ import { facts, heroPhrases } from "../data/site";
   :global(html.js:not(.no-play)) .hero-say { opacity: 0; }
   @media (min-width: 700px) {
     .hero-say { left: 61.5cqi; top: 8.5cqi; max-width: 15cqi; }
-    .hero-say-bubble { font-size: clamp(0.875rem, 1.35cqi, 1.25rem); padding: 0.75cqi 1.2cqi; }
+    .hero-say-bubble { padding: 0.75cqi 1.2cqi; }
   }
 
   .hero-bottom {
@@ -214,7 +214,7 @@ import { facts, heroPhrases } from "../data/site";
     padding-bottom: 32px;
   }
   .hero-intro { display: grid; gap: 20px; justify-items: start; max-width: 380px; }
-  .hero-intro p { color: var(--text-muted); font-size: 1.0625rem; line-height: 1.55; }
+  .hero-intro p { color: var(--text-muted); line-height: 1.55; }
 
   .hero-facts {
     display: grid;
@@ -230,18 +230,18 @@ import { facts, heroPhrases } from "../data/site";
   }
   .hero-facts strong {
     font-family: var(--font-heading);
-    font-size: clamp(1.15rem, 2.2vw, 1.75rem);
+    font-size: var(--fs-card);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.05;
   }
   .hero-facts li:first-child strong { color: var(--accent); }
-  .hero-facts span { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.35; }
+  .hero-facts span { font-size: var(--fs-small); color: var(--text-muted); line-height: 1.35; }
 
   /* mobile: PENSE também ocupa a largura toda; fatos em lista */
   @media (max-width: 699px) {
     /* a engrenagem sobe um pouco sobre o fim do hero */
-    .hero { padding-bottom: 52px; }
+    .hero { padding-bottom: 32px; }
     .hero-line:first-child { font-size: calc(100cqi / 2.3); line-height: 0.84; }
     .hero-avatar { width: min(68%, 320px); }
     .hero-facts { grid-template-columns: 1fr; gap: 0; }
@@ -279,6 +279,6 @@ import { facts, heroPhrases } from "../data/site";
       gap: 24px;
     }
     .hero-intro { grid-column: 1; }
-    .hero-facts { grid-column: 3; grid-template-columns: 1fr; gap: 14px; justify-self: end; width: min(100%, 280px); }
+    .hero-facts { grid-column: 3; grid-template-columns: 1fr; gap: 14px; justify-self: end; width: min(100%, 300px); }
   }
 </style>

@@ -13,26 +13,42 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public", "logos");
 const BG = "#0a0a0b";
 
+// noTagline: sai o descritor (a camada data-layer="tagline" do lockup), que nesse tamanho não dá para ler.
+const brandLockup = (slug) => `public/brand/${slug}/logo/lockup.svg`;
 const LOGOS = [
-  { slug: "faggian", name: "Faggian Brand", src: "cases/faggian/source/Logo_faggian.svg" },
-  { slug: "kom-saude", name: "Kom Saúde", src: "cases/kom-saude/source/Logo_KomSaude.svg" },
-  { slug: "visual-vidros", name: "Visual Vidros", src: "cases/visual-vidros/source/Logo_VisualVidros.svg" },
+  { slug: "faggian", name: "Faggian Brand", src: brandLockup("faggian"), noTagline: true },
+  { slug: "kom-saude", name: "Kom Saúde", src: brandLockup("kom-saude"), noTagline: true },
+  { slug: "visual-vidros", name: "Visual Vidros", src: brandLockup("visual-vidros"), noTagline: true },
   { slug: "dor-e-saude", name: "Instituto Dor & Saúde", src: "cases/dor-e-saude/source/logo-sem-descritor.svg" },
   { slug: "easywork", name: "EasyWork", src: "cases/easywork/source/logo_EasyWork.svg" },
-  { slug: "equipamentaria", name: "Equipamentaria", src: "cases/equipamentaria/source/Logo_equipamentaria.svg" },
+  { slug: "equipamentaria", name: "Equipamentaria", src: brandLockup("equipamentaria"), noTagline: true },
   { slug: "confraria", name: "Confraria dos Aromas", src: "cases/confraria/source/ConfrariaDosAromas.svg" },
   { slug: "vocs", name: "VOC&S", src: "cases/vocs/source/Logo_voc&s.svg" },
-  { slug: "urbes", name: "Urbes", src: "cases/urbes/source/Logo_urbes.svg" },
+  { slug: "urbes", name: "Urbes", src: brandLockup("urbes"), noTagline: true },
   { slug: "oticas-talarico", name: "Óticas Talarico", src: "../Oticas Talarico/Projeto case/Group 2023.svg" },
-  { slug: "grasie", name: "Grasiê Kids & Teen", src: "cases/grasie/source/Logo_Grasie.svg" },
+  { slug: "grasie", name: "Grasiê Kids & Teen", src: brandLockup("grasie"), noTagline: true },
   { slug: "rock-ensina", name: "Rock Ensina", src: "cases/rock-ensina/source/logo_rockensina.svg" },
-  { slug: "debora-sandrin", name: "Débora Sandrin", src: "../DeboraSandrin/Projeto Case/Logo_Debora.svg" },
+  { slug: "debora-sandrin", name: "Débora Sandrin", src: brandLockup("debora-sandrin"), noTagline: true },
   { slug: "lf-servicos-eletricos", name: "LF Serviços Elétricos", src: "../LF Serviços elétricos/Logo_Lf_2.svg" },
-  { slug: "lifestyle", name: "LifeStyle", src: "cases/lifestyle/source/Logo_LifeStyle.svg" },
-  { slug: "efpi", name: "EFPI", src: "cases/efpi/source/Logo EFPI.svg" },
+  { slug: "lifestyle", name: "LifeStyle", src: brandLockup("lifestyle"), noTagline: true },
+  { slug: "efpi", name: "EFPI", src: brandLockup("efpi"), noTagline: true },
   { slug: "mentevitale", name: "MenteVitale", src: "../Mentivitalle/Logo_mentevitale.svg" },
   { slug: "cau-pe", name: "CAU/PE", src: "public/cases/cau-pe/logo.svg" },
 ];
+
+/** Remove o grupo do descritor, contando os <g> abertos para achar onde ele termina. */
+function withoutTagline(svg, slug) {
+  const start = svg.search(/<g\b[^>]*data-layer="tagline"/);
+  if (start < 0) throw new Error(`${slug}: lockup sem camada de descritor`);
+  const tag = /<g\b[^>]*>|<\/g>/g;
+  tag.lastIndex = start;
+  let depth = 0;
+  for (let m; (m = tag.exec(svg)); ) {
+    depth += m[0] === "</g>" ? -1 : m[0].endsWith("/>") ? 0 : 1;
+    if (depth === 0) return svg.slice(0, start) + svg.slice(m.index + m[0].length);
+  }
+  throw new Error(`${slug}: grupo do descritor sem fechamento`);
+}
 
 const NAMED = { white: "#ffffff", black: "#000000" };
 const COLOR = /#[0-9a-f]{6}\b|#[0-9a-f]{3}\b|rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)|(?<=(?:fill|stroke|stop-color)\s*[:=]\s*"?)(?:white|black)\b/gi;
@@ -109,7 +125,8 @@ function whiteVersion(t) {
 fs.mkdirSync(OUT, { recursive: true });
 const manifest = [];
 for (const logo of LOGOS) {
-  const raw = fs.readFileSync(path.resolve(ROOT, logo.src), "utf8");
+  const original = fs.readFileSync(path.resolve(ROOT, logo.src), "utf8");
+  const raw = logo.noTagline ? withoutTagline(original, logo.slug) : original;
   if (/<image\b/i.test(raw)) throw new Error(`${logo.slug}: o SVG traz imagem embutida`);
   const { body, vb } = clean(raw);
   const box = await tightBox(body, vb);

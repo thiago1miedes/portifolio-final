@@ -37,10 +37,17 @@
   --radius-pill: 999px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --nav-h: 64px;
-  --belt-h: clamp(84px, 7vw, 100px);
+  --belt-h: clamp(96px, 8vw, 112px);
+
+  /* tamanhos de texto: quatro degraus para a home inteira (o título do hero e o THIAGO do rodapé são arte, ficam de fora) */
+  --fs-title: clamp(2.5rem, 6vw, 5.25rem); /* título de seção */
+  --fs-card: clamp(1.25rem, 1.8vw, 1.5rem); /* título de card, pergunta, destaque */
+  --fs-body: 1rem; /* texto corrido */
+  --fs-small: 0.875rem; /* legenda, etiqueta, detalhe */
 
   color-scheme: dark;
 }
+@media (min-width: 900px) { :root { --fs-body: 1.0625rem; } }
 
 *,
 *::before,
@@ -61,13 +68,12 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--fs-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
 }
-@media (min-width: 900px) { body { font-size: 1.0625rem; } }
 
 img, svg, video { display: block; max-width: 100%; }
 img { height: auto; }
@@ -142,11 +148,11 @@ h1 em, h2 em, h3 em, .kw { font-style: normal; color: var(--accent); }
 }
 
 .title-section {
-  font-size: clamp(2.5rem, 6vw, 5.25rem);
+  font-size: var(--fs-title);
   letter-spacing: -0.045em;
   line-height: 0.98;
 }
-.title-card { font-size: clamp(1.35rem, 2vw, 1.75rem); letter-spacing: -0.03em; }
+.title-card { font-size: var(--fs-card); letter-spacing: -0.03em; }
 .lead { font-size: clamp(1.0625rem, 1.3vw, 1.25rem); color: var(--text-muted); line-height: 1.55; }
 .muted { color: var(--text-muted); }
 

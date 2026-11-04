@@ -37,7 +37,7 @@ export const facts = [
 ];
 
 /** Frase que gira na engrenagem da faixa de logos. O espaço não separável no fim fecha o círculo. */
-export const beltPhrase = "MARCAS QUE CONFIARAM NO MEU TRABALHO · DE BAURU PARA O BRASIL · ";
+export const beltPhrase = "MARCAS QUE CONFIARAM · DE BAURU PARA O BRASIL · ";
 
 /** Frases do balão ao lado da foto no hero (cada clique troca). As de mouse só fazem sentido onde dá para arrastar. */
 export const heroPhrases = {
@@ -72,57 +72,79 @@ export const homeBoard: BoardItem[] = [
   { slug: "kom-saude", x: 37, y: 66.5, w: 31, ratio: "4 / 3", r: -4.5, deco: "pin", image: "/brand/kom-saude/img/mockup-garrafas.webp" },
 ];
 
-/** Aplicativos da faixa de ferramentas. tile: o ícone não tem quadrado próprio e ganha um fundo. */
-export const tools: { name: string; icon: string; tile?: boolean }[] = [
-  { name: "Photoshop", icon: "photoshop" },
-  { name: "Illustrator", icon: "illustrator" },
-  { name: "InDesign", icon: "indesign" },
-  { name: "After Effects", icon: "aftereffects" },
-  { name: "Premiere Pro", icon: "premiere" },
-  { name: "Lightroom", icon: "lightroom" },
-  { name: "Adobe XD", icon: "xd" },
-  { name: "Figma", icon: "figma", tile: true },
-  { name: "VS Code", icon: "vscode", tile: true },
-  { name: "Blender", icon: "blender", tile: true },
+/**
+ * Aplicativos espalhados em volta do texto da seção de ferramentas.
+ * x e y: posição em % do palco (mx e my no celular). size em px, r em graus.
+ * tile: o ícone não tem quadrado próprio e ganha um fundo.
+ */
+export const tools: { name: string; icon: string; tile?: boolean; x: number; y: number; mx: number; my: number; size: number; r: number }[] = [
+  { name: "Photoshop", icon: "photoshop", x: 7, y: 10, mx: 4, my: 5, size: 96, r: -12 },
+  { name: "Illustrator", icon: "illustrator", x: 25, y: 1, mx: 30, my: 0, size: 72, r: 8 },
+  { name: "InDesign", icon: "indesign", x: 45, y: 9, mx: 57, my: 7, size: 60, r: -6 },
+  { name: "After Effects", icon: "aftereffects", x: 66, y: 0, mx: 80, my: 1, size: 84, r: 10 },
+  { name: "Premiere Pro", icon: "premiere", x: 87, y: 16, mx: 84, my: 54, size: 78, r: 12 },
+  { name: "Lightroom", icon: "lightroom", x: 2, y: 56, mx: 1, my: 47, size: 70, r: 9 },
+  { name: "Adobe XD", icon: "xd", x: 17, y: 78, mx: 3, my: 74, size: 88, r: -10 },
+  { name: "Figma", icon: "figma", tile: true, x: 42, y: 82, mx: 29, my: 88, size: 66, r: 7 },
+  { name: "VS Code", icon: "vscode", tile: true, x: 65, y: 76, mx: 56, my: 82, size: 92, r: -8 },
+  { name: "Blender", icon: "blender", tile: true, x: 90, y: 60, mx: 80, my: 74, size: 76, r: 10 },
 ];
 
-/** Serviços (acordeão: só um aberto por vez). */
-export const services = [
+/** Serviços: um card para cada, com duas figurinhas em volta (props do Sticker, x e y relativos ao card). */
+export const services: { title: string; text: string; tags: string[]; stickers: { name: string; x: string; y: string; size: string; r: number; tone?: "accent" | "ink"; mx?: string; my?: string; msize?: string }[] }[] = [
   {
-    icon: "brand",
     title: "Identidade Visual",
     text: "Marcas com personalidade, do conceito ao manual, já aplicadas em peças reais para você ver como elas vivem no dia a dia.",
     tags: ["Logotipo", "Manual de marca", "Paleta e tipografia", "Rebranding"],
+    stickers: [
+      { name: "nib", tone: "ink", x: "85%", y: "-26px", size: "58px", r: 12, msize: "50px" },
+      { name: "palette", x: "-5%", y: "48%", size: "42px", r: -14, msize: "30px", mx: "-4%" },
+    ],
   },
   {
-    icon: "web",
     title: "Web Design",
     text: "Sites institucionais e landing pages rápidos, bonitos e fáceis de usar no celular, pensados para transformar visita em contato.",
     tags: ["Sites institucionais", "Landing pages", "Responsivo", "SEO básico"],
+    stickers: [
+      { name: "browser", x: "84%", y: "-28px", size: "60px", r: -10, msize: "50px" },
+      { name: "cursorclick", tone: "ink", x: "94%", y: "54%", size: "42px", r: 10, msize: "30px", mx: "94%" },
+    ],
   },
   {
-    icon: "ui",
     title: "UI e UX",
     text: "Interfaces de produtos digitais desenhadas no Figma, com fluxos claros, componentes reaproveitáveis e protótipos para testar antes de programar.",
     tags: ["Wireframes", "Protótipos", "Design system", "Figma"],
+    stickers: [
+      { name: "layout", tone: "ink", x: "85%", y: "-26px", size: "56px", r: 10, msize: "48px" },
+      { name: "handtap", x: "94%", y: "50%", size: "44px", r: -12, msize: "30px", mx: "94%" },
+    ],
   },
   {
-    icon: "social",
     title: "Social Media",
     text: "Posts, carrosséis e stories com linguagem própria, para o feed da sua marca ser reconhecido antes mesmo de alguém ler o nome.",
     tags: ["Feed", "Carrosséis", "Stories", "Campanhas"],
+    stickers: [
+      { name: "chat", x: "84%", y: "-28px", size: "58px", r: -8, msize: "50px" },
+      { name: "love", tone: "ink", x: "94%", y: "30%", size: "42px", r: 14, msize: "30px", mx: "94%" },
+    ],
   },
   {
-    icon: "package",
     title: "Embalagem",
     text: "Rótulos e embalagens que se destacam na prateleira e no marketplace, com arquivos fechados e prontos para a gráfica.",
     tags: ["Rótulos", "Caixas", "Mockups", "Fechamento de arquivo"],
+    stickers: [
+      { name: "box", tone: "ink", x: "85%", y: "-26px", size: "58px", r: 9, msize: "50px" },
+      { name: "pricetag", x: "-5%", y: "72%", size: "42px", r: -12, msize: "30px", mx: "-4%" },
+    ],
   },
   {
-    icon: "print",
     title: "Impressos",
     text: "Papelaria, folders, cartões e materiais de ponto de venda, com arquivo técnico certo para não ter surpresa na impressão.",
     tags: ["Papelaria", "Folders", "Cartões", "PDV"],
+    stickers: [
+      { name: "printer", x: "84%", y: "-28px", size: "58px", r: -9, msize: "50px" },
+      { name: "scissors", tone: "ink", x: "94%", y: "52%", size: "42px", r: 18, msize: "30px", mx: "94%" },
+    ],
   },
 ];
 

@@ -74,7 +74,7 @@ const letters = site.firstName.toUpperCase().split("");
   }
   .footer-inner { display: grid; gap: clamp(48px, 6vw, 88px); }
   .footer-cta { display: grid; gap: 24px; justify-items: start; }
-  .footer-title { max-width: 13ch; font-size: clamp(2.75rem, 7.4vw, 6.5rem); }
+  .footer-title { max-width: 13ch; }
 
   .footer-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
   @media (min-width: 900px) { .footer-cols { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
@@ -83,7 +83,7 @@ const letters = site.firstName.toUpperCase().split("");
   @media (min-width: 900px) { .footer-col:first-child { grid-column: auto; } }
   .footer-col h3 {
     font-family: var(--font-body);
-    font-size: 0.8125rem;
+    font-size: var(--fs-small);
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -92,14 +92,14 @@ const letters = site.firstName.toUpperCase().split("");
   .footer-link {
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    font-size: var(--fs-body);
     letter-spacing: -0.02em;
     overflow-wrap: anywhere;
     transition: color 0.3s;
   }
   .footer-link:hover { color: var(--accent); }
-  .footer-menu { display: grid; gap: 6px; }
-  .footer-menu .footer-link { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+  .footer-menu { display: grid; }
+  .footer-menu .footer-link { display: inline-block; padding-block: 5px; font-weight: 500; color: var(--text-muted); }
   .footer-menu .footer-link:hover { color: var(--text); }
 
   .socials { display: flex; gap: 10px; }
@@ -117,7 +117,7 @@ const letters = site.firstName.toUpperCase().split("");
     display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
-    font-size: 0.875rem;
+    font-size: var(--fs-small);
     color: var(--text-muted);
   }
 

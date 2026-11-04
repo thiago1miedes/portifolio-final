@@ -1,5 +1,5 @@
 // Brincadeiras da home: faixa de logos com engrenagem, mesa de projetos, figurinhas, foto que gira,
-// balão, curva de Bézier e dock de ferramentas.
+// balão, curva de Bézier e ferramentas espalhadas.
 // Carregado só na home (import dinâmico em main.ts), para as páginas de case não baixarem o Draggable.
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -430,83 +430,80 @@ function initBelt() {
   gear.addEventListener("pointercancel", release);
 }
 
-/* ------------------------------------------------------------------ dock de ferramentas */
-// Os ícones crescem conforme a distância do mouse, como no dock do Mac, e pulam no clique.
-function initDock() {
-  const dock = $("[data-dock]");
-  if (!dock) return;
-  const items = $$("[data-dock-item]", dock);
-  const REACH = 150;
-  const GROW = 0.8;
+/* ------------------------------------------------------------------ ferramentas espalhadas em volta do texto */
+function initTools() {
+  const stage = $("[data-tools]");
+  if (!stage) return;
+  const tools = $$("[data-tool]", stage);
+  const section = stage.closest<HTMLElement>("section") ?? undefined;
 
-  const bounce = (item: HTMLElement) => {
-    const icon = $("[data-dock-icon]", item)!;
-    if (!reduce) {
-      gsap.killTweensOf(icon);
-      gsap.timeline()
-        .to(icon, { y: -20, duration: 0.2, ease: "power2.out" })
-        .to(icon, { y: 0, duration: 0.2, ease: "power2.in" })
-        .to(icon, { y: -8, duration: 0.13, ease: "power2.out" })
-        .to(icon, { y: 0, duration: 0.13, ease: "power2.in" });
-    }
-    // com o dedo não há hover: o nome aparece por um instante
-    if (!finePointer) {
-      item.classList.add("is-tapped");
-      window.setTimeout(() => item.classList.remove("is-tapped"), 1400);
-    }
+  // saem de trás do texto, uma a uma
+  if (!reduce) {
+    const cx = stage.offsetWidth / 2;
+    const cy = stage.offsetHeight / 2;
+    gsap.from(tools, {
+      x: (_: number, el: HTMLElement) => cx - (el.offsetLeft + el.offsetWidth / 2),
+      y: (_: number, el: HTMLElement) => cy - (el.offsetTop + el.offsetHeight / 2),
+      scale: 0.3,
+      opacity: 0,
+      duration: 1.2,
+      ease: "expo.out",
+      stagger: { each: 0.05, from: "random" },
+      scrollTrigger: { trigger: stage, start: "top 78%", once: true },
+    });
+  }
+
+  const spin = (tool: HTMLElement) => {
+    if (reduce) return;
+    gsap.fromTo($(".tool-tile", tool), { rotation: -18 }, { rotation: 0, duration: 1, ease: "elastic.out(1.2, 0.35)" });
   };
-  items.forEach((item) => {
-    item.addEventListener("click", () => bounce(item));
-    item.addEventListener("keydown", (e) => {
-      if (e.key !== "Enter" && e.key !== " ") return;
-      e.preventDefault();
-      bounce(item);
+
+  if (!finePointer) {
+    // com o dedo não há hover: o toque mostra o nome por um instante
+    tools.forEach((tool) => tool.addEventListener("click", () => {
+      tools.forEach((t) => t.classList.remove("is-tapped"));
+      tool.classList.add("is-tapped");
+      spin(tool);
+      window.setTimeout(() => tool.classList.remove("is-tapped"), 1400);
+    }));
+    return;
+  }
+
+  tools.forEach((tool) => {
+    Draggable.create(tool, {
+      type: "x,y",
+      bounds: section,
+      inertia: !reduce,
+      edgeResistance: 0.75,
+      minimumMovement: 3,
+      cursor: "grab",
+      activeCursor: "grabbing",
+      onPress() { gsap.killTweensOf(tool); gsap.set(tool, { opacity: 1, scale: 1 }); },
+      onClick() { spin(tool); },
     });
   });
 
-  const wide = window.matchMedia("(min-width: 900px)");
-  if (!finePointer || reduce) return;
-  const size = items.map(() => 1);
-  let pointerX: number | null = null;
-  let running = false;
-
-  const step = () => {
-    let settled = true;
-    items.forEach((item, i) => {
-      let target = 1;
-      if (pointerX !== null) {
-        const r = item.getBoundingClientRect();
-        const d = Math.abs(pointerX - (r.left + r.width / 2));
-        if (d < REACH) target = 1 + GROW * Math.cos((d / REACH) * (Math.PI / 2)) ** 2;
-      }
-      size[i] += (target - size[i]) * 0.24;
-      if (Math.abs(target - size[i]) > 0.002) settled = false;
-      else size[i] = target;
-      item.style.setProperty("--s", size[i].toFixed(3));
-    });
-    if (settled && pointerX === null) {
-      running = false;
-      gsap.ticker.remove(step);
-    }
-  };
-  const start = () => {
-    if (running) return;
-    running = true;
-    gsap.ticker.add(step);
-  };
-  dock.addEventListener("pointermove", (e) => {
-    if (!wide.matches) return;
-    pointerX = e.clientX;
-    start();
+  // os maiores parecem mais perto e andam mais com o mouse
+  if (reduce || !section) return;
+  const layers = tools.map((tool) => {
+    const float = $("[data-tool-float]", tool)!;
+    return {
+      depth: (Number(tool.dataset.size) / 92) * 0.035,
+      x: gsap.quickTo(float, "x", { duration: 1, ease: "power3" }),
+      y: gsap.quickTo(float, "y", { duration: 1, ease: "power3" }),
+    };
   });
-  dock.addEventListener("pointerleave", () => {
-    pointerX = null;
-    start();
+  section.addEventListener("pointermove", (e) => {
+    const r = section.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width / 2);
+    const dy = e.clientY - (r.top + r.height / 2);
+    layers.forEach((l) => { l.x(dx * l.depth); l.y(dy * l.depth); });
   });
+  section.addEventListener("pointerleave", () => layers.forEach((l) => { l.x(0); l.y(0); }));
 }
 
 initBelt();
-initDock();
+initTools();
 initStickers();
 initAvatar();
 initSay();
