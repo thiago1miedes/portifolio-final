@@ -3,5 +3,11 @@ dist/
 .astro/
 .DS_Store
 
+# capas geradas no Flow (originais pesados; o que vai para o site fica em public/capas)
+capas/*.png
+capas/*.jpg
+capas/*.jpeg
+capas/*.webp
+
 .vercel
 .vercel

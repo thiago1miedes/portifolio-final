@@ -41,8 +41,38 @@ export const skills = [
   "Identidade Visual", "Web Design", "UI Design", "Social Media", "Photoshop", "Illustrator", "InDesign", "Figma",
 ];
 
-/** Slugs dos cases que aparecem na home: 2 sites + 2 identidades, em xadrez (site, marca / marca, site). */
-export const homeProjects = ["smartbox", "faggian", "dor-e-saude", "arie-capital"];
+/** Frases do balão ao lado da foto no hero (cada clique troca). As de mouse só fazem sentido onde dá para arrastar. */
+export const heroPhrases = {
+  all: ["Oi!", "Bora criar?", "Aceito café"],
+  mouse: ["Oi!", "Gira a foto na bolinha", "Bora criar?", "Arrasta as figurinhas", "Aceito café"],
+};
+
+export interface BoardItem {
+  slug: string;
+  /** posição e largura em % da mesa (x e w da largura, y da altura) */
+  x: number;
+  y: number;
+  w: number;
+  /** proporção do quadro da foto */
+  ratio: string;
+  /** inclinação em graus */
+  r: number;
+  deco: "tape" | "tape-accent" | "pin";
+  /** imagem provisória: vale até a marca ganhar capa nova em capas/ (ver imagens.md) */
+  image?: string;
+}
+
+/** Mesa de projetos da home: 4 sites + 4 marcas, soltos. No celular viram uma coluna em zigue-zague, na mesma ordem. */
+export const homeBoard: BoardItem[] = [
+  { slug: "smartbox", x: 0, y: 4, w: 38, ratio: "3 / 2", r: -5, deco: "tape" },
+  { slug: "faggian", x: 39.5, y: 0, w: 20, ratio: "3 / 4", r: 5, deco: "pin", image: "/brand/faggian/img/mockup-sacola.webp" },
+  { slug: "arie-capital", x: 62, y: 9, w: 36, ratio: "3 / 2", r: 3, deco: "tape-accent" },
+  { slug: "confraria", x: 4, y: 39, w: 21, ratio: "4 / 5", r: 6, deco: "pin", image: "/brand/confraria/img/mockup-vela.webp" },
+  { slug: "firework", x: 25, y: 32.5, w: 40, ratio: "3 / 2", r: -3.5, deco: "tape" },
+  { slug: "dor-e-saude", x: 70, y: 44, w: 20, ratio: "3 / 4", r: 7, deco: "tape-accent", image: "/brand/dor-e-saude/img/mockup-jaleco.webp" },
+  { slug: "deliziare", x: 0, y: 71, w: 34, ratio: "3 / 2", r: 3, deco: "tape" },
+  { slug: "kom-saude", x: 37, y: 66.5, w: 31, ratio: "4 / 3", r: -4.5, deco: "pin", image: "/brand/kom-saude/img/mockup-garrafas.webp" },
+];
 
 /** Ferramentas (ícones do bloco "Ferramentas que eu uso"). */
 export const tools = [

@@ -18,9 +18,11 @@ const cats = (Object.keys(categories) as Category[]).filter((k) => countBy(k) > 
 </div>
 
 <style>
+  /* a página formal: abas numa linha, sem pílulas, e grade alinhada */
   .filters {
-    display: flex; gap: 8px; flex-wrap: nowrap; overflow-x: auto;
-    padding-block: 4px 6px; margin-bottom: clamp(28px, 4vw, 48px);
+    display: flex; gap: clamp(18px, 2.4vw, 32px); flex-wrap: nowrap; overflow-x: auto;
+    margin-bottom: clamp(28px, 4vw, 48px);
+    border-bottom: 1px solid var(--border);
     scrollbar-width: none;
     margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter);
   }
@@ -29,20 +31,17 @@ const cats = (Object.keys(categories) as Category[]).filter((k) => countBy(k) > 
   .filter {
     flex: none;
     display: inline-flex; align-items: center; gap: 6px;
-    min-height: 44px; padding: 0 18px;
-    border-radius: var(--radius-pill);
-    background: var(--surface-glass);
-    border: 1px solid var(--border);
-    font-family: var(--font-heading); font-weight: 600; font-size: 0.9375rem; color: var(--text-muted);
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    min-height: 48px; margin-bottom: -1px;
+    border-bottom: 2px solid transparent;
+    font-family: var(--font-heading); font-weight: 500; font-size: 0.9375rem; color: var(--text-muted);
+    transition: color 0.3s, border-color 0.3s;
   }
   .filter sup { font-size: 0.6875rem; color: var(--text-muted); top: -0.5em; }
-  .filter:hover { border-color: var(--border-strong); color: var(--text); }
-  .filter.is-active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
-  .filter.is-active sup { color: var(--on-accent); }
+  .filter:hover { color: var(--text); }
+  .filter.is-active { border-color: var(--accent); color: var(--text); }
   .grid {
     display: grid;
-    gap: clamp(32px, 3.4vw, 48px) clamp(16px, 2vw, 28px);
+    gap: clamp(36px, 3.4vw, 52px) clamp(16px, 1.8vw, 24px);
     grid-template-columns: 1fr;
   }
   @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

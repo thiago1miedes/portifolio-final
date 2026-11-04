@@ -1,44 +1,45 @@
 ---
-import Icon from "./Icon.astro";
 import { categories, type Case } from "../data/cases";
+import { capaOf } from "../data/capas";
 interface Props { c: Case }
 const { c } = Astro.props;
+const cover = capaOf(c.slug) ?? c.thumb;
 ---
-<a href={`/cases/${c.slug}/`} class="case-card" data-cursor="view" data-cats={c.cats.join(" ")} data-project={c.slug} data-flip-id={c.slug}>
+<a href={`/cases/${c.slug}/`} class="case-card" data-cats={c.cats.join(" ")} data-project={c.slug} data-flip-id={c.slug}>
   <div class="cc-media">
-    <img src={c.thumb.src} width={c.thumb.w} height={c.thumb.h} alt={`Projeto ${c.title}`} loading="lazy" decoding="async" />
+    <img src={cover.src} width={cover.w} height={cover.h} alt={`Projeto ${c.title}`} loading="lazy" decoding="async" />
   </div>
   <div class="cc-info">
-    <div>
-      <h3 class="cc-title">{c.title}</h3>
-      <p class="cc-cat">{c.cats.slice(0, 2).map((k) => categories[k]).join(" · ")}</p>
-    </div>
-    <span class="cc-arrow" aria-hidden="true"><Icon name="arrow-up-right" size={18} /></span>
+    <h3 class="cc-title">{c.title}</h3>
+    <p class="cc-cat">{categories[c.cats[0]]}</p>
+    <p class="cc-sector">{c.sector}</p>
   </div>
 </a>
 
 <style>
-  .case-card { display: grid; gap: 16px; align-content: start; }
+  .case-card { display: grid; gap: 14px; align-content: start; }
   :global(.js) .case-card { opacity: 0; }
   .cc-media {
     position: relative;
     aspect-ratio: 3 / 2;
-    border-radius: var(--radius-card);
+    border-radius: 4px;
     overflow: hidden;
     background: var(--bg-elev);
-    border: 1px solid var(--border);
-    isolation: isolate;
+    outline: 1px solid var(--border);
+    outline-offset: -1px;
   }
-  .cc-media img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.9s var(--ease); }
-  .case-card:hover .cc-media img { scale: 1.04; }
-  .cc-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-inline: 2px; }
-  .cc-title { font-size: 1.3125rem; letter-spacing: -0.03em; transition: color 0.3s; }
-  .cc-cat { margin-top: 4px; font-size: 0.875rem; color: var(--text-muted); }
-  .cc-arrow {
-    flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
-    border: 1px solid var(--border); color: var(--text);
-    transition: background-color 0.35s, color 0.35s, border-color 0.35s, transform 0.45s var(--ease);
+  .cc-media img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s; }
+  .case-card:hover .cc-media img { opacity: 0.86; }
+  .cc-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 3px 16px;
+    align-items: baseline;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
   }
+  .cc-title { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; transition: color 0.3s; }
+  .cc-cat { font-size: 0.8125rem; color: var(--text-muted); white-space: nowrap; }
+  .cc-sector { grid-column: 1 / -1; font-size: 0.875rem; line-height: 1.35; color: var(--text-muted); }
   .case-card:hover .cc-title { color: var(--accent); }
-  .case-card:hover .cc-arrow { background: var(--accent); border-color: var(--accent); color: var(--on-accent); transform: rotate(45deg); }
 </style>

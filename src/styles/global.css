@@ -254,6 +254,8 @@ h1 em, h2 em, h3 em, .kw { font-style: normal; color: var(--accent); }
   transition: transform 0.45s var(--ease);
 }
 .cursor.is-view .cursor-label { transform: translate(-50%, -50%) scale(1); }
+/* enquanto arrasta uma foto na mesa da home, o "Ver" sai da frente */
+html.is-dragging-print .cursor.is-view .cursor-label { transform: translate(-50%, -50%) scale(0); }
 
 /* ---------------------------------------------------------------- transição entre páginas */
 .page-wipe {

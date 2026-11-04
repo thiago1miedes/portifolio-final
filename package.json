@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "assets": "node scripts/build-assets.mjs",
     "shots": "node scripts/shoot-sites.mjs",
-    "brand": "node scripts/brand-case.mjs"
+    "brand": "node scripts/brand-case.mjs",
+    "capas": "node scripts/capas.mjs"
   },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
@@ -25,6 +26,7 @@
     "@iconify-json/devicon-plain": "^1.2.62",
     "@iconify-json/fa6-brands": "^1.2.6",
     "@iconify-json/lucide": "^1.2.147",
+    "@iconify-json/ph": "^1.2.2",
     "@iconify/utils": "^3.1.7",
     "mupdf": "^1.26.4",
     "puppeteer-core": "^24.10.0",

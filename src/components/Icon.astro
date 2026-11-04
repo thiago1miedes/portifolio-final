@@ -3,12 +3,14 @@
 //  - Lucide (ISC): ícones de interface e de serviços
 //  - Font Awesome 6 Brands (CC BY 4.0): redes sociais e WhatsApp
 //  - Devicon (MIT): ferramentas (Adobe, Figma, VS Code)
+//  - Phosphor (MIT): figurinhas da home
 //  - InDesign desenhado aqui no mesmo traço do Devicon (o banco não tem)
 // Todos usam currentColor, então herdam a cor do texto.
 import { getIconData, iconToSVG, replaceIDs } from "@iconify/utils";
 import lucide from "@iconify-json/lucide/icons.json";
 import faBrands from "@iconify-json/fa6-brands/icons.json";
 import devicon from "@iconify-json/devicon-plain/icons.json";
+import phosphor from "@iconify-json/ph/icons.json";
 
 interface Props { name: string; size?: number; class?: string }
 const { name, size = 24, class: cls = "" } = Astro.props;
@@ -25,7 +27,7 @@ const custom = {
   },
 };
 
-const sets = { lucide, fa: faBrands, dev: devicon, custom } as const;
+const sets = { lucide, fa: faBrands, dev: devicon, ph: phosphor, custom } as const;
 
 // nome usado no site → [banco, ícone]
 const map: Record<string, [keyof typeof sets, string]> = {
@@ -75,6 +77,16 @@ const map: Record<string, [keyof typeof sets, string]> = {
   figma: ["dev", "figma"],
   vscode: ["dev", "vscode"],
   indesign: ["custom", "indesign"],
+  // figurinhas e mesa de projetos da home
+  spark: ["ph", "star-four-fill"],
+  nib: ["ph", "pen-nib-fill"],
+  bolt: ["ph", "lightning-fill"],
+  eyedropper: ["ph", "eyedropper-fill"],
+  scissors: ["ph", "scissors-fill"],
+  brush: ["ph", "paint-brush-broad-fill"],
+  cursor: ["ph", "cursor-fill"],
+  pushpin: ["ph", "push-pin-fill"],
+  shuffle: ["ph", "shuffle-bold"],
 };
 
 const [set, id] = map[name] ?? ["lucide", "circle"];

@@ -1,0 +1,80 @@
+---
+// Figurinha solta sobre a página. Com mouse dá para arrastar (src/scripts/playground.ts).
+// x, y e size: qualquer medida CSS, relativa a quem a contém. mx, my e msize valem abaixo de 700 px.
+// As de ícone vêm do Phosphor; smile, swatch e registration são desenhadas aqui.
+import Icon from "./Icon.astro";
+
+interface Props {
+  name: string;
+  x: string;
+  y: string;
+  size: string;
+  r?: number;
+  /** força do parallax com o mouse (só no hero) */
+  depth?: number;
+  tone?: "accent" | "ink";
+  mx?: string;
+  my?: string;
+  msize?: string;
+}
+const { name, x, y, size, r = 0, depth, tone = "accent", mx, my, msize } = Astro.props;
+const vars = [`--x:${x}`, `--y:${y}`, `--size:${size}`, `--r:${r}deg`, mx && `--mx:${mx}`, my && `--my:${my}`, msize && `--msize:${msize}`].filter(Boolean).join(";");
+---
+<span class:list={["sticker", `sticker--${tone}`]} data-sticker data-depth={depth} style={vars} aria-hidden="true">
+  <span class="sticker-in" data-sticker-in>
+    {name === "smile" ? (
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="44" fill="#ff5a1f" stroke="#f5f2ec" stroke-width="7" />
+        <circle cx="36" cy="42" r="5.5" fill="#0a0a0b" />
+        <circle cx="64" cy="42" r="5.5" fill="#0a0a0b" />
+        <path d="M30 60c5 11 13 16 20 16s15-5 20-16" fill="none" stroke="#0a0a0b" stroke-width="6" stroke-linecap="round" />
+      </svg>
+    ) : name === "swatch" ? (
+      <svg viewBox="0 0 100 136">
+        <rect x="2" y="2" width="96" height="132" rx="6" fill="#f5f2ec" />
+        <rect x="9" y="9" width="82" height="86" rx="2" fill="#ff5a1f" />
+        <text x="10" y="113" fill="#0a0a0b" font-family="Bricolage Grotesque Variable, system-ui, sans-serif" font-weight="700" font-size="15">Laranja</text>
+        <text x="10" y="126" fill="#55555c" font-family="Inter Variable, system-ui, sans-serif" font-size="10.5">#FF5A1F</text>
+      </svg>
+    ) : name === "registration" ? (
+      <svg viewBox="0 0 100 100" fill="none" stroke="#f5f2ec" stroke-width="3.5">
+        <circle cx="50" cy="50" r="26" />
+        <path d="M50 4v92M4 50h92" />
+      </svg>
+    ) : (
+      <Icon name={name} size={64} />
+    )}
+  </span>
+</span>
+
+<style>
+  .sticker {
+    --tone: var(--accent);
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    rotate: var(--r);
+    z-index: 900;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .sticker--ink { --tone: #0a0a0b; }
+  .sticker-in { display: block; }
+  .sticker :global(svg) { transition: rotate 0.5s var(--ease); }
+  @media (hover: hover) and (pointer: fine) { .sticker:hover :global(svg) { rotate: -8deg; } }
+
+  /* contorno de papel de figurinha recortada */
+  .sticker :global(svg) { width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45)); }
+  .sticker :global(.icon path) { fill: var(--tone); stroke: #f5f2ec; stroke-width: 30; stroke-linejoin: round; paint-order: stroke; }
+
+  /* com o dedo a figurinha não pode atrapalhar a rolagem */
+  @media (hover: none) { .sticker { pointer-events: none; } }
+  @media (max-width: 699px) {
+    .sticker { left: var(--mx, var(--x)); top: var(--my, var(--y)); width: var(--msize, var(--size)); }
+  }
+
+  /* entra pelo script; se o script não carregar, a classe no-play devolve a figurinha */
+  :global(html.js:not(.no-play)) .sticker-in { opacity: 0; }
+</style>

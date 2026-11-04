@@ -224,14 +224,9 @@ if (hero) {
   }
 }
 
-/* ------------------------------------------------------------------ projetos: parallax leve na imagem */
-if (!reduce) {
-  $$("[data-project-img]").forEach((img) => {
-    gsap.fromTo(img, { yPercent: -2.5 }, {
-      yPercent: 2.5, ease: "none",
-      scrollTrigger: { trigger: img.closest("[data-project]"), start: "top bottom", end: "bottom top", scrub: true },
-    });
-  });
+/* ------------------------------------------------------------------ home: mesa de projetos e figurinhas */
+if ($("[data-board]")) {
+  import("./playground").catch(() => root.classList.add("no-play"));
 }
 
 /* ------------------------------------------------------------------ serviços: só um aberto por vez (data-service-index) */

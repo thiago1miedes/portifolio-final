@@ -1,7 +1,8 @@
 ---
 import Icon from "./Icon.astro";
 import Marquee from "./Marquee.astro";
-import { facts, skills } from "../data/site";
+import Sticker from "./Sticker.astro";
+import { facts, skills, heroPhrases } from "../data/site";
 ---
 <section class="hero" id="inicio" data-hero>
   <div class="hero-glow" aria-hidden="true"></div>
@@ -18,14 +19,31 @@ import { facts, skills } from "../data/site";
       </p>
 
       <figure class="hero-avatar" data-hero-avatar>
-        <img
-          src="/about/thiago-cutout.webp"
-          width="612" height="984"
-          alt="Thiago Miedes de braços cruzados, vestindo blusa preta"
-          fetchpriority="high"
-          data-parallax="0.04"
-        />
+        <div class="hero-tilt" data-avatar-tilt>
+          <img
+            src="/about/thiago-cutout.webp"
+            width="612" height="984"
+            alt="Thiago Miedes de braços cruzados, vestindo blusa preta"
+            fetchpriority="high"
+            data-parallax="0.04"
+          />
+          <!-- a foto aparece selecionada, como numa tela do Figma: a bolinha de cima gira -->
+          <div class="selbox" data-selbox aria-hidden="true">
+            <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+            <span class="selbox-rotate" data-avatar-rotate></span>
+            <span class="selbox-tag">Thiago Miedes</span>
+          </div>
+        </div>
       </figure>
+
+      <button type="button" class="hero-say" data-say data-phrases={JSON.stringify(heroPhrases.all)} data-phrases-mouse={JSON.stringify(heroPhrases.mouse)} aria-label="Trocar a frase do balão">
+        <span class="hero-say-bubble" data-say-text>{heroPhrases.all[0]}</span>
+      </button>
+
+      <Sticker name="spark" x="74cqi" y="7cqi" size="6.5cqi" r={12} depth={0.05} mx="82cqi" my="28cqi" msize="46px" />
+      <Sticker name="swatch" x="88cqi" y="10.5cqi" size="6.6cqi" r={9} depth={0.025} mx="3cqi" my="68cqi" msize="54px" />
+      <Sticker name="nib" tone="ink" x="30cqi" y="13.5cqi" size="6cqi" r={-14} depth={-0.03} mx="6cqi" my="92cqi" msize="46px" />
+      <Sticker name="smile" x="29cqi" y="28.5cqi" size="5.6cqi" r={-10} depth={0.04} mx="84cqi" my="66cqi" msize="48px" />
     </div>
 
     <div class="hero-bottom">
@@ -111,6 +129,82 @@ import { facts, skills } from "../data/site";
   }
   .hero-avatar img {
     width: 100%;
+  }
+  .hero-tilt { position: relative; transform: rotate(-4deg); transform-origin: 50% 70%; }
+
+  /* caixa de seleção sobre a foto */
+  .selbox { position: absolute; inset: 1% 3% 12% 3%; border: 1.5px solid var(--accent); pointer-events: none; }
+  .selbox i { position: absolute; width: 11px; height: 11px; background: #fff; border: 1.5px solid var(--accent); }
+  .selbox .tl { left: -6px; top: -6px; }
+  .selbox .tr { right: -6px; top: -6px; }
+  .selbox .bl { left: -6px; bottom: -6px; }
+  .selbox .br { right: -6px; bottom: -6px; }
+  .selbox-rotate {
+    position: absolute;
+    left: 50%;
+    top: -38px;
+    width: 18px;
+    height: 18px;
+    translate: -50% 0;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid #fff;
+    pointer-events: auto;
+    cursor: grab;
+    touch-action: none;
+    transition: scale 0.3s var(--ease);
+  }
+  .selbox-rotate:hover { scale: 1.3; }
+  .selbox-rotate:active { cursor: grabbing; }
+  .selbox-rotate::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1.5px; height: 20px; margin-left: -0.75px; background: var(--accent); }
+  .selbox-tag {
+    position: absolute;
+    left: 50%;
+    bottom: -13px;
+    translate: -50% 0;
+    padding: 2px 9px;
+    border-radius: 4px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  /* no celular não há como girar com precisão: fica só a caixa */
+  @media (hover: none) { .selbox-rotate { display: none; } }
+  /* no celular o texto sobe por cima do fim da foto: a caixa termina antes dele */
+  @media (max-width: 699px) { .selbox { bottom: 27%; } }
+
+  /* balão de fala: cada clique troca a frase */
+  .hero-say {
+    position: absolute;
+    z-index: 5;
+    left: 73%;
+    top: 40cqi;
+    max-width: 44cqi;
+  }
+  .hero-say-bubble {
+    display: block;
+    padding: 8px 14px;
+    border-radius: 16px 16px 16px 4px;
+    background: #f5f2ec;
+    color: #0a0a0b;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-align: left;
+    rotate: 4deg;
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.6);
+    transition: rotate 0.4s var(--ease), scale 0.4s var(--ease);
+  }
+  .hero-say:hover .hero-say-bubble { rotate: -2deg; scale: 1.06; }
+  :global(html.js:not(.no-play)) .hero-say { opacity: 0; }
+  @media (min-width: 700px) {
+    .hero-say { left: 61.5cqi; top: 8.5cqi; max-width: 15cqi; }
+    .hero-say-bubble { font-size: clamp(0.875rem, 1.35cqi, 1.25rem); padding: 0.75cqi 1.2cqi; }
   }
 
   .hero-bottom {
