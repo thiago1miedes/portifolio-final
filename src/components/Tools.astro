@@ -1,0 +1,86 @@
+---
+// Faixa fina com os aplicativos, em forma de dock: os ícones crescem perto do mouse e pulam no clique
+// (src/scripts/playground.ts). Lista em site.ts; ícones do banco Logos, nas cores originais.
+import Icon from "./Icon.astro";
+import { tools } from "../data/site";
+---
+<section class="tools-band" id="ferramentas">
+  <div class="container tools-inner">
+    <h2 class="tools-heading" data-reveal>Minhas <em>ferramentas</em></h2>
+    <div class="dock-wrap" data-reveal>
+      <ul class="dock" data-dock>
+        {tools.map((t) => (
+          <li class="dock-item" data-dock-item tabindex="0">
+            <span class="dock-name">{t.name}</span>
+            <span class:list={["dock-icon", { "dock-icon--tile": t.tile }]} data-dock-icon>
+              <Icon name={t.icon} size={48} />
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tools-band {
+    position: relative;
+    z-index: 2;
+    padding-block: clamp(24px, 3vw, 36px);
+    border-block: 1px solid var(--border);
+  }
+  .tools-inner { display: grid; gap: 20px; align-items: center; }
+  .tools-heading { font-size: clamp(1.5rem, 2.6vw, 2.25rem); letter-spacing: -0.035em; }
+  .dock-wrap { display: flex; justify-content: center; }
+
+  .dock {
+    --base: 44px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 22px;
+    background: var(--surface-glass);
+    border: 1px solid var(--border);
+  }
+  .dock-item {
+    position: relative;
+    width: calc(var(--base) * var(--s, 1));
+    height: calc(var(--base) * var(--s, 1));
+    border-radius: 11px;
+    cursor: pointer;
+    touch-action: manipulation;
+    outline-offset: 2px;
+  }
+  .dock-icon { position: absolute; inset: 0; display: grid; place-items: center; will-change: transform; }
+  .dock-icon :global(svg) { width: 100%; height: 100%; }
+  /* quem não tem quadrado próprio no ícone (Figma, VS Code, Blender) ganha um */
+  .dock-icon--tile { padding: 19%; border-radius: 22%; background: #1f1f24; box-shadow: inset 0 0 0 1px var(--border); }
+
+  .dock-name {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    translate: -50% 4px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: #f5f2ec;
+    color: #0a0a0b;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, translate 0.3s var(--ease);
+  }
+  .dock-item:hover .dock-name, .dock-item:focus-visible .dock-name, .dock-item.is-tapped .dock-name { opacity: 1; translate: -50% 0; }
+
+  @media (min-width: 900px) {
+    .tools-inner { grid-template-columns: auto minmax(0, 1fr); gap: 32px; }
+    .dock { --base: 48px; flex-wrap: nowrap; align-items: flex-end; height: calc(var(--base) + 22px); }
+    .dock-item { flex: none; }
+  }
+</style>

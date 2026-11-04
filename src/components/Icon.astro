@@ -4,6 +4,7 @@
 //  - Font Awesome 6 Brands (CC BY 4.0): redes sociais e WhatsApp
 //  - Devicon (MIT): ferramentas (Adobe, Figma, VS Code)
 //  - Phosphor (MIT): figurinhas da home
+//  - Logos (CC0): aplicativos da seção de ferramentas, nas cores originais
 //  - InDesign desenhado aqui no mesmo traço do Devicon (o banco não tem)
 // Todos usam currentColor, então herdam a cor do texto.
 import { getIconData, iconToSVG, replaceIDs } from "@iconify/utils";
@@ -11,6 +12,7 @@ import lucide from "@iconify-json/lucide/icons.json";
 import faBrands from "@iconify-json/fa6-brands/icons.json";
 import devicon from "@iconify-json/devicon-plain/icons.json";
 import phosphor from "@iconify-json/ph/icons.json";
+import logos from "@iconify-json/logos/icons.json";
 
 interface Props { name: string; size?: number; class?: string }
 const { name, size = 24, class: cls = "" } = Astro.props;
@@ -27,7 +29,7 @@ const custom = {
   },
 };
 
-const sets = { lucide, fa: faBrands, dev: devicon, ph: phosphor, custom } as const;
+const sets = { lucide, fa: faBrands, dev: devicon, ph: phosphor, logos, custom } as const;
 
 // nome usado no site → [banco, ícone]
 const map: Record<string, [keyof typeof sets, string]> = {
@@ -71,12 +73,16 @@ const map: Record<string, [keyof typeof sets, string]> = {
   package: ["lucide", "package"],
   print: ["lucide", "printer"],
   // ferramentas
-  photoshop: ["dev", "photoshop"],
-  illustrator: ["dev", "illustrator"],
-  aftereffects: ["dev", "aftereffects"],
-  figma: ["dev", "figma"],
-  vscode: ["dev", "vscode"],
-  indesign: ["custom", "indesign"],
+  photoshop: ["logos", "adobe-photoshop"],
+  illustrator: ["logos", "adobe-illustrator"],
+  indesign: ["logos", "adobe-indesign"],
+  aftereffects: ["logos", "adobe-after-effects"],
+  premiere: ["logos", "adobe-premiere"],
+  lightroom: ["logos", "adobe-lightroom"],
+  xd: ["logos", "adobe-xd"],
+  figma: ["logos", "figma"],
+  vscode: ["logos", "visual-studio-code"],
+  blender: ["logos", "blender"],
   // figurinhas e mesa de projetos da home
   spark: ["ph", "star-four-fill"],
   nib: ["ph", "pen-nib-fill"],

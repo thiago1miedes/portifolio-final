@@ -1,4 +1,5 @@
-// Brincadeiras da home: mesa de projetos, figurinhas, foto que gira, balão e curva de Bézier.
+// Brincadeiras da home: faixa de logos com engrenagem, mesa de projetos, figurinhas, foto que gira,
+// balão, curva de Bézier e dock de ferramentas.
 // Carregado só na home (import dinâmico em main.ts), para as páginas de case não baixarem o Draggable.
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -353,6 +354,159 @@ function initBoard() {
   });
 }
 
+/* ------------------------------------------------------------------ faixa de logos e engrenagem */
+// Um número só (pos, em px) move tudo: a faixa anda pos e a engrenagem gira pos / raio, como pinhão e cremalheira.
+// Sozinha ela anda devagar; parar o mouse num logo freia; rolar a página acelera; girar a engrenagem empurra a faixa.
+function initBelt() {
+  const belt = $("[data-belt]");
+  if (!belt || reduce) return;
+  const track = $("[data-belt-track]", belt)!;
+  const group = $(".belt-group", track)!;
+  const view = $("[data-belt-view]", belt)!;
+  const racks = $$("[data-belt-rack]", belt);
+  const gear = $("[data-gear]", belt)!;
+  const spin = $("[data-gear-spin]", belt)!;
+  const BASE = 46;
+  const RACK_PITCH = 14;
+  const mod = (v: number, n: number) => ((v % n) + n) % n;
+
+  let pos = 0;
+  let vel = BASE;
+  let hovering = false;
+  let dragging = false;
+  let visible = true;
+  let width = group.offsetWidth;
+  let radius = gear.offsetWidth / 2;
+  let lastY = scrollY;
+
+  addEventListener("resize", () => { width = group.offsetWidth; radius = gear.offsetWidth / 2; });
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(belt);
+  view.addEventListener("pointerover", (e) => { hovering = !!(e.target as Element).closest(".belt-logo"); });
+  view.addEventListener("pointerleave", () => { hovering = false; });
+
+  gsap.ticker.add((_time, deltaMs) => {
+    const dt = Math.min(deltaMs, 100) / 1000;
+    const dy = scrollY - lastY;
+    lastY = scrollY;
+    if (!visible || !dt) return;
+    if (!dragging) {
+      const target = hovering ? 0 : BASE + clamp(-1400, 1400, (dy / dt) * 0.7);
+      vel += (target - vel) * (1 - Math.exp(-dt * (hovering ? 9 : 2.6)));
+      pos += vel * dt;
+    }
+    track.style.transform = `translate3d(${-mod(pos, width)}px,0,0)`;
+    racks.forEach((r) => { r.style.transform = `translate3d(${-mod(pos, RACK_PITCH)}px,0,0)`; });
+    spin.style.transform = `rotate(${pos / radius}rad)`;
+  });
+
+  // girar com o mouse ou o dedo: ao soltar, a velocidade do gesto continua e vai diminuindo
+  const angle = (e: PointerEvent) => {
+    const r = gear.getBoundingClientRect();
+    return Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2));
+  };
+  let lastAngle = 0;
+  let lastTime = 0;
+  gear.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    vel = 0;
+    lastAngle = angle(e);
+    lastTime = e.timeStamp;
+    gear.setPointerCapture(e.pointerId);
+    gear.classList.add("is-grabbing");
+  });
+  gear.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const a = angle(e);
+    const turn = Math.atan2(Math.sin(a - lastAngle), Math.cos(a - lastAngle));
+    const moved = turn * radius;
+    pos += moved;
+    const ms = Math.max(1, e.timeStamp - lastTime);
+    vel = vel * 0.6 + clamp(-2600, 2600, (moved / ms) * 1000) * 0.4;
+    lastAngle = a;
+    lastTime = e.timeStamp;
+  });
+  const release = () => { dragging = false; gear.classList.remove("is-grabbing"); };
+  gear.addEventListener("pointerup", release);
+  gear.addEventListener("pointercancel", release);
+}
+
+/* ------------------------------------------------------------------ dock de ferramentas */
+// Os ícones crescem conforme a distância do mouse, como no dock do Mac, e pulam no clique.
+function initDock() {
+  const dock = $("[data-dock]");
+  if (!dock) return;
+  const items = $$("[data-dock-item]", dock);
+  const REACH = 150;
+  const GROW = 0.8;
+
+  const bounce = (item: HTMLElement) => {
+    const icon = $("[data-dock-icon]", item)!;
+    if (!reduce) {
+      gsap.killTweensOf(icon);
+      gsap.timeline()
+        .to(icon, { y: -20, duration: 0.2, ease: "power2.out" })
+        .to(icon, { y: 0, duration: 0.2, ease: "power2.in" })
+        .to(icon, { y: -8, duration: 0.13, ease: "power2.out" })
+        .to(icon, { y: 0, duration: 0.13, ease: "power2.in" });
+    }
+    // com o dedo não há hover: o nome aparece por um instante
+    if (!finePointer) {
+      item.classList.add("is-tapped");
+      window.setTimeout(() => item.classList.remove("is-tapped"), 1400);
+    }
+  };
+  items.forEach((item) => {
+    item.addEventListener("click", () => bounce(item));
+    item.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      e.preventDefault();
+      bounce(item);
+    });
+  });
+
+  const wide = window.matchMedia("(min-width: 900px)");
+  if (!finePointer || reduce) return;
+  const size = items.map(() => 1);
+  let pointerX: number | null = null;
+  let running = false;
+
+  const step = () => {
+    let settled = true;
+    items.forEach((item, i) => {
+      let target = 1;
+      if (pointerX !== null) {
+        const r = item.getBoundingClientRect();
+        const d = Math.abs(pointerX - (r.left + r.width / 2));
+        if (d < REACH) target = 1 + GROW * Math.cos((d / REACH) * (Math.PI / 2)) ** 2;
+      }
+      size[i] += (target - size[i]) * 0.24;
+      if (Math.abs(target - size[i]) > 0.002) settled = false;
+      else size[i] = target;
+      item.style.setProperty("--s", size[i].toFixed(3));
+    });
+    if (settled && pointerX === null) {
+      running = false;
+      gsap.ticker.remove(step);
+    }
+  };
+  const start = () => {
+    if (running) return;
+    running = true;
+    gsap.ticker.add(step);
+  };
+  dock.addEventListener("pointermove", (e) => {
+    if (!wide.matches) return;
+    pointerX = e.clientX;
+    start();
+  });
+  dock.addEventListener("pointerleave", () => {
+    pointerX = null;
+    start();
+  });
+}
+
+initBelt();
+initDock();
 initStickers();
 initAvatar();
 initSay();

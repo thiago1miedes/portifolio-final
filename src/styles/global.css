@@ -37,6 +37,7 @@
   --radius-pill: 999px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --nav-h: 64px;
+  --belt-h: clamp(84px, 7vw, 100px);
 
   color-scheme: dark;
 }

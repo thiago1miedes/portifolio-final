@@ -24,8 +24,8 @@ export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURICompo
 /** Links do menu (âncoras da home). */
 export const nav = [
   { href: "/#projetos", label: "Trabalhos", section: "projetos" },
-  { href: "/#servicos", label: "Serviços", section: "servicos" },
   { href: "/#sobre", label: "Sobre", section: "sobre" },
+  { href: "/#servicos", label: "Serviços", section: "servicos" },
   { href: "/#faq", label: "FAQ", section: "faq" },
 ];
 
@@ -36,15 +36,13 @@ export const facts = [
   { value: "WorldSkills", label: "competidor pelo SENAI em Design Gráfico" },
 ];
 
-/** Faixa em movimento do hero. */
-export const skills = [
-  "Identidade Visual", "Web Design", "UI Design", "Social Media", "Photoshop", "Illustrator", "InDesign", "Figma",
-];
+/** Frase que gira na engrenagem da faixa de logos. O espaço não separável no fim fecha o círculo. */
+export const beltPhrase = "MARCAS QUE CONFIARAM NO MEU TRABALHO · DE BAURU PARA O BRASIL · ";
 
 /** Frases do balão ao lado da foto no hero (cada clique troca). As de mouse só fazem sentido onde dá para arrastar. */
 export const heroPhrases = {
   all: ["Oi!", "Bora criar?", "Aceito café"],
-  mouse: ["Oi!", "Gira a foto na bolinha", "Bora criar?", "Arrasta as figurinhas", "Aceito café"],
+  mouse: ["Oi!", "Gira a foto na bolinha", "Bora criar?", "Arrasta as figurinhas", "Gira a engrenagem", "Aceito café"],
 };
 
 export interface BoardItem {
@@ -74,14 +72,18 @@ export const homeBoard: BoardItem[] = [
   { slug: "kom-saude", x: 37, y: 66.5, w: 31, ratio: "4 / 3", r: -4.5, deco: "pin", image: "/brand/kom-saude/img/mockup-garrafas.webp" },
 ];
 
-/** Ferramentas (ícones do bloco "Ferramentas que eu uso"). */
-export const tools = [
+/** Aplicativos da faixa de ferramentas. tile: o ícone não tem quadrado próprio e ganha um fundo. */
+export const tools: { name: string; icon: string; tile?: boolean }[] = [
   { name: "Photoshop", icon: "photoshop" },
   { name: "Illustrator", icon: "illustrator" },
-  { name: "Figma", icon: "figma" },
   { name: "InDesign", icon: "indesign" },
   { name: "After Effects", icon: "aftereffects" },
-  { name: "VS Code", icon: "vscode" },
+  { name: "Premiere Pro", icon: "premiere" },
+  { name: "Lightroom", icon: "lightroom" },
+  { name: "Adobe XD", icon: "xd" },
+  { name: "Figma", icon: "figma", tile: true },
+  { name: "VS Code", icon: "vscode", tile: true },
+  { name: "Blender", icon: "blender", tile: true },
 ];
 
 /** Serviços (acordeão: só um aberto por vez). */

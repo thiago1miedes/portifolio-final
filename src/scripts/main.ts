@@ -229,29 +229,7 @@ if ($("[data-board]")) {
   import("./playground").catch(() => root.classList.add("no-play"));
 }
 
-/* ------------------------------------------------------------------ serviços: só um aberto por vez (data-service-index) */
-$$("[data-services]").forEach((list) => {
-  const triggers = $$<HTMLButtonElement>("[data-service-index]", list);
-  const select = (index: number) => {
-    triggers.forEach((t) => {
-      const item = t.closest<HTMLElement>("[data-service]")!;
-      const panel = document.getElementById(t.getAttribute("aria-controls")!)!;
-      const open = Number(t.dataset.serviceIndex) === index;
-      const wasOpen = t.getAttribute("aria-expanded") === "true";
-      t.setAttribute("aria-expanded", String(open));
-      item.classList.toggle("is-active", open);
-      if (open && !wasOpen) showPanel(panel);
-      if (!open && wasOpen) hidePanel(panel);
-    });
-  };
-  triggers.forEach((t) => t.addEventListener("click", () => {
-    const index = Number(t.dataset.serviceIndex);
-    // clicar no aberto mantém ele aberto (sempre há um card laranja)
-    if (t.getAttribute("aria-expanded") !== "true") select(index);
-  }));
-});
-
-/* ------------------------------------------------------------------ FAQ: só um aberto por vez (data-faq-index) */
+/* ------------------------------------------------------------------ FAQ e serviços: só um aberto por vez (data-faq-index) */
 $$("[data-faq]").forEach((list) => {
   const triggers = $$<HTMLButtonElement>("[data-faq-index]", list);
   triggers.forEach((t) => t.addEventListener("click", () => {

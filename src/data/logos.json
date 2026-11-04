@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "faggian",
+    "name": "Faggian Brand",
+    "ratio": 2.854
+  },
+  {
+    "slug": "kom-saude",
+    "name": "Kom Saúde",
+    "ratio": 0.898
+  },
+  {
+    "slug": "visual-vidros",
+    "name": "Visual Vidros",
+    "ratio": 1.046
+  },
+  {
+    "slug": "dor-e-saude",
+    "name": "Instituto Dor & Saúde",
+    "ratio": 1.196
+  },
+  {
+    "slug": "easywork",
+    "name": "EasyWork",
+    "ratio": 3.791
+  },
+  {
+    "slug": "equipamentaria",
+    "name": "Equipamentaria",
+    "ratio": 1.762
+  },
+  {
+    "slug": "confraria",
+    "name": "Confraria dos Aromas",
+    "ratio": 2.942
+  },
+  {
+    "slug": "vocs",
+    "name": "VOC&S",
+    "ratio": 3.322
+  },
+  {
+    "slug": "urbes",
+    "name": "Urbes",
+    "ratio": 2.907
+  },
+  {
+    "slug": "oticas-talarico",
+    "name": "Óticas Talarico",
+    "ratio": 3.872
+  },
+  {
+    "slug": "grasie",
+    "name": "Grasiê Kids & Teen",
+    "ratio": 1.209
+  },
+  {
+    "slug": "rock-ensina",
+    "name": "Rock Ensina",
+    "ratio": 5.446
+  },
+  {
+    "slug": "debora-sandrin",
+    "name": "Débora Sandrin",
+    "ratio": 2.496
+  },
+  {
+    "slug": "lf-servicos-eletricos",
+    "name": "LF Serviços Elétricos",
+    "ratio": 3.452
+  },
+  {
+    "slug": "lifestyle",
+    "name": "LifeStyle",
+    "ratio": 3.515
+  },
+  {
+    "slug": "efpi",
+    "name": "EFPI",
+    "ratio": 1.971
+  },
+  {
+    "slug": "mentevitale",
+    "name": "MenteVitale",
+    "ratio": 5.744
+  },
+  {
+    "slug": "cau-pe",
+    "name": "CAU/PE",
+    "ratio": 1
+  }
+]

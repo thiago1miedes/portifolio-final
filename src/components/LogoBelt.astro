@@ -1,0 +1,179 @@
+---
+// Faixa de logos logo abaixo do hero, movida por uma engrenagem no centro.
+// A rotação da engrenagem e o avanço da faixa saem do mesmo número (src/scripts/playground.ts):
+// girar a engrenagem com o mouse empurra os logos, e rolar a página acelera os dois.
+// Logos em branco com fundo escuro; no hover, a cor original sobre um cartão claro, porque
+// vários logos são escuros e sumiriam no fundo. Logos: public/logos, gerados por `npm run logos`.
+import logos from "../data/logos.json";
+import { cases } from "../data/cases";
+import { beltPhrase } from "../data/site";
+
+// número redondo para baixo: 46 cases viram "40+"
+const count = Math.floor(cases.length / 10) * 10;
+
+// mesma área visual para todos: logos compridos ficam mais baixos, os quadrados mais altos e estreitos
+const AREA = 6000;
+const sized = logos.map((l) => {
+  let w = Math.sqrt(AREA * l.ratio);
+  let h = w / l.ratio;
+  if (h > 58) { h = 58; w = h * l.ratio; }
+  if (w > 190) { w = 190; h = w / l.ratio; }
+  return { ...l, w: Math.round(w), h: Math.round(h) };
+});
+
+// contorno dentado
+const TEETH = 32;
+const OUTER = 200;
+const ROOT = 186;
+const at = (r: number, a: number) => `${(r * Math.cos(a)).toFixed(2)} ${(r * Math.sin(a)).toFixed(2)}`;
+const pitch = (2 * Math.PI) / TEETH;
+const gearPath = Array.from({ length: TEETH }, (_, i) => {
+  const a = i * pitch;
+  return [at(ROOT, a - 0.3 * pitch), at(OUTER, a - 0.17 * pitch), at(OUTER, a + 0.17 * pitch), at(ROOT, a + 0.3 * pitch)].join("L");
+}).join("L");
+---
+<section class="belt" aria-label="Marcas atendidas" data-belt>
+  <div class="belt-strip">
+    <span class="belt-rack belt-rack--top" data-belt-rack aria-hidden="true"></span>
+    <div class="belt-view" data-belt-view>
+      <div class="belt-track" data-belt-track>
+        {[0, 1].map((copy) => (
+          <ul class="belt-group" aria-hidden={copy === 1 ? "true" : undefined}>
+            {sized.map((l) => (
+              <li>
+                <a
+                  href={`/cases/${l.slug}/`}
+                  class="belt-logo"
+                  style={`--lw:${l.w}px;--lh:${l.h}px`}
+                  aria-label={`Projeto ${l.name}`}
+                  tabindex={copy === 1 ? -1 : undefined}
+                  draggable="false"
+                >
+                  <img class="belt-white" src={`/logos/${l.slug}-w.svg`} width={l.w} height={l.h} alt="" decoding="async" draggable="false" />
+                  <img class="belt-color" src={`/logos/${l.slug}.svg`} width={l.w} height={l.h} alt="" decoding="async" draggable="false" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
+    <span class="belt-rack belt-rack--bottom" data-belt-rack aria-hidden="true"></span>
+  </div>
+
+  <div class="gear" data-gear>
+    <p class="sr-only">Mais de {count} projetos já feitos</p>
+    <svg class="gear-spin" data-gear-spin viewBox="-204 -204 408 408" aria-hidden="true">
+      <defs><path id="gear-ring" d="M0 0m-157 0a157 157 0 1 1 314 0a157 157 0 1 1-314 0" /></defs>
+      <path class="gear-body" d={`M${gearPath}Z`} />
+      <circle class="gear-line" r="176" />
+      <circle class="gear-line" r="131" />
+      <text class="gear-text"><textPath href="#gear-ring" textLength="986">{beltPhrase}</textPath></text>
+    </svg>
+    <div class="gear-center" aria-hidden="true">
+      <strong>{count}+</strong>
+      <span>projetos já feitos</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .belt { position: relative; z-index: 5; }
+  .belt-strip {
+    position: relative;
+    height: var(--belt-h);
+    overflow: hidden;
+    background: var(--bg);
+    border-block: 1px solid var(--border);
+  }
+
+  /* dentes da faixa: andam junto com os logos */
+  .belt-rack {
+    position: absolute;
+    left: -28px;
+    right: -28px;
+    height: 5px;
+    background: repeating-linear-gradient(90deg, var(--border-strong) 0 5px, transparent 5px 14px);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .belt-rack--top { top: 0; }
+  .belt-rack--bottom { bottom: 0; }
+
+  .belt-view { height: 100%; }
+  /* sem animação (movimento reduzido ou script fora do ar) a faixa rola com o dedo ou o mouse */
+  :global(html:not(.js)) .belt-view, :global(html.no-play) .belt-view { overflow-x: auto; scrollbar-width: none; }
+  .belt-track { display: flex; width: max-content; height: 100%; will-change: transform; }
+  .belt-group { display: flex; align-items: center; flex: none; height: 100%; }
+  .belt-group li { display: flex; padding-inline: clamp(14px, 2vw, 30px); }
+
+  .belt-logo {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: calc(var(--lw) * var(--belt-k));
+    height: calc(var(--lh) * var(--belt-k));
+    --belt-k: 1;
+    -webkit-user-drag: none;
+  }
+  @media (max-width: 699px) { .belt-logo { --belt-k: 0.72; } }
+  .belt-logo img { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity 0.3s, scale 0.45s var(--ease); pointer-events: none; }
+  .belt-color { opacity: 0; }
+  /* cartão claro para a cor original aparecer certa */
+  .belt-logo::before {
+    content: "";
+    position: absolute;
+    inset: -12px -16px;
+    border-radius: 12px;
+    background: #f5f2ec;
+    box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    scale: 0.88;
+    transition: opacity 0.25s, scale 0.45s var(--ease);
+  }
+  .belt-logo:hover::before, .belt-logo:focus-visible::before { opacity: 1; scale: 1; }
+  .belt-logo:hover .belt-white, .belt-logo:focus-visible .belt-white { opacity: 0; }
+  .belt-logo:hover .belt-color, .belt-logo:focus-visible .belt-color { opacity: 1; }
+  .belt-logo:hover img, .belt-logo:focus-visible img { scale: 1.05; }
+
+  /* engrenagem gigante, centrada na faixa */
+  .gear {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(186px, 20vw, 290px);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    z-index: 2;
+    container-type: inline-size;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .gear.is-grabbing { cursor: grabbing; }
+  .gear::before {
+    content: "";
+    position: absolute;
+    inset: 4%;
+    border-radius: 50%;
+    box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.85), 0 0 90px -10px var(--accent-glow);
+  }
+  .gear-spin { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .gear-body { fill: var(--accent); }
+  .gear-line { fill: none; stroke: var(--on-accent); stroke-width: 1.5; opacity: 0.28; }
+  .gear-text { font-family: var(--font-heading); font-weight: 700; font-size: 22px; fill: var(--on-accent); }
+  .gear-center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 2cqi;
+    color: var(--on-accent);
+    text-align: center;
+    pointer-events: none;
+  }
+  .gear-center strong { font-family: var(--font-display); font-weight: 400; font-size: 27cqi; line-height: 0.9; }
+  .gear-center span { max-width: 34cqi; font-family: var(--font-heading); font-weight: 700; font-size: 5.6cqi; line-height: 1.05; letter-spacing: -0.02em; }
+</style>
