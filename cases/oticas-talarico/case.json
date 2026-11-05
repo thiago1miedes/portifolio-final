@@ -251,8 +251,8 @@
   "graphics": {
     "nav": "Elementos",
     "eyebrow": "",
-    "title": "Uma joia, um padrão e uma árvore.",
-    "text": "O acento do Ó é um anel com uma joia: os óculos da casa são tratados como preciosidades. As linhas finas do padrão cobrem o embrulho, o verso do cartão e a lateral da sacola. Na base de cada peça, um selo pequeno com uma árvore lembra que a marca é de família.",
+    "title": "Uma joia e um padrão.",
+    "text": "O acento do Ó é um anel com uma joia: os óculos da casa são tratados como preciosidades. As linhas finas do padrão cobrem o embrulho, o verso do cartão e a lateral da sacola.",
     "items": [
       {
         "src": "graphics/anel.svg",
@@ -268,11 +268,6 @@
         "src": "graphics/padrao-completo.svg",
         "label": "Padrão",
         "alt": "Padrão de linhas finas em azul claro, repetindo o módulo"
-      },
-      {
-        "src": "graphics/selo-arvore.svg",
-        "label": "Selo da árvore",
-        "alt": "Selo circular com uma árvore de copa cheia e raízes aparentes, em tom de cobre"
       }
     ],
     "patterns": [
@@ -552,10 +547,10 @@
       { "kind": "photo", "image": "mockup-interior", "col": [1, 12], "mobile": 2, "speed": 4 },
       { "kind": "photo", "image": "manual-embrulho", "col": [1, 12], "mobile": 2, "speed": 4 },
 
-      { "kind": "graphic", "src": "graphics/sacola-azul-claro.svg", "w": 595, "h": 842, "alt": "Sacola azul claro com o logo em azul escuro e branco e o selo da árvore no canto", "col": [1, 3], "mobile": 1, "speed": 2, "shadow": true },
-      { "kind": "graphic", "src": "graphics/sacola-azul-escuro.svg", "w": 595, "h": 842, "alt": "Sacola azul escuro com o logo em azul claro e branco e o selo da árvore no canto", "col": [4, 3], "mobile": 1, "speed": -2, "shadow": true },
-      { "kind": "graphic", "src": "graphics/sacola-branco.svg", "w": 595, "h": 842, "alt": "Sacola branca com o logo inteiro em azul claro e o selo da árvore no canto", "col": [7, 3], "mobile": 1, "speed": 2, "shadow": true },
-      { "kind": "graphic", "src": "graphics/sacola-marrom.svg", "w": 595, "h": 842, "alt": "Sacola marrom com o logo branco e o selo da árvore no canto", "col": [10, 3], "mobile": 1, "speed": -2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/sacola-azul-claro.svg", "w": 595, "h": 842, "alt": "Sacola azul claro com o logo em azul escuro e branco e um selo pequeno no canto", "col": [1, 3], "mobile": 1, "speed": 2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/sacola-azul-escuro.svg", "w": 595, "h": 842, "alt": "Sacola azul escuro com o logo em azul claro e branco e um selo pequeno no canto", "col": [4, 3], "mobile": 1, "speed": -2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/sacola-branco.svg", "w": 595, "h": 842, "alt": "Sacola branca com o logo inteiro em azul claro e um selo pequeno no canto", "col": [7, 3], "mobile": 1, "speed": 2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/sacola-marrom.svg", "w": 595, "h": 842, "alt": "Sacola marrom com o logo branco e um selo pequeno no canto", "col": [10, 3], "mobile": 1, "speed": -2, "shadow": true },
 
       { "kind": "photo", "image": "mockup-sacolas", "col": [1, 8], "mobile": 2, "speed": 3 },
       { "kind": "photo", "image": "editorial-prova", "col": [9, 4], "mobile": 2, "speed": -3 },
@@ -571,7 +566,7 @@
 
       { "kind": "marquee", "col": [1, 12], "mobile": 2 },
 
-      { "kind": "graphic", "src": "graphics/cartao-frente.svg", "w": 272, "h": 153, "alt": "Frente do cartão de visita: logo principal sobre branco e o selo da árvore em cobre", "col": [1, 6], "mobile": 2, "speed": 2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/cartao-frente.svg", "w": 272, "h": 153, "alt": "Frente do cartão de visita: logo principal sobre branco e um selo pequeno em cobre", "col": [1, 6], "mobile": 2, "speed": 2, "shadow": true },
       { "kind": "graphic", "src": "graphics/cartao-verso.svg", "w": 272, "h": 153, "alt": "Verso do cartão de visita: o padrão em linhas azul claro sobre branco", "col": [7, 6], "mobile": 2, "speed": -2, "shadow": true },
 
       { "kind": "photo", "image": "mockup-papelaria", "col": [1, 8], "mobile": 2, "speed": 3 },
@@ -627,7 +622,7 @@
       "w": 1620,
       "h": 1080,
       "essential": true,
-      "alt": "Frente e verso do cartão de visita flutuando sobre um fundo branco, com o logo, o selo da árvore e o padrão"
+      "alt": "Frente e verso do cartão de visita flutuando sobre um fundo branco, com o logo, um selo pequeno e o padrão"
     },
     {
       "id": "textura-lente",
@@ -711,7 +706,7 @@
       "section": "applications",
       "w": 2400,
       "h": 1600,
-      "alt": "Caixa embrulhada no papel com o padrão da marca, fechada com o selo da árvore"
+      "alt": "Caixa embrulhada no papel com o padrão da marca, fechada com um adesivo redondo com o símbolo"
     },
     {
       "id": "editorial-monoculo",

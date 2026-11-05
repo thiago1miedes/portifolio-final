@@ -21,7 +21,7 @@ Se preferir, solte tudo em `F:\Freelancer\Oticas Talarico\Referencias_Flow`, com
 | `hero-olhar` (abertura) | Foto e gradiente da página 2 do manual |
 | `manual-embrulho` | Mockup da página 12 do manual |
 | `manual-cartoes` | Mockup da página 13 do manual |
-| Sacolas, cartão, padrão e selo da árvore | PDFs de impressão, em vetor (`public/brand/oticas-talarico/graphics/`) |
+| Sacolas, cartão e padrão | PDFs de impressão, em vetor (`public/brand/oticas-talarico/graphics/`) |
 | Letras gigantes e alfabeto da Adam | Curvas do logotipo e da página 8 do manual |
 | Recortes do monóculo e do Ó, faixa em movimento, sistema do logo e blocos de cor | Código, a partir dos SVGs |
 
@@ -31,7 +31,7 @@ Tudo em `cases/oticas-talarico/ref/`.
 
 - **Logo:** `oticas-talarico-lockup-light.png` (para fundo claro), `-lockup-dark.png` (azul claro e branco sobre azul escuro), `-lockup-white.png` (todo branco), `-lockup-accent.png` (sobre azul claro), `-vertical-light.png`.
 - **Símbolo:** `-symbol-light.png` (azul claro), `-symbol-dark.png` (sobre azul escuro), `-symbol-white.png` (branco sobre azul escuro).
-- **Peças reais:** `real-sacola-azul-claro.png`, `real-sacola-azul-escuro.png`, `real-sacola-branco.png`, `real-sacola-marrom.png`, `real-cartao-frente.png`, `real-cartao-verso.png`, `real-selo-arvore.png`.
+- **Peças reais:** `real-sacola-azul-claro.png`, `real-sacola-azul-escuro.png`, `real-sacola-branco.png`, `real-sacola-marrom.png`, `real-cartao-frente.png`, `real-cartao-verso.png`.
 - **Padrão:** `real-padrao-azul.png`, `real-padrao-marinho.png`, `real-padrao-branco-azul.png`, `real-padrao-branco-marrom.png`.
 
 ## Linguagem das imagens
@@ -135,11 +135,11 @@ Photorealistic close-up of a folded premium microfiber lens cloth in sky blue #3
 
 ### `mockup-embrulho`
 
-**Anexar:** `real-padrao-marinho.png`, `real-padrao-branco-azul.png`, `real-selo-arvore.png`
+**Anexar:** `real-padrao-marinho.png`, `real-padrao-branco-azul.png`, `oticas-talarico-symbol-dark.png`
 **Evitar:** laço de presente grande, papel brilhante, Natal, dourado.
 
 ```
-Photorealistic still life of a small box gift-wrapped in matte paper with the attached navy #03045E geometric line pattern, crisp hidden folds, closed with a thin natural cotton ribbon and a round sticker carrying the attached copper tree seal. Beside it, a smaller package wrapped in white paper with the attached sky blue line pattern. On a walnut table with straight grain, warm white plaster wall behind. Soft window light from the left, gentle shadows. 50mm lens, f/4, careful and elegant, like a jewel being handed over.
+Photorealistic still life of a small box gift-wrapped in matte paper with the attached navy #03045E geometric line pattern, crisp hidden folds, closed with a thin natural cotton ribbon and a round navy sticker carrying the attached symbol. Beside it, a smaller package wrapped in white paper with the attached sky blue line pattern. On a walnut table with straight grain, warm white plaster wall behind. Soft window light from the left, gentle shadows. 50mm lens, f/4, careful and elegant, like a jewel being handed over.
 ```
 
 ### `mockup-fachada`

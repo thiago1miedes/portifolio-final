@@ -369,7 +369,7 @@ const list: CaseData[] = [
     summary: "Identidade visual de uma ótica de família: um olho desenhado como monóculo, um anel com joia no acento do Ó, azul, madeira e fundos claros.",
     about: [
       "Talarico é o sobrenome da família inteira. O símbolo junta o formato de um olho ao aro de um monóculo, e o acento do Ó vira um anel com uma joia, para tratar os óculos da casa como preciosidades.",
-      "O manual define construção, área segura, paleta, tipografia e os usos certos e errados. A identidade segue para cartão de visita, quatro sacolas e papel de embrulho, com um padrão de linhas finas e um selo com uma árvore.",
+      "O manual define construção, área segura, paleta, tipografia e os usos certos e errados. A identidade segue para cartão de visita, quatro sacolas e papel de embrulho, com um padrão de linhas finas.",
     ],
     deliverables: ["Manual de marca", "Símbolo e logotipo", "Paleta e tipografia", "Padrão", "Cartão de visita", "Sacolas e embrulho"],
     tools: ["Illustrator", "Photoshop", "InDesign"],

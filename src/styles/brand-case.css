@@ -354,6 +354,9 @@ html:not(.js) [data-intro-outline] { display: none; }
 .bc-graphics { position: relative; padding-block: var(--bc-pad); overflow: clip; }
 .bc-pictos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 56px) var(--bc-gap); }
 @media (min-width: 900px) { .bc-pictos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* três elementos: colunas iguais no desktop e o último centralizado no celular */
+@media (min-width: 900px) { .bc-pictos[data-cols="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 899px) { .bc-pictos[data-cols="3"] .bc-picto:last-child { grid-column: 1 / -1; } }
 .bc-picto { display: grid; gap: 14px; justify-items: center; text-align: center; }
 .bc-picto-art { display: block; width: min(100%, 260px); aspect-ratio: 1; overflow: hidden; }
 .bc-picto-art img { display: block; width: 100%; height: 100%; }

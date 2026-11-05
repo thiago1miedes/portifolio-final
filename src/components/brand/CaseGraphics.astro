@@ -16,7 +16,7 @@ const g = data.graphics!;
     <BrandText as="p" class="bc-body" text={g.text} data-bc-reveal />
   </div>
 
-  <ul class="container bc-pictos">
+  <ul class="container bc-pictos" data-cols={g.items.length}>
     {g.items.map((it, i) => (
       <li class="bc-picto" data-index={i} data-bc-picto>
         <span class="bc-picto-art">
