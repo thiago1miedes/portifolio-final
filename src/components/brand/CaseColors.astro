@@ -25,17 +25,24 @@ const swatches = c.swatches.map((s) => ({ ...s, info: swatchInfo(data, s.hex) })
           class="bc-swatch"
           data-index={i}
           data-card={s.info.card ? "true" : undefined}
-          style={`--sw:${s.hex};--sw-ink:${s.info.ink};--w:${s.weight}`}
+          style={`--sw:${s.gradient ?? s.hex};--sw-ink:${s.info.ink};--w:${s.weight}`}
         >
           <span class="bc-swatch-fill" aria-hidden="true"></span>
           <div class="bc-swatch-info">
             <BrandText as="h3" class="bc-swatch-name" text={s.name} />
             <p class="bc-swatch-role">{s.role}</p>
-            <dl class="bc-swatch-codes">
-              <div><dt>HEX</dt><dd>{s.hex.toUpperCase()}</dd></div>
-              <div><dt>RGB</dt><dd>{s.info.rgb}</dd></div>
-              <div><dt>CMYK</dt><dd>{s.cmyk ?? s.info.cmyk}</dd></div>
-            </dl>
+            {s.stops ? (
+              <dl class="bc-swatch-codes">
+                <div><dt>De</dt><dd>{s.stops[0].toUpperCase()}</dd></div>
+                <div><dt>Até</dt><dd>{s.stops[1].toUpperCase()}</dd></div>
+              </dl>
+            ) : (
+              <dl class="bc-swatch-codes">
+                <div><dt>HEX</dt><dd>{s.hex.toUpperCase()}</dd></div>
+                <div><dt>RGB</dt><dd>{s.info.rgb}</dd></div>
+                <div><dt>CMYK</dt><dd>{s.cmyk ?? s.info.cmyk}</dd></div>
+              </dl>
+            )}
             <p class="bc-swatch-wcag" title={`Contraste do texto sobre esta cor: ${s.info.ratio.toFixed(2)}:1 (WCAG ${s.info.grade})`}>
               Aa {s.info.ratio.toFixed(1)}:1 · {s.info.grade}
             </p>

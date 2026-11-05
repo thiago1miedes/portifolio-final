@@ -18,7 +18,7 @@ const vars = [
   `--outline-w:${outlineWidth}`,
 ].join(";");
 ---
-<section class="bc-intro" id="intro" data-theme="dark" data-bc-section data-bc-intro>
+<section class="bc-intro" id="intro" data-theme="dark" data-bc-section data-bc-intro data-gradient={data.intro.gradient ? "true" : undefined} style={data.intro.gradient ? `--intro-gradient:${data.intro.gradient}` : undefined}>
   {data.intro.image && (
     <div class="bc-bg bc-intro-bg" data-bc-intro-bg>
       <BrandImg data={data} id={data.intro.image} eager decorative />

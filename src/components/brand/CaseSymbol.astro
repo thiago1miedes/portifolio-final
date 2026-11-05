@@ -70,6 +70,7 @@ const drawnLabel = [symbol.label, gridLines.length && (s.grid?.label ?? "sobre a
               {gridLines.length > 0 && (
                 <g class="bc-symbol-lines" aria-hidden="true">
                   {gridLines.map((l, i) => <line {...l} pathLength="1" data-bc-grid-line data-index={i} />)}
+                  {(s.grid?.circles ?? []).map(([cx, cy, r], i) => <circle cx={cx} cy={cy} r={r} pathLength="1" data-bc-grid-line data-index={gridLines.length + i} />)}
                 </g>
               )}
               {pulses.length > 0 && (

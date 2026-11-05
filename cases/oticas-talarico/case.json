@@ -1,0 +1,741 @@
+{
+  "slug": "oticas-talarico",
+  "client": "Óticas Talarico",
+  "segment": "Ótica de família",
+  "year": "2024",
+  "assets": "/brand/oticas-talarico",
+  "seo": {
+    "title": "Óticas Talarico · Identidade visual",
+    "description": "Case de identidade visual da Óticas Talarico, ótica de uma família inteira com o mesmo sobrenome: um olho desenhado como monóculo, um anel com joia no acento do Ó, azul, madeira e fundos claros. Símbolo, tipografia, cores, padrão, papelaria e aplicações.",
+    "image": "og.png"
+  },
+  "theme": {
+    "dark": "#03045E",
+    "light": "#F7F5F2",
+    "primary": "#03045E",
+    "secondary": "#795F54",
+    "support": "#D9D0C7",
+    "accent": "#38B6FF",
+    "inkOnLight": "#03045E",
+    "mutedOnLight": "#5A5470",
+    "inkOnDark": "#FFFFFF",
+    "mutedOnDark": "#C9D8F5"
+  },
+  "font": {
+    "family": "Outfit",
+    "fallback": "\"Century Gothic\", \"Avenir Next\", \"Segoe UI\", system-ui, sans-serif",
+    "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+    "files": {
+      "100 900": "fonts/outfit-var.woff2"
+    },
+    "preload": [
+      200
+    ],
+    "display": {
+      "weight": 200,
+      "tracking": "-0.01em",
+      "manifesto": 200
+    },
+    "text": {
+      "family": "Clash Grotesk",
+      "tracking": "0.012em",
+      "fallback": "\"Segoe UI\", system-ui, -apple-system, Arial, sans-serif",
+      "files": {
+        "200 700": "fonts/clash-grotesk-var.woff2"
+      },
+      "preload": [
+        400
+      ]
+    }
+  },
+  "logo": {
+    "lockup": "logo/lockup.svg",
+    "vertical": "logo/vertical.svg",
+    "symbol": "logo/symbol.svg",
+    "outline": "logo/symbol-outline.svg",
+    "wordmark": "logo/wordmark.svg",
+    "nav": {
+      "desktop": [
+        "symbol",
+        "wordmark"
+      ],
+      "mobile": [
+        "symbol"
+      ],
+      "wordmarkHeight": 34,
+      "dark": "white",
+      "light": "positive"
+    },
+    "variants": {
+      "positive": {
+        "label": "Positivo",
+        "bg": "#FFFFFF",
+        "symbol-main": "#38B6FF",
+        "symbol-accent": "#38B6FF",
+        "wordmark": "#03045E",
+        "wordmark-accent": "#38B6FF",
+        "tagline": "#03045E"
+      },
+      "negative": {
+        "label": "Negativo",
+        "bg": "#03045E",
+        "symbol-main": "#38B6FF",
+        "symbol-accent": "#38B6FF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#38B6FF",
+        "tagline": "#FFFFFF"
+      },
+      "onPrimary": {
+        "label": "Sobre azul escuro",
+        "bg": "#03045E",
+        "symbol-main": "#38B6FF",
+        "symbol-accent": "#38B6FF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#38B6FF",
+        "tagline": "#FFFFFF"
+      },
+      "onAccent": {
+        "label": "Sobre azul claro",
+        "bg": "#38B6FF",
+        "symbol-main": "#03045E",
+        "symbol-accent": "#03045E",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#03045E",
+        "tagline": "#03045E"
+      },
+      "onGradient": {
+        "label": "Sobre o gradiente",
+        "bg": "linear-gradient(135deg, #38B6FF, #03045E)",
+        "base": "#1E5DAF",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "onWood": {
+        "label": "Sobre marrom",
+        "bg": "#795F54",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "onSand": {
+        "label": "Sobre marrom claro",
+        "bg": "#D9D0C7",
+        "symbol-main": "#03045E",
+        "symbol-accent": "#03045E",
+        "wordmark": "#03045E",
+        "wordmark-accent": "#03045E",
+        "tagline": "#03045E"
+      },
+      "white": {
+        "label": "Branca",
+        "bg": "#03045E",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "mono": {
+        "label": "Preta",
+        "bg": "#FFFFFF",
+        "symbol-main": "#000000",
+        "symbol-accent": "#000000",
+        "wordmark": "#000000",
+        "wordmark-accent": "#000000",
+        "tagline": "#000000"
+      },
+      "monoNegative": {
+        "label": "Branca sobre preto",
+        "bg": "#000000",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "monoGray": {
+        "label": "Branca sobre cinza",
+        "bg": "#7E7E7E",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "onPurple": {
+        "label": "Fundo escuro não corporativo",
+        "bg": "#6E2872",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      },
+      "onYellow": {
+        "label": "Fundo claro não corporativo",
+        "bg": "#F2EA0C",
+        "symbol-main": "#000000",
+        "symbol-accent": "#000000",
+        "wordmark": "#000000",
+        "wordmark-accent": "#000000",
+        "tagline": "#000000"
+      },
+      "onPhotoLight": {
+        "label": "Foto clara",
+        "bg": "#DDE7EE",
+        "symbol-main": "#000000",
+        "symbol-accent": "#000000",
+        "wordmark": "#000000",
+        "wordmark-accent": "#000000",
+        "tagline": "#000000"
+      },
+      "onPhotoDark": {
+        "label": "Foto escura",
+        "bg": "#0A0A0A",
+        "symbol-main": "#FFFFFF",
+        "symbol-accent": "#FFFFFF",
+        "wordmark": "#FFFFFF",
+        "wordmark-accent": "#FFFFFF",
+        "tagline": "#FFFFFF"
+      }
+    }
+  },
+  "intro": {
+    "kicker": "",
+    "subtitle": "Ótica de família, com o sobrenome de todos na porta.",
+    "scrollHint": "Role para conhecer a marca",
+    "variant": "onGradient",
+    "image": "hero-olhar",
+    "gradient": "linear-gradient(135deg, #38B6FF, #03045E)"
+  },
+  "symbol": {
+    "nav": "Símbolo",
+    "eyebrow": "",
+    "title": "Um olho que também é um monóculo.",
+    "text": [
+      "O ícone nasce do formato de um olho, mas o contorno sugere o aro de um óculos. Como só existe um lado, o desenho vira um monóculo, a peça de uma lente só que figuras refinadas usaram ao longo da história.",
+      "Tudo foi traçado numa grade, para a proporção ser a mesma em qualquer tamanho."
+    ],
+    "pieces": [
+      {
+        "piece": "monoculo",
+        "label": "Monóculo",
+        "text": "uma lente, um aro",
+        "shift": 0,
+        "y": 30
+      },
+      {
+        "piece": "olho",
+        "label": "Olho",
+        "text": "a visão, de onde a marca parte",
+        "shift": 0,
+        "y": 82
+      }
+    ],
+    "image": "textura-lente",
+    "grid": {
+      "x": [0, 44.4, 88.8, 133.2, 177.6, 222, 266.4, 310.8, 355.2],
+      "y": [23.2, 67.6, 112, 156.4, 200.8],
+      "circles": [
+        [276.867, 72.085, 60.711]
+      ],
+      "label": "sobre a grade de construção do manual, com o círculo da lente"
+    },
+    "variant": "onPrimary"
+  },
+  "graphics": {
+    "nav": "Elementos",
+    "eyebrow": "",
+    "title": "Uma joia, um padrão e uma árvore.",
+    "text": "O acento do Ó é um anel com uma joia: os óculos da casa são tratados como preciosidades. As linhas finas do padrão cobrem o embrulho, o verso do cartão e a lateral da sacola. Na base de cada peça, um selo pequeno com uma árvore lembra que a marca é de família.",
+    "items": [
+      {
+        "src": "graphics/anel.svg",
+        "label": "Anel com joia",
+        "alt": "O Ó do logotipo em tamanho grande, com o acento em forma de joia"
+      },
+      {
+        "src": "graphics/modulo.svg",
+        "label": "Módulo",
+        "alt": "Detalhe do padrão: linhas finas que se cruzam em ângulos de hexágono"
+      },
+      {
+        "src": "graphics/padrao-completo.svg",
+        "label": "Padrão",
+        "alt": "Padrão de linhas finas em azul claro, repetindo o módulo"
+      },
+      {
+        "src": "graphics/selo-arvore.svg",
+        "label": "Selo da árvore",
+        "alt": "Selo circular com uma árvore de copa cheia e raízes aparentes, em tom de cobre"
+      }
+    ],
+    "patterns": [
+      {
+        "src": "graphics/padrao-azul.svg",
+        "w": 792,
+        "h": 792,
+        "alt": "Padrão em azul escuro sobre azul claro"
+      },
+      {
+        "src": "graphics/padrao-branco-azul.svg",
+        "w": 792,
+        "h": 792,
+        "alt": "Padrão em azul claro sobre branco"
+      },
+      {
+        "src": "graphics/padrao-marinho.svg",
+        "w": 792,
+        "h": 792,
+        "alt": "Padrão em azul claro sobre azul escuro"
+      },
+      {
+        "src": "graphics/padrao-branco-marrom.svg",
+        "w": 792,
+        "h": 792,
+        "alt": "Padrão em marrom sobre branco"
+      },
+      {
+        "src": "graphics/padrao-branco-marinho.svg",
+        "w": 792,
+        "h": 792,
+        "alt": "Padrão em azul escuro sobre branco"
+      }
+    ],
+    "patternsNote": "O mesmo padrão nas cores da papelaria."
+  },
+  "typography": {
+    "nav": "Tipografia",
+    "eyebrow": "",
+    "title": "Adam",
+    "nameArt": "graphics/adam-nome.svg",
+    "glyphs": ["Ó", "T", "a", "r", "c", "o", "s"],
+    "weights": [400],
+    "glyphArts": [
+      { "name": "Ó", "note": "o anel e a joia", "src": "logo/glyph-o-acento.svg" },
+      { "name": "T", "note": "do logotipo", "src": "logo/glyph-T.svg" },
+      { "name": "a", "note": "do logotipo", "src": "logo/glyph-a.svg" },
+      { "name": "r", "note": "do logotipo", "src": "logo/glyph-r.svg" },
+      { "name": "c", "note": "do logotipo", "src": "logo/glyph-c.svg" },
+      { "name": "o", "note": "do logotipo", "src": "logo/glyph-o-baixa.svg" },
+      { "name": "s", "note": "do logotipo", "src": "logo/glyph-s.svg" }
+    ],
+    "text": "O logotipo foi construído na Adam, uma geométrica de traço fino, indicada também para os títulos. Em textos corridos, site e meios digitais entra a Clash Grotesk.",
+    "specimen": {
+      "src": "graphics/adam-alfabeto.svg",
+      "alt": "Alfabeto e algarismos da fonte Adam"
+    },
+    "second": {
+      "name": "Clash Grotesk",
+      "weights": [300, 400, 500, 600, 700],
+      "sample": "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789"
+    },
+    "spec": [
+      { "k": "Títulos", "v": "Adam" },
+      { "k": "Textos", "v": "Clash Grotesk, da Indian Type Foundry" },
+      { "k": "Nesta página", "v": "Outfit nos títulos, a gratuita mais próxima da Adam" }
+    ],
+    "sample": ""
+  },
+  "manifesto": {
+    "nav": "Manifesto",
+    "eyebrow": "",
+    "headline": "O nome na porta é o sobrenome da família inteira. O resto é madeira, fundo claro e óculos tratados como joia.",
+    "attributes": [
+      {
+        "word": "Familiar",
+        "text": "A marca leva o sobrenome que todos ali assinam."
+      },
+      {
+        "word": "Sofisticada",
+        "text": "Um monóculo no símbolo e uma joia no acento, sem precisar de dourado."
+      },
+      {
+        "word": "Leve",
+        "text": "Traço fino no logotipo, fundos claros e espaço de sobra."
+      },
+      {
+        "word": "Acolhedora",
+        "text": "A madeira de que a família gosta entra na loja e equilibra o azul."
+      }
+    ]
+  },
+  "colors": {
+    "nav": "Cores",
+    "eyebrow": "",
+    "title": "Azul de lente, marrom de madeira.",
+    "text": "O azul escuro e o gradiente são as cores principais e a base de todas as combinações. O azul claro e os marrons entram para compor, e é neles que a madeira da loja encontra a marca.",
+    "note": "HEX, RGB e CMYK oficiais do manual de marca. Azul claro em texto só sobre o azul escuro: no branco, o contraste cai para 2,3:1.",
+    "swatches": [
+      {
+        "name": "Gradiente",
+        "role": "Principal",
+        "hex": "#1E5DAF",
+        "gradient": "linear-gradient(135deg, #38B6FF, #03045E)",
+        "stops": ["#38B6FF", "#03045E"],
+        "weight": 2.2
+      },
+      {
+        "name": "Azul escuro",
+        "role": "Principal · base",
+        "hex": "#03045E",
+        "cmyk": "100 94 34 35",
+        "weight": 2
+      },
+      {
+        "name": "Azul claro",
+        "role": "Composição",
+        "hex": "#38B6FF",
+        "cmyk": "64 15 0 0",
+        "weight": 1.5
+      },
+      {
+        "name": "Marrom escuro",
+        "role": "Composição",
+        "hex": "#795F54",
+        "cmyk": "39 51 52 40",
+        "weight": 1.5
+      },
+      {
+        "name": "Marrom claro",
+        "role": "Composição",
+        "hex": "#D9D0C7",
+        "cmyk": "17 17 22 1",
+        "weight": 1.5
+      }
+    ]
+  },
+  "system": {
+    "nav": "Sistema",
+    "eyebrow": "",
+    "title": "Cada fundo tem a sua versão, e o manual diz qual.",
+    "tiles": [
+      {
+        "kind": "lockup",
+        "variant": "positive",
+        "size": "lg",
+        "label": "Versão principal",
+        "note": "Azul escuro e azul claro, sempre que for possível."
+      },
+      {
+        "kind": "lockup",
+        "art": "vertical",
+        "variant": "onPrimary",
+        "size": "tall",
+        "label": "Vertical"
+      },
+      {
+        "kind": "symbol",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Símbolo"
+      },
+      {
+        "kind": "sizes",
+        "variant": "positive",
+        "size": "sm",
+        "label": "Em tamanho pequeno",
+        "sizes": [48, 32, 24, 16]
+      },
+      {
+        "kind": "lockup",
+        "variant": "onGradient",
+        "size": "wide",
+        "label": "Sobre o gradiente"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onAccent",
+        "size": "sm",
+        "label": "Sobre azul claro"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onWood",
+        "size": "sm",
+        "label": "Sobre marrom"
+      },
+      {
+        "kind": "clearspace",
+        "variant": "positive",
+        "size": "wide",
+        "label": "Área segura",
+        "unit": 104,
+        "corner": "logo/ring.svg",
+        "note": "A margem mínima é o próprio Ó, em cada canto."
+      },
+      {
+        "kind": "lockup",
+        "variant": "negative",
+        "size": "wide",
+        "label": "Sobre azul escuro"
+      },
+      {
+        "kind": "lockup",
+        "variant": "mono",
+        "size": "sm",
+        "label": "Preta"
+      },
+      {
+        "kind": "lockup",
+        "variant": "monoNegative",
+        "size": "sm",
+        "label": "Branca sobre preto"
+      },
+      {
+        "kind": "lockup",
+        "variant": "monoGray",
+        "size": "sm",
+        "label": "Branca sobre cinza"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onSand",
+        "size": "sm",
+        "label": "Sobre marrom claro"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onPurple",
+        "size": "sm",
+        "label": "Cor escura de fora"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onYellow",
+        "size": "sm",
+        "label": "Cor clara de fora"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onPhotoLight",
+        "size": "sm",
+        "photo": "manual/ceu.webp",
+        "label": "Foto clara"
+      },
+      {
+        "kind": "lockup",
+        "variant": "onPhotoDark",
+        "size": "sm",
+        "photo": "manual/predio.webp",
+        "label": "Foto escura"
+      },
+      {
+        "kind": "misuse",
+        "variant": "positive",
+        "size": "full",
+        "label": "Uso incorreto",
+        "rules": [
+          { "effect": "distort", "label": "Não distorça" },
+          { "effect": "recolor", "label": "Não mude de cor" },
+          { "effect": "outline", "label": "Não troque a cor sólida por um contorno" },
+          { "effect": "resize", "label": "Não altere o tamanho das partes" },
+          { "effect": "fade", "label": "Não reduza a opacidade" },
+          { "effect": "font", "label": "Não altere a fonte" }
+        ]
+      }
+    ]
+  },
+  "applications": {
+    "nav": "Aplicações",
+    "eyebrow": "",
+    "title": "Do cartão ao embrulho, o cuidado de quem entrega uma joia.",
+    "text": "Cartão, sacola e papel de embrulho vieram dos arquivos de impressão. A sacola sai em quatro cores, e o padrão fica para o embrulho, o verso do cartão e as laterais.",
+    "marquee": "Óticas Talarico",
+    "marqueeArts": ["symbol", "wordmark"],
+    "items": [
+      { "kind": "photo", "image": "mockup-interior", "col": [1, 12], "mobile": 2, "speed": 4 },
+      { "kind": "photo", "image": "manual-embrulho", "col": [1, 12], "mobile": 2, "speed": 4 },
+
+      { "kind": "graphic", "src": "graphics/sacola-azul-claro.svg", "w": 595, "h": 842, "alt": "Sacola azul claro com o logo em azul escuro e branco e o selo da árvore no canto", "col": [1, 3], "mobile": 1, "speed": 2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/sacola-azul-escuro.svg", "w": 595, "h": 842, "alt": "Sacola azul escuro com o logo em azul claro e branco e o selo da árvore no canto", "col": [4, 3], "mobile": 1, "speed": -2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/sacola-branco.svg", "w": 595, "h": 842, "alt": "Sacola branca com o logo inteiro em azul claro e o selo da árvore no canto", "col": [7, 3], "mobile": 1, "speed": 2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/sacola-marrom.svg", "w": 595, "h": 842, "alt": "Sacola marrom com o logo branco e o selo da árvore no canto", "col": [10, 3], "mobile": 1, "speed": -2, "shadow": true },
+
+      { "kind": "photo", "image": "mockup-sacolas", "col": [1, 8], "mobile": 2, "speed": 3 },
+      { "kind": "photo", "image": "editorial-prova", "col": [9, 4], "mobile": 2, "speed": -3 },
+
+      { "kind": "crop", "art": "symbol", "viewBox": "196 -8 170 170", "variant": "onPrimary", "col": [1, 4], "mobile": 2 },
+      { "kind": "photo", "image": "manual-cartoes", "col": [5, 8], "mobile": 2, "speed": 3 },
+
+      { "kind": "photo", "image": "mockup-estojo", "col": [1, 8], "mobile": 2, "speed": 3 },
+      { "kind": "photo", "image": "editorial-monoculo", "col": [9, 4], "mobile": 2, "speed": -3 },
+
+      { "kind": "photo", "image": "mockup-caixa", "col": [1, 4], "mobile": 2, "speed": -3 },
+      { "kind": "photo", "image": "mockup-brindes", "col": [5, 8], "mobile": 2, "speed": 3 },
+
+      { "kind": "marquee", "col": [1, 12], "mobile": 2 },
+
+      { "kind": "graphic", "src": "graphics/cartao-frente.svg", "w": 272, "h": 153, "alt": "Frente do cartão de visita: logo principal sobre branco e o selo da árvore em cobre", "col": [1, 6], "mobile": 2, "speed": 2, "shadow": true },
+      { "kind": "graphic", "src": "graphics/cartao-verso.svg", "w": 272, "h": 153, "alt": "Verso do cartão de visita: o padrão em linhas azul claro sobre branco", "col": [7, 6], "mobile": 2, "speed": -2, "shadow": true },
+
+      { "kind": "photo", "image": "mockup-papelaria", "col": [1, 8], "mobile": 2, "speed": 3 },
+      { "kind": "photo", "image": "editorial-ajuste", "col": [9, 4], "mobile": 2, "speed": -3 },
+
+      { "kind": "crop", "art": "wordmark", "viewBox": "412 -8 116 116", "variant": "onAccent", "col": [1, 4], "mobile": 2 },
+      { "kind": "graphic", "src": "graphics/padrao-largo-branco-marrom.svg", "w": 16, "h": 9, "alt": "Padrão de linhas finas em marrom sobre branco, como na lateral da sacola marrom", "col": [5, 8], "mobile": 2, "speed": 2, "shadow": true },
+
+      { "kind": "photo", "image": "mockup-embrulho", "col": [1, 8], "mobile": 2, "speed": 3 },
+      { "kind": "photo", "image": "mockup-flanela", "col": [9, 4], "mobile": 2, "speed": -3 },
+
+      { "kind": "photo", "image": "mockup-balcao", "col": [1, 12], "mobile": 2, "speed": 4 },
+      { "kind": "photo", "image": "mockup-fachada", "col": [1, 12], "mobile": 2, "speed": 4 }
+    ]
+  },
+  "closing": {
+    "phrase": "Um sobrenome, um olho, uma joia.",
+    "image": "fechamento-madeira",
+    "credits": [
+      { "k": "Cliente", "v": "Óticas Talarico" },
+      { "k": "Segmento", "v": "Ótica de família" },
+      { "k": "Ano", "v": "2024" },
+      { "k": "Serviços", "v": "Manual de marca · símbolo · logotipo · paleta · tipografia · padrão · cartão de visita · sacola · papel de embrulho" },
+      { "k": "Ferramentas", "v": "Illustrator · Photoshop · InDesign" },
+      { "k": "Design", "v": "Thiago Miedes" }
+    ],
+    "cta": {
+      "text": "Tem uma marca para construir?",
+      "label": "Vamos conversar",
+      "href": "/#contato"
+    }
+  },
+  "images": [
+    {
+      "id": "hero-olhar",
+      "section": "intro",
+      "w": 2400,
+      "h": 1350,
+      "essential": true,
+      "alt": "Rosto de uma mulher de óculos de aro grosso, em close, tingido com o gradiente azul da marca"
+    },
+    {
+      "id": "manual-embrulho",
+      "section": "applications",
+      "w": 1920,
+      "h": 1080,
+      "essential": true,
+      "alt": "Folhas e um rolo de papel de embrulho com o padrão da marca em azul claro, branco e azul escuro"
+    },
+    {
+      "id": "manual-cartoes",
+      "section": "applications",
+      "w": 1620,
+      "h": 1080,
+      "essential": true,
+      "alt": "Frente e verso do cartão de visita flutuando sobre um fundo branco, com o logo, o selo da árvore e o padrão"
+    },
+    {
+      "id": "textura-lente",
+      "section": "symbol",
+      "w": 2400,
+      "h": 1792,
+      "alt": "Reflexos azuis do tratamento de uma lente, em macro, sobre fundo azul escuro"
+    },
+    {
+      "id": "fechamento-madeira",
+      "section": "closing",
+      "w": 2400,
+      "h": 1350,
+      "alt": "Veios de nogueira escura em close, com a luz entrando de lado"
+    },
+    {
+      "id": "mockup-interior",
+      "section": "applications",
+      "w": 2400,
+      "h": 1350,
+      "alt": "Interior da Óticas Talarico: paredes claras, prateleiras de nogueira com óculos expostos e o logo na parede"
+    },
+    {
+      "id": "mockup-fachada",
+      "section": "applications",
+      "w": 2400,
+      "h": 1350,
+      "alt": "Fachada da Óticas Talarico com ripas de nogueira, parede clara e o logo em letras iluminadas"
+    },
+    {
+      "id": "mockup-balcao",
+      "section": "applications",
+      "w": 2400,
+      "h": 1350,
+      "alt": "Balcão de nogueira com bandeja de óculos, espelho redondo e uma sacola da Óticas Talarico"
+    },
+    {
+      "id": "mockup-estojo",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "alt": "Estojo rígido azul escuro com o símbolo em relevo, forrado com o padrão azul claro, e um par de óculos sobre uma mesa de nogueira"
+    },
+    {
+      "id": "mockup-caixa",
+      "section": "applications",
+      "w": 1800,
+      "h": 2400,
+      "alt": "Caixa de óculos em nogueira com o logo gravado na tampa e o interior em veludo azul escuro"
+    },
+    {
+      "id": "mockup-sacolas",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "alt": "As quatro sacolas da Óticas Talarico em pé, em azul claro, azul escuro, branco e marrom, com alças de corda"
+    },
+    {
+      "id": "mockup-brindes",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "alt": "Brindes da Óticas Talarico: spray de limpeza, cordão de óculos, chaveiro de madeira e chave de ajuste sobre uma superfície clara"
+    },
+    {
+      "id": "mockup-flanela",
+      "section": "applications",
+      "w": 1800,
+      "h": 2400,
+      "alt": "Flanela azul claro dobrada com o padrão em tom sobre tom e o símbolo branco no canto"
+    },
+    {
+      "id": "mockup-papelaria",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "alt": "Papelaria da Óticas Talarico: cartões, papel timbrado, envelope e certificado de garantia sobre madeira clara"
+    },
+    {
+      "id": "mockup-embrulho",
+      "section": "applications",
+      "w": 2400,
+      "h": 1600,
+      "alt": "Caixa embrulhada no papel com o padrão da marca, fechada com o selo da árvore"
+    },
+    {
+      "id": "editorial-monoculo",
+      "mono": true,
+      "section": "applications",
+      "w": 1800,
+      "h": 2400,
+      "alt": "Retrato em preto e branco de um senhor elegante usando um monóculo, sobre fundo claro"
+    },
+    {
+      "id": "editorial-ajuste",
+      "mono": true,
+      "section": "applications",
+      "w": 1800,
+      "h": 2400,
+      "alt": "Mãos ajustando a haste de um óculos com uma chave pequena, numa bancada de madeira, em preto e branco"
+    },
+    {
+      "id": "editorial-prova",
+      "mono": true,
+      "section": "applications",
+      "w": 1800,
+      "h": 2400,
+      "alt": "Mulher experimentando óculos diante de um espelho redondo, em preto e branco"
+    }
+  ]
+}

@@ -36,8 +36,10 @@ const rootVars = {
   "--bc-muted-on-dark": t.mutedOnDark,
   "--bc-font": `"${data.font.family}", ${data.font.fallback}`,
   ...(data.font.text && { "--bc-font-text": `"${data.font.text.family}", ${data.font.text.fallback}` }),
+  ...(data.font.text?.tracking && { "--bc-text-track": data.font.text.tracking }),
   ...(data.font.display?.weight && { "--bc-h-weight": String(data.font.display.weight) }),
   ...(data.font.display?.tracking && { "--bc-h-track": data.font.display.tracking }),
+  ...(data.font.display?.manifesto && { "--bc-manifesto-weight": String(data.font.display.manifesto) }),
   ...variantVars(data, "positive"),
 };
 const style = Object.entries(rootVars).map(([k, v]) => `${k}:${v}`).join(";");

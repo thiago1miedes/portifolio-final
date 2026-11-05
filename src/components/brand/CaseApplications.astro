@@ -171,7 +171,7 @@ function mosaic(it: AppItem) {
 
         {it.kind === "graphic" && (
           <figure data-bc-reveal>
-            <div class="bc-graphic" style={`--ar:${it.w}/${it.h}`} data-speed={it.speed ?? 2}>
+            <div class="bc-graphic" style={`--ar:${it.w}/${it.h}`} data-speed={it.speed ?? 2} data-shadow={it.shadow ? "true" : undefined}>
               <img src={assetUrl(data, it.src!)} width={it.w} height={it.h} alt={plain(it.alt)} loading="lazy" decoding="async" />
             </div>
             {it.caption && <figcaption><BrandText text={it.caption} /></figcaption>}

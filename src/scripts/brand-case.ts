@@ -273,13 +273,21 @@ function typeMorph(root: HTMLElement) {
   const glyphName = $("[data-bc-glyph-name]", section);
   const weightName = $("[data-bc-weight-name]", section);
   const ticks = $$("[data-weight]", section);
-  const steps = glyphs.length * weights.length;
+  // typography.glyphArts: as letras já estão no markup, em SVG; a rolagem só troca qual aparece
+  const arts = $$<SVGSVGElement>("[data-bc-glyph-art]", section);
+  const steps = (arts.length || glyphs.length) * weights.length;
   let current = -1;
 
   const render = (progress: number) => {
     const i = Math.min(steps - 1, Math.floor(progress * steps));
     if (i === current) return;
     current = i;
+    if (arts.length) {
+      arts.forEach((art, n) => art.classList.toggle("is-hidden", n !== i));
+      if (glyphName) glyphName.textContent = arts[i].dataset.name ?? "";
+      if (weightName) weightName.textContent = arts[i].dataset.note ?? "";
+      return;
+    }
     const g = Math.floor(i / weights.length);
     const k = i % weights.length;
     const w = g % 2 === 0 ? k : weights.length - 1 - k; // vai e volta: o peso nunca salta
@@ -291,8 +299,10 @@ function typeMorph(root: HTMLElement) {
   };
 
   // carrega todos os pesos antes de precisar deles
-  const family = getComputedStyle(glyph).fontFamily;
-  weights.forEach((w) => document.fonts?.load(`${w} 100px ${family}`).catch(() => {}));
+  if (!arts.length) {
+    const family = getComputedStyle(glyph).fontFamily;
+    weights.forEach((w) => document.fonts?.load(`${w} 100px ${family}`).catch(() => {}));
+  }
 
   gsap.matchMedia().add({ desktop: DESKTOP, mobile: MOBILE }, (ctx) => {
     const desktop = ctx.conditions?.desktop;
@@ -316,6 +326,19 @@ function typeGuides(root: HTMLElement) {
   const cap = section && $('[data-bc-guide="cap"]', section);
   const base = section && $('[data-bc-guide="base"]', section);
   if (!glyph || !cap || !base) return;
+  // letras em SVG: as linhas vêm do quadro de desenho, não da métrica da fonte
+  if (glyph.dataset.artBase) {
+    const placeArt = () => {
+      const h = glyph.offsetHeight;
+      base.style.setProperty("--pos", `${glyph.offsetTop + h * Number(glyph.dataset.artBase)}px`);
+      cap.style.setProperty("--pos", `${glyph.offsetTop + h * Number(glyph.dataset.artCap)}px`);
+      cap.classList.remove("is-hidden");
+      base.classList.remove("is-hidden");
+    };
+    placeArt();
+    new ResizeObserver(placeArt).observe(glyph.parentElement!);
+    return;
+  }
   const place = () => {
     const style = getComputedStyle(glyph);
     const ctx = document.createElement("canvas").getContext("2d");

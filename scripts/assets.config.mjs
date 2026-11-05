@@ -352,14 +352,13 @@ export const cases = {
       { id: "mock-receituario", src: "Dor&Saúde/Papelaria/Mockup/Mockup_receituario_medico.png", kind: "image" },
     ],
   },
+  // A página é o case de marca (cases/oticas-talarico/case.json); a capa vem de `npm run brand -- oticas-talarico thumb`
+  // (logo negativo sobre o azul escuro). Rodar `npm run assets -- oticas-talarico` a troca pela crua.
   "oticas-talarico": {
-    thumb: { from: "manual-01" },
+    thumb: { logo: "logo", bg: "#03045E", symbol: "simbolo" },
     items: [
-      { id: "manual", src: `${W}/Otica Talarico/1-exported-by-super-pdf.pdf`, kind: "slide", pages: range(1, 14) },
-      { id: "foto-1", src: "Oticas Talarico/Fotos/DSC06208.JPG", kind: "image", group: "packaging" },
-      { id: "foto-2", src: "Oticas Talarico/Fotos/DSC06465.JPG", kind: "image", group: "packaging" },
-      { id: "foto-3", src: "Oticas Talarico/Fotos/DSC06530.JPG", kind: "image", group: "packaging" },
-      { id: "foto-4", src: "Oticas Talarico/Imagens/imagem-lente-copiar_0000_Agrupar-23.png", kind: "image", group: "packaging" },
+      { id: "logo", src: "Oticas Talarico/Projeto case/Group 2023.svg", kind: "svg" },
+      { id: "simbolo", src: "Oticas Talarico/Projeto case/Vector.svg", kind: "svg" },
     ],
   },
   // A página é o case de marca (cases/easywork/case.json); a capa vem de `npm run brand -- easywork thumb`

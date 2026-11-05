@@ -62,6 +62,7 @@ async function refs() {
     ["symbol", "dark", "negative", t.dark],
     // segunda composição do logo (logo.horizontal), quando o case tem uma
     ...(data.logo.horizontal ? [["horizontal", "transparent", "positive", null], ["horizontal", "light", "positive", t.light]] : []),
+    ...(data.logo.vertical ? [["vertical", "transparent", "positive", null], ["vertical", "light", "positive", t.light]] : []),
     // versão sem descritor (logo.untagged), quando ela é a principal da marca
     ...(data.logo.untagged ? [["untagged", "transparent", "positive", null], ["untagged", "dark", "negative", t.dark], ["untagged", "light", "positive", t.light]] : []),
   ];

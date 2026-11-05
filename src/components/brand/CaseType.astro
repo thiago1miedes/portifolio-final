@@ -1,7 +1,7 @@
 ---
 // 3. Tipografia: uma letra gigante da fonte da marca troca de forma (letra e peso) conforme a rolagem.
 import BrandText from "./BrandText.astro";
-import type { BrandCaseData } from "../../data/brand-cases";
+import { readSvgFile, type BrandCaseData } from "../../data/brand-cases";
 
 interface Props { data: BrandCaseData }
 const { data } = Astro.props;
@@ -12,6 +12,10 @@ const weightNames: Record<number, string> = {
 };
 const names = t.weights.map((w) => `${weightNames[w] ?? "Peso"} ${w}`);
 const start = t.weights.includes(700) ? 700 : t.weights[t.weights.length - 1];
+// glyphArts: letras em SVG (fonte sem arquivo de web); todas no quadro de 170 × 170, com a linha de base em y=150 e a altura das maiúsculas em y=46
+const arts = (t.glyphArts ?? []).map((g) => ({ ...g, svg: readSvgFile(data, g.src) }));
+const nameArt = t.nameArt ? readSvgFile(data, t.nameArt) : undefined;
+const specimen = t.specimen ? readSvgFile(data, t.specimen.src) : undefined;
 ---
 <section
   class="bc-type"
@@ -31,10 +35,18 @@ const start = t.weights.includes(700) ? 700 : t.weights[t.weights.length - 1];
         <div class="bc-type-glyph-wrap" data-bc-glyph-wrap>
           <span class="bc-type-guide is-cap is-hidden" data-bc-guide="cap" aria-hidden="true"><i>altura das maiúsculas</i></span>
           <span class="bc-type-guide is-base is-hidden" data-bc-guide="base" aria-hidden="true"><i>linha de base</i></span>
-          <span class="bc-type-glyph" data-bc-glyph style={`font-weight:${start}`} aria-hidden="true">{t.glyphs[0]}</span>
+          {arts.length ? (
+            <span class="bc-type-glyph bc-type-glyph--art" data-bc-glyph data-art-cap={46 / 170} data-art-base={150 / 170} aria-hidden="true">
+              {arts.map((g, i) => (
+                <svg class:list={["bc-type-art", { "is-hidden": i > 0 }]} xmlns="http://www.w3.org/2000/svg" viewBox={g.svg.viewBox.join(" ")} data-bc-glyph-art data-index={i} data-name={g.name} data-note={g.note} focusable="false" set:html={g.svg.inner} />
+              ))}
+            </span>
+          ) : (
+            <span class="bc-type-glyph" data-bc-glyph style={`font-weight:${start}`} aria-hidden="true">{t.glyphs[0]}</span>
+          )}
         </div>
         <p class="bc-type-readout" aria-hidden="true">
-          <span data-bc-glyph-name>{t.glyphs[0]}</span> · <span data-bc-weight-name>{names[t.weights.indexOf(start)]}</span>
+          <span data-bc-glyph-name>{arts[0]?.name ?? t.glyphs[0]}</span> · <span data-bc-weight-name>{arts[0]?.note ?? names[t.weights.indexOf(start)]}</span>
         </p>
         {t.weights.length > 1 && (
           <ol class="bc-type-scale" aria-hidden="true">
@@ -45,15 +57,35 @@ const start = t.weights.includes(700) ? 700 : t.weights[t.weights.length - 1];
       </div>
 
       <div class="bc-type-info">
-        <h2 class="bc-type-name">{t.title}</h2>
+        {nameArt ? (
+          <h2 class="bc-type-name bc-type-name--art" aria-label={t.title}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox={nameArt.viewBox.join(" ")} aria-hidden="true" focusable="false" set:html={nameArt.inner} />
+          </h2>
+        ) : (
+          <h2 class="bc-type-name">{t.title}</h2>
+        )}
         <BrandText as="p" class="bc-body" text={t.text} />
+        {specimen && (
+          <svg class="bc-type-specimen" xmlns="http://www.w3.org/2000/svg" viewBox={specimen.viewBox.join(" ")} preserveAspectRatio="xMinYMid meet" role="img" aria-label={t.specimen!.alt} focusable="false" set:html={specimen.inner} />
+        )}
+        {t.second && (
+          <div class="bc-type-second">
+            <h3 class="bc-type-second-name">{t.second.name}</h3>
+            <p class="bc-type-weights" aria-label={`Pesos da ${t.second.name}: ${t.second.weights.join(", ")}`}>
+              {t.second.weights.map((w) => <span style={`font-weight:${w}`} aria-hidden="true">Aa</span>)}
+            </p>
+            <p class="bc-type-sample">{t.second.sample}</p>
+          </div>
+        )}
         <dl class="bc-spec">
           {t.spec.map((row) => <div><dt>{row.k}</dt><dd>{row.v}</dd></div>)}
         </dl>
-        <p class="bc-type-weights" aria-label={`Pesos da ${t.title}: ${t.weights.join(", ")}`}>
-          {t.weights.map((w) => <span style={`font-weight:${w}`} aria-hidden="true">Aa</span>)}
-        </p>
-        <p class="bc-type-sample">{t.sample}</p>
+        {!specimen && (
+          <p class="bc-type-weights" aria-label={`Pesos da ${t.title}: ${t.weights.join(", ")}`}>
+            {t.weights.map((w) => <span style={`font-weight:${w}`} aria-hidden="true">Aa</span>)}
+          </p>
+        )}
+        {!specimen && <p class="bc-type-sample">{t.sample}</p>}
       </div>
     </div>
   </div>

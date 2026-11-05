@@ -224,7 +224,7 @@ Use the attached image as the exact logo: same shapes, letters, proportions and 
 **Salvar como:** `capas/oticas-talarico.png`
 
 ```
-Eyewear retail campaign photograph. An elegant pair of tortoiseshell glasses resting on top of a closed deep blue hard glasses case, with the attached logo large on the case in white. A folded soft blue lens cloth beside it. The saturated blue set #1565D8 fills the wall and floor. Hard window light from the left passes through the lenses and draws bright lens-shaped reflections on the surface. Clean reflections on the lenses. Shot on 100mm, sharp, premium, optical retail advertising.
+Eyewear retail campaign photograph. An elegant pair of tortoiseshell glasses resting on top of a closed deep navy hard glasses case #03045E, with the attached logo large on the case. A folded sky blue lens cloth #38B6FF beside it, on a walnut tabletop with straight grain. Warm white plaster wall behind. Window light from the left passes through the lenses and draws bright lens-shaped reflections on the wood. Clean reflections on the lenses. Shot on 100mm, sharp, premium, light and sophisticated optical retail advertising.
 Use the attached image as the exact logo: same shapes, letters, proportions and colors. Do not redraw it. No other text, logos, captions or watermarks anywhere. No people, no brand names on the glasses. Keep the products inside the central area, with clear space at the top and bottom.
 ```
 

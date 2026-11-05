@@ -10,9 +10,9 @@ import { fileURLToPath } from "node:url";
 export type LogoPart = "symbol-main" | "symbol-accent" | "symbol-3" | "symbol-4" | "symbol-5" | "wordmark" | "wordmark-accent" | "tagline";
 /** horizontal: segunda composição do logo (ex.: símbolo ao lado do nome), opcional como o tagline
  *  untagged: o lockup sem descritor (símbolo + logotipo), quando a versão principal da marca não leva o descritor */
-export type LogoArt = "lockup" | "symbol" | "outline" | "wordmark" | "tagline" | "horizontal" | "untagged";
+export type LogoArt = "lockup" | "symbol" | "outline" | "wordmark" | "tagline" | "horizontal" | "vertical" | "untagged";
 type OptionalPart = "wordmark-accent" | "symbol-3" | "symbol-4" | "symbol-5";
-export type Variant = Record<Exclude<LogoPart, OptionalPart>, string> & Partial<Record<OptionalPart, string>> & { label: string; bg: string };
+export type Variant = Record<Exclude<LogoPart, OptionalPart>, string> & Partial<Record<OptionalPart, string>> & { label: string; bg: string; /** cor de referência para o contraste, quando bg é um gradiente */ base?: string };
 type Pin = [number, number][];
 
 export interface BrandImage { id: string; section: string; w: number; h: number; alt: string; essential?: boolean; mono?: boolean }
@@ -38,6 +38,8 @@ export interface AppItem {
   profile?: { name: string; bio: string; alt: string; action: string; highlights?: { label: string; src: string }[] };
   /** graphic: caminho em public/<assets>/ e tamanho natural */
   src?: string; w?: number; h?: number; alt?: string;
+  /** graphic: peça impressa, com sombra para descolar do fundo claro */
+  shadow?: boolean;
   /** cutout: inclina de leve seguindo o mouse (só com mouse e com movimento permitido) */
   tilt?: boolean;
   /** track: recortes da faixa (ids de images[]) e a dica que aparece no celular */
@@ -54,7 +56,13 @@ export interface GraphicsSection {
   patternsNote?: string;
 }
 export interface SystemTile {
-  kind: "lockup" | "symbol" | "sizes" | "clearspace" | "icon" | "minimum"; variant: string; size: "lg" | "tall" | "wide" | "sm"; label: string; note?: string; sizes?: number[];
+  kind: "lockup" | "symbol" | "sizes" | "clearspace" | "icon" | "minimum" | "misuse"; variant: string; size: "lg" | "tall" | "wide" | "sm" | "full"; label: string; note?: string; sizes?: number[];
+  /** foto de fundo do bloco, em public/<assets>/ (uso do logo sobre fotografia) */
+  photo?: string;
+  /** clearspace: SVG em public/<assets>/ desenhado nos quatro cantos, como módulo da área de proteção */
+  corner?: string;
+  /** misuse: os usos errados, cada um com um efeito de CSS (distort, recolor, outline, resize, fade, font) */
+  rules?: { effect: string; label: string }[];
   /** lockup: outra parte do logo no lugar do logo completo (ex.: "wordmark" para a versão sem descritor) */
   art?: LogoArt;
   /** clearspace: medida "x" em unidades do logo (padrão: altura do logotipo) */
@@ -62,7 +70,8 @@ export interface SystemTile {
   /** minimum: largura do logo completo na redução mínima, em px (padrão: 160) */
   minWidth?: number;
 }
-interface FontFiles { family: string; fallback: string; unicodeRange?: string; files: Record<string, string>; preload?: number[] }
+/** tracking (só em font.text): espaçamento dos textos, para fontes muito fechadas */
+interface FontFiles { family: string; fallback: string; unicodeRange?: string; files: Record<string, string>; preload?: number[]; tracking?: string }
 
 /** Seção opcional de processo, logo depois da abertura: os caminhos apresentados ao cliente (imagens reais
  *  da apresentação, em images[]) e a síntese que virou a marca. kept: o que aquele caminho deixou na versão final. */
@@ -98,20 +107,22 @@ export interface BrandCaseData {
   seo: { title: string; description: string; image: string };
   theme: { dark: string; light: string; primary: string; secondary: string; support: string; accent: string; inkOnLight: string; mutedOnLight: string; inkOnDark: string; mutedOnDark: string };
   /** fonte da marca (títulos); `text` é a fonte opcional de textos e interface;
-   *  display: peso e espaçamento dos títulos, quando a marca pede outro tom (padrão: 600 e o espaçamento de cada título) */
-  font: FontFiles & { preload: number[]; text?: FontFiles; display?: { weight?: number; tracking?: string } };
-  /** tagline, horizontal e untagged são opcionais: logos sem descritor ou sem segunda composição não precisam do arquivo */
-  logo: Record<Exclude<LogoArt, "tagline" | "horizontal" | "untagged">, string> & { tagline?: string; horizontal?: string; untagged?: string } & {
+   *  display: peso e espaçamento dos títulos, quando a marca pede outro tom (padrão: 600 e o espaçamento de cada título);
+   *  display.manifesto: peso da headline do manifesto (padrão: 500) */
+  font: FontFiles & { preload: number[]; text?: FontFiles; display?: { weight?: number; tracking?: string; manifesto?: number } };
+  /** tagline, horizontal, vertical e untagged são opcionais: logos sem descritor ou sem segunda composição não precisam do arquivo */
+  logo: Record<Exclude<LogoArt, "tagline" | "horizontal" | "vertical" | "untagged">, string> & { tagline?: string; horizontal?: string; vertical?: string; untagged?: string } & {
     variants: Record<string, Variant>;
     /** partes do logo na navegação (padrão: desktop símbolo + logotipo, celular só o símbolo);
      *  dark/light: variante usada sobre seções escuras/claras (padrão: cores do tema) */
     nav?: { desktop?: LogoArt[]; mobile?: LogoArt[]; wordmarkHeight?: number; dark?: string; light?: string };
   };
-  /** variant: versão do logo na abertura (padrão: negative) */
-  intro: { kicker: string; subtitle: string; scrollHint: string; image?: string; variant?: string };
+  /** variant: versão do logo na abertura (padrão: negative); gradient: fundo da abertura em CSS, quando a marca abre num gradiente */
+  intro: { kicker: string; subtitle: string; scrollHint: string; image?: string; variant?: string; gradient?: string };
   /** crop: quadrado [x, y, lado, lado] em unidades do símbolo; ao rolar, ele recorta o símbolo e mostra o módulo do grafismo
    *  grid: linhas da grade de construção (posições x e y em unidades do símbolo), desenhadas ao rolar;
    *  lines: segmentos livres [x1, y1, x2, y2] (ex.: os cabos que correm pelas ruas do símbolo da Urbes), no traço de cabo;
+   *  circles: círculos de construção [cx, cy, r], desenhados depois das linhas;
    *  pulse: pontos de luz correm pelos segmentos de lines depois de desenhados; label: descrição das linhas para leitor de tela
    *  variant: versão do símbolo na seção (padrão: onPrimary)
    *  carve: símbolo feito de vazio (ex.: uma letra escavada noutra). solid é o volume ainda inteiro e void o traço do vazio,
@@ -119,14 +130,22 @@ export interface BrandCaseData {
   symbol: {
     nav: string; eyebrow: string; title: string; text: string[]; pieces: { piece: string; label: string; text: string; shift: number; y: number }[];
     image?: string; crop?: [number, number, number, number]; variant?: string;
-    grid?: { x: number[]; y: number[]; lines?: [number, number, number, number][]; pulse?: boolean; label?: string };
+    grid?: { x: number[]; y: number[]; lines?: [number, number, number, number][]; circles?: [number, number, number][]; pulse?: boolean; label?: string };
     carve?: { solid: string; void: string };
   };
-  /** font "text": a letra gigante e a amostra usam a fonte de textos (ex.: a fonte do logotipo não é a dos títulos) */
-  typography: { nav: string; eyebrow: string; title: string; glyphs: string[]; weights: number[]; text: string; spec: { k: string; v: string }[]; sample: string; font?: "text" };
+  /** font "text": a letra gigante e a amostra usam a fonte de textos (ex.: a fonte do logotipo não é a dos títulos)
+   *  glyphArts: letras gigantes desenhadas (SVG em public/<assets>/, quadro de 170 × 170 com a linha de base em y=150), para fonte sem arquivo de web;
+   *  nameArt e specimen: nome e alfabeto da fonte em SVG; second: a segunda família, com pesos e alfabeto */
+  typography: {
+    nav: string; eyebrow: string; title: string; glyphs: string[]; weights: number[]; text: string; spec: { k: string; v: string }[]; sample: string; font?: "text";
+    glyphArts?: { name: string; note?: string; src: string }[];
+    nameArt?: string; specimen?: { src: string; alt: string };
+    second?: { name: string; weights: number[]; sample: string };
+  };
   manifesto: { nav: string; eyebrow: string; headline: string; attributes: { word: string; text: string }[] };
-  /** swatches[].cmyk: valor oficial da marca, quando existe (senão é calculado e aproximado) */
-  colors: { nav: string; eyebrow: string; title: string; text: string; note: string; swatches: { name: string; role: string; hex: string; weight: number; cmyk?: string }[] };
+  /** swatches[].cmyk: valor oficial da marca, quando existe (senão é calculado e aproximado);
+   *  swatches[].gradient: o bloco é um gradiente (CSS); hex é a cor do meio, para o contraste, e stops as pontas mostradas no lugar dos códigos */
+  colors: { nav: string; eyebrow: string; title: string; text: string; note: string; swatches: { name: string; role: string; hex: string; weight: number; cmyk?: string; gradient?: string; stops?: [string, string] }[] };
   system: { nav: string; eyebrow: string; title: string; tiles: SystemTile[] };
   /** marqueeArts: partes do logo na faixa em movimento (padrão: logotipo + símbolo) */
   applications: { nav: string; eyebrow: string; title: string; text: string; marquee: string; marqueeArts?: LogoArt[]; items: AppItem[] };
@@ -228,7 +247,7 @@ export function readSvgFile(c: BrandCaseData, rel: string): SvgFile {
  *  uma variante pode usar "url(#id)" como cor, e a referência não quebra quando a cópia do logo está com display:none. */
 export function logoDefs(c: BrandCaseData) {
   const byId = new Map<string, string>();
-  for (const art of ["lockup", "symbol", "outline", "wordmark", "tagline", "horizontal", "untagged"] as const) {
+  for (const art of ["lockup", "symbol", "outline", "wordmark", "tagline", "horizontal", "vertical", "untagged"] as const) {
     if (!c.logo[art]) continue;
     for (const m of readSvg(c, art).defs.matchAll(/<(\w+)\b[^>]*\bid="([^"]+)"[\s\S]*?<\/\1>/g)) {
       if (!byId.has(m[2])) byId.set(m[2], m[0]);
