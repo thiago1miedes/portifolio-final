@@ -1218,6 +1218,7 @@ const list: CaseData[] = [
     ],
     deliverables: ["5 carrosséis de feed", "31 telas em 1:1", "36 posts avulsos", "Conteúdo de saúde", "Posts de produto", "Campanhas com cupom", "Datas comemorativas"],
     tools: ["Photoshop", "Illustrator"],
+    credit: "Projeto realizado na Olive Marketing e Comunicação",
     social: {
       profile: "pronutricare_",
       place: "Rio de Janeiro",
