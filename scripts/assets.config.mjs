@@ -28,6 +28,9 @@ const LFD = "LF Serviços elétricos";
 // os 24 posts do Instagram da LF (1:1) vêm em arquivos baixados; cada um é um group próprio (a chave é o id)
 const lfPost = (n) => `${LFD}/${fs.readdirSync(`${SRC}/${LFD}`).filter((x) => x.endsWith(".png")).sort()[n]}`;
 
+// os posts do Instagram da SindBoss também vêm baixados: o começo do nome identifica cada arquivo
+const sindPost = (start) => `SindBoss/${fs.readdirSync(`${SRC}/SindBoss`).find((x) => x.startsWith(start))}`;
+
 export const cases = {
   /* ---------------------------------------------------------------- sites no ar */
   deliziare: {
@@ -299,7 +302,21 @@ export const cases = {
   },
   sindboss: {
     thumb: { from: "home" },
-    items: [{ id: "home", src: `${W}/SindBoss/SindBoss - WebSite.pdf`, kind: "page", label: "Home" }],
+    items: [
+      { id: "home", src: `${W}/SindBoss/SindBoss - WebSite.pdf`, kind: "page", label: "Home" },
+      { id: "avatar", src: "shots/sindboss-avatar.svg", kind: "svg", group: "marca" },
+      { id: "agua-1", src: sindPost("490446673"), kind: "feed", group: "agua", label: "Consumo de água em condomínios" },
+      { id: "familias-1", src: sindPost("490473380"), kind: "feed", group: "familias", label: "Dia Internacional das Famílias" },
+      { id: "lixo-1", src: sindPost("490509820"), kind: "feed", group: "lixo", label: "Coleta de lixo" },
+      { id: "sindico-1", src: sindPost("490902410"), kind: "feed", group: "sindico", label: "Nem todo síndico profissional é igual" },
+      { id: "maes-1", src: sindPost("491176949"), kind: "feed", group: "maes", label: "Dia das Mães" },
+      { id: "trabalho-1", src: sindPost("491934731"), kind: "feed", group: "trabalho", label: "Dia do Trabalho" },
+      { id: "contratar-1", src: sindPost("492114200"), kind: "feed", group: "contratar", label: "Como contratar um síndico profissional" },
+      { id: "pai-1", src: sindPost("492887266"), kind: "feed", group: "pai", label: "Pai com P de Profissional" },
+      { id: "bauru-1", src: sindPost("617377713"), kind: "feed", group: "bauru", label: "Parabéns, Bauru" },
+      { id: "porteiro-1", src: sindPost("638307827"), kind: "feed", group: "porteiro", label: "Dia do Porteiro" },
+      { id: "patrimonio-1", src: sindPost("868484555"), kind: "feed", group: "patrimonio", label: "Patrimônio valorizado" },
+    ],
   },
   "guia-da-cozinha": {
     thumb: { from: "home" },

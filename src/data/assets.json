@@ -2156,6 +2156,113 @@
     "h": 5386,
     "kind": "page",
     "label": "Home"
+   },
+   {
+    "id": "avatar",
+    "src": "/cases/sindboss/avatar.svg",
+    "w": 1200,
+    "h": 1200,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "agua-1",
+    "src": "/cases/sindboss/agua-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Consumo de água em condomínios",
+    "group": "agua"
+   },
+   {
+    "id": "familias-1",
+    "src": "/cases/sindboss/familias-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Dia Internacional das Famílias",
+    "group": "familias"
+   },
+   {
+    "id": "lixo-1",
+    "src": "/cases/sindboss/lixo-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Coleta de lixo",
+    "group": "lixo"
+   },
+   {
+    "id": "sindico-1",
+    "src": "/cases/sindboss/sindico-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Nem todo síndico profissional é igual",
+    "group": "sindico"
+   },
+   {
+    "id": "maes-1",
+    "src": "/cases/sindboss/maes-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Dia das Mães",
+    "group": "maes"
+   },
+   {
+    "id": "trabalho-1",
+    "src": "/cases/sindboss/trabalho-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Dia do Trabalho",
+    "group": "trabalho"
+   },
+   {
+    "id": "contratar-1",
+    "src": "/cases/sindboss/contratar-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Como contratar um síndico profissional",
+    "group": "contratar"
+   },
+   {
+    "id": "pai-1",
+    "src": "/cases/sindboss/pai-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Pai com P de Profissional",
+    "group": "pai"
+   },
+   {
+    "id": "bauru-1",
+    "src": "/cases/sindboss/bauru-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Parabéns, Bauru",
+    "group": "bauru"
+   },
+   {
+    "id": "porteiro-1",
+    "src": "/cases/sindboss/porteiro-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia do Porteiro",
+    "group": "porteiro"
+   },
+   {
+    "id": "patrimonio-1",
+    "src": "/cases/sindboss/patrimonio-1.webp",
+    "w": 1440,
+    "h": 1454,
+    "kind": "feed",
+    "label": "Patrimônio valorizado",
+    "group": "patrimonio"
    }
   ]
  },
