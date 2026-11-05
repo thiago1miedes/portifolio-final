@@ -5621,5 +5621,603 @@
   },
   "cover": null,
   "items": []
+ },
+ "procare": {
+  "thumb": {
+   "src": "/cases/procare/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": "logo",
+  "items": [
+   {
+    "id": "logo",
+    "src": "/cases/procare/logo.webp",
+    "w": 1600,
+    "h": 313,
+    "kind": "image",
+    "group": "marca"
+   },
+   {
+    "id": "avatar",
+    "src": "/cases/procare/avatar.webp",
+    "w": 480,
+    "h": 480,
+    "kind": "image",
+    "group": "marca"
+   },
+   {
+    "id": "celiaca-1",
+    "src": "/cases/procare/celiaca-1.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "celiaca"
+   },
+   {
+    "id": "celiaca-2",
+    "src": "/cases/procare/celiaca-2.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "celiaca"
+   },
+   {
+    "id": "celiaca-3",
+    "src": "/cases/procare/celiaca-3.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "celiaca"
+   },
+   {
+    "id": "celiaca-4",
+    "src": "/cases/procare/celiaca-4.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "celiaca"
+   },
+   {
+    "id": "celiaca-5",
+    "src": "/cases/procare/celiaca-5.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "celiaca"
+   },
+   {
+    "id": "celiaca-6",
+    "src": "/cases/procare/celiaca-6.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "celiaca"
+   },
+   {
+    "id": "celiaca-7",
+    "src": "/cases/procare/celiaca-7.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "celiaca"
+   },
+   {
+    "id": "diabetes-junho-1",
+    "src": "/cases/procare/diabetes-junho-1.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-junho"
+   },
+   {
+    "id": "diabetes-junho-2",
+    "src": "/cases/procare/diabetes-junho-2.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-junho"
+   },
+   {
+    "id": "diabetes-junho-3",
+    "src": "/cases/procare/diabetes-junho-3.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-junho"
+   },
+   {
+    "id": "diabetes-junho-4",
+    "src": "/cases/procare/diabetes-junho-4.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-junho"
+   },
+   {
+    "id": "diabetes-junho-5",
+    "src": "/cases/procare/diabetes-junho-5.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-junho"
+   },
+   {
+    "id": "diabetes-junho-6",
+    "src": "/cases/procare/diabetes-junho-6.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-junho"
+   },
+   {
+    "id": "diabetes-junho-7",
+    "src": "/cases/procare/diabetes-junho-7.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-junho"
+   },
+   {
+    "id": "cancer-infantil-1",
+    "src": "/cases/procare/cancer-infantil-1.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "cancer-infantil"
+   },
+   {
+    "id": "cancer-infantil-2",
+    "src": "/cases/procare/cancer-infantil-2.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "cancer-infantil"
+   },
+   {
+    "id": "cancer-infantil-3",
+    "src": "/cases/procare/cancer-infantil-3.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "cancer-infantil"
+   },
+   {
+    "id": "cancer-infantil-4",
+    "src": "/cases/procare/cancer-infantil-4.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "cancer-infantil"
+   },
+   {
+    "id": "cancer-infantil-5",
+    "src": "/cases/procare/cancer-infantil-5.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "cancer-infantil"
+   },
+   {
+    "id": "diabetes-mundial-1",
+    "src": "/cases/procare/diabetes-mundial-1.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-mundial"
+   },
+   {
+    "id": "diabetes-mundial-2",
+    "src": "/cases/procare/diabetes-mundial-2.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-mundial"
+   },
+   {
+    "id": "diabetes-mundial-3",
+    "src": "/cases/procare/diabetes-mundial-3.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-mundial"
+   },
+   {
+    "id": "diabetes-mundial-4",
+    "src": "/cases/procare/diabetes-mundial-4.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-mundial"
+   },
+   {
+    "id": "diabetes-mundial-5",
+    "src": "/cases/procare/diabetes-mundial-5.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-mundial"
+   },
+   {
+    "id": "diabetes-mundial-6",
+    "src": "/cases/procare/diabetes-mundial-6.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-mundial"
+   },
+   {
+    "id": "diabetes-mundial-7",
+    "src": "/cases/procare/diabetes-mundial-7.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "diabetes-mundial"
+   },
+   {
+    "id": "fresubin-creme-1",
+    "src": "/cases/procare/fresubin-creme-1.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "fresubin-creme"
+   },
+   {
+    "id": "fresubin-creme-2",
+    "src": "/cases/procare/fresubin-creme-2.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "fresubin-creme"
+   },
+   {
+    "id": "fresubin-creme-3",
+    "src": "/cases/procare/fresubin-creme-3.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "fresubin-creme"
+   },
+   {
+    "id": "fresubin-creme-4",
+    "src": "/cases/procare/fresubin-creme-4.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "fresubin-creme"
+   },
+   {
+    "id": "fresubin-creme-5",
+    "src": "/cases/procare/fresubin-creme-5.webp",
+    "w": 640,
+    "h": 640,
+    "kind": "feed",
+    "group": "fresubin-creme"
+   },
+   {
+    "id": "lembrete-1",
+    "src": "/cases/procare/lembrete-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Lembrete: pré-operatório mais saudável",
+    "group": "lembrete"
+   },
+   {
+    "id": "frebini-promo-1",
+    "src": "/cases/procare/frebini-promo-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Frebini Energy Fibre 500ml em promoção",
+    "group": "frebini-promo"
+   },
+   {
+    "id": "mulher-1",
+    "src": "/cases/procare/mulher-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia Internacional da Mulher",
+    "group": "mulher"
+   },
+   {
+    "id": "rio-1",
+    "src": "/cases/procare/rio-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "458 anos do Rio de Janeiro",
+    "group": "rio"
+   },
+   {
+    "id": "semana-tag-1",
+    "src": "/cases/procare/semana-tag-1.webp",
+    "w": 960,
+    "h": 960,
+    "kind": "feed",
+    "label": "Semana do Consumidor com o cupom CLIENTE10",
+    "group": "semana-tag"
+   },
+   {
+    "id": "protein-energy-1",
+    "src": "/cases/procare/protein-energy-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Fresubin Protein Energy Drink",
+    "group": "protein-energy"
+   },
+   {
+    "id": "linha-enteral-1",
+    "src": "/cases/procare/linha-enteral-1.webp",
+    "w": 2048,
+    "h": 2047,
+    "kind": "feed",
+    "label": "Nutrição enteral e suplementos",
+    "group": "linha-enteral"
+   },
+   {
+    "id": "cancer-1",
+    "src": "/cases/procare/cancer-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia Mundial do Combate ao Câncer",
+    "group": "cancer"
+   },
+   {
+    "id": "digestiva-1",
+    "src": "/cases/procare/digestiva-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Saúde digestiva em dia",
+    "group": "digestiva"
+   },
+   {
+    "id": "hipertensao-1",
+    "src": "/cases/procare/hipertensao-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Predisposição genética à hipertensão",
+    "group": "hipertensao"
+   },
+   {
+    "id": "lp-drink-1",
+    "src": "/cases/procare/lp-drink-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Linha Fresubin LP Drink",
+    "group": "lp-drink"
+   },
+   {
+    "id": "habitos-1",
+    "src": "/cases/procare/habitos-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Hábitos saudáveis",
+    "group": "habitos"
+   },
+   {
+    "id": "etapas-1",
+    "src": "/cases/procare/etapas-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Nutrição para todas as etapas da vida",
+    "group": "etapas"
+   },
+   {
+    "id": "frebini-linha-1",
+    "src": "/cases/procare/frebini-linha-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Linha Frebini Energy Drink",
+    "group": "frebini-linha"
+   },
+   {
+    "id": "saude-1",
+    "src": "/cases/procare/saude-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia Mundial da Saúde",
+    "group": "saude"
+   },
+   {
+    "id": "namorados-1",
+    "src": "/cases/procare/namorados-1.webp",
+    "w": 1000,
+    "h": 1000,
+    "kind": "feed",
+    "label": "Dia dos Namorados",
+    "group": "namorados"
+   },
+   {
+    "id": "pais-1",
+    "src": "/cases/procare/pais-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia dos Pais",
+    "group": "pais"
+   },
+   {
+    "id": "dia-cliente-1",
+    "src": "/cases/procare/dia-cliente-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia do Cliente com o cupom CLIENTE15",
+    "group": "dia-cliente"
+   },
+   {
+    "id": "fresubin-32-1",
+    "src": "/cases/procare/fresubin-32-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Fresubin 3.2 kcal",
+    "group": "fresubin-32"
+   },
+   {
+    "id": "semana-consumidor-1",
+    "src": "/cases/procare/semana-consumidor-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Semana do Consumidor com o cupom CONSUMIDOR10",
+    "group": "semana-consumidor"
+   },
+   {
+    "id": "felicidade-1",
+    "src": "/cases/procare/felicidade-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia Internacional da Felicidade",
+    "group": "felicidade"
+   },
+   {
+    "id": "saude-mental-1",
+    "src": "/cases/procare/saude-mental-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "8 dicas para a saúde mental",
+    "group": "saude-mental"
+   },
+   {
+    "id": "maes-1",
+    "src": "/cases/procare/maes-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia das Mães",
+    "group": "maes"
+   },
+   {
+    "id": "jucy-jejum-1",
+    "src": "/cases/procare/jucy-jejum-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Fresubin Jucy Drink no pré-operatório",
+    "group": "jucy-jejum"
+   },
+   {
+    "id": "hp-energy-1",
+    "src": "/cases/procare/hp-energy-1.webp",
+    "w": 720,
+    "h": 720,
+    "kind": "feed",
+    "label": "Fresubin HP Energy",
+    "group": "hp-energy"
+   },
+   {
+    "id": "melhores-1",
+    "src": "/cases/procare/melhores-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Os melhores produtos de nutrição",
+    "group": "melhores"
+   },
+   {
+    "id": "medicamento-1",
+    "src": "/cases/procare/medicamento-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia Nacional de Luta por Medicamento",
+    "group": "medicamento"
+   },
+   {
+    "id": "doe-sangue-1",
+    "src": "/cases/procare/doe-sangue-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Doe sangue e ganhe 15%",
+    "group": "doe-sangue"
+   },
+   {
+    "id": "trabalhador-1",
+    "src": "/cases/procare/trabalhador-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia do Trabalhador",
+    "group": "trabalhador"
+   },
+   {
+    "id": "dia-consumidor-1",
+    "src": "/cases/procare/dia-consumidor-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia do Consumidor com o cupom CLIENTE20",
+    "group": "dia-consumidor"
+   },
+   {
+    "id": "dermatologista-1",
+    "src": "/cases/procare/dermatologista-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia do Médico Dermatologista",
+    "group": "dermatologista"
+   },
+   {
+    "id": "pascoa-1",
+    "src": "/cases/procare/pascoa-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Feliz Páscoa",
+    "group": "pascoa"
+   },
+   {
+    "id": "orgaos-1",
+    "src": "/cases/procare/orgaos-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Doação de órgãos",
+    "group": "orgaos"
+   },
+   {
+    "id": "semana-cliente-1",
+    "src": "/cases/procare/semana-cliente-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Semana do Cliente",
+    "group": "semana-cliente"
+   },
+   {
+    "id": "energy-1000-1",
+    "src": "/cases/procare/energy-1000-1.webp",
+    "w": 800,
+    "h": 800,
+    "kind": "feed",
+    "label": "Fresubin Energy 1000ml",
+    "group": "energy-1000"
+   },
+   {
+    "id": "lp-baunilha-1",
+    "src": "/cases/procare/lp-baunilha-1.webp",
+    "w": 1080,
+    "h": 1081,
+    "kind": "feed",
+    "label": "Fresubin LP Baunilha",
+    "group": "lp-baunilha"
+   }
+  ]
  }
 }

@@ -110,8 +110,10 @@ export interface SocialShowcase {
   hideIndex?: boolean;
   /** cor da capa quando o case não tem o painel de ladrilhos (item "padrao"): o logotipo (item "logo") vai sobre ela */
   coverBg?: string;
-  /** estilo da capa lisa: ondas no rodapé (padrão) ou o símbolo (item "simbolo") grande, montado peça por peça */
-  coverStyle?: "wave" | "symbol";
+  /** estilo da capa lisa: ondas no rodapé (padrão), o símbolo (item "simbolo") grande, montado peça por peça, ou cunhas e cruzes como nos posts */
+  coverStyle?: "wave" | "symbol" | "plus";
+  /** nos carrosséis, mostra só a proporção: em artes baixadas do Instagram, a medida seria a do download */
+  hideSize?: boolean;
   /** posts únicos fora dos carrosséis: cada um é um group próprio, com o título no label do item */
   singles?: { title: string; note: string; list: { key: string; title: string; when: string; big?: boolean }[] };
   /** faixa de stories avulsos (group "stories") */
@@ -1195,6 +1197,116 @@ const list: CaseData[] = [
           { key: "meio-ambiente", title: "Dia Mundial do Meio Ambiente", when: "5 de junho" },
           { key: "pais", title: "Dia dos Pais", when: "14 de agosto" },
           { key: "natal", title: "Feliz Natal", when: "Dezembro" },
+        ],
+      },
+    },
+  },
+  {
+    slug: "procare",
+    title: "Procare",
+    client: "Procare",
+    sector: "Nutrição enteral e suplementos · Rio de Janeiro",
+    year: "2022 e 2023",
+    cats: ["social"],
+    accent: "#A9CD41",
+    live: "https://www.pronutricare.com.br/",
+    summary: "Cinco carrosséis e 36 posts de Instagram para a Procare, que vende nutrição enteral e suplementos para todo o Brasil e hoje assina como Pro NutriCare.",
+    about: [
+      "A Procare é uma empresa de produtos hospitalares do Rio de Janeiro. Vende pela internet nutrição enteral, suplementos e dispositivos médicos. Os posts são de antes da marca passar a assinar como Pro NutriCare, por isso o nome nas artes é outro.",
+      "Ninguém compra dieta enteral por impulso: a pessoa chega com um diagnóstico e muitas dúvidas. Por isso os carrosséis começam pela doença, aproveitando as datas do calendário da saúde, e só nas últimas telas mostram o produto indicado.",
+      "Nos posts avulsos, o petróleo e o verde dão conta de três assuntos bem diferentes: o frasco com a indicação ao lado, o cupom da semana e as datas do ano.",
+    ],
+    deliverables: ["5 carrosséis de feed", "31 telas em 1:1", "36 posts avulsos", "Conteúdo de saúde", "Posts de produto", "Campanhas com cupom", "Datas comemorativas"],
+    tools: ["Photoshop", "Illustrator"],
+    social: {
+      profile: "pronutricare_",
+      place: "Rio de Janeiro",
+      avatar: "avatar",
+      coverBg: "#005070",
+      coverStyle: "plus",
+      hideIndex: true,
+      hideSize: true,
+      stats: [
+        { n: "5", label: "carrosséis" },
+        { n: "31", label: "telas em carrossel" },
+        { n: "36", label: "posts avulsos" },
+      ],
+      page: {
+        title: "O feed da <em>Procare</em>",
+        note: "Os 41 posts na grade do perfil. Toque em um para ver as telas.",
+        name: "Procare",
+        category: "Produtos hospitalares",
+        bio: ["Nutrição enteral e suplementos", "Produtos para todas as fases da vida", "Entregamos para todo o Brasil"],
+        link: "pronutricare.com.br",
+        feed: ["celiaca", "rio", "protein-energy", "semana-cliente", "diabetes-mundial", "hipertensao", "cancer-infantil", "linha-enteral", "felicidade", "diabetes-junho", "maes", "fresubin-creme", "dia-cliente", "lp-drink", "pais", "hp-energy", "saude-mental", "frebini-linha", "mulher", "semana-tag", "lembrete", "doe-sangue", "etapas", "pascoa", "fresubin-32", "saude", "semana-consumidor", "energy-1000", "cancer", "namorados", "jucy-jejum", "medicamento", "digestiva", "dia-consumidor", "melhores", "trabalhador", "lp-baunilha", "dermatologista", "habitos", "orgaos", "frebini-promo"],
+        visible: 9,
+      },
+      fronts: [
+        { key: "saude", label: "Saúde", note: "Cada data do calendário da saúde abre uma conversa: primeiro a doença, depois o produto." },
+        { key: "produto", label: "Produto", note: "Quando o assunto é o próprio produto, a sequência responde o que ele é, o que oferece e onde comprar." },
+      ],
+      carousels: [
+        {
+          key: "celiaca", front: "saude", title: "Você sabe o que é doença celíaca?", when: "16 de maio",
+          note: "A capa pergunta, a prancheta responde em duas frases e o médico chama os produtos sem glúten, que aparecem um por tela.",
+        },
+        {
+          key: "diabetes-junho", front: "saude", title: "O que você sabe sobre o diabetes?", when: "26 de junho",
+          note: "A prancheta atravessa a emenda entre duas telas para explicar a síndrome. Na sequência de produtos, a embalagem do Diben passa da borda e aparece na tela do fechamento.",
+        },
+        {
+          key: "cancer-infantil", front: "saude", title: "Dia Nacional de Combate ao Câncer Infantil", when: "23 de novembro",
+          note: "O verde da blusa da menina já traz a cor da marca para a capa. As telas seguintes falam de diagnóstico precoce em frases curtas, e a linha Frebini só aparece perto do fim.",
+        },
+        {
+          key: "diabetes-mundial", front: "saude", title: "Dia Mundial do Diabetes", when: "14 de novembro",
+          note: "Os números abrem a sequência em tipografia grande: 15 milhões de pessoas com diabetes no Brasil. Depois vêm os tipos, a prevenção e o controle em cartões petróleo, até a linha Diben.",
+        },
+        {
+          key: "fresubin-creme", front: "produto", title: "Conheça o Fresubin 2 Kcal Crème", when: "Produto",
+          note: "Um suplemento que se come de colher: a sequência fala de consistência antes de falar de proteína e fecha mandando para o site.",
+        },
+      ],
+      singles: {
+        title: "Rótulo, cupom e <em>calendário</em>",
+        note: "O frasco com a indicação ao lado, o cupom da semana e as datas do ano. Clique em um post para ampliar.",
+        list: [
+          { key: "linha-enteral", title: "Nutrição enteral e suplementos", when: "Produto", big: true },
+          { key: "mulher", title: "Dia Internacional da Mulher", when: "8 de março" },
+          { key: "lembrete", title: "Lembrete: pré-operatório mais saudável", when: "Produto" },
+          { key: "semana-tag", title: "Semana do Consumidor com o cupom CLIENTE10", when: "Cupom" },
+          { key: "protein-energy", title: "Fresubin Protein Energy Drink", when: "Produto" },
+          { key: "hipertensao", title: "Predisposição genética à hipertensão", when: "Saúde" },
+          { key: "pais", title: "Dia dos Pais", when: "Agosto" },
+          { key: "fresubin-32", title: "Fresubin 3.2 kcal", when: "Produto" },
+          { key: "saude", title: "Dia Mundial da Saúde", when: "7 de abril" },
+          { key: "digestiva", title: "Saúde digestiva em dia", when: "Saúde" },
+          { key: "doe-sangue", title: "Doe sangue e ganhe 15%", when: "Campanha" },
+          { key: "etapas", title: "Nutrição para todas as etapas da vida", when: "Produto" },
+          { key: "maes", title: "Dia das Mães", when: "Maio" },
+          { key: "dia-cliente", title: "Dia do Cliente com o cupom CLIENTE15", when: "15 de setembro" },
+          { key: "hp-energy", title: "Fresubin HP Energy", when: "Produto" },
+          { key: "rio", title: "458 anos do Rio de Janeiro", when: "Aniversário da cidade", big: true },
+          { key: "frebini-linha", title: "Linha Frebini Energy Drink", when: "Produto" },
+          { key: "cancer", title: "Dia Mundial do Combate ao Câncer", when: "8 de abril" },
+          { key: "semana-consumidor", title: "Semana do Consumidor com o cupom CONSUMIDOR10", when: "14 a 20 de março" },
+          { key: "energy-1000", title: "Fresubin Energy 1000ml", when: "Produto" },
+          { key: "saude-mental", title: "8 dicas para a saúde mental", when: "Saúde" },
+          { key: "namorados", title: "Dia dos Namorados", when: "12 de junho" },
+          { key: "medicamento", title: "Dia Nacional de Luta por Medicamento", when: "8 de setembro" },
+          { key: "frebini-promo", title: "Frebini Energy Fibre 500ml em promoção", when: "Produto" },
+          { key: "felicidade", title: "Dia Internacional da Felicidade", when: "20 de março" },
+          { key: "melhores", title: "Os melhores produtos de nutrição", when: "Produto" },
+          { key: "semana-cliente", title: "Semana do Cliente", when: "12 a 18 de setembro", big: true },
+          { key: "jucy-jejum", title: "Fresubin Jucy Drink no pré-operatório", when: "Produto" },
+          { key: "pascoa", title: "Feliz Páscoa", when: "Páscoa" },
+          { key: "dermatologista", title: "Dia do Médico Dermatologista", when: "5 de fevereiro" },
+          { key: "habitos", title: "Hábitos saudáveis", when: "Saúde" },
+          { key: "lp-baunilha", title: "Fresubin LP Baunilha", when: "Produto" },
+          { key: "dia-consumidor", title: "Dia do Consumidor com o cupom CLIENTE20", when: "15 de março" },
+          { key: "lp-drink", title: "Linha Fresubin LP Drink", when: "Produto", big: true },
+          { key: "orgaos", title: "Doação de órgãos", when: "Campanha" },
+          { key: "trabalhador", title: "Dia do Trabalhador", when: "1º de maio" },
         ],
       },
     },

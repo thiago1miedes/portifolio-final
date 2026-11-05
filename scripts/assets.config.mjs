@@ -28,6 +28,11 @@ const LFD = "LF Serviços elétricos";
 // os 24 posts do Instagram da LF (1:1) vêm em arquivos baixados; cada um é um group próprio (a chave é o id)
 const lfPost = (n) => `${LFD}/${fs.readdirSync(`${SRC}/${LFD}`).filter((x) => x.endsWith(".png")).sort()[n]}`;
 
+const PRO = "Procare";
+// posts da Procare, baixados do Instagram: cada arquivo é achado pelo começo do nome
+const proFile = (dir, part) => { const base = dir ? `${PRO}/${dir}` : PRO; return `${base}/${fs.readdirSync(`${SRC}/${base}`).find((n) => n.startsWith(part))}`; };
+const proSeq = (group, dir, parts) => seq(group, parts.map((p) => proFile(dir, p)), "feed");
+
 // os posts do Instagram da SindBoss também vêm baixados: o começo do nome identifica cada arquivo
 const sindPost = (start) => `SindBoss/${fs.readdirSync(`${SRC}/SindBoss`).find((x) => x.startsWith(start))}`;
 
@@ -608,6 +613,60 @@ export const cases = {
       { id: "problemas-1", src: lfPost(21), kind: "feed", group: "problemas", label: "Problemas elétricos" },
       { id: "meio-ambiente-1", src: lfPost(22), kind: "feed", group: "meio-ambiente", label: "Meio Ambiente" },
       { id: "processo-1", src: lfPost(23), kind: "feed", group: "processo", label: "Processo de instalação" },
+    ],
+  },
+
+  // Procare (hoje Pro NutriCare): 5 carrosséis nas pastas 01 a 05 e 36 posts soltos, todos do Instagram.
+  // A ordem das telas foi deduzida pelo conteúdo e pelo que atravessa as emendas. O logo só existe em webp:
+  // o negativo e o avatar em sources/shots saem dele. Na pasta 04, 656566450 repete 650756858 e ficou de fora.
+  procare: {
+    thumb: { logo: "logo", bg: "#005070", plus: true },
+    items: [
+      { id: "logo", src: "shots/procare-logo-negativo.png", kind: "image", group: "marca" },
+      { id: "avatar", src: "shots/procare-avatar.png", kind: "image", group: "marca" },
+      ...proSeq("celiaca", "01", ["487875311", "487672488", "487857767", "487824733", "487803846", "487813580", "487692138"]),
+      ...proSeq("diabetes-junho", "02", ["489460340", "488756078", "488669507", "488049287", "488925323", "489085827", "488248422"]),
+      ...proSeq("cancer-infantil", "03", ["484766102", "484757556", "482244062", "485040854", "482243826"]),
+      ...proSeq("diabetes-mundial", "04", ["654002605", "650756858", "652602010", "652108193", "652639530", "649763676", "671092240"]),
+      ...proSeq("fresubin-creme", "05", ["654651499", "656412143", "669350263", "653533407", "651076502"]),
+      ...[
+        ["lembrete", "484721252", "Lembrete: pré-operatório mais saudável"],
+        ["frebini-promo", "485765204", "Frebini Energy Fibre 500ml em promoção"],
+        ["mulher", "486319439", "Dia Internacional da Mulher"],
+        ["rio", "486577278", "458 anos do Rio de Janeiro"],
+        ["semana-tag", "486729331", "Semana do Consumidor com o cupom CLIENTE10"],
+        ["protein-energy", "487086225", "Fresubin Protein Energy Drink"],
+        ["linha-enteral", "487171995", "Nutrição enteral e suplementos"],
+        ["cancer", "487215237", "Dia Mundial do Combate ao Câncer"],
+        ["digestiva", "487481281", "Saúde digestiva em dia"],
+        ["hipertensao", "487490223", "Predisposição genética à hipertensão"],
+        ["lp-drink", "487855501", "Linha Fresubin LP Drink"],
+        ["habitos", "487938933", "Hábitos saudáveis"],
+        ["etapas", "488696833", "Nutrição para todas as etapas da vida"],
+        ["frebini-linha", "489135905", "Linha Frebini Energy Drink"],
+        ["saude", "618678316", "Dia Mundial da Saúde"],
+        ["namorados", "619838192", "Dia dos Namorados"],
+        ["pais", "619904590", "Dia dos Pais"],
+        ["dia-cliente", "621458580", "Dia do Cliente com o cupom CLIENTE15"],
+        ["fresubin-32", "621987329", "Fresubin 3.2 kcal"],
+        ["semana-consumidor", "622117676", "Semana do Consumidor com o cupom CONSUMIDOR10"],
+        ["felicidade", "622620527", "Dia Internacional da Felicidade"],
+        ["saude-mental", "623433095", "8 dicas para a saúde mental"],
+        ["maes", "623931710", "Dia das Mães"],
+        ["jucy-jejum", "624074457", "Fresubin Jucy Drink no pré-operatório"],
+        ["hp-energy", "624077974", "Fresubin HP Energy"],
+        ["melhores", "624463370", "Os melhores produtos de nutrição"],
+        ["medicamento", "624630408", "Dia Nacional de Luta por Medicamento"],
+        ["doe-sangue", "624647163", "Doe sangue e ganhe 15%"],
+        ["trabalhador", "624739417", "Dia do Trabalhador"],
+        ["dia-consumidor", "624823181", "Dia do Consumidor com o cupom CLIENTE20"],
+        ["dermatologista", "624997627", "Dia do Médico Dermatologista"],
+        ["pascoa", "625855250", "Feliz Páscoa"],
+        ["orgaos", "626405489", "Doação de órgãos"],
+        ["semana-cliente", "628225291", "Semana do Cliente"],
+        ["energy-1000", "628279737", "Fresubin Energy 1000ml"],
+        ["lp-baunilha", "637708136", "Fresubin LP Baunilha"],
+      ].map(([id, part, label]) => ({ id: `${id}-1`, src: proFile("", part), kind: "feed", group: id, label })),
     ],
   },
 

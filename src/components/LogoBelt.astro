@@ -13,7 +13,7 @@ const count = Math.floor(cases.length / 10) * 10;
 
 // mesma área visual para todos: logos compridos ficam mais baixos, os quadrados mais altos e estreitos
 const AREA = 9500;
-const sized = logos.map((l) => {
+const sized = (logos as { slug: string; name: string; ratio: number; ext?: string }[]).map((l) => {
   let w = Math.sqrt(AREA * l.ratio);
   let h = w / l.ratio;
   if (h > 72) { h = 72; w = h * l.ratio; }
@@ -49,8 +49,8 @@ const gearPath = Array.from({ length: TEETH }, (_, i) => {
                   tabindex={copy === 1 ? -1 : undefined}
                   draggable="false"
                 >
-                  <img class="belt-white" src={`/logos/${l.slug}-w.svg`} width={l.w} height={l.h} alt="" decoding="async" draggable="false" />
-                  <img class="belt-color" src={`/logos/${l.slug}.svg`} width={l.w} height={l.h} alt="" decoding="async" draggable="false" />
+                  <img class="belt-white" src={`/logos/${l.slug}-w.${l.ext ?? "svg"}`} width={l.w} height={l.h} alt="" decoding="async" draggable="false" />
+                  <img class="belt-color" src={`/logos/${l.slug}.${l.ext ?? "svg"}`} width={l.w} height={l.h} alt="" decoding="async" draggable="false" />
                 </a>
               </li>
             ))}

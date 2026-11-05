@@ -24,6 +24,7 @@ const LOGOS = [
   { slug: "equipamentaria", name: "Equipamentaria", src: brandLockup("equipamentaria"), noTagline: true },
   { slug: "confraria", name: "Confraria dos Aromas", src: "cases/confraria/source/ConfrariaDosAromas.svg" },
   { slug: "vocs", name: "VOC&S", src: "cases/vocs/source/Logo_voc&s.svg" },
+  { slug: "procare", name: "Procare", raster: "../Procare/logo-pro-nutricare.webp" },
   { slug: "urbes", name: "Urbes", src: brandLockup("urbes"), noTagline: true },
   { slug: "oticas-talarico", name: "Óticas Talarico", src: "../Oticas Talarico/Projeto case/Group 2023.svg" },
   { slug: "grasie", name: "Grasiê Kids & Teen", src: brandLockup("grasie"), noTagline: true },
@@ -122,9 +123,44 @@ function whiteVersion(t) {
   return { svg: t.replace(COLOR, (c) => map.get(c.toLowerCase()) ?? c), tones: [...new Set(map.values())] };
 }
 
+/**
+ * Logo que só existe em bitmap: corta a área vazia e grava as duas versões em webp.
+ * Mesma lógica do negativo: a cor mais escura vira branco e a mais clara, cinza; o alfa original cuida do serrilhado.
+ */
+async function rasterLogo(file, slug) {
+  const { data, info } = await sharp(file).ensureAlpha().trim({ threshold: 1 }).resize({ width: 900 }).raw().toBuffer({ resolveWithObject: true });
+  const counts = new Map();
+  for (let i = 0; i < data.length; i += 4) {
+    if (data[i + 3] < 250) continue;
+    const k = (data[i] >> 4 << 8) | (data[i + 1] >> 4 << 4) | (data[i + 2] >> 4);
+    counts.set(k, (counts.get(k) ?? 0) + 1);
+  }
+  // as duas cores que mais aparecem são as do logo
+  const [a, b] = [...counts.entries()].sort((x, y) => y[1] - x[1]).slice(0, 2).map(([k]) => [(k >> 8) * 17, ((k >> 4) & 15) * 17, (k & 15) * 17]);
+  const [dark, light] = luminance(a) < luminance(b) ? [a, b] : [b, a];
+  const tone = 255 - Math.min(1, (luminance(light) - luminance(dark)) / 0.55) * 0.42 * 245;
+  const d = dark.map((v, c) => light[c] - v);
+  const len = d[0] ** 2 + d[1] ** 2 + d[2] ** 2;
+  const white = Buffer.from(data);
+  for (let i = 0; i < white.length; i += 4) {
+    const t = Math.max(0, Math.min(1, ((white[i] - dark[0]) * d[0] + (white[i + 1] - dark[1]) * d[1] + (white[i + 2] - dark[2]) * d[2]) / len));
+    white.fill(Math.round(255 + (tone - 255) * t), i, i + 3);
+  }
+  const raw = { raw: { width: info.width, height: info.height, channels: 4 } };
+  await sharp(data, raw).webp({ quality: 90 }).toFile(path.join(OUT, `${slug}.webp`));
+  await sharp(white, raw).webp({ quality: 90 }).toFile(path.join(OUT, `${slug}-w.webp`));
+  return info.width / info.height;
+}
+
 fs.mkdirSync(OUT, { recursive: true });
 const manifest = [];
 for (const logo of LOGOS) {
+  if (logo.raster) {
+    const ratio = await rasterLogo(path.resolve(ROOT, logo.raster), logo.slug);
+    manifest.push({ slug: logo.slug, name: logo.name, ratio: +ratio.toFixed(3), ext: "webp" });
+    console.log(logo.slug.padEnd(24), `proporção ${ratio.toFixed(2)}`.padEnd(18), "bitmap");
+    continue;
+  }
   const original = fs.readFileSync(path.resolve(ROOT, logo.src), "utf8");
   const raw = logo.noTagline ? withoutTagline(original, logo.slug) : original;
   if (/<image\b/i.test(raw)) throw new Error(`${logo.slug}: o SVG traz imagem embutida`);

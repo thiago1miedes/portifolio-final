@@ -40,6 +40,12 @@
     "ratio": 3.322
   },
   {
+    "slug": "procare",
+    "name": "Procare",
+    "ratio": 5.114,
+    "ext": "webp"
+  },
+  {
     "slug": "urbes",
     "name": "Urbes",
     "ratio": 2.904

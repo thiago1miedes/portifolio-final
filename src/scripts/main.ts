@@ -854,6 +854,15 @@ if (scWall && !reduce) {
       })
       .from(emblem, { clipPath: "inset(0% 100% 0% 0%)", x: -24, duration: 1.2, ease: "expo.inOut" }, 0.45);
     gsap.to(svg, { rotate: 8, ease: "none", scrollTrigger: { trigger: scWall, start: "top top", end: "bottom top", scrub: true } });
+  } else if (variant === "plus") {
+    // as cunhas cortam a capa vindas de lados opostos, as cruzes giram um quarto de volta até o lugar e o logotipo sobe por último;
+    // na rolagem, cada cruz sobe num ritmo (o giro fica no svg, o deslocamento na camada de fora, para os dois não disputarem)
+    const pluses = $$("[data-sc-plus]", scWall);
+    gsap.timeline({ delay })
+      .from($$("[data-sc-cut]", scWall), { x: (i: number) => (i % 2 ? -420 : 420), opacity: 0, duration: 1.4, ease: "expo.out", stagger: 0.1 })
+      .from(pluses.map((p) => $("svg", p)!), { scale: 0, rotate: -90, duration: 1.2, ease: "back.out(1.5)", stagger: 0.08 }, 0.1)
+      .from(emblem, { y: 28, opacity: 0, duration: 1.1, ease: "expo.out" }, 0.55);
+    pluses.forEach((p, k) => gsap.to(p, { yPercent: -18 - k * 24, ease: "none", scrollTrigger: { trigger: scWall, start: "top top", end: "bottom top", scrub: true } }));
   }
 }
 

@@ -259,7 +259,7 @@ const screens = slides("tela");
             <ul class="cb-meta" data-reveal>
               <li>{k.when}</li>
               <li>{count(items)}</li>
-              <li>{`${ratioOf(items[0])} · ${items[0].w} × ${items[0].h} px`}</li>
+              <li>{s.hideSize ? ratioOf(items[0]) : `${ratioOf(items[0])} · ${items[0].w} × ${items[0].h} px`}</li>
             </ul>
           </div>
           <div class="cb-post" data-reveal>

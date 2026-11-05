@@ -154,6 +154,20 @@ async function symbolThumb(logoFile, symbolFile, bg, file) {
   return { w: W, h: H };
 }
 
+// Capa da listagem com o logotipo em bitmap sobre a cor da marca, com as cunhas e as cruzes dos posts.
+async function plusThumb(logoFile, bg, file) {
+  const W = 1200, H = 800, L = 780;
+  const logo = await sharp(logoFile).resize({ width: L }).png().toBuffer();
+  const lh = (await sharp(logo).metadata()).height;
+  const plus = (x, y, s, o) => `<g opacity="${o}" fill="#fff" transform="translate(${x} ${y}) scale(${s}) skewX(-22)"><rect x="-12" y="-50" width="24" height="100" rx="7"/><rect x="-50" y="-12" width="100" height="24" rx="7"/></g>`;
+  const art = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><rect width="100%" height="100%" fill="${bg}"/>${plus(1030, 250, 4.4, 0.07)}${plus(120, 120, 1.05, 0.16)}${plus(236, 232, 0.5, 0.12)}<path d="M1200 0H820L1010 74 1200 24Z" fill="#A9CD41"/><path d="M0 800V650L300 590 520 700 930 570 1200 636V800Z" fill="#A9CD41"/><path d="M0 800V706L290 646 530 752 940 626 1200 690V800Z" fill="#003E58"/></svg>`;
+  await sharp(Buffer.from(art))
+    .composite([{ input: logo, left: (W - L) / 2, top: Math.round((H - lh) / 2) - 50 }])
+    .webp({ quality: 86 })
+    .toFile(file);
+  return { w: W, h: H };
+}
+
 async function thumb(srcFile, crop, file) {
   const m = await sharp(srcFile, { limitInputPixels: false }).metadata();
   const ratio = 3 / 2;
@@ -209,7 +223,9 @@ for (const slug of slugs) {
   }
   let t = null;
   const from = items.find((i) => i.id === conf.thumb?.from) ?? items[0];
-  if (conf.thumb?.logo && conf.thumb.bg && conf.thumb.symbol) {
+  if (conf.thumb?.plus) {
+    t = { src: `/cases/${slug}/thumb.webp`, ...(await plusThumb(path.join(dir, `${conf.thumb.logo}.webp`), conf.thumb.bg, path.join(dir, "thumb.webp"))) };
+  } else if (conf.thumb?.logo && conf.thumb.bg && conf.thumb.symbol) {
     t = { src: `/cases/${slug}/thumb.webp`, ...(await symbolThumb(path.join(dir, `${conf.thumb.logo}.svg`), path.join(dir, `${conf.thumb.symbol}.svg`), conf.thumb.bg, path.join(dir, "thumb.webp"))) };
   } else if (conf.thumb?.logo && conf.thumb.bg) {
     t = { src: `/cases/${slug}/thumb.webp`, ...(await brandThumb(path.join(dir, `${conf.thumb.logo}.svg`), conf.thumb.bg, path.join(dir, "thumb.webp"))) };

@@ -3,6 +3,7 @@
 //  - "tiles": o emblema do cliente sobre a repetição do padrão de ladrilhos (CAU/PE)
 //  - "wave": o logotipo sobre a cor da marca, com ondas claras subindo do rodapé (MenteVitale)
 //  - "symbol": o logotipo ao lado do símbolo em tamanho grande, que se monta peça por peça (LF)
+//  - "plus": o logotipo entre as cunhas e as cruzes que aparecem nos posts (Procare)
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "../../data/brand-cases";
@@ -12,7 +13,7 @@ interface Props {
   pattern?: string;
   bg?: string;
   title: string;
-  style?: "wave" | "symbol";
+  style?: "wave" | "symbol" | "plus";
   /** símbolo em SVG (só no estilo "symbol"): as peças são animadas uma a uma */
   symbol?: string;
 }
@@ -31,6 +32,13 @@ if (variant === "symbol" && symbol) {
     .replace(/class="(cls-\d+)"/g, (_, k) => `fill="${fills[k]}" data-sc-piece`)
     .replace(/<svg\b[^>]*viewBox="([^"]+)"[^>]*>/, '<svg viewBox="$1" aria-hidden="true" focusable="false">');
 }
+// estilo "plus": x e y em % da capa, w em % da largura, o = opacidade
+const pluses = [
+  { x: 75, y: 4, w: 36, o: 0.07 },
+  { x: 5, y: 9, w: 8, o: 0.16 },
+  { x: 15, y: 31, w: 3.6, o: 0.12 },
+  { x: 25, y: 7, w: 2.4, o: 0.1 },
+];
 ---
 <section class="sc container">
   <div
@@ -46,6 +54,20 @@ if (variant === "symbol" && symbol) {
       </svg>
     )}
     {variant === "symbol" && <div class="sc-symbol" data-sc-symbol set:html={symbolSvg} />}
+    {variant === "plus" && pluses.map((p) => (
+      <span class="sc-plus" style={`left:${p.x}%;top:${p.y}%;width:${p.w}%;opacity:${p.o}`} data-sc-plus>
+        <svg viewBox="-72 -52 144 104" aria-hidden="true" focusable="false">
+          <g transform="skewX(-22)"><rect x="-12" y="-50" width="24" height="100" rx="7" /><rect x="-50" y="-12" width="100" height="24" rx="7" /></g>
+        </svg>
+      </span>
+    ))}
+    {variant === "plus" && (
+      <svg class="sc-cuts" viewBox="0 0 1440 620" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path data-sc-cut fill="#A9CD41" d="M1440 0H1000L1210 58 1440 20Z" />
+        <path data-sc-cut fill="#A9CD41" d="M0 620V498L360 438 620 540 1110 410 1440 474V620Z" />
+        <path data-sc-cut fill="#003E58" d="M0 620V552L350 492 640 592 1130 464 1440 530V620Z" />
+      </svg>
+    )}
     <div class:list={["sc-emblem", { "sc-emblem--wide": wide }]} data-sc-emblem>
       <img src={logo.src} width={logo.w} height={logo.h} alt={`Logotipo ${title}`} loading="eager" />
     </div>
@@ -89,6 +111,12 @@ if (variant === "symbol" && symbol) {
   /* as peças azuis somem no fundo azul: ficam um tom acima */
   .sc-symbol :global([fill="#103e5a"]) { fill: #1a5677; }
   .sc-wall--symbol .sc-emblem--wide { width: min(46%, 640px); }
+
+  /* cunhas e cruzes: a mesma geometria dos cantos dos posts */
+  .sc-cuts { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+  .sc-plus { position: absolute; z-index: 0; display: block; }
+  .sc-plus svg { display: block; width: 100%; height: auto; overflow: visible; fill: #fff; }
+  .sc-wall--plus .sc-emblem { margin-bottom: 7%; }
 
   @media (max-width: 700px) {
     .sc-wall { aspect-ratio: 4 / 3; --tile: 320px; }
