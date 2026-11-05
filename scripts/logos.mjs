@@ -35,6 +35,8 @@ const LOGOS = [
   { slug: "efpi", name: "EFPI", src: brandLockup("efpi"), noTagline: true },
   { slug: "mentevitale", name: "MenteVitale", src: "../Mentivitalle/Logo_mentevitale.svg" },
   { slug: "cau-pe", name: "CAU/PE", src: "public/cases/cau-pe/logo.svg" },
+  { slug: "arte-kanvas", name: "Arte Kanvas", src: "../Arte Kanvas/Ativo 2.svg" },
+  { slug: "convivio", name: "Convívio", raster: "../Convivio/logo.png" },
 ];
 
 /** Remove o grupo do descritor, contando os <g> abertos para achar onde ele termina. */

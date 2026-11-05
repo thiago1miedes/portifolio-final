@@ -827,6 +827,9 @@ $$("[data-book]").forEach((bk) => {
 // ladrilhos: o emblema redondo entra girando e o padrão desce devagar com a rolagem
 // ondas: as ondas sobem do rodapé uma a uma e o logotipo emerge de baixo, como se viesse com elas
 // símbolo: as peças do símbolo chegam de fora e se encaixam; o logotipo é revelado da esquerda para a direita
+// plus: as cunhas cortam a capa, as cruzes giram até o lugar e o logotipo sobe
+// line: o traço do logotipo se desenha em órbita, atrás e na frente dele
+// azulejo: os azulejos se encaixam do centro para as bordas e o selo aparece no meio
 const scWall = $("[data-sc-wall]");
 if (scWall && !reduce) {
   const delay = root.classList.contains("is-arriving") ? 0.6 : 0.35;
@@ -863,6 +866,21 @@ if (scWall && !reduce) {
       .from(pluses.map((p) => $("svg", p)!), { scale: 0, rotate: -90, duration: 1.2, ease: "back.out(1.5)", stagger: 0.08 }, 0.1)
       .from(emblem, { y: 28, opacity: 0, duration: 1.1, ease: "expo.out" }, 0.55);
     pluses.forEach((p, k) => gsap.to(p, { yPercent: -18 - k * 24, ease: "none", scrollTrigger: { trigger: scWall, start: "top top", end: "bottom top", scrub: true } }));
+  } else if (variant === "line") {
+    // o traço se desenha de ponta a ponta (a cópia de trás e a da frente juntas) e o logotipo aparece quando a órbita já passou por ele;
+    // na rolagem, as duas camadas sobem no mesmo ritmo para a órbita não se descolar do logotipo
+    gsap.timeline({ delay })
+      .fromTo($$("[data-sc-orbit]", scWall), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2.6, ease: "power2.inOut" })
+      .from(emblem, { opacity: 0, y: 22, duration: 1.2, ease: "expo.out" }, 0.8);
+    gsap.to($$(".sc-orbit", scWall), { yPercent: -7, ease: "none", scrollTrigger: { trigger: scWall, start: "top top", end: "bottom top", scrub: true } });
+  } else if (variant === "azulejo") {
+    // os azulejos se encaixam do centro para as bordas, cada um girando um quarto de volta, e o logotipo aparece no meio da parede
+    const wall = $<SVGSVGElement>("[data-sc-tiles]", scWall)!;
+    const [cols, rows] = wall.dataset.scTiles!.split("x").map(Number);
+    gsap.timeline({ delay })
+      .from($$("[data-sc-tile]", scWall), { scale: 0, rotate: -90, opacity: 0, duration: 0.9, ease: "back.out(1.5)", stagger: { grid: [rows, cols], from: "center", amount: 1.3 } })
+      .from(emblem, { opacity: 0, scale: 0.92, duration: 1.2, ease: "expo.out" }, 0.9);
+    gsap.to(wall, { yPercent: -5, ease: "none", scrollTrigger: { trigger: scWall, start: "top top", end: "bottom top", scrub: true } });
   }
 }
 

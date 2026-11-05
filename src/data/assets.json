@@ -6219,5 +6219,589 @@
     "group": "lp-baunilha"
    }
   ]
+ },
+ "arte-kanvas": {
+  "thumb": {
+   "src": "/cases/arte-kanvas/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": "logo",
+  "items": [
+   {
+    "id": "logo",
+    "src": "/cases/arte-kanvas/logo.svg",
+    "w": 1038,
+    "h": 935,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "avatar",
+    "src": "/cases/arte-kanvas/avatar.svg",
+    "w": 400,
+    "h": 400,
+    "kind": "svg",
+    "group": "marca"
+   },
+   {
+    "id": "criatividade-1",
+    "src": "/cases/arte-kanvas/criatividade-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia da Criatividade",
+    "group": "criatividade"
+   },
+   {
+    "id": "galerias-1",
+    "src": "/cases/arte-kanvas/galerias-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Visite 5 galerias famosas sem sair de casa",
+    "group": "galerias"
+   },
+   {
+    "id": "mundo-das-artes-1",
+    "src": "/cases/arte-kanvas/mundo-das-artes-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Leve o mundo das artes para a sua casa",
+    "group": "mundo-das-artes"
+   },
+   {
+    "id": "novo-mundo-1",
+    "src": "/cases/arte-kanvas/novo-mundo-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Um novo mundo te espera",
+    "group": "novo-mundo"
+   },
+   {
+    "id": "artistas-nacionais-1",
+    "src": "/cases/arte-kanvas/artistas-nacionais-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Apoie artistas nacionais",
+    "group": "artistas-nacionais"
+   },
+   {
+    "id": "teatro-1",
+    "src": "/cases/arte-kanvas/teatro-1.webp",
+    "w": 1200,
+    "h": 1200,
+    "kind": "feed",
+    "label": "O espetáculo já vai começar",
+    "group": "teatro"
+   },
+   {
+    "id": "todos-os-tipos-1",
+    "src": "/cases/arte-kanvas/todos-os-tipos-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Ideal para todos os tipos de arte",
+    "group": "todos-os-tipos"
+   },
+   {
+    "id": "viver-de-arte-1",
+    "src": "/cases/arte-kanvas/viver-de-arte-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Você já pensou em viver de arte",
+    "group": "viver-de-arte"
+   },
+   {
+    "id": "bienal-1",
+    "src": "/cases/arte-kanvas/bienal-1.webp",
+    "w": 1200,
+    "h": 1200,
+    "kind": "feed",
+    "label": "Bienal de São Paulo",
+    "group": "bienal"
+   },
+   {
+    "id": "fotografo-1",
+    "src": "/cases/arte-kanvas/fotografo-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dia do Fotógrafo",
+    "group": "fotografo"
+   },
+   {
+    "id": "decore-casa-1",
+    "src": "/cases/arte-kanvas/decore-casa-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Decore sua casa com a Arte Kanvas",
+    "group": "decore-casa"
+   },
+   {
+    "id": "decoracao-1",
+    "src": "/cases/arte-kanvas/decoracao-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Obras de arte na decoração",
+    "group": "decoracao"
+   },
+   {
+    "id": "plataforma-1",
+    "src": "/cases/arte-kanvas/plataforma-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "A plataforma online que conecta apreciadores de arte e artistas",
+    "group": "plataforma"
+   },
+   {
+    "id": "proximos-1",
+    "src": "/cases/arte-kanvas/proximos-1.webp",
+    "w": 1000,
+    "h": 1000,
+    "kind": "feed",
+    "label": "Conheça e compre dos artistas próximos de você",
+    "group": "proximos"
+   },
+   {
+    "id": "navegue-1",
+    "src": "/cases/arte-kanvas/navegue-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Navegue no mundo das artes",
+    "group": "navegue"
+   },
+   {
+    "id": "ver-o-mundo-1",
+    "src": "/cases/arte-kanvas/ver-o-mundo-1.webp",
+    "w": 1000,
+    "h": 1000,
+    "kind": "feed",
+    "label": "A arte é uma forma de ver o mundo",
+    "group": "ver-o-mundo"
+   },
+   {
+    "id": "arara-1",
+    "src": "/cases/arte-kanvas/arara-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Leve o mundo das artes para a sua casa",
+    "group": "arara"
+   },
+   {
+    "id": "emocoes-1",
+    "src": "/cases/arte-kanvas/emocoes-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "A galeria digital na palma da sua mão",
+    "group": "emocoes"
+   },
+   {
+    "id": "escultores-1",
+    "src": "/cases/arte-kanvas/escultores-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "5 escultores brasileiros",
+    "group": "escultores"
+   },
+   {
+    "id": "exponha-1",
+    "src": "/cases/arte-kanvas/exponha-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Sua arte merece ser vista pelo Brasil todo",
+    "group": "exponha"
+   },
+   {
+    "id": "busca-1",
+    "src": "/cases/arte-kanvas/busca-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Em busca de obras de arte para decorar o seu lar",
+    "group": "busca"
+   },
+   {
+    "id": "autoexpressao-1",
+    "src": "/cases/arte-kanvas/autoexpressao-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "A arte é a autoexpressão",
+    "group": "autoexpressao"
+   },
+   {
+    "id": "decore-sua-casa-1",
+    "src": "/cases/arte-kanvas/decore-sua-casa-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Decore sua casa",
+    "group": "decore-sua-casa"
+   },
+   {
+    "id": "galeria-digital-1",
+    "src": "/cases/arte-kanvas/galeria-digital-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Galeria digital",
+    "group": "galeria-digital"
+   },
+   {
+    "id": "van-gogh-1",
+    "src": "/cases/arte-kanvas/van-gogh-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Crie sua loja virtual",
+    "group": "van-gogh"
+   },
+   {
+    "id": "divulgue-1",
+    "src": "/cases/arte-kanvas/divulgue-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Divulgue suas obras",
+    "group": "divulgue"
+   }
+  ]
+ },
+ "convivio": {
+  "thumb": {
+   "src": "/cases/convivio/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": "logo",
+  "items": [
+   {
+    "id": "logo",
+    "src": "/cases/convivio/logo.webp",
+    "w": 1118,
+    "h": 782,
+    "kind": "image",
+    "group": "marca"
+   },
+   {
+    "id": "avatar",
+    "src": "/cases/convivio/avatar.webp",
+    "w": 400,
+    "h": 400,
+    "kind": "image",
+    "group": "marca"
+   },
+   {
+    "id": "crocante-1",
+    "src": "/cases/convivio/crocante-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Crocante e muuuito gostoso",
+    "group": "crocante"
+   },
+   {
+    "id": "carnaval-1",
+    "src": "/cases/convivio/carnaval-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Dê uma pausa no carnaval",
+    "group": "carnaval"
+   },
+   {
+    "id": "feijoada-capricho-1",
+    "src": "/cases/convivio/feijoada-capricho-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Procurando uma feijoada no capricho",
+    "group": "feijoada-capricho"
+   },
+   {
+    "id": "sabado-motivos-1",
+    "src": "/cases/convivio/sabado-motivos-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Motivos pra passar seu sábado no Convívio",
+    "group": "sabado-motivos"
+   },
+   {
+    "id": "primavera-1",
+    "src": "/cases/convivio/primavera-1.webp",
+    "w": 1200,
+    "h": 1200,
+    "kind": "feed",
+    "label": "Primavera",
+    "group": "primavera"
+   },
+   {
+    "id": "clube-do-chopp-1",
+    "src": "/cases/convivio/clube-do-chopp-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Novidade: Clube do Chopp",
+    "group": "clube-do-chopp"
+   },
+   {
+    "id": "enquete-1",
+    "src": "/cases/convivio/enquete-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "A feijoada do Convívio é",
+    "group": "enquete"
+   },
+   {
+    "id": "terca-happy-hour-1",
+    "src": "/cases/convivio/terca-happy-hour-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Terça do Happy Hour",
+    "group": "terca-happy-hour"
+   },
+   {
+    "id": "louca-suja-1",
+    "src": "/cases/convivio/louca-suja-1.webp",
+    "w": 1200,
+    "h": 1200,
+    "kind": "feed",
+    "label": "Crie independência da louça suja",
+    "group": "louca-suja"
+   },
+   {
+    "id": "sabado-feijoada-1",
+    "src": "/cases/convivio/sabado-feijoada-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Sábado no Convívio",
+    "group": "sabado-feijoada"
+   },
+   {
+    "id": "lembrancas-1",
+    "src": "/cases/convivio/lembrancas-1.webp",
+    "w": 1200,
+    "h": 1200,
+    "kind": "feed",
+    "label": "Crie lembranças memoráveis",
+    "group": "lembrancas"
+   },
+   {
+    "id": "feriado-1",
+    "src": "/cases/convivio/feriado-1.webp",
+    "w": 1200,
+    "h": 1200,
+    "kind": "feed",
+    "label": "Feriado é no Convívio",
+    "group": "feriado"
+   },
+   {
+    "id": "feliz-2024-1",
+    "src": "/cases/convivio/feliz-2024-1.webp",
+    "w": 1200,
+    "h": 1200,
+    "kind": "feed",
+    "label": "Obrigado por conviver com a gente em 2023",
+    "group": "feliz-2024"
+   },
+   {
+    "id": "confraternizacao-1",
+    "src": "/cases/convivio/confraternizacao-1.webp",
+    "w": 2048,
+    "h": 2048,
+    "kind": "feed",
+    "label": "Faça a sua festa de confraternização",
+    "group": "confraternizacao"
+   },
+   {
+    "id": "bloco-1",
+    "src": "/cases/convivio/bloco-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Esse é o bloco que adoramos",
+    "group": "bloco"
+   },
+   {
+    "id": "bossa-nova-1",
+    "src": "/cases/convivio/bossa-nova-1.webp",
+    "w": 2000,
+    "h": 2000,
+    "kind": "feed",
+    "label": "Dia Nacional da Bossa Nova",
+    "group": "bossa-nova"
+   },
+   {
+    "id": "bolinho-de-costela-1",
+    "src": "/cases/convivio/bolinho-de-costela-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Bolinho de costela",
+    "group": "bolinho-de-costela"
+   },
+   {
+    "id": "panceta-1",
+    "src": "/cases/convivio/panceta-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Panceta com barbecue de goiabada",
+    "group": "panceta"
+   },
+   {
+    "id": "sextou-1",
+    "src": "/cases/convivio/sextou-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Convívio, celebrar, festa, sextou",
+    "group": "sextou"
+   },
+   {
+    "id": "feijuca-1",
+    "src": "/cases/convivio/feijuca-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Bora de feijuca",
+    "group": "feijuca"
+   },
+   {
+    "id": "ifood-1",
+    "src": "/cases/convivio/ifood-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Estamos no iFood",
+    "group": "ifood"
+   },
+   {
+    "id": "sabado-gostoso-1",
+    "src": "/cases/convivio/sabado-gostoso-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Deixe seu sábado mais gostoso",
+    "group": "sabado-gostoso"
+   },
+   {
+    "id": "almoco-1",
+    "src": "/cases/convivio/almoco-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Aqui, seu almoço fica muito mais gostoso",
+    "group": "almoco"
+   },
+   {
+    "id": "agenda-1",
+    "src": "/cases/convivio/agenda-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Agenda da Semana",
+    "group": "agenda"
+   },
+   {
+    "id": "terca-chopp-1",
+    "src": "/cases/convivio/terca-chopp-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Não me leve a sério",
+    "group": "terca-chopp"
+   },
+   {
+    "id": "boteco-1",
+    "src": "/cases/convivio/boteco-1.webp",
+    "w": 1080,
+    "h": 1080,
+    "kind": "feed",
+    "label": "Domingo é dia de comida de boteco",
+    "group": "boteco"
+   }
+  ]
+ },
+ "lobos-adventure": {
+  "thumb": {
+   "src": "/cases/lobos-adventure/thumb.webp",
+   "w": 1200,
+   "h": 800
+  },
+  "cover": "home",
+  "items": [
+   {
+    "id": "home",
+    "src": "/cases/lobos-adventure/home.webp",
+    "w": 1440,
+    "h": 5390,
+    "kind": "page",
+    "label": "Home"
+   },
+   {
+    "id": "sobre",
+    "src": "/cases/lobos-adventure/sobre.webp",
+    "w": 1440,
+    "h": 3209,
+    "kind": "page",
+    "label": "Sobre a Lobos"
+   },
+   {
+    "id": "parceiros",
+    "src": "/cases/lobos-adventure/parceiros.webp",
+    "w": 1440,
+    "h": 3211,
+    "kind": "page",
+    "label": "Parceiros"
+   },
+   {
+    "id": "noticias",
+    "src": "/cases/lobos-adventure/noticias.webp",
+    "w": 1440,
+    "h": 2760,
+    "kind": "page",
+    "label": "Dicas e notícias"
+   },
+   {
+    "id": "contato",
+    "src": "/cases/lobos-adventure/contato.webp",
+    "w": 1440,
+    "h": 1542,
+    "kind": "page",
+    "label": "Contato"
+   },
+   {
+    "id": "mobile",
+    "src": "/cases/lobos-adventure/mobile.webp",
+    "w": 780,
+    "h": 14356,
+    "kind": "mobile"
+   },
+   {
+    "id": "mobile-sobre",
+    "src": "/cases/lobos-adventure/mobile-sobre.webp",
+    "w": 780,
+    "h": 10312,
+    "kind": "mobile"
+   }
+  ]
  }
 }

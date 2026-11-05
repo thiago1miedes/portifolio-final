@@ -4,6 +4,8 @@
 //  - "wave": o logotipo sobre a cor da marca, com ondas claras subindo do rodapé (MenteVitale)
 //  - "symbol": o logotipo ao lado do símbolo em tamanho grande, que se monta peça por peça (LF)
 //  - "plus": o logotipo entre as cunhas e as cruzes que aparecem nos posts (Procare)
+//  - "line": o logotipo escuro sobre o branco, com o traço do logotipo desenhando uma órbita em volta dele (Arte Kanvas)
+//  - "azulejo": o logotipo branco sobre uma parede de azulejos azuis que se encaixam do centro para as bordas (Convívio)
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "../../data/brand-cases";
@@ -13,7 +15,7 @@ interface Props {
   pattern?: string;
   bg?: string;
   title: string;
-  style?: "wave" | "symbol" | "plus";
+  style?: "wave" | "symbol" | "plus" | "line" | "azulejo";
   /** símbolo em SVG (só no estilo "symbol"): as peças são animadas uma a uma */
   symbol?: string;
 }
@@ -39,6 +41,13 @@ const pluses = [
   { x: 15, y: 31, w: 3.6, o: 0.12 },
   { x: 25, y: 7, w: 2.4, o: 0.1 },
 ];
+// estilo "line": a órbita é um caminho só, desenhado duas vezes. A cópia de trás fica atrás do logotipo e a da frente,
+// cortada na metade de baixo, passa por cima dele, como o traço dos posts passa por trás e pela frente das fotos.
+const orbit =
+  "M-60 430 C160 486 470 520 730 474 C1040 420 1240 330 1100 252 C980 186 700 160 470 196 C250 230 150 310 330 366 C520 424 900 474 1180 432 C1320 410 1430 364 1510 322";
+// estilo "azulejo": 14 colunas por 6 fileiras de 100 unidades; o desenho do ladrilho fica em <symbol> e se repete
+const tileCols = 14, tileRows = 6;
+const tiles = Array.from({ length: tileCols * tileRows }, (_, i) => ({ x: (i % tileCols) * 100, y: Math.floor(i / tileCols) * 100, alt: ((i % tileCols) + Math.floor(i / tileCols)) % 2 === 1 }));
 ---
 <section class="sc container">
   <div
@@ -68,9 +77,41 @@ const pluses = [
         <path data-sc-cut fill="#003E58" d="M0 620V552L350 492 640 592 1130 464 1440 530V620Z" />
       </svg>
     )}
+    {variant === "azulejo" && (
+      <svg class="sc-tiles" viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" data-sc-tiles={`${tileCols}x${tileRows}`}>
+        <defs>
+          {/* cores em atributos: seletor com ancestral não alcança as cópias do <use> */}
+          <symbol id="sc-azulejo-alt" viewBox="0 0 100 100">
+            <rect x="0" y="0" width="100" height="100" fill="#fff" fill-opacity="0.07" />
+            <use href="#sc-azulejo" width="100" height="100" />
+          </symbol>
+          <symbol id="sc-azulejo" viewBox="0 0 100 100">
+            <g fill="none" stroke="#fff" stroke-opacity="0.26">
+              <rect x="3" y="3" width="94" height="94" stroke-width="1.4" />
+              <path stroke-width="1.6" d="M3 27A24 24 0 0 0 27 3M97 27A24 24 0 0 1 73 3M3 73A24 24 0 0 1 27 97M97 73A24 24 0 0 0 73 97" />
+              <rect x="26" y="26" width="48" height="48" stroke-width="1.8" />
+              <rect x="26" y="26" width="48" height="48" stroke-width="1.8" transform="rotate(45 50 50)" />
+            </g>
+            <circle cx="50" cy="50" r="7" fill="#fff" fill-opacity="0.26" />
+          </symbol>
+        </defs>
+        {tiles.map((t) => <use href={t.alt ? "#sc-azulejo-alt" : "#sc-azulejo"} x={t.x} y={t.y} width="100" height="100" class="sc-tile" data-sc-tile />)}
+      </svg>
+    )}
+    {variant === "line" && (
+      <svg class="sc-orbit sc-orbit--back" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <path data-sc-orbit pathLength="1" d={orbit} />
+      </svg>
+    )}
     <div class:list={["sc-emblem", { "sc-emblem--wide": wide }]} data-sc-emblem>
       <img src={logo.src} width={logo.w} height={logo.h} alt={`Logotipo ${title}`} loading="eager" />
     </div>
+    {variant === "line" && (
+      <svg class="sc-orbit sc-orbit--front" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <defs><clipPath id="sc-orbit-front"><rect x="0" y="318" width="1440" height="302" /></clipPath></defs>
+        <path data-sc-orbit pathLength="1" d={orbit} clip-path="url(#sc-orbit-front)" />
+      </svg>
+    )}
   </div>
 </section>
 
@@ -118,10 +159,28 @@ const pluses = [
   .sc-plus svg { display: block; width: 100%; height: auto; overflow: visible; fill: #fff; }
   .sc-wall--plus .sc-emblem { margin-bottom: 7%; }
 
+  /* órbita: fundo branco, logotipo escuro e um traço fino que passa atrás e na frente dele */
+  .sc-wall--line { border-color: rgba(255, 255, 255, 0.14); }
+  .sc-orbit { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+  .sc-orbit--back { z-index: 0; }
+  .sc-orbit--front { z-index: 2; }
+  .sc-orbit path { fill: none; stroke: #1c1c1c; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .sc-wall--line .sc-emblem { width: min(26%, 340px); }
+
+  /* azulejos: a parede cobre a capa e o centro escurece para o logotipo respirar */
+  .sc-tiles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+  .sc-wall--azulejo::before {
+    content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(closest-side at 50% 50%, var(--bg) 22%, color-mix(in srgb, var(--bg) 55%, transparent) 62%, transparent);
+  }
+  .sc-wall--azulejo .sc-emblem { width: min(30%, 400px); z-index: 2; }
+
   @media (max-width: 700px) {
     .sc-wall { aspect-ratio: 4 / 3; --tile: 320px; }
     .sc-emblem { width: 58%; }
     .sc-emblem--wide { width: 72%; }
+    .sc-wall--line .sc-emblem { width: 44%; }
+    .sc-wall--azulejo .sc-emblem { width: 66%; }
     /* celular: o símbolo sangra no canto de cima e o logotipo desce para a base */
     .sc-wall--symbol { place-items: end start; padding: 0 0 9% 7%; }
     .sc-symbol { top: -14%; right: -8%; width: 60%; translate: 0 0; }

@@ -168,6 +168,40 @@ async function plusThumb(logoFile, bg, file) {
   return { w: W, h: H };
 }
 
+// Capa da listagem do Arte Kanvas: logotipo escuro sobre o branco e o traço dando a volta nele.
+// A cópia de trás passa por baixo do logotipo; a da frente, cortada na metade de baixo, passa por cima.
+async function lineThumb(logoFile, bg, file) {
+  const W = 1200, H = 800, L = 380;
+  const logo = await sharp(logoFile, { density: 220 }).resize({ width: L }).png().toBuffer();
+  const lh = (await sharp(logo).metadata()).height;
+  const d = "M-50 520C133 576 392 610 608 564C867 510 1033 420 917 342C817 276 583 250 392 286C208 320 125 400 275 456C433 514 750 564 983 522C1100 500 1192 454 1258 412";
+  const line = (clip) => `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${clip ? `<defs><clipPath id="c"><rect x="0" y="408" width="${W}" height="${H - 408}"/></clipPath></defs>` : ""}<path d="${d}" fill="none" stroke="#1c1c1c" stroke-width="3.2" stroke-linecap="round"${clip ? ' clip-path="url(#c)"' : ""}/></svg>`;
+  const back = await sharp({ create: { width: W, height: H, channels: 4, background: bg } })
+    .composite([{ input: Buffer.from(line(false)) }, { input: logo, left: (W - L) / 2, top: Math.round((H - lh) / 2) }])
+    .png()
+    .toBuffer();
+  await sharp(back).composite([{ input: Buffer.from(line(true)) }]).webp({ quality: 86 }).toFile(file);
+  return { w: W, h: H };
+}
+
+// Capa da listagem do Convívio: o selo sobre uma parede de azulejos azuis, com o centro mais escuro para ele respirar.
+async function azulejoThumb(logoFile, bg, file) {
+  const W = 1200, H = 800, L = 520, T = 100;
+  const tile = `<g id="a"><rect width="100" height="100" fill="#fff" fill-opacity="0.07"/><rect x="3" y="3" width="94" height="94" fill="none" stroke="#fff" stroke-opacity="0.26" stroke-width="1.4"/><path d="M3 27A24 24 0 0 0 27 3M97 27A24 24 0 0 1 73 3M3 73A24 24 0 0 1 27 97M97 73A24 24 0 0 0 73 97" fill="none" stroke="#fff" stroke-opacity="0.26" stroke-width="1.6"/><g fill="none" stroke="#fff" stroke-opacity="0.26" stroke-width="1.8"><rect x="26" y="26" width="48" height="48"/><rect x="26" y="26" width="48" height="48" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="7" fill="#fff" fill-opacity="0.26"/></g>`;
+  const uses = [];
+  for (let r = 0; r < H / T; r++) for (let c = 0; c < W / T; c++) if ((r + c) % 2) uses.push(`<use xlink:href="#a" x="${c * T}" y="${r * T}"/>`);
+  else uses.push(`<use xlink:href="#b" x="${c * T}" y="${r * T}"/>`);
+  const plain = tile.replace('<rect width="100" height="100" fill="#fff" fill-opacity="0.07"/>', "").replace('id="a"', 'id="b"');
+  const wall = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${W}" height="${H}"><rect width="100%" height="100%" fill="${bg}"/><defs>${tile}${plain}<radialGradient id="g" cx="50%" cy="50%" r="52%"><stop offset="0.25" stop-color="${bg}" stop-opacity="1"/><stop offset="0.62" stop-color="${bg}" stop-opacity="0.55"/><stop offset="1" stop-color="${bg}" stop-opacity="0"/></radialGradient></defs>${uses.join("")}<rect width="100%" height="100%" fill="url(#g)"/></svg>`;
+  const logo = await sharp(logoFile).resize({ width: L }).png().toBuffer();
+  const lh = (await sharp(logo).metadata()).height;
+  await sharp(Buffer.from(wall))
+    .composite([{ input: logo, left: (W - L) / 2, top: Math.round((H - lh) / 2) }])
+    .webp({ quality: 86 })
+    .toFile(file);
+  return { w: W, h: H };
+}
+
 async function thumb(srcFile, crop, file) {
   const m = await sharp(srcFile, { limitInputPixels: false }).metadata();
   const ratio = 3 / 2;
@@ -225,6 +259,10 @@ for (const slug of slugs) {
   const from = items.find((i) => i.id === conf.thumb?.from) ?? items[0];
   if (conf.thumb?.plus) {
     t = { src: `/cases/${slug}/thumb.webp`, ...(await plusThumb(path.join(dir, `${conf.thumb.logo}.webp`), conf.thumb.bg, path.join(dir, "thumb.webp"))) };
+  } else if (conf.thumb?.line) {
+    t = { src: `/cases/${slug}/thumb.webp`, ...(await lineThumb(path.join(dir, `${conf.thumb.logo}.svg`), conf.thumb.bg, path.join(dir, "thumb.webp"))) };
+  } else if (conf.thumb?.azulejo) {
+    t = { src: `/cases/${slug}/thumb.webp`, ...(await azulejoThumb(path.join(dir, `${conf.thumb.logo}.webp`), conf.thumb.bg, path.join(dir, "thumb.webp"))) };
   } else if (conf.thumb?.logo && conf.thumb.bg && conf.thumb.symbol) {
     t = { src: `/cases/${slug}/thumb.webp`, ...(await symbolThumb(path.join(dir, `${conf.thumb.logo}.svg`), path.join(dir, `${conf.thumb.symbol}.svg`), conf.thumb.bg, path.join(dir, "thumb.webp"))) };
   } else if (conf.thumb?.logo && conf.thumb.bg) {

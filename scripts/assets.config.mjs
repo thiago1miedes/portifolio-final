@@ -36,6 +36,14 @@ const proSeq = (group, dir, parts) => seq(group, parts.map((p) => proFile(dir, p
 // os posts do Instagram da SindBoss também vêm baixados: o começo do nome identifica cada arquivo
 const sindPost = (start) => `SindBoss/${fs.readdirSync(`${SRC}/SindBoss`).find((x) => x.startsWith(start))}`;
 
+// Arte Kanvas e Convívio: posts baixados do Instagram, achados pelo começo do nome (o do Convívio tem uma cópia "(1)" que fica de fora)
+const KAN = "Arte Kanvas";
+const kanPost = (start) => `${KAN}/${fs.readdirSync(`${SRC}/${KAN}`).find((x) => x.startsWith(start))}`;
+const CON = "Convivio";
+const conPost = (start) => `${CON}/${fs.readdirSync(`${SRC}/${CON}`).find((x) => x.startsWith(start) && !x.includes("(1)"))}`;
+// cada post é um group próprio: [id, começo do nome do arquivo, descrição]
+const singles = (pick, list) => list.map(([id, start, label]) => ({ id: `${id}-1`, src: pick(start), kind: "feed", group: id, label }));
+
 export const cases = {
   /* ---------------------------------------------------------------- sites no ar */
   deliziare: {
@@ -64,6 +72,20 @@ export const cases = {
     items: [
       { id: "live", src: "shots/cidadealegre-desktop.webp", kind: "page", label: "Landing page" },
       { id: "mobile", src: "shots/cidadealegre-mobile.webp", kind: "mobile" },
+    ],
+  },
+
+  // site no ar, capturado das páginas internas (home, sobre, parceiros, notícias, contato) e de dois celulares
+  "lobos-adventure": {
+    thumb: { from: "home", crop: "top" },
+    items: [
+      { id: "home", src: "shots/lobos-home-desktop.webp", kind: "page", label: "Home" },
+      { id: "sobre", src: "shots/lobos-sobre-desktop.webp", kind: "page", label: "Sobre a Lobos" },
+      { id: "parceiros", src: "shots/lobos-parceiros-desktop.webp", kind: "page", label: "Parceiros" },
+      { id: "noticias", src: "shots/lobos-noticias-desktop.webp", kind: "page", label: "Dicas e notícias" },
+      { id: "contato", src: "shots/lobos-contato-desktop.webp", kind: "page", label: "Contato" },
+      { id: "mobile", src: "shots/lobos-home-mobile.webp", kind: "mobile" },
+      { id: "mobile-sobre", src: "shots/lobos-sobre-mobile.webp", kind: "mobile" },
     ],
   },
 
@@ -671,6 +693,82 @@ export const cases = {
   },
 
   /* ---------------------------------------------------------------- embalagem */
+  // Arte Kanvas: o logo é o SVG original em escuro (capa clara e miniatura); o avatar é o mesmo logo num círculo branco
+  // (sources/shots). Os 26 posts vêm da pasta, um group por post.
+  "arte-kanvas": {
+    thumb: { logo: "logo", bg: "#F3F2EE", line: true },
+    items: [
+      { id: "logo", src: `${KAN}/Ativo 1.svg`, kind: "svg", group: "marca" },
+      { id: "avatar", src: "shots/kanvas-avatar.svg", kind: "svg", group: "marca" },
+      ...singles(kanPost, [
+        ["criatividade", "316104644", "Dia da Criatividade"],
+        ["galerias", "326065134", "Visite 5 galerias famosas sem sair de casa"],
+        ["mundo-das-artes", "479875806", "Leve o mundo das artes para a sua casa"],
+        ["novo-mundo", "480272998", "Um novo mundo te espera"],
+        ["artistas-nacionais", "480649562", "Apoie artistas nacionais"],
+        ["teatro", "480695213", "O espetáculo já vai começar"],
+        ["todos-os-tipos", "480763335", "Ideal para todos os tipos de arte"],
+        ["viver-de-arte", "480829805", "Você já pensou em viver de arte"],
+        ["bienal", "480856775", "Bienal de São Paulo"],
+        ["fotografo", "619202917", "Dia do Fotógrafo"],
+        ["decore-casa", "619216097", "Decore sua casa com a Arte Kanvas"],
+        ["decoracao", "619585715", "Obras de arte na decoração"],
+        ["plataforma", "621107848", "A plataforma online que conecta apreciadores de arte e artistas"],
+        ["proximos", "622152137", "Conheça e compre dos artistas próximos de você"],
+        ["navegue", "622161819", "Navegue no mundo das artes"],
+        ["ver-o-mundo", "622220355", "A arte é uma forma de ver o mundo"],
+        ["arara", "622264323", "Leve o mundo das artes para a sua casa"],
+        ["emocoes", "622460107", "A galeria digital na palma da sua mão"],
+        ["escultores", "623077569", "5 escultores brasileiros"],
+        ["exponha", "623251875", "Sua arte merece ser vista pelo Brasil todo"],
+        ["busca", "623779437", "Em busca de obras de arte para decorar o seu lar"],
+        ["autoexpressao", "626205955", "A arte é a autoexpressão"],
+        ["decore-sua-casa", "626277567", "Decore sua casa"],
+        ["galeria-digital", "626545022", "Galeria digital"],
+        ["van-gogh", "626633476", "Crie sua loja virtual"],
+        ["divulgue", "632273882", "Divulgue suas obras"],
+      ]),
+    ],
+  },
+  // Convívio: o logo é um selo oval com miolo branco (bitmap, ampliado em sources/shots) e serve direto sobre o azul;
+  // o avatar é o mesmo selo num círculo branco. Os 26 posts vêm da pasta, um group por post; 476097947 repete
+  // 475350788 e a cópia "(1)" repete 621700665, então os dois ficaram de fora.
+  convivio: {
+    thumb: { logo: "logo", bg: "#1B4FA0", azulejo: true },
+    items: [
+      { id: "logo", src: "shots/convivio-logo.png", kind: "image", group: "marca" },
+      { id: "avatar", src: "shots/convivio-avatar.png", kind: "image", group: "marca" },
+      ...singles(conPost, [
+        ["crocante", "473806870", "Crocante e muuuito gostoso"],
+        ["carnaval", "475246918", "Dê uma pausa no carnaval"],
+        ["feijoada-capricho", "475350788", "Procurando uma feijoada no capricho"],
+        ["sabado-motivos", "475645759", "Motivos pra passar seu sábado no Convívio"],
+        ["primavera", "475763468", "Primavera"],
+        ["clube-do-chopp", "475773162", "Novidade: Clube do Chopp"],
+        ["enquete", "475791643", "A feijoada do Convívio é"],
+        ["terca-happy-hour", "475875584", "Terça do Happy Hour"],
+        ["louca-suja", "475894739", "Crie independência da louça suja"],
+        ["sabado-feijoada", "476225515", "Sábado no Convívio"],
+        ["lembrancas", "480314587", "Crie lembranças memoráveis"],
+        ["feriado", "480325618", "Feriado é no Convívio"],
+        ["feliz-2024", "480513313", "Obrigado por conviver com a gente em 2023"],
+        ["confraternizacao", "480599799", "Faça a sua festa de confraternização"],
+        ["bloco", "480686223", "Esse é o bloco que adoramos"],
+        ["bossa-nova", "481248349", "Dia Nacional da Bossa Nova"],
+        ["bolinho-de-costela", "619097565", "Bolinho de costela"],
+        ["panceta", "621677414", "Panceta com barbecue de goiabada"],
+        ["sextou", "621700665", "Convívio, celebrar, festa, sextou"],
+        ["feijuca", "622119528", "Bora de feijuca"],
+        ["ifood", "622490738", "Estamos no iFood"],
+        ["sabado-gostoso", "622630291", "Deixe seu sábado mais gostoso"],
+        ["almoco", "622669936", "Aqui, seu almoço fica muito mais gostoso"],
+        ["agenda", "625210241", "Agenda da Semana"],
+        ["terca-chopp", "628416687", "Não me leve a sério"],
+        ["boteco", "631595034", "Domingo é dia de comida de boteco"],
+      ]),
+    ],
+  },
+
   // os ids são lidos por c.product em cases.ts (vistas `${versão}-front|left|right|label`, fotos por linha, campanhas por group)
   dedicad: {
     thumb: { from: "duo-burst", crop: "center" },

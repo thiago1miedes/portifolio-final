@@ -94,5 +94,16 @@
     "slug": "cau-pe",
     "name": "CAU/PE",
     "ratio": 1
+  },
+  {
+    "slug": "arte-kanvas",
+    "name": "Arte Kanvas",
+    "ratio": 2.826
+  },
+  {
+    "slug": "convivio",
+    "name": "Convívio",
+    "ratio": 1.429,
+    "ext": "webp"
   }
 ]
