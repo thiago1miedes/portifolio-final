@@ -8,6 +8,8 @@ capas/*.png
 capas/*.jpg
 capas/*.jpeg
 capas/*.webp
+# capas desenhadas em código (npm run covers): saem do script, não precisam ir para o repositório
+capas/auto/
 
 .vercel
 .vercel

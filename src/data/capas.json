@@ -1,1 +1,170 @@
-{}
+{
+  "confraria": {
+    "v": {
+      "src": "/capas/confraria-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/confraria.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "debora-sandrin": {
+    "v": {
+      "src": "/capas/debora-sandrin-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/debora-sandrin.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "dor-e-saude": {
+    "v": {
+      "src": "/capas/dor-e-saude-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/dor-e-saude.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "easywork": {
+    "v": {
+      "src": "/capas/easywork-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/easywork.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "efpi": {
+    "v": {
+      "src": "/capas/efpi-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/efpi.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "equipamentaria": {
+    "v": {
+      "src": "/capas/equipamentaria-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/equipamentaria.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "faggian": {
+    "v": {
+      "src": "/capas/faggian-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/faggian.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "grasie": {
+    "v": {
+      "src": "/capas/grasie-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/grasie.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "kom-saude": {
+    "v": {
+      "src": "/capas/kom-saude-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/kom-saude.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "lifestyle": {
+    "v": {
+      "src": "/capas/lifestyle-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/lifestyle.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "oticas-talarico": {
+    "v": {
+      "src": "/capas/oticas-talarico-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/oticas-talarico.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "urbes": {
+    "v": {
+      "src": "/capas/urbes-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/urbes.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "visual-vidros": {
+    "v": {
+      "src": "/capas/visual-vidros-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/visual-vidros.webp",
+      "w": 1200,
+      "h": 800
+    }
+  },
+  "vocs": {
+    "v": {
+      "src": "/capas/vocs-v.webp",
+      "w": 900,
+      "h": 1200
+    },
+    "h": {
+      "src": "/capas/vocs.webp",
+      "w": 1200,
+      "h": 800
+    }
+  }
+}

@@ -11,6 +11,7 @@
     "shots": "node scripts/shoot-sites.mjs",
     "brand": "node scripts/brand-case.mjs",
     "capas": "node scripts/capas.mjs",
+    "covers": "node scripts/covers.mjs",
     "logos": "node scripts/logos.mjs"
   },
   "dependencies": {

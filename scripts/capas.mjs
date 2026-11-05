@@ -3,6 +3,8 @@
 //   capas/<slug>-v.png  (3:4)  vira a capa vertical da home
 // Grava em public/capas/ e registra em src/data/capas.json, que os cards leem.
 // Fica separado de thumb.webp porque `npm run assets` e `npm run brand -- <slug> thumb` sobrescrevem aquele arquivo.
+// capas/auto/ guarda as capas desenhadas em código por `npm run covers` (scripts/covers.mjs);
+// uma imagem de mesmo nome em capas/ (a do Flow) tem prioridade sobre a desenhada.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -18,11 +20,18 @@ const known = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(ROOT, "sr
 const manifest = {};
 fs.mkdirSync(OUT, { recursive: true });
 
-const files = fs.readdirSync(IN).filter((f) => /\.(png|jpe?g|webp)$/i.test(f));
-if (!files.length) console.log("Nenhuma imagem em capas/.");
+const isImg = (f) => /\.(png|jpe?g|webp)$/i.test(f);
+const AUTO = path.join(IN, "auto");
+// nome (sem extensão) → caminho; as do Flow, lidas por último, trocam as desenhadas
+const byName = new Map();
+for (const dir of [AUTO, IN]) {
+  if (!fs.existsSync(dir)) continue;
+  for (const f of fs.readdirSync(dir).filter(isImg)) byName.set(path.parse(f).name.toLowerCase(), path.join(dir, f));
+}
+if (!byName.size) console.log("Nenhuma imagem em capas/.");
 
-for (const file of files) {
-  const name = path.parse(file).name.toLowerCase();
+for (const [name, input] of byName) {
+  const file = path.basename(input);
   const key = name.endsWith("-v") ? "v" : "h";
   const slug = key === "v" ? name.slice(0, -2) : name;
   if (!known.has(slug)) {
@@ -30,7 +39,7 @@ for (const file of files) {
     continue;
   }
   const out = `${name}.webp`;
-  await sharp(path.join(IN, file), { limitInputPixels: false })
+  await sharp(input, { limitInputPixels: false })
     .rotate()
     .resize({ ...SIZE[key], fit: "cover", position: "centre" })
     .webp({ quality: 84, effort: 5 })
